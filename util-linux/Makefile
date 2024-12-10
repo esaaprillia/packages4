@@ -690,7 +690,7 @@ MESON_ARGS += \
 	-Dncursesw=enabled
 
 define Host/Install
-	$(call Host/Install/Default)
+	$(call Host/Install/Meson)
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
 	$(CP) $(HOST_BUILD_DIR)/libuuid/src/uuid.h $(STAGING_DIR_HOSTPKG)/include/
 endef
