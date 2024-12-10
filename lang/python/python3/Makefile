@@ -315,19 +315,10 @@ HOST_CONFIGURE_ARGS += \
 define Host/Configure
 	$(SED) 's/^ENABLE_USER_SITE = None$$$$/ENABLE_USER_SITE = False/' $(HOST_BUILD_DIR)/Lib/site.py
 	$(call Host/Configure/Default)
-	ls $(HOST_BUILD_DIR)/Lib/ensurepip/_bundled/setuptools-$(PYTHON3_SETUPTOOLS_VERSION)-py3-none-any.whl
 	ls $(HOST_BUILD_DIR)/Lib/ensurepip/_bundled/pip-$(PYTHON3_PIP_VERSION)-py3-none-any.whl
 endef
 
 define Host/Install
-	$(if $(wildcard $(HOST_PYTHON3_PKG_DIR)/.setuptools_installed_$(PYTHON3_SETUPTOOLS_VERSION)-$(PYTHON3_SETUPTOOLS_PKG_RELEASE)),,
-		rm -rf \
-			$(HOST_PYTHON3_PKG_DIR)/pkg_resources \
-			$(HOST_PYTHON3_PKG_DIR)/setuptools \
-			$(HOST_PYTHON3_PKG_DIR)/setuptools-* \
-			$(HOST_PYTHON3_PKG_DIR)/.setuptools-patched* \
-			$(HOST_PYTHON3_PKG_DIR)/.setuptools_installed_*
-	)
 	$(if $(wildcard $(HOST_PYTHON3_PKG_DIR)/.pip_installed_$(PYTHON3_PIP_VERSION)-$(PYTHON3_PIP_PKG_RELEASE)),,
 		rm -rf \
 			$(HOST_PYTHON3_PKG_DIR)/pip \
@@ -336,10 +327,6 @@ define Host/Install
 			$(HOST_PYTHON3_PKG_DIR)/.pip_installed_*
 	)
 	$(call Host/Install/Default)
-	$(if $(wildcard $(HOST_PYTHON3_PKG_DIR)/.setuptools_installed_$(PYTHON3_SETUPTOOLS_VERSION)-$(PYTHON3_SETUPTOOLS_PKG_RELEASE)),,
-		$(call HostPatchDir,$(HOST_PYTHON3_PKG_DIR),./patches-host-setuptools,)
-		touch $(HOST_PYTHON3_PKG_DIR)/.setuptools_installed_$(PYTHON3_SETUPTOOLS_VERSION)-$(PYTHON3_SETUPTOOLS_PKG_RELEASE)
-	)
 	$(if $(wildcard $(HOST_PYTHON3_PKG_DIR)/.pip_installed_$(PYTHON3_PIP_VERSION)-$(PYTHON3_PIP_PKG_RELEASE)),,
 		$(call HostPatchDir,$(HOST_PYTHON3_PKG_DIR),./patches-host-pip,)
 		touch $(HOST_PYTHON3_PKG_DIR)/.pip_installed_$(PYTHON3_PIP_VERSION)-$(PYTHON3_PIP_PKG_RELEASE)
