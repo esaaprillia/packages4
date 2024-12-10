@@ -625,9 +625,9 @@ MESON_HOST_ARGS += \
 	-Dbuild-bash-completion=disabled \
 	-Dbuild-pylibmount=disabled \
 	-Dbuild-liblastlog2=disabled \
+	-Dbuild-more=disabled \
 	-Dreadline=disabled \
 	-Dmagic=disabled \
-	-Dprogram-tests=false \
 	-Dncursesw=disabled
 
 MESON_ARGS += \
