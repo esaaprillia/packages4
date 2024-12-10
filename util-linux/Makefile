@@ -25,7 +25,6 @@ PKG_LICENSE_FILES:=	COPYING					\
 			libuuid/COPYING				\
 			Documentation/licenses/COPYING.BSD-3
 
-HOST_BUILD_DEPENDS:=ncurses/host
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -628,7 +627,7 @@ MESON_HOST_ARGS += \
 	-Dbuild-liblastlog2=disabled \
 	-Dreadline=disabled \
 	-Dmagic=disabled \
-	-Dncursesw=enabled
+	-Dncursesw=disabled
 
 MESON_ARGS += \
 	-Dsystemd=disabled \
