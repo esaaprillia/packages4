@@ -5,7 +5,7 @@
 # See /LICENSE for more information.
 #
 
-# Note: keep in sync with setuptools & pip
+# Note: keep in sync with pip
 PYTHON3_VERSION_MAJOR:=3
 PYTHON3_VERSION_MINOR:=13
 PYTHON3_VERSION_MICRO:=1
