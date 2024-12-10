@@ -703,6 +703,11 @@ MESON_ARGS += \
 	-Dmagic=disabled \
 	-Dncursesw=enabled
 
+define Host/Install
+	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
+	$(CP) $(HOST_BUILD_DIR)/libuuid/src/uuid.h $(STAGING_DIR_HOSTPKG)/include/
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/blkid.pc $(1)/usr/lib/pkgconfig
