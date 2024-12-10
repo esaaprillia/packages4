@@ -627,6 +627,7 @@ MESON_HOST_ARGS += \
 	-Dbuild-liblastlog2=disabled \
 	-Dreadline=disabled \
 	-Dmagic=disabled \
+	-Dprogram-tests=false \
 	-Dncursesw=disabled
 
 MESON_ARGS += \
