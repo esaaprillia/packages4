@@ -1,0 +1,18 @@
+--- a/Modules/_hashopenssl.c
++++ b/Modules/_hashopenssl.c
+@@ -874,11 +890,15 @@ py_evp_fromname(PyObject *module, const
+         goto exit;
+     }
+ 
++#ifndef EVP_MD_FLAG_XOF
++    type = get_hashlib_state(module)->EVPtype;
++#else
+     if ((EVP_MD_flags(digest) & EVP_MD_FLAG_XOF) == EVP_MD_FLAG_XOF) {
+         type = get_hashlib_state(module)->EVPXOFtype;
+     } else {
+         type = get_hashlib_state(module)->EVPtype;
+     }
++#endif
+ 
+     self = newEVPobject(type);
+     if (self == NULL) {
