@@ -628,9 +628,33 @@ MESON_HOST_ARGS += \
 	-Dbuild-more=disabled \
 	-Dbuild-fdisks=disabled \
 	-Dbuild-setterm=disabled \
+	-Dbuild-agetty=disabled \
+	-Dbuild-plymouth-support=disabled \
+	-Dbuild-cramfs=disabled \
+	-Dbuild-fallocate=disabled \
+	-Dbuild-fsck=disabled \
+	-Dbuild-libblkid=disabled \
+	-Dbuild-libmount=disabled \
+	-Dbuild-pylibmount=disabled \
+	-Dbuild-lslogins=disabled \
+	-Dbuild-login=disabled \
+	-Dbuild-nologin=disabled \
+	-Dbuild-sulogin=disabled \
+	-Dbuild-mount=disabled \
+	-Dbuild-mountpoint=disabled \
+	-Dbuild-partx=disabled \
+	-Dbuild-pivot_root=disabled \
+	-Dbuild-rename=disabled \
+	-Dbuild-schedutils=disabled \
+	-Dbuild-su=disabled \
+	-Dbuild-switch_root=disabled \
+	-Dbuild-unshare=disabled \
+	-Dbuild-uuidd=disabled \
+	-Dbuild-wall=disabled \
 	-Dreadline=disabled \
 	-Dmagic=disabled \
-	-Dncursesw=disabled
+	-Dncursesw=disabled \
+	-Dncurses=disabled
 
 MESON_ARGS += \
 	-Dsystemd=disabled \
@@ -688,12 +712,6 @@ MESON_ARGS += \
 	-Dreadline=disabled \
 	-Dmagic=disabled \
 	-Dncursesw=enabled
-
-define Host/Install
-	$(call Host/Install/Meson)
-	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
-	$(CP) $(HOST_BUILD_DIR)/libuuid/src/uuid.h $(STAGING_DIR_HOSTPKG)/include/
-endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
