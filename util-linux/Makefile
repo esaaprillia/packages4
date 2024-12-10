@@ -25,7 +25,7 @@ PKG_LICENSE_FILES:=	COPYING					\
 			libuuid/COPYING				\
 			Documentation/licenses/COPYING.BSD-3
 
-PKG_BUILD_DEPENDS:=ncurses/host
+HOST_BUILD_DEPENDS:=ncurses/host
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
