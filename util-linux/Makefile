@@ -640,6 +640,7 @@ MESON_HOST_ARGS += \
 	-Dbuild-unshare=disabled \
 	-Dbuild-uuidd=disabled \
 	-Dbuild-wall=disabled \
+	-Dbuild-libsmartcols=disabled \
 	-Dreadline=disabled \
 	-Dmagic=disabled \
 	-Dncursesw=disabled \
