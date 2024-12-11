@@ -1,0 +1,22 @@
+From 2ee8a8f2855d474de2a4d4c31223c4878bb5526c Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 11 Dec 2024 08:45:06 +0800
+Subject: [PATCH] Update _cursesmodule.c
+
+---
+ Modules/_cursesmodule.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Modules/_cursesmodule.c b/Modules/_cursesmodule.c
+index 55038cf..aae40a3 100644
+--- a/Modules/_cursesmodule.c
++++ b/Modules/_cursesmodule.c
+@@ -137,7 +137,7 @@ typedef chtype attr_t;           /* No attr_t type is available */
+ #define STRICT_SYSV_CURSES
+ #endif
+ 
+-#if NCURSES_EXT_FUNCS+0 >= 20170401 && NCURSES_EXT_COLORS+0 >= 20170401
++#if HAVE_NCURSESW && NCURSES_EXT_FUNCS+0 >= 20170401 && NCURSES_EXT_COLORS+0 >= 20170401
+ #define _NCURSES_EXTENDED_COLOR_FUNCS   1
+ #else
+ #define _NCURSES_EXTENDED_COLOR_FUNCS   0
