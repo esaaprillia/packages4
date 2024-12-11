@@ -45,8 +45,8 @@ define Package/libreadline/description
 	history expansion on previous commands.
 endef
 
-HOST_CONFIGURE_ARGS += --disable-shared --with-pic
-CONFIGURE_ARGS += --with-curses --disable-install-examples
+HOST_CONFIGURE_ARGS += --disable-shared --with-pic --with-shared-termcap-library
+CONFIGURE_ARGS += --with-curses --disable-install-examples --with-shared-termcap-library
 
 HOST_CONFIGURE_VARS += \
 	bash_cv_termcap_lib=libncurses
