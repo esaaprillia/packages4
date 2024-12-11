@@ -257,7 +257,6 @@ endef
 
 define Py3Package/python3-light/filespec
 +|/usr/lib/python$(PYTHON3_VERSION)
--|/usr/lib/python$(PYTHON3_VERSION)/distutils/cygwinccompiler.py
 -|/usr/lib/python$(PYTHON3_VERSION)/idlelib
 -|/usr/lib/python$(PYTHON3_VERSION)/tkinter
 -|/usr/lib/python$(PYTHON3_VERSION)/turtledemo
