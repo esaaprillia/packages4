@@ -244,7 +244,6 @@ PYTHON3_BASE_LIB_FILES:= \
 	/usr/lib/python$(PYTHON3_VERSION)/os.py \
 	/usr/lib/python$(PYTHON3_VERSION)/posixpath.py \
 	/usr/lib/python$(PYTHON3_VERSION)/site.py \
-	/usr/lib/python$(PYTHON3_VERSION)/sysconfig.py \
 	/usr/lib/python$(PYTHON3_VERSION)/stat.py
 
 PYTHON3_LIB_FILES_DEL+=$(PYTHON3_BASE_LIB_FILES)
