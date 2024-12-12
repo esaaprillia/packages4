@@ -19,7 +19,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 CPE_ID:=cpe:/a:python:setuptools
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-packaging/host python-typing-extensions/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-wheel/host python-packaging/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
