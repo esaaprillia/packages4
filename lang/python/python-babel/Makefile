@@ -11,7 +11,7 @@ PKG_NAME:=python-babel
 PKG_VERSION:=2.16.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=Babel
+PYPI_NAME:=babel
 PKG_HASH:=d1f3554ca26605fe173f3de0c65f750f5a42f924499bf134de6423582298e316
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
