@@ -26,6 +26,7 @@ HOST_BUILD_DEPENDS:= \
 	python-installer/host \
 	python-wheel/host \
 	python-packaging/host \
+	python-setuptools/host \
 	python-typing-extensions/host
 
 include ../pypi.mk
