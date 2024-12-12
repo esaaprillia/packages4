@@ -34,7 +34,6 @@ define Package/python3-babel
   URL:=https://babel.pocoo.org/
   DEPENDS:= \
     +python3-decimal \
-    +python3-distutils \
     +python3-email \
     +python3-light \
     +python3-logging \
