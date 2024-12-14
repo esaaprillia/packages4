@@ -89,10 +89,7 @@ HOST_CONFIGURE_ARGS += \
 	--without-debug \
 	--without-manpages \
 	--without-profile \
-	--without-tests \
-	--without-curses-h \
-	--with-shared
-
+	--without-tests
 
 ifeq ($(HOST_OS),FreeBSD)
 	CONFIGURE_ARGS +=
