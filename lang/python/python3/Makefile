@@ -41,7 +41,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/Python-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/Python-$(PKG_VERSION)
 
 PKG_BUILD_DEPENDS:=bluez python3/host python-build/host python-installer/host python-wheel/host
-HOST_BUILD_DEPENDS:=bzip2/host libffi/host util-linux/host
+HOST_BUILD_DEPENDS:=bzip2/host libffi/host readline/host util-linux/host
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
@@ -152,7 +152,7 @@ endef
 TARGET_CONFIGURE_OPTS+= \
 	READELF="$(TARGET_CROSS)readelf"
 
-EXTRA_LDFLAGS+= \
+TARGET_LDFLAGS+= \
 	-L$(PKG_BUILD_DIR) \
 	-L$(STAGING_DIR)/usr/lib -L$(STAGING_DIR)/lib
 
@@ -290,6 +290,10 @@ endif
 # Would be nice to be able to do this, but hosts are very fiddly
 # HOST_MAKE_VARS += \
 # 	PYTHONSTRICTEXTENSIONBUILD=1
+
+HOST_LDFLAGS+= \
+	-L$(HOST_BUILD_DIR) \
+	-L$(STAGING_DIR_HOSTPKG)/lib -L$(STAGING_DIR_HOSTPKG)
 
 # Bypass configure test
 HOST_CONFIGURE_VARS += \
