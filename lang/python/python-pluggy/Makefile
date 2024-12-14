@@ -18,12 +18,13 @@ PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>, Jeffery To <jeffery.to@g
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-setuptools/host python-setuptools-scm/host
 HOST_BUILD_DEPENDS:= \
 	python3/host \
 	python-build/host \
 	python-installer/host \
 	python-wheel/host \
+	python-setuptools/host \
 	python-setuptools-scm/host
 
 include ../pypi.mk
