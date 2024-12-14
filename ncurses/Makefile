@@ -89,8 +89,7 @@ HOST_CONFIGURE_ARGS += \
 	--without-debug \
 	--without-manpages \
 	--without-profile \
-	--without-tests \
-	--without-curses-h
+	--without-tests
 
 
 ifeq ($(HOST_OS),FreeBSD)
@@ -183,11 +182,6 @@ define Build/InstallDev
 	ln -sf $(STAGING_DIR)/host/bin/ncursesw6-config $(1)/usr/bin/ncursesw6-config
 	$(SED) 's,$(TOOLCHAIN_DIR),$(STAGING_DIR),g' \
 		$(1)/usr/lib/pkgconfig/ncursesw.pc
-endef
-
-define Host/Compile
-	$(MAKE) -C $(HOST_BUILD_DIR) libs
-	$(MAKE) -C $(HOST_BUILD_DIR)/progs tic
 endef
 
 $(eval $(call HostBuild))
