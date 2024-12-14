@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pyproject-metadata
-PKG_VERSION:=0.7.1
+PKG_VERSION:=0.9.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyproject-metadata
-PKG_HASH:=0a94f18b108b9b21f3a26a3d541f056c34edcb17dc872a144a15618fed7aef67
+PKG_HASH:=8511c00a4cad96686af6a6b4143433298beb96105a9379afdc9b0328f4f260c9
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
