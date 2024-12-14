@@ -32,6 +32,13 @@ endef
 HOST_CONFIGURE_ARGS +=--disable-cxx
 CONFIGURE_ARGS +=--disable-cxx
 
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		LDFLAGS="$(TARGET_LDFLAGS)" \
+		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
+		CC="$(TARGET_CC)"
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
