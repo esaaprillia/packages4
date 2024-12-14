@@ -9,12 +9,12 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ncurses
 PKG_CPE_ID:=cpe:/a:gnu:ncurses
-PKG_VERSION:=6.5
-PKG_RELEASE:=1
+PKG_VERSION:=6.4
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=@GNU/$(PKG_NAME)
-PKG_HASH:=skip
+PKG_HASH:=6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=README
@@ -89,7 +89,8 @@ HOST_CONFIGURE_ARGS += \
 	--without-debug \
 	--without-manpages \
 	--without-profile \
-	--without-tests
+	--without-tests \
+	--without-curses-h
 
 
 ifeq ($(HOST_OS),FreeBSD)
@@ -182,6 +183,11 @@ define Build/InstallDev
 	ln -sf $(STAGING_DIR)/host/bin/ncursesw6-config $(1)/usr/bin/ncursesw6-config
 	$(SED) 's,$(TOOLCHAIN_DIR),$(STAGING_DIR),g' \
 		$(1)/usr/lib/pkgconfig/ncursesw.pc
+endef
+
+define Host/Compile
+	$(MAKE) -C $(HOST_BUILD_DIR) libs
+	$(MAKE) -C $(HOST_BUILD_DIR)/progs tic
 endef
 
 $(eval $(call HostBuild))
