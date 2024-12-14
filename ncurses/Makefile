@@ -9,12 +9,12 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ncurses
 PKG_CPE_ID:=cpe:/a:gnu:ncurses
-PKG_VERSION:=6.4
-PKG_RELEASE:=2
+PKG_VERSION:=6.5
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=@GNU/$(PKG_NAME)
-PKG_HASH:=6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
+PKG_HASH:=skip
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=README
@@ -89,7 +89,9 @@ HOST_CONFIGURE_ARGS += \
 	--without-debug \
 	--without-manpages \
 	--without-profile \
-	--without-tests
+	--without-tests \
+	--without-curses-h
+
 
 ifeq ($(HOST_OS),FreeBSD)
 	CONFIGURE_ARGS +=
