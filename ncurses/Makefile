@@ -90,7 +90,8 @@ HOST_CONFIGURE_ARGS += \
 	--without-manpages \
 	--without-profile \
 	--without-tests \
-	--without-curses-h
+	--without-curses-h \
+	--with-shared
 
 
 ifeq ($(HOST_OS),FreeBSD)
