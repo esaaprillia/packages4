@@ -49,7 +49,7 @@ HOST_CONFIGURE_ARGS += --disable-shared --with-pic
 CONFIGURE_ARGS += --with-curses --disable-install-examples
 
 HOST_CONFIGURE_VARS += \
-	bash_cv_termcap_lib=libncurses
+	bash_cv_termcap_lib=libncursesw
 
 CONFIGURE_VARS += \
 	bash_cv_wcwidth_broken=no \
