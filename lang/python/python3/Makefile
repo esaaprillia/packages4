@@ -152,7 +152,7 @@ endef
 TARGET_CONFIGURE_OPTS+= \
 	READELF="$(TARGET_CROSS)readelf"
 
-TARGET_LDFLAGS+= \
+EXTRA_LDFLAGS+= \
 	-L$(PKG_BUILD_DIR) \
 	-L$(STAGING_DIR)/usr/lib -L$(STAGING_DIR)/lib
 
@@ -290,10 +290,6 @@ endif
 # Would be nice to be able to do this, but hosts are very fiddly
 # HOST_MAKE_VARS += \
 # 	PYTHONSTRICTEXTENSIONBUILD=1
-
-HOST_LDFLAGS+= \
-	-L$(HOST_BUILD_DIR) \
-	-L$(STAGING_DIR_HOSTPKG)/lib -L$(STAGING_DIR_HOSTPKG)
 
 # Bypass configure test
 HOST_CONFIGURE_VARS += \
