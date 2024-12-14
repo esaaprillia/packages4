@@ -19,7 +19,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
 PKG_HOST_ONLY:=1
-HOST_BUILD_DEPENDS:=python3/host python-flit-core/host python-installer/host python-setuptools/host
+HOST_BUILD_DEPENDS:=python3/host python-flit-core/host python-installer/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
