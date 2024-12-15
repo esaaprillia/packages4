@@ -29,29 +29,12 @@ define Package/python3-pip
   SUBMENU:=Python
   TITLE:=PyPA recommended tool for installing Python packages
   URL:=https://pip.pypa.io/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-setuptools
 endef
 
 define Package/python3-pip/description
 pip is the package installer for Python. You can use pip to install
 packages from the Python Package Index and other indexes.
-endef
-
-PYTHON3_PKG_WHEEL_NAME:=pip
-PYTHON3_PKG_WHEEL_VERSION:=24.3.1
-
-define Package/python3-pip/conffiles
-/etc/pip.conf
-endef
-
-define Py3Package/python3-pip/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/pip$(PYTHON3_VERSION) $(1)/usr/bin/
-	$(LN) pip$(PYTHON3_VERSION) $(1)/usr/bin/pip3
-	$(LN) pip$(PYTHON3_VERSION) $(1)/usr/bin/pip
-
-	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_DATA) ./files/pip.conf $(1)/etc/
 endef
 
 $(eval $(call Py3Package,python3-pip))
