@@ -8,8 +8,7 @@ PKG_NAME:=flask
 PKG_VERSION:=3.1.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=Flask
-PYPI_SOURCE_NAME:=flask
+PYPI_NAME:=flask
 PKG_HASH:=5f873c5184c897c8d9d1b05df1e3d01b14910ce69607a117bd3277098a5836ac
 
 PKG_MAINTAINER:=Michal Vasilek <michal.vasilek@nic.cz>
