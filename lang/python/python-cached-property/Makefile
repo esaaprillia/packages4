@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cached-property
-PKG_VERSION:=1.5.2
-PKG_RELEASE:=2
+PKG_VERSION:=2.0.1
+PKG_RELEASE:=1
 
 PYPI_NAME:=cached-property
-PKG_HASH:=9fa5755838eecbb2d234c3aa390bd80fbd3ac6b6869109bfc1b499f7bd89a130
+PKG_HASH:=484d617105e3ee0e4f1f58725e72a8ef9e93deee462222dbd51cd91230897641
 
 PKG_MAINTAINER:=Javier Marcet <javier@marcet.info>
 PKG_LICENSE:=BSD-3-Clause
