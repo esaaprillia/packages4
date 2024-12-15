@@ -34,4 +34,3 @@ endef
 $(eval $(call Py3Package,python3-standard-telnetlib))
 $(eval $(call BuildPackage,python3-standard-telnetlib))
 $(eval $(call BuildPackage,python3-standard-telnetlib-src))
-$(eval $(call HostBuild))
