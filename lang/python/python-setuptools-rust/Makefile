@@ -11,7 +11,7 @@ PKG_NAME:=python-setuptools-rust
 PKG_VERSION:=1.10.2
 PKG_RELEASE:=1
 
-PYPI_NAME:=setuptools-rust
+PYPI_NAME:=setuptools_rust
 PKG_HASH:=5d73e7eee5f87a6417285b617c97088a7c20d1a70fcea60e3bdc94ff567c29dc
 
 PKG_LICENSE:=MIT
