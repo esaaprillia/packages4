@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pytest-xdist
-PKG_VERSION:=3.3.1
+PKG_VERSION:=3.6.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=pytest-xdist
-PKG_HASH:=d5ee0520eb1b7bcca50a60a518ab7a7707992812c578198f8b44fdfac78e8c93
+PKG_HASH:=ead156a4db231eec769737f57668ef58a2084a34b2e55c4a8fa20d861107300d
 
 PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
