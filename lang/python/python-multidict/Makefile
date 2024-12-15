@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-multidict
-PKG_VERSION:=6.0.4
+PKG_VERSION:=6.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=multidict
-PKG_HASH:=3666906492efb76453c0e7b97f2cf459b0682e7402c0489a95484965dbc1da49
+PKG_HASH:=22ae2ebf9b0c69d206c003e2f6a914ea33f0a932d4aa16f236afc049d9958f4a
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=Apache-2.0
