@@ -21,7 +21,7 @@ define Package/python3-standard-chunk
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Standard library telnetlib redistribution. "dead battery".
+  TITLE:=Standard library chunk redistribution. "dead battery".
   URL:=https://github.com/youknowone/python-deadlib
   DEPENDS:=+python3
 endef
