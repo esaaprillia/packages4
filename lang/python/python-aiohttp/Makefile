@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiohttp
-PKG_VERSION:=3.9.3
+PKG_VERSION:=3.11.10
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiohttp
-PKG_HASH:=90842933e5d1ff760fae6caca4b2b3edba53ba8f4b71e95dacf2818a2aca06f7
+PKG_HASH:=b1fc6b45010a8d0ff9e88f9f2418c6fd408c99c211257334aff41597ebece42e
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=Apache-2.0
