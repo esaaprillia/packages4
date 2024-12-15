@@ -9,11 +9,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyparsing
-PKG_VERSION:=3.1.1
+PKG_VERSION:=3.2.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyparsing
-PKG_HASH:=ede28a1a32462f5a9705e07aea48001a08f7cf81a021585011deba701581a0db
+PKG_HASH:=cbf74e27246d595d9a74b186b810f6fbb86726dbf3b9532efb343f6d7294fe9c
 
 PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
