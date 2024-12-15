@@ -37,6 +37,9 @@ pip is the package installer for Python. You can use pip to install
 packages from the Python Package Index and other indexes.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=pip
+PYTHON3_PKG_WHEEL_VERSION:=24.3.1
+
 define Package/python3-pip/conffiles
 /etc/pip.conf
 endef
