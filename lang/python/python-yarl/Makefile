@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=yarl
-PKG_VERSION:=1.9.2
+PKG_VERSION:=1.18.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=$(PKG_NAME)
-PKG_HASH:=04ab9d4b9f587c06d801c2abfe9317b77cdf996c65a90d5e84ecc45010823571
+PKG_HASH:=b57f4f58099328dfb26c6a771d09fb20dbbae81d20cfb66141251ea063bd101b
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=Apache-2.0
