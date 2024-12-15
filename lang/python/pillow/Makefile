@@ -7,11 +7,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pillow
-PKG_VERSION:=10.1.0
+PKG_VERSION:=11.0.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=Pillow
-PKG_HASH:=e6bf8de6c36ed96c86ea3b6e1d5273c53f46ef518a062464cd7ef5dd2cf92e38
+PYPI_NAME:=pillow
+PKG_HASH:=72bacbaf24ac003fea9bff9837d1eedb6088758d41e100c1552930151f677739
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
