@@ -4,7 +4,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=Flask
+PKG_NAME:=flask
 PKG_VERSION:=3.1.0
 PKG_RELEASE:=1
 
