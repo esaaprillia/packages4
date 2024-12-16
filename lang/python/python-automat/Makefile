@@ -11,7 +11,7 @@ PKG_NAME:=python-automat
 PKG_VERSION:=24.8.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=Automat
+PYPI_NAME:=automat
 PKG_HASH:=b34227cf63f6325b8ad2399ede780675083e439b20c323d376373d8ee6306d88
 
 PKG_LICENSE:=MIT
@@ -41,6 +41,9 @@ Automat is a library for concise, idiomatic Python expression of
 finite-state automata (particularly deterministic finite-state
 transducers).
 endef
+
+PYTHON3_PKG_WHEEL_NAME:=Automat
+PYTHON3_PKG_WHEEL_VERSION:=24.8.1
 
 define Py3Package/python3-automat/filespec
 +|$(PYTHON3_PKG_DIR)
