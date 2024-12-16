@@ -43,7 +43,6 @@ PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
 	--build-option=--enable-zlib \
 	--build-option=--enable-jpeg \
 	--build-option=--enable-webp \
-	--build-option=--enable-webpmux \
 	--build-option=--enable-tiff \
 	--build-option=--enable-freetype \
 	--build-option=--disable-lcms \
