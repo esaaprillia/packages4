@@ -11,7 +11,7 @@ PKG_NAME:=python-charset-normalizer
 PKG_VERSION:=3.4.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=charset-normalizer
+PYPI_NAME:=charset_normalizer
 PKG_HASH:=223217c3d4f82c3ac5e29032b3f1c2eb0fb591b72161f86d93f5719079dae93e
 
 PKG_LICENSE:=MIT
