@@ -1,6 +1,6 @@
 m = Map("mqos")
 m.title = translate("MQOS")
-m.description = translate("Rate limit devices by MAC address")
+m.description = translate("Rate limit devices by MAC Address")
 
 s = m:section(TypedSection, "global")
 s.addremove = false
