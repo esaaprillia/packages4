@@ -57,3 +57,4 @@ endef
 $(eval $(call Py3Package,python3-versioningit))
 $(eval $(call BuildPackage,python3-versioningit))
 $(eval $(call BuildPackage,python3-versioningit-src))
+$(eval $(call HostBuild))
