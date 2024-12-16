@@ -6,28 +6,28 @@ s = m:section(TypedSection, "global")
 s.addremove = false
 s.anonymous = true
 
-e = s:option(Flag, "enabled", translate("enable"))
+e = s:option(Flag, "enabled", translate("Enabled"))
 
-ifa = s:option(Value, "interface", translate("interface"))
+ifa = s:option(Value, "interface", translate("Interface"))
 ifa.description = translate("Need to save the application first")
 ifa.datatype = "string"
 ifa.default = "br-lan"
 
-dl = s:option(Value, "download", translate("Download speed (Mbit/s)"))
-dl.description = translate("Interface download speed")
+dl = s:option(Value, "download", translate("Download (Mbit/s)"))
+dl.description = translate("Download")
 dl.datatype = "and(uinteger,min(1))"
 
-ul = s:option(Value, "upload", translate("upload speed (Mbit/s)"))
-ul.description = translate("Interface upload speed")
+ul = s:option(Value, "upload", translate("Upload (Mbit/s)"))
+ul.description = translate("Upload")
 ul.datatype = "and(uinteger,min(1))"
 
-s = m:section(TypedSection, "device", translate("Rate limiting based on MAC address"))
+s = m:section(TypedSection, "device", translate("Rate limiting based on MAC Address"))
 s.template = "cbi/tblsection"
 s.anonymous = true
 s.addremove = true
 s.sortable = true
 
-mac = s:option(Value, "mac", translate("address"))
+mac = s:option(Value, "mac", translate("Mac Address"))
 mac.datatype = "macaddr"
 
 luci.ip.neighbors({family = 4, dev = luci.sys.exec("uci get mqos.@global[0].interface")},
@@ -37,10 +37,10 @@ luci.ip.neighbors({family = 4, dev = luci.sys.exec("uci get mqos.@global[0].inte
 	end
 end)
 
-dl = s:option(Value, "download", translate("Download speed (Mbit/s)"))
+dl = s:option(Value, "download", translate("Download (Mbit/s)"))
 dl.datatype = "and(uinteger,min(1))"
 
-ul = s:option(Value, "upload", translate("upload speed (Mbit/s)"))
+ul = s:option(Value, "upload", translate("Upload (Mbit/s)"))
 ul.datatype = "and(uinteger,min(1))"
 
 comment = s:option(Value, "comment", translate("Remark"))
