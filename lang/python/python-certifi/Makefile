@@ -16,9 +16,13 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=certifi
 PKG_HASH:=b650d30f370c2b724812bee08008be0c4163b163ddaec3f2546c1caf65f191db
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-certifi
   SUBMENU:=Python
@@ -38,3 +42,4 @@ endef
 $(eval $(call Py3Package,python3-certifi))
 $(eval $(call BuildPackage,python3-certifi))
 $(eval $(call BuildPackage,python3-certifi-src))
+$(eval $(call HostBuild))
