@@ -20,10 +20,13 @@ PYPI_NAME:=urllib3
 PKG_HASH:=e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:=python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-urllib3
   SUBMENU:=Python
@@ -41,3 +44,4 @@ endef
 $(eval $(call Py3Package,python3-urllib3))
 $(eval $(call BuildPackage,python3-urllib3))
 $(eval $(call BuildPackage,python3-urllib3-src))
+$(eval $(call HostBuild))
