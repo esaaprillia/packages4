@@ -11,7 +11,7 @@ PKG_NAME:=python-sqlalchemy
 PKG_VERSION:=2.0.36
 PKG_RELEASE:=1
 
-PYPI_NAME:=SQLAlchemy
+PYPI_NAME:=sqlalchemy
 PKG_HASH:=7f2767680b6d2398aea7082e45a774b2b0767b5c8d8ffb9c8b683088ea9b29c5
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
@@ -41,6 +41,9 @@ SQLAlchemy provides a full suite of well known enterprise-level
 persistence patterns, designed for efficient and high-performing
 database access, adapted into a simple and Pythonic domain language.
 endef
+
+PYTHON3_PKG_WHEEL_NAME:=SQLAlchemy
+PYTHON3_PKG_WHEEL_VERSION:=2.0.36
 
 $(eval $(call Py3Package,python3-sqlalchemy))
 $(eval $(call BuildPackage,python3-sqlalchemy))
