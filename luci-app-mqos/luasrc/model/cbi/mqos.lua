@@ -1,33 +1,33 @@
 m = Map("mqos")
 m.title = translate("MQOS")
-m.description = translate("按 MAC 地址限速设备")
+m.description = translate("Rate limit devices by MAC address")
 
 s = m:section(TypedSection, "global")
 s.addremove = false
 s.anonymous = true
 
-e = s:option(Flag, "enabled", translate("启用"))
+e = s:option(Flag, "enabled", translate("enable"))
 
-ifa = s:option(Value, "interface", translate("接口"))
-ifa.description = translate("需要先保存应用")
+ifa = s:option(Value, "interface", translate("interface"))
+ifa.description = translate("Need to save the application first")
 ifa.datatype = "string"
 ifa.default = "br-lan"
 
-dl = s:option(Value, "download", translate("下载速度 (Mbit/s)"))
-dl.description = translate("接口下载速度")
+dl = s:option(Value, "download", translate("Download speed (Mbit/s)"))
+dl.description = translate("Interface download speed")
 dl.datatype = "and(uinteger,min(1))"
 
-ul = s:option(Value, "upload", translate("上传速度 (Mbit/s)"))
-ul.description = translate("接口上传速度")
+ul = s:option(Value, "upload", translate("upload speed (Mbit/s)"))
+ul.description = translate("Interface upload speed")
 ul.datatype = "and(uinteger,min(1))"
 
-s = m:section(TypedSection, "device", translate("基于 MAC 地址限速"))
+s = m:section(TypedSection, "device", translate("Rate limiting based on MAC address"))
 s.template = "cbi/tblsection"
 s.anonymous = true
 s.addremove = true
 s.sortable = true
 
-mac = s:option(Value, "mac", translate("地址"))
+mac = s:option(Value, "mac", translate("address"))
 mac.datatype = "macaddr"
 
 luci.ip.neighbors({family = 4, dev = luci.sys.exec("uci get mqos.@global[0].interface")},
@@ -37,12 +37,12 @@ luci.ip.neighbors({family = 4, dev = luci.sys.exec("uci get mqos.@global[0].inte
 	end
 end)
 
-dl = s:option(Value, "download", translate("下载速度 (Mbit/s)"))
+dl = s:option(Value, "download", translate("Download speed (Mbit/s)"))
 dl.datatype = "and(uinteger,min(1))"
 
-ul = s:option(Value, "upload", translate("上传速度 (Mbit/s)"))
+ul = s:option(Value, "upload", translate("upload speed (Mbit/s)"))
 ul.datatype = "and(uinteger,min(1))"
 
-comment = s:option(Value, "comment", translate("备注"))
+comment = s:option(Value, "comment", translate("Remark"))
 
 return m
