@@ -44,6 +44,12 @@ ISA-L is a collection of optimized low-level functions targeting storage applica
 • igzip - A command line application like gzip, accelerated with ISA-L.
 endef
 
+ifeq ($(ARCH),x86_64)
+# FIXME: temporary fix for x86_64 with GCC 13 + musl;
+#        isal-l does not detect this compiler extension, so we just enable it
+TARGET_CFLAGS += -mavx512f
+endif
+
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		LDFLAGS="$(TARGET_LDFLAGS)" \
