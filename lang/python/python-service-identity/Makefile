@@ -11,7 +11,7 @@ PKG_NAME:=python-service-identity
 PKG_VERSION:=24.2.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=service-identity
+PYPI_NAME:=service_identity
 PYPI_SOURCE_NAME:=service_identity
 PKG_HASH:=b8683ba13f0d39c6cd5d625d2c5f65421d6d707b013b375c355751557cbe8e09
 
