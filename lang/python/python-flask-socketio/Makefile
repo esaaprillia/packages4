@@ -39,6 +39,9 @@ define Package/python3-flask-socketio/description
   bi-directional communications between the clients and the server.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=Flask_SocketIO
+PYTHON3_PKG_WHEEL_VERSION:=5.4.1
+
 $(eval $(call Py3Package,python3-flask-socketio))
 $(eval $(call BuildPackage,python3-flask-socketio))
 $(eval $(call BuildPackage,python3-flask-socketio-src))
