@@ -4,7 +4,7 @@ PKG_NAME:=python-websocket-client
 PKG_VERSION:=1.8.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=websocket-client
+PYPI_NAME:=websocket_client
 PKG_HASH:=3239df9f44da632f96012472805d40a23281a991027ce11d2f45a6f24ac4c3da
 
 PKG_MAINTAINER:=Javier Marcet <javier@marcet.info>
