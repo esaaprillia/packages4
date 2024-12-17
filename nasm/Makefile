@@ -23,7 +23,7 @@ define Package/nasm
   SECTION:=devel
   CATEGORY:=Development
   TITLE:=nasm assembler
-  DEPENDS:
+  DEPENDS:=@(TARGET_x86_64||TARGET_armsr_armv8)
 endef
 
 define Package/nasm/description
