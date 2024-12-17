@@ -11,7 +11,7 @@ PKG_NAME:=python-flask-socketio
 PKG_VERSION:=5.4.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=Flask-SocketIO
+PYPI_NAME:=flask_socketio
 PKG_HASH:=2e9b8864a5be37ca54f6c76a4d06b1ac5e0df61fde12d03afc81ab4057e1eb86
 
 PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
