@@ -11,7 +11,7 @@ PKG_NAME:=python-flask-session
 PKG_VERSION:=0.8.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=Flask-Session
+PYPI_NAME:=flask_session
 PKG_HASH:=20e045eb01103694e70be4a49f3a80dbb1b57296a22dc6f44bbf3f83ef0742ff
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
