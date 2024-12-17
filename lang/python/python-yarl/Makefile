@@ -12,7 +12,7 @@ PKG_VERSION:=1.18.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=$(PKG_NAME)
-PKG_HASH:=b57f4f58099328dfb26c6a771d09fb20dbbae81d20cfb66141251ea063bd101b
+PKG_HASH:=ac1801c45cbf77b6c99242eeff4fffb5e4e73a800b5c4ad4fc0be5def634d2e1
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=Apache-2.0
