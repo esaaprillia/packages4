@@ -4,7 +4,7 @@ PKG_NAME:=pyproject-metadata
 PKG_VERSION:=0.9.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=pyproject-metadata
+PYPI_NAME:=pyproject_metadata
 PKG_HASH:=8511c00a4cad96686af6a6b4143433298beb96105a9379afdc9b0328f4f260c9
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
