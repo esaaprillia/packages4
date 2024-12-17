@@ -11,7 +11,7 @@ PKG_NAME:=python-flask-babel
 PKG_VERSION:=4.0.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=flask-babel
+PYPI_NAME:=flask_babel
 PYPI_SOURCE_NAME:=flask_babel
 PKG_HASH:=dbeab4027a3f4a87678a11686496e98e1492eb793cbdd77ab50f4e9a2602a593
 
