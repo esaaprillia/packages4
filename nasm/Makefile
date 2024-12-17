@@ -31,7 +31,7 @@ define Package/nasm/description
   Intel x86 series of processors, with portable source.
 endef
 
-#HOST_CONFIGURE_ARGS += --disable-lto --disable-werror --disable-gdb
+HOST_CONFIGURE_ARGS += --disable-lto --disable-werror --disable-gdb
 CONFIGURE_ARGS += --disable-lto --disable-werror --disable-gdb
 
 define Package/nasm/install
