@@ -47,25 +47,6 @@ endef
 TARGET_CFLAGS:=$(filter-out -O%,$(TARGET_CFLAGS))
 MAKE_FLAGS:=$(filter-out LD=%,$(MAKE_FLAGS)) LD="$(TARGET_CC) -o"
 
-# Instead of blacklisting a boatload of platforms just enable
-# optimization where it makes sense (matters) ie ARMv7+ and x86_64
-
-ifneq ($(findstring cortex-a,$(CONFIG_CPU_TYPE)),)
-  CONFIGURE_ARGS += --enable-lto
-else
-  ifneq ($(CONFIG_TARGET_x86_64),)
-    CONFIGURE_ARGS += --enable-lto
-    ifeq ($(CONFIG_NASM),y)
-      CONFIGURE_VARS+= AS=nasm
-      MAKE_FLAGS+= AS=nasm
-    endif
-  else
-    CONFIGURE_VARS+= AS=
-    MAKE_FLAGS+= AS=
-    CONFIGURE_ARGS += --disable-asm
-  endif
-endif
-
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
