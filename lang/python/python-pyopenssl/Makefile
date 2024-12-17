@@ -11,7 +11,7 @@ PKG_NAME:=python-pyopenssl
 PKG_VERSION:=24.3.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=pyOpenSSL
+PYPI_NAME:=pyopenssl
 PKG_HASH:=49f7a019577d834746bc55c5fce6ecbcec0f2b4ec5ce1cf43a9a173b8138bb36
 
 PKG_LICENSE:=Apache-2.0
@@ -38,6 +38,9 @@ endef
 define Package/python3-pyopenssl/description
 Python wrapper module around the OpenSSL library
 endef
+
+PYTHON3_PKG_WHEEL_NAME:=pyOpenSSL
+PYTHON3_PKG_WHEEL_VERSION:=24.3.0
 
 $(eval $(call Py3Package,python3-pyopenssl))
 $(eval $(call BuildPackage,python3-pyopenssl))
