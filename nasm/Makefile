@@ -40,5 +40,11 @@ define Package/nasm/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/nasm $(1)/usr/bin/
 endef
 
+define Host/Install
+	$(call Host/Install/Default)
+	$(INSTALL_DIR) $(STAGING_DIR_HOST)/bin
+	$(CP) $(HOST_BUILD_DIR)/{nasm,ndisasm} $(STAGING_DIR_HOST)/bin/
+endef
+
 $(eval $(call BuildPackage,nasm))
 $(eval $(call HostBuild))
