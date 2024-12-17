@@ -4,7 +4,7 @@ PKG_NAME:=python-cached-property
 PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=cached-property
+PYPI_NAME:=cached_property
 PKG_HASH:=484d617105e3ee0e4f1f58725e72a8ef9e93deee462222dbd51cd91230897641
 
 PKG_MAINTAINER:=Javier Marcet <javier@marcet.info>
