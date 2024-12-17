@@ -23,7 +23,7 @@ define Package/python3-aiooui
   CATEGORY:=Languages
   TITLE:=Async OUI lookups
   URL:=https://github.com/bluetooth-devices/aiooui
-  DEPENDS:=+python3 +python3-requests
+  DEPENDS:=+python3 +python3-requests +python3-charset-normalizer
 endef
 
 define Package/python3-aiooui/description
