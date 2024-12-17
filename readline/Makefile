@@ -45,6 +45,7 @@ define Package/libreadline/description
 	history expansion on previous commands.
 endef
 
+#HOST_CONFIGURE_ARGS += --disable-shared --with-pic
 CONFIGURE_ARGS += --with-curses --disable-install-examples
 
 HOST_CONFIGURE_VARS += \
