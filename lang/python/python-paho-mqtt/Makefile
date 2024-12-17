@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>, Alexandru Ardelean
 PKG_LICENSE:=EPL-2.0 Eclipse Distribution License v1.0
 PKG_LICENSE_FILES:=epl-v20 edl-v10 LICENSE.txt
 
-PYPI_NAME:=paho-mqtt
+PYPI_NAME:=paho_mqtt
 PKG_HASH:=12d6e7511d4137555a3f6ea167ae846af2c7357b10bc6fa4f7c3968fc1723834
 
 include ../pypi.mk
