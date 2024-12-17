@@ -17,7 +17,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
-#PKG_BUILD_DEPENDS:=nasm/host
+PKG_BUILD_DEPENDS:=nasm/host
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
@@ -28,7 +28,7 @@ define Package/isa-l
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Intelligent Storage Acceleration Library
-	DEPENDS:=@(TARGET_x86_64||TARGET_armsr_armv8)
+	DEPENDS:=
 	URL:=https://github.com/intel/isa-l
 endef
 
@@ -44,9 +44,12 @@ ISA-L is a collection of optimized low-level functions targeting storage applica
 • igzip - A command line application like gzip, accelerated with ISA-L.
 endef
 
-ifneq ($(CONFIG_TARGET_x86),)
-  TARGET_CFLAGS+= -mavx512f
-endif
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		LDFLAGS="$(TARGET_LDFLAGS)" \
+		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
+		CC="$(TARGET_CC)"
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
