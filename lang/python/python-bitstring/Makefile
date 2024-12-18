@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-asn1crypto
+PKG_NAME:=python-bitstring
 PKG_VERSION:=4.2.3
 PKG_RELEASE:=1
 
@@ -17,19 +17,19 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-define Package/python3-asn1crypto
+define Package/python3-bitstring
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=A Python module to help you manage your bits
+  TITLE:=Simple construction, analysis and modification of binary data.
   URL:=https://bitstring.readthedocs.io/en/stable/index.html
   DEPENDS:=+python3 +python3-bitarray
 endef
 
-define Package/python3-asn1crypto/description
-  bitstring is a Python library to help make the creation and analysis of all types of bit-level binary data as simple and efficient as possible. It has been actively maintained since 2006.
+define Package/python3-bitstring/description
+  bitstring is a Python module to help make the creation and analysis of all types of bit-level binary data as simple and efficient as possible.
 endef
 
-$(eval $(call Py3Package,python3-asn1crypto))
-$(eval $(call BuildPackage,python3-asn1crypto))
-$(eval $(call BuildPackage,python3-asn1crypto-src))
+$(eval $(call Py3Package,python3-bitstring))
+$(eval $(call BuildPackage,python3-bitstring))
+$(eval $(call BuildPackage,python3-bitstring-src))
