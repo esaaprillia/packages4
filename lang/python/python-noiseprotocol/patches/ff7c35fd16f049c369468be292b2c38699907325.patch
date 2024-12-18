@@ -1,0 +1,22 @@
+From ff7c35fd16f049c369468be292b2c38699907325 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 19 Dec 2024 06:39:35 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 3139617..4536f12 100644
+--- a/setup.py
++++ b/setup.py
+@@ -8,7 +8,7 @@
+     import pypandoc
+     with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+         long_description = pypandoc.convert('README.md', 'rst')
+-except (IOError, ImportError):
++except (IOError, ImportError,AttributeError):
+     long_description = 'Check https://github.com/plizonczyk/noiseprotocol for readme.'
+ 
+ setup(
