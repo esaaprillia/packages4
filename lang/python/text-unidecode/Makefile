@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-text-unidecode
 PKG_VERSION:=1.3
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PYPI_NAME:=text-unidecode
 PKG_HASH:=bad6603bb14d279193107714b288be206cac565dfa49aa5b105294dd5c4aab93
