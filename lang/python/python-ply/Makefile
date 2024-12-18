@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ply
 PKG_VERSION:=3.11
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PYPI_NAME:=ply
 PKG_HASH:=00c7c1aaa88358b9c765b6d3000c6eec0ba42abca5351b095321aef446081da3
