@@ -8,7 +8,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aio-mqtt-mod
 PKG_VERSION:=0.3.4
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=aio-mqtt-mod
 PKG_HASH:=340184b35771b7eb7982072fcca313213d856638dd7f98b99bda3ab16ba23552
