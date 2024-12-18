@@ -44,7 +44,9 @@ ISA-L is a collection of optimized low-level functions targeting storage applica
 • igzip - A command line application like gzip, accelerated with ISA-L.
 endef
 
+ifneq ($(CONFIG_TARGET_x86_64)$(CONFIG_TARGET_x86),)
 CONFIGURE_VARS+= AS=nasm
+endif
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
