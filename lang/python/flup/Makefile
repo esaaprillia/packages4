@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=flup
 PKG_VERSION:=1.0.3
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 
 PYPI_NAME:=flup
 PKG_HASH:=5eb09f26eb0751f8380d8ac43d1dfb20e1d42eca0fa45ea9289fa532a79cd159
