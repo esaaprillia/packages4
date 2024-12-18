@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-constantly
 PKG_VERSION:=23.10.4
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=constantly
 PKG_HASH:=aa92b70a33e2ac0bb33cd745eb61776594dc48764b06c35e0efd050b7f1c7cbd
