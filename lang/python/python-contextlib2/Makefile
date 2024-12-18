@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-contextlib2
 PKG_VERSION:=21.6.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=contextlib2
 PKG_HASH:=ab1e2bfe1d01d968e1b7e8d9023bc51ef3509bba217bb730cee3827e1ee82869
