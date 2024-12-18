@@ -1,0 +1,74 @@
+From c69e43c457ebe5d95cc1ab1cc49b76ecd8efb789 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 21 Nov 2024 10:53:30 +0800
+Subject: [PATCH] Update __init__.py
+
+---
+ mesonpy/__init__.py | 48 +++------------------------------------------
+ 1 file changed, 3 insertions(+), 45 deletions(-)
+
+diff --git a/mesonpy/__init__.py b/mesonpy/__init__.py
+index 4d785a3..2e0e0c0 100644
+--- a/mesonpy/__init__.py
++++ b/mesonpy/__init__.py
+@@ -639,8 +639,8 @@ def __init__(
+         self._source_dir = pathlib.Path(source_dir).absolute()
+         self._build_dir = pathlib.Path(build_dir).absolute()
+         self._editable_verbose = editable_verbose
+-        self._meson_native_file = self._build_dir / 'meson-python-native-file.ini'
+-        self._meson_cross_file = self._build_dir / 'meson-python-cross-file.ini'
++        self._meson_native_file = self._source_dir / 'openwrt-native.txt'
++        self._meson_cross_file = self._source_dir / 'openwrt-cross.txt'
+         self._meson_args: MesonArgs = collections.defaultdict(list)
+         self._limited_api = False
+ 
+@@ -673,49 +673,6 @@ def __init__(
+         if not any(self._build_dir.iterdir()):
+             _add_ignore_files(self._build_dir)
+ 
+-        # setuptools-like ARCHFLAGS environment variable support
+-        if sysconfig.get_platform().startswith('macosx-'):
+-            archflags = os.environ.get('ARCHFLAGS', '').strip()
+-            if archflags:
+-
+-                # parse the ARCHFLAGS environment variable
+-                parser = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
+-                parser.add_argument('-arch', action='append')
+-                args, unknown = parser.parse_known_args(archflags.split())
+-                if unknown:
+-                    raise ConfigError(f'Unknown flag specified in $ARCHFLAGS={archflags!r}')
+-                arch, *other = set(args.arch)
+-                if other:
+-                    raise ConfigError(f'Multi-architecture builds are not supported but $ARCHFLAGS={archflags!r}')
+-
+-                macver, _, nativearch = platform.mac_ver()
+-                if arch != nativearch:
+-                    x = os.environ.setdefault('_PYTHON_HOST_PLATFORM', f'macosx-{macver}-{arch}')
+-                    if not x.endswith(arch):
+-                        raise ConfigError(f'$ARCHFLAGS={archflags!r} and $_PYTHON_HOST_PLATFORM={x!r} do not agree')
+-                    family = 'aarch64' if arch == 'arm64' else arch
+-                    cross_file_data = textwrap.dedent(f'''
+-                        [binaries]
+-                        c = ['cc', '-arch', {arch!r}]
+-                        cpp = ['c++', '-arch', {arch!r}]
+-                        objc = ['cc', '-arch', {arch!r}]
+-                        objcpp = ['c++', '-arch', {arch!r}]
+-                        [host_machine]
+-                        system = 'darwin'
+-                        cpu = {arch!r}
+-                        cpu_family = {family!r}
+-                        endian = 'little'
+-                    ''')
+-                    self._meson_cross_file.write_text(cross_file_data, encoding='utf-8')
+-                    self._meson_args['setup'].extend(('--cross-file', os.fspath(self._meson_cross_file)))
+-
+-        # write the native file
+-        native_file_data = textwrap.dedent(f'''
+-            [binaries]
+-            python = '{sys.executable}'
+-        ''')
+-        self._meson_native_file.write_text(native_file_data, encoding='utf-8')
+-
+         # reconfigure if we have a valid Meson build directory. Meson
+         # uses the presence of the 'meson-private/coredata.dat' file
+         # in the build directory as indication that the build
