@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-astral
 PKG_VERSION:=3.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=astral
 PKG_HASH:=9b7c3b412e9e69d172cfb24be0e6addcc9f1bd01a28db8bebe66d75ccc533d88
