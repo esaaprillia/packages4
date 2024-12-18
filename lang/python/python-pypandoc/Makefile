@@ -23,7 +23,7 @@ define Package/python3-pypandoc
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Thin wrapper for "pandoc" (MIT)
+  TITLE:=Thin wrapper for pandoc
   URL:=http://pypi.python.org/pypi/pypandoc/
   DEPENDS:=+python3
 endef
