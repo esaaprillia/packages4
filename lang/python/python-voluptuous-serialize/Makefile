@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-voluptuous-serialize
 PKG_VERSION:=2.6.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=voluptuous-serialize
 PKG_HASH:=79acdc58239582a393144402d827fa8efd6df0f5350cdc606d9242f6f9bca7c4
