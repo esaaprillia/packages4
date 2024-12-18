@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-colorama
 PKG_VERSION:=0.4.6
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=colorama
 PKG_HASH:=08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44
