@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hyperlink
 PKG_VERSION:=21.0.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=hyperlink
 PKG_HASH:=427af957daa58bc909471c6c40f74c5450fa123dd093fc53efd2e91d2705a56b
