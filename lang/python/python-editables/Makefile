@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-editables
 PKG_VERSION:=0.5
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=editables
 PKG_HASH:=309627d9b5c4adc0e668d8c6fa7bac1ba7c8c5d415c2d27f60f081f8e80d1de2
