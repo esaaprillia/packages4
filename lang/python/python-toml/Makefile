@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-toml
 PKG_VERSION:=0.10.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=toml
 PKG_HASH:=b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
