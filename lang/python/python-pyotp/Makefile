@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyotp
 PKG_VERSION:=2.9.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=pyotp
 PKG_HASH:=346b6642e0dbdde3b4ff5a930b664ca82abfa116356ed48cc42c7d6590d36f63
