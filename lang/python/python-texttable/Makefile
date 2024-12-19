@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-texttable
 PKG_VERSION:=1.7.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=texttable
 PKG_HASH:=2d2068fb55115807d3ac77a4ca68fa48803e84ebb0ee2340f858107a36522638
