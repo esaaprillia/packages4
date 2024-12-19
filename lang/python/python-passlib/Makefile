@@ -5,7 +5,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-passlib
 PKG_VERSION:=1.7.4
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=passlib
 PKG_HASH:=defd50f72b65c5402ab2c573830a6978e5f202ad0d984793c8dde2c4152ebe04
