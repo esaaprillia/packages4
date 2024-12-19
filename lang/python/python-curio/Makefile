@@ -33,4 +33,3 @@ endef
 $(eval $(call Py3Package,python3-curio))
 $(eval $(call BuildPackage,python3-curio))
 $(eval $(call BuildPackage,python3-curio-src))
-$(eval $(call HostBuild))
