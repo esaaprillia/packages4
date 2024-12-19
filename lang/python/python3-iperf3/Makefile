@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python3-iperf3
 PKG_VERSION:=0.1.11
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=iperf3
 PKG_HASH:=d50eebbf2dcf445a173f98a82f9c433e0302d3dfb7987e1f21b86b35ef63ce26
