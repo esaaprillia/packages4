@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-dockerpty
 PKG_VERSION:=0.4.1
-PKG_RELEASE:=4
+PKG_RELEASE:=5
 
 PYPI_NAME:=dockerpty
 PKG_HASH:=69a9d69d573a0daa31bcd1c0774eeed5c15c295fe719c61aca550ed1393156ce
