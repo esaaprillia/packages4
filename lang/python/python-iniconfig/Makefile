@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-iniconfig
 PKG_VERSION:=2.0.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=iniconfig
 PKG_HASH:=2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3
