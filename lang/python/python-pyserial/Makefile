@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyserial
 PKG_VERSION:=3.5
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=pyserial
 PKG_HASH:=3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb
