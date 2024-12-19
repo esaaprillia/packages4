@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host protobuf/host
+PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host protobuf
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
