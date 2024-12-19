@@ -10,7 +10,7 @@ include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=python-evdev
 PKG_VERSION:=1.7.1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_LICENSE:=BSD-3-Clause
 PKG_MAINTAINER:=Paulo Costa <me@paulo.costa.nom.br>, Alexandru Ardelean <ardeleanalex@gmail.com>
