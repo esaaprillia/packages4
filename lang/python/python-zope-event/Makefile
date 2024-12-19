@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zope-event
 PKG_VERSION:=5.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=zope.event
 PKG_HASH:=bac440d8d9891b4068e2b5a2c5e2c9765a9df762944bda6955f96bb9b91e67cd
