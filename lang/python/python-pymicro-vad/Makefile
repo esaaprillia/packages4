@@ -23,7 +23,7 @@ define Package/python3-pymicro-vad
   CATEGORY:=Languages
   TITLE:=Self-contained voice activity detector
   URL:=https://github.com/rhasspy/pymicro-vad
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +libstdcpp
 endef
 
 define Package/python3-pymicro-vad/description
