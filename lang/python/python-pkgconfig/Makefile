@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pkgconfig
 PKG_VERSION:=1.5.5
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=pkgconfig
 PKG_HASH:=deb4163ef11f75b520d822d9505c1f462761b4309b1bb713d08689759ea8b899
