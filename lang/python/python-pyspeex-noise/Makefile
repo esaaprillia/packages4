@@ -23,7 +23,7 @@ define Package/python3-pyspeex-noise
   CATEGORY:=Languages
   TITLE:=Noise suppression and automatic gain with speex
   URL:=https://github.com/rhasspy/pyspeex-noise
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +libstdcpp
 endef
 
 define Package/python3-pyspeex-noise/description
