@@ -11,11 +11,14 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=mypy_extensions
 PKG_HASH:=75dbf8955dc00442a438fc4d0666508a9a97b6bd41aa2f0ffe9d2f2725af0782
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-mypy-extensions
   SUBMENU:=Python
@@ -33,3 +36,4 @@ endef
 $(eval $(call Py3Package,python3-mypy-extensions))
 $(eval $(call BuildPackage,python3-mypy-extensions))
 $(eval $(call BuildPackage,python3-mypy-extensions-src))
+$(eval $(call HostBuild))
