@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyturbojpeg
-PKG_VERSION:=1.7.7
+PKG_VERSION:=1.7.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=PyTurboJPEG
-PKG_HASH:=2f1929f6bb32faf3c6007fbfbae1932e125b690173be60bcae03f678ffa4963b
+PKG_HASH:=5dd5f40dbf4159f41b6abaa123733910e8b1182df562b6ddb768991868b487d3
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
