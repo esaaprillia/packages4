@@ -18,8 +18,8 @@ PKG_LICENSE:=MPL-2.0
 PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
-PKG_HOST_ONLY:=1
 HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-flit-core/host
+PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-flit-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -34,7 +34,6 @@ define Package/python3-pathspec
   TITLE:=gitignore style pattern matching of file paths
   URL:=https://github.com/cpburnz/python-pathspec
   DEPENDS:=+python3-light
-  BUILDONLY:=1
 endef
 
 define Package/python3-pathspec/description
