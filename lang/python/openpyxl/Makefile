@@ -28,7 +28,7 @@ define Package/python3-openpyxl
   CATEGORY:=Languages
   TITLE:=A Python library to read/write Excel 2010 xlsx/xlsm files
   URL:=https://openpyxl.readthedocs.org/
-  DEPENDS:=+python3 +python3-defusedxml +python3-et_xmlfile +python3-jdcal
+  DEPENDS:=+python3 +python3-defusedxml +python3-et-xmlfile +python3-jdcal
 endef
 
 define Package/python3-openpyxl/description
