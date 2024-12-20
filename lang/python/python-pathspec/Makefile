@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pathspec
 PKG_VERSION:=0.12.1
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PYPI_NAME:=pathspec
 PKG_HASH:=a482d51503a1ab33b1c67a6c3813a26953dbdc71c31dacaef9a838c4e29f5712
