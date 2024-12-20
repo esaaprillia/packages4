@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=numpy
-PKG_VERSION:=2.2.0
-PKG_RELEASE:=1
+PKG_VERSION:=2.1.3
+PKG_RELEASE:=2
 
 PYPI_NAME:=$(PKG_NAME)
-PKG_HASH:=140dd80ff8981a583a60980be1a655068f8adebf7a45a06a6858c873fcdcd4a0
+PKG_HASH:=aa08e04e08aaf974d4458def539dece0d28146d866a39da5639596f4921fd761
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 
