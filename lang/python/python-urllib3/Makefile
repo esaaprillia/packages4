@@ -19,8 +19,8 @@ PKG_CPE_ID:=cpe:/a:python:urllib3
 PYPI_NAME:=urllib3
 PKG_HASH:=e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9
 
-PKG_BUILD_DEPENDS:=python-hatchling/host
-HOST_BUILD_DEPENDS:=python-hatchling/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
