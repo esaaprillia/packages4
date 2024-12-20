@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-go2rtc-client
-PKG_VERSION:=0.1.2
+PKG_VERSION:=0.1.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=go2rtc_client
-PKG_HASH:=07cb27bb0252749effe43dbb791caea8ec12df97fee6cff5501544fe163e52cd
+PKG_HASH:=9e18dd1f188b13aed9ef696ac52d1223e33d171dfd4592778d8db4efe8cda155
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
