@@ -23,7 +23,7 @@ define Package/python3-aiodiscover
   CATEGORY:=Languages
   TITLE:=Discover hosts by arp and ptr lookup
   URL:=https://github.com/bdraco/aiodiscover
-  DEPENDS:=+python3 +python3-dnspython +python3-ifaddr +python3-netifaces +python3-pyroute2
+  DEPENDS:=+python3 +python3-async-timeout +python3-netifaces +python3-aiodns +python3-ifaddr +python3-pyroute2 +python3-cached-ipaddress
 endef
 
 define Package/python3-aiodiscover/description
