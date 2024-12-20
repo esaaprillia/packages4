@@ -23,7 +23,7 @@ define Package/python3-home-assistant-intents
   CATEGORY:=Languages
   TITLE:=Intents to be used with Home Assistant
   URL:=https://developers.home-assistant.io/docs/voice/overview/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-hassil +python3-yaml +python3-voluptuous +python3-regex +python3-jinja2 +python3-black +python3-flake8 +python3-isort +python3-mypy +python3-pylint +python3-pytest +python3-pytest-xdist
 endef
 
 define Package/python3-home-assistant-intents/description
