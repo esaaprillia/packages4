@@ -5,7 +5,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-et_xmlfile
+PKG_NAME:=python-et-xmlfile
 PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
@@ -19,7 +19,7 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-define Package/python3-et_xmlfile
+define Package/python3-et-xmlfile
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
@@ -30,12 +30,12 @@ define Package/python3-et_xmlfile
 	+python3-lxml
 endef
 
-define Package/python3-et_xmlfile/description
+define Package/python3-et-xmlfile/description
   An implementation of lxml.xmlfile for the standard library.
   It is based upon the xmlfile module from lxml with the aim of
   allowing code to be developed that will work with both libraries.
 endef
 
-$(eval $(call Py3Package,python3-et_xmlfile))
-$(eval $(call BuildPackage,python3-et_xmlfile))
-$(eval $(call BuildPackage,python3-et_xmlfile-src))
+$(eval $(call Py3Package,python3-et-xmlfile))
+$(eval $(call BuildPackage,python3-et-xmlfile))
+$(eval $(call BuildPackage,python3-et-xmlfile-src))
