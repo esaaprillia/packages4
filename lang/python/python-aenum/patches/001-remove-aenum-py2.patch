@@ -1,0 +1,23 @@
+From 01f5ad08d1aa1586a3284d1d3a6322b9d80d60bd Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 21 Dec 2024 09:01:42 +0800
+Subject: [PATCH] Delete aenum/_py2.py
+
+---
+ aenum/_py2.py | 7 -------
+ 1 file changed, 7 deletions(-)
+ delete mode 100644 aenum/_py2.py
+
+diff --git a/aenum/_py2.py b/aenum/_py2.py
+deleted file mode 100644
+index a6e7b29..0000000
+--- a/aenum/_py2.py
++++ /dev/null
+@@ -1,7 +0,0 @@
+-from operator import div as _div_
+-from inspect import getargspec
+-
+-def raise_with_traceback(exc, tb):
+-    raise exc, None, tb
+-
+-__all__ = ['_div_', 'getargspec', 'raise_with_traceback']
