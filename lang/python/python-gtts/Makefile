@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-gtts
-PKG_VERSION:=2.5.4
+PKG_VERSION:=2.2.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=gtts
-PKG_HASH:=f5737b585f6442f677dbe8773424fd50697c75bdf3e36443585e30a8d48c1884
+PKG_HASH:=60f6a611ea858badcceb328544b28435b663e39898859beeb9adb2a874bc1eca
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
