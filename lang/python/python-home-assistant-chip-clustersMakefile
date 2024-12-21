@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=home-assistant-chip-clusters
+PKG_NAME:=python-home-assistant-chip-clusters
 PKG_VERSION:=2024.9.0
 PKG_RELEASE:=1
 
