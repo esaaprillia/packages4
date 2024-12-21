@@ -23,7 +23,7 @@ define Package/python3-annotated-types
   SUBMENU:=Python
   TITLE:=Reusable constraint types to use with typing.Annotated
   URL:=https://github.com/annotated-types/annotated-types
-  DEPENDS:=+python3-dateutil +python3-typing-extensions
+  DEPENDS:=+python3 +python3-typing-extensions
 endef
 
 define Package/python3-annotated-types/description
