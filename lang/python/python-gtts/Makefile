@@ -31,7 +31,7 @@ gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Go
 endef
 
 PYTHON3_PKG_WHEEL_NAME:=gTTS
-PYTHON3_PKG_WHEEL_VERSION:=2.5.4
+PYTHON3_PKG_WHEEL_VERSION:=2.2.4
 
 $(eval $(call Py3Package,python3-gtts))
 $(eval $(call BuildPackage,python3-gtts))
