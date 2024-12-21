@@ -23,7 +23,7 @@ define Package/python3-pymetno
   CATEGORY:=Languages
   TITLE:=A library to communicate with the met.no api
   URL:=https://github.com/Danielhiversen/pyMetno/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-asyncio +python3-aiohttp +python3-async-timeout +python3-logging +python3-pytz +python3-xmltodict
 endef
 
 define Package/python3-pymetno/description
