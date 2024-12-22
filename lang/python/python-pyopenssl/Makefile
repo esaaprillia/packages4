@@ -40,7 +40,7 @@ Python wrapper module around the OpenSSL library
 endef
 
 PYTHON3_PKG_WHEEL_NAME:=pyOpenSSL
-PYTHON3_PKG_WHEEL_VERSION:=24.3.0
+PYTHON3_PKG_WHEEL_VERSION:=24.2.1
 
 $(eval $(call Py3Package,python3-pyopenssl))
 $(eval $(call BuildPackage,python3-pyopenssl))
