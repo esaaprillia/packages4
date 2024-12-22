@@ -11,8 +11,6 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=aiodns
 PKG_HASH:=62869b23409349c21b072883ec8998316b234c9a9e36675756e8e317e8768f72
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
@@ -23,7 +21,7 @@ define Package/python3-aiodns
   CATEGORY:=Languages
   TITLE:=Simple DNS resolver for asyncio
   URL:=https://pypi.python.org/pypi/aiodns
-  DEPENDS:=+python3 +python3-pycares
+  DEPENDS:=+python3-light +python3-pycares
 endef
 
 define Package/python3-aiodns/description
