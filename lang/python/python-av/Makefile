@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-cython/host python-google-api-core/host
+PKG_BUILD_DEPENDS:=python-cython/host python-google-api-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/python3-av
   CATEGORY:=Languages
   TITLE:=Pythonic bindings for FFmpeg's libraries.
   URL:=https://github.com/home-assistant-libs/ha-ffmpeg
-  DEPENDS:=+python3 +ffmpeg +libffmpeg-full
+  DEPENDS:=+python3-light +ffmpeg +libffmpeg-full
 endef
 
 define Package/python3-av/description
