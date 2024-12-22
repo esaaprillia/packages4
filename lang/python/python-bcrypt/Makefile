@@ -28,7 +28,7 @@ define Package/python3-bcrypt
   SUBMENU:=Python
   TITLE:=Modern password hashing
   URL:=https://github.com/pyca/bcrypt/
-  DEPENDS:=+python3-light $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+python3-light +python3-pytest $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-bcrypt/description
