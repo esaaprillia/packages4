@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/python3-aiodhcpwatcher
   CATEGORY:=Languages
   TITLE:=Watch for DHCP packets with asyncio
   URL:=https://aiodhcpwatcher.readthedocs.io/
-  DEPENDS:=+python3 +python3-scapy +libpcap
+  DEPENDS:=+python3 +python3-scapy
 endef
 
 define Package/python3-aiodhcpwatcher/description
