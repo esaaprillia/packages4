@@ -1,11 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-gtts
-PKG_VERSION:=2.5.4
+PKG_VERSION:=2.2.4
 PKG_RELEASE:=1
 
-PYPI_NAME:=gtts
-PKG_HASH:=f5737b585f6442f677dbe8773424fd50697c75bdf3e36443585e30a8d48c1884
+PYPI_NAME:=gTTS
+PKG_SOURCE_URL:=https://github.com/pndurette/gTTS/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
@@ -31,7 +32,7 @@ gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Go
 endef
 
 PYTHON3_PKG_WHEEL_NAME:=gTTS
-PYTHON3_PKG_WHEEL_VERSION:=2.5.4
+PYTHON3_PKG_WHEEL_VERSION:=2.2.4
 
 $(eval $(call Py3Package,python3-gtts))
 $(eval $(call BuildPackage,python3-gtts))
