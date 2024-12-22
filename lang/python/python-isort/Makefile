@@ -23,7 +23,7 @@ define Package/python3-isort
   CATEGORY:=Languages
   TITLE:=A Python utility / library to sort imports.
   URL:=https://pycqa.github.io/isort/
-  DEPENDS:=+python3 +python3-toml
+  DEPENDS:=+python3 +python3-toml +python3-colorama
 endef
 
 define Package/python3-isort/description
