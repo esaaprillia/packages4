@@ -1,5 +1,18 @@
 --- a/Modules/_hashopenssl.c
 +++ b/Modules/_hashopenssl.c
+@@ -44,7 +44,9 @@
+ 
+ #define MUNCH_SIZE INT_MAX
+ 
++#if defined(NID_id_scrypt)
+ #define PY_OPENSSL_HAS_SCRYPT 1
++#endif
+ #if defined(NID_sha3_224) && defined(NID_sha3_256) && defined(NID_sha3_384) && defined(NID_sha3_512)
+ #define PY_OPENSSL_HAS_SHA3 1
+ #endif
+ 
+--- a/Modules/_hashopenssl.c
++++ b/Modules/_hashopenssl.c
 @@ -874,11 +890,15 @@ py_evp_fromname(PyObject *module, const
          goto exit;
      }
