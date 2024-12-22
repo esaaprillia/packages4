@@ -29,15 +29,7 @@ define Package/python3-aiohttp
   SUBMENU:=Python
   TITLE:=Async http client/server framework (asyncio)
   URL:=https://github.com/aio-libs/aiohttp
-  DEPENDS:= \
-	+python3 \
-	+python3-aiosignal \
-	+python3-async-timeout \
-	+python3-attrs \
-	+python3-charset-normalizer \
-	+python3-frozenlist \
-	+python3-multidict \
-	+python3-yarl
+  DEPENDS:=+python3-light python3-aiohappyeyeballs +python3-aiosignal +python3-async-timeout +python3-frozenlist +python3-multidict +python3-propcache +python3-yarl
 endef
 
 define Package/python3-aiohttp/description
