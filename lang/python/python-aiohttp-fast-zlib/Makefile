@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=aiohttp_fast_zlib
 PKG_HASH:=e2e6c27a7ffc825cdd50d6f80e302ebbc025b43c876c00f01dc2ae759905dce8
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
