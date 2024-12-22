@@ -11,8 +11,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
@@ -23,7 +21,7 @@ define Package/python3-async-upnp-client
   CATEGORY:=Languages
   TITLE:=Async UPnP Client for Python
   URL:=https://github.com/StevenLooman/async_upnp_client
-  DEPENDS:=+python3 +python3-aiohttp +python3-async-timeout +python3-defusedxml +python3-didl-lite +python3-voluptuous
+  DEPENDS:=+python3 +python3-voluptuous +python3-aiohttp +python3-async-timeout +python3-python-didl-lite +python3-defusedxml
 endef
 
 define Package/python3-async-upnp-client/description
