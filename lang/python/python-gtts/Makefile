@@ -5,7 +5,8 @@ PKG_VERSION:=2.2.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=gTTS
-PKG_HASH:=60f6a611ea858badcceb328544b28435b663e39898859beeb9adb2a874bc1eca
+PKG_SOURCE_URL:=https://github.com/pndurette/gTTS/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
