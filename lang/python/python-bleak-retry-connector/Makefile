@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=bleak_retry_connector
 PKG_HASH:=2be9f2eaf2e83fd1f87170caefbf0e992b192df8634df81d937d626ed0ec5148
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/python3-bleak-retry-connector
   CATEGORY:=Languages
   TITLE:=A connector for Bleak Clients that handles transient connection failures
   URL:=https://github.com/bluetooth-devices/bleak-retry-connector
-  DEPENDS:=+python3 +python3-async-timeout +python3-bleak +python3-bluetooth-adapters +python3-dbus-fast
+  DEPENDS:=+python3-light +python3-bleak +python3-async-timeout +python3-dbus-fast +python3-bluetooth-adapters
 endef
 
 define Package/python3-bleak-retry-connector/description
