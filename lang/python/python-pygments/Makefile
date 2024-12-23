@@ -23,7 +23,7 @@ define Package/python3-pygments
   SUBMENU:=Python
   TITLE:=Pygments is a syntax highlighting package written in Python.
   URL:=http://pygments.org/
-  DEPENDS:=+python3-light python3-tox
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-pygments/description
