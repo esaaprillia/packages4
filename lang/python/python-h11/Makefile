@@ -11,8 +11,6 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
@@ -23,7 +21,7 @@ define Package/python3-h11
   CATEGORY:=Languages
   TITLE:=A pure-Python, bring-your-own-I/O implementation of HTTP/1.1
   URL:=https://github.com/python-hyper/h11
-  DEPENDS:=+python3
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-h11/description
