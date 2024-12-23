@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=bluetooth_auto_recovery
 PKG_HASH:=7146bacf1864b07c6ef0ed989b8e7784aa5597426a80c05735558f72b255b7d8
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/python3-bluetooth-auto-recovery
   CATEGORY:=Languages
   TITLE:=Recover bluetooth adapters that are in an stuck state
   URL:=https://github.com/bluetooth-devices/bluetooth-auto-recovery
-  DEPENDS:=+python3 +python3-bluetooth-adapters +python3-btsocket +python3-pyric +python3-usb-devices
+  DEPENDS:=+python3-light +python3-pyric +python3-btsocket +python3-async-timeout +python3-usb-devices +python3-bluetooth-adapters
 endef
 
 define Package/python3-bluetooth-auto-recovery/description
