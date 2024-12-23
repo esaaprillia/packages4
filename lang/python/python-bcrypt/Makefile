@@ -6,11 +6,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bcrypt
-PKG_VERSION:=4.2.0
+PKG_VERSION:=4.1.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=bcrypt
-PKG_HASH:=cf69eaf5185fd58f268f805b505ce31f9b9fc2d64b376642164e9244540c1221
+PKG_HASH:=33313a1200a3ae90b75587ceac502b048b840fc69e7f7a0905b5f87fac7a1258
 
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
@@ -28,7 +28,7 @@ define Package/python3-bcrypt
   SUBMENU:=Python
   TITLE:=Modern password hashing
   URL:=https://github.com/pyca/bcrypt/
-  DEPENDS:=+python3-light +python3-pytest $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+python3-light $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-bcrypt/description
