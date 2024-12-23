@@ -12,8 +12,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
@@ -24,7 +22,7 @@ define Package/python3-home-assistant-frontend
   CATEGORY:=Languages
   TITLE:=Frontend for Home Assistant
   URL:=https://github.com/home-assistant/frontend
-  DEPENDS:=+python3
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-home-assistant-frontend/description
