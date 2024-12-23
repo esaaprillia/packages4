@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiohttp-fast-zlib
-PKG_VERSION:=0.2.0
+PKG_VERSION:=0.2.1
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=aiohttp_fast_zlib
-PKG_HASH:=e2e6c27a7ffc825cdd50d6f80e302ebbc025b43c876c00f01dc2ae759905dce8
+PKG_HASH:=f0f392ebd663e781a9e5c10646f24c26c0b9fac6293ddf8e28f37dad66ce5117
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
 
