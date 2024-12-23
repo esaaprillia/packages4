@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE.md
 PYPI_NAME:=httpcore
 PKG_HASH:=8551cb62a169ec7162ac7be8d4817d561f60e08eaa485234898414bb5a8a0b4c
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host python-hatch-fancy-pypi-readme/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/python3-httpcore
   CATEGORY:=Languages
   TITLE:=A minimal low-level HTTP client.
   URL:=https://www.encode.io/httpcore/
-  DEPENDS:=+python3 +python3-anyio +python3-certifi +python3-h11 +python3-sniffio
+  DEPENDS:=+python3-light +python3-certifi +python3-h11 +python3-h2 +python3-socksio +python3-trio +python3-anyio
 endef
 
 define Package/python3-httpcore/description
