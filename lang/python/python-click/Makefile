@@ -25,7 +25,7 @@ define Package/python3-click
   SUBMENU:=Python
   TITLE:=Composable command line interface toolkit
   URL:=https://palletsprojects.com/p/click/
-  DEPENDS:=+python3-light +python3-urllib +python3-uuid
+  DEPENDS:=+python3-light +python3-colorama +python3-urllib +python3-uuid
 endef
 
 define Package/python3-click/description
