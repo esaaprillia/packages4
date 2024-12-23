@@ -23,7 +23,7 @@ define Package/python3-tox
   SUBMENU:=Python
   TITLE:=tox is a generic virtualenv management and test command line tool
   URL:=http://pygments.org/
-  DEPENDS:=+python3-light python3-tox
+  DEPENDS:=+python3-light +python3-cachetools +python3-chardet +python3-colorama +python3-filelock +python3-packaging +python3-platformdirs +python3-pluggy +python3-pyproject-api +python3-tomli +python3-typing-extensions +python3-virtualenv
 endef
 
 define Package/python3-tox/description
