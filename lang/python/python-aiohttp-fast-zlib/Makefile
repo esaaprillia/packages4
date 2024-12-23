@@ -23,7 +23,7 @@ define Package/python3-aiohttp-fast-zlib
   CATEGORY:=Languages
   TITLE:=Use the fastest installed zlib compatible library with aiohttp
   URL:=https://github.com/bdraco/aiohttp-fast-zlib
-  DEPENDS:=+python3 +python3-aiohttp +python3-isal +python3-zlib-ng
+  DEPENDS:=+python3-light +python3-aiohttp +python3-isal +python3-zlib-ng
 endef
 
 define Package/python3-aiohttp-fast-zlib/description
