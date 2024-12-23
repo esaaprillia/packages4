@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-async-upnp-client
-PKG_VERSION:=0.41.0
+PKG_VERSION:=0.42.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=async_upnp_client
-PKG_HASH:=06f1ec722fb04fd79f16ca5615260b3c3d958ff39e0163bc49c6ef0843606266
+PKG_HASH:=558ec3f981ca04c33cce13d9ef77391f21f4fc8d35ee12b7698f8760887c9b7d
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
