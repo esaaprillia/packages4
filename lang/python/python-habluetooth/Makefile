@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=habluetooth
 PKG_HASH:=df79914d9037456b370ba790bac71ca23fd16871c202aac93df5f800119137e6
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/python3-habluetooth
   CATEGORY:=Languages
   TITLE:=High availability Bluetooth
   URL:=https://github.com/bluetooth-devices/habluetooth
-  DEPENDS:=+python3 +python3-async-interrupt +python3-bleak +python3-bleak-retry-connector +python3-bluetooth-adapters +python3-bluetooth-auto-recovery +python3-bluetooth-data-tools
+  DEPENDS:=+python3-light +python3-bleak +python3-bleak-retry-connector +python3-bluetooth-data-tools +python3-bluetooth-adapters +python3-bluetooth-auto-recovery +python3-async-interrupt
 endef
 
 define Package/python3-habluetooth/description
