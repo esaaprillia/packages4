@@ -23,7 +23,7 @@ define Package/python3-virtualenv
   SUBMENU:=Python
   TITLE:=Virtual Python Environment builder
   URL:=https://virtualenv.pypa.io/
-  DEPENDS:=+python3-light
+  DEPENDS:=+python3-light +python3-distlib +python3-filelock +python3-platformdirs
 endef
 
 define Package/python3-virtualenv/description
