@@ -23,7 +23,7 @@ define Package/python3-async-interrupt
   CATEGORY:=Languages
   TITLE:=Context manager to raise an exception when a future is done
   URL:=https://github.com/bdraco/async_interrupt
-  DEPENDS:=+python3
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-async-interrupt/description
