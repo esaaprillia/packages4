@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiohttp
-PKG_VERSION:=3.11.11
+PKG_VERSION:=3.9.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiohttp
-PKG_HASH:=bb49c7f1e6ebf3821a42d81d494f538107610c3a705987f53068546b0e90303e
+PKG_HASH:=90842933e5d1ff760fae6caca4b2b3edba53ba8f4b71e95dacf2818a2aca06f7
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -29,7 +29,15 @@ define Package/python3-aiohttp
   SUBMENU:=Python
   TITLE:=Async http client/server framework (asyncio)
   URL:=https://github.com/aio-libs/aiohttp
-  DEPENDS:=+python3-light python3-aiohappyeyeballs +python3-aiosignal +python3-async-timeout +python3-frozenlist +python3-multidict +python3-propcache +python3-yarl
+  DEPENDS:= \
+	+python3 \
+	+python3-aiosignal \
+	+python3-async-timeout \
+	+python3-attrs \
+	+python3-charset-normalizer \
+	+python3-frozenlist \
+	+python3-multidict \
+	+python3-yarl
 endef
 
 define Package/python3-aiohttp/description
