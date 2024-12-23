@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=anyio
 PKG_HASH:=2f834749c602966b7d456a7567cafcb309f96482b5081d14ac93ccd457f9dd48
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/python3-anyio
   CATEGORY:=Languages
   TITLE:=High level compatibility layer for multiple asynchronous event loop implementations
   URL:=https://github.com/agronholm/anyio
-  DEPENDS:=+python3 +python3-idna +python3-sniffio
+  DEPENDS:=+python3-light +python3-exceptiongroup +python3-idna +python3-sniffio +python3-typing-extensions
 endef
 
 define Package/python3-anyio/description
