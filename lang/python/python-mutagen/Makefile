@@ -23,7 +23,7 @@ define Package/python3-mutagen
   CATEGORY:=Languages
   TITLE:=read and write audio tags for many formats
   URL:=https://mutagen.readthedocs.io/
-  DEPENDS:=+python3
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-mutagen/description
