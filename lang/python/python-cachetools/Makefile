@@ -11,8 +11,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
@@ -23,7 +21,7 @@ define Package/python3-cachetools
   CATEGORY:=Languages
   TITLE:=Extensible memoizing collections and decorators
   URL:=https://github.com/tkem/cachetools/
-  DEPENDS:=+python3
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-cachetools/description
