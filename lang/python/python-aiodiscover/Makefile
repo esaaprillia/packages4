@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiodiscover
-PKG_VERSION:=2.1.0
+PKG_VERSION:=2.2.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiodiscover
-PKG_HASH:=16d283c581f6d626c2fe0fc6fab3516033db60654ef943c972a542dfd217d46a
+PKG_HASH:=e5911d34b31ed3840740af123b94fa12617a97a295cf0cfd2f2516bdab065fa8
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
