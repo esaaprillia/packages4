@@ -20,7 +20,7 @@ define Package/python3-zstd
   CATEGORY:=Languages
   SUBMENU:=Python
   TITLE:=ZSTD Bindings for Python
-  URL:=https://github.com/home-assistant-libs/ha-ffmpeg
+  URL:=https://github.com/sergey-dryabzhinsky/python-zstd
   DEPENDS:=+python3-light +libzstd
 endef
 
