@@ -11,8 +11,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
@@ -23,7 +21,7 @@ define Package/python3-hassil
   CATEGORY:=Languages
   TITLE:=The Home Assistant Intent Language parser
   URL:=https://github.com/rhasspy/pyspeex-noise
-  DEPENDS:=+python3 +python3-yaml +python3-unicode-rbnf
+  DEPENDS:=+python3-light +python3-yaml +python3-unicode-rbnf
 endef
 
 define Package/python3-hassil/description
