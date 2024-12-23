@@ -8,7 +8,7 @@ PYPI_NAME:=zstd
 PKG_HASH:=1ef980abf0e1e072b028d2d76ef95b476632651c96225cf30b619c6eef625672
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 include ../pypi.mk
