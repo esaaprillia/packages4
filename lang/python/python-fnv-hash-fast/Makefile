@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-fnv-hash-fast
 PKG_VERSION:=1.0.2
-PKG_RELEASE:=2
+PKG_RELEASE:=1
 
 PYPI_NAME:=fnv-hash-fast
 PYPI_SOURCE_NAME:=fnv_hash_fast
