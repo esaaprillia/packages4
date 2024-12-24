@@ -28,6 +28,7 @@ define Package/python3-grpcio
 	+libcares \
 	+libopenssl \
 	+libstdcpp \
+	+zlib \
 	+python3-asyncio \
 	+python3-grpcio-tools \
 	+python3-logging \
@@ -54,6 +55,13 @@ PYTHON3_PKG_SETUP_VARS += \
 	GRPC_PYTHON_BUILD_SYSTEM_CARES="True" \
 	GRPC_PYTHON_BUILD_SYSTEM_RE2="False" \
 	GRPC_PYTHON_BUILD_SYSTEM_ABSL="False"
+
+TARGET_CPPFLAGS += -I$(PKG_BUILD_DIR)/third_party/abseil-cpp
+
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's,@STAGING_DIR@,$(STAGING_DIR)/usr,g' $(PKG_BUILD_DIR)/setup.py
+endef
 
 $(eval $(call Py3Package,python3-grpcio))
 $(eval $(call BuildPackage,python3-grpcio))
