@@ -21,7 +21,7 @@ define Package/python3-async-upnp-client
   CATEGORY:=Languages
   TITLE:=Async UPnP Client for Python
   URL:=https://github.com/StevenLooman/async_upnp_client
-  DEPENDS:=+python3 +python3-voluptuous +python3-aiohttp +python3-async-timeout +python3-python-didl-lite +python3-defusedxml
+  DEPENDS:=+python3 +python3-voluptuous +python3-aiohttp +python3-async-timeout +python3-didl-lite +python3-defusedxml
 endef
 
 define Package/python3-async-upnp-client/description
