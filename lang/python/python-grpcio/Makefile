@@ -27,6 +27,7 @@ define Package/python3-grpcio
 	+libatomic \
 	+libcares \
 	+libopenssl \
+	+libopenssl-legacy \
 	+libstdcpp \
 	+zlib \
 	+python3-asyncio \
