@@ -11,8 +11,6 @@ PKG_LICENSE_FILES:=COPYING
 PYPI_NAME:=mutagen
 PKG_HASH:=719fadef0a978c31b4cf3c956261b3c58b6948b32023078a2117b1de09f0fc99
 
-PKG_BUILD_DEPENDS:=python-poetry-core/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
