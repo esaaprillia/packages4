@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=ulid_transform
 PKG_HASH:=9b710f6adb93a7620910bce385c7e977a234ab321443ec3bc1e48ae931f1e5d4
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host python-cython/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host python-cython/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
