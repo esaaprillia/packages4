@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=propcache
 PKG_HASH:=3f77ce728b19cb537714499928fe800c3dda29e8d9428778fc7c186da4c09a64
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-expandvars/host python-cython/host
+PKG_BUILD_DEPENDS:=python-expandvars/host python-cython/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
