@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-home-assistant-intents
-PKG_VERSION:=2024.12.9
+PKG_VERSION:=2024.12.20
 PKG_RELEASE:=1
 
 PYPI_NAME:=home_assistant_intents
-PKG_HASH:=b987859321dc148de5719d92721b36ebbb62ddeea742bf9f449b4af312f7732c
+PKG_HASH:=ed4c18d891a08a9c30e02c6052ee6fed3b52178250ae158cdadda5748a66d64e
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=CC-BY-4.0
