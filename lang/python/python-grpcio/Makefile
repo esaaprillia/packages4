@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-cython/host
+PKG_BUILD_DEPENDS:=python-cython/host abseil-cpp
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -56,8 +56,6 @@ PYTHON3_PKG_SETUP_VARS += \
 	GRPC_PYTHON_BUILD_SYSTEM_CARES="True" \
 	GRPC_PYTHON_BUILD_SYSTEM_RE2="False" \
 	GRPC_PYTHON_BUILD_SYSTEM_ABSL="False"
-
-TARGET_CPPFLAGS += -I$(PKG_BUILD_DIR)/third_party/abseil-cpp
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
