@@ -5,7 +5,7 @@
  # You may want to change these depending on your system.
  
 -prefix ?= /usr/local
-+prefix ?= /opt
++prefix ?= /usr
  
  DTRACE ?= dtrace
  CONFIG ?= opt
