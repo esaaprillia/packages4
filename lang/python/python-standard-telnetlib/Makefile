@@ -11,8 +11,6 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=standard_telnetlib
 PKG_HASH:=243333696bf1659a558eb999c23add82c41ffc2f2d04a56fae13b61b536fb173
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
