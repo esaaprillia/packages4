@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hass-nabucasa
-PKG_VERSION:=0.86.0
+PKG_VERSION:=0.87.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=hass_nabucasa
-PKG_HASH:=d6951af95796a92a6e7e6d64f7ddac1ecbdda65f3d65374c8f3216650a579b89
+PKG_HASH:=5fa1c174c28436dfdaea3f9e05c138dc9f4d8273fd3da2af6a481791849e4a00
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
