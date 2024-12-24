@@ -40,11 +40,10 @@
  
  EXTENSION_INCLUDE_DIRECTORIES = (
      (PYTHON_STEM,)
-@@ -375,7 +375,7 @@ if BUILD_WITH_SYSTEM_RE2:
-     EXTENSION_LIBRARIES += ("re2",)
+@@ -364,7 +364,7 @@ def check_linker_need_libatomic():
  if BUILD_WITH_SYSTEM_ABSL:
      EXTENSION_LIBRARIES += tuple(
-        lib.stem[3:]
+         lib.stem[3:]
 -        for lib in sorted(pathlib.Path("/usr").glob("lib*/libabsl_*.so"))
 +        for lib in sorted(pathlib.Path("@STAGING_DIR@").glob("lib*/libabsl_*.so"))
      )
