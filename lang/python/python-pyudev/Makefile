@@ -23,7 +23,7 @@ define Package/python3-pyudev
   CATEGORY:=Languages
   TITLE:=Python bindings to libudev (with support for PyQt4, PySide, pygobject and wx)
   URL:=http://pyudev.readthedocs.org/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +libudev
 endef
 
 define Package/python3-pyudev/description
