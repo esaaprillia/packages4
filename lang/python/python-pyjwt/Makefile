@@ -11,8 +11,6 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=pyjwt
 PKG_HASH:=3cc5772eb20009233caf06e9d8a0577824723b44e6648ee0a2aedb6cf9381953
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
