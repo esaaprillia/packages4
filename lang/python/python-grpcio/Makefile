@@ -29,9 +29,10 @@ define Package/python3-grpcio
 	+libopenssl \
 	+libopenssl-legacy \
 	+libstdcpp \
+	+abseil-cpp \
+	+re2 \
 	+zlib \
 	+python3-asyncio \
-	+python3-grpcio-tools \
 	+python3-logging \
 	+python3-multiprocessing \
 	+python3-protobuf \
