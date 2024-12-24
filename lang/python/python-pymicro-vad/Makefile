@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=pymicro_vad
 PKG_HASH:=b386ff00fad76e29fa145a8af472cde9e1275c2716ef5c350e7a143b8d97f507
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-pybind11/host
+PKG_BUILD_DEPENDS:=python-pybind11/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
