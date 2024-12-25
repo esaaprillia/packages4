@@ -39,6 +39,7 @@ define Package/python3-grpcio
 	+python3-readline \
 	+python3-unittest \
 	+python3-urllib \
+	+python3-six \
 	+python3-xml \
 	+python3-yaml
 endef
