@@ -21,8 +21,7 @@ define Package/python3-grpcio-status
   SUBMENU:=Python
   TITLE:=Status proto mapping for gRPC
   URL:=https://grpc.io
-  EXTRA_DEPENDS:=python3-grpcio (>=$(PKG_VERSION)-$(PKG_RELEASE))
-  DEPENDS:=+python3-googleapis-common-protos +python3-protobuf
+  DEPENDS:=+python3-protobuf +python3-grpcio +python3-googleapis-common-protos
 endef
 
 define Package/python3-grpcio-status/description
