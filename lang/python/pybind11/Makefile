@@ -65,3 +65,4 @@ define Package/pybind11/install
 endef
 
 $(eval $(call BuildPackage,pybind11))
+$(eval $(call HostBuild))
