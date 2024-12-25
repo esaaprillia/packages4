@@ -84,12 +84,12 @@ index 7c6ba7c5ecb0e..1cf73b29d372d 100644
  
  static int server_handshaker_factory_npn_advertised_callback(
      SSL* /*ssl*/, const unsigned char** out, unsigned int* outlen, void* arg) {
-@@ -2159,7 +2148,6 @@ tsi_result tsi_create_ssl_client_handshaker_factory_with_options(
-                 tsi_result_to_string(result));
+@@ -2318,7 +2318,6 @@ tsi_result tsi_create_ssl_client_handshaker_factory_with_options(
+                    << tsi_result_to_string(result);
          break;
        }
 -#if TSI_OPENSSL_ALPN_SUPPORT
-       GPR_ASSERT(impl->alpn_protocol_list_length < UINT_MAX);
+       CHECK(impl->alpn_protocol_list_length < UINT_MAX);
        if (SSL_CTX_set_alpn_protos(
                ssl_context, impl->alpn_protocol_list,
 @@ -2168,7 +2156,6 @@ tsi_result tsi_create_ssl_client_handshaker_factory_with_options(
@@ -111,36 +111,3 @@ index 7c6ba7c5ecb0e..1cf73b29d372d 100644
        SSL_CTX_set_next_protos_advertised_cb(
            impl->ssl_contexts[i],
            server_handshaker_factory_npn_advertised_callback, impl);
-diff --git a/test/core/security/security_connector_test.cc b/test/core/security/security_connector_test.cc
-index cb781d1fd7e68..c9dec9ea50321 100644
---- a/test/core/security/security_connector_test.cc
-+++ b/test/core/security/security_connector_test.cc
-@@ -40,10 +40,6 @@
- #include "src/core/tsi/transport_security.h"
- #include "test/core/util/test_config.h"
- 
--#ifndef TSI_OPENSSL_ALPN_SUPPORT
--#define TSI_OPENSSL_ALPN_SUPPORT 1
--#endif
--
- static int check_peer_property(const tsi_peer* peer,
-                                const tsi_peer_property* expected) {
-   size_t i;
-@@ -716,7 +712,6 @@ static void test_default_ssl_roots(void) {
- }
- 
- static void test_peer_alpn_check(void) {
--#if TSI_OPENSSL_ALPN_SUPPORT
-   tsi_peer peer;
-   const char* alpn = "h2";
-   const char* wrong_alpn = "wrong";
-@@ -748,9 +743,6 @@ static void test_peer_alpn_check(void) {
-       TSI_OK);
-   ASSERT_EQ(grpc_ssl_check_alpn(&peer), absl::OkStatus());
-   tsi_peer_destruct(&peer);
--#else
--  ASSERT_EQ(grpc_ssl_check_alpn(nullptr), absl::OkStatus());
--#endif
- }
- 
- TEST(SecurityConnectorTest, MainTest) {
