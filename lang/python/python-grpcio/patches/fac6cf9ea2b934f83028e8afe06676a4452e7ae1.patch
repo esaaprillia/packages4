@@ -4,10 +4,9 @@ Date: Thu, 8 Feb 2024 11:41:22 -0800
 Subject: [PATCH] Remove initial batch of TSI_OPENSSL_ALPN_SUPPORT macro.
 
 ---
- .../lib/security/security_connector/ssl_utils.cc  |  6 ------
  src/core/tsi/ssl_transport_security.cc            | 15 ---------------
  test/core/security/security_connector_test.cc     |  8 --------
- 3 files changed, 29 deletions(-)
+ 2 files changed, 23 deletions(-)
 
 diff --git a/src/core/lib/security/security_connector/ssl_utils.cc b/src/core/lib/security/security_connector/ssl_utils.cc
 index b0b907ac503d1..fb5acf31d6dc5 100644
