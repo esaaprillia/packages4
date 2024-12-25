@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://www.freedesktop.org/software/uchardet/releases/$(PKG_VER
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=MPL
+PKG_LICENSE:=MPL-1.1
 PKG_LICENSE_FILES:=COPYING
 
 CMAKE_BINARY_SUBDIR := build
