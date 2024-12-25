@@ -61,8 +61,6 @@ TARGET_CPPFLAGS += -I$(PKG_BUILD_DIR)/third_party/abseil-cpp
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(SED) 's,c++14,c++17,g' $(PKG_BUILD_DIR)/setup.py
-	$(RM) $(PKG_BUILD_DIR)/src/python/grpcio/grpc/_cython/cygrpc.cpp
 	$(SED) 's,@STAGING_DIR@,$(STAGING_DIR)/usr,g' $(PKG_BUILD_DIR)/setup.py
 endef
 
