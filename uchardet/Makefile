@@ -23,7 +23,7 @@ define Package/uchardet
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Encoding detector library ported from Mozilla
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=https://www.freedesktop.org/wiki/Software/uchardet/
 endef
 
