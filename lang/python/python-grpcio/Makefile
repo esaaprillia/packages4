@@ -51,6 +51,7 @@ define Package/python3-grpcio/description
 endef
 
 PYTHON3_PKG_SETUP_VARS += \
+	GRPC_PYTHON_CFLAGS="-std=c++17" \
 	GRPC_BUILD_WITH_BORING_SSL_ASM="False" \
 	GRPC_PYTHON_BUILD_WITH_CYTHON="True" \
 	GRPC_PYTHON_BUILD_SYSTEM_OPENSSL="True" \
