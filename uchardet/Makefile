@@ -4,7 +4,7 @@ PKG_NAME:=uchardet
 PKG_VERSION:=0.0.8
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://www.freedesktop.org/software/uchardet/releases/
 PKG_HASH:=skip
 
