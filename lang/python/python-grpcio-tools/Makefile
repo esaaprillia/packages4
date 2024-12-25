@@ -21,18 +21,21 @@ define Package/python3-grpcio-tools
   SUBMENU:=Python
   TITLE:=Protobuf code generator for gRPC
   URL:=https://grpc.io/
-  EXTRA_DEPENDS:=python3-grpcio (>=$(PKG_VERSION)-$(PKG_RELEASE))
   DEPENDS:= \
 	+libatomic \
 	+libstdcpp \
 	+python3-multiprocessing \
 	+python3-protobuf \
+	+python3-grpcio \
 	+python3-setuptools
 endef
 
 define Package/python3-grpcio-tools/description
   Package for gRPC Python tools.
 endef
+
+PYTHON3_PKG_SETUP_VARS += \
+	GRPC_PYTHON_BUILD_WITH_CYTHON="True"
 
 $(eval $(call Py3Package,python3-grpcio-tools))
 $(eval $(call BuildPackage,python3-grpcio-tools))
