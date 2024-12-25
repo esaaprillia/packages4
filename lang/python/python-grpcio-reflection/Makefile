@@ -21,7 +21,6 @@ define Package/python3-grpcio-reflection
   SUBMENU:=Python
   TITLE:=Standard Protobuf Reflection Service for gRPC
   URL:=https://grpc.io
-  EXTRA_DEPENDS:=python3-grpcio (>=$(PKG_VERSION)-$(PKG_RELEASE))
   DEPENDS:=+python3-logging +python3-protobuf +python3-grpcio +python3-grpcio-tools
 endef
 
