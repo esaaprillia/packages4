@@ -26,7 +26,7 @@ define Package/python3-grpcio
   DEPENDS:= \
 	+libatomic \
 	+libcares \
-	+libopenssl \
+	+libopenssl @OPENSSL_WITH_NPN \
 	+libopenssl-legacy \
 	+libstdcpp \
 	+abseil-cpp \
