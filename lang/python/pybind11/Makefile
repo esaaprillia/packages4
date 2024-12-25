@@ -1,67 +1,67 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=re2
-PKG_VERSION:=2024-07-02
+PKG_NAME:=pybind11
+PKG_VERSION:=2.13.5
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/google/re2/archive/$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/pybind/pybind11/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
-CMAKE_BINARY_SUBDIR := build
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 PKG_BUILD_PARALLEL:=1
 
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../meson/cmake.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
-define Package/re2
-	SECTION:=libs
-	CATEGORY:=Libraries
-	TITLE:=Fast, safe, thread-friendly regular expression engine
-	DEPENDS:=+abseil-cpp
-	URL:=https://github.com/google/re2
+define Package/pybind11
+	SUBMENU:=Python
+	SECTION:=lang
+	CATEGORY:=Languages
+	TITLE:=Seamless operability between C++11 and Python
+	URL:=pybind11.readthedocs.io/
+	DEPENDS:=+python3
 endef
 
-define Package/re2/description
-	RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines like those used in PCRE, Perl, and Python. It is a C++ library.
+define Package/pybind11/description
+	pybind11 — Seamless operability between C++11 and Python
 endef
-
-CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
-	-DRE2_BUILD_TESTING=OFF
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
-	  $(1)/usr/lib
+	  $(1)/usr/lib \
+	  $(1)/$(PYTHON3_PKG_DIR)
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/re2 \
+	  $(PKG_INSTALL_DIR)/usr/include/pybind11 \
 	  $(1)/usr/include/
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*,cmake} \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,cmake} \
 	  $(1)/usr/lib/
-	
-	$(SED) \
-	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/re2.pc
-	
-	$(SED) \
-	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/re2.pc
-endef
-
-define Package/re2/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/lib
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/pybind11 \
+	  $(1)/$(PYTHON3_PKG_DIR)
 endef
 
-$(eval $(call BuildPackage,re2))
+define Package/pybind11/install
+	$(INSTALL_DIR) \
+	  $(1)/$(PYTHON3_PKG_DIR)
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/pybind11 \
+	  $(1)/$(PYTHON3_PKG_DIR)
+endef
+
+$(eval $(call BuildPackage,pybind11))
