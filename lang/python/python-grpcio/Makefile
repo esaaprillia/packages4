@@ -29,8 +29,6 @@ define Package/python3-grpcio
 	+libopenssl \
 	+libopenssl-legacy \
 	+libstdcpp \
-	+abseil-cpp \
-	+re2 \
 	+zlib \
 	+python3-asyncio \
 	+python3-logging \
@@ -56,8 +54,10 @@ PYTHON3_PKG_SETUP_VARS += \
 	GRPC_PYTHON_BUILD_SYSTEM_OPENSSL="True" \
 	GRPC_PYTHON_BUILD_SYSTEM_ZLIB="True" \
 	GRPC_PYTHON_BUILD_SYSTEM_CARES="True" \
-	GRPC_PYTHON_BUILD_SYSTEM_RE2="True" \
-	GRPC_PYTHON_BUILD_SYSTEM_ABSL="True"
+	GRPC_PYTHON_BUILD_SYSTEM_RE2="False" \
+	GRPC_PYTHON_BUILD_SYSTEM_ABSL="False"
+
+TARGET_CPPFLAGS += -I$(PKG_BUILD_DIR)/third_party/abseil-cpp
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
