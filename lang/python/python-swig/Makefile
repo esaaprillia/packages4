@@ -33,10 +33,7 @@ A project that packages SWIG as a Python package, enabling swig to be installed 
 endef
 
 PYTHON3_HOST_BUILD_CONFIG_SETTINGS += \
-	cmake.args= \
-	-Wno-dev \
-	-DPCRE2_LIBRARY="$(STAGING_DIR_HOSTPKG)/lib" \
-	-DPCRE2_INCLUDE_DIR="$(STAGING_DIR_HOSTPKG)/include"
+	cmake.args=-Wno-dev;-DPCRE2_LIBRARY="$(STAGING_DIR_HOSTPKG)/lib";-DPCRE2_INCLUDE_DIR="$(STAGING_DIR_HOSTPKG)/include"
 
 $(eval $(call Py3Package,python3-swig))
 $(eval $(call BuildPackage,python3-swig))
