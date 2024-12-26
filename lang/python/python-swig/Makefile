@@ -11,15 +11,13 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0 GPL-3.0 License
 PKG_LICENSE_FILES:=LICENSE LICENSE-GPL LICENSE-SWIG LICENSE-UNIVERSITIES
 
-HOST_BUILD_DEPENDS:=python-scikit-build-core/host python-setuptools-scm/host pcre2/host
+HOST_BUILD_DEPENDS:=python-scikit-build-core/host python-setuptools-scm/host swig/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
-
-export CMAKE_ARGS=-Wno-dev -DPCRE2_LIBRARY="$(STAGING_DIR_HOSTPKG)/lib" -DPCRE2_INCLUDE_DIR="$(STAGING_DIR_HOSTPKG)/include"
 
 define Package/python3-swig
   SECTION:=lang
