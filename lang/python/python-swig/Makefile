@@ -19,6 +19,8 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
+export CMAKE_ARGS=-Wno-dev -DPCRE2_LIBRARY="$(STAGING_DIR_HOSTPKG)/lib" -DPCRE2_INCLUDE_DIR="$(STAGING_DIR_HOSTPKG)/include"
+
 define Package/python3-swig
   SECTION:=lang
   CATEGORY:=Languages
