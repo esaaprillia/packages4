@@ -1,0 +1,20 @@
+--- a/homeassistant/components/python_script/__init__.py
++++ b/homeassistant/components/python_script/__init__.py
+@@ -132,7 +132,7 @@ def discover_scripts(hass):
+     else:
+         services_dict = {}
+ 
+-    for fil in glob.iglob(os.path.join(path, "*.py")):
++    for fil in glob.iglob(os.path.join(path, "*.pyc")):
+         name = os.path.splitext(os.path.basename(fil))[0]
+         hass.services.register(
+             DOMAIN,
+@@ -182,7 +182,7 @@ def guarded_inplacevar(op: str, target:
+ @bind_hass
+ def execute_script(hass, name, data=None, return_response=False):
+     """Execute a script."""
+-    filename = f"{name}.py"
++    filename = f"{name}.pyc"
+     raise_if_invalid_filename(filename)
+     with open(hass.config.path(FOLDER, filename), encoding="utf8") as fil:
+         source = fil.read()
