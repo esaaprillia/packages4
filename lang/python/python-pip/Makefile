@@ -37,6 +37,15 @@ pip is the package installer for Python. You can use pip to install
 packages from the Python Package Index and other indexes.
 endef
 
+define Package/python3-pip/conffiles
+/etc/pip.conf
+endef
+
+define Package/python3-pip/install
+	$(INSTALL_DIR) $(1)/etc
+	$(INSTALL_DATA) ./files/pip.conf $(1)/etc/
+endef
+
 $(eval $(call Py3Package,python3-pip))
 $(eval $(call BuildPackage,python3-pip))
 $(eval $(call BuildPackage,python3-pip-src))
