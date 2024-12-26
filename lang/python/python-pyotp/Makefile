@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyotp
-PKG_VERSION:=2.8.0
+PKG_VERSION:=2.9.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyotp
-PKG_HASH:=c2f5e17d9da92d8ec1f7de6331ab08116b9115adbabcba6e208d46fc49a98c5a
+PKG_HASH:=346b6642e0dbdde3b4ff5a930b664ca82abfa116356ed48cc42c7d6590d36f63
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=MIT
