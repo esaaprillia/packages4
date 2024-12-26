@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-matter-server
-PKG_VERSION:=6.6.0
+PKG_VERSION:=7.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_matter_server
-PKG_HASH:=5d9da5a33587b7d30ba647a8177381c46656da43cdc2c5d2a7ed59a65a95566f
+PKG_HASH:=7ca266963d973b9f65518276fc97042b01395aac2f3b1da2057740d7bc1e96d9
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
