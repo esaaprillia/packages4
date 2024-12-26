@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_DEPENDS:=swig/host
+PKG_BUILD_DEPENDS:=python-swig/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
