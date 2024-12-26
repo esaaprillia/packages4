@@ -21,7 +21,7 @@ define Package/python3-tzdata
   CATEGORY:=Languages
   TITLE:=Provider of IANA time zone data
   URL:=https://github.com/python/tzdata
-  DEPENDS:=+python3 +python3-attrs
+  DEPENDS:=+python3
 endef
 
 define Package/python3-tzdata/description
