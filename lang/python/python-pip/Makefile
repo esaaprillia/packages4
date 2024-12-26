@@ -29,7 +29,7 @@ define Package/python3-pip
   SUBMENU:=Python
   TITLE:=PyPA recommended tool for installing Python packages
   URL:=https://pip.pypa.io/
-  DEPENDS:=+python3 +python3-setuptools
+  DEPENDS:=+python3
 endef
 
 define Package/python3-pip/description
