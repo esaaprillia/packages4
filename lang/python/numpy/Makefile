@@ -8,7 +8,6 @@ PYPI_NAME:=$(PKG_NAME)
 PKG_HASH:=45681fd7128c8ad1c379f0ca0776a8b0c6583d2f69889ddac01559dfe4390918
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 PKG_CPE_ID:=cpe:/a:numpy:numpy
