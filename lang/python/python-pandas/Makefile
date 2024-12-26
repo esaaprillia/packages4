@@ -11,15 +11,15 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=pandas
 PKG_HASH:=4f18ba62b61d7e192368b84517265a99b4d7ee8912f8708660fb4a366cc82667
 
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host numpy/host python-cython/host meson-python/host python-versioneer/host
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host numpy/host python-cython/host meson-python/host python-versioneer/host
+HOST_BUILD_DEPENDS:=numpy/host python-cython/host meson-python/host python-versioneer/host
+PKG_BUILD_DEPENDS:=numpy/host python-cython/host meson-python/host python-versioneer/host
 
-include $(TOPDIR)/feeds/packages/lang/python/pypi.mk
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(TOPDIR)/feeds/mosdns/meson/meson.mk
-include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
-include $(TOPDIR)/feeds/packages/lang/python/python3-host-build.mk
+include ../meson/meson.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-pandas
   SUBMENU:=Python
