@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host python-hatch-fancy-pypi-readme/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/python3-pydantic
   SUBMENU:=Python
   TITLE:=Data validation using Python type hints
   URL:=https://docs.pydantic.dev/
-  DEPENDS:=+python3-dateutil +python3-typing-extensions +python3-annotated-types +python3-pydantic-core
+  DEPENDS:=+python3 +python3-dateutil +python3-typing-extensions +python3-annotated-types +python3-pydantic-core
 endef
 
 define Package/python3-pydantic/description
