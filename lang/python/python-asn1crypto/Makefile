@@ -11,23 +11,21 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
 define Package/python3-asn1crypto
-  SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Python ASN.1 library with a focus on performance and a pythonic API
+  SUBMENU:=Python
+  TITLE:=A fast, pure Python library for parsing and serializing ASN.1 structures.
   URL:=https://github.com/wbond/asn1crypto
   DEPENDS:=+python3
 endef
 
 define Package/python3-asn1crypto/description
-  Fast ASN.1 parser and serializer with definitions for private keys, public keys, certificates, CRL, OCSP, CMS, PKCS#3, PKCS#7, PKCS#8, PKCS#12, PKCS#5, X.509 and TSP
+Fast ASN.1 parser and serializer with definitions for private keys, public keys, certificates, CRL, OCSP, CMS, PKCS#3, PKCS#7, PKCS#8, PKCS#12, PKCS#5, X.509 and TSP
 endef
 
 $(eval $(call Py3Package,python3-asn1crypto))
