@@ -27,7 +27,7 @@ define Package/python3-pandas
   CATEGORY:=Languages
   TITLE:=Powerful data structures for data analysis, time series, and statistics
   URL:=https://pandas.pydata.org/
-  DEPENDS:=+python3 +python3-dateutil +python3-numpy +python3-pytz +python3-tzdata
+  DEPENDS:=+python3 +python3-numpy +python3-python-dateutil +python3-tzdata
 endef
 
 define Package/python3-pandas/description
