@@ -7,7 +7,7 @@ PKG_RELEASE:=1
 PYPI_NAME:=httplib2
 PKG_HASH:=d7a10bc5ef5ab08322488bde8c726eeee5c8618723fdb399597ec58f3d82df81
 
-PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
@@ -20,7 +20,7 @@ define Package/python3-httplib2
   CATEGORY:=Languages
   SUBMENU:=Python
   TITLE:=A comprehensive HTTP client library
-  URL:=https://github.com/pndurette/gTTS
+  URL:=http://httplib2.readthedocs.io/
   DEPENDS:= \
 	+python3-email \
 	+python3-openssl \
