@@ -30,8 +30,8 @@ define Package/python3-pykcs11/description
 A complete PKCS#11 wrapper for Python. You can use any PKCS#11 (aka CryptoKi) module such as the PSM which comes as part of mozilla or the various modules supplied by vendors of hardware crypto tokens, and almost all PKCS#11 functions and data types. The wrapper has been generated with the help of the SWIG compiler.
 endef
 
-PYTHON3_HOST_WHEEL_NAME:=PyKCS11
-PYTHON3_HOST_WHEEL_VERSION:=1.5.17
+PYTHON3_PKG_WHEEL_NAME:=PyKCS11
+PYTHON3_PKG_WHEEL_VERSION:=1.5.17
 
 $(eval $(call Py3Package,python3-pykcs11))
 $(eval $(call BuildPackage,python3-pykcs11))
