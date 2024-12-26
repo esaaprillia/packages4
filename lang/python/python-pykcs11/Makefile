@@ -23,7 +23,7 @@ define Package/python3-pykcs11
   SUBMENU:=Python
   TITLE:=A Full PKCS#11 wrapper for Python
   URL:=https://github.com/LudovicRousseau/PyKCS11
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +libstdcpp
 endef
 
 define Package/python3-pykcs11/description
