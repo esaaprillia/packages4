@@ -32,6 +32,9 @@ define Package/python3-swig/description
 A project that packages SWIG as a Python package, enabling swig to be installed from PyPI
 endef
 
+PYTHON3_HOST_BUILD_CONFIG_SETTINGS += \
+	--config-settings=cmake.args=-Wno-dev
+
 $(eval $(call Py3Package,python3-swig))
 $(eval $(call BuildPackage,python3-swig))
 $(eval $(call BuildPackage,python3-swig-src))
