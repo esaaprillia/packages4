@@ -23,7 +23,7 @@ define Package/python3-pydantic
   SUBMENU:=Python
   TITLE:=Data validation using Python type hints
   URL:=https://docs.pydantic.dev/
-  DEPENDS:=+python3 +python3-dateutil +python3-typing-extensions +python3-annotated-types +python3-pydantic-core
+  DEPENDS:=+python3 +python3-typing-extensions +python3-annotated-types +python3-pydantic-core
 endef
 
 define Package/python3-pydantic/description
