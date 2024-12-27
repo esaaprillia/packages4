@@ -21,7 +21,7 @@ define Package/python3-objgraph
   CATEGORY:=Languages
   TITLE:=Draws Python object reference graphs with graphviz
   URL:=http://mg.pov.lt/objgraph/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-graphviz
 endef
 
 define Package/python3-objgraph/description
