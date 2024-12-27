@@ -30,11 +30,6 @@ define Package/python3-btlewrap/description
   on different platforms.
 endef
 
-define Py3Package/python3-btlewrap/filespec
-+|$(PYTHON3_PKG_DIR)
--|$(PYTHON3_PKG_DIR)/test
-endef
-
 $(eval $(call Py3Package,python3-btlewrap))
 $(eval $(call BuildPackage,python3-btlewrap))
 $(eval $(call BuildPackage,python3-btlewrap-src))
