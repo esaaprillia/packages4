@@ -11,6 +11,8 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=types_psutil
 PKG_HASH:=600f5a36bd5e0eb8887f0e3f3ff2cf154d90690ad8123c8a707bba4ab94d3185
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
