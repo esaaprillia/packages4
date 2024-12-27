@@ -17,6 +17,7 @@ CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/abseil-cpp
@@ -31,8 +32,12 @@ define Package/abseil-cpp/description
 	The repository contains the Abseil C++ library code. Abseil is an open-source collection of C++ code (compliant to C++14) designed to augment the C++ standard library.
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-DCMAKE_CXX_STANDARD=17 \
+	-DABSL_PROPAGATE_CXX_STD=ON \
+	-DABSL_USE_GOOGLETEST_HEAD=OFF
+
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
 	-DCMAKE_CXX_STANDARD=17 \
 	-DABSL_PROPAGATE_CXX_STD=ON \
 	-DABSL_USE_GOOGLETEST_HEAD=OFF
@@ -67,3 +72,4 @@ define Package/abseil-cpp/install
 endef
 
 $(eval $(call BuildPackage,abseil-cpp))
+$(eval $(call HostBuild))
