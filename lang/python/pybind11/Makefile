@@ -35,6 +35,10 @@ define Package/pybind11/description
 	pybind11 — Seamless operability between C++11 and Python
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-Wno-dev \
+	-DPYBIND11_TEST=ON
+
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DPYBIND11_TEST=ON
