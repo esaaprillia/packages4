@@ -11,8 +11,6 @@ PKG_LICENSE_FILES:=LICENSE.md
 PYPI_NAME:=homeassistant
 PKG_HASH:=3df79d8a02561cbbf606a1ce81579d0f2271c714a67477b60af3cd6025a2e9a0
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
