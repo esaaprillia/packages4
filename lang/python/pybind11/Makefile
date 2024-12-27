@@ -22,6 +22,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/pybind11
 	SUBMENU:=Python
