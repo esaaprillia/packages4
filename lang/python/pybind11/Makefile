@@ -16,11 +16,9 @@ HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-
 
 PKG_BUILD_PARALLEL:=1
 
-include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../python3-package.mk
-include ../python3-host-build.mk
+include ../cmake.mk
 
 define Package/pybind11
 	SUBMENU:=Python
