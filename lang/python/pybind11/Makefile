@@ -19,7 +19,6 @@ PKG_BUILD_PARALLEL:=1
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../meson/cmake.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
@@ -35,6 +34,10 @@ endef
 define Package/pybind11/description
 	pybind11 — Seamless operability between C++11 and Python
 endef
+
+CMAKE_HOST_OPTIONS += \
+	-Wno-dev \
+	-DPYBIND11_TEST=ON
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
@@ -68,7 +71,7 @@ define Package/pybind11/install
 	  $(1)/$(PYTHON3_PKG_DIR)
 endef
 
-$(eval $(call Py3Package,pybind11))
 $(eval $(call BuildPackage,pybind11))
+$(eval $(call Py3Package,pybind11))
 $(eval $(call BuildPackage,pybind11-src))
 $(eval $(call HostBuild))
