@@ -1,15 +1,15 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-types-psutil
-PKG_VERSION:=6.1.0.20241102
+PKG_VERSION:=6.1.0.20241221
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
-PYPI_NAME:=types-psutil
-PKG_HASH:=8cbe086b9c29f5c0aa55c4422498c07a8e506f096205761dba088905198551dc
+PYPI_NAME:=types_psutil
+PKG_HASH:=600f5a36bd5e0eb8887f0e3f3ff2cf154d90690ad8123c8a707bba4ab94d3185
 
 HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
