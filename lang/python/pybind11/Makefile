@@ -43,6 +43,8 @@ CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DPYBIND11_TEST=ON
 
+PYTHON3_HOST_BUILD_CONFIG_SETTINGS += cmake.args=-DPYBIND11_TEST=ON
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
