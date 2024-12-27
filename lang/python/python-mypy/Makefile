@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-mypy
-PKG_VERSION:=1.13.0
+PKG_VERSION:=1.14.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=mypy
-PKG_HASH:=0291a61b6fbf3e6673e3405cfcc0e7650bebc7939659fdca2702958038bd835e
+PKG_HASH:=822dbd184d4a9804df5a7d5335a68cf7662930e70b8c1bc976645d1509f9a9d6
 
 HOST_BUILD_DEPENDS:=python-types-psutil/host python-mypy-extensions/host python-types-setuptools/host
 PKG_BUILD_DEPENDS:=python-types-psutil/host python-mypy-extensions/host python-types-setuptools/host
