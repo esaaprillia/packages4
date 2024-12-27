@@ -18,8 +18,8 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
-HOST_BUILD_DEPENDS:=python-mypy/host
-PKG_BUILD_DEPENDS:=python-mypy/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-mypy/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-mypy/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
