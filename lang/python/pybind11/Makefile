@@ -19,7 +19,6 @@ PKG_BUILD_PARALLEL:=1
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../meson/cmake.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
