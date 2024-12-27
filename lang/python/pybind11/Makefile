@@ -14,6 +14,8 @@ PKG_LICENSE_FILES:=LICENSE
 
 HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
+CMAKE_BINARY_SUBDIR := openwrt-build
+
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
