@@ -67,7 +67,7 @@ define Package/pybind11/install
 	  $(1)/$(PYTHON3_PKG_DIR)
 endef
 
-$(eval $(call Py3Package,pybind11))
 $(eval $(call BuildPackage,pybind11))
+$(eval $(call Py3Package,pybind11))
 $(eval $(call BuildPackage,pybind11-src))
 $(eval $(call HostBuild))
