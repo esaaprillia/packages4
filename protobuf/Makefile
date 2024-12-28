@@ -28,7 +28,8 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../lang/python/python3-host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-PYTHON3_PKG_SETUP_DIR:=python/dist
+PYTHON3_PKG_BUILD_PATH:=python/dist
+PYTHON3_HOST_BUILD_PATH:=python/dist
 
 define Package/protobuf/Default
   SECTION:=libs
