@@ -22,7 +22,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
-include $(INCLUDE_DIR)/cmake.mk
+include ../cmake.mk
 
 define Package/pybind11
 	SUBMENU:=Python
@@ -45,7 +45,12 @@ CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DPYBIND11_TEST=ON
 
-PYTHON3_HOST_BUILD_CONFIG_SETTINGS += cmake.args=-DPYBIND11_TEST=ON
+#PYTHON3_HOST_BUILD_CONFIG_SETTINGS += cmake.args=-DPYBIND11_TEST=ON
+
+define Host/Compile
+	$(call Py3Host/Compile)
+	$(call Host/Compile/Cmake)
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
