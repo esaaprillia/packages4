@@ -17,8 +17,6 @@ PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
-TARGET_LDFLAGS += -L$(PKG_BUILD_DIR)/src/.libs
-
 define Package/hdf5
 	SECTION:=libs
 	CATEGORY:=Libraries
