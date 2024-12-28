@@ -23,10 +23,10 @@ PKG_CPE_ID:=cpe:/a:google:protobuf
 HOST_BUILD_DEPENDS:=abseil-cpp/host
 
 include $(INCLUDE_DIR)/package.mk
+include ../lang/python/python3-package.mk
 include $(INCLUDE_DIR)/host-build.mk
+include ../lang/python/python3-host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
-include ../../python3-package.mk
-include ../../python3-host-build.mk
 
 PYTHON3_PKG_SETUP_DIR:=python
 
