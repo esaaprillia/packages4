@@ -35,7 +35,13 @@ CONFIGURE_ARGS += \
 	--disable-fortran \
 	--disable-java
 
-TARGET_LDFLAGS += -L$(PKG_BUILD_DIR)/src/.libs
+TARGET_LDFLAGS+= \
+	-L$(PKG_BUILD_DIR)/c++/src/.libs \
+	-L$(PKG_BUILD_DIR)/fortran/src/.libs \
+	-L$(PKG_BUILD_DIR)/hl/src/.libs \
+	-L$(PKG_BUILD_DIR)/hl/c++/src/.libs \
+	-L$(PKG_BUILD_DIR)/hl/fortran/src/.libs \
+	-L$(PKG_BUILD_DIR)/src/.libs
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
