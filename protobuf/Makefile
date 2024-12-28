@@ -21,6 +21,8 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:google:protobuf
 
 HOST_BUILD_DEPENDS:=abseil-cpp/host python3/host python-build/host python-installer/host python-wheel/host
+PYTHON3_PKG_BUILD:=0
+PYTHON3_HOST_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include ../lang/python/python3-package.mk
@@ -28,8 +30,8 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../lang/python/python3-host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-PYTHON3_PKG_BUILD_PATH:=python/dist
-PYTHON3_HOST_BUILD_PATH:=python/dist
+#PYTHON3_PKG_BUILD_PATH:=python/dist
+#PYTHON3_HOST_BUILD_PATH:=python/dist
 
 define Package/protobuf/Default
   SECTION:=libs
