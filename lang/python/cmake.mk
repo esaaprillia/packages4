@@ -1,3 +1,7 @@
+cmake_mk_path:=$(dir $(lastword $(MAKEFILE_LIST)))
+include $(cmake_mk_path)python3-package.mk
+include $(cmake_mk_path)python3-host-build.mk
+
 cmake_bool = $(patsubst %,-D%:BOOL=$(if $($(1)),ON,OFF),$(2))
 
 PKG_USE_NINJA ?= 1
