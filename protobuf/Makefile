@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=protobuf
-PKG_VERSION:=3.17.3
-PKG_RELEASE:=3
+PKG_VERSION:=29.2
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/google/protobuf/releases/download/v$(PKG_VERSION)
@@ -28,7 +28,7 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../lang/python/python3-host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-PYTHON3_PKG_SETUP_DIR:=python
+PYTHON3_PKG_SETUP_DIR:=python/dist
 
 define Package/protobuf/Default
   SECTION:=libs
