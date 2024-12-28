@@ -49,7 +49,7 @@ endef
 
 define Package/python3-protobuf
   $(call Package/protobuf/Default)
-  DEPENDS+=+python3 +protobuf
+  DEPENDS+=+python3
 endef
 
 define Package/protobuf/description/Default
