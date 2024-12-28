@@ -20,7 +20,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:google:protobuf
 
-HOST_BUILD_DEPENDS:=abseil-cpp/host
+HOST_BUILD_DEPENDS:=abseil-cpp/host python3/host python-build/host python-installer/host python-wheel/host
 
 include $(INCLUDE_DIR)/package.mk
 include ../lang/python/python3-package.mk
