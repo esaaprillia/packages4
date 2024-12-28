@@ -1,7 +1,3 @@
-cmake_mk_path:=$(dir $(lastword $(MAKEFILE_LIST)))
-include $(cmake_mk_path)python3-package.mk
-include $(cmake_mk_path)python3-host-build.mk
-
 cmake_bool = $(patsubst %,-D%:BOOL=$(if $($(1)),ON,OFF),$(2))
 
 PKG_USE_NINJA ?= 1
@@ -94,8 +90,8 @@ define Build/Configure/Cmake
 	mkdir -p $(CMAKE_BINARY_DIR)
 	(cd $(CMAKE_BINARY_DIR); \
 		CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-		CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)" \
-		LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
+		CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS) -I$(PYTHON3_INC_DIR)" \
+		LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) -lpython$(PYTHON3_VERSION)" \
 		cmake \
 			--no-warn-unused-cli \
 			-DCMAKE_SYSTEM_NAME=Linux \
@@ -147,8 +143,8 @@ define Host/Configure/Cmake
 	mkdir -p "$(HOST_CMAKE_BINARY_DIR)"
 	(cd $(HOST_CMAKE_BINARY_DIR); \
 		CFLAGS="$(HOST_CFLAGS)" \
-		CXXFLAGS="$(HOST_CFLAGS)" \
-		LDFLAGS="$(HOST_LDFLAGS)" \
+		CXXFLAGS="$(HOST_CFLAGS) -I$(HOST_PYTHON3_INC_DIR)" \
+		LDFLAGS="$(HOST_LDFLAGS) -lpython$(PYTHON3_VERSION)" \
 		cmake \
 			--no-warn-unused-cli \
 			-DCMAKE_BUILD_TYPE=Release \
