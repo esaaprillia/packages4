@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=protobuf
-PKG_VERSION:=29.1
-PKG_RELEASE:=1
+PKG_VERSION:=3.17.3
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/google/protobuf/releases/download/v$(PKG_VERSION)
-PKG_HASH:=3d32940e975c4ad9b8ba69640e78f5527075bae33ca2890275bf26b853c0962c
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Ken Keys <kkeys@caida.org>, Austin Lane <vidplace7@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
@@ -49,7 +49,7 @@ endef
 
 define Package/python3-protobuf
   $(call Package/protobuf/Default)
-  DEPENDS+=+python3
+  DEPENDS+=+python3 +protobuf
 endef
 
 define Package/protobuf/description/Default
