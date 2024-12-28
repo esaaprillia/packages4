@@ -184,10 +184,10 @@ MAKE_FLAGS += \
 	CMAKE_COMMAND='$$(if $$(CMAKE_DISABLE_$$@),:,$(STAGING_DIR_HOST)/bin/cmake)' \
 	CMAKE_DISABLE_cmake_check_build_system=1
 
-#Host/Configure=$(call Host/Configure/Cmake)
-#Host/Compile=$(call Host/Compile/Cmake)
-#Host/Install=$(call Host/Install/Cmake)
-#Host/Uninstall=$(call Host/Uninstall/Cmake)
-#Build/Configure=$(call Build/Configure/Cmake)
-#Build/Compile=$(call Build/Compile/Cmake)
-#Build/Install=$(call Build/Install/Cmake)
+Host/Configure=$(call Host/Configure/Cmake)
+Host/Compile=$(call Host/Compile/Cmake)
+Host/Install=$(call Host/Install/Cmake)
+Host/Uninstall=$(call Host/Uninstall/Cmake)
+Build/Configure=$(call Build/Configure/Cmake)
+Build/Compile=$(call Build/Compile/Cmake)
+Build/Install=$(call Build/Install/Cmake)
