@@ -22,6 +22,10 @@ export HDF5_DIR="$(STAGING_DIR)/usr"
 export HDF5_MPI="OFF"
 export H5PY_SETUP_REQUIRES="0"
 
+TARGET_LDFLAGS+= \
+	-L$(PKG_BUILD_DIR) \
+	-L$(STAGING_DIR)/usr/lib -L$(STAGING_DIR)/lib
+
 define Package/python3-h5py
   SUBMENU:=Python
   SECTION:=lang
