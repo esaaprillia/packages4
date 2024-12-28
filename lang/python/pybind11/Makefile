@@ -45,11 +45,14 @@ CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DPYBIND11_TEST=ON
 
-#PYTHON3_HOST_BUILD_CONFIG_SETTINGS += cmake.args=-DPYBIND11_TEST=ON
-
 define Host/Compile
 	$(call Py3Host/Compile)
 	$(call Host/Compile/Cmake)
+endef
+
+define Build/Compile
+	$(call Py3Build/Compile)
+	$(call Build/Compile/Cmake)
 endef
 
 define Build/InstallDev
