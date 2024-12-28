@@ -17,10 +17,8 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-export HDF5_VERSION="1.14.5"
-export HDF5_DIR="$(STAGING_DIR)/usr"
-export HDF5_MPI="OFF"
-export H5PY_SETUP_REQUIRES="0"
+export HDF5_DIR=$(STAGING_DIR)/usr
+export H5PY_SETUP_REQUIRES=0
 
 TARGET_LDFLAGS+= \
 	-L$(PKG_BUILD_DIR) \
