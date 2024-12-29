@@ -36,6 +36,12 @@ CONFIGURE_ARGS += \
 	--disable-fortran \
 	--disable-java
 
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		DESTDIR="$(PKG_INSTALL_DIR)" \
+		install
+endef
+
 define Build/InstallDev
 	$(MAKE) -C $(PKG_BUILD_DIR) DESTDIR="$(STAGING_DIR)/usr" install
 endef
