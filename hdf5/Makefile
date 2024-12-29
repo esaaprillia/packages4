@@ -37,7 +37,7 @@ CONFIGURE_ARGS += \
 	--disable-java
 
 define Build/InstallDev
-	$(MAKE) -C $(PKG_BUILD_DIR) install
+	$(MAKE) -C $(PKG_BUILD_DIR) install +DESTDIR="$(STAGING_DIR)/usr"
 endef
 
 define Package/hdf5/install
