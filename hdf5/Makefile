@@ -31,13 +31,24 @@ define Package/hdf5/description
 endef
 
 CONFIGURE_ARGS += \
-	--prefix="$(STAGING_DIR)/usr" \
 	--enable-cxx \
 	--disable-fortran \
 	--disable-java
 
+MAKE_FLAGS += PREFIX="$(STAGING_DIR)/usr"
+
 define Build/InstallDev
-	$(MAKE) -C $(PKG_BUILD_DIR) DESTDIR="$(STAGING_DIR)/usr" install"
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/* \
+	  $(1)/usr/lib/
 endef
 
 define Package/hdf5/install
