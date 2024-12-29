@@ -29,6 +29,19 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
+CMAKE_OPTIONS += \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DBUILD_STATIC_LIBS=OFF \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DHDF5_BUILD_HL_LIB=ON \
+	-DHDF5_BUILD_CPP_LIB=ON \
+	-DHDF5_BUILD_FORTRAN=OFF \
+	-DHDF5_BUILD_JAVA=OFF \
+	-DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
+	-DHDF5_ENABLE_SZIP_SUPPORT=ON \
+	-DHDF5_ENABLE_SZIP_ENCODING=ON \
+	-DUSE_LIBAEC=ON
+
 CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--docdir=/usr/share/doc/hdf5/ \
