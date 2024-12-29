@@ -13,7 +13,6 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
 PKG_BUILD_PARALLEL:=1
-#PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -31,19 +30,30 @@ define Package/hdf5/description
 endef
 
 CONFIGURE_ARGS += \
-	--prefix="$(STAGING_DIR)/usr" \
 	--enable-cxx \
 	--disable-fortran \
 	--disable-java
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
+		CC="$(TARGET_CC)" \
+		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS) $(FPIC)" \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		install
 endef
 
 define Build/InstallDev
-	$(MAKE) -C $(PKG_BUILD_DIR) DESTDIR="$(STAGING_DIR)/usr" install
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/* \
+	  $(1)/usr/lib/
 endef
 
 define Package/hdf5/install
