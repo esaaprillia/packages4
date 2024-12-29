@@ -18,7 +18,7 @@ PKG_BUILD_PARALLEL:=1
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/hdf5
 	SECTION:=libs
@@ -34,6 +34,7 @@ define Package/hdf5/description
 endef
 
 CMAKE_OPTIONS += \
+	-DCMAKE_GENERATOR="Unix Makefiles" \
 	-DBUILD_STATIC_LIBS=OFF \
 	-DHDF5_BUILD_HL_LIB=ON \
 	-DHDF5_BUILD_CPP_LIB=ON \
