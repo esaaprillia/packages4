@@ -44,7 +44,7 @@ CMAKE_OPTIONS += \
 	-DHDF5_ENABLE_SZIP_ENCODING=ON \
 	-DUSE_LIBAEC=ON
 
-MAKE_PATH:=.
+cd ..
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
@@ -62,7 +62,7 @@ CONFIGURE_ARGS += \
 	--with-zlib \
 	--with-szlib
 
-define Build/Compile
+define Build/Compile/Default
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		all install
