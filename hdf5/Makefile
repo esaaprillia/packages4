@@ -58,9 +58,12 @@ define Build/InstallDev
 	
 	$(SED) \
 	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
-	
+
 	$(SED) \
 	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
+
+	$(SED) \
+	  '/Requires/ s/-/ = /g' $(1)/usr/lib/pkgconfig/hdf5*.pc
 endef
 
 define Package/hdf5/install
