@@ -18,7 +18,7 @@ PKG_BUILD_PARALLEL:=1
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
-include ../../../python/meson/cmake.mk
+include ../../../meson/cmake.mk
 
 define Package/hdf5
 	SECTION:=libs
