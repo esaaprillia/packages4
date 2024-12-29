@@ -33,6 +33,7 @@ CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--docdir=/usr/share/doc/hdf5/ \
 	--with-examplesdir=/usr/share/doc/hdf5/examples/ \
+	--with-default-plugindir=/usr/lib/hdf5/lib/plugin/ \
 	--disable-static \
 	--disable-sharedlib-rpath \
 	--enable-build-mode=production \
