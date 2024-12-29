@@ -17,14 +17,6 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-PYTHON3_PKG_SETUP_VARS:= \
-	HDF5_INCLUDEDIR=$(STAGING_DIR)/usr/include \
-	HDF5_LIBDIR=$(STAGING_DIR)/usr/lib
-
-LDFLAGS+= \
-	-L$(PKG_BUILD_DIR) \
-	-L$(STAGING_DIR)/usr/lib -L$(STAGING_DIR)/lib
-
 define Package/python3-h5py
   SUBMENU:=Python
   SECTION:=lang
