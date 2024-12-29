@@ -30,12 +30,12 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
+CONFIGURE_VARS += PREFIX="$(STAGING_DIR)/usr"
+
 CONFIGURE_ARGS += \
 	--enable-cxx \
 	--disable-fortran \
 	--disable-java
-
-MAKE_FLAGS += PREFIX="$(STAGING_DIR)/usr"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
