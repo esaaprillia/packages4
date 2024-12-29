@@ -30,9 +30,19 @@ define Package/hdf5/description
 endef
 
 CONFIGURE_ARGS += \
+	--prefix=/usr \
+	--docdir=/usr/share/doc/hdf5/ \
+	--with-examplesdir=/usr/share/doc/hdf5/examples/ \
+	--disable-static \
+	--disable-sharedlib-rpath \
+	--enable-build-mode=production \
+	--enable-hl \
 	--enable-cxx \
 	--disable-fortran \
-	--disable-java
+	--disable-java \
+	--with-pic \
+	--with-zlib \
+	--with-szlib
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
