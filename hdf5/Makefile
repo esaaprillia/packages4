@@ -18,7 +18,7 @@ PKG_BUILD_PARALLEL:=1
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include ../../meson/cmake.mk
 
 define Package/hdf5
 	SECTION:=libs
@@ -61,7 +61,6 @@ CONFIGURE_ARGS += \
 	--with-szlib
 
 define Build/Compile
-	cd $(PKG_BUILD_DIR)
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		all install
