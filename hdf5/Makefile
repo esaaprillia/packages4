@@ -37,17 +37,7 @@ CONFIGURE_ARGS += \
 	--disable-java
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/* \
-	  $(1)/usr/lib/
+	$(MAKE) -C $(PKG_BUILD_DIR) install
 endef
 
 define Package/hdf5/install
