@@ -60,7 +60,8 @@ CONFIGURE_ARGS += \
 	--with-zlib \
 	--with-szlib
 
-define Build/Compile/Default
+define Build/Compile
+	cd $(PKG_BUILD_DIR)
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		all install
