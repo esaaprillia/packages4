@@ -30,25 +30,14 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
-CONFIGURE_VARS += PREFIX="$(STAGING_DIR)/usr"
-
 CONFIGURE_ARGS += \
+	--prefix="$(STAGING_DIR)/usr" \
 	--enable-cxx \
 	--disable-fortran \
 	--disable-java
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/* \
-	  $(1)/usr/lib/
+	$(MAKE) -C $(PKG_BUILD_DIR) DESTDIR="$(STAGING_DIR)/usr" install
 endef
 
 define Package/hdf5/install
