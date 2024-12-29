@@ -12,9 +12,13 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
+PKG_USE_NINJA:=0
 PKG_BUILD_PARALLEL:=1
 
+CMAKE_BINARY_DIR:=$(PKG_BUILD_DIR)/build
+
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/hdf5
 	SECTION:=libs
