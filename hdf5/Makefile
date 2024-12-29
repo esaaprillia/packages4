@@ -46,6 +46,8 @@ CMAKE_OPTIONS += \
 	-DHDF5_ENABLE_SZIP_ENCODING=ON \
 	-DUSE_LIBAEC=ON
 
+CONFIGURE_PATH:=.
+
 CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--docdir=/usr/share/doc/hdf5/ \
