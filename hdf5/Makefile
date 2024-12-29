@@ -34,7 +34,7 @@ define Package/hdf5/description
 endef
 
 CMAKE_OPTIONS += \
-	-DCMAKE_GENERATOR="Unix Makefiles" \
+	-DCMAKE_GENERATOR="" \
 	-DBUILD_STATIC_LIBS=OFF \
 	-DHDF5_BUILD_HL_LIB=ON \
 	-DHDF5_BUILD_CPP_LIB=ON \
