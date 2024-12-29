@@ -12,7 +12,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
-PKG_USE_NINJA:=0
 PKG_BUILD_PARALLEL:=1
 
 CMAKE_BINARY_SUBDIR := build
@@ -45,28 +44,6 @@ CMAKE_OPTIONS += \
 	-DHDF5_ENABLE_SZIP_ENCODING=ON \
 	-DUSE_LIBAEC=ON
 
-CONFIGURE_ARGS += \
-	--prefix=/usr \
-	--docdir=/usr/share/doc/hdf5/ \
-	--with-examplesdir=/usr/share/doc/hdf5/examples/ \
-	--with-default-plugindir=/usr/lib/hdf5/lib/plugin/ \
-	--disable-static \
-	--disable-sharedlib-rpath \
-	--enable-build-mode=production \
-	--enable-hl \
-	--enable-cxx \
-	--disable-fortran \
-	--disable-java \
-	--with-pic \
-	--with-zlib \
-	--with-szlib
-
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all install
-endef
-
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
@@ -79,6 +56,12 @@ define Build/InstallDev
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/* \
 	  $(1)/usr/lib/
+	
+	$(SED) \
+	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
+	
+	$(SED) \
+	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
 endef
 
 define Package/hdf5/install
