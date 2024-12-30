@@ -17,6 +17,9 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
+PYTHON3_PKG_SETUP_VARS:= H5PY_SETUP_REQUIRES=0
+PYTHON3_PKG_SETUP_ARGS:= --no-binary=h5py h5py
+
 define Package/python3-h5py
   SUBMENU:=Python
   SECTION:=lang
