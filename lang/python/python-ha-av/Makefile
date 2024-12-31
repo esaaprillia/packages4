@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ha-av
+PKG_NAME:=python-ha-av
 PKG_VERSION:=10.1.1
 PKG_RELEASE:=1
 
