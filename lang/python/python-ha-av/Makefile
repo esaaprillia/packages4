@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: GPL-2.0-only
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ha-av
@@ -9,14 +7,15 @@ PKG_RELEASE:=1
 PYPI_NAME:=ha-av
 PKG_HASH:=41a30556f8258a9374906d7e65034a93b593c9d4b220f9f6a9adf652dbcb89dc
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python-cython/host python-wheel/host
+PKG_BUILD_DEPENDS:=python-cython/host
 
-include $(TOPDIR)/feeds/packages/lang/python/pypi.mk
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
+include ../python3-package.mk
 
 define Package/python3-ha-av
   SECTION:=lang
@@ -34,4 +33,4 @@ endef
 
 $(eval $(call Py3Package,python3-ha-av))
 $(eval $(call BuildPackage,python3-ha-av))
-#$(eval $(call BuildPackage,python3-ha-av-src))
+$(eval $(call BuildPackage,python3-ha-av-src))
