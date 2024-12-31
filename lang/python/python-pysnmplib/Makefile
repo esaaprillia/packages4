@@ -28,7 +28,7 @@ define Package/python3-pysnmplib
 	+python3-ctypes \
 	+python3-logging \
 	+python3-cryptodomex \
-	+python3-pysnmp-pyasn1 \
+	+python3-pyasn1 \
 	+python3-pysnmp-pysmi
 endef
 
