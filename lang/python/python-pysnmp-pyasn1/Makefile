@@ -32,11 +32,6 @@ define Package/python3-pysnmp-pyasn1/description
   of ASN.1 types and codecs as a Python package.
 endef
 
-define Package/python3-pysnmp-pyasn1/install
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)
-endef
-
 $(eval $(call Py3Package,python3-pysnmp-pyasn1))
 $(eval $(call BuildPackage,python3-pysnmp-pyasn1))
 $(eval $(call BuildPackage,python3-pysnmp-pyasn1-src))
