@@ -30,6 +30,9 @@ define Package/python3-opencv/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
 
+PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
+	cmake.args=-DBUILD_opencv_java=OFF;-DBUILD_SHARED_LIBS=ON
+
 $(eval $(call Py3Package,python3-opencv))
 $(eval $(call BuildPackage,python3-opencv))
 $(eval $(call BuildPackage,python3-opencv-src))
