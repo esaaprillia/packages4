@@ -127,9 +127,23 @@ define Build/Configure/Default
 			-DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=TRUE \
 			-DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=FALSE \
 			-DCMAKE_FIND_PACKAGE_NO_SYSTEM_PACKAGE_REGISTRY=TRUE \
+			-DPYTHON_VERSION_STRING:STRING=$(PYTHON3_VERSION).$(PYTHON3_VERSION_MICRO) \
+			-DPYTHON_EXECUTABLE:PATH=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3) \
+			-DPYTHON_INCLUDE_DIR:PATH=$(PYTHON3_DIR)/include/python$(PYTHON3_VERSION) \
+			-DPython_EXECUTABLE:PATH=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3) \
+			-DPython_ROOT_DIR:PATH=$(PYTHON3_DIR) \
+			-DPython_FIND_REGISTRY:STRING=NEVER \
+			-DPython_INCLUDE_DIR:PATH=$(PYTHON3_DIR)/include/python$(PYTHON3_VERSION) \
+			-DPython3_EXECUTABLE:PATH=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3) \
+			-DPython3_ROOT_DIR:PATH=$(PYTHON3_DIR) \
+			-DPython3_FIND_REGISTRY:STRING=NEVER \
+			-DPython3_INCLUDE_DIR:PATH=$(PYTHON3_DIR)/include/python$(PYTHON3_VERSION) \
+			-DPYTHON3_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3) \
+			-DPYTHON_DEFAULT_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3) \
+			-DPYTHON3_INCLUDE_DIR=$(PYTHON3_DIR)/include/python$(PYTHON3_VERSION) \
+			-DPYTHON3_LIBRARY=$(PYTHON3_DIR)/lib/python$(PYTHON3_VERSION) \
 			$(CMAKE_OPTIONS) \
 		$(CMAKE_SOURCE_DIR) \
-		$(PKG_BUILD_DIR) \
 	)
 endef
 
@@ -175,6 +189,21 @@ define Host/Configure/Default
 			-DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=TRUE \
 			-DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=FALSE \
 			-DCMAKE_FIND_PACKAGE_NO_SYSTEM_PACKAGE_REGISTRY=TRUE \
+			-DPYTHON_VERSION_STRING:STRING=3.13.1 \
+			-DPYTHON_EXECUTABLE:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+			-DPYTHON_INCLUDE_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
+			-DPython_EXECUTABLE:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+			-DPython_ROOT_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg \
+			-DPython_FIND_REGISTRY:STRING=NEVER \
+			-DPython_INCLUDE_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
+			-DPython3_EXECUTABLE:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+			-DPython3_ROOT_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg \
+			-DPython3_FIND_REGISTRY:STRING=NEVER \
+			-DPython3_INCLUDE_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
+			-DPYTHON3_EXECUTABLE=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+			-DPYTHON_DEFAULT_EXECUTABLE=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+			-DPYTHON3_INCLUDE_DIR=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
+			-DPYTHON3_LIBRARY=libpython3.13m.a \
 			-DBUILD_SHARED_LIBS=OFF \
 			$(CMAKE_HOST_OPTIONS) \
 		$(HOST_CMAKE_SOURCE_DIR) \
