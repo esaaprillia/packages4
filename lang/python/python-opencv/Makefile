@@ -33,7 +33,7 @@ define Package/python3-opencv/description
 endef
 
 #PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
-	cmake.args=-Wno-dev;-DBUILD_opencv_java=OFF;-DBUILD_opencv_freetype=ON;-DBUILD_JAVA=OFF;-DBUILD_FAT_JAVA_LIB=OFF;-DWITH_OPENCL=OFF;-DWITH_CUDA=OFF;-DWITH_GTK=OFF;-DBUILD_OPENEXR=OFF;-DBUILD_SHARED_LIBS=ON
+	cmake_args=-Wno-dev;-DBUILD_opencv_java=OFF;-DBUILD_opencv_freetype=ON;-DBUILD_JAVA=OFF;-DBUILD_FAT_JAVA_LIB=OFF;-DWITH_OPENCL=OFF;-DWITH_CUDA=OFF;-DWITH_GTK=OFF;-DBUILD_OPENEXR=OFF;-DBUILD_SHARED_LIBS=ON
 
 $(eval $(call Py3Package,python3-opencv))
 $(eval $(call BuildPackage,python3-opencv))
