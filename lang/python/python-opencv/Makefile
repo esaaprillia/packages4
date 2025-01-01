@@ -23,7 +23,7 @@ define Package/python3-opencv
   SUBMENU:=Python
   TITLE:= Wrapper package for OpenCV python bindings.
   URL:=https://pypi.org/project/opencv-python/
-  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg-turbo +libfreetype +libtiff +libpng +libgstreamer1 +ffmpeg
+  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg-turbo +libfreetype +libtiff +libpng +libgstreamer1 +ffmpeg +protobuf
 endef
 
 define Package/python3-opencv/description
@@ -31,7 +31,7 @@ define Package/python3-opencv/description
 endef
 
 PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
-	cmake.args=-Wno-dev;-DBUILD_opencv_java=OFF;-DBUILD_opencv_freetype=ON;-DBUILD_JAVA=OFF;-DBUILD_FAT_JAVA_LIB=OFF;-DWITH_OPENCL=OFF;-DWITH_CUDA=OFF;-DWITH_GTK=OFF;-DBUILD_SHARED_LIBS=ON
+	cmake.args=-Wno-dev;-DBUILD_opencv_java=OFF;-DBUILD_opencv_freetype=ON;-DBUILD_JAVA=OFF;-DBUILD_FAT_JAVA_LIB=OFF;-DWITH_OPENCL=OFF;-DWITH_CUDA=OFF;-DWITH_GTK=OFF;-DBUILD_OPENEXR=OFF;-DBUILD_SHARED_LIBS=ON
 
 $(eval $(call Py3Package,python3-opencv))
 $(eval $(call BuildPackage,python3-opencv))
