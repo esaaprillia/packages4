@@ -17,7 +17,7 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-export CMAKE_ARGS=-DBUILD_opencv_java=OFF -DWITH_opencv_gapi=OFF -DWITH_ADE=OFF -DWITH_IPP=OFF -DOPENCV_PYTHON3_INSTALL_PATH=$(PYTHON3_PKG_DIR)
+export CMAKE_ARGS=-DBUILD_opencv_java=OFF -DWITH_opencv_gapi=OFF -DBUILD_JAVA=OFF -DWITH_ADE=OFF -DWITH_IPP=OFF -DOPENCV_GENERATE_SETUPVARS=OFF -DOPENCV_PYTHON3_INSTALL_PATH=$(PYTHON3_PKG_DIR)
 
 define Package/python3-opencv
   SECTION:=lang
