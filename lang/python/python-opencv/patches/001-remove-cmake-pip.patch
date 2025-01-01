@@ -1,14 +1,14 @@
-From cb5a47023a77a6125f56a6b897267bc2ee60c170 Mon Sep 17 00:00:00 2001
+From 810e2e0a0ad77336f7712a6971c52c8b0b55ef7c Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Wed, 1 Jan 2025 08:41:05 +0800
+Date: Wed, 1 Jan 2025 09:00:51 +0800
 Subject: [PATCH] Update pyproject.toml
 
 ---
- pyproject.toml | 2 --
- 1 file changed, 2 deletions(-)
+ pyproject.toml | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index 71de7f9..d55fe2f 100644
+index 71de7f9..46aebfa 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -1,13 +1,11 @@
@@ -23,5 +23,6 @@ index 71de7f9..d55fe2f 100644
    "numpy>=2.0.0;  python_version>='3.9'",
 -  "pip",
    "scikit-build>=0.14.0",
-   "setuptools==59.2.0",
+-  "setuptools==59.2.0",
++  "setuptools",
  ]
