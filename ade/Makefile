@@ -32,14 +32,15 @@ ADE Framework is a graph construction, manipulation, and processing framework.
 ADE Framework is suitable for organizing data flow processing and execution.
 endef
 
-CFLAGS=$(TARGET_CFLAGS) -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+#CFLAGS=$(TARGET_CFLAGS) -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 
 CMAKE_OPTIONS += \
 	-DENABLE_ADE_TESTING=OFF \
 	-DBUILD_ADE_TUTORIAL=OFF \
 	-DFORCE_ADE_ASSERTS=OFF \
 	-DBUILD_ADE_DOCUMENTATION=OFF \
-	-DBUILD_WITH_STATIC_CRT=OFF
+	-DBUILD_WITH_STATIC_CRT=OFF \
+	-DCMAKE_C_FLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
