@@ -30,7 +30,20 @@ define Package/python3-opencv/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
 
-PYTHON3_PKG_SETUP_VARS +=CMAKE_ARGS="-DBUILD_SHARED_LIBS=ON -DBUILD_JAVA=OFF -DWITH_ADE=OFF -DWITH_IPP=OFF -DOPENCV_GENERATE_SETUPVARS=OFF"
+PYTHON3_PKG_SETUP_VARS +=CMAKE_ARGS="\
+	-DBUILD_opencv_gpu:BOOL=OFF \
+	-DWITH_1394:BOOL=OFF -DBUILD_opencv_stitching:BOOL=OFF \
+	-DBUILD_opencv_superres:BOOL=OFF -DBUILD_opencv_ts:BOOL=OFF \
+	-DBUILD_opencv_highgui:BOOL=OFF \
+	-DBUILD_opencv_videostab:BOOL=OFF \
+	-DWITH_FFMPEG:BOOL=OFF \
+	-DWITH_GSTREAMER:BOOL=OFF \
+	-DWITH_LIBV4L:BOOL=OFF \
+	-DWITH_PNG:BOOL=OFF \
+	-DWITH_GTK:BOOL=OFF \
+	-DWITH_TIFF:BOOL=OFF \
+	-DCMAKE_VERBOSE:BOOL=OFF \
+	-DENABLE_PRECOMPILED_HEADERS=OFF"
 
 $(eval $(call Py3Package,python3-opencv))
 $(eval $(call BuildPackage,python3-opencv))
