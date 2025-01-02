@@ -17,8 +17,6 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-export CMAKE_ARGS=-DBUILD_opencv_java=OFF -DWITH_opencv_gapi=OFF -DBUILD_SHARED_LIBS=ON -DBUILD_JAVA=OFF -DWITH_ADE=OFF -DWITH_IPP=OFF -DOPENCV_GENERATE_SETUPVARS=OFF -DOPENCV_PYTHON3_INSTALL_PATH=$(PYTHON3_PKG_DIR)
-
 define Package/python3-opencv
   SECTION:=lang
   CATEGORY:=Languages
@@ -32,8 +30,8 @@ define Package/python3-opencv/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
 
-#PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
-	cmake_args=-Wno-dev;-DBUILD_opencv_java=OFF;-DBUILD_opencv_freetype=ON;-DBUILD_JAVA=OFF;-DBUILD_FAT_JAVA_LIB=OFF;-DWITH_OPENCL=OFF;-DWITH_CUDA=OFF;-DWITH_GTK=OFF;-DBUILD_OPENEXR=OFF;-DBUILD_SHARED_LIBS=ON
+PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
+	cmake_args=-DBUILD_opencv_java=OFF -DWITH_opencv_gapi=OFF -DBUILD_SHARED_LIBS=ON -DBUILD_JAVA=OFF -DWITH_ADE=OFF -DWITH_IPP=OFF -DOPENCV_GENERATE_SETUPVARS=OFF
 
 $(eval $(call Py3Package,python3-opencv))
 $(eval $(call BuildPackage,python3-opencv))
