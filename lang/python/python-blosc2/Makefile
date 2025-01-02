@@ -11,8 +11,8 @@ PKG_LICENSE_FILES:=LICENSE.txt
 PYPI_NAME:=blosc2
 PKG_HASH:=d8c03a09ed11b644b48bf050bd108972ec56ac9cbc3f2aedca077255ed81ac69
 
-HOST_BUILD_DEPENDS:=python-cython/host python-scikit-build/host numpy/host c-blosc2/host
-PKG_BUILD_DEPENDS:=python-cython/host python-scikit-build/host numpy/host
+HOST_BUILD_DEPENDS:=python-cython/host python-scikit-build-core/host numpy/host c-blosc2/host
+PKG_BUILD_DEPENDS:=python-cython/host python-scikit-build-core/host numpy/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
