@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-blosc2
-PKG_VERSION:=2.7.1
+PKG_VERSION:=3.0.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE.txt
 
 PYPI_NAME:=blosc2
-PKG_HASH:=34db4d41543b16e894d507d6c7d10a9a67c9dd420ff40b072f7c39185cbb8fe8
+PKG_HASH:=d8c03a09ed11b644b48bf050bd108972ec56ac9cbc3f2aedca077255ed81ac69
 
 HOST_BUILD_DEPENDS:=python-cython/host python-scikit-build/host numpy/host c-blosc2/host
 PKG_BUILD_DEPENDS:=python-cython/host python-scikit-build/host numpy/host
