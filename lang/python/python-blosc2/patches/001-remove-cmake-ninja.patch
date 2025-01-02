@@ -1,0 +1,22 @@
+From 4550dc784f761267d181a4390a7131bef3dc1cf8 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 4 Dec 2024 22:50:17 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index d460a4b..64034e3 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -3,8 +3,6 @@ requires = [
+     "setuptools",
+     "scikit-build",
+     "cython>=3",
+-    "cmake",
+-    "ninja",
+     "numpy>=2.0.0",
+ ]
+ build-backend = "setuptools.build_meta"
