@@ -23,7 +23,7 @@ define Package/python3-opencv
   SUBMENU:=Python
   TITLE:= Wrapper package for OpenCV python bindings.
   URL:=https://pypi.org/project/opencv-python/
-  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg-turbo +libfreetype +libtiff +libpng +libgstreamer1 +ffmpeg +protobuf +libwebp +openjpeg
+  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +ffmpeg +protobuf +libwebp +openjpeg
 endef
 
 define Package/python3-opencv/description
@@ -36,7 +36,7 @@ PYTHON3_PKG_SETUP_VARS +=CMAKE_ARGS="\
 	-DBUILD_opencv_superres:BOOL=OFF -DBUILD_opencv_ts:BOOL=OFF \
 	-DBUILD_opencv_highgui:BOOL=OFF \
 	-DBUILD_opencv_videostab:BOOL=OFF \
-	-DWITH_FFMPEG:BOOL=OFF \
+	-DWITH_FFMPEG:BOOL=ON \
 	-DWITH_GSTREAMER:BOOL=OFF \
 	-DWITH_LIBV4L:BOOL=OFF \
 	-DWITH_PNG:BOOL=OFF \
