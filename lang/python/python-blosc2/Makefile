@@ -37,7 +37,7 @@ Note: Python-Blosc2 is meant to be backward compatible with Python-Blosc data. T
 endef
 
 PYTHON3_HOST_BUILD_CONFIG_SETTINGS +=cmake_args=-DUSE_SYSTEM_BLOSC2=ON
-PYTHON3_PKG_BUILD_CONFIG_SETTINGS +=cmake_args=-DUSE_SYSTEM_BLOSC2=ON
+PYTHON3_PKG_SETUP_VARS +=CMAKE_ARGS=-DUSE_SYSTEM_BLOSC2=ON
 
 $(eval $(call Py3Package,python3-blosc2))
 $(eval $(call BuildPackage,python3-blosc2))
