@@ -26,7 +26,7 @@ define Package/python3-blosc2
   CATEGORY:=Languages
   TITLE:=Python wrapper for the C-Blosc2 library
   URL:=https://github.com/Blosc/python-blosc2
-  DEPENDS:=+python3 +python3-numpy +python3-ndindex +python3-msgpack +python3-numexpr +python3-py-cpuinfo +c-blosc2
+  DEPENDS:=+python3 +python3-numpy +python3-ndindex +python3-msgpack +python3-numexpr +python3-py-cpuinfo +python3-httpx +c-blosc2
 endef
 
 define Package/python3-blosc2/description
