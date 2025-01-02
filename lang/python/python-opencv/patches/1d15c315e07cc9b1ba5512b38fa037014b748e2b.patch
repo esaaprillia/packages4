@@ -1,0 +1,22 @@
+From 1d15c315e07cc9b1ba5512b38fa037014b748e2b Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 1 Jan 2025 13:11:29 +0800
+Subject: [PATCH] Update setup.py
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 48d5a65..47a7fe3 100644
+--- a/setup.py
++++ b/setup.py
+@@ -183,7 +183,7 @@ def main():
+             "-DBUILD_opencv_java=%s" % build_java,
+             # Relative dir to install the built module to in the build tree.
+             # The default is generated from sysconfig, we'd rather have a constant for simplicity
+-            "-DOPENCV_PYTHON3_INSTALL_PATH=python",
++            # "-DOPENCV_PYTHON3_INSTALL_PATH=python",
+             # Otherwise, opencv scripts would want to install `.pyd' right into site-packages,
+             # and skbuild bails out on seeing that
+             "-DINSTALL_CREATE_DISTRIB=ON",
