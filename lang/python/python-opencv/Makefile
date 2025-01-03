@@ -4,14 +4,16 @@ PKG_NAME:=python-opencv
 PKG_VERSION:=4.10.0.84
 PKG_RELEASE:=1
 
-PYPI_NAME:=opencv-python
-PKG_HASH:=72d234e4582e9658ffea8e9cae5b63d488ad06994ef12d81dc303b17472f3526
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/opencv/opencv-python.git
+PKG_SOURCE_VERSION:=43c110551a6a9bade0a1656714e2f509f1a7f87f
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python-scikit-build/host numpy/host ade
+PKG_BUILD_DEPENDS:=python-scikit-build/host numpy/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,12 +25,14 @@ define Package/python3-opencv
   SUBMENU:=Python
   TITLE:= Wrapper package for OpenCV python bindings.
   URL:=https://pypi.org/project/opencv-python/
-  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +openjpeg
+  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg
 endef
 
 define Package/python3-opencv/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
+
+PYTHON3_PKG_WHEEL_NAME:=opencv_python
 
 PYTHON3_PKG_SETUP_VARS +=CMAKE_ARGS="\
 	-DWITH_opencv_java=OFF \
