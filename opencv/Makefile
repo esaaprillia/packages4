@@ -20,13 +20,17 @@ PKG_MAINTAINER:=
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
+PKG_BUILD_DEPENDS:=python-scikit-build/host numpy/host
+
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
+PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/opencv/Default/description
  OpenCV (Open Source Computer Vision Library) is an open source computer
@@ -42,23 +46,52 @@ define Package/opencv
   CATEGORY:=Libraries
   TITLE:=OpenCV
   URL:=https://opencv.org/
-  DEPENDS:=+libpthread +librt +libatomic +libstdcpp +zlib +libjpeg
+  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_opencv_gpu:BOOL=OFF \
-	-DWITH_1394:BOOL=OFF -DBUILD_opencv_stitching:BOOL=OFF \
-	-DBUILD_opencv_superres:BOOL=OFF -DBUILD_opencv_ts:BOOL=OFF \
-	-DBUILD_opencv_highgui:BOOL=OFF \
-	-DBUILD_opencv_videostab:BOOL=OFF \
-	-DWITH_FFMPEG:BOOL=OFF \
-	-DWITH_GSTREAMER:BOOL=OFF \
-	-DWITH_LIBV4L:BOOL=OFF \
-	-DWITH_PNG:BOOL=OFF \
-	-DWITH_GTK:BOOL=OFF \
-	-DWITH_TIFF:BOOL=OFF \
-	-DCMAKE_VERBOSE:BOOL=OFF \
-	-DENABLE_PRECOMPILED_HEADERS=OFF
+	-DBUILD_ZLIB=OFF \
+	-DBUILD_TIFF=OFF \
+	-DBUILD_OPENJPEG=OFF \
+	-DBUILD_JASPER=OFF \
+	-DBUILD_JPEG=OFF \
+	-DBUILD_PNG=OFF \
+	-DBUILD_OPENEXR=OFF \
+	-DBUILD_WEBP=OFF \
+	-DBUILD_TBB=OFF \
+	-DBUILD_IPP_IW=OFF \
+	-DBUILD_ITT=OFF \
+	-DBUILD_JAVA=OFF \
+	-DBUILD_PROTOBUF=OFF \
+	-DWITH_TIFF=ON \
+	-DWITH_OPENJPEG=OFF \
+	-DWITH_JASPER=OFF \
+	-DWITH_JPEG=ON \
+	-DWITH_PNG=ON \
+	-DWITH_OPENEXR=OFF \
+	-DWITH_WEBP=ON \
+	-DWITH_TBB=OFF \
+	-DWITH_IPP=OFF \
+	-DWITH_ITT=OFF \
+	-DWITH_GTK=OFF \
+	-DWITH_ADE=OFF \
+	-DWITH_PROTOBUF=ON \
+	-DWITH_VA=OFF \
+	-DWITH_VA_INTEL=OFF \
+	-DWITH_VTK=OFF \
+	-DWITH_GPHOTO2=ON \
+	-DTIFF_LIBRARY="$(STAGING_DIR)/usr/lib" \
+	-DJPEG_LIBRARY="$(STAGING_DIR)/usr/lib" \
+	-DPNG_LIBRARY="$(STAGING_DIR)/usr/lib" \
+	-DWEBP_LIBRARY="$(STAGING_DIR)/usr/lib" \
+	-DPROTOBUF_LIBRARY="$(STAGING_DIR)/usr/lib" \
+	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+	-DPYTHON_INCLUDE_DIR="$(PYTHON3_DIR)/include/python$(PYTHON3_VERSION)" \
+	-DPYTHON_LIBRARY="libpython$(PYTHON3_VERSION)" \
+	-DPYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+	-DPYTHON3_INCLUDE_DIR="$(PYTHON3_DIR)/include/python$(PYTHON3_VERSION)" \
+	-DPYTHON3_LIBRARY="libpython$(PYTHON3_VERSION)" \
+	-DOPENCV_PYTHON3_INSTALL_PATH="$(PYTHON3_PKG_DIR)"
 
 TARGET_LDFLAGS += -latomic
 
