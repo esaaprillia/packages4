@@ -45,7 +45,8 @@ CMAKE_OPTIONS += \
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
-	  $(1)/usr/lib
+	  $(1)/usr/lib \
+	  $(1)/usr/share
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/include/* \
@@ -54,6 +55,10 @@ define Build/InstallDev
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/* \
 	  $(1)/usr/lib/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/share/* \
+	  $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,ade))
