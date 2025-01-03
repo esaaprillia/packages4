@@ -17,6 +17,7 @@ CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/openjpeg
@@ -52,6 +53,9 @@ define Build/InstallDev
 
 	$(SED) \
 	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
+
+	$(foreach BIN,opj_compress opj_decompress opj_dump,
+		$(SED) 's/^$(BIN)=$$$${bindir}\/\(.*\)/$(BIN)=$$$${prefix_hostpkg}\/bin\/\1/' $(1)/usr/lib/pkgconfig/libopenjp2.pc)
 endef
 
 define Package/openjpeg/install
@@ -69,3 +73,4 @@ define Package/openjpeg/install
 endef
 
 $(eval $(call BuildPackage,openjpeg))
+$(eval $(call HostBuild))
