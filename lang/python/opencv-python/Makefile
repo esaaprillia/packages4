@@ -32,8 +32,6 @@ define Package/opencv-python3/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
 
-PYTHON3_PKG_WHEEL_NAME:=opencv_python
-
 PYTHON3_PKG_SETUP_VARS +=CMAKE_ARGS="\
 	-DWITH_opencv_java=OFF \
 	-DWITH_opencv_stitching=OFF \
