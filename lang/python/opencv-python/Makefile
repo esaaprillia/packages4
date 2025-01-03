@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=opencv-python
-PKG_VERSION:=4.10.0.84
+PKG_VERSION:=4.11.0
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
@@ -31,6 +31,8 @@ endef
 define Package/opencv-python3/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
+
+PYTHON3_PKG_BUILD_CONFIG_SETTINGS:=--build-option=bdist_wheel
 
 PYTHON3_PKG_SETUP_VARS +=CMAKE_ARGS="\
 	-DWITH_opencv_java=OFF \
