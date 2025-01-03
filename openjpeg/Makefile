@@ -54,8 +54,8 @@ define Build/InstallDev
 	$(SED) \
 	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
 
-	$(foreach BIN,opj_compress opj_decompress opj_dump,
-		$(SED) 's/^$(BIN)=$$$${bindir}\/\(.*\)/$(BIN)=$$$${prefix_hostpkg}\/bin\/\1/' $(1)/usr/lib/pkgconfig/libopenjp2.pc)
+	$(SED) \
+	  's,^\(bindir\)=.*,\1=$$$${prefix_hostpkg}/bin,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
 endef
 
 define Package/openjpeg/install
