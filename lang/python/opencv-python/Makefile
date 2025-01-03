@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-opencv
+PKG_NAME:=opencv-python
 PKG_VERSION:=4.10.0.84
 PKG_RELEASE:=1
 
@@ -17,7 +17,7 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-define Package/python3-opencv
+define Package/opencv-python3
   SECTION:=lang
   CATEGORY:=Languages
   SUBMENU:=Python
@@ -26,7 +26,7 @@ define Package/python3-opencv
   DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +openjpeg
 endef
 
-define Package/python3-opencv/description
+define Package/opencv-python3/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
 
@@ -57,6 +57,6 @@ PYTHON3_PKG_SETUP_VARS +=CMAKE_ARGS="\
 	-DOPENCV_ENABLE_NONFREE=OFF \
 	-DOPENCV_GENERATE_SETUPVARS=OFF"
 
-$(eval $(call Py3Package,python3-opencv))
-$(eval $(call BuildPackage,python3-opencv))
-$(eval $(call BuildPackage,python3-opencv-src))
+$(eval $(call Py3Package,opencv-python3))
+$(eval $(call BuildPackage,opencv-python3))
+$(eval $(call BuildPackage,opencv-python3-src))
