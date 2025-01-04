@@ -73,12 +73,9 @@ define Package/openjpeg/install
 endef
 
 define Host/Install
-	$(INSTALL_DIR) \
-	  $(STAGING_DIR_HOSTPKG)/bin
-
-	$(CP) \
-	  $(HOST_CMAKE_BINARY_DIR)/bin/{opj_compress,opj_decompress,opj_dump} \
-	  $(STAGING_DIR_HOSTPKG)/bin/
+	$(call Host/Install/Default)
+	$(RM) \
+	  $(STAGING_DIR_HOSTPKG)/lib/cmake/openjpeg-2.5
 endef
 
 $(eval $(call BuildPackage,openjpeg))
