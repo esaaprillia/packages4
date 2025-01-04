@@ -77,7 +77,7 @@ define Host/Install
 	  $(STAGING_DIR_HOSTPKG)/bin
 
 	$(CP) \
-	  $(CMAKE_BINARY_SUBDIR)/bin/{opj_compress,opj_decompress,opj_dump} \
+	  $(HOST_CMAKE_SOURCE_DIR)/bin/{opj_compress,opj_decompress,opj_dump} \
 	  $(STAGING_DIR_HOSTPKG)/bin/
 endef
 
