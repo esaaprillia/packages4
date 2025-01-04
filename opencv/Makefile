@@ -20,17 +20,16 @@ PKG_MAINTAINER:=
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=numpy/host
+PKG_BUILD_DEPENDS:=openjpeg/host
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
-PYTHON3_PKG_BUILD:=0
+#PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/opencv/Default/description
  OpenCV (Open Source Computer Vision Library) is an open source computer
@@ -46,7 +45,7 @@ define Package/opencv
   CATEGORY:=Libraries
   TITLE:=OpenCV
   URL:=https://opencv.org/
-  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg
+  DEPENDS:=+libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg
 endef
 
 CMAKE_OPTIONS += \
@@ -78,18 +77,7 @@ CMAKE_OPTIONS += \
 	-DWITH_VA=OFF \
 	-DWITH_VA_INTEL=OFF \
 	-DWITH_VTK=OFF \
-	-DWITH_GPHOTO2=ON \
-	-DPYTHON_EXECUTABLE="$(HOST_PYTHON3_BIN)" \
-	-DPYTHON_INCLUDE_DIR="$(HOST_PYTHON3_INC_DIR)" \
-	-DPYTHON_LIBRARY="$(HOST_PYTHON3_LIB_DIR)" \
-	-DPYTHON3_EXECUTABLE="$(HOST_PYTHON3_BIN)" \
-	-DPYTHON3_INCLUDE_DIR="$(HOST_PYTHON3_INC_DIR)" \
-	-DPYTHON3_LIBRARY="$(HOST_PYTHON3_LIB_DIR)" \
-	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)" \
-	-DOPENCV_PYTHON3_INSTALL_PATH="$(PYTHON3_PKG_DIR)" \
-	-DOPENCV_ENABLE_NONFREE=OFF \
-	-DOPENCV_SKIP_PYTHON_LOADER=OFF \
-	-DOPENCV_GENERATE_SETUPVARS=OFF
+	-DWITH_GPHOTO2=ON
 
 TARGET_LDFLAGS += -latomic
 
