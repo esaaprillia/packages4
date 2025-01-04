@@ -89,6 +89,11 @@ define Build/Compile
 	$(call Py3Build/Compile)
 endef
 
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install/Default)
+endef
+
 define Package/opencv/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libopencv* $(1)/usr/lib/
