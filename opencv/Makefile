@@ -20,7 +20,7 @@ PKG_MAINTAINER:=
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=openjpeg/host
+#PKG_BUILD_DEPENDS:=openjpeg/host
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
@@ -81,7 +81,7 @@ CMAKE_OPTIONS += \
 
 TARGET_LDFLAGS += -latomic
 
-PYTHON3_PKG_BUILD_PATH:=modules/python/package
+#PYTHON3_PKG_BUILD_PATH:=modules/python/package
 
 define Package/opencv/install
 	$(INSTALL_DIR) $(1)/usr/lib
