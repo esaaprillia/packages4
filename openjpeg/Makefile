@@ -49,13 +49,10 @@ define Build/InstallDev
 	  $(1)/usr/lib/
 
 	$(SED) \
-	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
-
-	$(SED) \
-	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
-
-	$(SED) \
 	  's,^\(bindir\)=.*,\1=$$$${prefix_hostpkg}/bin,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
+
+	$(SED) \
+	  's,^\(libdir\)=.*,\1=$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
 endef
 
 define Package/openjpeg/install
@@ -70,12 +67,6 @@ define Package/openjpeg/install
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
 	  $(1)/usr/lib/
-endef
-
-define Host/Install
-	$(call Host/Install/Default)
-	$(RM) \
-	  $(STAGING_DIR_HOSTPKG)/lib/cmake/openjpeg-2.5
 endef
 
 $(eval $(call BuildPackage,openjpeg))
