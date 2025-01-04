@@ -20,7 +20,7 @@ PKG_MAINTAINER:=
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=openjpeg/host
+PKG_BUILD_DEPENDS:=openjpeg/host numpy/host
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
@@ -30,6 +30,7 @@ PKG_USE_MIPS16:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/opencv/Default/description
  OpenCV (Open Source Computer Vision Library) is an open source computer
@@ -45,7 +46,7 @@ define Package/opencv
   CATEGORY:=Libraries
   TITLE:=OpenCV
   URL:=https://opencv.org/
-  DEPENDS:=+libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg
+  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg
 endef
 
 CMAKE_OPTIONS += \
@@ -77,7 +78,24 @@ CMAKE_OPTIONS += \
 	-DWITH_VA=OFF \
 	-DWITH_VA_INTEL=OFF \
 	-DWITH_VTK=OFF \
-	-DWITH_GPHOTO2=ON
+	-DWITH_GPHOTO2=ON \
+	-DPYTHON_VERSION_STRING:STRING=3.13.1 \
+	-DPYTHON_EXECUTABLE:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+	-DPYTHON_INCLUDE_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
+	-DPython_EXECUTABLE:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+	-DPython_ROOT_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg \
+	-DPython_FIND_REGISTRY:STRING=NEVER \
+	-DPython_INCLUDE_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
+	-DPython_NumPy_INCLUDE_DIRS:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/lib/python3.13/site-packages/numpy/_core/include \
+	-DPython3_EXECUTABLE:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+	-DPython3_ROOT_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg \
+	-DPython3_FIND_REGISTRY:STRING=NEVER \
+	-DPython3_INCLUDE_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
+	-DPython3_NumPy_INCLUDE_DIRS:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/lib/python3.13/site-packages/numpy/_core/include \
+	-DPYTHON3_EXECUTABLE=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+	-DPYTHON_DEFAULT_EXECUTABLE=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
+	-DPYTHON3_INCLUDE_DIR=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
+	-DPYTHON3_LIBRARY=libpython3.13m.a
 
 TARGET_LDFLAGS += -latomic
 
