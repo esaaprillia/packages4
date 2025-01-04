@@ -78,28 +78,12 @@ CMAKE_OPTIONS += \
 	-DWITH_VA=OFF \
 	-DWITH_VA_INTEL=OFF \
 	-DWITH_VTK=OFF \
-	-DWITH_GPHOTO2=ON \
-	-DPYTHON_VERSION_STRING:STRING=3.13.1 \
-	-DPYTHON_EXECUTABLE:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
-	-DPYTHON_INCLUDE_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
-	-DPython_EXECUTABLE:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
-	-DPython_ROOT_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg \
-	-DPython_FIND_REGISTRY:STRING=NEVER \
-	-DPython_INCLUDE_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
-	-DPython_NumPy_INCLUDE_DIRS:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/lib/python3.13/site-packages/numpy/_core/include \
-	-DPython3_EXECUTABLE:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
-	-DPython3_ROOT_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg \
-	-DPython3_FIND_REGISTRY:STRING=NEVER \
-	-DPython3_INCLUDE_DIR:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
-	-DPython3_NumPy_INCLUDE_DIRS:PATH=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/lib/python3.13/site-packages/numpy/_core/include \
-	-DPYTHON3_EXECUTABLE=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
-	-DPYTHON_DEFAULT_EXECUTABLE=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/bin/python3.13 \
-	-DPYTHON3_INCLUDE_DIR=/home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/include/python3.13 \
-	-DPYTHON3_LIBRARY=libpython3.13m.a
+	-DWITH_GPHOTO2=ON
 
 TARGET_LDFLAGS += -latomic
 
-#PYTHON3_PKG_BUILD_PATH:=modules/python/package
+
+PYTHON3_PKG_BUILD_PATH:=modules/python/package
 
 define Package/opencv/install
 	$(INSTALL_DIR) $(1)/usr/lib
