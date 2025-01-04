@@ -45,7 +45,7 @@ define Build/InstallDev
 	  $(1)/usr/include/
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*,*.a} \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
 	  $(1)/usr/lib/
 
 	$(SED) \
