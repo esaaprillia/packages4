@@ -1,24 +1,22 @@
-From 23cc17d921e45777587a8266b0772ccd8493ee1c Mon Sep 17 00:00:00 2001
+From 9e5239bc5d3304ac76cec9352310018a7b132dcf Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Tue, 7 Jan 2025 17:06:03 +0800
-Subject: [PATCH] Update setup_configure.py
+Date: Tue, 7 Jan 2025 18:28:42 +0800
+Subject: [PATCH] Update setup.py
 
 ---
- setup_configure.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/setup_configure.py b/setup_configure.py
-index 3c5fe0d..e2ccb0d 100644
---- a/setup_configure.py
-+++ b/setup_configure.py
-@@ -144,8 +144,8 @@ def _find_hdf5_compiler_settings(mpi=False):
+diff --git a/setup.py b/setup.py
+index d5634c9..9f049ee 100644
+--- a/setup.py
++++ b/setup.py
+@@ -17,7 +17,7 @@
+ if '' not in sys.path:
+     sys.path.insert(0, '')
  
-         # Specified a prefix dir (e.g. '/usr/local')
-         if hdf5:
--            inc_dirs = [op.join(hdf5, 'include')]
--            lib_dirs = [op.join(hdf5, 'lib')]
-+            inc_dirs = [op.join(hdf5, '@STAGING_DIR@')]
-+            lib_dirs = [op.join(hdf5, '@STAGING_DIR@')]
-             if sys.platform.startswith('win'):
-                 lib_dirs.append(op.join(hdf5, 'bin'))
-             return (inc_dirs, lib_dirs, [])
+-import setup_build, setup_configure
++#import setup_build, setup_configure
+ 
+ 
+ VERSION = '3.12.1'
