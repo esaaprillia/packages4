@@ -17,6 +17,9 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
+PYTHON3_PKG_SETUP_VARS:= \
+	H5PY_SETUP_REQUIRES=0
+
 define Package/python3-h5py
   SUBMENU:=Python
   SECTION:=lang
@@ -29,11 +32,6 @@ endef
 define Package/python3-h5py/description
   The h5py package provides both a high- and low-level interface to the HDF5 library from Python.
   The low-level interface is intended to be a complete wrapping of the HDF5 API, while the high-level component supports access to HDF5 files, datasets and groups using established Python and NumPy concepts.
-endef
-
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) 's,@STAGING_DIR@,$(STAGING_DIR)/usr,g' $(PKG_BUILD_DIR)/setup_configure.py
 endef
 
 $(eval $(call Py3Package,python3-h5py))
