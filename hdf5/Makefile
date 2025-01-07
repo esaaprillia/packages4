@@ -14,10 +14,7 @@ PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
 PKG_BUILD_PARALLEL:=1
 
-CMAKE_BINARY_SUBDIR := build
-
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
 
 define Package/hdf5
 	SECTION:=libs
@@ -32,16 +29,27 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
-CMAKE_OPTIONS += \
-	-DBUILD_STATIC_LIBS=OFF \
-	-DHDF5_BUILD_HL_LIB=ON \
-	-DHDF5_BUILD_CPP_LIB=ON \
-	-DHDF5_BUILD_FORTRAN=OFF \
-	-DHDF5_BUILD_JAVA=OFF \
-	-DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
-	-DHDF5_ENABLE_SZIP_SUPPORT=ON \
-	-DHDF5_ENABLE_SZIP_ENCODING=ON \
-	-DUSE_LIBAEC=ON
+CONFIGURE_ARGS += \
+	--prefix=/usr \
+	--docdir=/usr/share/doc/hdf5/ \
+	--with-examplesdir=/usr/share/doc/hdf5/examples/ \
+	--with-default-plugindir=/usr/lib/hdf5/lib/plugin/ \
+	--disable-static \
+	--disable-sharedlib-rpath \
+	--enable-build-mode=production \
+	--enable-hl \
+	--enable-cxx \
+	--disable-fortran \
+	--disable-java \
+	--with-pic \
+	--with-zlib \
+	--with-szlib
+
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		DESTDIR="$(PKG_INSTALL_DIR)" \
+		all install
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
@@ -55,15 +63,6 @@ define Build/InstallDev
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/* \
 	  $(1)/usr/lib/
-	
-	$(SED) \
-	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
-
-	$(SED) \
-	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
-
-	$(SED) \
-	  '/Requires/ s/-/ = /g' $(1)/usr/lib/pkgconfig/hdf5*.pc
 endef
 
 define Package/hdf5/install
