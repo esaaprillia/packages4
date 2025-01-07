@@ -20,7 +20,7 @@ define Package/python3-cronsim
   CATEGORY:=Languages
   SUBMENU:=Python
   TITLE:=Cron expression parser and evaluator
-  URL:=https://github.com/home-assistant-libs/ha-ffmpeg
+  URL:=https://github.com/cuu508/cronsim
   DEPENDS:=+python3-light
 endef
 
