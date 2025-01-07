@@ -80,7 +80,13 @@ CMAKE_OPTIONS += \
 	-DWITH_VA=OFF \
 	-DWITH_VA_INTEL=OFF \
 	-DWITH_VTK=OFF \
-	-DWITH_GPHOTO2=ON
+	-DWITH_GPHOTO2=ON \
+	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+	-DPYTHON_INCLUDE_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
+	-DPYTHON_LIBRARY_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
+	-DPYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+	-DPYTHON3_INCLUDE_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
+	-DPYTHON3_LIBRARY_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)"
 
 TARGET_LDFLAGS += -latomic
 
