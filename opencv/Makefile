@@ -30,7 +30,7 @@ PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-cmake.mk
 
 define Package/opencv
   SECTION:=libs
