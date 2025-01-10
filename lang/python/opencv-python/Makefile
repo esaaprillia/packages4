@@ -17,6 +17,8 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
+export CMAKE_ARGS='-DCMAKE_VERBOSE_MAKEFILE=ON'
+
 define Package/opencv-python3
   SECTION:=lang
   CATEGORY:=Languages
@@ -29,6 +31,8 @@ endef
 define Package/opencv-python3/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
+
+MAKE_FLAGS+=VERBOSE=1
 
 $(eval $(call Py3Package,opencv-python3))
 $(eval $(call BuildPackage,opencv-python3))
