@@ -17,7 +17,7 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-export CMAKE_ARGS='-DCMAKE_VERBOSE_MAKEFILE=ON'
+export CMAKE_ARGS="-DCMAKE_SYSTEM_PROCESSOR=$(ARCH) ENABLE_CONTRIB=OFF ENABLE_HEADLESS=ON"
 
 define Package/opencv-python3
   SECTION:=lang
