@@ -30,7 +30,7 @@ PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/opencv
   SECTION:=libs
@@ -79,7 +79,11 @@ CMAKE_OPTIONS += \
 	-DWITH_VA_INTEL=OFF \
 	-DWITH_VTK=OFF \
 	-DWITH_GPHOTO2=ON \
-	-DPYTHON_EXECUTABLE="$(PYTHON3_VARS) $(HOST_PYTHON3_BIN)"
+	-DOPENCV_GENERATE_SETUPVARS=OFF \
+	-DPYTHON3_INCLUDE_DIR="$(PYTHON3_INC_DIR)" \
+	-DPYTHON3_LIBRARY="-lpython$(PYTHON3_VERSION)" \
+	-DPYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+	-DPYTHON_DEFAULT_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 TARGET_LDFLAGS += -latomic
 
