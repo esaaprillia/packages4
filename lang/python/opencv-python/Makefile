@@ -30,37 +30,6 @@ define Package/opencv-python3/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
 
-export CMAKE_ARGS="\
-	-DBUILD_ZLIB=OFF \
-	-DBUILD_TIFF=OFF \
-	-DBUILD_OPENJPEG=OFF \
-	-DBUILD_JASPER=OFF \
-	-DBUILD_JPEG=OFF \
-	-DBUILD_PNG=OFF \
-	-DBUILD_OPENEXR=OFF \
-	-DBUILD_WEBP=OFF \
-	-DBUILD_TBB=OFF \
-	-DBUILD_IPP_IW=OFF \
-	-DBUILD_ITT=OFF \
-	-DBUILD_JAVA=OFF \
-	-DWITH_TIFF=ON \
-	-DWITH_OPENJPEG=ON \
-	-DWITH_JASPER=OFF \
-	-DWITH_JPEG=ON \
-	-DWITH_PNG=ON \
-	-DWITH_OPENEXR=OFF \
-	-DWITH_WEBP=ON \
-	-DWITH_TBB=OFF \
-	-DWITH_IPP=OFF \
-	-DWITH_ITT=OFF \
-	-DWITH_GTK=OFF \
-	-DWITH_ADE=OFF \
-	-DWITH_PROTOBUF=ON \
-	-DWITH_VA=OFF \
-	-DWITH_VA_INTEL=OFF \
-	-DWITH_VTK=OFF \
-	-DWITH_GPHOTO2=ON"
-
 $(eval $(call Py3Package,opencv-python3))
 $(eval $(call BuildPackage,opencv-python3))
 $(eval $(call BuildPackage,opencv-python3-src))
