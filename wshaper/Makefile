@@ -20,7 +20,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/wshaper
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+kmod-sched +tc
+  DEPENDS:=+kmod-sched +kmod-sched-core +tc
   TITLE:=wshaper
   URL:=http://lartc.org/wondershaper/
   PKGARCH:=all
