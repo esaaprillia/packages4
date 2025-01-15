@@ -16,6 +16,8 @@ PKG_USE_MIPS16:=0
 
 CMAKE_BINARY_SUBDIR := build
 
+PKG_BUILD_DEPENDS:=protobuf/host
+
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
@@ -30,7 +32,7 @@ endef
 define Package/mysql-server
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+libmysqlclient +libpthread +libncursesw +libreadline +libedit +icu +libevent2 +liblz4 +protobuf +libopenssl +libzstd
+  DEPENDS:=+libmysqlclient +libpthread +libncursesw +libreadline +libedit +icu +libevent2 +liblz4 +protobuf +libopenssl +libzstd +libsasl2 +boost-libs +libtirpc
   TITLE:=MySQL Server
   URL:=http://dev.mysql.com/
   SUBMENU:=database
@@ -47,6 +49,12 @@ define Package/libmysqlclient-r
 endef
 
 TARGET_CFLAGS += $(FPIC)
+
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(RM) $(STAGING_DIR)/usr/bin/protoc*
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
+endef
 
 CMAKE_OPTIONS += \
 	-DDEFAULT_CHARSET=utf8mb4 \
@@ -73,6 +81,7 @@ CMAKE_OPTIONS += \
 	-DWITH_LIBEVENT=system \
 	-DWITH_LZ4=system \
 	-DWITH_PROTOBUF=system \
+	-DWITH_RAPID=OFF \
 	-DWITH_SSL=system \
 	-DWITH_UNIT_TESTS=OFF \
 	-DWITH_ZLIB=system \
