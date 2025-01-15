@@ -85,7 +85,7 @@ endef
 
 PKG_BUILD_DEPENDS:=boost/host
 
-include ../../lang/python/python3-version.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-version.mk
 BOOST_PYTHON3_VER=$(PYTHON3_VERSION)
 
 BOOST_LIBS =
