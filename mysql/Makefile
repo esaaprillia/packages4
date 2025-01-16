@@ -57,6 +57,7 @@ define Build/Prepare
 endef
 
 CMAKE_OPTIONS += \
+	-DSTACK_DIRECTION=-1 \
 	-DDEFAULT_CHARSET=utf8mb4 \
 	-DDEFAULT_COLLATION=utf8mb4_general_ci \
 	-DINSTALL_DOCDIR=share/doc/mysql \
