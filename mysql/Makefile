@@ -16,7 +16,7 @@ PKG_USE_MIPS16:=0
 
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=protobuf/host
+PKG_BUILD_DEPENDS:=protobuf/host rapidjson
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -32,7 +32,7 @@ endef
 define Package/mysql-server
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+libmysqlclient +libpthread +libncursesw +libreadline +libedit +icu +libevent2 +liblz4 +protobuf +libopenssl +libzstd +libsasl2 +boost-libs +libtirpc
+  DEPENDS:=+libmysqlclient +libpthread +libncursesw +libreadline +libedit +icu +libevent2 +liblz4 +protobuf +libopenssl +libzstd +libsasl2 +boost-libs +libtirpc +libaio
   TITLE:=MySQL Server
   URL:=http://dev.mysql.com/
   SUBMENU:=database
@@ -81,11 +81,12 @@ CMAKE_OPTIONS += \
 	-DWITH_LIBEVENT=system \
 	-DWITH_LZ4=system \
 	-DWITH_PROTOBUF=system \
-	-DWITH_RAPID=OFF \
+	-DWITH_RAPIDJSON=system \
 	-DWITH_SSL=system \
 	-DWITH_UNIT_TESTS=OFF \
 	-DWITH_ZLIB=system \
-	-DWITH_ZSTD=system
+	-DWITH_ZSTD=system \
+	-DBOOST_INCLUDE_DIR="$(STAGING_DIR)/usr/include"
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(2)/bin $(1)/usr/bin $(1)/usr/include $(1)/usr/lib
