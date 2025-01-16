@@ -97,7 +97,7 @@ CMAKE_OPTIONS += \
 	-DWITH_UNIT_TESTS=OFF \
 	-DWITH_ZLIB=system \
 	-DWITH_ZSTD=system \
-	-DWITH_BOOST="$(STAGING_DIR)/usr"
+	-DBOOST_INCLUDE_DIR="$(STAGING_DIR)/usr/include/boost"
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(2)/bin $(1)/usr/bin $(1)/usr/include $(1)/usr/lib
