@@ -14,7 +14,7 @@ PKG_LICENSE:=GPL-2.0
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 
-CMAKE_BINARY_SUBDIR := build
+#CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=protobuf/host rapidjson
 
@@ -87,7 +87,8 @@ CMAKE_OPTIONS += \
 	-DWITH_UNIT_TESTS=OFF \
 	-DWITH_ZLIB=system \
 	-DWITH_ZSTD=system \
-	-DBOOST_INCLUDE_DIR="$(STAGING_DIR)/usr/include"
+	-DWITH_BOOST="$(STAGING_DIR)/usr" \
+	-DFORCE_INSOURCE_BUILD=1
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(2)/bin $(1)/usr/bin $(1)/usr/include $(1)/usr/lib
