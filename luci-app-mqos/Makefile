@@ -38,7 +38,7 @@ define Package/luci-app-mqos/install
 		$(INSTALL_DIR) $(1)/etc/uci-defaults
 		$(INSTALL_DIR) $(1)/etc/hotplug.d/iface
 
-		$(INSTALL_CONF) ./root/etc/uci-defaults/* $(1)/etc/uci-defaults
+		$(INSTALL_CONF) ./root/etc/uci-defaults/mqos $(1)/etc/uci-defaults/mqos
 		$(INSTALL_CONF) ./root/etc/config/mqos $(1)/etc/config/mqos
 		$(INSTALL_BIN) ./root/etc/init.d/mqos $(1)/etc/init.d/mqos
 		$(INSTALL_DATA) ./root/etc/hotplug.d/iface/10-mqos $(1)/etc/hotplug.d/iface/10-mqos
