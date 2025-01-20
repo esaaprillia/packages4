@@ -17,7 +17,7 @@ define Package/luci-app-mqos
 		DEPENDS:=+luci-base +tc +kmod-sched-core +kmod-ifb
 endef
 
-define Package/luci-app-ustb/description
+define Package/luci-app-mqos/description
 This package contains LuCI configuration pages for MQos.
 endef
 
@@ -41,7 +41,7 @@ define Package/luci-app-mqos/install
 		$(INSTALL_CONF) ./root/etc/uci-defaults/* $(1)/etc/uci-defaults
 		$(INSTALL_CONF) ./root/etc/config/mqos $(1)/etc/config/mqos
 		$(INSTALL_BIN) ./root/etc/init.d/mqos $(1)/etc/init.d/mqos
-		$(INSTALL_DATA) ./root/etc/hotplug.d/iface/10-mqos $(1)/etc/hotplug.d/iface/10-ustb
+		$(INSTALL_DATA) ./root/etc/hotplug.d/iface/10-mqos $(1)/etc/hotplug.d/iface/10-mqos
 		
 		$(INSTALL_DATA) ./luasrc/model/cbi/mqos.lua $(1)/usr/lib/lua/luci/model/cbi/mqos/mqos.lua
 		$(INSTALL_DATA) ./luasrc/controller/mqos.lua $(1)/usr/lib/lua/luci/controller/mqos.lua
