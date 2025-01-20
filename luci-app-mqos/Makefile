@@ -14,7 +14,7 @@ define Package/luci-app-mqos
 		SUBMENU:=3. Applications
 		TITLE:=Qos by MAC Address
 		PKGARCH:=all
-		DEPENDS:=+luci-base +tc +kmod-sched-core +kmod-ifb
+		DEPENDS:=+luci-base +tc +kmod-sched-core +kmod-ifb +luci-compat
 endef
 
 define Package/luci-app-mqos/description
