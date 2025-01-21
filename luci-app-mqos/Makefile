@@ -35,12 +35,14 @@ define Package/luci-app-mqos/install
 		$(INSTALL_DIR) $(1)/etc/init.d
 		$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi/mqos
 		$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
+		$(INSTALL_DIR) $(1)/usr/sbin
 		$(INSTALL_DIR) $(1)/etc/uci-defaults
 		$(INSTALL_DIR) $(1)/etc/hotplug.d/iface
 
 		$(INSTALL_CONF) ./root/etc/uci-defaults/mqos $(1)/etc/uci-defaults/mqos
 		$(INSTALL_CONF) ./root/etc/config/mqos $(1)/etc/config/mqos
 		$(INSTALL_BIN) ./root/etc/init.d/mqos $(1)/etc/init.d/mqos
+		$(INSTALL_BIN) ./root/usr/sbin/mqos $(1)/usr/sbin/mqos
 		$(INSTALL_DATA) ./root/etc/hotplug.d/iface/10-mqos $(1)/etc/hotplug.d/iface/10-mqos
 		
 		$(INSTALL_DATA) ./luasrc/model/cbi/mqos.lua $(1)/usr/lib/lua/luci/model/cbi/mqos/mqos.lua
