@@ -9,7 +9,7 @@ LUCI_TITLE:=LuCI Internet Access Control
 LUCI_NAME:=luci-app-access-control
 PKG_VERSION:=0.4.3
 PKG_RELEASE:=$(PKG_SOURCE_VERSION)
-DEPENDS:=+luci-base +luci-compat
+LUCI_DEPENDS:=+luci-base +luci-compat
 
 define Package/luci-app-access-control/postinst
 #!/bin/sh
