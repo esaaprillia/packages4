@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiohasupervisor
-PKG_VERSION:=0.2.1
+PKG_VERSION:=0.2.2b5
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiohasupervisor
-PKG_HASH:=a1242165fd255796c961dadfbb88fc1f0d45f8441f8af10f42899ab478b1cbd9
+PKG_HASH:=10556147b2fed525735cee14a43ad703512e3dd79ec39e42578ca43b72b90452
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
