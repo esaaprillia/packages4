@@ -14,13 +14,18 @@ PKG_RELEASE:=1
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/E/ET/ETHER/
 PKG_SOURCE:=Try-Tiny-$(PKG_VERSION).tar.gz
 PKG_HASH:=ef2d6cab0bad18e3ab1c4e6125cc5f695c7e459899f512451c8fa3ef83fa7fc0
+
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Try-Tiny-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Try-Tiny-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=perl/host
 
 PKG_MAINTAINER:=Matt Merhar <mattmerhar@protonmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
 define Package/perl-try-tiny
@@ -30,6 +35,18 @@ define Package/perl-try-tiny
   TITLE:=Minimal try/catch with proper preservation of $$$$@
   URL:=https://metacpan.org/pod/Try::Tiny
   DEPENDS:=perl +perlbase-essential
+endef
+
+define Host/Configure
+        $(call perlmod/host/Configure,,,)
+endef
+
+define Host/Compile
+        $(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+        $(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -45,3 +62,4 @@ define Package/perl-try-tiny/install
 endef
 
 $(eval $(call BuildPackage,perl-try-tiny))
+$(eval $(call HostBuild))

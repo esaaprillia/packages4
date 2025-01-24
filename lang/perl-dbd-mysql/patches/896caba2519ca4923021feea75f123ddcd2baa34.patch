@@ -1,0 +1,35 @@
+From 53a2a853e279e485662796341f77130fbeca7eff Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 4 Sep 2024 15:28:26 +0800
+Subject: [PATCH] Update Makefile.PL
+
+---
+ Makefile.PL | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 0bf733c..cbe2f06 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -9,7 +9,7 @@ use Config;
+ use Getopt::Long;
+ use ExtUtils::MakeMaker;
+ use Data::Dumper;
+-use Devel::CheckLib;
++# use Devel::CheckLib;
+ use File::Path;
+ use File::Copy;
+ use File::Basename;
+@@ -207,9 +207,9 @@ MSG
+ 
+ print "Checking if libs are available for compiling...\n";
+ 
+-assert_lib(
+-  LIBS => ($opt->{'embedded'} ? $opt->{'embedded'} : $opt->{libs}),
+-);
++#assert_lib(
++#  LIBS => ($opt->{'embedded'} ? $opt->{'embedded'} : $opt->{libs}),
++#);
+ 
+ print "Looks good.\n\n";
+ 
