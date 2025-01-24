@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bluetooth-data-tools
-PKG_VERSION:=1.20.0
+PKG_VERSION:=1.22.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=bluetooth_data_tools
-PKG_HASH:=1c11aca1a25e045e0baf1f88ebb0de53d2844e357d6017dc6c143c20e20b3436
+PKG_HASH:=f466495caf49594531fedd667d402e883a85b8cc89f3b3daf61b8952061392dc
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
 
