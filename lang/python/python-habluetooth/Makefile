@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-habluetooth
-PKG_VERSION:=3.6.0
+PKG_VERSION:=3.12.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=habluetooth
-PKG_HASH:=df79914d9037456b370ba790bac71ca23fd16871c202aac93df5f800119137e6
+PKG_HASH:=3e0f45918fef549326207414d34bddca39985b7328513b6a38cb1a4c29011606
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
 
