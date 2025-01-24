@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hyperframe
-PKG_VERSION:=6.0.1
+PKG_VERSION:=6.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=hyperframe
-PKG_HASH:=ae510046231dc8e9ecb1a6586f63d2347bf4c8905914aa84ba585ae85f28a914
+PKG_HASH:=f630908a00854a7adeabd6382b43923a4c4cd4b821fcb527e6ab9e15382a3b08
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
