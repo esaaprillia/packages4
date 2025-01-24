@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bleak-retry-connector
-PKG_VERSION:=3.6.0
+PKG_VERSION:=3.8.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=bleak_retry_connector
-PKG_HASH:=2be9f2eaf2e83fd1f87170caefbf0e992b192df8634df81d937d626ed0ec5148
+PKG_HASH:=4e50360cabf6c32cff9d1daa318dc5617e22f92af913af888e8aa3f29b2770d6
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
 
