@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ulid-transform
-PKG_VERSION:=1.0.2
+PKG_VERSION:=1.2.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=ulid_transform
-PKG_HASH:=9b710f6adb93a7620910bce385c7e977a234ab321443ec3bc1e48ae931f1e5d4
+PKG_HASH:=300d81eabfc0e9a5bfb03bf54e89889b03453e40268d9baa262829eaa6698c9e
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host python-cython/host
 
