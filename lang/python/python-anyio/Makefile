@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-anyio
-PKG_VERSION:=4.7.0
+PKG_VERSION:=4.8.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=anyio
-PKG_HASH:=2f834749c602966b7d456a7567cafcb309f96482b5081d14ac93ccd457f9dd48
+PKG_HASH:=1d9fe889df5212298c0c0723fa20479d1b94883a2df44bd3897aa91083316f7a
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
