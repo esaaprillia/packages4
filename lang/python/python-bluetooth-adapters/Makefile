@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bluetooth-adapters
-PKG_VERSION:=0.20.2
+PKG_VERSION:=0.21.1
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=bluetooth_adapters
-PKG_HASH:=88bfba4ab8678c1bb3416851b3e6f497d4b8a368c8de1bc4e517743081ad2f55
+PKG_HASH:=6840bb235ce51e7f03779126e59e73266ad36893d7ca7d562e6008fde7a17fba
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
 
