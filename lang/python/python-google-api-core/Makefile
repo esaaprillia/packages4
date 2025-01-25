@@ -24,7 +24,7 @@ define Package/python3-google-api-core
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Google API client core library
-  URL:=https://github.com/home-assistant-libs/ha-ffmpeg
+  URL:=https://github.com/googleapis/python-api-core
   DEPENDS:=+python3
 endef
 
