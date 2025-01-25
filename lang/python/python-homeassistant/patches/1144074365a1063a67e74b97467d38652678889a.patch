@@ -1,0 +1,935 @@
+From 1144074365a1063a67e74b97467d38652678889a Mon Sep 17 00:00:00 2001
+From: esaapriliasalsabila <esaapriliasalsabila@gmail.com>
+Date: Sat, 25 Jan 2025 07:52:56 +0700
+Subject: [PATCH] add port
+
+---
+ PKG-INFO                                      | 30 +++----
+ homeassistant.egg-info/PKG-INFO               | 30 +++----
+ homeassistant.egg-info/requires.txt           | 30 +++----
+ .../components/assist_pipeline/manifest.json  |  2 +-
+ homeassistant/components/backup/manifest.json |  2 +-
+ .../components/bluetooth/manifest.json        | 10 +--
+ homeassistant/components/camera/manifest.json |  2 +-
+ homeassistant/components/cloud/manifest.json  |  2 +-
+ .../components/compensation/manifest.json     |  2 +-
+ homeassistant/components/dhcp/manifest.json   |  2 +-
+ .../components/dlna_dmr/manifest.json         |  2 +-
+ .../components/dlna_dms/manifest.json         |  2 +-
+ homeassistant/components/doods/manifest.json  |  2 +-
+ .../components/generic/manifest.json          |  2 +-
+ .../components/homekit/manifest.json          |  2 +-
+ .../components/image_upload/manifest.json     |  2 +-
+ homeassistant/components/iqvia/manifest.json  |  2 +-
+ .../components/ld2410_ble/manifest.json       |  2 +-
+ .../components/led_ble/manifest.json          |  2 +-
+ homeassistant/components/matrix/manifest.json |  2 +-
+ homeassistant/components/mqtt/manifest.json   |  2 +-
+ .../components/mqtt/quality_scale.yaml        |  2 +-
+ .../private_ble_device/manifest.json          |  2 +-
+ homeassistant/components/proxy/manifest.json  |  2 +-
+ homeassistant/components/qrcode/manifest.json |  2 +-
+ .../components/recorder/manifest.json         |  4 +-
+ .../remember_the_milk/manifest.json           |  2 +-
+ .../components/samsungtv/manifest.json        |  2 +-
+ .../components/seven_segments/manifest.json   |  2 +-
+ .../components/sighthound/manifest.json       |  2 +-
+ homeassistant/components/sql/manifest.json    |  2 +-
+ homeassistant/components/ssdp/manifest.json   |  2 +-
+ homeassistant/components/stream/manifest.json |  2 +-
+ .../components/tensorflow/manifest.json       |  4 +-
+ homeassistant/components/trend/manifest.json  |  2 +-
+ homeassistant/components/upnp/manifest.json   |  2 +-
+ homeassistant/components/usb/manifest.json    |  2 +-
+ .../components/yeelight/manifest.json         |  2 +-
+ .../components/zeroconf/manifest.json         |  2 +-
+ homeassistant/package_constraints.txt         | 78 +++++++++----------
+ pyproject.toml                                | 30 +++----
+ 41 files changed, 141 insertions(+), 141 deletions(-)
+
+diff --git a/PKG-INFO b/PKG-INFO
+index b7dc99f3..caf30cc5 100644
+--- a/PKG-INFO
++++ b/PKG-INFO
+@@ -26,47 +26,47 @@ Requires-Dist: aiodns==3.2.0
+ Requires-Dist: aiohasupervisor==0.2.2b5
+ Requires-Dist: aiohttp==3.11.11
+ Requires-Dist: aiohttp_cors==0.7.0
+-Requires-Dist: aiohttp-fast-zlib==0.2.0
++Requires-Dist: aiohttp-fast-zlib==0.2.1
+ Requires-Dist: aiozoneinfo==0.2.1
+-Requires-Dist: astral==2.2
++Requires-Dist: astral==3.2
+ Requires-Dist: async-interrupt==1.2.0
+-Requires-Dist: attrs==24.2.0
++Requires-Dist: attrs==24.3.0
+ Requires-Dist: atomicwrites-homeassistant==1.4.1
+ Requires-Dist: audioop-lts==0.2.1; python_version >= "3.13"
+ Requires-Dist: awesomeversion==24.6.0
+-Requires-Dist: bcrypt==4.2.0
++Requires-Dist: bcrypt==4.2.1
+ Requires-Dist: certifi>=2021.5.30
+ Requires-Dist: ciso8601==2.3.2
+ Requires-Dist: cronsim==2.6
+-Requires-Dist: fnv-hash-fast==1.0.2
+-Requires-Dist: hass-nabucasa==0.87.0
+-Requires-Dist: httpx==0.27.2
++Requires-Dist: fnv-hash-fast==1.2.2
++Requires-Dist: hass-nabucasa==0.88.1
++Requires-Dist: httpx==0.28.1
+ Requires-Dist: home-assistant-bluetooth==1.13.0
+ Requires-Dist: ifaddr==0.2.0
+ Requires-Dist: Jinja2==3.1.5
+ Requires-Dist: lru-dict==1.3.0
+ Requires-Dist: PyJWT==2.10.1
+ Requires-Dist: cryptography==44.0.0
+-Requires-Dist: Pillow==11.0.0
++Requires-Dist: Pillow==11.1.0
+ Requires-Dist: propcache==0.2.1
+-Requires-Dist: pyOpenSSL==24.3.0
+-Requires-Dist: orjson==3.10.12
++Requires-Dist: pyOpenSSL==25.0.0
++Requires-Dist: orjson==3.10.15
+ Requires-Dist: packaging>=23.1
+ Requires-Dist: psutil-home-assistant==0.0.1
+ Requires-Dist: python-slugify==8.0.4
+ Requires-Dist: PyYAML==6.0.2
+ Requires-Dist: requests==2.32.3
+-Requires-Dist: securetar==2024.11.0
+-Requires-Dist: SQLAlchemy==2.0.36
++Requires-Dist: securetar==2025.1.3
++Requires-Dist: SQLAlchemy==2.0.37
+ Requires-Dist: standard-aifc==3.13.0; python_version >= "3.13"
+ Requires-Dist: standard-telnetlib==3.13.0; python_version >= "3.13"
+ Requires-Dist: typing-extensions<5.0,>=4.12.2
+-Requires-Dist: ulid-transform==1.0.2
++Requires-Dist: ulid-transform==1.2.0
+ Requires-Dist: urllib3<2,>=1.26.5
+-Requires-Dist: uv==0.5.8
++Requires-Dist: uv==0.5.24
+ Requires-Dist: voluptuous==0.15.2
+ Requires-Dist: voluptuous-serialize==2.6.0
+-Requires-Dist: voluptuous-openapi==0.0.5
++Requires-Dist: voluptuous-openapi==0.0.6
+ Requires-Dist: yarl==1.18.3
+ Requires-Dist: webrtc-models==0.3.0
+ 
+diff --git a/homeassistant.egg-info/PKG-INFO b/homeassistant.egg-info/PKG-INFO
+index b7dc99f3..caf30cc5 100644
+--- a/homeassistant.egg-info/PKG-INFO
++++ b/homeassistant.egg-info/PKG-INFO
+@@ -26,47 +26,47 @@ Requires-Dist: aiodns==3.2.0
+ Requires-Dist: aiohasupervisor==0.2.2b5
+ Requires-Dist: aiohttp==3.11.11
+ Requires-Dist: aiohttp_cors==0.7.0
+-Requires-Dist: aiohttp-fast-zlib==0.2.0
++Requires-Dist: aiohttp-fast-zlib==0.2.1
+ Requires-Dist: aiozoneinfo==0.2.1
+-Requires-Dist: astral==2.2
++Requires-Dist: astral==3.2
+ Requires-Dist: async-interrupt==1.2.0
+-Requires-Dist: attrs==24.2.0
++Requires-Dist: attrs==24.3.0
+ Requires-Dist: atomicwrites-homeassistant==1.4.1
+ Requires-Dist: audioop-lts==0.2.1; python_version >= "3.13"
+ Requires-Dist: awesomeversion==24.6.0
+-Requires-Dist: bcrypt==4.2.0
++Requires-Dist: bcrypt==4.2.1
+ Requires-Dist: certifi>=2021.5.30
+ Requires-Dist: ciso8601==2.3.2
+ Requires-Dist: cronsim==2.6
+-Requires-Dist: fnv-hash-fast==1.0.2
+-Requires-Dist: hass-nabucasa==0.87.0
+-Requires-Dist: httpx==0.27.2
++Requires-Dist: fnv-hash-fast==1.2.2
++Requires-Dist: hass-nabucasa==0.88.1
++Requires-Dist: httpx==0.28.1
+ Requires-Dist: home-assistant-bluetooth==1.13.0
+ Requires-Dist: ifaddr==0.2.0
+ Requires-Dist: Jinja2==3.1.5
+ Requires-Dist: lru-dict==1.3.0
+ Requires-Dist: PyJWT==2.10.1
+ Requires-Dist: cryptography==44.0.0
+-Requires-Dist: Pillow==11.0.0
++Requires-Dist: Pillow==11.1.0
+ Requires-Dist: propcache==0.2.1
+-Requires-Dist: pyOpenSSL==24.3.0
+-Requires-Dist: orjson==3.10.12
++Requires-Dist: pyOpenSSL==25.0.0
++Requires-Dist: orjson==3.10.15
+ Requires-Dist: packaging>=23.1
+ Requires-Dist: psutil-home-assistant==0.0.1
+ Requires-Dist: python-slugify==8.0.4
+ Requires-Dist: PyYAML==6.0.2
+ Requires-Dist: requests==2.32.3
+-Requires-Dist: securetar==2024.11.0
+-Requires-Dist: SQLAlchemy==2.0.36
++Requires-Dist: securetar==2025.1.3
++Requires-Dist: SQLAlchemy==2.0.37
+ Requires-Dist: standard-aifc==3.13.0; python_version >= "3.13"
+ Requires-Dist: standard-telnetlib==3.13.0; python_version >= "3.13"
+ Requires-Dist: typing-extensions<5.0,>=4.12.2
+-Requires-Dist: ulid-transform==1.0.2
++Requires-Dist: ulid-transform==1.2.0
+ Requires-Dist: urllib3<2,>=1.26.5
+-Requires-Dist: uv==0.5.8
++Requires-Dist: uv==0.5.24
+ Requires-Dist: voluptuous==0.15.2
+ Requires-Dist: voluptuous-serialize==2.6.0
+-Requires-Dist: voluptuous-openapi==0.0.5
++Requires-Dist: voluptuous-openapi==0.0.6
+ Requires-Dist: yarl==1.18.3
+ Requires-Dist: webrtc-models==0.3.0
+ 
+diff --git a/homeassistant.egg-info/requires.txt b/homeassistant.egg-info/requires.txt
+index ec7c889d..bca54650 100644
+--- a/homeassistant.egg-info/requires.txt
++++ b/homeassistant.egg-info/requires.txt
+@@ -2,44 +2,44 @@ aiodns==3.2.0
+ aiohasupervisor==0.2.2b5
+ aiohttp==3.11.11
+ aiohttp_cors==0.7.0
+-aiohttp-fast-zlib==0.2.0
++aiohttp-fast-zlib==0.2.1
+ aiozoneinfo==0.2.1
+-astral==2.2
++astral==3.2
+ async-interrupt==1.2.0
+-attrs==24.2.0
++attrs==24.3.0
+ atomicwrites-homeassistant==1.4.1
+ awesomeversion==24.6.0
+-bcrypt==4.2.0
++bcrypt==4.2.1
+ certifi>=2021.5.30
+ ciso8601==2.3.2
+ cronsim==2.6
+-fnv-hash-fast==1.0.2
+-hass-nabucasa==0.87.0
+-httpx==0.27.2
++fnv-hash-fast==1.2.2
++hass-nabucasa==0.88.1
++httpx==0.28.1
+ home-assistant-bluetooth==1.13.0
+ ifaddr==0.2.0
+ Jinja2==3.1.5
+ lru-dict==1.3.0
+ PyJWT==2.10.1
+ cryptography==44.0.0
+-Pillow==11.0.0
++Pillow==11.1.0
+ propcache==0.2.1
+-pyOpenSSL==24.3.0
+-orjson==3.10.12
++pyOpenSSL==25.0.0
++orjson==3.10.15
+ packaging>=23.1
+ psutil-home-assistant==0.0.1
+ python-slugify==8.0.4
+ PyYAML==6.0.2
+ requests==2.32.3
+-securetar==2024.11.0
+-SQLAlchemy==2.0.36
++securetar==2025.1.3
++SQLAlchemy==2.0.37
+ typing-extensions<5.0,>=4.12.2
+-ulid-transform==1.0.2
++ulid-transform==1.2.0
+ urllib3<2,>=1.26.5
+-uv==0.5.8
++uv==0.5.24
+ voluptuous==0.15.2
+ voluptuous-serialize==2.6.0
+-voluptuous-openapi==0.0.5
++voluptuous-openapi==0.0.6
+ yarl==1.18.3
+ webrtc-models==0.3.0
+ 
+diff --git a/homeassistant/components/assist_pipeline/manifest.json b/homeassistant/components/assist_pipeline/manifest.json
+index 3a59d8f8..1351b8a0 100644
+--- a/homeassistant/components/assist_pipeline/manifest.json
++++ b/homeassistant/components/assist_pipeline/manifest.json
+@@ -8,5 +8,5 @@
+   "integration_type": "system",
+   "iot_class": "local_push",
+   "quality_scale": "internal",
+-  "requirements": ["pymicro-vad==1.0.1", "pyspeex-noise==1.0.2"]
++  "requirements": ["pymicro-vad==1.0.2", "pyspeex-noise==1.0.2"]
+ }
+diff --git a/homeassistant/components/backup/manifest.json b/homeassistant/components/backup/manifest.json
+index b399043e..ffaed260 100644
+--- a/homeassistant/components/backup/manifest.json
++++ b/homeassistant/components/backup/manifest.json
+@@ -8,5 +8,5 @@
+   "integration_type": "system",
+   "iot_class": "calculated",
+   "quality_scale": "internal",
+-  "requirements": ["cronsim==2.6", "securetar==2024.11.0"]
++  "requirements": ["cronsim==2.6", "securetar==2025.1.3"]
+ }
+diff --git a/homeassistant/components/bluetooth/manifest.json b/homeassistant/components/bluetooth/manifest.json
+index ef1ec6a8..424bfdb3 100644
+--- a/homeassistant/components/bluetooth/manifest.json
++++ b/homeassistant/components/bluetooth/manifest.json
+@@ -15,11 +15,11 @@
+   "quality_scale": "internal",
+   "requirements": [
+     "bleak==0.22.3",
+-    "bleak-retry-connector==3.6.0",
+-    "bluetooth-adapters==0.20.2",
++    "bleak-retry-connector==3.8.0",
++    "bluetooth-adapters==0.21.1",
+     "bluetooth-auto-recovery==1.4.2",
+-    "bluetooth-data-tools==1.20.0",
+-    "dbus-fast==2.24.3",
+-    "habluetooth==3.7.0"
++    "bluetooth-data-tools==1.22.0",
++    "dbus-fast==2.30.2",
++    "habluetooth==3.12.0"
+   ]
+ }
+diff --git a/homeassistant/components/camera/manifest.json b/homeassistant/components/camera/manifest.json
+index 9c56d97f..31db631f 100644
+--- a/homeassistant/components/camera/manifest.json
++++ b/homeassistant/components/camera/manifest.json
+@@ -7,5 +7,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/camera",
+   "integration_type": "entity",
+   "quality_scale": "internal",
+-  "requirements": ["PyTurboJPEG==1.7.5"]
++  "requirements": ["PyTurboJPEG==1.7.7"]
+ }
+diff --git a/homeassistant/components/cloud/manifest.json b/homeassistant/components/cloud/manifest.json
+index 7ee8cf46..0f415b17 100644
+--- a/homeassistant/components/cloud/manifest.json
++++ b/homeassistant/components/cloud/manifest.json
+@@ -13,6 +13,6 @@
+   "integration_type": "system",
+   "iot_class": "cloud_push",
+   "loggers": ["hass_nabucasa"],
+-  "requirements": ["hass-nabucasa==0.87.0"],
++  "requirements": ["hass-nabucasa==0.88.1"],
+   "single_config_entry": true
+ }
+diff --git a/homeassistant/components/compensation/manifest.json b/homeassistant/components/compensation/manifest.json
+index ac82938b..cdf4dd1a 100644
+--- a/homeassistant/components/compensation/manifest.json
++++ b/homeassistant/components/compensation/manifest.json
+@@ -5,5 +5,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/compensation",
+   "iot_class": "calculated",
+   "quality_scale": "legacy",
+-  "requirements": ["numpy==2.2.0"]
++  "requirements": ["numpy==2.2.2"]
+ }
+diff --git a/homeassistant/components/dhcp/manifest.json b/homeassistant/components/dhcp/manifest.json
+index ba773782..39ec4e15 100644
+--- a/homeassistant/components/dhcp/manifest.json
++++ b/homeassistant/components/dhcp/manifest.json
+@@ -15,7 +15,7 @@
+   "quality_scale": "internal",
+   "requirements": [
+     "aiodhcpwatcher==1.0.2",
+-    "aiodiscover==2.1.0",
++    "aiodiscover==2.2.0",
+     "cached-ipaddress==0.8.0"
+   ]
+ }
+diff --git a/homeassistant/components/dlna_dmr/manifest.json b/homeassistant/components/dlna_dmr/manifest.json
+index af16379e..590a7c19 100644
+--- a/homeassistant/components/dlna_dmr/manifest.json
++++ b/homeassistant/components/dlna_dmr/manifest.json
+@@ -8,7 +8,7 @@
+   "documentation": "https://www.home-assistant.io/integrations/dlna_dmr",
+   "iot_class": "local_push",
+   "loggers": ["async_upnp_client"],
+-  "requirements": ["async-upnp-client==0.42.0", "getmac==0.9.4"],
++  "requirements": ["async-upnp-client==0.43.0", "getmac==0.9.4"],
+   "ssdp": [
+     {
+       "deviceType": "urn:schemas-upnp-org:device:MediaRenderer:1",
+diff --git a/homeassistant/components/dlna_dms/manifest.json b/homeassistant/components/dlna_dms/manifest.json
+index ac5bf371..17fc3dc2 100644
+--- a/homeassistant/components/dlna_dms/manifest.json
++++ b/homeassistant/components/dlna_dms/manifest.json
+@@ -7,7 +7,7 @@
+   "dependencies": ["ssdp"],
+   "documentation": "https://www.home-assistant.io/integrations/dlna_dms",
+   "iot_class": "local_polling",
+-  "requirements": ["async-upnp-client==0.42.0"],
++  "requirements": ["async-upnp-client==0.43.0"],
+   "ssdp": [
+     {
+       "deviceType": "urn:schemas-upnp-org:device:MediaServer:1",
+diff --git a/homeassistant/components/doods/manifest.json b/homeassistant/components/doods/manifest.json
+index ae307bb4..2c672dd4 100644
+--- a/homeassistant/components/doods/manifest.json
++++ b/homeassistant/components/doods/manifest.json
+@@ -6,5 +6,5 @@
+   "iot_class": "local_polling",
+   "loggers": ["pydoods"],
+   "quality_scale": "legacy",
+-  "requirements": ["pydoods==1.0.2", "Pillow==11.0.0"]
++  "requirements": ["pydoods==1.0.2", "Pillow==11.1.0"]
+ }
+diff --git a/homeassistant/components/generic/manifest.json b/homeassistant/components/generic/manifest.json
+index 0b6f07e8..a4f013af 100644
+--- a/homeassistant/components/generic/manifest.json
++++ b/homeassistant/components/generic/manifest.json
+@@ -7,5 +7,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/generic",
+   "integration_type": "device",
+   "iot_class": "local_push",
+-  "requirements": ["av==13.1.0", "Pillow==11.0.0"]
++  "requirements": ["av==14.0.1", "Pillow==11.1.0"]
+ }
+diff --git a/homeassistant/components/homekit/manifest.json b/homeassistant/components/homekit/manifest.json
+index cf74bcc7..d7ea293b 100644
+--- a/homeassistant/components/homekit/manifest.json
++++ b/homeassistant/components/homekit/manifest.json
+@@ -10,7 +10,7 @@
+   "loggers": ["pyhap"],
+   "requirements": [
+     "HAP-python==4.9.2",
+-    "fnv-hash-fast==1.0.2",
++    "fnv-hash-fast==1.2.2",
+     "PyQRCode==1.2.1",
+     "base36==0.1.1"
+   ],
+diff --git a/homeassistant/components/image_upload/manifest.json b/homeassistant/components/image_upload/manifest.json
+index bb8c33ba..e43377a3 100644
+--- a/homeassistant/components/image_upload/manifest.json
++++ b/homeassistant/components/image_upload/manifest.json
+@@ -7,5 +7,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/image_upload",
+   "integration_type": "system",
+   "quality_scale": "internal",
+-  "requirements": ["Pillow==11.0.0"]
++  "requirements": ["Pillow==11.1.0"]
+ }
+diff --git a/homeassistant/components/iqvia/manifest.json b/homeassistant/components/iqvia/manifest.json
+index 0236b72c..a738036b 100644
+--- a/homeassistant/components/iqvia/manifest.json
++++ b/homeassistant/components/iqvia/manifest.json
+@@ -7,5 +7,5 @@
+   "integration_type": "service",
+   "iot_class": "cloud_polling",
+   "loggers": ["pyiqvia"],
+-  "requirements": ["numpy==2.2.0", "pyiqvia==2022.04.0"]
++  "requirements": ["numpy==2.2.2", "pyiqvia==2022.04.0"]
+ }
+diff --git a/homeassistant/components/ld2410_ble/manifest.json b/homeassistant/components/ld2410_ble/manifest.json
+index d3e21eea..2e64a590 100644
+--- a/homeassistant/components/ld2410_ble/manifest.json
++++ b/homeassistant/components/ld2410_ble/manifest.json
+@@ -20,5 +20,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/ld2410_ble",
+   "integration_type": "device",
+   "iot_class": "local_push",
+-  "requirements": ["bluetooth-data-tools==1.20.0", "ld2410-ble==0.1.1"]
++  "requirements": ["bluetooth-data-tools==1.22.0", "ld2410-ble==0.1.1"]
+ }
+diff --git a/homeassistant/components/led_ble/manifest.json b/homeassistant/components/led_ble/manifest.json
+index 4aaaebc0..6263ef7c 100644
+--- a/homeassistant/components/led_ble/manifest.json
++++ b/homeassistant/components/led_ble/manifest.json
+@@ -35,5 +35,5 @@
+   "dependencies": ["bluetooth_adapters"],
+   "documentation": "https://www.home-assistant.io/integrations/led_ble",
+   "iot_class": "local_polling",
+-  "requirements": ["bluetooth-data-tools==1.20.0", "led-ble==1.1.1"]
++  "requirements": ["bluetooth-data-tools==1.22.0", "led-ble==1.1.1"]
+ }
+diff --git a/homeassistant/components/matrix/manifest.json b/homeassistant/components/matrix/manifest.json
+index e06eed11..b173a2c8 100644
+--- a/homeassistant/components/matrix/manifest.json
++++ b/homeassistant/components/matrix/manifest.json
+@@ -6,5 +6,5 @@
+   "iot_class": "cloud_push",
+   "loggers": ["matrix_client"],
+   "quality_scale": "legacy",
+-  "requirements": ["matrix-nio==0.25.2", "Pillow==11.0.0"]
++  "requirements": ["matrix-nio==0.25.2", "Pillow==11.1.0"]
+ }
+diff --git a/homeassistant/components/mqtt/manifest.json b/homeassistant/components/mqtt/manifest.json
+index 081449b1..7a5c69ec 100644
+--- a/homeassistant/components/mqtt/manifest.json
++++ b/homeassistant/components/mqtt/manifest.json
+@@ -7,6 +7,6 @@
+   "dependencies": ["file_upload", "http"],
+   "documentation": "https://www.home-assistant.io/integrations/mqtt",
+   "iot_class": "local_push",
+-  "requirements": ["paho-mqtt==1.6.1"],
++  "requirements": ["paho-mqtt==2.1.0"],
+   "single_config_entry": true
+ }
+diff --git a/homeassistant/components/mqtt/quality_scale.yaml b/homeassistant/components/mqtt/quality_scale.yaml
+index 26ce8cb0..3085f717 100644
+--- a/homeassistant/components/mqtt/quality_scale.yaml
++++ b/homeassistant/components/mqtt/quality_scale.yaml
+@@ -128,4 +128,4 @@ rules:
+   strict-typing:
+     status: todo
+     comment: |
+-      Requirement 'paho-mqtt==1.6.1' appears untyped
++      Requirement 'paho-mqtt==2.1.0' appears untyped
+diff --git a/homeassistant/components/private_ble_device/manifest.json b/homeassistant/components/private_ble_device/manifest.json
+index 6759cdda..2ab736b0 100644
+--- a/homeassistant/components/private_ble_device/manifest.json
++++ b/homeassistant/components/private_ble_device/manifest.json
+@@ -6,5 +6,5 @@
+   "dependencies": ["bluetooth_adapters"],
+   "documentation": "https://www.home-assistant.io/integrations/private_ble_device",
+   "iot_class": "local_push",
+-  "requirements": ["bluetooth-data-tools==1.20.0"]
++  "requirements": ["bluetooth-data-tools==1.22.0"]
+ }
+diff --git a/homeassistant/components/proxy/manifest.json b/homeassistant/components/proxy/manifest.json
+index e73eddf3..6925b9e2 100644
+--- a/homeassistant/components/proxy/manifest.json
++++ b/homeassistant/components/proxy/manifest.json
+@@ -4,5 +4,5 @@
+   "codeowners": [],
+   "documentation": "https://www.home-assistant.io/integrations/proxy",
+   "quality_scale": "legacy",
+-  "requirements": ["Pillow==11.0.0"]
++  "requirements": ["Pillow==11.1.0"]
+ }
+diff --git a/homeassistant/components/qrcode/manifest.json b/homeassistant/components/qrcode/manifest.json
+index 9634d45b..cd3ee8ec 100644
+--- a/homeassistant/components/qrcode/manifest.json
++++ b/homeassistant/components/qrcode/manifest.json
+@@ -6,5 +6,5 @@
+   "iot_class": "calculated",
+   "loggers": ["pyzbar"],
+   "quality_scale": "legacy",
+-  "requirements": ["Pillow==11.0.0", "pyzbar==0.1.7"]
++  "requirements": ["Pillow==11.1.0", "pyzbar==0.1.7"]
+ }
+diff --git a/homeassistant/components/recorder/manifest.json b/homeassistant/components/recorder/manifest.json
+index 93ffb12d..7cef284e 100644
+--- a/homeassistant/components/recorder/manifest.json
++++ b/homeassistant/components/recorder/manifest.json
+@@ -7,8 +7,8 @@
+   "iot_class": "local_push",
+   "quality_scale": "internal",
+   "requirements": [
+-    "SQLAlchemy==2.0.36",
+-    "fnv-hash-fast==1.0.2",
++    "SQLAlchemy==2.0.37",
++    "fnv-hash-fast==1.2.2",
+     "psutil-home-assistant==0.0.1"
+   ]
+ }
+diff --git a/homeassistant/components/remember_the_milk/manifest.json b/homeassistant/components/remember_the_milk/manifest.json
+index 13c37d56..796c5111 100644
+--- a/homeassistant/components/remember_the_milk/manifest.json
++++ b/homeassistant/components/remember_the_milk/manifest.json
+@@ -7,5 +7,5 @@
+   "iot_class": "cloud_push",
+   "loggers": ["rtmapi"],
+   "quality_scale": "legacy",
+-  "requirements": ["RtmAPI==0.7.2", "httplib2==0.20.4"]
++  "requirements": ["RtmAPI==0.7.2", "httplib2==0.22.0"]
+ }
+diff --git a/homeassistant/components/samsungtv/manifest.json b/homeassistant/components/samsungtv/manifest.json
+index a1fda255..d3580d3b 100644
+--- a/homeassistant/components/samsungtv/manifest.json
++++ b/homeassistant/components/samsungtv/manifest.json
+@@ -39,7 +39,7 @@
+     "samsungctl[websocket]==0.7.1",
+     "samsungtvws[async,encrypted]==2.7.2",
+     "wakeonlan==2.1.0",
+-    "async-upnp-client==0.42.0"
++    "async-upnp-client==0.43.0"
+   ],
+   "ssdp": [
+     {
+diff --git a/homeassistant/components/seven_segments/manifest.json b/homeassistant/components/seven_segments/manifest.json
+index bf98140a..cdc3b16f 100644
+--- a/homeassistant/components/seven_segments/manifest.json
++++ b/homeassistant/components/seven_segments/manifest.json
+@@ -5,5 +5,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/seven_segments",
+   "iot_class": "local_polling",
+   "quality_scale": "legacy",
+-  "requirements": ["Pillow==11.0.0"]
++  "requirements": ["Pillow==11.1.0"]
+ }
+diff --git a/homeassistant/components/sighthound/manifest.json b/homeassistant/components/sighthound/manifest.json
+index 1efd5724..e1226fd3 100644
+--- a/homeassistant/components/sighthound/manifest.json
++++ b/homeassistant/components/sighthound/manifest.json
+@@ -6,5 +6,5 @@
+   "iot_class": "cloud_polling",
+   "loggers": ["simplehound"],
+   "quality_scale": "legacy",
+-  "requirements": ["Pillow==11.0.0", "simplehound==0.3"]
++  "requirements": ["Pillow==11.1.0", "simplehound==0.3"]
+ }
+diff --git a/homeassistant/components/sql/manifest.json b/homeassistant/components/sql/manifest.json
+index 01c95d6c..0094770d 100644
+--- a/homeassistant/components/sql/manifest.json
++++ b/homeassistant/components/sql/manifest.json
+@@ -5,5 +5,5 @@
+   "config_flow": true,
+   "documentation": "https://www.home-assistant.io/integrations/sql",
+   "iot_class": "local_polling",
+-  "requirements": ["SQLAlchemy==2.0.36", "sqlparse==0.5.0"]
++  "requirements": ["SQLAlchemy==2.0.37", "sqlparse==0.5.0"]
+ }
+diff --git a/homeassistant/components/ssdp/manifest.json b/homeassistant/components/ssdp/manifest.json
+index 2632e37a..6e1fba8c 100644
+--- a/homeassistant/components/ssdp/manifest.json
++++ b/homeassistant/components/ssdp/manifest.json
+@@ -8,5 +8,5 @@
+   "iot_class": "local_push",
+   "loggers": ["async_upnp_client"],
+   "quality_scale": "internal",
+-  "requirements": ["async-upnp-client==0.42.0"]
++  "requirements": ["async-upnp-client==0.43.0"]
+ }
+diff --git a/homeassistant/components/stream/manifest.json b/homeassistant/components/stream/manifest.json
+index b9368565..9cad1feb 100644
+--- a/homeassistant/components/stream/manifest.json
++++ b/homeassistant/components/stream/manifest.json
+@@ -7,5 +7,5 @@
+   "integration_type": "system",
+   "iot_class": "local_push",
+   "quality_scale": "internal",
+-  "requirements": ["PyTurboJPEG==1.7.5", "av==13.1.0", "numpy==2.2.0"]
++  "requirements": ["PyTurboJPEG==1.7.7", "av==14.0.1", "numpy==2.2.2"]
+ }
+diff --git a/homeassistant/components/tensorflow/manifest.json b/homeassistant/components/tensorflow/manifest.json
+index 16de386b..81705e32 100644
+--- a/homeassistant/components/tensorflow/manifest.json
++++ b/homeassistant/components/tensorflow/manifest.json
+@@ -10,7 +10,7 @@
+     "tensorflow==2.5.0",
+     "tf-models-official==2.5.0",
+     "pycocotools==2.0.6",
+-    "numpy==2.2.0",
+-    "Pillow==11.0.0"
++    "numpy==2.2.2",
++    "Pillow==11.1.0"
+   ]
+ }
+diff --git a/homeassistant/components/trend/manifest.json b/homeassistant/components/trend/manifest.json
+index 85012939..16c7067c 100644
+--- a/homeassistant/components/trend/manifest.json
++++ b/homeassistant/components/trend/manifest.json
+@@ -7,5 +7,5 @@
+   "integration_type": "helper",
+   "iot_class": "calculated",
+   "quality_scale": "internal",
+-  "requirements": ["numpy==2.2.0"]
++  "requirements": ["numpy==2.2.2"]
+ }
+diff --git a/homeassistant/components/upnp/manifest.json b/homeassistant/components/upnp/manifest.json
+index 08e0be2d..1f515744 100644
+--- a/homeassistant/components/upnp/manifest.json
++++ b/homeassistant/components/upnp/manifest.json
+@@ -8,7 +8,7 @@
+   "integration_type": "device",
+   "iot_class": "local_polling",
+   "loggers": ["async_upnp_client"],
+-  "requirements": ["async-upnp-client==0.42.0", "getmac==0.9.4"],
++  "requirements": ["async-upnp-client==0.43.0", "getmac==0.9.4"],
+   "ssdp": [
+     {
+       "st": "urn:schemas-upnp-org:device:InternetGatewayDevice:1"
+diff --git a/homeassistant/components/usb/manifest.json b/homeassistant/components/usb/manifest.json
+index 19269801..438642d5 100644
+--- a/homeassistant/components/usb/manifest.json
++++ b/homeassistant/components/usb/manifest.json
+@@ -7,5 +7,5 @@
+   "integration_type": "system",
+   "iot_class": "local_push",
+   "quality_scale": "internal",
+-  "requirements": ["pyudev==0.24.1", "pyserial==3.5"]
++  "requirements": ["pyudev==0.24.3", "pyserial==3.5"]
+ }
+diff --git a/homeassistant/components/yeelight/manifest.json b/homeassistant/components/yeelight/manifest.json
+index eba970dc..6efb6644 100644
+--- a/homeassistant/components/yeelight/manifest.json
++++ b/homeassistant/components/yeelight/manifest.json
+@@ -16,7 +16,7 @@
+   },
+   "iot_class": "local_push",
+   "loggers": ["async_upnp_client", "yeelight"],
+-  "requirements": ["yeelight==0.7.14", "async-upnp-client==0.42.0"],
++  "requirements": ["yeelight==0.7.14", "async-upnp-client==0.43.0"],
+   "zeroconf": [
+     {
+       "type": "_miio._udp.local.",
+diff --git a/homeassistant/components/zeroconf/manifest.json b/homeassistant/components/zeroconf/manifest.json
+index 9ad92bb4..6fe2b5b1 100644
+--- a/homeassistant/components/zeroconf/manifest.json
++++ b/homeassistant/components/zeroconf/manifest.json
+@@ -8,5 +8,5 @@
+   "iot_class": "local_push",
+   "loggers": ["zeroconf"],
+   "quality_scale": "internal",
+-  "requirements": ["zeroconf==0.136.2"]
++  "requirements": ["zeroconf==0.141.0"]
+ }
+diff --git a/homeassistant/package_constraints.txt b/homeassistant/package_constraints.txt
+index 061ff2a0..9e3ae9f0 100644
+--- a/homeassistant/package_constraints.txt
++++ b/homeassistant/package_constraints.txt
+@@ -1,78 +1,78 @@
+ # Automatically generated by gen_requirements_all.py, do not edit
+ 
+ aiodhcpwatcher==1.0.2
+-aiodiscover==2.1.0
++aiodiscover==2.2.0
+ aiodns==3.2.0
+ aiohasupervisor==0.2.2b5
+-aiohttp-fast-zlib==0.2.0
++aiohttp-fast-zlib==0.2.1
+ aiohttp==3.11.11
+ aiohttp_cors==0.7.0
+ aiozoneinfo==0.2.1
+-astral==2.2
++astral==3.2
+ async-interrupt==1.2.0
+-async-upnp-client==0.42.0
++async-upnp-client==0.43.0
+ atomicwrites-homeassistant==1.4.1
+-attrs==24.2.0
++attrs==24.3.0
+ audioop-lts==0.2.1;python_version>='3.13'
+-av==13.1.0
++av==14.0.1
+ awesomeversion==24.6.0
+-bcrypt==4.2.0
+-bleak-retry-connector==3.6.0
++bcrypt==4.2.1
++bleak-retry-connector==3.8.0
+ bleak==0.22.3
+-bluetooth-adapters==0.20.2
++bluetooth-adapters==0.21.1
+ bluetooth-auto-recovery==1.4.2
+-bluetooth-data-tools==1.20.0
++bluetooth-data-tools==1.22.0
+ cached-ipaddress==0.8.0
+ certifi>=2021.5.30
+ ciso8601==2.3.2
+ cronsim==2.6
+ cryptography==44.0.0
+-dbus-fast==2.24.3
+-fnv-hash-fast==1.0.2
++dbus-fast==2.30.2
++fnv-hash-fast==1.2.2
+ go2rtc-client==0.1.2
+ ha-ffmpeg==3.2.2
+-habluetooth==3.7.0
+-hass-nabucasa==0.87.0
++habluetooth==3.12.0
++hass-nabucasa==0.88.1
+ hassil==2.1.0
+ home-assistant-bluetooth==1.13.0
+ home-assistant-frontend==20250109.2
+ home-assistant-intents==2025.1.1
+-httpx==0.27.2
++httpx==0.28.1
+ ifaddr==0.2.0
+ Jinja2==3.1.5
+ lru-dict==1.3.0
+ mutagen==1.47.0
+-orjson==3.10.12
++orjson==3.10.15
+ packaging>=23.1
+-paho-mqtt==1.6.1
+-Pillow==11.0.0
++paho-mqtt==2.1.0
++Pillow==11.1.0
+ propcache==0.2.1
+ psutil-home-assistant==0.0.1
+ PyJWT==2.10.1
+-pymicro-vad==1.0.1
++pymicro-vad==1.0.2
+ PyNaCl==1.5.0
+-pyOpenSSL==24.3.0
++pyOpenSSL==25.0.0
+ pyserial==3.5
+ pyspeex-noise==1.0.2
+ python-slugify==8.0.4
+-PyTurboJPEG==1.7.5
+-pyudev==0.24.1
++PyTurboJPEG==1.7.7
++pyudev==0.24.3
+ PyYAML==6.0.2
+ requests==2.32.3
+-securetar==2024.11.0
+-SQLAlchemy==2.0.36
++securetar==2025.1.3
++SQLAlchemy==2.0.37
+ standard-aifc==3.13.0;python_version>='3.13'
+ standard-telnetlib==3.13.0;python_version>='3.13'
+ typing-extensions>=4.12.2,<5.0
+-ulid-transform==1.0.2
++ulid-transform==1.2.0
+ urllib3>=1.26.5,<2
+-uv==0.5.8
+-voluptuous-openapi==0.0.5
++uv==0.5.24
++voluptuous-openapi==0.0.6
+ voluptuous-serialize==2.6.0
+ voluptuous==0.15.2
+ webrtc-models==0.3.0
+ yarl==1.18.3
+-zeroconf==0.136.2
++zeroconf==0.141.0
+ 
+ # Constrain pycryptodome to avoid vulnerability
+ # see https://github.com/home-assistant/core/pull/16238
+@@ -85,9 +85,9 @@ httplib2>=0.19.0
+ # gRPC is an implicit dependency that we want to make explicit so we manage
+ # upgrades intentionally. It is a large package to build from source and we
+ # want to ensure we have wheels built.
+-grpcio==1.67.1
+-grpcio-status==1.67.1
+-grpcio-reflection==1.67.1
++grpcio==1.70.0
++grpcio-status==1.70.0
++grpcio-reflection==1.70.0
+ 
+ # This is a old unmaintained library and is replaced with pycryptodome
+ pycrypto==1000000000.0.0
+@@ -107,16 +107,16 @@ uuid==1000000000.0.0
+ # these requirements are quite loose. As the entire stack has some outstanding issues, and
+ # even newer versions seem to introduce new issues, it's useful for us to pin all these
+ # requirements so we can directly link HA versions to these library versions.
+-anyio==4.7.0
++anyio==4.8.0
+ h11==0.14.0
+-httpcore==1.0.5
++httpcore==1.0.7
+ 
+ # Ensure we have a hyperframe version that works in Python 3.10
+ # 5.2.0 fixed a collections abc deprecation
+ hyperframe>=5.2.0
+ 
+ # Ensure we run compatible with musllinux build env
+-numpy==2.2.0
++numpy==2.2.2
+ pandas~=2.2.3
+ 
+ # Constrain multidict to avoid typing issues
+@@ -127,7 +127,7 @@ multidict>=6.0.2
+ backoff>=2.0
+ 
+ # ensure pydantic version does not float since it might have breaking changes
+-pydantic==2.10.4
++pydantic==2.10.6
+ 
+ # Required for Python 3.12.4 compatibility (#119223).
+ mashumaro>=3.13.1
+@@ -142,11 +142,11 @@ iso4217!=1.10.20220401
+ 
+ # pyOpenSSL 24.0.0 or later required to avoid import errors when
+ # cryptography 42.0.0 is installed with botocore
+-pyOpenSSL>=24.0.0
++pyOpenSSL>=25.0.0
+ 
+ # protobuf must be in package constraints for the wheel
+ # builder to build binary wheels
+-protobuf==5.29.2
++protobuf==5.29.3
+ 
+ # faust-cchardet: Ensure we have a version we can build wheels
+ # 2.1.18 is the first version that works with our wheel builder
+@@ -170,7 +170,7 @@ get-mac==1000000000.0.0
+ # We want to skip the binary wheels for the 'charset-normalizer' packages.
+ # They are build with mypyc, but causes issues with our wheel builder.
+ # In order to do so, we need to constrain the version.
+-charset-normalizer==3.4.0
++charset-normalizer==3.4.1
+ 
+ # dacite: Ensure we have a version that is able to handle type unions for
+ # NAM, Brother, and GIOS.
+@@ -196,7 +196,7 @@ tenacity!=8.4.0
+ 
+ # 5.0.0 breaks Timeout as a context manager
+ # TypeError: 'Timeout' object does not support the context manager protocol
+-async-timeout==4.0.3
++async-timeout==5.0.1
+ 
+ # aiofiles keeps getting downgraded by custom components
+ # causing newer methods to not be available and breaking
+diff --git a/pyproject.toml b/pyproject.toml
+index fad27cfd..a9a030ab 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -31,25 +31,25 @@ dependencies    = [
+     "aiohasupervisor==0.2.2b5",
+     "aiohttp==3.11.11",
+     "aiohttp_cors==0.7.0",
+-    "aiohttp-fast-zlib==0.2.0",
++    "aiohttp-fast-zlib==0.2.1",
+     "aiozoneinfo==0.2.1",
+-    "astral==2.2",
++    "astral==3.2",
+     "async-interrupt==1.2.0",
+-    "attrs==24.2.0",
++    "attrs==24.3.0",
+     "atomicwrites-homeassistant==1.4.1",
+     "audioop-lts==0.2.1;python_version>='3.13'",
+     "awesomeversion==24.6.0",
+-    "bcrypt==4.2.0",
++    "bcrypt==4.2.1",
+     "certifi>=2021.5.30",
+     "ciso8601==2.3.2",
+     "cronsim==2.6",
+-    "fnv-hash-fast==1.0.2",
++    "fnv-hash-fast==1.2.2",
+     # hass-nabucasa is imported by helpers which don't depend on the cloud
+     # integration
+-    "hass-nabucasa==0.87.0",
++    "hass-nabucasa==0.88.1",
+     # When bumping httpx, please check the version pins of
+     # httpcore, anyio, and h11 in gen_requirements_all
+-    "httpx==0.27.2",
++    "httpx==0.28.1",
+     "home-assistant-bluetooth==1.13.0",
+     "ifaddr==0.2.0",
+     "Jinja2==3.1.5",
+@@ -57,29 +57,29 @@ dependencies    = [
+     "PyJWT==2.10.1",
+     # PyJWT has loose dependency. We want the latest one.
+     "cryptography==44.0.0",
+-    "Pillow==11.0.0",
++    "Pillow==11.1.0",
+     "propcache==0.2.1",
+-    "pyOpenSSL==24.3.0",
+-    "orjson==3.10.12",
++    "pyOpenSSL==25.0.0",
++    "orjson==3.10.15",
+     "packaging>=23.1",
+     "psutil-home-assistant==0.0.1",
+     "python-slugify==8.0.4",
+     "PyYAML==6.0.2",
+     "requests==2.32.3",
+-    "securetar==2024.11.0",
+-    "SQLAlchemy==2.0.36",
++    "securetar==2025.1.3",
++    "SQLAlchemy==2.0.37",
+     "standard-aifc==3.13.0;python_version>='3.13'",
+     "standard-telnetlib==3.13.0;python_version>='3.13'",
+     "typing-extensions>=4.12.2,<5.0",
+-    "ulid-transform==1.0.2",
++    "ulid-transform==1.2.0",
+     # Constrain urllib3 to ensure we deal with CVE-2020-26137 and CVE-2021-33503
+     # Temporary setting an upper bound, to prevent compat issues with urllib3>=2
+     # https://github.com/home-assistant/core/issues/97248
+     "urllib3>=1.26.5,<2",
+-    "uv==0.5.8",
++    "uv==0.5.24",
+     "voluptuous==0.15.2",
+     "voluptuous-serialize==2.6.0",
+-    "voluptuous-openapi==0.0.5",
++    "voluptuous-openapi==0.0.6",
+     "yarl==1.18.3",
+     "webrtc-models==0.3.0",
+ ]
