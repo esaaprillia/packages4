@@ -34,7 +34,7 @@ endef
 
 CONFIGURE_ARGS += \
 	--disable-doc \
-	--disable-introspection \
+	--disable-video \
 	--without-directshow \
 	--without-x \
 	--without-xshm \
@@ -64,8 +64,7 @@ endef
 define Package/zbar/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
-	  $(1)/usr/lib \
-	  $(1)/usr/share
+	  $(1)/usr/lib
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/bin/* \
@@ -74,10 +73,6 @@ define Package/zbar/install
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
 	  $(1)/usr/lib/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/share/locale \
-	  $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,zbar))
