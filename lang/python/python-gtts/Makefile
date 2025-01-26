@@ -4,14 +4,12 @@ PKG_NAME:=python-gtts
 PKG_VERSION:=2.5.4
 PKG_RELEASE:=1
 
-PYPI_NAME:=gTTS
+PYPI_NAME:=gtts
 PKG_HASH:=f5737b585f6442f677dbe8773424fd50697c75bdf3e36443585e30a8d48c1884
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
-
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
