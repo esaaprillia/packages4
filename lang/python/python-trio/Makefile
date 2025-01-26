@@ -28,7 +28,14 @@ define Package/python3-trio
   SUBMENU:=Python
   TITLE:=Friendly library for async concurrency and I/O
   URL:=https://github.com/python-trio/trio
-  DEPENDS:=+python3-light +python3-attrs +python3-sortedcontainers +python3-idna +python3-outcome +python3-sniffio +python3-cffi +python3-exceptiongroup
+  DEPENDS:= \
+    +python3-light \
+    +python3-attrs \
+    +python3-idna \
+    +python3-outcome \
+    +python3-sniffio \
+    +python3-sortedcontainers \
+    +python3-cffi
 endef
 
 define Package/python3-trio/description
