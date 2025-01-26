@@ -1,0 +1,20 @@
+From 8ba6e948c4acd365d7eece4083c39debc0ae22d2 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 27 Jan 2025 00:49:45 +0800
+Subject: [PATCH] Update setup.py
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 9eb6a76..5410f76 100644
+--- a/setup.py
++++ b/setup.py
+@@ -22,5 +22,5 @@
+         'Programming Language :: Python :: 3',
+         'Programming Language :: Python :: 3.1',
+     ],
+-    use_2to3=True,
++    use_2to3=False,
+ )
