@@ -1,0 +1,35 @@
+From 023250ae8e9df7390d245a3b1e5368dcb240d452 Mon Sep 17 00:00:00 2001
+From: esaapriliasalsabila <esaapriliasalsabila@gmail.com>
+Date: Sun, 26 Jan 2025 08:14:50 +0700
+Subject: [PATCH] add port3
+
+---
+ homeassistant/components/google_cloud/manifest.json     | 4 ++--
+ homeassistant/components/google_translate/manifest.json | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/homeassistant/components/google_cloud/manifest.json b/homeassistant/components/google_cloud/manifest.json
+index 3e08b625..824b9a07 100644
+--- a/homeassistant/components/google_cloud/manifest.json
++++ b/homeassistant/components/google_cloud/manifest.json
+@@ -8,7 +8,7 @@
+   "integration_type": "service",
+   "iot_class": "cloud_push",
+   "requirements": [
+-    "google-cloud-texttospeech==2.17.2",
+-    "google-cloud-speech==2.27.0"
++    "google-cloud-texttospeech==2.24.0",
++    "google-cloud-speech==2.30.0"
+   ]
+ }
+diff --git a/homeassistant/components/google_translate/manifest.json b/homeassistant/components/google_translate/manifest.json
+index 7074d0ed..01e406b8 100644
+--- a/homeassistant/components/google_translate/manifest.json
++++ b/homeassistant/components/google_translate/manifest.json
+@@ -6,5 +6,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/google_translate",
+   "iot_class": "cloud_push",
+   "loggers": ["gtts"],
+-  "requirements": ["gTTS==2.2.4"]
++  "requirements": ["gTTS==2.5.4"]
+ }
