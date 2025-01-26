@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LICENSE
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python-pybind11/host meson-python/host numpy/host
-PKG_BUILD_DEPENDS:=python-pybind11/host meson-python/host numpy/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-pybind11/host meson-python/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-pybind11/host meson-python/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -27,7 +27,7 @@ define Package/python3-matplotlib
   CATEGORY:=Languages
   TITLE:=matplotlib plotting with Python
   URL:=matplotlib.org/stable/
-  DEPENDS:=+python3 +python3-numpy +python3-certifi +python3-contourpy +python3-cycler +python3-dateutil +python3-fonttools +python3-kiwisolver +python3-packaging +python3-pyparsing +python3-pytz +libfreetype +qhull
+  DEPENDS:=+python3 +python3-contourpy +python3-cycler +python3-fonttools +python3-kiwisolver +python3-numpy +python3-packaging +python3-pillow +python3-pyparsing +python3--dateutil +libfreetype +qhull
 endef
 
 define Package/python3-matplotlib/description
