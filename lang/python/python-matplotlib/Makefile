@@ -27,7 +27,7 @@ define Package/python3-matplotlib
   CATEGORY:=Languages
   TITLE:=matplotlib plotting with Python
   URL:=matplotlib.org/stable/
-  DEPENDS:=+python3 +python3-contourpy +python3-cycler +python3-fonttools +python3-kiwisolver +python3-numpy +python3-packaging +python3-pillow +python3-pyparsing +python3--dateutil +libfreetype +qhull
+  DEPENDS:=+python3 +python3-contourpy +python3-cycler +python3-fonttools +python3-kiwisolver +python3-numpy +python3-packaging +python3-pillow +python3-pyparsing +python3-dateutil +libfreetype +qhull
 endef
 
 define Package/python3-matplotlib/description
