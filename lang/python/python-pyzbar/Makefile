@@ -22,7 +22,7 @@ define Package/python3-pyzbar
   SUBMENU:=Python
   TITLE:=Read one-dimensional barcodes and QR codes from Python 2 and 3.
   URL:=https://github.com/NaturalHistoryMuseum/pyzbar
-  DEPENDS:=+python3 +zbar
+  DEPENDS:=+python3 +python3-pillow +zbar
 endef
 
 define Package/python3-pyzbar/description
