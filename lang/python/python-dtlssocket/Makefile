@@ -31,6 +31,7 @@ This is a cython wrapper for tinydtls.
 It currently implements a socket like Interface with sendmsg and readmsg. All other calls are passt to the underlying socket.
 endef
 
+PYTHON3_PKG_SETUP_GLOBAL_ARGS += build_ext
 PYTHON3_PKG_WHEEL_NAME:=DTLSSocket
 PYTHON3_PKG_WHEEL_VERSION:=0.2.2
 
