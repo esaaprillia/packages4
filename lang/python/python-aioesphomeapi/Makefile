@@ -1,17 +1,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aioesphomeapi
-PKG_VERSION:=28.0.0
+PKG_VERSION:=28.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=aioesphomeapi
-PKG_HASH:=2ba5377ad519e81e93cdfccef0f5eb80f861fd016e96a35696d854ece6bb6601
+PKG_HASH:=716a6b114a26be5a14896518656a3c880bf1f42da37d99bceea5d076ea311c0b
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-cython/host
+PKG_BUILD_DEPENDS:=python-cython/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
