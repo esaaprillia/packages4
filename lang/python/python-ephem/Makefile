@@ -20,7 +20,7 @@ define Package/python3-ephem
   CATEGORY:=Languages
   SUBMENU:=Python
   TITLE:=Compute positions of the planets and stars
-  URL:=http://rhodesmill.org/pyephem/
+  URL:=https://rhodesmill.org/pyephem/
   DEPENDS:=+python3-urllib
 endef
 
