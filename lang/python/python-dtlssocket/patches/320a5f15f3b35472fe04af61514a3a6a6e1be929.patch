@@ -1,0 +1,21 @@
+From 320a5f15f3b35472fe04af61514a3a6a6e1be929 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 27 Jan 2025 22:54:41 +0800
+Subject: [PATCH] Update setup.py
+
+---
+ setup.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setup.py b/setup.py
+index bfacfe0..9fc9837 100644
+--- a/setup.py
++++ b/setup.py
+@@ -18,6 +18,7 @@ def run_command(args):
+ 
+         commands =  [
+                     ["sh", "-c", "./autogen.sh"],
++                    ["sed", "-i", "-e", "s,cross_compiling=no,cross_compiling=yes,", "configure"],
+                     ["sh", "-c", "./configure"], # no --without-ecc
+                     ]
+         if not os.path.exists(os.path.join(os.path.dirname(__file__), 'DTLSSocket','tinydtls','dtls.c')):
