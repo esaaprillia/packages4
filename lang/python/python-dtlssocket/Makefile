@@ -23,7 +23,7 @@ define Package/python3-dtlssocket
   SUBMENU:=Python
   TITLE:=DTLSSocket is a cython wrapper for tinydtls with a Socket like interface
   URL:=https://git.fslab.de/jkonra2m/tinydtls-cython
-  DEPENDS:=+python3 +tinydtls
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-dtlssocket/description
