@@ -21,7 +21,7 @@ define Package/python3-matrix-nio
   SUBMENU:=Python
   TITLE:=A Python Matrix client library, designed according to sans I/O principles.
   URL:=https://matrix-nio.readthedocs.io
-  DEPENDS:=+python3 +python3-aiohttp +python3-aiofiles +python3-h11+python3-h2 +python3-jsonschema +python3-unpaddedbase64 +python3-cryptodome +python3-aiohttp-socks
+  DEPENDS:=+python3 +python3-aiohttp +python3-aiofiles +python3-h11 +python3-h2 +python3-jsonschema +python3-unpaddedbase64 +python3-cryptodome +python3-aiohttp-socks
 endef
 
 define Package/python3-matrix-nio/description
