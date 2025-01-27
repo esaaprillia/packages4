@@ -14,7 +14,6 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_PARALLEL:=1
-PKG_FORTIFY_SOURCE:=0
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -33,8 +32,7 @@ This library contains functions and structures that can help constructing a sing
 • tests The subdirectory tests contains test programs that show how each component is used.
 endef
 
-TARGET_CFLAGS += -fPIC
-TARGET_LDFLAGS += -fPIC
+CONFIGURE_VARS:=CC="$(TARGET_CC)" CXX="$(TARGET_CXX)" CPPFLAGS="$(TARGET_CPPFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" LDFLAGS="$(TARGET_LDFLAGS)" $(MAKE_VARS)
 
 define Build/Configure
 	(cd $(PKG_BUILD_DIR); ./autogen.sh );
