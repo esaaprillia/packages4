@@ -33,19 +33,12 @@ This library contains functions and structures that can help constructing a sing
 • tests The subdirectory tests contains test programs that show how each component is used.
 endef
 
-CONFIGURE_ARGS += \
-	--enable-shared
+TARGET_CFLAGS += -fPIC
+TARGET_LDFLAGS += -fPIC
 
 define Build/Configure
 	(cd $(PKG_BUILD_DIR); ./autogen.sh );
 	$(call Build/Configure/Default)
-endef
-
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		LDFLAGS="$(TARGET_LDFLAGS)" \
-		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS) -fPIC" \
-		CC="$(TARGET_CC)"
 endef
 
 define Build/InstallDev
