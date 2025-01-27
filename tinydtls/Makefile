@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tinydtls
-PKG_VERSION:=1.1.0
+PKG_VERSION:=0.8.6
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
@@ -12,8 +12,6 @@ PKG_MIRROR_HASH:=skip
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
-
-CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
 
@@ -56,13 +54,8 @@ endef
 
 define Package/tinydtls/install
 	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
 	  $(1)/usr/lib
 
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/* \
-	  $(1)/usr/bin/
-	
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
 	  $(1)/usr/lib/
