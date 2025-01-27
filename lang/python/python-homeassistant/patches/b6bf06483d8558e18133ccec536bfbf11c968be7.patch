@@ -1,0 +1,22 @@
+From b6bf06483d8558e18133ccec536bfbf11c968be7 Mon Sep 17 00:00:00 2001
+From: esaapriliasalsabila <esaapriliasalsabila@gmail.com>
+Date: Mon, 27 Jan 2025 08:48:34 +0700
+Subject: [PATCH] add port5
+
+---
+ homeassistant/components/tensorflow/manifest.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/homeassistant/components/tensorflow/manifest.json b/homeassistant/components/tensorflow/manifest.json
+index 81705e32..fac0f899 100644
+--- a/homeassistant/components/tensorflow/manifest.json
++++ b/homeassistant/components/tensorflow/manifest.json
+@@ -9,7 +9,7 @@
+   "requirements": [
+     "tensorflow==2.5.0",
+     "tf-models-official==2.5.0",
+-    "pycocotools==2.0.6",
++    "pycocotools==2.0.8",
+     "numpy==2.2.2",
+     "Pillow==11.1.0"
+   ]
