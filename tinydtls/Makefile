@@ -37,6 +37,12 @@ define Build/Configure
 	$(call Build/Configure/Default)
 endef
 
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		DESTDIR="$(PKG_INSTALL_DIR)" \
+		all install
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
