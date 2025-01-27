@@ -14,6 +14,9 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_PARALLEL:=1
+PKG_FIXUP:=autoreconf
+
+CFLAGS += $(FPIC)
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -32,15 +35,11 @@ This library contains functions and structures that can help constructing a sing
 • tests The subdirectory tests contains test programs that show how each component is used.
 endef
 
-define Build/Configure
-	(cd $(PKG_BUILD_DIR); ./autogen.sh );
-	$(call Build/Configure/Default)
-endef
-
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all install
+		LDFLAGS="$(TARGET_LDFLAGS)" \
+		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
+		CC="$(TARGET_CC)"
 endef
 
 define Build/InstallDev
