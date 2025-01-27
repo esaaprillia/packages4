@@ -32,15 +32,18 @@ This library contains functions and structures that can help constructing a sing
 • tests The subdirectory tests contains test programs that show how each component is used.
 endef
 
-CONFIGURE_VARS+=CC="$(TARGET_CC)" CXX="$(TARGET_CXX)" CPPFLAGS="$(TARGET_CPPFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" LDFLAGS="$(TARGET_LDFLAGS)" $(MAKE_VARS)
-
 define Build/Configure
 	(cd $(PKG_BUILD_DIR); ./autogen.sh );
 	$(call Build/Configure/Default)
 endef
 
 define Build/Compile
-	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		CC="$(TARGET_CC)" \
+		CXX="$(TARGET_CXX)" \
+		CPPFLAGS="$(TARGET_CPPFLAGS)" \
+		CXXFLAGS="$(TARGET_CXXFLAGS)" \
+		LDFLAGS="$(TARGET_LDFLAGS)"
 endef
 
 define Build/InstallDev
