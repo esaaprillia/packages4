@@ -32,10 +32,10 @@ This library contains functions and structures that can help constructing a sing
 • tests The subdirectory tests contains test programs that show how each component is used.
 endef
 
-CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
-	-DDTLS_ECC=ON \
-	-DDTLS_PSK=ON
+define Build/Configure
+	(cd $(PKG_BUILD_DIR); ./autogen.sh );
+	$(call Build/Configure/Default)
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
