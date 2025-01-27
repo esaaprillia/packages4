@@ -15,8 +15,6 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_PARALLEL:=1
 
-CFLAGS += $(FPIC)
-
 include $(INCLUDE_DIR)/package.mk
 
 define Package/tinydtls
@@ -33,6 +31,9 @@ This library contains functions and structures that can help constructing a sing
 • dtls Basic support for DTLS with pre-shared key mode and RPK mode with ECC.
 • tests The subdirectory tests contains test programs that show how each component is used.
 endef
+
+CONFIGURE_ARGS += \
+	--enable-shared
 
 define Build/Configure
 	(cd $(PKG_BUILD_DIR); ./autogen.sh );
