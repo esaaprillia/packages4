@@ -14,7 +14,6 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_PARALLEL:=1
-PKG_FIXUP:=autoreconf
 
 CFLAGS += $(FPIC)
 
@@ -33,6 +32,11 @@ tinydtls is a library for Datagram Transport Layer Security (DTLS 1.2 RFC 6347) 
 This library contains functions and structures that can help constructing a single-threaded UDP server with DTLS support in C99. The following components are available:
 • dtls Basic support for DTLS with pre-shared key mode and RPK mode with ECC.
 • tests The subdirectory tests contains test programs that show how each component is used.
+endef
+
+define Build/Configure
+	(cd $(PKG_BUILD_DIR); ./autogen.sh );
+	$(call Build/Configure/Default)
 endef
 
 define Build/Compile
