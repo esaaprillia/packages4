@@ -23,7 +23,7 @@ define Package/python3-aioesphomeapi
   CATEGORY:=Languages
   TITLE:=Python API for interacting with ESPHome devices.
   URL:=https://esphome.io/
-  DEPENDS:=+python3 +python3-aiohappyeyeballs +python3-async-timeout +python3-async-interrupt +python3-chacha20poly1305-reuseable +python3-cryptography +python3-noiseprotocol +python3-protobuf +python3-zeroconf
+  DEPENDS:=+python3 +python3-aiohappyeyeballs +python3-async-interrupt +python3-protobuf +python3-zeroconf +python3-chacha20poly1305-reuseable +python3-cryptography +python3-noiseprotocol +python3-async-timeout
 endef
 
 define Package/python3-aioesphomeapi/description
