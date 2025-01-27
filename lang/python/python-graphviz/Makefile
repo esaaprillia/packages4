@@ -5,10 +5,11 @@ PKG_VERSION:=0.20.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=graphviz
+PYPI_SOURCE_EXT:=zip
 PKG_HASH:=09d6bc81e6a9fa392e7ba52135a9d49f1ed62526f96499325930e87ca1b5925d
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
-PYPI_SOURCE_EXT:=zip
 PKG_LICENSE_FILES:=LICENSE.txt
 
 include ../pypi.mk
