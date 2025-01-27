@@ -1,17 +1,15 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-watchdog
-PKG_VERSION:=2.3.1
+PKG_VERSION:=6.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=watchdog
-PKG_HASH:=d9f9ed26ed22a9d331820a8432c3680707ea8b54121ddcc9dc7d9f2ceeb36906
+PKG_HASH:=9ddf7c82fda3ae8e24decda1338ede66e1c99883db93711d8fb941eaa2d8c282
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=COPYING LICENSE
-
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
