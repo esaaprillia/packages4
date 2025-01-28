@@ -11,8 +11,6 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=tokenize_rt
 PKG_HASH:=e8ee836616c0877ab7c7b54776d2fefcc3bde714449a206762425ae114b53c86
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
