@@ -27,7 +27,6 @@ define Package/python3-setuptools-git-versioning
   TITLE:=use git repo data
   URL:=https://setuptools-git-versioning.readthedocs.io
   DEPENDS:= \
-	+python3-distutils \
 	+python3-logging \
 	+python3-packaging \
 	+python3-setuptools
