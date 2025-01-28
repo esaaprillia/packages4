@@ -1,0 +1,178 @@
+From e72dc6d63be495304162f23672bd701ed25b10fe Mon Sep 17 00:00:00 2001
+From: esaapriliasalsabila <esaapriliasalsabila@gmail.com>
+Date: Tue, 28 Jan 2025 12:13:06 +0700
+Subject: [PATCH] add port6
+
+---
+ homeassistant/components/debugpy/manifest.json         | 2 +-
+ homeassistant/components/emulated_kasa/manifest.json   | 2 +-
+ homeassistant/components/eq3btsmart/manifest.json      | 2 +-
+ homeassistant/components/esphome/manifest.json         | 4 ++--
+ homeassistant/components/media_extractor/manifest.json | 2 +-
+ homeassistant/components/ping/manifest.json            | 2 +-
+ homeassistant/components/profiler/manifest.json        | 4 ++--
+ homeassistant/components/python_script/manifest.json   | 2 +-
+ homeassistant/components/sense/manifest.json           | 2 +-
+ homeassistant/components/shelly/manifest.json          | 2 +-
+ homeassistant/components/version/manifest.json         | 2 +-
+ homeassistant/components/voip/manifest.json            | 2 +-
+ homeassistant/components/zha/manifest.json             | 2 +-
+ 13 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/homeassistant/components/debugpy/manifest.json b/homeassistant/components/debugpy/manifest.json
+index 078af8c6..7b364b20 100644
+--- a/homeassistant/components/debugpy/manifest.json
++++ b/homeassistant/components/debugpy/manifest.json
+@@ -6,5 +6,5 @@
+   "integration_type": "service",
+   "iot_class": "local_push",
+   "quality_scale": "internal",
+-  "requirements": ["debugpy==1.8.11"]
++  "requirements": ["debugpy==1.8.12"]
+ }
+diff --git a/homeassistant/components/emulated_kasa/manifest.json b/homeassistant/components/emulated_kasa/manifest.json
+index da3912a9..384dd355 100644
+--- a/homeassistant/components/emulated_kasa/manifest.json
++++ b/homeassistant/components/emulated_kasa/manifest.json
+@@ -6,5 +6,5 @@
+   "iot_class": "local_push",
+   "loggers": ["sense_energy"],
+   "quality_scale": "internal",
+-  "requirements": ["sense-energy==0.13.4"]
++  "requirements": ["sense-energy==0.13.5"]
+ }
+diff --git a/homeassistant/components/eq3btsmart/manifest.json b/homeassistant/components/eq3btsmart/manifest.json
+index 43f18d4f..43f52451 100644
+--- a/homeassistant/components/eq3btsmart/manifest.json
++++ b/homeassistant/components/eq3btsmart/manifest.json
+@@ -22,5 +22,5 @@
+   "integration_type": "device",
+   "iot_class": "local_polling",
+   "loggers": ["eq3btsmart"],
+-  "requirements": ["eq3btsmart==1.4.1", "bleak-esphome==2.0.0"]
++  "requirements": ["eq3btsmart==1.4.1", "bleak-esphome==2.1.1"]
+ }
+diff --git a/homeassistant/components/esphome/manifest.json b/homeassistant/components/esphome/manifest.json
+index b04fa4db..4682be1c 100644
+--- a/homeassistant/components/esphome/manifest.json
++++ b/homeassistant/components/esphome/manifest.json
+@@ -16,9 +16,9 @@
+   "loggers": ["aioesphomeapi", "noiseprotocol", "bleak_esphome"],
+   "mqtt": ["esphome/discover/#"],
+   "requirements": [
+-    "aioesphomeapi==28.0.0",
++    "aioesphomeapi==28.0.1",
+     "esphome-dashboard-api==1.2.3",
+-    "bleak-esphome==2.0.0"
++    "bleak-esphome==2.1.1"
+   ],
+   "zeroconf": ["_esphomelib._tcp.local."]
+ }
+diff --git a/homeassistant/components/media_extractor/manifest.json b/homeassistant/components/media_extractor/manifest.json
+index becca8e6..c32c47bd 100644
+--- a/homeassistant/components/media_extractor/manifest.json
++++ b/homeassistant/components/media_extractor/manifest.json
+@@ -8,6 +8,6 @@
+   "iot_class": "calculated",
+   "loggers": ["yt_dlp"],
+   "quality_scale": "internal",
+-  "requirements": ["yt-dlp[default]==2025.01.15"],
++  "requirements": ["yt-dlp[default]==2025.1.26"],
+   "single_config_entry": true
+ }
+diff --git a/homeassistant/components/ping/manifest.json b/homeassistant/components/ping/manifest.json
+index ded5a3fd..5b562478 100644
+--- a/homeassistant/components/ping/manifest.json
++++ b/homeassistant/components/ping/manifest.json
+@@ -7,5 +7,5 @@
+   "iot_class": "local_polling",
+   "loggers": ["icmplib"],
+   "quality_scale": "internal",
+-  "requirements": ["icmplib==3.0"]
++  "requirements": ["icmplib==3.0.4"]
+ }
+diff --git a/homeassistant/components/profiler/manifest.json b/homeassistant/components/profiler/manifest.json
+index 8d2814c8..f3710a82 100644
+--- a/homeassistant/components/profiler/manifest.json
++++ b/homeassistant/components/profiler/manifest.json
+@@ -7,8 +7,8 @@
+   "quality_scale": "internal",
+   "requirements": [
+     "pyprof2calltree==1.4.5",
+-    "guppy3==3.1.4.post1;python_version<'3.13'",
+-    "objgraph==3.5.0"
++    "guppy3==3.1.5;python_version<'3.13'",
++    "objgraph==3.6.2"
+   ],
+   "single_config_entry": true
+ }
+diff --git a/homeassistant/components/python_script/manifest.json b/homeassistant/components/python_script/manifest.json
+index 4348fdd9..c8cb1da4 100644
+--- a/homeassistant/components/python_script/manifest.json
++++ b/homeassistant/components/python_script/manifest.json
+@@ -5,5 +5,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/python_script",
+   "loggers": ["RestrictedPython"],
+   "quality_scale": "internal",
+-  "requirements": ["RestrictedPython==7.4"]
++  "requirements": ["RestrictedPython==8.0"]
+ }
+diff --git a/homeassistant/components/sense/manifest.json b/homeassistant/components/sense/manifest.json
+index 966488b6..a7cee28f 100644
+--- a/homeassistant/components/sense/manifest.json
++++ b/homeassistant/components/sense/manifest.json
+@@ -20,5 +20,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/sense",
+   "iot_class": "cloud_polling",
+   "loggers": ["sense_energy"],
+-  "requirements": ["sense-energy==0.13.4"]
++  "requirements": ["sense-energy==0.13.5"]
+ }
+diff --git a/homeassistant/components/shelly/manifest.json b/homeassistant/components/shelly/manifest.json
+index 29c8fd4c..e0d8c03f 100644
+--- a/homeassistant/components/shelly/manifest.json
++++ b/homeassistant/components/shelly/manifest.json
+@@ -8,7 +8,7 @@
+   "integration_type": "device",
+   "iot_class": "local_push",
+   "loggers": ["aioshelly"],
+-  "requirements": ["aioshelly==12.2.0"],
++  "requirements": ["aioshelly==12.3.2"],
+   "zeroconf": [
+     {
+       "type": "_http._tcp.local.",
+diff --git a/homeassistant/components/version/manifest.json b/homeassistant/components/version/manifest.json
+index 984d3ada..3d2cbdcb 100644
+--- a/homeassistant/components/version/manifest.json
++++ b/homeassistant/components/version/manifest.json
+@@ -7,5 +7,5 @@
+   "iot_class": "local_push",
+   "loggers": ["pyhaversion"],
+   "quality_scale": "internal",
+-  "requirements": ["pyhaversion==22.8.0"]
++  "requirements": ["pyhaversion==24.6.1"]
+ }
+diff --git a/homeassistant/components/voip/manifest.json b/homeassistant/components/voip/manifest.json
+index ed7f11f8..e96039a6 100644
+--- a/homeassistant/components/voip/manifest.json
++++ b/homeassistant/components/voip/manifest.json
+@@ -7,5 +7,5 @@
+   "documentation": "https://www.home-assistant.io/integrations/voip",
+   "iot_class": "local_push",
+   "quality_scale": "internal",
+-  "requirements": ["voip-utils==0.2.2"]
++  "requirements": ["voip-utils==0.3.0"]
+ }
+diff --git a/homeassistant/components/zha/manifest.json b/homeassistant/components/zha/manifest.json
+index 975a1804..98b95427 100644
+--- a/homeassistant/components/zha/manifest.json
++++ b/homeassistant/components/zha/manifest.json
+@@ -21,7 +21,7 @@
+     "zha",
+     "universal_silabs_flasher"
+   ],
+-  "requirements": ["universal-silabs-flasher==0.0.25", "zha==0.0.45"],
++  "requirements": ["universal-silabs-flasher==0.0.28", "zha==0.0.45"],
+   "usb": [
+     {
+       "vid": "10C4",
