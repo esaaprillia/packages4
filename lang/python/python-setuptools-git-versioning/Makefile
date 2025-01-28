@@ -37,9 +37,6 @@ define Package/python3-setuptools-git-versioning/description
   Use git repo data for building a version number according PEP-440.
 endef
 
-PYTHON3_HOST_WHEEL_NAME:=setuptools_git_versioning
-PYTHON3_HOST_WHEEL_VERSION:=2.1.0
-
 $(eval $(call Py3Package,python3-setuptools-git-versioning))
 $(eval $(call BuildPackage,python3-setuptools-git-versioning))
 $(eval $(call BuildPackage,python3-setuptools-git-versioning-src))
