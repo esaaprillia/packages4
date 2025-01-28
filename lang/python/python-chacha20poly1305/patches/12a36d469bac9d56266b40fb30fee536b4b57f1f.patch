@@ -1,0 +1,22 @@
+From 12a36d469bac9d56266b40fb30fee536b4b57f1f Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 28 Jan 2025 21:53:54 +0800
+Subject: [PATCH] Update setup.py
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index b56853d..ed12cfb 100644
+--- a/setup.py
++++ b/setup.py
+@@ -25,7 +25,7 @@
+     long_description = pypandoc.convert('README.md', 'rst')
+     long_description = long_description.replace("\r", '')
+ 
+-except(IOError, ImportError):
++except(IOError, ImportError,AttributeError):
+     import io
+     with io.open('README.md', encoding='utf-8') as f:
+         long_description = f.read()
