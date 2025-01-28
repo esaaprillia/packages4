@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pypandoc
-PKG_VERSION:=1.14
+PKG_VERSION:=1.15
 PKG_RELEASE:=1
 
 PYPI_NAME:=pypandoc
-PKG_HASH:=6b4c45f5f1b9fb5bb562079164806bdbbc3e837b5402bcf3f1139edc5730a197
+PKG_HASH:=ea25beebe712ae41d63f7410c08741a3cab0e420f6703f95bc9b3a749192ce13
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
