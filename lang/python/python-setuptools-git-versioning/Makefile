@@ -5,7 +5,7 @@ PKG_VERSION:=2.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=setuptools_git_versioning
-PKG_HASH:=75e3e8c4528fa21ca2417a1f222fdaaa4d2ca7d8536c44affad827c6ec9ba0d4
+PKG_HASH:=6aef5b8bb1cfb953b6b343d27cbfc561d96cf2a2ee23c2e0dd3591042a059921
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
