@@ -12,7 +12,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_HOST_ONLY:=1
-HOST_BUILD_DEPENDS:=python-packaging/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-packaging/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
