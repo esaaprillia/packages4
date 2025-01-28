@@ -24,7 +24,7 @@ PKG_BUILD_PARALLEL:=1
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/python/python3-package.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 ifneq ($(CONFIG_PACKAGE_libgpiodcxx),)
 CONFIGURE_ARGS += --enable-bindings-cxx
