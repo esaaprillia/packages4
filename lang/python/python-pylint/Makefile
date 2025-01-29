@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pylint
-PKG_VERSION:=3.3.2
+PKG_VERSION:=3.3.4
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,9 +9,7 @@ PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=pylint
-PKG_HASH:=9ec054ec992cd05ad30a6df1676229739a73f8feeabf3912c995d17601052b01
-
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+PKG_HASH:=74ae7a38b177e69a9b525d0794bd8183820bfa7eb68cc1bee6e8ed22a42be4ce
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
