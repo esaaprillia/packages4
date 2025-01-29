@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-astroid
-PKG_VERSION:=3.3.6
+PKG_VERSION:=3.3.8
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,9 +9,7 @@ PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=astroid
-PKG_HASH:=6aaea045f938c735ead292204afdb977a36e989522b7833ef6fea94de743f442
-
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+PKG_HASH:=187ccc0c248bfbba564826c26f070494f7bc964fd286b6d9fff4420e55de828c
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
