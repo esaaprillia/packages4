@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-colorama/host python-requests/host python-cryptography/host python-cryptodome/host python-pyaes/host
+PKG_BUILD_DEPENDS:=python-colorama/host python-requests/host python-cryptography/host python-cryptodome/host python-pyaes/host python-charset-normalizer/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
