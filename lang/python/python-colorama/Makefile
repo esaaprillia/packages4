@@ -11,11 +11,14 @@ PKG_MAINTAINER:=Daniel Danzberger <daniel@dd-wrt.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 
+HOST_BUILD_DEPENDS:=python-hatchling/host
 PKG_BUILD_DEPENDS:=python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-colorama
   SUBMENU:=Python
@@ -34,3 +37,4 @@ endef
 $(eval $(call Py3Package,python3-colorama))
 $(eval $(call BuildPackage,python3-colorama))
 $(eval $(call BuildPackage,python3-colorama-src))
+$(eval $(call HostBuild))
