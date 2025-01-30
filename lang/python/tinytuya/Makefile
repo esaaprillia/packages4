@@ -4,7 +4,7 @@ PKG_NAME:=tinytuya
 PKG_VERSION:=1.16.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PYPI_NAME:=tinytuya
 PKG_SOURCE_URL:=https://github.com/jasonacox/tinytuya/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
