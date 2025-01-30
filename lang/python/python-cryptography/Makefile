@@ -19,6 +19,7 @@ PKG_LICENSE_FILES:=LICENSE.APACHE LICENSE.BSD
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 PKG_CPE_ID:=cpe:/a:cryptography_project:cryptography
 
+HOST_BUILD_DEPENDS:=libffi/host python-cffi/host python-flit-core/host python-setuptools-rust/host python-maturin/host
 PKG_BUILD_DEPENDS:=libffi/host python-cffi/host python-flit-core/host python-setuptools-rust/host python-maturin/host
 
 include ../pypi.mk
@@ -50,3 +51,4 @@ endef
 $(eval $(call Py3Package,python3-cryptography))
 $(eval $(call BuildPackage,python3-cryptography))
 $(eval $(call BuildPackage,python3-cryptography-src))
+$(eval $(call HostBuild))
