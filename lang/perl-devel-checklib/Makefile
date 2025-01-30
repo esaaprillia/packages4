@@ -25,7 +25,7 @@ PKG_BUILD_DEPENDS:=perl/host perl-capture-tiny/host perl-mock-config/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(TOPDIR)/feeds/packages/lang/perl/perlmod.mk
+include ../perl/perlmod.mk
 
 define Package/perl-devel-checklib
   SUBMENU:=Perl

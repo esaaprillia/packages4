@@ -17,7 +17,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/perl/IO-Socket-SSL-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=perl-mozilla-ca/host perl-net-ssleay/host
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/packages/lang/perl/perlmod.mk
+include ../perl/perlmod.mk
 
 define Package/perl-io-socket-ssl
 	SUBMENU:=Perl

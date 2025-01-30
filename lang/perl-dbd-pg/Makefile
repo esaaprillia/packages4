@@ -21,7 +21,7 @@ PKG_LICENSE_FILES:=LICENSES/artistic.txt LICENSES/gpl-2.0.txt
 PKG_BUILD_DEPENDS:=perl-dbi/host
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/packages/lang/perl/perlmod.mk
+include ../perl/perlmod.mk
 
 define Package/perl-dbd-pg
 	SUBMENU:=Perl
