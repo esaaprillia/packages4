@@ -23,7 +23,7 @@ define Package/python3-tuya-device-sharing-sdk
   CATEGORY:=Languages
   TITLE:=A Python sdk for Tuya Open API, which provides IoT capabilities, maintained by Tuya official
   URL:=https://github.com/tuya/tuya-device-sharing-sdk
-  DEPENDS:=+python3 +python3-paho-mqtt +python3-requests
+  DEPENDS:=+python3 +python3-paho-mqtt +python3-requests +python3-cryptography
 endef
 
 define Package/python3-tuya-device-sharing-sdk/description
