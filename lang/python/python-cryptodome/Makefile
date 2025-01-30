@@ -16,9 +16,13 @@ PKG_LICENSE_FILES:=LICENSE.rst
 PKG_MAINTAINER:=Richard Yu <yurichard3839@gmail.com>
 PKG_CPE_ID:=cpe:/a:pycryptodome:pycryptodome
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 PYTHON3_PKG_BUILD_VARS:= \
   CONFIG_BIG_ENDIAN="$(CONFIG_BIG_ENDIAN)"
@@ -41,3 +45,4 @@ endef
 $(eval $(call Py3Package,python3-cryptodome))
 $(eval $(call BuildPackage,python3-cryptodome))
 $(eval $(call BuildPackage,python3-cryptodome-src))
+$(eval $(call HostBuild))
