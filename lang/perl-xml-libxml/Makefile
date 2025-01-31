@@ -21,7 +21,7 @@ PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/XML-LibXML-$(PKG_VERSION)
 HOST_BUILD_DEPENDS:=perl/host perl-alien-libxml2/host perl-alien-build/host libxml2/host perl-xml-sax/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/XML-LibXML-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host
+PKG_BUILD_DEPENDS:=perl/host perl-alien-libxml2/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
