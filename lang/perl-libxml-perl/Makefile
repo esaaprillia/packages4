@@ -12,7 +12,7 @@ PKG_VERSION:=0.08
 PKG_RELEASE:=1
 
 PKG_SOURCE:=libxml-perl-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/
+PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/K/KM/KMACLEOD/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
@@ -57,7 +57,7 @@ define Build/Compile
 endef
 
 define Package/perl-libxml-perl/install
-	$(call perlmod/Install,$(1),XML auto/XML)
+	$(call perlmod/Install,$(1),Data XML)
 endef
 
 $(eval $(call BuildPackage,perl-libxml-perl))
