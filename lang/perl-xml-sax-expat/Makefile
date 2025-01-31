@@ -20,9 +20,9 @@ PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_LICENSE_FILES:=LICENSE
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/XML-SAX-Expat-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-xml-sax-expat/host
+HOST_BUILD_DEPENDS:=perl/host perl-xml-sax-expat/host perl-xml-namespacesupport/host perl-xml-parser/host perl-xml-sax/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/XML-SAX-Expat-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host perl-xml-sax-expat/host
+PKG_BUILD_DEPENDS:=perl/host perl-xml-sax-expat/host perl-xml-namespacesupport/host perl-xml-parser/host perl-xml-sax/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
