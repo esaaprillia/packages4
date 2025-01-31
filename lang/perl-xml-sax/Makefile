@@ -58,7 +58,7 @@ define Build/Compile
 endef
 
 define Package/perl-xml-sax/install
-	$(call perlmod/Install,$(1),XML/SAX.pm XML/SAX)
+	$(call perlmod/Install,$(1),XML)
 endef
 
 $(eval $(call BuildPackage,perl-xml-sax))
