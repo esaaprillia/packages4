@@ -19,9 +19,9 @@ PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Alien-Build-Plugin-Download-GitLab-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host
+HOST_BUILD_DEPENDS:=perl/host perl-alien-build/host perl-path-tiny/host perl-uri/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Alien-Build-Plugin-Download-GitLab-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host
+PKG_BUILD_DEPENDS:=perl/host perl-alien-build/host perl-path-tiny/host perl-uri/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -59,7 +59,6 @@ endef
 define Package/perl-alien-build-plugin-download-gitlab/install
 	$(call perlmod/Install,$(1),Alien)
 endef
-
 
 $(eval $(call BuildPackage,perl-alien-build-plugin-download-gitlab))
 $(eval $(call HostBuild))
