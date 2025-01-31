@@ -11,6 +11,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
+PKG_BUILD_FLAGS:=no-lto
 PKG_BUILD_DEPENDS:=python-requests/host python-cryptography/host
 
 include ../pypi.mk
