@@ -1,0 +1,35 @@
+From 7f235413f3bd191bc344f480b39afd924618a736 Mon Sep 17 00:00:00 2001
+From: Serhiy Storchaka <storchaka@gmail.com>
+Date: Thu, 2 Jan 2025 13:38:21 +0200
+Subject: [PATCH] gh-123925: Fix building curses on platforms without
+ libncursesw (GH-128405) (cherry picked from commit
+ 8d16919a06a55a50756bf083221a6f6cab43de50)
+
+Co-authored-by: Serhiy Storchaka <storchaka@gmail.com>
+---
+ .../next/Build/2025-01-02-11-02-45.gh-issue-123925.TLlyUi.rst   | 2 ++
+ Modules/_cursesmodule.c                                         | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 Misc/NEWS.d/next/Build/2025-01-02-11-02-45.gh-issue-123925.TLlyUi.rst
+
+diff --git a/Misc/NEWS.d/next/Build/2025-01-02-11-02-45.gh-issue-123925.TLlyUi.rst b/Misc/NEWS.d/next/Build/2025-01-02-11-02-45.gh-issue-123925.TLlyUi.rst
+new file mode 100644
+index 00000000000000..a2a9c6fc7680b5
+--- /dev/null
++++ b/Misc/NEWS.d/next/Build/2025-01-02-11-02-45.gh-issue-123925.TLlyUi.rst
+@@ -0,0 +1,2 @@
++Fix building the :mod:`curses` module on platforms with libncurses but
++without libncursesw.
+diff --git a/Modules/_cursesmodule.c b/Modules/_cursesmodule.c
+index 55038cf09c2876..a7cbe81226eb19 100644
+--- a/Modules/_cursesmodule.c
++++ b/Modules/_cursesmodule.c
+@@ -137,7 +137,7 @@ typedef chtype attr_t;           /* No attr_t type is available */
+ #define STRICT_SYSV_CURSES
+ #endif
+ 
+-#if NCURSES_EXT_FUNCS+0 >= 20170401 && NCURSES_EXT_COLORS+0 >= 20170401
++#if defined(HAVE_NCURSESW) && NCURSES_EXT_FUNCS+0 >= 20170401 && NCURSES_EXT_COLORS+0 >= 20170401
+ #define _NCURSES_EXTENDED_COLOR_FUNCS   1
+ #else
+ #define _NCURSES_EXTENDED_COLOR_FUNCS   0
