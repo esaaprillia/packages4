@@ -31,12 +31,14 @@ define Package/python3-aiohttp
   URL:=https://github.com/aio-libs/aiohttp
   DEPENDS:= \
 	+python3 \
+	+python3-aiohappyeyeballs \
 	+python3-aiosignal \
 	+python3-async-timeout \
 	+python3-attrs \
 	+python3-charset-normalizer \
 	+python3-frozenlist \
 	+python3-multidict \
+	+python3-propcache \
 	+python3-yarl
 endef
 
