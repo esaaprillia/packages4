@@ -17,7 +17,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=nasm/host
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
@@ -43,10 +42,6 @@ ISA-L is a collection of optimized low-level functions targeting storage applica
 • De-compression - Fast inflate-compatible data compression.
 • igzip - A command line application like gzip, accelerated with ISA-L.
 endef
-
-ifneq ($(CONFIG_TARGET_x86_64)$(CONFIG_TARGET_x86),)
-CONFIGURE_VARS+= AS=nasm
-endif
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
