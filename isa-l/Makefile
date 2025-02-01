@@ -1,17 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=isa-l
-PKG_VERSION:=2.31.0
-PKG_RELEASE:=2
+PKG_VERSION:=2.31.1
+PKG_RELEASE:=1
 
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://github.com/intel/isa-l/archive/v$(PKG_VERSION)
-#PKG_HASH:=skip
-
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/intel/isa-l.git
-PKG_SOURCE_VERSION:=b1e6ac3c66ade56de004de3bafeb9e2cc903d10a
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/intel/isa-l/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
