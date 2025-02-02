@@ -26,7 +26,7 @@ define Package/python3-anyio
   CATEGORY:=Languages
   TITLE:=High level compatibility layer for multiple asynchronous event loop implementations
   URL:=https://github.com/agronholm/anyio
-  DEPENDS:=+python3-light +python3-exceptiongroup +python3-idna +python3-sniffio +python3-typing-extensions
+  DEPENDS:=+python3-light +python3-idna +python3-sniffio +python3-typing-extensions
 endef
 
 define Package/python3-anyio/description
