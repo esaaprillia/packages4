@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE.md
 PYPI_NAME:=httpcore
 PKG_HASH:=8551cb62a169ec7162ac7be8d4817d561f60e08eaa485234898414bb5a8a0b4c
 
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host python-h11/host
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 
 include ../pypi.mk
