@@ -11,14 +11,11 @@ PKG_LICENSE_FILES:=LICENSE.txt
 PYPI_NAME:=blosc
 PKG_HASH:=ac5e7c1bfc1c7232b900be94cddb5ffcf9ea49f313c8ae98a7ca0dd87b872bf4
 
-HOST_BUILD_DEPENDS:=python-scikit-build/host python-py-cpuinfo/host numpy/host c-blosc/host
 PKG_BUILD_DEPENDS:=python-scikit-build/host python-py-cpuinfo/host numpy/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
-include ../python3-host-build.mk
 
 define Package/python3-blosc
   SUBMENU:=Python
@@ -35,12 +32,8 @@ Blosc works well for compressing numerical arrays that contains data with relati
 python-blosc a Python package that wraps Blosc. python-blosc supports Python 3.9 or higher versions.
 endef
 
-PYTHON3_HOST_BUILD_CONFIG_SETTINGS += \
-	--config-settings=cmake.args=-DUSE_SYSTEM_BLOSC=ON;-DDEACTIVATE_SNAPPY=OFF;-DDEACTIVATE_AVX2=ON
-
-PYTHON3_PKG_SETUP_VARS +=CMAKE_ARGS="-DUSE_SYSTEM_BLOSC=ON -DDEACTIVATE_SNAPPY=OFF -DDEACTIVATE_AVX2=ON"
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DUSE_SYSTEM_BLOSC=ON -DDEACTIVATE_SNAPPY=OFF -DDEACTIVATE_AVX2=ON"
 
 $(eval $(call Py3Package,python3-blosc))
 $(eval $(call BuildPackage,python3-blosc))
 $(eval $(call BuildPackage,python3-blosc-src))
-$(eval $(call HostBuild))
