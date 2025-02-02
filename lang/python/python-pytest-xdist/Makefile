@@ -18,11 +18,14 @@ PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-pytest-xdist
   SUBMENU:=Python
@@ -46,3 +49,4 @@ endef
 $(eval $(call Py3Package,python3-pytest-xdist))
 $(eval $(call BuildPackage,python3-pytest-xdist))
 $(eval $(call BuildPackage,python3-pytest-xdist-src))
+$(eval $(call HostBuild))
