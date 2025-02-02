@@ -11,11 +11,14 @@ PKG_LICENSE_FILES:=LICENSE.md
 PYPI_NAME:=httpx
 PKG_HASH:=75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc
 
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-httpx
   SUBMENU:=Python
@@ -33,3 +36,4 @@ endef
 $(eval $(call Py3Package,python3-httpx))
 $(eval $(call BuildPackage,python3-httpx))
 $(eval $(call BuildPackage,python3-httpx-src))
+$(eval $(call HostBuild))
