@@ -18,10 +18,9 @@ include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
 PYTHON3_PKG_SETUP_VARS += \
+	HDF5_DIR="$(STAGING_DIR)/usr" \
 	H5PY_SYSTEM_LZF=1 \
 	H5PY_SETUP_REQUIRES=0
-
-PYTHON3_PKG_SETUP_GLOBAL_ARGS += build_ext
 
 define Package/python3-h5py
   SUBMENU:=Python
