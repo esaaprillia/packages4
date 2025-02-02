@@ -1,0 +1,22 @@
+From 8f5b4a75327715c2f8c496899e0bb0cef66f3fb9 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 2 Feb 2025 19:56:45 +0800
+Subject: [PATCH] Update setup_configure.py
+
+---
+ setup_configure.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup_configure.py b/setup_configure.py
+index 5576775..9a3a0f6 100644
+--- a/setup_configure.py
++++ b/setup_configure.py
+@@ -206,7 +206,7 @@ def autodetect_version(hdf5_dir=None):
+         default_path = 'libhdf5.so'
+         regexp = re.compile(r'^libhdf5.so')
+ 
+-    libdirs = ['/usr/local/lib', '/opt/local/lib']
++    libdirs = ['@STAGING_DIR@/usr/lib']
+     try:
+         if pkgconfig.exists("hdf5"):
+             libdirs.extend(pkgconfig.parse("hdf5")['library_dirs'])
