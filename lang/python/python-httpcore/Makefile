@@ -11,11 +11,14 @@ PKG_LICENSE_FILES:=LICENSE.md
 PYPI_NAME:=httpcore
 PKG_HASH:=8551cb62a169ec7162ac7be8d4817d561f60e08eaa485234898414bb5a8a0b4c
 
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-httpcore
   SUBMENU:=Python
@@ -44,3 +47,4 @@ endef
 $(eval $(call Py3Package,python3-httpcore))
 $(eval $(call BuildPackage,python3-httpcore))
 $(eval $(call BuildPackage,python3-httpcore-src))
+$(eval $(call HostBuild))
