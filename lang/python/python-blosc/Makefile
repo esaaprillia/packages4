@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE.txt
 PYPI_NAME:=blosc
 PKG_HASH:=ac5e7c1bfc1c7232b900be94cddb5ffcf9ea49f313c8ae98a7ca0dd87b872bf4
 
-PKG_BUILD_DEPENDS:=python-scikit-build/host python-py-cpuinfo/host numpy/host
+PKG_BUILD_DEPENDS:=python-scikit-build/host python-py-cpuinfo/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
