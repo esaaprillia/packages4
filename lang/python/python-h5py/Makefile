@@ -39,6 +39,7 @@ endef
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(SED) 's,@STAGING_DIR@,$(STAGING_DIR),g' $(PKG_BUILD_DIR)/setup_build.py
+	$(SED) 's,@STAGING_DIR@,$(STAGING_DIR),g' $(PKG_BUILD_DIR)/setup_configure.py
 endef
 
 $(eval $(call Py3Package,python3-h5py))
