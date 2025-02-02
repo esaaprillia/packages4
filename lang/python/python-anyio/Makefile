@@ -11,11 +11,14 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=anyio
 PKG_HASH:=1d9fe889df5212298c0c0723fa20479d1b94883a2df44bd3897aa91083316f7a
 
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-anyio
   SUBMENU:=Python
@@ -35,3 +38,4 @@ endef
 $(eval $(call Py3Package,python3-anyio))
 $(eval $(call BuildPackage,python3-anyio))
 $(eval $(call BuildPackage,python3-anyio-src))
+$(eval $(call HostBuild))
