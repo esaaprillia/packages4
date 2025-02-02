@@ -18,11 +18,14 @@ PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=COPYING
 
+HOST_BUILD_DEPENDS:=python-cython/host
 PKG_BUILD_DEPENDS:=python-cython/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-msgpack
   SUBMENU:=Python
@@ -41,3 +44,4 @@ endef
 $(eval $(call Py3Package,python3-msgpack))
 $(eval $(call BuildPackage,python3-msgpack))
 $(eval $(call BuildPackage,python3-msgpack-src))
+$(eval $(call HostBuild))
