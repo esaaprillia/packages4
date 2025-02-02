@@ -18,9 +18,14 @@ PKG_LICENSE:=Apache-2.0|MIT
 PKG_LICENSE_FILES:=LICENSE.APACHE2|LICENSE.MIT
 PKG_MAINTAINER:=Julien Malik <julien.malik@paraiso.me>
 
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-sniffio
   SECTION:=lang
@@ -38,3 +43,4 @@ endef
 $(eval $(call Py3Package,python3-sniffio))
 $(eval $(call BuildPackage,python3-sniffio))
 $(eval $(call BuildPackage,python3-sniffio-src))
+$(eval $(call HostBuild))
