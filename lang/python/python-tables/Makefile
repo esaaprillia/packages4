@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE.txt
 PYPI_NAME:=tables
 PKG_HASH:=2544812a7186fadba831d6dd34eb49ccd788d6a83f4e4c2b431b835b6796c910
 
-PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-py-cpuinfo/host python-cython/host python-blosc2/host
+PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-py-cpuinfo/host python-cython/host python-blosc2/host python-ndindex/host python-msgpack/host python-numexpr/host python-httpx/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
