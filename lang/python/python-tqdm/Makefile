@@ -27,7 +27,7 @@ define Package/python3-tqdm
 endef
 
 define Package/python3-tqdm/description
-tqdm derives from the Arabic word taqaddum (تقدّم) which can mean “progress,” and is an abbreviation for “I love you so much” in Spanish (te quiero demasiado).
+tqdm derives from the Arabic word taqaddum (تقدّم) which can mean progress, and is an abbreviation for I love you so much in Spanish (te quiero demasiado).
 Instantly make your loops show a smart progress meter - just wrap any iterable with tqdm(iterable), and you’re done!
 endef
 
