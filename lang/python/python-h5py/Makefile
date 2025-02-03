@@ -23,7 +23,7 @@ PYTHON3_PKG_SETUP_VARS += \
 	H5PY_DIRECT_VFD=0 \
 	HDF5_INCLUDEDIR="$(STAGING_DIR)/usr/include" \
 	HDF5_LIBDIR="$(STAGING_DIR)/usr/lib" \
-	H5PY_SYSTEM_LZF=0 \
+	H5PY_SYSTEM_LZF=1 \
 	H5PY_SETUP_REQUIRES=0
 
 define Package/python3-h5py
@@ -32,7 +32,7 @@ define Package/python3-h5py
   CATEGORY:=Languages
   TITLE:=Read and write HDF5 files from Python
   URL:=http://www.h5py.org/
-  DEPENDS:=+python3 +python3-numpy +hdf5
+  DEPENDS:=+python3 +python3-numpy +hdf5 +liblzf
 endef
 
 define Package/python3-h5py/description
