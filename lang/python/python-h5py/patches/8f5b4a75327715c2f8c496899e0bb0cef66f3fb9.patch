@@ -1,22 +1,25 @@
-From 8f5b4a75327715c2f8c496899e0bb0cef66f3fb9 Mon Sep 17 00:00:00 2001
+From 97a5bcf0c905d978135edf6e7c6848039e092089 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sun, 2 Feb 2025 19:56:45 +0800
+Date: Mon, 3 Feb 2025 15:01:23 +0800
 Subject: [PATCH] Update setup_configure.py
 
 ---
- setup_configure.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ setup_configure.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/setup_configure.py b/setup_configure.py
-index 5576775..9a3a0f6 100644
+index 3c5fe0d..046a8dd 100644
 --- a/setup_configure.py
 +++ b/setup_configure.py
-@@ -206,7 +206,7 @@ def autodetect_version(hdf5_dir=None):
-         default_path = 'libhdf5.so'
-         regexp = re.compile(r'^libhdf5.so')
+@@ -286,10 +286,8 @@ def _load_hdf5_lib(self, libdirs):
+             raise FileNotFoundError(f"{path} is missing")
  
--    libdirs = ['/usr/local/lib', '/opt/local/lib']
-+    libdirs = ['@STAGING_DIR@/usr/lib']
-     try:
-         if pkgconfig.exists("hdf5"):
-             libdirs.extend(pkgconfig.parse("hdf5")['library_dirs'])
+         try:
+-            lib = ctypes.CDLL(path, **load_kw)
++            lib = ctypes.CDLL(path)
+         except Exception:
+-            print("error: Unable to load dependency HDF5, make sure HDF5 is installed properly")
+-            print(f"on {sys.platform=} with {platform.machine()=}")
+             print("Library dirs checked:", libdirs)
+             raise
+ 
