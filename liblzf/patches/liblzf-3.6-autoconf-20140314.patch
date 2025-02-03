@@ -237,10 +237,10 @@ diff -uNr liblzf-3.6.ORIG/Makefile.am liblzf-3.6/Makefile.am
 +    lzfP.h
 +
 +
-+library_includedir="$(includedir)"
++library_includedir="$($(STAGING_DIR)/usr)"
 +
 +
-+INCLUDES = -I$(includedir) -DLOCALEDIR=\"$(localedir)\"
++INCLUDES = -I$($(STAGING_DIR)/usr) -DLOCALEDIR=\"$(localedir)\"
 +
 +library_include_HEADERS = $(h_sources)
 +
