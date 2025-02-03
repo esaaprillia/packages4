@@ -35,7 +35,7 @@ endef
 
 CONFIGURE_VARS += \
 	LDFLAGS="$(TARGET_LDFLAGS) -L$(STAGING_DIR)/usr/lib" \
-	CPPFLAGS="$(TARGET_CPPFLAGS) -I$(STAGING_DIR)/usr/include"
+	CFLAGS="$(TARGET_CFLAGS) -I$(STAGING_DIR)/usr/include"
 
 CONFIGURE_ARGS += \
 	--prefix=/usr
