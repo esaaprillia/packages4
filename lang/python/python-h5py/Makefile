@@ -19,9 +19,11 @@ include ../python3-package.mk
 
 PYTHON3_PKG_SETUP_VARS += \
 	HDF5_VERSION=1.14.5 \
+	H5PY_ROS3=0 \
+	H5PY_DIRECT_VFD=0 \
 	HDF5_INCLUDEDIR="$(STAGING_DIR)/usr/include" \
 	HDF5_LIBDIR="$(STAGING_DIR)/usr/lib" \
-	H5PY_SYSTEM_LZF=1 \
+	H5PY_SYSTEM_LZF=0 \
 	H5PY_SETUP_REQUIRES=0
 
 define Package/python3-h5py
