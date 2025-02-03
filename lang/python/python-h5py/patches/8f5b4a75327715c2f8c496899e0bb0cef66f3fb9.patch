@@ -1,25 +1,90 @@
-From 97a5bcf0c905d978135edf6e7c6848039e092089 Mon Sep 17 00:00:00 2001
+From a2a5a0a5afcd24e35a95e43551dd59d53afa174f Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Mon, 3 Feb 2025 15:01:23 +0800
+Date: Mon, 3 Feb 2025 16:14:08 +0800
 Subject: [PATCH] Update setup_configure.py
 
 ---
- setup_configure.py | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ setup_configure.py | 70 ----------------------------------------------
+ 1 file changed, 70 deletions(-)
 
 diff --git a/setup_configure.py b/setup_configure.py
-index 3c5fe0d..046a8dd 100644
+index 3c5fe0d..c73e473 100644
 --- a/setup_configure.py
 +++ b/setup_configure.py
-@@ -286,10 +286,8 @@ def _load_hdf5_lib(self, libdirs):
-             raise FileNotFoundError(f"{path} is missing")
+@@ -225,76 +225,6 @@ def fmt_dirs(l):
+         print('')
+         print('*' * 80)
  
-         try:
+-
+-class HDF5LibWrapper:
+-
+-    def __init__(self, libdirs):
+-        self._load_hdf5_lib(libdirs)
+-
+-    def _load_hdf5_lib(self, libdirs):
+-        """
+-        Detect and load the HDF5 library.
+-
+-        Raises an exception if anything goes wrong.
+-
+-        libdirs: the library paths to search for the library
+-        """
+-        import ctypes
+-
+-        # extra keyword args to pass to LoadLibrary
+-        load_kw = {}
+-        if sys.platform.startswith('darwin'):
+-            default_path = 'libhdf5.dylib'
+-            regexp = re.compile(r'^libhdf5.dylib')
+-        elif sys.platform.startswith('win'):
+-            if 'MSC' in sys.version:
+-                default_path = 'hdf5.dll'
+-                regexp = re.compile(r'^hdf5.dll')
+-            else:
+-                default_path = 'libhdf5-0.dll'
+-                regexp = re.compile(r'^libhdf5-[0-9].dll')
+-            # To overcome "difficulty" loading the library on windows
+-            # https://bugs.python.org/issue42114
+-            load_kw['winmode'] = 0
+-        elif sys.platform.startswith('cygwin'):
+-            default_path = 'cyghdf5-200.dll'
+-            regexp = re.compile(r'^cyghdf5-\d+.dll$')
+-        else:
+-            default_path = 'libhdf5.so'
+-            regexp = re.compile(r'^libhdf5.so')
+-
+-        path = None
+-        for d in libdirs:
+-            try:
+-                candidates = [x for x in os.listdir(d) if regexp.match(x)]
+-            except Exception:
+-                continue   # Skip invalid entries
+-
+-            if len(candidates) != 0:
+-                candidates.sort(key=lambda x: len(x))   # Prefer libfoo.so to libfoo.so.X.Y.Z
+-                path = op.abspath(op.join(d, candidates[0]))
+-                break
+-
+-        if path is None:
+-            path = default_path
+-
+-        print("Loading library to get build settings and version:", path)
+-
+-        self._lib_path = path
+-
+-        if op.isabs(path) and not op.exists(path):
+-            raise FileNotFoundError(f"{path} is missing")
+-
+-        try:
 -            lib = ctypes.CDLL(path, **load_kw)
-+            lib = ctypes.CDLL(path)
-         except Exception:
+-        except Exception:
 -            print("error: Unable to load dependency HDF5, make sure HDF5 is installed properly")
 -            print(f"on {sys.platform=} with {platform.machine()=}")
-             print("Library dirs checked:", libdirs)
-             raise
- 
+-            print("Library dirs checked:", libdirs)
+-            raise
+-
+-        self._lib = lib
+-
+     def autodetect_version(self):
+         """
+         Detect the current version of HDF5, and return X.Y.Z version string.
