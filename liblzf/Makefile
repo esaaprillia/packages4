@@ -59,7 +59,7 @@ define Package/liblzf/install
 	  $(1)/usr/bin/
 	
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
 	  $(1)/usr/lib/
 endef
 
