@@ -21,7 +21,7 @@ define Package/python3-tqdm
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Fast, Extensible Progress Meter
+  TITLE:=Fast Extensible Progress Meter
   URL:=https://tqdm.github.io/
   DEPENDS:=+python3 +python3-colorama
 endef
