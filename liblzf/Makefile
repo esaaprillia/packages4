@@ -32,7 +32,12 @@ define Package/liblzf/description
 	Last not least, it is freely usable, unlike most other compression libraries which are under the GPL, this library uses a BSD-type license, so you can include it in your programs without worrying.
 endef
 
-CONFIGURE_VARS:=CC="$(TARGET_CC)" CXX="$(TARGET_CXX)" CPPFLAGS="$(TARGET_CPPFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" LDFLAGS="$(TARGET_LDFLAGS)"
+CONFIGURE_VARS += \
+	LDFLAGS="$(TARGET_LDFLAGS) -L$(STAGING_DIR)/usr/lib" \
+	CPPFLAGS="$(TARGET_CPPFLAGS) -I$(STAGING_DIR)/usr/include"
+
+CONFIGURE_ARGS += \
+	--prefix=/usr
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
