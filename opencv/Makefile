@@ -37,7 +37,16 @@ define Package/opencv
   CATEGORY:=Libraries
   TITLE:=OpenCV
   URL:=https://opencv.org/
-  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg
+  DEPENDS:=+libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg
+endef
+
+define Package/python3-opencv
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Python bindings for the OpenCV
+  URL:=https://opencv.org/
+  DEPENDS:=+python3 +python3-numpy +opencv
 endef
 
 define Package/opencv/Default/description
@@ -47,6 +56,10 @@ define Package/opencv/Default/description
  the use of machine perception in the commercial products. Being a
  BSD-licensed product, OpenCV makes it easy for businesses to utilize
  and modify the code.
+endef
+
+define Package/python3-opencv/description
+  Open source computer vision and machine learning library (python modules)
 endef
 
 CMAKE_OPTIONS += \
