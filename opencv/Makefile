@@ -106,8 +106,7 @@ CMAKE_OPTIONS += \
 	-DPYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 	-DPYTHON3_INCLUDE_DIR="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
 	-DPYTHON3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
-	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include" \
-	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)"
+	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include"
 
 PYTHON3_PKG_BUILD_PATH:=modules/python/package
 PYTHON3_PKG_WHEEL_NAME:=opencv
