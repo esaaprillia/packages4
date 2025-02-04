@@ -28,6 +28,9 @@ define Package/python3-pulp/description
   PuLP is an linear and mixed integer programming modeler written in Python. With PuLP, it is simple to create MILP optimisation problems and solve them with the latest open-source (or proprietary) solvers. PuLP can generate MPS or LP files and call solvers such as GLPK, COIN-OR CLP/CBC, CPLEX, GUROBI, MOSEK, XPRESS, CHOCO, MIPCL, HiGHS, SCIP/FSCIP.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=PuLP
+PYTHON3_PKG_WHEEL_VERSION:=2.9.0
+
 $(eval $(call Py3Package,python3-pulp))
 $(eval $(call BuildPackage,python3-pulp))
 $(eval $(call BuildPackage,python3-pulp-src))
