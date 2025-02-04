@@ -104,8 +104,8 @@ CMAKE_OPTIONS += \
 	-DOPENCV_GENERATE_SETUPVARS=OFF \
 	-DBUILD_opencv_python3=1 \
 	-DPYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-	-DPYTHON3_INCLUDE_DIR="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
-	-DPYTHON3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
+	-DPYTHON3_INCLUDE_DIR="$(STAGING_DIR)/usr/include/python$(PYTHON3_VERSION)" \
+	-DPYTHON3_LIBRARIES="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/libpython$(PYTHON3_VERSION)" \
 	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include"
 
 PYTHON3_PKG_BUILD_PATH:=modules/python/package
