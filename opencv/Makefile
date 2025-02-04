@@ -96,6 +96,10 @@ CMAKE_OPTIONS += \
 	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include" \
 	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)"
 
+PYTHON3_PKG_BUILD_PATH:=modules/python/package
+PYTHON3_PKG_WHEEL_NAME:=opencv
+PYTHON3_PKG_WHEEL_VERSION:=4.11.0
+
 define Build/Compile
 	$(call Build/Compile/Default)
 	$(call Py3Build/Compile)
@@ -125,3 +129,6 @@ define Package/opencv/install
 endef
 
 $(eval $(call BuildPackage,opencv))
+$(eval $(call Py3Package,python3-opencv))
+$(eval $(call BuildPackage,python3-opencv))
+$(eval $(call BuildPackage,python3-opencv-src))
