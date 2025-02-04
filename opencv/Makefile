@@ -106,10 +106,7 @@ CMAKE_OPTIONS += \
 	-DPYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 	-DPYTHON3_INCLUDE_DIR="$(STAGING_DIR)/usr/include/python$(PYTHON3_VERSION)" \
 	-DPYTHON3_LIBRARIES="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/libpython$(PYTHON3_VERSION)" \
-	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include" \
-	-DCMAKE_EXE_LINKER_FLAGS:STRING="$(TARGET_LDFLAGS) -lpython$(PYTHON3_VERSION)" \
-	-DCMAKE_MODULE_LINKER_FLAGS:STRING="$(TARGET_LDFLAGS) -lpython$(PYTHON3_VERSION) $(CMAKE_SHARED_LDFLAGS)" \
-	-DCMAKE_SHARED_LINKER_FLAGS:STRING="$(TARGET_LDFLAGS) -lpython$(PYTHON3_VERSION) $(CMAKE_SHARED_LDFLAGS)"
+	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include"
 
 PYTHON3_PKG_BUILD_PATH:=modules/python/package
 PYTHON3_PKG_WHEEL_NAME:=opencv
@@ -133,6 +130,15 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cmake $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/opencv4.pc $(1)/usr/lib/pkgconfig/
+endef
+
+define Package/opencv/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/opencv* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libopencv* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/opencv4 $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,opencv))
