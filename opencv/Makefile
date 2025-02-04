@@ -96,6 +96,11 @@ CMAKE_OPTIONS += \
 	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include" \
 	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)"
 
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/opencv4 $(1)/usr/include/
@@ -104,6 +109,10 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cmake $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/opencv4.pc $(1)/usr/lib/pkgconfig/
+endef
+
+define Build/Install
+	$(call Py3Build/Install)
 endef
 
 define Package/opencv/install
