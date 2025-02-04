@@ -104,8 +104,8 @@ CMAKE_OPTIONS += \
 	-DOPENCV_GENERATE_SETUPVARS=OFF \
 	-DBUILD_opencv_python3=1 \
 	-DPYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-	-DPYTHON3_INCLUDE_DIR="$(STAGING_DIR)/usr/include/python$(PYTHON3_VERSION)" \
-	-DPYTHON3_LIBRARIES="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/libpython$(PYTHON3_VERSION)" \
+	-DPYTHON3_INCLUDE_DIR="$(TARGET_CPPFLAGS) -I$(PYTHON3_INC_DIR)" \
+	-DPYTHON3_LIBRARIES="$(TARGET_LDFLAGS) -lpython$(PYTHON3_VERSION)" \
 	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include" \
 	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)"
 
@@ -115,7 +115,12 @@ PYTHON3_PKG_WHEEL_VERSION:=4.11.0
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	$(call Py3Build/Compile)
+	$(call Py3Build/Compile/Default)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install/Default)
 endef
 
 define Build/InstallDev
@@ -126,10 +131,6 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cmake $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/opencv4.pc $(1)/usr/lib/pkgconfig/
-endef
-
-define Build/Install
-	$(call Py3Build/Install)
 endef
 
 define Package/opencv/install
