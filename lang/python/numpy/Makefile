@@ -49,6 +49,25 @@ define Build/Prepare
 	$(INSTALL_CONF) files/cross/__init__.py $(HOST_PYTHON3_PKG_DIR)/mesonpy/
 endef
 
+define Build/InstallDev
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/numpy-config $(1)/usr/bin/
+	$(INSTALL_DIR) $(2)/bin
+	$(LN) ../../usr/bin/numpy-config $(2)/bin/numpy-config
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/_core
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include $(1)$(PYTHON3_PKG_DIR)/numpy/_core/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/libnpymath.a $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/_core/tests/examples/limited_api
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/tests/examples/limited_api/{limited_api1.c,limited_api_latest.c} $(1)$(PYTHON3_PKG_DIR)/numpy/_core/tests/examples/limited_api/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/src
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/f2py/src/{fortranobject.c,fortranobject.h} $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/src/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/tests/src/array_from_pyobj
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/f2py/tests/src/array_from_pyobj/wrapmodule.c $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/tests/src/array_from_pyobj/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/random/lib
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/random/lib/libnpyrandom.a $(1)$(PYTHON3_PKG_DIR)/numpy/random/lib/
+endef
+
 $(eval $(call Py3Package,python3-numpy))
 $(eval $(call BuildPackage,python3-numpy))
 $(eval $(call BuildPackage,python3-numpy-src))
