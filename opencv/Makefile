@@ -1,11 +1,3 @@
-#
-# Copyright (C) 2013-2014 wrtnode.com
-# Copyright (C) 2015-2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=opencv
@@ -32,12 +24,14 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
+export _PYTHON_SYSCONFIGDATA_NAME="_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH)"
+
 define Package/opencv
   SECTION:=libs
   CATEGORY:=Libraries
   TITLE:=OpenCV
   URL:=https://opencv.org/
-  DEPENDS:=+libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg
+  DEPENDS:=+libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg +openblas
 endef
 
 define Package/python3-opencv
@@ -106,7 +100,8 @@ CMAKE_OPTIONS += \
 	-DPYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 	-DPYTHON3_INCLUDE_DIR="$(STAGING_DIR)/usr/include/python$(PYTHON3_VERSION)" \
 	-DPYTHON3_LIBRARIES="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/libpython$(PYTHON3_VERSION)" \
-	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include"
+	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include" \
+	-D_PYTHON_SYSCONFIGDATA_NAME="_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH)"
 
 PYTHON3_PKG_BUILD_PATH:=modules/python/package
 PYTHON3_PKG_WHEEL_NAME:=opencv
@@ -137,6 +132,7 @@ define Package/opencv/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/opencv* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libopencv* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cv2* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/opencv4 $(1)/usr/share/
 endef
