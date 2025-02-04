@@ -135,15 +135,6 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/opencv4.pc $(1)/usr/lib/pkgconfig/
 endef
 
-define Package/opencv/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/opencv* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libopencv* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/share
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/opencv4 $(1)/usr/share/
-endef
-
 $(eval $(call BuildPackage,opencv))
 $(eval $(call Py3Package,python3-opencv))
 $(eval $(call BuildPackage,python3-opencv))
