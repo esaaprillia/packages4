@@ -96,9 +96,19 @@ CMAKE_OPTIONS += \
 	-DPYTHON3_NUMPY_INCLUDE_DIRS="$((STAGING_DIR_HOSTPKG)/bin/$(PYTHON3) -c 'import numpy;print(numpy.get_include())')" \
 	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)"
 
-TARGET_LDFLAGS += -latomic
+define Build/InstallDev
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/opencv4 $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libopencv* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cmake $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/opencv4.pc $(1)/usr/lib/pkgconfig/
+endef
 
 define Package/opencv/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/opencv* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libopencv* $(1)/usr/lib/
 endef
