@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=opencv-python
-PKG_VERSION:=4.10.0.84
+PKG_VERSION:=4.11.0.86
 PKG_RELEASE:=1
 
 PYPI_NAME:=opencv-python
-PKG_HASH:=72d234e4582e9658ffea8e9cae5b63d488ad06994ef12d81dc303b17472f3526
+PKG_HASH:=03d60ccae62304860d232272e4a4fda93c39d595780cb40b161b310244b736a4
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
