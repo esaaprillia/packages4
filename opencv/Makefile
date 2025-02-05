@@ -100,11 +100,6 @@ CMAKE_OPTIONS += \
 	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include" \
 	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)"
 
-define Build/Compile
-	$(call Build/Compile/Default)
-	$(call Py3Build/Compile/Default)
-endef
-
 define Build/Install
 	$(call Build/Install/Default)
 	$(call Py3Build/Install/Default)
