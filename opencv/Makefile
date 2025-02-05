@@ -24,10 +24,6 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
-export PYTHONPATH="$(PYTHON3PATH)" 
-export _PYTHON_SYSCONFIGDATA_NAME="_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH)"
-export PYTHONDONTWRITEBYTECODE=1
-
 define Package/opencv
   SECTION:=libs
   CATEGORY:=Libraries
