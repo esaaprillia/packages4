@@ -112,6 +112,8 @@ define Build/Compile
 	$(call Py3Build/Compile/Default)
 endef
 
+MAKE_FLAGS +="$(PYTHON3_VARS)"
+
 define Build/Install
 	$(call Build/Install/Default)
 	$(call Py3Build/Install/Default)
