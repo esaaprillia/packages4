@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python-scikit-build/host numpy/host openjpeg/host
+PKG_BUILD_DEPENDS:=python-scikit-build/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -25,14 +25,12 @@ define Package/opencv-python3
   SUBMENU:=Python
   TITLE:= Wrapper package for OpenCV python bindings.
   URL:=https://pypi.org/project/opencv-python/
-  DEPENDS:=+python3 +python3-numpy +libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg
+  DEPENDS:=+python3 +opencv
 endef
 
 define Package/opencv-python3/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
-
-MAKE_FLAGS+=VERBOSE=1
 
 $(eval $(call Py3Package,opencv-python3))
 $(eval $(call BuildPackage,opencv-python3))
