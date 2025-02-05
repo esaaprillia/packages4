@@ -39,10 +39,6 @@ define Package/opencv/Default/description
  and modify the code.
 endef
 
-define Package/python3-opencv/description
-  Open source computer vision and machine learning library (python modules)
-endef
-
 CMAKE_OPTIONS += \
 	-DBUILD_ZLIB=OFF \
 	-DBUILD_TIFF=OFF \
