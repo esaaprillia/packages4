@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python-scikit-build/host numpy/host
+PKG_BUILD_DEPENDS:=python-scikit-build/host numpy/host python-packaging/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
