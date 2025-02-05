@@ -109,8 +109,6 @@ define Build/Compile
 	$(call Py3Build/Compile/Default)
 endef
 
-MAKE_FLAGS +="$(PYTHON3_VARS)"
-
 define Build/Install
 	$(call Build/Install/Default)
 	$(call Py3Build/Install/Default)
@@ -133,8 +131,6 @@ define Package/opencv/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libopencv* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/opencv4 $(1)/usr/share/
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)
 endef
 
 $(eval $(call BuildPackage,opencv))
