@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python-scikit-build/host
+PKG_BUILD_DEPENDS:=python-scikit-build/host numpy/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/opencv-python3
   SUBMENU:=Python
   TITLE:= Wrapper package for OpenCV python bindings.
   URL:=https://pypi.org/project/opencv-python/
-  DEPENDS:=+python3 +opencv
+  DEPENDS:=+python3 +python3-numpy +opencv
 endef
 
 define Package/opencv-python3/description
