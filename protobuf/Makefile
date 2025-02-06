@@ -23,7 +23,6 @@ PKG_CPE_ID:=cpe:/a:google:protobuf
 CMAKE_BINARY_SUBDIR := build
 
 HOST_BUILD_DEPENDS:=abseil-cpp/host
-PKG_BUILD_DEPENDS:=abseil-cpp
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
