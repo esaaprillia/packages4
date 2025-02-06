@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=openjpeg/host numpy/host
+PKG_BUILD_DEPENDS:=openjpeg/host numpy/host protobuf/host
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
