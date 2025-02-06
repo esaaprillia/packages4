@@ -55,6 +55,7 @@ define Package/python3-opencv/description
 endef
 
 CMAKE_OPTIONS += \
+	-DCMAKE_CXX_STANDARD=17 \
 	-DBUILD_ZLIB=OFF \
 	-DBUILD_TIFF=OFF \
 	-DBUILD_OPENJPEG=OFF \
