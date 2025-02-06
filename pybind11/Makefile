@@ -32,19 +32,13 @@ define Package/pybind11/description
 	pybind11 — Seamless operability between C++11 and Python
 endef
 
+CMAKE_OPTIONS += \
+	-Wno-dev \
+	-DPYBIND11_TEST=ON
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib \
 	  $(1)/$(PYTHON3_PKG_DIR)
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/pybind11 \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,cmake} \
-	  $(1)/usr/lib/
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/* \
