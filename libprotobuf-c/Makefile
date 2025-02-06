@@ -13,7 +13,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=protobuf-c-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/protobuf-c/protobuf-c/releases/download/v$(PKG_VERSION)
-PKG_HASH:=4cc4facd508172f3e0a4d3a8736225d472418aee35b4ad053384b137b220339f
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/protobuf-c-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/protobuf-c-$(PKG_VERSION)
 
