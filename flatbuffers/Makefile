@@ -82,7 +82,7 @@ define Host/Install
 	  $(STAGING_DIR)/usr/bin
 
 	$(CP) \
-	  $(HOST_CMAKE_BINARY_DIR)/bin/flatc \
+	  $(HOST_CMAKE_BINARY_DIR)/flatc \
 	  $(STAGING_DIR)/usr/bin/
 endef
 
