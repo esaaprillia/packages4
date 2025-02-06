@@ -24,7 +24,7 @@ define Package/flatbuffers
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=FlatBuffers Memory Efficient Serialization Library
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=https://flatbuffers.dev/
 endef
 
