@@ -12,15 +12,17 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=openjpeg/host
+PKG_BUILD_DEPENDS:=openjpeg/host numpy/host
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
+PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/opencv
   SECTION:=libs
@@ -30,6 +32,15 @@ define Package/opencv
   DEPENDS:=+libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +libwebp +libgphoto2 +openjpeg +openblas
 endef
 
+define Package/python3-opencv
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Python bindings for the OpenCV
+  URL:=https://opencv.org/
+  DEPENDS:=+python3 +python3-numpy +opencv
+endef
+
 define Package/opencv/Default/description
  OpenCV (Open Source Computer Vision Library) is an open source computer
  vision and machine learning software library. OpenCV was built to provide
@@ -37,6 +48,10 @@ define Package/opencv/Default/description
  the use of machine perception in the commercial products. Being a
  BSD-licensed product, OpenCV makes it easy for businesses to utilize
  and modify the code.
+endef
+
+define Package/python3-opencv/description
+  Open source computer vision and machine learning library (python modules)
 endef
 
 CMAKE_OPTIONS += \
@@ -74,9 +89,27 @@ CMAKE_OPTIONS += \
 	-DWITH_VTK=OFF \
 	-DWITH_GPHOTO2=ON \
 	-DINSTALL_C_EXAMPLES=OFF \
+	-DINSTALL_PYTHON_EXAMPLES=OFF \
+	-DOPENCV_SKIP_PYTHON_LOADER=ON \
 	-DOPENCV_GENERATE_PKGCONFIG=ON \
 	-DOPENCV_ENABLE_NONFREE=OFF \
-	-DOPENCV_GENERATE_SETUPVARS=OFF
+	-DOPENCV_GENERATE_SETUPVARS=OFF \
+	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include" \
+	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)"
+
+PYTHON3_PKG_BUILD_PATH:=modules/python/package
+PYTHON3_PKG_WHEEL_NAME:=opencv
+PYTHON3_PKG_WHEEL_VERSION:=4.11.0
+
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install)
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
@@ -98,3 +131,6 @@ define Package/opencv/install
 endef
 
 $(eval $(call BuildPackage,opencv))
+$(eval $(call Py3Package,python3-opencv))
+$(eval $(call BuildPackage,python3-opencv))
+$(eval $(call BuildPackage,python3-opencv-src))
