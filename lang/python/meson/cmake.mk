@@ -92,6 +92,12 @@ define Build/Configure/Default
 		CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 		CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)" \
 		LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
+		PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+		PYTHON_INCLUDE_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
+		PYTHON_LIBRARY_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
+		PYTHON_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
+		PYTHON_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
+		$(PYTHON3_VARS) \
 		cmake \
 			--no-warn-unused-cli \
 			-DCMAKE_SYSTEM_NAME=Linux \
