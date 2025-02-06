@@ -91,18 +91,17 @@ define Build/Configure/Default
 	(cd $(CMAKE_BINARY_DIR); \
 		CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 		CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)" \
-		LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
 		PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-		PYTHON_INCLUDE_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
-		PYTHON_LIBRARY_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
+		PYTHON_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
+		PYTHON_LIBRARY_DIRS="$(PYTHON3_LIB_DIR)" \
 		PYTHON_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
 		PYTHON_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
 		PYTHON_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
 		PYTHON3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-		PYTHON3_INCLUDE_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
-		PYTHON3_LIBRARY_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
+		PYTHON3_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
+		PYTHON3_LIBRARY_DIRS="$(PYTHON3_LIB_DIR)" \
 		PYTHON3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
 		PYTHON3_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
 		PYTHON3_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
