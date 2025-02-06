@@ -36,6 +36,16 @@ CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DPYBIND11_TEST=ON
 
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install)
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/$(PYTHON3_PKG_DIR)
