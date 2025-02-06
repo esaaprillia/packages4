@@ -776,7 +776,7 @@ PKG_DICTIONARIES:= \
 	compat \
 	freeradius freeradius.internal \
 	rfc2865 rfc2866 rfc2867 rfc2868 rfc2869 rfc3162 rfc3576 rfc3580 \
-	rfc4072 rfc4372 rfc4675 rfc4679 rfc5580 rfc6911 \
+	rfc4072 rfc4372 rfc4675 rfc4679 rfc4818 rfc5580 rfc6911 \
 	microsoft \
 	wispr \
 
