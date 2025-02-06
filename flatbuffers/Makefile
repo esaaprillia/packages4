@@ -18,6 +18,7 @@ PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/flatbuffers
@@ -31,6 +32,11 @@ endef
 define Package/flatbuffers/description
 	FlatBuffers is a cross platform serialization library architected for maximum memory efficiency. It allows you to directly access serialized data without parsing/unpacking it first, while still having great forwards/backwards compatibility.
 endef
+
+CMAKE_HOST_OPTIONS += \
+	-DFLATBUFFERS_BUILD_FLATLIB=OFF \
+	-DFLATBUFFERS_BUILD_SHAREDLIB=ON \
+	-DFLATBUFFERS_BUILD_TESTS=OFF
 
 CMAKE_OPTIONS += \
 	-DFLATBUFFERS_BUILD_FLATLIB=OFF \
@@ -71,4 +77,14 @@ define Package/flatbuffers/install
 	  $(1)/usr/lib/
 endef
 
+define Host/Install
+	$(INSTALL_DIR) \
+	  $(STAGING_DIR)/usr/bin
+
+	$(CP) \
+	  $(HOST_CMAKE_BINARY_DIR)/bin/flatc \
+	  $(STAGING_DIR)/usr/bin/
+endef
+
 $(eval $(call BuildPackage,flatbuffers))
+$(eval $(call HostBuild))
