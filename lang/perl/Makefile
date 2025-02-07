@@ -125,7 +125,7 @@ endef
 ifeq ($(CONFIG_arc),)
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/lib/perl5/$(PERL_VERSION)
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/lib/perl5/$(PERL_VERSION) $(1)/usr/lib/perl5/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/perl5/$(PERL_VERSION) $(1)/usr/lib/perl5/
 endef
 endif
 
