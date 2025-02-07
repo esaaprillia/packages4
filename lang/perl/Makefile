@@ -31,6 +31,7 @@ define Package/perl/description
 endef
 
 define Build/Configure
+	cd $(PKG_BUILD_DIR); \
 	./Configure -des \
 		-Dcccdlflags='-fPIC' \
 		-Dccdlflags='-rdynamic' \
