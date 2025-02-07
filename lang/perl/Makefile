@@ -45,7 +45,7 @@ define Build/Configure
 		-Dsitelib=/usr/lib/share/perl5/site_perl \
 		-Dsitearch=/usr/lib/perl5/site_perl \
 		-Dlocincpth=' ' \
-		-Doptimize="$(TARGET_CFLAGS)" \
+		-Doptimize="-O2" \
 		-Duselargefiles \
 		-Dusethreads \
 		-Duseshrplib \
