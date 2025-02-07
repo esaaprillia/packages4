@@ -30,7 +30,7 @@ define Package/perl/description
 	FlatBuffers is a cross platform serialization library architected for maximum memory efficiency. It allows you to directly access serialized data without parsing/unpacking it first, while still having great forwards/backwards compatibility.
 endef
 
-CONFIGURE_CMD = \
+define Build/Configure
 	./Configure -des \
 		-Dcccdlflags='-fPIC' \
 		-Dccdlflags='-rdynamic' \
@@ -62,6 +62,7 @@ CONFIGURE_CMD = \
 		-Ud_off64_t \
 		-Dusenm \
 		-Duse64bitint
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
