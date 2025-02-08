@@ -63,11 +63,6 @@ define Build/Configure
 		-Duse64bitint
 endef
 
-define Build/Compile
-	cd $(PKG_BUILD_DIR); \
-	./Configure
-endef
-
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
