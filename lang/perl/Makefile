@@ -33,9 +33,6 @@ endef
 define Build/Configure
 	cd $(PKG_BUILD_DIR); \
 	./Configure -des \
-		-Dusecrosscompile \
-		-Dcccdlflags='-fPIC' \
-		-Dccdlflags='-rdynamic' \
 		-Dprefix=/usr \
 		-Dprivlib=/usr/share/perl5/core_perl \
 		-Darchlib=/usr/lib/perl5/core_perl \
