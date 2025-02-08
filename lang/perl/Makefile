@@ -33,6 +33,8 @@ endef
 define Build/Configure
 	cd $(PKG_BUILD_DIR); \
 	./Configure -des \
+		-Dusecrosscompile \
+		-Dtargethost='HOSTCC' \
 		-Dcc='$(TARGET_CC)' \
 		-Dcccdlflags='-fPIC' \
 		-Dccdlflags='-rdynamic' \
