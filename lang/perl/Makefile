@@ -33,6 +33,7 @@ endef
 define Build/Configure
 	cd $(PKG_BUILD_DIR); \
 	./Configure -des \
+		-Dcc='$(TARGET_CC)' \
 		-Dcccdlflags='-fPIC' \
 		-Dccdlflags='-rdynamic' \
 		-Dprefix=/usr \
@@ -45,7 +46,7 @@ define Build/Configure
 		-Dsitelib=/usr/lib/share/perl5/site_perl \
 		-Dsitearch=/usr/lib/perl5/site_perl \
 		-Dlocincpth=' ' \
-		-Doptimize="-O2" \
+		-Doptimize='-O2' \
 		-Duselargefiles \
 		-Dusethreads \
 		-Duseshrplib \
