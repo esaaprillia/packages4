@@ -1,10 +1,3 @@
-#
-# Copyright (C) 2008-2010 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
@@ -16,13 +9,15 @@ include $(INCLUDE_DIR)/package.mk
 
 define KernelPackage/unicam-bcm2835
   TITLE:=BCM2835 unicam
+  SUBMENU:=$(VIDEO_MENU)
+  URL:=https://github.com/dtaht/sch_cake
   KCONFIG:= \
     CONFIG_VIDEO_BCM2835_UNICAM \
     CONFIG_VIDEO_V4L2_SUBDEV_API
   FILES:= \
     $(LINUX_DIR)/drivers/media/platform/bcm2835/bcm2835-unicam.ko
   AUTOLOAD:=$(call AutoLoad,66,bcm2835-unicam)
-  $(call AddDepends/video,@TARGET_bcm27xx kmod-video-dma-contig kmod-video-fwnode kmod-video-videobuf2)
+  DEPENDS:=@TARGET_bcm27xx +kmod-video-dma-contig +kmod-video-fwnode +kmod-video-videobuf2
 endef
 
 include $(INCLUDE_DIR)/kernel-defaults.mk
