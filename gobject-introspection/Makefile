@@ -45,7 +45,8 @@ MESON_HOST_ARGS += \
 MESON_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
-	-Dgtk_doc=false
+	-Dgtk_doc=false \
+	-Dbuild_introspection_data=false
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
