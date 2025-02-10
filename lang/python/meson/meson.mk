@@ -78,16 +78,16 @@ define Meson/CreateCrossFile
 	$(STAGING_DIR_HOST)/bin/sed \
 		-e "s|@CC@|$(foreach BIN,$(TARGET_CC),'$(BIN)',)|" \
 		-e "s|@CXX@|$(foreach BIN,$(TARGET_CXX),'$(BIN)',)|" \
-		-e "s|@LD@|$(foreach BIN,$(TARGET_CC),'$(BIN)',)|" \
+		-e "s|@LD@|$(foreach FLAG,$(TARGET_LINKER) $(PYTHON3_VARS),'$(FLAG)',)|" \
 		-e "s|@AR@|$(TARGET_AR)|" \
 		-e "s|@STRIP@|$(TARGET_CROSS)strip|" \
 		-e "s|@NM@|$(TARGET_NM)|" \
 		-e "s|@PKGCONFIG@|$(PKG_CONFIG)|" \
 		-e "s|@CMAKE@|$(STAGING_DIR_HOST)/bin/cmake|" \
 		-e "s|@PYTHON@|$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)|" \
-		-e "s|@CFLAGS@|$(foreach FLAG,$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS) $(PYTHON3_VARS),'$(FLAG)',)|" \
-		-e "s|@CXXFLAGS@|$(foreach FLAG,$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS) $(PYTHON3_VARS),'$(FLAG)',)|" \
-		-e "s|@LDFLAGS@|$(foreach FLAG,$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) $(PYTHON3_VARS),'$(FLAG)',)|" \
+		-e "s|@CFLAGS@|$(foreach FLAG,$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS),'$(FLAG)',)|" \
+		-e "s|@CXXFLAGS@|$(foreach FLAG,$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS),'$(FLAG)',)|" \
+		-e "s|@LDFLAGS@|$(foreach FLAG,$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS),'$(FLAG)',)|" \
 		-e "s|@ARCH@|$(MESON_ARCH)|" \
 		-e "s|@CPU@|$(MESON_CPU)|" \
 		-e "s|@ENDIAN@|$(if $(CONFIG_BIG_ENDIAN),big,little)|" \
