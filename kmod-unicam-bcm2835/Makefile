@@ -2,6 +2,7 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=unicam-bcm2835
+PKG_VERSION:=$(LINUX_VERSION)
 PKG_RELEASE:=1
 PKG_LICENSE:=GPL-2.0
 
