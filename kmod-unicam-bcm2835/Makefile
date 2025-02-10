@@ -28,8 +28,4 @@ define KernelPackage/unicam-bcm2835/description
   therefore fail to probe.
 endef
 
-define Build/Compile
-	$(KERNEL_MAKE) M="$(PKG_BUILD_DIR)" modules
-endef
-
 $(eval $(call KernelPackage,unicam-bcm2835))
