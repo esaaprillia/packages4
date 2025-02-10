@@ -12,11 +12,7 @@ define KernelPackage/unicam-bcm2835
   TITLE:=BCM2835 unicam
   SUBMENU:=$(VIDEO_MENU)
   URL:=https://github.com/dtaht/sch_cake
-  KCONFIG:= \
-    CONFIG_VIDEO_BCM2835_UNICAM \
-    CONFIG_VIDEO_V4L2_SUBDEV_API
-  FILES:= \
-    $(LINUX_DIR)/drivers/media/platform/bcm2835/bcm2835-unicam.ko
+  FILES:=$(LINUX_DIR)/drivers/media/platform/bcm2835/bcm2835-unicam.ko
   AUTOLOAD:=$(call AutoLoad,66,bcm2835-unicam)
   DEPENDS:=@TARGET_bcm27xx +kmod-video-dma-contig +kmod-video-fwnode +kmod-video-videobuf2
 endef
