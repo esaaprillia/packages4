@@ -1,14 +1,7 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-test-warnings
-PKG_VERSION:=0.032
+PKG_VERSION:=0.038
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Test-Warnings-$(PKG_VERSION).tar.gz
@@ -57,9 +50,8 @@ define Build/Compile
 endef
 
 define Package/perl-test-warnings/install
-	$(call perlmod/Install,$(1),Test)
+	$(call perlmod/Install,$(1),Test Test2)
 endef
-
 
 $(eval $(call BuildPackage,perl-test-warnings))
 $(eval $(call HostBuild))
