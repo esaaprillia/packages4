@@ -76,20 +76,20 @@ endef
 
 define Meson/CreateCrossFile
 	$(STAGING_DIR_HOST)/bin/sed \
-		-e "s|@CC@|$(TARGET_CC)|" \
-		-e "s|@CCSHARED@|$(TARGET_CC) $(FPIC)|" \
-		-e "s|@CXX@|$(TARGET_CXX)|" \
-		-e "s|@LD@|$(TARGET_CC)|" \
-		-e "s|@LDSHARED@|$(TARGET_CC) -shared|" \
+		-e "s|@CC@|$(foreach BIN,$(TARGET_CC),'$(BIN)',)|" \
+		-e "s|@CCSHARED@|$(foreach FLAG,$(TARGET_CC) $(FPIC),'$(FLAG)',)|" \
+		-e "s|@CXX@|$(foreach BIN,$(TARGET_CXX),'$(BIN)',)|" \
+		-e "s|@LD@|$(foreach FLAG,$(TARGET_LINKER),'$(FLAG)',)|" \
+		-e "s|@LDSHARED@|$(foreach FLAG,$(TARGET_CC) -shared,'$(FLAG)',)|" \
 		-e "s|@AR@|$(TARGET_AR)|" \
 		-e "s|@STRIP@|$(TARGET_CROSS)strip|" \
 		-e "s|@NM@|$(TARGET_NM)|" \
 		-e "s|@PKGCONFIG@|$(PKG_CONFIG)|" \
 		-e "s|@CMAKE@|$(STAGING_DIR_HOST)/bin/cmake|" \
 		-e "s|@PYTHON@|$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)|" \
-		-e "s|@CFLAGS@|$(TARGET_CFLAGS)|" \
-		-e "s|@CPPFLAGS@|$(TARGET_CPPFLAGS) -I$(PYTHON3_INC_DIR)|" \
-		-e "s|@LDFLAGS@|$(TARGET_LDFLAGS) -lpython$(PYTHON3_VERSION)|" \
+		-e "s|@CFLAGS@|$(foreach FLAG,$(TARGET_CFLAGS),'$(FLAG)',)|" \
+		-e "s|@CPPFLAGS@|$(foreach FLAG,$(TARGET_CPPFLAGS) -I$(PYTHON3_INC_DIR),'$(FLAG)',)|" \
+		-e "s|@LDFLAGS@|$(foreach FLAG,$(TARGET_LDFLAGS) -lpython$(PYTHON3_VERSION),'$(FLAG)',)|" \
 		-e "s|@_PYTHON_HOST_PLATFORM@|$(_PYTHON_HOST_PLATFORM)|" \
 		-e "s|@_PYTHON_SYSCONFIGDATA_NAME@|_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH)|" \
 		-e "s|@PYTHONPATH@|$(PYTHON3PATH)|" \
