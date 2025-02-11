@@ -1,14 +1,7 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-par-dist
-PKG_VERSION:=0.52
+PKG_VERSION:=0.53
 PKG_RELEASE:=1
 
 PKG_SOURCE:=PAR-Dist-$(PKG_VERSION).tar.gz
@@ -59,7 +52,6 @@ endef
 define Package/perl-par-dist/install
 	$(call perlmod/Install,$(1),PAR)
 endef
-
 
 $(eval $(call BuildPackage,perl-par-dist))
 $(eval $(call HostBuild))
