@@ -77,8 +77,10 @@ endef
 define Meson/CreateCrossFile
 	$(STAGING_DIR_HOST)/bin/sed \
 		-e "s|@CC@|$(foreach BIN,$(TARGET_CC),'$(BIN)',)|" \
+		-e "s|@CCSHARED@|$(foreach FLAG,$(TARGET_CC) $(FPIC),'$(FLAG)',)|" \
 		-e "s|@CXX@|$(foreach BIN,$(TARGET_CXX),'$(BIN)',)|" \
 		-e "s|@LD@|$(foreach FLAG,$(TARGET_LINKER),'$(FLAG)',)|" \
+		-e "s|@LDSHARED@|$(foreach FLAG,$(TARGET_CC) -shared,'$(FLAG)',)|" \
 		-e "s|@AR@|$(TARGET_AR)|" \
 		-e "s|@STRIP@|$(TARGET_CROSS)strip|" \
 		-e "s|@NM@|$(TARGET_NM)|" \
@@ -88,6 +90,10 @@ define Meson/CreateCrossFile
 		-e "s|@CFLAGS@|$(foreach FLAG,$(TARGET_CFLAGS),'$(FLAG)',)|" \
 		-e "s|@CPPFLAGS@|$(foreach FLAG,$(TARGET_CPPFLAGS) -I$(PYTHON3_INC_DIR),'$(FLAG)',)|" \
 		-e "s|@LDFLAGS@|$(foreach FLAG,$(TARGET_LDFLAGS) -lpython$(PYTHON3_VERSION),'$(FLAG)',)|" \
+		-e "s|@_PYTHON_HOST_PLATFORM@|$(_PYTHON_HOST_PLATFORM)|" \
+		-e "s|@_PYTHON_SYSCONFIGDATA_NAME@|_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH)|" \
+		-e "s|@PYTHONPATH@|$(PYTHON3PATH)|" \
+		-e "s|@_python_sysroot@|$(STAGING_DIR)|" \
 		-e "s|@ARCH@|$(MESON_ARCH)|" \
 		-e "s|@CPU@|$(MESON_CPU)|" \
 		-e "s|@ENDIAN@|$(if $(CONFIG_BIG_ENDIAN),big,little)|" \
