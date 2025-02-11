@@ -1,14 +1,7 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-test-mockmodule
-PKG_VERSION:=0.177.0
+PKG_VERSION:=0.179.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Test-MockModule-v$(PKG_VERSION).tar.gz
@@ -57,9 +50,8 @@ define Build/Compile
 endef
 
 define Package/perl-test-mockmodule/install
-	$(call perlmod/Install,$(1),inc)
+	$(call perlmod/Install,$(1),Test)
 endef
-
 
 $(eval $(call BuildPackage,perl-test-mockmodule))
 $(eval $(call HostBuild))
