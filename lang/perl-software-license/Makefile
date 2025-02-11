@@ -1,14 +1,7 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-software-license
-PKG_VERSION:=0.104004
+PKG_VERSION:=0.104006
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Software-License-$(PKG_VERSION).tar.gz
@@ -59,7 +52,6 @@ endef
 define Package/perl-software-license/install
 	$(call perlmod/Install,$(1),Software)
 endef
-
 
 $(eval $(call BuildPackage,perl-software-license))
 $(eval $(call HostBuild))
