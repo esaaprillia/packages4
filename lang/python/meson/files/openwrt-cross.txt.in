@@ -9,20 +9,11 @@ nm = '@NM@'
 pkg-config = '@PKGCONFIG@'
 cmake = '@CMAKE@'
 python = '@PYTHON@'
-CCSHARED = '@CCSHARED@'
-LDSHARED = '@LDSHARED@'
-_PYTHON_HOST_PLATFORM = '@_PYTHON_HOST_PLATFORM@'
-_PYTHON_SYSCONFIGDATA_NAME = '@_PYTHON_SYSCONFIGDATA_NAME@'
-PYTHONPATH = '@PYTHONPATH@'
-PYTHONDONTWRITEBYTECODE='1'
-_python_sysroot = '@_python_sysroot@'
-_python_prefix='/usr'
-_python_exec_prefix='/usr'
 
 [built-in options]
 c_args = [@CFLAGS@]
 c_link_args = [@LDFLAGS@]
-cpp_args = [@CPPFLAGS@]
+cpp_args = [@CXXFLAGS@]
 cpp_link_args = [@LDFLAGS@]
 prefix = '/usr'
 
