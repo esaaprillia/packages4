@@ -85,13 +85,9 @@ define Meson/CreateCrossFile
 		-e "s|@PKGCONFIG@|$(PKG_CONFIG)|" \
 		-e "s|@CMAKE@|$(STAGING_DIR_HOST)/bin/cmake|" \
 		-e "s|@PYTHON@|$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)|" \
-		-e "s|@CFLAGS@|$(foreach FLAG,$(TARGET_CFLAGS),'$(FLAG)',)|" \
-		-e "s|@CPPFLAGS@|$(foreach FLAG,$(TARGET_CPPFLAGS) -I$(PYTHON3_INC_DIR),'$(FLAG)',)|" \
-		-e "s|@LDFLAGS@|$(foreach FLAG,$(TARGET_LDFLAGS) -lpython$(PYTHON3_VERSION),'$(FLAG)',)|" \
-		-e "s|@_PYTHON_HOST_PLATFORM@|$(_PYTHON_HOST_PLATFORM)|" \
-		-e "s|@_PYTHON_SYSCONFIGDATA_NAME@|_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH)|" \
-		-e "s|@PYTHONPATH@|$(PYTHON3PATH)|" \
-		-e "s|@_python_sysroot@|$(STAGING_DIR)|" \
+		-e "s|@CFLAGS@|$(foreach FLAG,$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS),'$(FLAG)',)|" \
+		-e "s|@CXXFLAGS@|$(foreach FLAG,$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS),'$(FLAG)',)|" \
+		-e "s|@LDFLAGS@|$(foreach FLAG,$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS),'$(FLAG)',)|" \
 		-e "s|@ARCH@|$(MESON_ARCH)|" \
 		-e "s|@CPU@|$(MESON_CPU)|" \
 		-e "s|@ENDIAN@|$(if $(CONFIG_BIG_ENDIAN),big,little)|" \
