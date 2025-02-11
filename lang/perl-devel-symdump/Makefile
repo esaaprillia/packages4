@@ -1,10 +1,3 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-devel-symdump
@@ -59,7 +52,6 @@ endef
 define Package/perl-devel-symdump/install
 	$(call perlmod/Install,$(1),Devel)
 endef
-
 
 $(eval $(call BuildPackage,perl-devel-symdump))
 $(eval $(call HostBuild))
