@@ -1,14 +1,7 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-scalar-list-utils
-PKG_VERSION:=1.63
+PKG_VERSION:=1.68
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Scalar-List-Utils-$(PKG_VERSION).tar.gz
@@ -59,7 +52,6 @@ endef
 define Package/perl-scalar-list-utils/install
 	$(call perlmod/Install,$(1),List Scalar Sub auto/List)
 endef
-
 
 $(eval $(call BuildPackage,perl-scalar-list-utils))
 $(eval $(call HostBuild))
