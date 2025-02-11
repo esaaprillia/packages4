@@ -31,7 +31,7 @@ define Package/perl-mro-compat
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Perl MRO Compat
+  TITLE:=Perl inc latest
   URL:=https://metacpan.org/dist/MRO-Compat
   DEPENDS:=perl +perlbase-base
 endef
