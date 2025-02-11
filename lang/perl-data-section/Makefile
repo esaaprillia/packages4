@@ -1,10 +1,3 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-data-section
@@ -59,7 +52,6 @@ endef
 define Package/perl-data-section/install
 	$(call perlmod/Install,$(1),Data)
 endef
-
 
 $(eval $(call BuildPackage,perl-data-section))
 $(eval $(call HostBuild))
