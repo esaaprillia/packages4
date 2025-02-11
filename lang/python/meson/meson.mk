@@ -78,7 +78,7 @@ define Meson/CreateCrossFile
 	$(STAGING_DIR_HOST)/bin/sed \
 		-e "s|@CC@|$(foreach BIN,$(TARGET_CC),'$(BIN)',)|" \
 		-e "s|@CXX@|$(foreach BIN,$(TARGET_CXX),'$(BIN)',)|" \
-		-e "s|@LD@|$(foreach FLAG,$(PYTHON3_VARS),'$(FLAG)',)|" \
+		-e "s|@LD@|$(foreach FLAG,$(PYTHON3_VARS) $(TARGET_LINKER),'$(FLAG)',)|" \
 		-e "s|@AR@|$(TARGET_AR)|" \
 		-e "s|@STRIP@|$(TARGET_CROSS)strip|" \
 		-e "s|@NM@|$(TARGET_NM)|" \
