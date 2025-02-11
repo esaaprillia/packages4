@@ -50,7 +50,7 @@ define Build/Compile
 endef
 
 define Package/perl-archive-zip/install
-	$(call perlmod/Install,$(1),inc)
+	$(call perlmod/Install,$(1),Archive)
 endef
 
 $(eval $(call BuildPackage,perl-archive-zip))
