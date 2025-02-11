@@ -26,7 +26,7 @@ define Package/perl-software-license
   CATEGORY:=Languages
   TITLE:=Perl Software License
   URL:=https://metacpan.org/dist/Software-License
-  DEPENDS:=perl +perlbase-base +perl-try-tiny +perl-data-section +perl-text-template
+  DEPENDS:=perl +perlbase-base +perl-data-section +perl-text-template +perl-extutils-makemaker +perl-try-tiny
 endef
 
 define Host/Configure
