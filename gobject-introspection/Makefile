@@ -37,6 +37,8 @@ define Package/gobject-introspection/description
 	The goal of the project is to describe the APIs and collect them in a uniform, machine readable format.
 endef
 
+MESON_VARS += $(PYTHON3_VARS)
+
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
