@@ -1,14 +1,7 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-pod-parser
-PKG_VERSION:=1.66
+PKG_VERSION:=1.67
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Pod-Parser-$(PKG_VERSION).tar.gz
@@ -58,8 +51,9 @@ endef
 
 define Package/perl-pod-parser/install
 	$(call perlmod/Install,$(1),Pod)
+	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/podselect $(1)/usr/bin/
 endef
-
 
 $(eval $(call BuildPackage,perl-pod-parser))
 $(eval $(call HostBuild))
