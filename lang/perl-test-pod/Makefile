@@ -1,10 +1,3 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-test-pod
@@ -59,7 +52,6 @@ endef
 define Package/perl-test-pod/install
 	$(call perlmod/Install,$(1),Test)
 endef
-
 
 $(eval $(call BuildPackage,perl-test-pod))
 $(eval $(call HostBuild))
