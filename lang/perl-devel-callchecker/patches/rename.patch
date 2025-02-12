@@ -1,1 +1,4 @@
-mmm
+diff --git a/Build.PL b/Makefile.PL
+similarity index 100%
+rename from Build.PL
+rename to Makefile.PL
