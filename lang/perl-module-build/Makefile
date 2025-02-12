@@ -1,10 +1,3 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-module-build
@@ -19,9 +12,9 @@ PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Module-Build-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host
+PKG_BUILD_DEPENDS:=perl/host perl-software-license/host perl-try-tiny/host perl-inc-latest/host perl-par-dist/host
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Module-Build-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host
+HOST_BUILD_DEPENDS:=perl/host perl-software-license/host perl-try-tiny/host perl-inc-latest/host perl-par-dist/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -33,7 +26,7 @@ define Package/perl-module-build
   CATEGORY:=Languages
   TITLE:=Perl Module Build
   URL:=https://metacpan.org/dist/Module-Build
-  DEPENDS:=perl +perlbase-essential
+  DEPENDS:=perl +perlbase-essential +perl-software-license +perl-try-tiny +perl-inc-latest +perl-par-dist
 endef
 
 define Host/Configure
@@ -44,9 +37,9 @@ define Host/Compile
         $(call perlmod/host/Compile,,)
 endef
 
-#define Host/Install
-#        $(call perlmod/host/Install,$(1),)
-#endef
+define Host/Install
+        $(call perlmod/host/Install,$(1),)
+endef
 
 define Build/Configure
 	$(call perlmod/Configure,,)
@@ -58,6 +51,8 @@ endef
 
 define Package/perl-module-build/install
 	$(call perlmod/Install,$(1),Module)
+	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/config_data $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,perl-module-build))
