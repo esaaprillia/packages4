@@ -18,7 +18,7 @@ PKG_BUILD_DEPENDS:=perl/host perl-ipc-run3/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(TOPDIR)/feeds/mosdns/perl/perlmod.mk
+include ../perl/perlmod.mk
 
 define Package/perl-ipc-run3
   SUBMENU:=Perl
