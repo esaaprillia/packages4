@@ -1,14 +1,7 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-ipc-run3
-PKG_VERSION:=0.048
+PKG_VERSION:=0.049
 PKG_RELEASE:=1
 
 PKG_SOURCE:=IPC-Run3-$(PKG_VERSION).tar.gz
