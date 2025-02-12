@@ -58,7 +58,7 @@ define Build/Compile
 endef
 
 define Package/perl-try-tiny/install
-	$(call perlmod/Install,$(1),Try auto/Try)
+	$(call perlmod/Install,$(1),Try)
 endef
 
 $(eval $(call BuildPackage,perl-try-tiny))
