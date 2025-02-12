@@ -59,7 +59,7 @@ endef
 define perlmod/host/Compile
 	($(FLOCK) -s -w 300 9 || { echo perlmod/host/Compile: failed to acquire lock; exit 1; }; \
 	$(2) \
-	$(MAKE) -C $(HOST_BUILD_DIR) \
+	$(HOST_BUILD_DIR)/Build \
 		$(1) \
 		install \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock
@@ -68,7 +68,7 @@ endef
 define perlmod/host/Install
 	($(FLOCK) -s -w 300 9 || { echo perlmod/host/Install: failed to acquire lock; exit 1; }; \
 	$(2) \
-	$(MAKE) -C $(HOST_BUILD_DIR) \
+	$(HOST_BUILD_DIR)/Build \
 		$(1) \
 		install \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock
