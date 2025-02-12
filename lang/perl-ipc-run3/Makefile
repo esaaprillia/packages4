@@ -19,13 +19,13 @@ PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/IPC-Run3-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host
+HOST_BUILD_DEPENDS:=perl/host perl-ipc-run3/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/IPC-Run3-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host
+PKG_BUILD_DEPENDS:=perl/host perl-ipc-run3/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../perl/perlmod.mk
+include $(TOPDIR)/feeds/mosdns/perl/perlmod.mk
 
 define Package/perl-ipc-run3
   SUBMENU:=Perl
