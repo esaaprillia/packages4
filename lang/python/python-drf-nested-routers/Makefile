@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=drf-nested-routers
+PKG_NAME:=python3-drf-nested-routers
 PKG_VERSION:=0.94.1
 PKG_RELEASE:=1
 
