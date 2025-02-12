@@ -36,11 +36,12 @@ PERLBASE_TESTSDIR:=/usr/share/perl/perlbase-tests
 PERLMOD_TESTSDIR:=/usr/share/perl/perlmod-tests
 
 FLOCK:=$(STAGING_DIR_HOST)/bin/flock
+BUILD:=Build
 
 define perlmod/host/relink
 	rm -f $(1)/Makefile.aperl
 	($(FLOCK) -w 900 9 || { echo perlmod/host/relink: failed to acquire lock; exit 1; }; \
-	    $(MAKE) -C $(1) perl && \
+	    $(BUILD) $(1) perl && \
 	    $(INSTALL_BIN) $(1)/perl $(PERL_CMD) && \
 	    $(INSTALL_BIN) $(1)/perl $(STAGING_DIR_HOSTPKG)/usr/bin/perl \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock
@@ -59,7 +60,7 @@ endef
 define perlmod/host/Compile
 	($(FLOCK) -s -w 300 9 || { echo perlmod/host/Compile: failed to acquire lock; exit 1; }; \
 	$(2) \
-	$(HOST_BUILD_DIR)/Build \
+	$(BUILD) $(HOST_BUILD_DIR) \
 		$(1) \
 		install \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock
@@ -68,7 +69,7 @@ endef
 define perlmod/host/Install
 	($(FLOCK) -s -w 300 9 || { echo perlmod/host/Install: failed to acquire lock; exit 1; }; \
 	$(2) \
-	$(HOST_BUILD_DIR)/Build \
+	$(BUILD) $(HOST_BUILD_DIR) \
 		$(1) \
 		install \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock
