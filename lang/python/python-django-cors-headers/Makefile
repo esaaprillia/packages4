@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=django-cors-headers
+PKG_NAME:=python3-django-cors-headers
 PKG_VERSION:=4.6.0
 PKG_RELEASE:=1
 
