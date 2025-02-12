@@ -50,7 +50,7 @@ define Build/Compile
 endef
 
 define Package/perl-devel-callchecker/install
-	$(call perlmod/Install,$(1),Class)
+	$(call perlmod/Install,$(1),Devel auto/Devel)
 endef
 
 $(eval $(call BuildPackage,perl-devel-callchecker))
