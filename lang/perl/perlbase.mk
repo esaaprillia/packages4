@@ -1185,7 +1185,7 @@ DEPENDS+=+perlbase-essential +perlbase-list
 endef
 
 define Package/perlbase-scalar/install
-$(call perlmod/Install,$(1),Scalar Sub,)
+$(call perlmod/Install,$(1),List Scalar Sub auto/List,)
 $(call perlmod/InstallBaseTests,$(1),cpan/Scalar-List-Utils/t)
 endef
 
