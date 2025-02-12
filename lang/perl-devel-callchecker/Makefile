@@ -18,7 +18,7 @@ PKG_BUILD_DEPENDS:=perl/host perl-module-build/host perl-test-pod/host perl-test
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../perl/perlmod.mk
+include ../perl/perlmod-build.mk
 
 define Package/perl-devel-callchecker
   SUBMENU:=Perl
