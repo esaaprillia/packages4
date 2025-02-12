@@ -1,14 +1,7 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-module-scandeps
-PKG_VERSION:=1.35
+PKG_VERSION:=1.37
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Module-ScanDeps-$(PKG_VERSION).tar.gz
@@ -58,8 +51,9 @@ endef
 
 define Package/perl-module-scandeps/install
 	$(call perlmod/Install,$(1),Module)
+	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/scandeps.pl $(1)/usr/bin/
 endef
-
 
 $(eval $(call BuildPackage,perl-module-scandeps))
 $(eval $(call HostBuild))
