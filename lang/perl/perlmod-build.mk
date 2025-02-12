@@ -40,7 +40,7 @@ FLOCK:=$(STAGING_DIR_HOST)/bin/flock
 define perlmod/host/relink
 	rm -f $(1)/Makefile.aperl
 	($(FLOCK) -w 900 9 || { echo perlmod/host/relink: failed to acquire lock; exit 1; }; \
-	    $(INSTALL_DIR) $(1)/perl
+	    $(INSTALL_DIR) $(1)/perl \
 	    $(INSTALL_BIN) $(1)/perl $(PERL_CMD) && \
 	    $(INSTALL_BIN) $(1)/perl $(STAGING_DIR_HOSTPKG)/usr/bin/perl \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock
