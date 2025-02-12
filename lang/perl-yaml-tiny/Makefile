@@ -1,14 +1,7 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-yaml-tiny
-PKG_VERSION:=1.74
+PKG_VERSION:=1.76
 PKG_RELEASE:=1
 
 PKG_SOURCE:=YAML-Tiny-$(PKG_VERSION).tar.gz
@@ -59,7 +52,6 @@ endef
 define Package/perl-yaml-tiny/install
 	$(call perlmod/Install,$(1),YAML)
 endef
-
 
 $(eval $(call BuildPackage,perl-yaml-tiny))
 $(eval $(call HostBuild))
