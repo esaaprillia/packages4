@@ -26,7 +26,7 @@ define Package/perl-crypt-eksblowfish
   CATEGORY:=Languages
   TITLE:=Perl Crypt-Eksblowfish
   URL:=https://metacpan.org/dist/Crypt-Eksblowfish
-  DEPENDS:=perl +perlbase-base +perl-class-mix +perl-module-build
+  DEPENDS:=perl +perlbase-base +perl-class-mix
 endef
 
 define Host/Configure
