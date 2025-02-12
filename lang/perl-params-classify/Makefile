@@ -1,38 +1,31 @@
-#
-# Copyright (C) 2014 - 2016 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-file-remove
-PKG_VERSION:=1.61
+PKG_NAME:=perl-params-classify
+PKG_VERSION:=0.015
 PKG_RELEASE:=1
 
-PKG_SOURCE:=File-Remove-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/
+PKG_SOURCE:=Params-Classify-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
-HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/File-Remove-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/File-Remove-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Params-Classify-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host perl-module-build/host
+PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Params-Classify-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=perl/host perl-module-build/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
-define Package/perl-file-remove
+define Package/perl-params-classify
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Perl File Remove
-  URL:=https://metacpan.org/dist/File-Remove
+  TITLE:=Perl Params-Classify
+  URL:=https://metacpan.org/dist/Params-Classify
   DEPENDS:=perl +perlbase-base
 endef
 
@@ -56,10 +49,9 @@ define Build/Compile
 	$(call perlmod/Compile,,)
 endef
 
-define Package/perl-file-remove/install
-	$(call perlmod/Install,$(1),File)
+define Package/perl-params-classify/install
+	$(call perlmod/Install,$(1),Params auto/Params)
 endef
 
-
-$(eval $(call BuildPackage,perl-file-remove))
+$(eval $(call BuildPackage,perl-params-classify))
 $(eval $(call HostBuild))
