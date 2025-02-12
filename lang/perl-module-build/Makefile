@@ -37,9 +37,9 @@ define Host/Compile
         $(call perlmod/host/Compile,,)
 endef
 
-#define Host/Install
-#        $(call perlmod/host/Install,$(1),)
-#endef
+define Host/Install
+        $(call perlmod/host/Install,$(1),)
+endef
 
 define Build/Configure
 	$(call perlmod/Configure,,)
