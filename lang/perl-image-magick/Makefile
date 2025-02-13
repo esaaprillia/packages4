@@ -2,9 +2,10 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-image-magick
 PKG_VERSION:=7.1.1
+PKG_VERSION_REV:=28
 PKG_RELEASE:=1
 
-PKG_SOURCE:=Image-Magick-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=Image-Magick-$(PKG_VERSION)-$(PKG_VERSION_REV).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/J/JC/JCRISTY/
 PKG_HASH:=skip
 
