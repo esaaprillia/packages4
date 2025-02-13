@@ -1,0 +1,30 @@
+From ee9374fb0f165ee009776a836fae0cea75c1b37f Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 13 Feb 2025 10:02:42 +0800
+Subject: [PATCH] Update Makefile.PL
+
+---
+ Makefile.PL | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 0c16f9a..ce0b1cc 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -161,11 +161,11 @@ foreach my $delegate (@tested_delegates) {
+ }
+ 
+ # defaults for LIBS & INC & CCFLAGS params that we later pass to Writemakefile
+-my $INC_magick = '-I/usr/local/include/ImageMagick-7 -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/include/libxml2 -I"' . $Config{'usrinc'} . '/ImageMagick-7"';
+-my $LIBS_magick = '-L/usr/local/lib -lMagickCore-7.Q16HDRI -lm -L' . $Config{'archlib'} . '/CORE';
+-my $CCFLAGS_magick = "$Config{'ccflags'} -I/usr/include/freetype2 -g -O2 -Wall -pthread -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16";
+-my $LDFLAGS_magick   = "-L/usr/local/lib -lMagickCore-7.Q16HDRI $Config{'ldflags'} ";
+-my $LDDLFLAGS_magick = "-L/usr/local/lib -lMagickCore-7.Q16HDRI $Config{'lddlflags'} ";
++my $INC_magick = '-I@STAGING_DIR@/include/ImageMagick-7 -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I@STAGING_DIR@/include/libxml2 -I"' . $Config{'usrinc'} . '/ImageMagick-7"';
++my $LIBS_magick = '-L@STAGING_DIR@/lib -lMagickCore-7.Q16HDRI -lm -L' . $Config{'archlib'} . '/CORE';
++my $CCFLAGS_magick = "$Config{'ccflags'} -I@STAGING_DIR@/include/freetype2 -g -O2 -Wall -pthread -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16";
++my $LDFLAGS_magick   = "-L@STAGING_DIR@/lib -lMagickCore-7.Q16HDRI $Config{'ldflags'} ";
++my $LDDLFLAGS_magick = "-L@STAGING_DIR@/lib -lMagickCore-7.Q16HDRI $Config{'lddlflags'} ";
+ 
+ if (($^O eq 'MSWin32') && ($Config{cc} =~ /gcc/)) {
+   my($Ipaths, $Lpaths) = AutodetectWin32gcc();
