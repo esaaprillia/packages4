@@ -44,7 +44,7 @@ define perlmod/host/relink
 	    $(PERL_CMD) Build $(1) perl && \
 	    $(INSTALL_BIN) $(1)/perl $(PERL_CMD) && \
 	    $(INSTALL_BIN) $(1)/perl $(STAGING_DIR_HOSTPKG)/usr/bin/perl \
-	) 9> $(TMP_DIR)/.perlmod-perl.flock;
+	) 9> $(TMP_DIR)/.perlmod-perl.flock
 endef
 
 define perlmod/host/Configure
@@ -64,7 +64,7 @@ define perlmod/host/Compile
 	$(PERL_CMD) Build \
 		$(1) \
 		install \
-	) 9> $(TMP_DIR)/.perlmod-perl.flock;
+	) 9> $(TMP_DIR)/.perlmod-perl.flock
 endef
 
 define perlmod/host/Install
@@ -74,7 +74,7 @@ define perlmod/host/Install
 	$(PERL_CMD) Build \
 		$(1) \
 		install \
-	) 9> $(TMP_DIR)/.perlmod-perl.flock;
+	) 9> $(TMP_DIR)/.perlmod-perl.flock
 	$(call perlmod/host/relink,$(HOST_BUILD_DIR))
 endef
 
