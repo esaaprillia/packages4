@@ -75,7 +75,6 @@ define perlmod/host/Install
 		$(1) \
 		install \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock;
-	$(call perlmod/host/relink,$(HOST_BUILD_DIR))
 endef
 
 define perlmod/Configure
