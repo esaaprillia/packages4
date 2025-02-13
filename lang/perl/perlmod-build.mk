@@ -51,7 +51,7 @@ define perlmod/host/Configure
 	(cd $(HOST_BUILD_DIR); \
 	$(FLOCK) -s -w 300 9 || { echo perlmod/host/Configure: failed to acquire lock; exit 1; }; \
 	$(2) \
-	$(PERL_CMD) Build.PL --config cc="$(HOSTCC)" ld="$(HOSTCC)" cflags="$(HOST_CFLAGS)" cppflags="$(HOST_CPPFLAGS)" ldflags="$(HOST_LDFLAGS)" \
+	$(PERL_CMD) Build.PL --config cc="$(HOSTCC)" --config ld="$(HOSTCC)" --config cflags="$(HOST_CFLAGS)" --config cppflags="$(HOST_CPPFLAGS)" --config ldflags="$(HOST_LDFLAGS)" \
 		$(1) \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock;
 endef
