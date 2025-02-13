@@ -27,7 +27,12 @@ define Package/perl-image-magick
   CATEGORY:=Languages
   TITLE:=Perl Image-Magick
   URL:=https://metacpan.org/dist/Image-Magick
-  DEPENDS:=perl +perlbase-base +imagemagick
+  DEPENDS:=perl +perlbase-base +imagemagick +libxml2 +libfreetype
+endef
+
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's,@STAGING_DIR@,$(STAGING_DIR)/usr,g' $(PKG_BUILD_DIR)/Makefile.PL
 endef
 
 define Host/Configure
