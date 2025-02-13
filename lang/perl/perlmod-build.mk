@@ -52,7 +52,7 @@ define perlmod/host/Configure
 	$(FLOCK) -s -w 300 9 || { echo perlmod/host/Configure: failed to acquire lock; exit 1; }; \
 	PERL_MM_USE_DEFAULT=1 \
 	$(2) \
-	$(PERL_CMD) Build.PL \
+	$(PERL_CMD) Build.PL --config cc="$(HOSTCC)" --config ld="$(HOSTCC)" \
 		$(1) \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock;
 endef
