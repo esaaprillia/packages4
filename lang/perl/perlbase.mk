@@ -242,6 +242,20 @@ endef
 $(eval $(call BuildPackage,perlbase-charnames))
 
 
+define Package/perlbase-carp
+$(call Package/perlbase-template)
+TITLE:=Carp perl module
+DEPENDS+=+perlbase-base
+endef
+
+define Package/perlbase-carp/install
+$(call perlmod/Install,$(1),Carp.pm Carp,)
+$(call perlmod/InstallBaseTests,$(1),dist/Carp/t)
+endef
+
+$(eval $(call BuildPackage,perlbase-carp))
+
+
 define Package/perlbase-class
 $(call Package/perlbase-template)
 TITLE:=Class perl module
@@ -276,7 +290,7 @@ TITLE:=Config perl module
 endef
 
 define Package/perlbase-config/install
-$(call perlmod/Install,$(1),Config Config.pm Config_git.pl Config_heavy.pl,)
+$(call perlmod/Install,$(1),Config Config.pm Config_git.pl Config_heavy.pl,Config.pod)
 $(call perlmod/InstallBaseTests,$(1),cpan/Config-Perl-V/t lib/Config.t lib/Config/Extensions.t)
 endef
 
@@ -286,11 +300,11 @@ $(eval $(call BuildPackage,perlbase-config))
 define Package/perlbase-cpan
 $(call Package/perlbase-template)
 TITLE:=CPAN perl module
-DEPENDS+=+perlbase-b +perlbase-config +perlbase-cwd +perlbase-dirhandle +perlbase-essential +perlbase-extutils +perlbase-fcntl +perlbase-file +perlbase-filehandle +perlbase-http-tiny +perlbase-net +perlbase-safe +perlbase-scalar +perlbase-sys +perlbase-text
+DEPENDS+=+perlbase-b +perlbase-config +perlbase-cwd +perlbase-dirhandle +perlbase-essential +perlbase-extutils +perlbase-fcntl +perlbase-file +perlbase-filehandle +perlbase-http-tiny +perlbase-net +perlbase-safe +perlbase-scalar +perlbase-sys +perlbase-text +perlbase-parse
 endef
 
 define Package/perlbase-cpan/install
-$(call perlmod/Install,$(1),CPAN CPAN.pm Parse/CPAN/Meta.pm,CPAN/FirstTime.pm)
+$(call perlmod/Install,$(1),CPAN CPAN.pm,CPAN/FirstTime.pm CPAN/API/HOWTO.pod CPAN/Meta/History/Meta_1_0.pod CPAN/Meta/History/Meta_1_1.pod CPAN/Meta/History/Meta_1_2.pod CPAN/Meta/History/Meta_1_3.pod CPAN/Meta/History/Meta_1_4.pod)
 $(call perlmod/Install/NoStrip,$(1),CPAN/FirstTime.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/CPAN-Meta-Requirements/t cpan/CPAN-Meta-YAML/t cpan/CPAN-Meta/t cpan/CPAN/t)
 endef
@@ -521,6 +535,20 @@ endef
 $(eval $(call BuildPackage,perlbase-env))
 
 
+define Package/perlbase-exporter
+$(call Package/perlbase-template)
+TITLE:=Exporter perl module
+DEPENDS+=+perlbase-config +perlbase-tie
+endef
+
+define Package/perlbase-exporter/install
+$(call perlmod/Install,$(1),Exporter.pm Exporter,)
+$(call perlmod/InstallBaseTests,$(1),dist/Exporter/t)
+endef
+
+$(eval $(call BuildPackage,perlbase-exporter))
+
+
 define Package/perlbase-errno
 $(call Package/perlbase-template)
 TITLE:=Errno perl module
@@ -538,13 +566,13 @@ $(eval $(call BuildPackage,perlbase-errno))
 define Package/perlbase-essential
 $(call Package/perlbase-template)
 TITLE:=essential perl module
-DEPENDS+=+perlbase-config
+DEPENDS+=+perlbase-config +perlbase-exporter +perlbase-carp +perlbase-locale
 endef
 
 define Package/perlbase-essential/install
-$(call perlmod/Install,$(1),Carp Carp.pm Exporter Exporter.pm constant.pm deprecate.pm lib.pm builtin.pm locale.pm overload.pm overloading.pm parent.pm strict.pm subs.pm vars.pm vmsish.pm warnings warnings.pm,)
+$(call perlmod/Install,$(1),constant.pm deprecate.pm lib.pm builtin.pm overload.pm overloading.pm parent.pm strict.pm subs.pm vars.pm vmsish.pm warnings warnings.pm,)
 $(call perlmod/Install/NoStrip,$(1),overload/numbers.pm,)
-$(call perlmod/InstallBaseTests,$(1),cpan/parent/t dist/Carp/t dist/Exporter/t dist/constant/t dist/lib/t lib/builtin.t lib/locale.t lib/overload.t lib/overload64.t lib/overloading.t lib/strict.t lib/subs.t lib/vars.t lib/vars_carp.t lib/vmsish.t lib/warnings.t)
+$(call perlmod/InstallBaseTests,$(1),cpan/parent/t dist/constant/t dist/lib/t lib/builtin.t lib/overload.t lib/overload64.t lib/overloading.t lib/strict.t lib/subs.t lib/vars.t lib/vars_carp.t lib/vmsish.t lib/warnings.t)
 endef
 
 $(eval $(call BuildPackage,perlbase-essential))
@@ -571,7 +599,7 @@ DEPENDS+=+perlbase-autosplit +perlbase-base +perlbase-config +perlbase-cwd +perl
 endef
 
 define Package/perlbase-extutils/install
-$(call perlmod/Install,$(1),ExtUtils,ExtUtils/MakeMaker/FAQ.pod ExtUtils/MakeMaker/Tutorial.pod ExtUtils/ParseXS.pm ExtUtils/ParseXS/Utilities.pm)
+$(call perlmod/Install,$(1),ExtUtils,ExtUtils/MakeMaker/FAQ.pod ExtUtils/MakeMaker/Tutorial.pod ExtUtils/ParseXS.pod ExtUtils/ParseXS.pm ExtUtils/ParseXS/Utilities.pm)
 $(call perlmod/Install/NoStrip,$(1),ExtUtils/ParseXS.pm ExtUtils/ParseXS/Utilities.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/ExtUtils-Constant/t cpan/ExtUtils-Install/t cpan/ExtUtils-MakeMaker/t cpan/ExtUtils-Manifest/t dist/ExtUtils-CBuilder/t dist/ExtUtils-ParseXS/t lib/ExtUtils/t lib/h2ph.t lib/h2xs.t utils/h2ph utils/h2xs)
 endef
@@ -765,7 +793,7 @@ DEPENDS+=+perlbase-errno +perlbase-essential +perlbase-io
 endef
 
 define Package/perlbase-http-tiny/install
-$(call perlmod/Install,$(1),HTTP/Tiny.pm,)
+$(call perlmod/Install,$(1),HTTP,)
 $(call perlmod/InstallBaseTests,$(1),cpan/HTTP-Tiny/corpus cpan/HTTP-Tiny/t)
 endef
 
@@ -780,8 +808,8 @@ endef
 
 define Package/perlbase-i18n/install
 $(call perlmod/Install,$(1),I18N auto/I18N,I18N/LangTags/List.pm)
-$(call perlmod/InstallBaseTests,$(1),dist/I18N-Collate/t dist/I18N-LangTags/t ext/I18N-Langinfo/t)
 $(call perlmod/Install/NoStrip,$(1),I18N/LangTags/List.pm)
+$(call perlmod/InstallBaseTests,$(1),dist/I18N-Collate/t dist/I18N-LangTags/t ext/I18N-Langinfo/t)
 endef
 
 $(eval $(call BuildPackage,perlbase-i18n))
@@ -848,7 +876,7 @@ DEPENDS+=+perlbase-b +perlbase-base +perlbase-essential
 endef
 
 define Package/perlbase-json-pp/install
-$(call perlmod/Install,$(1),JSON/PP JSON/PP.pm,)
+$(call perlmod/Install,$(1),JSON,)
 $(call perlmod/InstallBaseTests,$(1),cpan/JSON-PP/t)
 endef
 
@@ -885,12 +913,12 @@ $(eval $(call BuildPackage,perlbase-list))
 define Package/perlbase-locale
 $(call Package/perlbase-template)
 TITLE:=Locale perl module
-DEPENDS+=+perlbase-essential +perlbase-i18n +perlbase-integer +perlbase-utf8
+DEPENDS+=+perlbase-i18n +perlbase-integer +perlbase-utf8
 endef
 
 define Package/perlbase-locale/install
-$(call perlmod/Install,$(1),Locale,Locale/Constants.pod Locale/Country.pod Locale/Currency.pod Locale/Language.pod Locale/Maketext.pod Locale/Maketext/TPJ13.pod Locale/Script.pod)
-$(call perlmod/InstallBaseTests,$(1),cpan/Locale-Maketext-Simple/t dist/Locale-Maketext/t)
+$(call perlmod/Install,$(1),locale.pm Locale,Locale/Maketext.pod Locale/Maketext/Cookbook.pod Locale/Maketext/TPJ13.pod)
+$(call perlmod/InstallBaseTests,$(1),lib/locale.t cpan/Locale-Maketext-Simple/t dist/Locale-Maketext/t)
 endef
 
 $(eval $(call BuildPackage,perlbase-locale))
@@ -1090,6 +1118,19 @@ endef
 $(eval $(call BuildPackage,perlbase-params))
 
 
+define Package/perlbase-parse
+$(call Package/perlbase-template)
+TITLE:=Parse perl module
+DEPENDS+=+perlbase-essential
+endef
+
+define Package/perlbase-parse/install
+$(call perlmod/Install,$(1),Parse,)
+endef
+
+$(eval $(call BuildPackage,perlbase-parse))
+
+
 define Package/perlbase-perl5db
 $(call Package/perlbase-template)
 TITLE:=perl5db perl module
@@ -1143,7 +1184,7 @@ DEPENDS+=+perlbase-essential +perlbase-fcntl +perlbase-tie +perlbase-xsloader
 endef
 
 define Package/perlbase-posix/install
-$(call perlmod/Install,$(1),POSIX.pm auto/POSIX,)
+$(call perlmod/Install,$(1),POSIX.pm auto/POSIX,POSIX.pod)
 $(call perlmod/InstallBaseTests,$(1),ext/POSIX/Makefile.PL ext/POSIX/POSIX.xs ext/POSIX/t)
 endef
 
@@ -1181,11 +1222,11 @@ $(eval $(call BuildPackage,perlbase-safe))
 define Package/perlbase-scalar
 $(call Package/perlbase-template)
 TITLE:=Scalar perl module
-DEPENDS+=+perlbase-essential +perlbase-list
+DEPENDS+=+perlbase-essential +perlbase-list +perlbase-sub
 endef
 
 define Package/perlbase-scalar/install
-$(call perlmod/Install,$(1),List Scalar Sub auto/List,)
+$(call perlmod/Install,$(1),Scalar,)
 $(call perlmod/InstallBaseTests,$(1),cpan/Scalar-List-Utils/t)
 endef
 
@@ -1302,6 +1343,19 @@ $(call perlmod/InstallBaseTests,$(1),dist/Storable/t)
 endef
 
 $(eval $(call BuildPackage,perlbase-storable))
+
+
+define Package/perlbase-sub
+$(call Package/perlbase-template)
+TITLE:=Sub perl module
+DEPENDS+=+perlbase-essential +perlbase-xsloader
+endef
+
+define Package/perlbase-sub/install
+$(call perlmod/Install,$(1),Sub,)
+endef
+
+$(eval $(call BuildPackage,perlbase-sub))
 
 
 define Package/perlbase-symbol
