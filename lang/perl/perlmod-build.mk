@@ -38,10 +38,9 @@ PERLMOD_TESTSDIR:=/usr/share/perl/perlmod-tests
 FLOCK:=$(STAGING_DIR_HOST)/bin/flock
 
 define perlmod/host/relink
-	mkdir -p $(1)/build
 	(cd $(HOST_BUILD_DIR); \
 	$(FLOCK) -w 900 9 || { echo perlmod/host/relink: failed to acquire lock; exit 1; }; \
-	    $(PERL_CMD) Build $(1) build && \
+	    $(PERL_CMD) Build install --destdir $(1) build && \
 	    $(INSTALL_BIN) $(1)/build $(PERL_CMD) && \
 	    $(INSTALL_BIN) $(1)/build $(STAGING_DIR_HOSTPKG)/usr/bin/perl \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock;
