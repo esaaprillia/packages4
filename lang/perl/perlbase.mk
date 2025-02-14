@@ -194,7 +194,7 @@ DEPENDS+=+perlbase-bigint +perlbase-essential
 endef
 
 define Package/perlbase-bignum/install
-$(call perlmod/Install,$(1),bignum.pm bigrat.pm,)
+$(call perlmod/Install,$(1),bigfloat.pm bignum.pm bigrat.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/bignum/t)
 endef
 
@@ -290,7 +290,7 @@ DEPENDS+=+perlbase-b +perlbase-config +perlbase-cwd +perlbase-dirhandle +perlbas
 endef
 
 define Package/perlbase-cpan/install
-$(call perlmod/Install,$(1),CPAN CPAN.pm Parse/CPAN/Meta.pm,CPAN/FirstTime.pm)
+$(call perlmod/Install,$(1),CPAN CPAN.pm Parse/CPAN/Meta.pm,CPAN/FirstTime.pm CPAN/API/HOWTO.pod CPAN/Meta/History/Meta_1_0.pod CPAN/Meta/History/Meta_1_1.pod CPAN/Meta/History/Meta_1_2.pod CPAN/Meta/History/Meta_1_3.pod CPAN/Meta/History/Meta_1_4.pod)
 $(call perlmod/Install/NoStrip,$(1),CPAN/FirstTime.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/CPAN-Meta-Requirements/t cpan/CPAN-Meta-YAML/t cpan/CPAN-Meta/t cpan/CPAN/t)
 endef
@@ -542,7 +542,7 @@ DEPENDS+=+perlbase-config
 endef
 
 define Package/perlbase-essential/install
-$(call perlmod/Install,$(1),Carp Carp.pm Exporter Exporter.pm constant.pm deprecate.pm lib.pm builtin.pm locale.pm overload.pm overloading.pm parent.pm strict.pm subs.pm vars.pm vmsish.pm warnings warnings.pm,)
+$(call perlmod/Install,$(1),Carp Carp.pm Exporter Exporter.pm constant.pm deprecate.pm lib.pm builtin.pm locale.pm overload.pm overloading.pm parent.pm perlfaq.pm strict.pm subs.pm vars.pm vmsish.pm warnings warnings.pm,)
 $(call perlmod/Install/NoStrip,$(1),overload/numbers.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/parent/t dist/Carp/t dist/Exporter/t dist/constant/t dist/lib/t lib/builtin.t lib/locale.t lib/overload.t lib/overload64.t lib/overloading.t lib/strict.t lib/subs.t lib/vars.t lib/vars_carp.t lib/vmsish.t lib/warnings.t)
 endef
@@ -571,7 +571,7 @@ DEPENDS+=+perlbase-autosplit +perlbase-base +perlbase-config +perlbase-cwd +perl
 endef
 
 define Package/perlbase-extutils/install
-$(call perlmod/Install,$(1),ExtUtils,ExtUtils/MakeMaker/FAQ.pod ExtUtils/MakeMaker/Tutorial.pod ExtUtils/ParseXS.pm ExtUtils/ParseXS/Utilities.pm)
+$(call perlmod/Install,$(1),ExtUtils,ExtUtils/MakeMaker/FAQ.pod ExtUtils/MakeMaker/Tutorial.pod ExtUtils/ParseXS.pod ExtUtils/ParseXS.pm ExtUtils/ParseXS/Utilities.pm)
 $(call perlmod/Install/NoStrip,$(1),ExtUtils/ParseXS.pm ExtUtils/ParseXS/Utilities.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/ExtUtils-Constant/t cpan/ExtUtils-Install/t cpan/ExtUtils-MakeMaker/t cpan/ExtUtils-Manifest/t dist/ExtUtils-CBuilder/t dist/ExtUtils-ParseXS/t lib/ExtUtils/t lib/h2ph.t lib/h2xs.t utils/h2ph utils/h2xs)
 endef
@@ -889,7 +889,7 @@ DEPENDS+=+perlbase-essential +perlbase-i18n +perlbase-integer +perlbase-utf8
 endef
 
 define Package/perlbase-locale/install
-$(call perlmod/Install,$(1),Locale,Locale/Constants.pod Locale/Country.pod Locale/Currency.pod Locale/Language.pod Locale/Maketext.pod Locale/Maketext/TPJ13.pod Locale/Script.pod)
+$(call perlmod/Install,$(1),Locale,Locale/Maketext.pod Locale/Maketext/Cookbook.pod Locale/Maketext/TPJ13.pod)
 $(call perlmod/InstallBaseTests,$(1),cpan/Locale-Maketext-Simple/t dist/Locale-Maketext/t)
 endef
 
@@ -959,7 +959,7 @@ DEPENDS+=+perlbase-essential +perlbase-file +perlbase-filehandle +perlbase-local
 endef
 
 define Package/perlbase-module/install
-$(call perlmod/Install,$(1),Module,)
+$(call perlmod/Install,$(1),Module,Module/CoreList.pod)
 $(call perlmod/InstallBaseTests,$(1),cpan/Module-Load-Conditional/t cpan/Module-Load/t cpan/Module-Loaded/t cpan/Module-Metadata/corpus cpan/Module-Metadata/lib cpan/Module-Metadata/t dist/Module-CoreList/t)
 endef
 
@@ -1125,7 +1125,7 @@ DEPENDS+=+perlbase-config +perlbase-cwd +perlbase-encode +perlbase-essential +pe
 endef
 
 define Package/perlbase-pod/install
-$(call perlmod/Install,$(1),Pod,Pod/Usage.pm)
+$(call perlmod/Install,$(1),Pod,Pod/Usage.pm Pod/Simple.pod Pod/Simple/Subclassing.pod)
 $(call perlmod/Install/NoStrip,$(1),Pod/Usage.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/Pod-Checker/t cpan/Pod-Escapes/t cpan/Pod-Perldoc/t cpan/Pod-Simple/t cpan/Pod-Usage/scripts cpan/Pod-Usage/t cpan/podlators/t ext/Pod-Functions/Functions.pm ext/Pod-Functions/t ext/Pod-Html/t lib/Pod/t)
 	$(INSTALL_DIR) $(1)/usr/bin
@@ -1339,7 +1339,7 @@ DEPENDS+=+perlbase-base +perlbase-benchmark +perlbase-config +perlbase-essential
 endef
 
 define Package/perlbase-tap/install
-$(call perlmod/Install,$(1),TAP,)
+$(call perlmod/Install,$(1),TAP,TAP/Harness/Beyond.pod)
 endef
 
 $(eval $(call BuildPackage,perlbase-tap))
