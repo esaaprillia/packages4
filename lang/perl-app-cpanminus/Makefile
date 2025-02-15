@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-app-cpanminus
-PKG_VERSION:=1.7047
+PKG_VERSION:=1.7048
 PKG_RELEASE:=1
 
 PKG_SOURCE:=App-cpanminus-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/
-PKG_HASH:=963e63c6e1a8725ff2f624e9086396ae150db51dd0a337c3781d09a994af05a5
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=LICENSE
@@ -37,6 +37,7 @@ define Package/perl-app-cpanminus/install
 	$(call perlmod/Install,$(1),App)
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/cpanm $(1)/usr/bin/
+	$(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/cpanm
 endef
 
 $(eval $(call BuildPackage,perl-app-cpanminus))
