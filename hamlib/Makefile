@@ -74,9 +74,9 @@ endef
 
 define Package/hamlib/install
 	$(call Build/Install/Default)
-	$(call Python3/CompileAll),$(1)
-	$(call Python3/DeleteSourceFiles),$(1)
-	$(call Python3/DeleteEmptyDirs),$(1)
+	$(call Python3/CompileAll,$(1))
+	$(call Python3/DeleteSourceFiles,$(1))
+	$(call Python3/DeleteEmptyDirs,$(1))
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
 	  $(1)/usr/lib \
