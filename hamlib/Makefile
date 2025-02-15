@@ -26,13 +26,26 @@ define Package/hamlib
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Ham radio control library for rigs, rotators, tuners, and amplifiers
-	DEPENDS:=+libusb-1.0 +libreadline +libxml2 +libstdcpp +tcl +lua5.4 +python3-light
+	DEPENDS:=+libusb-1.0 +libreadline +libxml2 +libstdcpp +tcl +lua5.4
 	URL:=https://github.com/Hamlib/Hamlib
+endef
+
+define Package/python3-hamlib
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Python bindings Hamlib
+  URL:=https://github.com/Hamlib/Hamlib
+  DEPENDS:=+python3-light +hamlib
 endef
 
 define Package/hamlib/description
 	The library provides functions for both radio and rotator control, and data retrieval from the radio or rotator.
 	A number of functions useful for calculating distance and bearing and grid square conversion are included.
+endef
+
+define Package/python3-hamlib/description
+  Python bindings Hamlib
 endef
 
 CONFIGURE_VARS += \
@@ -75,8 +88,7 @@ endef
 define Package/hamlib/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
-	  $(1)/usr/lib \
-	  $(1)/$(PYTHON3_PKG_DIR)
+	  $(1)/usr/lib
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/bin/* \
@@ -85,10 +97,20 @@ define Package/hamlib/install
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/{lua,tcl,*.so*} \
 	  $(1)/usr/lib/
+endef
+
+define Package/python3-hamlib/install
+	$(INSTALL_DIR) \
+	  $(1)/$(PYTHON3_PKG_DIR)
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/* \
-	  $(1)/$(PYTHON3_PKG_DIR)/
+	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/*.so* \
+	  $(1)/$(PYTHON3_PKG_DIR)
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/*.py* \
+	  $(1)/$(PYTHON3_PKG_DIR)
 endef
 
 $(eval $(call BuildPackage,hamlib))
+$(eval $(call BuildPackage,python3-hamlib))
