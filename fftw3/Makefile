@@ -27,7 +27,7 @@ define Package/fftw3
   DEPENDS:=+libpthread
   VARIANT:=double
   TITLE:=Fast Fourier transform library
-  URL:=http://www.fftw.org/
+  URL:=https://www.fftw.org/
   MAINTAINER:=Vladimir Ulrich <admin@evl.su>
 endef
 
