@@ -57,13 +57,14 @@ CONFIGURE_VARS += \
 	PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 CONFIGURE_ARGS += \
+	--enable-shared \
+	--disable-static \
 	--with-xml-support \
 	--without-cxx-binding \
 	--without-perl-binding \
 	--with-python-binding \
 	--with-tcl-binding \
-	--with-lua-binding \
-	--with-pic
+	--with-lua-binding
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
@@ -96,6 +97,15 @@ define Package/hamlib/install
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/{lua,tcl,*.so*} \
 	  $(1)/usr/lib/
+endef
+
+define Py3Package/python3-hamlib/install
+	$(INSTALL_DIR) \
+	  $(1)/$(PYTHON3_PKG_DIR)
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/{*.so*,*.py*} \
+	  $(1)/$(PYTHON3_PKG_DIR)
 endef
 
 $(eval $(call BuildPackage,hamlib))
