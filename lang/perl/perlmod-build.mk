@@ -38,12 +38,12 @@ PERLMOD_TESTSDIR:=/usr/share/perl/perlmod-tests
 FLOCK:=$(STAGING_DIR_HOST)/bin/flock
 
 define perlmod/host/relink
-	(cd $(HOST_BUILD_DIR); \
-	$(FLOCK) -w 900 9 || { echo perlmod/host/relink: failed to acquire lock; exit 1; }; \
-	    $(PERL_CMD) Build install --destdir=build $(1) build && \
-	    $(INSTALL_BIN) $(1)/build $(PERL_CMD) && \
-	    $(INSTALL_BIN) $(1)/build $(STAGING_DIR_HOSTPKG)/usr/bin/perl \
-	) 9> $(TMP_DIR)/.perlmod-perl.flock;
+	rm -f $(1)/Makefile.aperl
+	($(FLOCK) -w 900 9 || { echo perlmod/host/relink: failed to acquire lock; exit 1; }; \
+	    $(MAKE) -C $(1) build && \
+	    $(INSTALL_BIN) $(1)/perl $(PERL_CMD) && \
+	    $(INSTALL_BIN) $(1)/perl $(STAGING_DIR_HOSTPKG)/usr/bin/perl \
+	) 9> $(TMP_DIR)/.perlmod-perl.flock
 endef
 
 define perlmod/host/Configure
@@ -51,36 +51,34 @@ define perlmod/host/Configure
 	$(FLOCK) -s -w 300 9 || { echo perlmod/host/Configure: failed to acquire lock; exit 1; }; \
 	PERL_MM_USE_DEFAULT=1 \
 	$(2) \
-	$(PERL_CMD) Build.PL \
+	$(PERL_CMD) Makefile.PL \
 		$(1) \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock;
 endef
 
 define perlmod/host/Compile
-	(cd $(HOST_BUILD_DIR); \
-	$(FLOCK) -s -w 300 9 || { echo perlmod/host/Compile: failed to acquire lock; exit 1; }; \
+	($(FLOCK) -s -w 300 9 || { echo perlmod/host/Compile: failed to acquire lock; exit 1; }; \
 	$(2) \
-	$(PERL_CMD) Build \
+	$(MAKE) -C $(HOST_BUILD_DIR) \
 		$(1) \
 		install \
-	) 9> $(TMP_DIR)/.perlmod-perl.flock;
+	) 9> $(TMP_DIR)/.perlmod-perl.flock
 endef
 
 define perlmod/host/Install
-	(cd $(HOST_BUILD_DIR); \
-	$(FLOCK) -s -w 300 9 || { echo perlmod/host/Install: failed to acquire lock; exit 1; }; \
+	($(FLOCK) -s -w 300 9 || { echo perlmod/host/Install: failed to acquire lock; exit 1; }; \
 	$(2) \
-	$(PERL_CMD) Build \
+	$(MAKE) -C $(HOST_BUILD_DIR) \
 		$(1) \
 		install \
-	) 9> $(TMP_DIR)/.perlmod-perl.flock;
+	) 9> $(TMP_DIR)/.perlmod-perl.flock
 	$(call perlmod/host/relink,$(HOST_BUILD_DIR))
 endef
 
 define perlmod/Configure
 	(cd $(if $(3),$(3),$(PKG_BUILD_DIR)); \
 	 $(FLOCK) -s -w 300 9 || { echo perlmod/Configure: failed to acquire lock; exit 1; }; \
-	 (echo -e 'use Config;\n\n$$$${tied %Config::Config}{cpprun}="$(GNU_TARGET_NAME)-cpp -E";\n' ; cat Build.PL) | \
+	 (echo -e 'use Config;\n\n$$$${tied %Config::Config}{cpprun}="$(GNU_TARGET_NAME)-cpp -E";\n' ; cat Makefile.PL) | \
 	 PERL_MM_USE_DEFAULT=1 \
 	 $(2) \
 	 $(PERL_CMD) -I. -- - \
