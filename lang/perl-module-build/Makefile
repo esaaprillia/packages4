@@ -18,7 +18,7 @@ HOST_BUILD_DEPENDS:=perl/host perl-software-license/host perl-try-tiny/host perl
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../perl/perlmod-build.mk
+include ../perl/perlmod.mk
 
 define Package/perl-module-build
   SUBMENU:=Perl
