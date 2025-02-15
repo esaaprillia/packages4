@@ -31,12 +31,12 @@ define Package/hamlib
 endef
 
 define Package/python3-hamlib
-  SUBMENU:=Python
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=Python bindings Hamlib
-  URL:=https://github.com/Hamlib/Hamlib
-  DEPENDS:=+python3-light +hamlib
+	SUBMENU:=Python
+	SECTION:=lang
+	CATEGORY:=Languages
+	TITLE:=Python bindings Hamlib
+	DEPENDS:=+python3-light +hamlib
+	URL:=https://github.com/Hamlib/Hamlib
 endef
 
 define Package/hamlib/description
@@ -45,7 +45,7 @@ define Package/hamlib/description
 endef
 
 define Package/python3-hamlib/description
-  Python bindings Hamlib
+	Python bindings Hamlib
 endef
 
 CONFIGURE_VARS += \
