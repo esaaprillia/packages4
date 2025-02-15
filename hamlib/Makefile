@@ -1,42 +1,91 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-app-cpanminus
-PKG_VERSION:=1.7047
+PKG_NAME:=hamlib
+PKG_VERSION:=4.5.5
 PKG_RELEASE:=1
 
-PKG_SOURCE:=App-cpanminus-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/
-PKG_HASH:=963e63c6e1a8725ff2f624e9086396ae150db51dd0a337c3781d09a994af05a5
+PKG_SOURCE_URL:=https://github.com/Hamlib/Hamlib/releases/download/$(PKG_VERSION)
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_HASH:=skip
 
-PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=LICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=License GPL-2.0 license
+PKG_LICENSE_FILES:=COPYING COPYING.LIB
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/App-cpanminus-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=swig/host lua5.3/host
+
+PKG_BUILD_PARALLEL:=1
+PYTHON3_PKG_BUILD:=0
+PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include ../perl/perlmod.mk
+include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
 
-define Package/perl-app-cpanminus
-  SUBMENU:=Perl
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=Perl App cpanminus
-  URL:=https://metacpan.org/dist/App-cpanminus
-  DEPENDS:=perl +perlbase-base +perlbase-essential
+define Package/hamlib
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Ham radio control library for rigs, rotators, tuners, and amplifiers
+	DEPENDS:=+libusb-1.0 +libreadline +libxml2 +libstdcpp +tcl +lua5.3 +python3
+	URL:=https://github.com/Hamlib/Hamlib
 endef
 
-define Build/Configure
-	$(call perlmod/Configure,,)
+define Package/hamlib/description
+	The library provides functions for both radio and rotator control, and data retrieval from the radio or rotator.
+	A number of functions useful for calculating distance and bearing and grid square conversion are included.
 endef
 
-define Build/Compile
-	$(call perlmod/Compile,,)
+CONFIGURE_VARS += \
+	LUA="$(STAGING_DIR_HOSTPKG)/bin/lua5.3" \
+	LUA_INCLUDE="-I$(STAGING_DIR)/usr/include/lua5.3" \
+	LUA_LIB="-L$(STAGING_DIR)/usr/lib -llua5.3" \
+	PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
+
+CONFIGURE_ARGS += \
+	--enable-shared \
+	--disable-static \
+	--with-xml-support \
+	--without-cxx-binding \
+	--without-perl-binding \
+	--with-python-binding \
+	--with-tcl-binding \
+	--with-lua-binding
+
+define Build/InstallDev
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib \
+	  $(1)/usr/share
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/hamlib \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(1)/usr/lib/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/share/aclocal \
+	  $(1)/usr/share/
 endef
 
-define Package/perl-app-cpanminus/install
-	$(call perlmod/Install,$(1),App)
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/cpanm $(1)/usr/bin/
+define Package/hamlib/install
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(1)/usr/lib \
+	  $(1)/$(PYTHON3_PKG_DIR)
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/* \
+	  $(1)/usr/bin/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{lua,tcl,*.so*} \
+	  $(1)/usr/lib/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/* \
+	  $(1)/$(PYTHON3_PKG_DIR)/
 endef
 
-$(eval $(call BuildPackage,perl-app-cpanminus))
+$(eval $(call BuildPackage,hamlib))
