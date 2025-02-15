@@ -57,14 +57,13 @@ CONFIGURE_VARS += \
 	PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 CONFIGURE_ARGS += \
-	--enable-shared \
-	--disable-static \
 	--with-xml-support \
 	--without-cxx-binding \
 	--without-perl-binding \
 	--with-python-binding \
 	--with-tcl-binding \
-	--with-lua-binding
+	--with-lua-binding \
+	--with-pic
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
