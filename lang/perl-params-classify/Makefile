@@ -18,7 +18,7 @@ PKG_BUILD_DEPENDS:=perl/host perl-module-build/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../perl/perlmod-build.mk
+include ../perl/perlmod.mk
 
 define Package/perl-params-classify
   SUBMENU:=Perl
