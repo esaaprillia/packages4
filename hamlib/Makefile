@@ -113,4 +113,6 @@ define Package/python3-hamlib/install
 endef
 
 $(eval $(call BuildPackage,hamlib))
+$(eval $(call Py3Package,python3-hamlib))
 $(eval $(call BuildPackage,python3-hamlib))
+$(eval $(call BuildPackage,python3-hamlib-src))
