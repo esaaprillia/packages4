@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=hamlib
-PKG_VERSION:=4.5.5
+PKG_VERSION:=4.6.2
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/Hamlib/Hamlib/releases/download/$(PKG_VERSION)
@@ -12,9 +12,10 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License GPL-2.0 license
 PKG_LICENSE_FILES:=COPYING COPYING.LIB
 
-PKG_BUILD_DEPENDS:=swig/host lua5.3/host
+PKG_BUILD_DEPENDS:=swig/host lua5.4/host
 
 PKG_BUILD_PARALLEL:=1
+PKG_FIXUP:=autoreconf
 PYTHON3_PKG_BUILD:=0
 PKG_INSTALL:=1
 
