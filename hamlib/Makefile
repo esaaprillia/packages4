@@ -36,9 +36,6 @@ define Package/hamlib/description
 endef
 
 CONFIGURE_VARS += \
-	LUA="$(STAGING_DIR_HOSTPKG)/bin/lua5.3" \
-	LUA_INCLUDE="-I$(STAGING_DIR)/usr/include/lua5.3" \
-	LUA_LIB="-L$(STAGING_DIR)/usr/lib -llua5.3" \
 	PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 CONFIGURE_ARGS += \
