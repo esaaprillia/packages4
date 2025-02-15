@@ -49,12 +49,10 @@ define Package/python3-hamlib/description
 endef
 
 CONFIGURE_VARS += \
+	$(PYTHON3_VARS) \
 	LUA="$(STAGING_DIR_HOSTPKG)/bin/lua5.4" \
 	LUA_INCLUDE="-I$(STAGING_DIR)/usr/include/lua5.4" \
-	LUA_LIB="-L$(STAGING_DIR)/usr/lib -llua5.4" \
-	PYTHON_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
-	PYTHON_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
-	PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
+	LUA_LIB="-L$(STAGING_DIR)/usr/lib -llua5.4"
 
 CONFIGURE_ARGS += \
 	--enable-shared \
