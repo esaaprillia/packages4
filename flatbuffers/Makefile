@@ -77,14 +77,5 @@ define Package/flatbuffers/install
 	  $(1)/usr/lib/
 endef
 
-define Host/Install
-	$(INSTALL_DIR) \
-	  $(STAGING_DIR)/usr/bin
-
-	$(CP) \
-	  $(HOST_CMAKE_BINARY_DIR)/flatc \
-	  $(STAGING_DIR)/usr/bin/
-endef
-
 $(eval $(call BuildPackage,flatbuffers))
 $(eval $(call HostBuild))
