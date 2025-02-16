@@ -158,7 +158,7 @@ define Package
   ifndef Package/$(1)/install
     define Package/$(1)/install
 	$$(call Package/$(1)/install,$$(1))
-	$$(call Py3Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
+	$$(call Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
 	$(FIND) $$(1) -name '*.exe' -delete
 	$$(call Python3/CompileAll,$$(1))
 	$$(call Python3/DeleteSourceFiles,$$(1))
@@ -169,8 +169,8 @@ define Package
     endef
 
     define Package/$(1)-src/install
-	$$(call Py3Package/$(1)/install,$$(1))
-	$$(call Py3Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
+	$$(call Package/$(1)/install,$$(1))
+	$$(call Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
 	$$(call Python3/DeleteNonSourceFiles,$$(1))
 	$$(call Python3/DeleteEmptyDirs,$$(1))
     endef
