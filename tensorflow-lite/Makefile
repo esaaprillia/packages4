@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen
 
 CMAKE_INSTALL:=1
 #CMAKE_BINARY_SUBDIR:=tensorflow/lite
