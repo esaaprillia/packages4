@@ -38,7 +38,8 @@ define Package/tensorflow-lite/description
 endef
 
 CMAKE_OPTIONS += \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-Wno-dev \
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/usr/bin"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
