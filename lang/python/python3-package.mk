@@ -104,6 +104,80 @@ define Python3/DeleteEmptyDirs
 endef
 
 
+# Package
+
+define Package/filespec/Default
++|$(PYTHON3_PKG_DIR)
+endef
+
+# $(1) => package name
+# $(2) => src directory
+# $(3) => dest directory
+define Package/ProcessFilespec
+	$(eval $(call shexport,Package/$(1)/filespec))
+	$(SHELL) $(python3_mk_path)python-package-install.sh \
+		"$(2)" "$(3)" "$$$$$(call shvar,Package/$(1)/filespec)"
+endef
+
+define Package
+  define Package/$(1)-src
+    $(call Package/$(1))
+    DEPENDS:=
+    CONFLICTS:=
+    PROVIDES:=
+    EXTRA_DEPENDS:=
+    TITLE+= (sources)
+    USERID:=
+    MENU:=
+  endef
+
+  define Package/$(1)-src/description
+    $$(call Package/$(1)/description)
+
+    This package contains the Python source files for $(1).
+  endef
+
+  define Package/$(1)-src/config
+    depends on PACKAGE_$(1)
+  endef
+
+  # Add default PyPackage filespec none defined
+  ifeq ($(origin Package/$(1)/filespec),undefined)
+    Package/$(1)/filespec=$$(Package/filespec/Default)
+  endif
+
+  ifndef Package/$(1)/install
+    define Package/$(1)/install
+	if [ -d $(PKG_INSTALL_DIR)/usr/bin ]; then \
+		$(INSTALL_DIR) $$(1)/usr/bin ; \
+		$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $$(1)/usr/bin/ ; \
+	fi
+    endef
+  endif
+
+  ifndef Package/$(1)/install
+    define Package/$(1)/install
+	$$(call Package/$(1)/install,$$(1))
+	$$(call Py3Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
+	$(FIND) $$(1) -name '*.exe' -delete
+	$$(call Python3/CompileAll,$$(1))
+	$$(call Python3/DeleteSourceFiles,$$(1))
+	$$(call Python3/DeleteEmptyDirs,$$(1))
+	if [ -d "$$(1)/usr/bin" ]; then \
+		$$(call Python3/FixShebang,$$(1)/usr/bin/*) ; \
+	fi
+    endef
+
+    define Package/$(1)-src/install
+	$$(call Py3Package/$(1)/install,$$(1))
+	$$(call Py3Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
+	$$(call Python3/DeleteNonSourceFiles,$$(1))
+	$$(call Python3/DeleteEmptyDirs,$$(1))
+    endef
+  endif # Package/$(1)/install
+endef
+
+
 # Py3Package
 
 define Py3Package/filespec/Default
