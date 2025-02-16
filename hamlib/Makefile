@@ -75,8 +75,7 @@ endef
 define Package/hamlib/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
-	  $(1)/usr/lib \
-	  $(1)/$(PYTHON3_PKG_DIR)
+	  $(1)/usr/lib
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/bin/* \
