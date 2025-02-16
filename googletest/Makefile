@@ -18,6 +18,7 @@ PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/googletest
@@ -61,3 +62,4 @@ define Package/googletest/install
 endef
 
 $(eval $(call BuildPackage,googletest))
+$(eval $(call HostBuild))
