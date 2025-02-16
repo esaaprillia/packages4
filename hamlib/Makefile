@@ -26,13 +26,26 @@ define Package/hamlib
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Ham radio control library for rigs, rotators, tuners, and amplifiers
-	DEPENDS:=+libusb-1.0 +libreadline +libxml2 +libstdcpp +tcl +lua5.4 +python3-light
+	DEPENDS:=+libusb-1.0 +libreadline +libxml2 +libstdcpp +tcl +lua5.4
+	URL:=https://github.com/Hamlib/Hamlib
+endef
+
+define Package/python3-hamlib
+	SUBMENU:=Python
+	SECTION:=lang
+	CATEGORY:=Languages
+	TITLE:=Python bindings Hamlib
+	DEPENDS:=+python3-light +hamlib
 	URL:=https://github.com/Hamlib/Hamlib
 endef
 
 define Package/hamlib/description
 	The library provides functions for both radio and rotator control, and data retrieval from the radio or rotator.
 	A number of functions useful for calculating distance and bearing and grid square conversion are included.
+endef
+
+define Package/python3-hamlib/description
+	Python bindings Hamlib
 endef
 
 CONFIGURE_VARS += \
@@ -86,6 +99,8 @@ define Package/hamlib/install
 	  $(1)/usr/lib/
 endef
 
-$(eval $(call Py3Package,hamlib))
 $(eval $(call BuildPackage,hamlib))
-$(eval $(call BuildPackage,hamlib-src))
+
+$(eval $(call Py3Package,python3-hamlib))
+$(eval $(call BuildPackage,python3-hamlib))
+$(eval $(call BuildPackage,python3-hamlib-src))
