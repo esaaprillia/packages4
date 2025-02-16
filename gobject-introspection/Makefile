@@ -53,20 +53,30 @@ MESON_ARGS += \
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
-	  $(1)/usr/lib
+	  $(1)/usr/lib \
+	  $(1)/usr/share
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include \
+	  $(PKG_INSTALL_DIR)/usr/include/* \
 	  $(1)/usr/
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(PKG_INSTALL_DIR)/usr/lib/* \
 	  $(1)/usr/lib/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/share/* \
+	  $(1)/usr/share/
 endef
 
 define Package/gobject-introspection/install
 	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
 	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/* \
+	  $(1)/usr/bin/
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
