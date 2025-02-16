@@ -92,3 +92,4 @@ define Package/hamlib/install
 endef
 
 $(eval $(call BuildPackage,hamlib))
+$(eval $(call Package,hamlib))
