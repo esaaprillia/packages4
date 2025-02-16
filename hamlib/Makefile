@@ -73,6 +73,7 @@ define Build/InstallDev
 endef
 
 define Package/hamlib/install
+	$(call Py3Package)
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
 	  $(1)/usr/lib \
@@ -87,9 +88,8 @@ define Package/hamlib/install
 	  $(1)/usr/lib/
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/{*.so*,*.py*} \
+	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/{*.so*,*.pyc} \
 	  $(1)/$(PYTHON3_PKG_DIR)
 endef
 
 $(eval $(call BuildPackage,hamlib))
-$(eval $(call Package,hamlib))
