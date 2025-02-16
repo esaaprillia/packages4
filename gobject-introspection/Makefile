@@ -70,12 +70,6 @@ define Build/InstallDev
 endef
 
 define Package/gobject-introspection/install
-	$$(call Py3Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
-	$(FIND) $$(1) -name '*.exe' -delete
-	$$(call Python3/CompileAll,$$(1))
-	$$(call Python3/DeleteSourceFiles,$$(1))
-	$$(call Python3/DeleteEmptyDirs,$$(1))
-	$$(call Python3/FixShebang,$$(1)/usr/bin/*)
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
 	  $(1)/usr/lib
