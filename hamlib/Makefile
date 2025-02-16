@@ -86,14 +86,7 @@ define Package/hamlib/install
 	  $(1)/usr/lib/
 endef
 
-define Py3Package/hamlib/install
-	$(INSTALL_DIR) \
-	  $(1)/$(PYTHON3_PKG_DIR)
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/{*.so*,*.pyc} \
-	  $(1)/$(PYTHON3_PKG_DIR)
-endef
-
 $(eval $(call BuildPackage,hamlib))
-$(eval $(call Py3Package,hamlib))
+$(eval $(call Py3Package,python3-hamlib))
+$(eval $(call BuildPackage,python3-hamlib))
+$(eval $(call BuildPackage,python3-hamlib-src))
