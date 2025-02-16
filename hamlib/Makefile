@@ -96,3 +96,4 @@ define Py3Package/hamlib/install
 endef
 
 $(eval $(call BuildPackage,hamlib))
+$(eval $(call Py3Package,hamlib))
