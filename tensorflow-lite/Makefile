@@ -1,42 +1,76 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-app-cpanminus
-PKG_VERSION:=1.7047
+PKG_NAME:=tensorflow-lite
+PKG_VERSION:=2.18.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=App-cpanminus-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/
-PKG_HASH:=963e63c6e1a8725ff2f624e9086396ae150db51dd0a337c3781d09a994af05a5
+PKG_SOURCE:=tensorflow-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
-PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=LICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=Apache-2.0
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/App-cpanminus-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
+
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host
+
+CMAKE_INSTALL:=1
+#CMAKE_BINARY_SUBDIR:=tensorflow/lite
+CMAKE_SOURCE_SUBDIR:=tensorflow/lite
+
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include ../perl/perlmod.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/perl-app-cpanminus
-  SUBMENU:=Perl
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=Perl App cpanminus
-  URL:=https://metacpan.org/dist/App-cpanminus
-  DEPENDS:=perl +perlbase-base +perlbase-essential
+define Package/tensorflow-lite
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=An Open Source Machine Learning Framework for Everyone
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest
+	URL:=https://tensorflow.org/
 endef
 
-define Build/Configure
-	$(call perlmod/Configure,,)
+define Package/tensorflow-lite/description
+	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
 endef
 
-define Build/Compile
-	$(call perlmod/Compile,,)
+CMAKE_OPTIONS +=
+
+define Build/InstallDev
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/flatbuffers \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*,cmake} \
+	  $(1)/usr/lib/
+
+	$(SED) \
+	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
+
+	$(SED) \
+	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
 endef
 
-define Package/perl-app-cpanminus/install
-	$(call perlmod/Install,$(1),App)
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/cpanm $(1)/usr/bin/
+define Package/tensorflow-lite/install
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/flatc \
+	  $(1)/usr/bin/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,perl-app-cpanminus))
+$(eval $(call BuildPackage,tensorflow-lite))
