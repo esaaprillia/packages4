@@ -14,6 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
+HOST_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen/host re2/host
 PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen
 
 CMAKE_INSTALL:=1
@@ -23,6 +24,7 @@ CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/tensorflow-lite
@@ -93,3 +95,4 @@ define Package/tensorflow-lite/install
 endef
 
 $(eval $(call BuildPackage,tensorflow-lite))
+$(eval $(call HostBuild))
