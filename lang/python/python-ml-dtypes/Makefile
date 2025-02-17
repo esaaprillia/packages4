@@ -23,7 +23,7 @@ define Package/python3-ml-dtypes
   CATEGORY:=Languages
   SUBMENU:=Python
   TITLE:=A stand-alone implementation of several NumPy dtype extensions used in machine learning.
-  URL:=https://github.com/abseil/abseil-py
+  URL:=https://github.com/jax-ml/ml_dtypes
   DEPENDS:=+python3 +python3-numpy
 endef
 
