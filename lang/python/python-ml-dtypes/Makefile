@@ -1,42 +1,37 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-app-cpanminus
-PKG_VERSION:=1.7047
+PKG_NAME:=python-ml-dtypes
+PKG_VERSION:=0.5.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=App-cpanminus-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/
-PKG_HASH:=963e63c6e1a8725ff2f624e9086396ae150db51dd0a337c3781d09a994af05a5
+PYPI_NAME:=ml_dtypes
+PKG_HASH:=ac5b58559bb84a95848ed6984eb8013249f90b6bab62aa5acbad876e256002c9
 
-PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=LICENSE
+PKG_LICENSE:=Apache-2.0
+PKG_LICENSE_FILES:=LICENSE LICENSE.eigen
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/App-cpanminus-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=numpy/host python-absl-py/host
 
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include ../perl/perlmod.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
-define Package/perl-app-cpanminus
-  SUBMENU:=Perl
+define Package/python3-ml-dtypes
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Perl App cpanminus
-  URL:=https://metacpan.org/dist/App-cpanminus
-  DEPENDS:=perl +perlbase-base +perlbase-essential
+  SUBMENU:=Python
+  TITLE:=A stand-alone implementation of several NumPy dtype extensions used in machine learning.
+  URL:=https://github.com/abseil/abseil-py
+  DEPENDS:=+python3 +python3-numpy
 endef
 
-define Build/Configure
-	$(call perlmod/Configure,,)
+define Package/python3-ml-dtypes/description
+ml_dtypes is a stand-alone implementation of several NumPy dtype extensions used in machine learning libraries, including
 endef
 
-define Build/Compile
-	$(call perlmod/Compile,,)
-endef
-
-define Package/perl-app-cpanminus/install
-	$(call perlmod/Install,$(1),App)
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/cpanm $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,perl-app-cpanminus))
+$(eval $(call Py3Package,python3-ml-dtypes))
+$(eval $(call BuildPackage,python3-ml-dtypes))
+$(eval $(call BuildPackage,python3-ml-dtypes-src))
+$(eval $(call HostBuild))
