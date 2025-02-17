@@ -1,12 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cpuinfo
-#PKG_VERSION:=1.1.0
+PKG_VERSION:=2025-30-01
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/pytorch/cpuinfo.git
-PKG_SOURCE_DATE:=2025-30-01
 PKG_SOURCE_VERSION:=aaac07ee499895770c89163ce0920ef8bb41ed23
 PKG_MIRROR_HASH:=skip
 
