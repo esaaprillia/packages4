@@ -17,6 +17,7 @@ CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/re2
@@ -65,3 +66,4 @@ define Package/re2/install
 endef
 
 $(eval $(call BuildPackage,re2))
+$(eval $(call HostBuild))
