@@ -41,15 +41,20 @@ CMAKE_OPTIONS += \
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
-	  $(1)/usr/lib
+	  $(1)/usr/lib \
+	  $(1)/usr/share
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/cpuinfo \
+	  $(PKG_INSTALL_DIR)/usr/include/cpuinfo.h \
 	  $(1)/usr/include/
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
 	  $(1)/usr/lib/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/share/cpuinfo \
+	  $(1)/usr/share/
 endef
 
 define Package/cpuinfo/install
@@ -58,11 +63,11 @@ define Package/cpuinfo/install
 	  $(1)/usr/lib
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/brotli \
+	  $(PKG_INSTALL_DIR)/usr/bin/* \
 	  $(1)/usr/bin/
 	
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
 	  $(1)/usr/lib/
 endef
 
