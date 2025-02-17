@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/tensorflow-$(PKG_VERSION)
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
 HOST_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen/host re2/host
