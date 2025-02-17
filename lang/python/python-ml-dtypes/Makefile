@@ -10,7 +10,7 @@ PKG_HASH:=ac5b58559bb84a95848ed6984eb8013249f90b6bab62aa5acbad876e256002c9
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE LICENSE.eigen
 
-PKG_BUILD_DEPENDS:=numpy/host python-absl-py/host
+PKG_BUILD_DEPENDS:=numpy/host python-absl-py/host eigen
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
