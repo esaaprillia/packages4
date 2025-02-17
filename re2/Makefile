@@ -12,6 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DEPENDS:=abseil-cpp/host
+
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
