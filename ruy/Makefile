@@ -33,41 +33,22 @@ define Package/ruy/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
+	-Wno-dev \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 	-DRUY_FIND_CPUINFO=ON \
-	-DRUY_ENABLE_INSTALL=ON
+	-DRUY_MINIMAL_BUILD=ON
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
-	  $(1)/usr/lib \
-	  $(1)/usr/share
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/cpuinfo.h \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
-	  $(1)/usr/lib/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/share/cpuinfo \
-	  $(1)/usr/share/
-endef
-
-define Package/ruy/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
 	  $(1)/usr/lib
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/{isa-info,cpu-info,cache-info} \
-	  $(1)/usr/bin/
-	
+	  $(PKG_INSTALL_DIR)/usr/include/ruy \
+	  $(1)/usr/include/
+
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(PKG_INSTALL_DIR)/usr/lib/{cmake,*.a*} \
 	  $(1)/usr/lib/
 endef
 
