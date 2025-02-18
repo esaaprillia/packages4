@@ -16,7 +16,7 @@ index 9d35815..46b6c7c 100644
  TARGET_INCLUDE_DIRECTORIES(datatype PRIVATE include src)
  TARGET_INCLUDE_DIRECTORIES(microkernels-prod PRIVATE include src)
 -TARGET_INCLUDE_DIRECTORIES(hardware-config PRIVATE include src ${CPUINFO_SOURCE_DIR}/include)
-+TARGET_INCLUDE_DIRECTORIES(hardware-config PRIVATE include src @STAGING_DIR@/include)
++TARGET_INCLUDE_DIRECTORIES(hardware-config PRIVATE include src "@STAGING_DIR@/include")
  TARGET_INCLUDE_DIRECTORIES(indirection PRIVATE include src)
  TARGET_INCLUDE_DIRECTORIES(microparams-init PRIVATE include src)
  TARGET_INCLUDE_DIRECTORIES(normalization PRIVATE include src)
