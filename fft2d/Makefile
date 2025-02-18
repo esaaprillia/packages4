@@ -30,11 +30,9 @@ This is a package to calculate Discrete Fourier/Cosine/Sine Transforms of 2,3-di
 endef
 
 define Build/Compile
-	true
 endef
 
 define Build/Install
-	true
 endef
 
 define Build/InstallDev
