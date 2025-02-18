@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cpuinfo
-PKG_VERSION:=2025-30-01
+PKG_VERSION:=2025-30-1
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
