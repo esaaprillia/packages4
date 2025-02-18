@@ -29,12 +29,21 @@ define Package/fft2d/description
 This is a package to calculate Discrete Fourier/Cosine/Sine Transforms of 2,3-dimensional sequences of length 2^N.
 endef
 
+define Build/Configure
+endef
+
+define Build/Compile
+endef
+
+define Build/Install
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include/fft2d
 
 	$(CP) \
-	  $(PKG_BUILD_DIR)/* \
+	  $(IPKG_INSTALL)/* \
 	  $(1)/usr/include/fft2d/
 endef
 
