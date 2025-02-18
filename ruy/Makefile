@@ -34,8 +34,9 @@ endef
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
+	-DBUILD_SHARED_LIBS=ON \
 	-DRUY_MINIMAL_BUILD=ON \
-	-DRUY_FIND_CPUINFO=ON
+	-DRUY_ENABLE_INSTALL=ON
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
