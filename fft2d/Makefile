@@ -44,7 +44,7 @@ define Build/InstallDev
 	  $(1)/usr/include/fft2d
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(PKG_BUILD_DIR)/* \
 	  $(1)/usr/include/fft2d/
 endef
 
