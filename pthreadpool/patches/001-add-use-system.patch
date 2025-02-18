@@ -71,48 +71,4 @@ index 7fa4285..fa59e16 100644
      SET(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
      ADD_SUBDIRECTORY(
        "${GOOGLETEST_SOURCE_DIR}"
-@@ -178,14 +187,14 @@ IF(PTHREADPOOL_BUILD_TESTS)
- 
-   ADD_EXECUTABLE(pthreadpool-test test/pthreadpool.cc)
-   SET_TARGET_PROPERTIES(pthreadpool-test PROPERTIES
--    CXX_STANDARD 11
-+    CXX_STANDARD 14
-     CXX_EXTENSIONS NO)
-   TARGET_LINK_LIBRARIES(pthreadpool-test pthreadpool gtest gtest_main)
-   ADD_TEST(pthreadpool pthreadpool-test)
- 
-   ADD_EXECUTABLE(pthreadpool-cxx-test test/pthreadpool-cxx.cc)
-   SET_TARGET_PROPERTIES(pthreadpool-cxx-test PROPERTIES
--    CXX_STANDARD 11
-+    CXX_STANDARD 14
-     CXX_EXTENSIONS NO)
-   TARGET_LINK_LIBRARIES(pthreadpool-cxx-test pthreadpool gtest gtest_main)
-   ADD_TEST(pthreadpool-cxx pthreadpool-cxx-test)
-@@ -193,7 +202,7 @@ ENDIF()
- 
- IF(PTHREADPOOL_BUILD_BENCHMARKS)
-   # ---[ Build google benchmark
--  IF(NOT TARGET benchmark)
-+  IF(NOT TARGET benchmark AND NOT PTHREADPOOL_USE_SYSTEM_LIBS)
-     SET(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "")
-     ADD_SUBDIRECTORY(
-       "${GOOGLEBENCHMARK_SOURCE_DIR}"
-@@ -202,13 +211,13 @@ IF(PTHREADPOOL_BUILD_BENCHMARKS)
- 
-   ADD_EXECUTABLE(latency-bench bench/latency.cc)
-   SET_TARGET_PROPERTIES(latency-bench PROPERTIES
--    CXX_STANDARD 11
-+    CXX_STANDARD 14
-     CXX_EXTENSIONS NO)
-   TARGET_LINK_LIBRARIES(latency-bench pthreadpool benchmark)
- 
-   ADD_EXECUTABLE(throughput-bench bench/throughput.cc)
-   SET_TARGET_PROPERTIES(throughput-bench PROPERTIES
--    CXX_STANDARD 11
-+    CXX_STANDARD 14
-     CXX_EXTENSIONS NO)
-   TARGET_LINK_LIBRARIES(throughput-bench pthreadpool benchmark)
- ENDIF()
--- 
-2.41.0
 
