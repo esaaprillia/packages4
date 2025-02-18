@@ -13,7 +13,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +22,7 @@ define Package/fft2d
 	CATEGORY:=Libraries
 	TITLE:=General Purpose FFT (Fast Fourier/Cosine/Sine Transform) Package
 	DEPENDS:=
-	URL:=https://www.kurims.kyoto-u.ac.jp/~ooura/fft.html
+	URL:=https://github.com/petewarden/OouraFFT
 endef
 
 define Package/fft2d/description
