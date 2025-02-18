@@ -33,6 +33,11 @@ define Package/xnnpack/description
 XNNPACK is a highly optimized solution for neural network inference on ARM, x86, WebAssembly, and RISC-V platforms. XNNPACK is not intended for direct use by deep learning practitioners and researchers; instead it provides low-level performance primitives for accelerating high-level machine learning frameworks, such as TensorFlow Lite, TensorFlow.js, PyTorch, ONNX Runtime, and MediaPipe.
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's,@STAGING_DIR@,$(STAGING_DIR)/usr,g' $(PKG_BUILD_DIR)/CMakeLists.txt
+endef
+
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
@@ -41,9 +46,7 @@ CMAKE_OPTIONS += \
 	-DXNNPACK_USE_SYSTEM_LIBS=ON \
 	-DXNNPACK_ENABLE_KLEIDIAI=OFF
 	-DXNNPACK_BUILD_LIBRARY=ON \
-	-DXNNPACK_LIBRARY_TYPE=shared \
-	-DPTHREADPOOL_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
-	-DCPUINFO_SOURCE_DIR="$(STAGING_DIR)/usr/include"
+	-DXNNPACK_LIBRARY_TYPE=shared
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
