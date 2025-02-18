@@ -1,42 +1,66 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-app-cpanminus
-PKG_VERSION:=1.7047
+PKG_NAME:=psimd
+PKG_VERSION:=2020-05-17
 PKG_RELEASE:=1
 
-PKG_SOURCE:=App-cpanminus-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/
-PKG_HASH:=963e63c6e1a8725ff2f624e9086396ae150db51dd0a337c3781d09a994af05a5
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/Maratyszcza/psimd.git
+PKG_SOURCE_VERSION:=072586a71b55b7f8c584153d223e95687148a900
+PKG_MIRROR_HASH:=skip
 
-PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=LICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=MIT
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/App-cpanminus-$(PKG_VERSION)
+CMAKE_BINARY_SUBDIR := build
+
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include ../perl/perlmod.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/perl-app-cpanminus
-  SUBMENU:=Perl
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=Perl App cpanminus
-  URL:=https://metacpan.org/dist/App-cpanminus
-  DEPENDS:=perl +perlbase-base +perlbase-essential
+define Package/psimd
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Portable 128-bit SIMD intrinsics
+	DEPENDS:=
+	URL:=https://github.com/Maratyszcza/psimd
 endef
 
-define Build/Configure
-	$(call perlmod/Configure,,)
+define Package/psimd/description
+Portable 128-bit SIMD intrinsics
 endef
 
-define Build/Compile
-	$(call perlmod/Compile,,)
+CMAKE_OPTIONS += \
+	-Wno-dev
+
+define Build/InstallDev
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(1)/usr/lib/
 endef
 
-define Package/perl-app-cpanminus/install
-	$(call perlmod/Install,$(1),App)
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/cpanm $(1)/usr/bin/
+define Package/psimd/install
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/igzip \
+	  $(1)/usr/bin/
+	
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,perl-app-cpanminus))
+$(eval $(call BuildPackage,psimd))
