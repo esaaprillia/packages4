@@ -27,7 +27,7 @@ define Package/pthreadpool
 	CATEGORY:=Libraries
 	TITLE:=Portable (POSIX/Windows/Emscripten) thread pool for C/C++
 	DEPENDS:=
-	URL:=https://github.com/Maratyszcza/pthreadpool
+	URL:=https://github.com/google/pthreadpool
 endef
 
 define Package/pthreadpool/description
