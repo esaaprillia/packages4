@@ -20,19 +20,13 @@ include $(INCLUDE_DIR)/package.mk
 define Package/fft2d
 	SECTION:=libs
 	CATEGORY:=Libraries
-	TITLE:=This is a package to calculate Discrete Fourier/Cosine/Sine Transforms of 2,3-dimensional sequences of length 2^N.
+	TITLE:=General Purpose FFT (Fast Fourier/Cosine/Sine Transform) Package
 	DEPENDS:=
 	URL:=https://www.kurims.kyoto-u.ac.jp/~ooura/fft.html
 endef
 
 define Package/fft2d/description
-General Purpose FFT (Fast Fourier/Cosine/Sine Transform) Package
-endef
-
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR)/sample2d \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all install
+This is a package to calculate Discrete Fourier/Cosine/Sine Transforms of 2,3-dimensional sequences of length 2^N.
 endef
 
 define Build/InstallDev
@@ -41,7 +35,7 @@ define Build/InstallDev
 	  $(1)/usr/lib
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(PKG_INSTALL_DIR)/usr/include/fft2d \
 	  $(1)/usr/include/
 
 	$(CP) \
