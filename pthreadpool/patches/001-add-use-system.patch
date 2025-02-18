@@ -44,16 +44,6 @@ index 7fa4285..fa59e16 100644
  
  # ---[ pthreadpool library
  IF(PTHREADPOOL_ALLOW_DEPRECATED_API)
-@@ -135,6 +139,9 @@ ENDIF()
- SET_TARGET_PROPERTIES(pthreadpool PROPERTIES
-   C_STANDARD 11
-   C_EXTENSIONS NO)
-+# YY.M.D of last upstream commit to main
-+set(pthreadpool_VERSION 23.8.29)
-+SET_TARGET_PROPERTIES(pthreadpool PROPERTIES VERSION ${pthreadpool_VERSION} SOVERSION ${pthreadpool_VERSION})
- TARGET_LINK_LIBRARIES(pthreadpool PUBLIC pthreadpool_interface)
- TARGET_INCLUDE_DIRECTORIES(pthreadpool PRIVATE src)
- IF(NOT CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
 @@ -154,14 +161,16 @@ IF(CMAKE_SYSTEM_NAME STREQUAL "Linux")
  ENDIF()
  
