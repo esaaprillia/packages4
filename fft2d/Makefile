@@ -47,4 +47,7 @@ define Build/InstallDev
 	  $(1)/usr/include/fft2d/
 endef
 
+define Package/fft2d/install
+endef
+
 $(eval $(call BuildPackage,fft2d))
