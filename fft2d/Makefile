@@ -39,11 +39,11 @@ endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
-	  $(1)/usr/include
+	  $(1)/usr/include/fft2d
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/fft2d \
-	  $(1)/usr/include/
+	  $(PKG_BUILD_DIR)/* \
+	  $(1)/usr/include/fft2d/
 endef
 
 $(eval $(call BuildPackage,fft2d))
