@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pthreadpool
-PKG_VERSION:=2024-06-17
+PKG_VERSION:=2025-02-14
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/Maratyszcza/pthreadpool.git
-PKG_SOURCE_VERSION:=560c60d342a76076f0557a3946924c6478470044
+PKG_SOURCE_URL:=https://github.com/google/pthreadpool.git
+PKG_SOURCE_VERSION:=5703882e34c104137669d306536c65362413d976
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
