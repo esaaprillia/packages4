@@ -1,42 +1,68 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-app-cpanminus
-PKG_VERSION:=1.7047
+PKG_NAME:=kleidiai
+PKG_VERSION:=1.3.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=App-cpanminus-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/
-PKG_HASH:=963e63c6e1a8725ff2f624e9086396ae150db51dd0a337c3781d09a994af05a5
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://gitlab.arm.com/kleidi/kleidiai/-/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
-PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=LICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=Apache-2.0 BSD-3-Clause
+PKG_LICENSE_FILES:=Apache-2.0.txt BSD-3-Clause.txt
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/App-cpanminus-$(PKG_VERSION)
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include ../perl/perlmod.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/perl-app-cpanminus
-  SUBMENU:=Perl
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=Perl App cpanminus
-  URL:=https://metacpan.org/dist/App-cpanminus
-  DEPENDS:=perl +perlbase-base +perlbase-essential
+define Package/kleidiai
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=KleidiAI is an open-source library that provides optimized performance-critical routines, also known as micro-kernels, for artificial intelligence (AI) workloads tailored for Arm® CPUs.
+	DEPENDS:=
+	URL:=https://gitlab.arm.com/kleidi/kleidiai
 endef
 
-define Build/Configure
-	$(call perlmod/Configure,,)
+define Package/kleidiai/description
+KleidiAI is an open-source library that provides optimized performance-critical routines, also known as micro-kernels, for artificial intelligence (AI) workloads tailored for Arm® CPUs.
+These routines are tuned to exploit the capabilities of specific Arm® hardware architectures, aiming to maximize performance.
+The KleidiAI library has been designed for ease of adoption into C or C++ machine learning (ML) and AI frameworks. Specifically, developers looking to incorporate specific micro-kernels into their projects can only include the corresponding .c and .h files associated with those micro-kernels and a common header file.
 endef
 
-define Build/Compile
-	$(call perlmod/Compile,,)
+CMAKE_OPTIONS += \
+	-Wno-dev \
+	-DBUILD_SHARED_LIBS=ON \
+	-DKLEIDIAI_BUILD_TESTS=OFF \
+	-DKLEIDIAI_BUILD_BENCHMARK=OFF
+
+define Build/InstallDev
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(1)/usr/lib/
 endef
 
-define Package/perl-app-cpanminus/install
-	$(call perlmod/Install,$(1),App)
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/cpanm $(1)/usr/bin/
+define Package/kleidiai/install
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/igzip \
+	  $(1)/usr/bin/
+	
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,perl-app-cpanminus))
+$(eval $(call BuildPackage,kleidiai))
