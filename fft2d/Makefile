@@ -1,42 +1,66 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-app-cpanminus
-PKG_VERSION:=1.7047
+PKG_NAME:=fft2d
+PKG_VERSION:=2006-12-28 
 PKG_RELEASE:=1
 
-PKG_SOURCE:=App-cpanminus-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/
-PKG_HASH:=963e63c6e1a8725ff2f624e9086396ae150db51dd0a337c3781d09a994af05a5
+PKG_SOURCE:=$(PKG_NAME).tgz
+PKG_SOURCE_URL:=https://www.kurims.kyoto-u.ac.jp/~ooura/
+PKG_HASH:=skip
 
-PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=LICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=License
+PKG_LICENSE_FILES:=
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/App-cpanminus-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include ../perl/perlmod.mk
 
-define Package/perl-app-cpanminus
-  SUBMENU:=Perl
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=Perl App cpanminus
-  URL:=https://metacpan.org/dist/App-cpanminus
-  DEPENDS:=perl +perlbase-base +perlbase-essential
+define Package/fft2d
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=This is a package to calculate Discrete Fourier/Cosine/Sine Transforms of 2,3-dimensional sequences of length 2^N.
+	DEPENDS:=
+	URL:=https://www.kurims.kyoto-u.ac.jp/~ooura/fft.html
 endef
 
-define Build/Configure
-	$(call perlmod/Configure,,)
+define Package/fft2d/description
+General Purpose FFT (Fast Fourier/Cosine/Sine Transform) Package
 endef
 
 define Build/Compile
-	$(call perlmod/Compile,,)
+	$(MAKE) -C $(PKG_BUILD_DIR)/sample2d \
+		DESTDIR="$(PKG_INSTALL_DIR)" \
+		all install
 endef
 
-define Package/perl-app-cpanminus/install
-	$(call perlmod/Install,$(1),App)
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/cpanm $(1)/usr/bin/
+define Build/InstallDev
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,perl-app-cpanminus))
+define Package/fft2d/install
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/igzip \
+	  $(1)/usr/bin/
+	
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(1)/usr/lib/
+endef
+
+$(eval $(call BuildPackage,fft2d))
