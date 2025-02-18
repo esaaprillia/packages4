@@ -40,33 +40,23 @@ CMAKE_OPTIONS += \
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
-	  $(1)/usr/lib \
-	  $(1)/usr/share
+	  $(1)/usr/lib
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/cpuinfo.h \
+	  $(PKG_INSTALL_DIR)/usr/include/gemmlowp \
 	  $(1)/usr/include/
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(PKG_INSTALL_DIR)/usr/lib/{cmake,*.so*} \
 	  $(1)/usr/lib/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/share/cpuinfo \
-	  $(1)/usr/share/
 endef
 
 define Package/gemmlowp/install
 	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
 	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/{isa-info,cpu-info,cache-info} \
-	  $(1)/usr/bin/
 	
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
 	  $(1)/usr/lib/
 endef
 
