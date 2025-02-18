@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=kleidiai
-PKG_VERSION:=1.3.0
+PKG_VERSION:=v1.3.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://gitlab.arm.com/kleidi/kleidiai/-/archive/v$(PKG_VERSION)
+PKG_SOURCE_URL:=https://gitlab.arm.com/kleidi/kleidiai/-/archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
