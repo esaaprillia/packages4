@@ -37,7 +37,7 @@ define Build/InstallDev
 	  $(1)/usr/lib
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(PKG_INSTALL_DIR)/usr/include/farmhash.h \
 	  $(1)/usr/include/
 
 	$(CP) \
@@ -47,12 +47,7 @@ endef
 
 define Package/farmhash/install
 	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
 	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/igzip \
-	  $(1)/usr/bin/
 	
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
