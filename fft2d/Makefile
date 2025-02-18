@@ -23,6 +23,7 @@ define Package/fft2d
 	TITLE:=This is a package to calculate Discrete Fourier/Cosine/Sine Transforms of 2,3-dimensional sequences of length 2^N.
 	DEPENDS:=
 	URL:=https://www.kurims.kyoto-u.ac.jp/~ooura/fft.html
+	BUILDONLY:=1
 endef
 
 define Package/fft2d/description
