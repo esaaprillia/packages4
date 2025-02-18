@@ -24,7 +24,7 @@ define Package/pthreadpool
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Portable (POSIX/Windows/Emscripten) thread pool for C/C++
-	DEPENDS:=+fxdiv
+	DEPENDS:=
 	URL:=https://github.com/Maratyszcza/pthreadpool
 endef
 
@@ -35,7 +35,7 @@ endef
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
-	-DFXDIV_SOURCE_DIR="$(FXDIV_DIR)" \
+	-DFXDIV_SOURCE_DIR="$(STAGING_DIR)/usr" \
 	-DPTHREADPOOL_BUILD_TESTS=OFF \
 	-DPTHREADPOOL_BUILD_BENCHMARKS=OFF
 
