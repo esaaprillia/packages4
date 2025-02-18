@@ -34,36 +34,16 @@ endef
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
-	-DBUILD_SHARED_LIBS=ON \
 	-DFP16_BUILD_TESTS=OFF \
 	-DFP16_BUILD_BENCHMARKS=OFF
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
+	  $(1)/usr/include
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(PKG_INSTALL_DIR)/usr/include/{fp16.h,fp16} \
 	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
-	  $(1)/usr/lib/
-endef
-
-define Package/fp16/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/igzip \
-	  $(1)/usr/bin/
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,fp16))
