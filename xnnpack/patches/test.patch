@@ -16,7 +16,7 @@ index ec72466..1bc492b 100644
  #include "xnnpack/microfnptr.h"
  #include "xnnpack/microparams.h"
 -#include "pthreadpool.h"
-+#include "<pthreadpool.h>"
++#include <pthreadpool.h>
  
  enum xnn_parallelization_type {
    xnn_parallelization_type_invalid = 0,
