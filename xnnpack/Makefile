@@ -13,8 +13,9 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=fxdiv
+CMAKE_BINARY_SUBDIR := build
 
+PKG_BUILD_DEPENDS:=fxdiv fp16
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -24,7 +25,7 @@ define Package/xnnpack
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=High-efficiency floating-point neural network inference operators for mobile, server, and Web
-	DEPENDS:=+cpuinfo +kleidiai +pthreadpool
+	DEPENDS:=+cpuinfo +pthreadpool
 	URL:=https://github.com/google/XNNPACK
 endef
 
