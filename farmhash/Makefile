@@ -13,8 +13,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
 
-PKG_INSTALL:=1
-
 include $(INCLUDE_DIR)/package.mk
 
 define Package/farmhash
@@ -27,6 +25,13 @@ endef
 
 define Package/farmhash/description
 A general overview of hash functions and their use is available in the file Understanding_Hash_Functions in this directory.  It may be helpful to read it before using FarmHash.
+endef
+
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		LDFLAGS="$(TARGET_LDFLAGS)" \
+		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
+		CC="$(TARGET_CC)"
 endef
 
 define Build/InstallDev
