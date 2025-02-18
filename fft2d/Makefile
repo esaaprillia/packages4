@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=fft2d
-PKG_VERSION:=2006-12-28 
+PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME).tgz
-PKG_SOURCE_URL:=https://www.kurims.kyoto-u.ac.jp/~ooura/
+PKG_SOURCE:=OouraFFT-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/petewarden/OouraFFT/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
