@@ -37,30 +37,11 @@ CMAKE_OPTIONS += \
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
+	  $(1)/usr/include
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(PKG_INSTALL_DIR)/usr/include/psimd.h \
 	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
-	  $(1)/usr/lib/
-endef
-
-define Package/psimd/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/igzip \
-	  $(1)/usr/bin/
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,psimd))
