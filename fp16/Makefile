@@ -1,42 +1,69 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-app-cpanminus
-PKG_VERSION:=1.7047
+PKG_NAME:=fp16
+PKG_VERSION:=2024-06-20
 PKG_RELEASE:=1
 
-PKG_SOURCE:=App-cpanminus-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/
-PKG_HASH:=963e63c6e1a8725ff2f624e9086396ae150db51dd0a337c3781d09a994af05a5
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/Maratyszcza/FP16.git
+PKG_SOURCE_VERSION:=98b0a46bce017382a6351a19577ec43a715b6835
+PKG_MIRROR_HASH:=skip
 
-PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=LICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=MIT
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/App-cpanminus-$(PKG_VERSION)
+CMAKE_BINARY_SUBDIR := build
+
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include ../perl/perlmod.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/perl-app-cpanminus
-  SUBMENU:=Perl
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=Perl App cpanminus
-  URL:=https://metacpan.org/dist/App-cpanminus
-  DEPENDS:=perl +perlbase-base +perlbase-essential
+define Package/fp16
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Conversion to/from half-precision floating point formats
+	DEPENDS:=
+	URL:=https://github.com/Maratyszcza/FP16
 endef
 
-define Build/Configure
-	$(call perlmod/Configure,,)
+define Package/fp16/description
+Header-only library for conversion to/from half-precision floating point formats
 endef
 
-define Build/Compile
-	$(call perlmod/Compile,,)
+CMAKE_OPTIONS += \
+	-Wno-dev \
+	-DBUILD_SHARED_LIBS=ON \
+	-DFP16_BUILD_TESTS=OFF \
+	-DFP16_BUILD_BENCHMARKS=OFF
+
+define Build/InstallDev
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(1)/usr/lib/
 endef
 
-define Package/perl-app-cpanminus/install
-	$(call perlmod/Install,$(1),App)
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/cpanm $(1)/usr/bin/
+define Package/fp16/install
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/igzip \
+	  $(1)/usr/bin/
+	
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,perl-app-cpanminus))
+$(eval $(call BuildPackage,fp16))
