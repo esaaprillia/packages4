@@ -1,12 +1,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=fft2d
-PKG_VERSION:=2006-12-28 
+PKG_VERSION:=2015-02-13 
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME).tgz
-PKG_SOURCE_URL:=https://www.kurims.kyoto-u.ac.jp/~ooura/
-PKG_HASH:=skip
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/petewarden/OouraFFT.git
+PKG_SOURCE_VERSION:=c6fd2dd6d21397baa6653139d31d84540d5449a2
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
