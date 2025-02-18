@@ -11,7 +11,7 @@ PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
-PKG_LICENSE_FILES:=
+PKG_LICENSE_FILES:=readme2d.txt
 
 PKG_BUILD_PARALLEL:=1
 
