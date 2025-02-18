@@ -1,14 +1,14 @@
-From 9c279925a734c5f4e89e5f5204f44b43fe1d745b Mon Sep 17 00:00:00 2001
+From 6b0b54dc8e6185af9372d4477481a0c04a777db6 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Tue, 18 Feb 2025 22:50:57 +0800
+Date: Tue, 18 Feb 2025 21:34:35 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- CMakeLists.txt | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ CMakeLists.txt | 14 +++++---------
+ 1 file changed, 5 insertions(+), 9 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9d35815..d129e7f 100644
+index 9d35815..46b6c7c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1079,7 +1079,7 @@ IF(XNNPACK_BUILD_ALL_MICROKERNELS)
@@ -16,11 +16,11 @@ index 9d35815..d129e7f 100644
  TARGET_INCLUDE_DIRECTORIES(datatype PRIVATE include src)
  TARGET_INCLUDE_DIRECTORIES(microkernels-prod PRIVATE include src)
 -TARGET_INCLUDE_DIRECTORIES(hardware-config PRIVATE include src ${CPUINFO_SOURCE_DIR}/include)
-+TARGET_INCLUDE_DIRECTORIES(hardware-config PRIVATE include src "@STAGING_DIR@/include")
++TARGET_INCLUDE_DIRECTORIES(hardware-config PRIVATE include src @STAGING_DIR@/include)
  TARGET_INCLUDE_DIRECTORIES(indirection PRIVATE include src)
  TARGET_INCLUDE_DIRECTORIES(microparams-init PRIVATE include src)
  TARGET_INCLUDE_DIRECTORIES(normalization PRIVATE include src)
-@@ -1135,11 +1135,11 @@ IF(NOT TARGET cpuinfo)
+@@ -1135,11 +1135,10 @@ IF(NOT TARGET cpuinfo)
        "${CMAKE_BINARY_DIR}/cpuinfo")
    ELSE()
      ADD_LIBRARY(cpuinfo SHARED IMPORTED)
@@ -30,11 +30,10 @@ index 9d35815..d129e7f 100644
        MESSAGE(FATAL_ERROR "Cannot find cpuinfo")
      ENDIF()
 -    TARGET_INCLUDE_DIRECTORIES(cpuinfo INTERFACE "${CPUINFO_SOURCE_DIR}/include")
-+    TARGET_INCLUDE_DIRECTORIES(cpuinfo "@STAGING_DIR@/include")
      SET_PROPERTY(TARGET cpuinfo PROPERTY IMPORTED_LOCATION "${CPUINFO_LIBRARY}")
      SET_PROPERTY(TARGET cpuinfo PROPERTY IMPORTED_IMPLIB "${CPUINFO_LIBRARY}")
    ENDIF()
-@@ -1160,12 +1160,12 @@ IF(NOT TARGET pthreadpool)
+@@ -1160,12 +1159,11 @@ IF(NOT TARGET pthreadpool)
        "${CMAKE_BINARY_DIR}/pthreadpool")
    ELSE()
      ADD_LIBRARY(pthreadpool SHARED IMPORTED)
@@ -45,11 +44,10 @@ index 9d35815..d129e7f 100644
      ENDIF()
      FIND_PACKAGE(Threads REQUIRED)
 -    TARGET_INCLUDE_DIRECTORIES(pthreadpool INTERFACE "${PTHREADPOOL_SOURCE_DIR}/include")
-+    TARGET_INCLUDE_DIRECTORIES(pthreadpool "@STAGING_DIR@/include")
      TARGET_LINK_LIBRARIES(pthreadpool INTERFACE Threads::Threads)
      SET_PROPERTY(TARGET pthreadpool PROPERTY IMPORTED_LOCATION "${PTHREADPOOL_LIBRARY}")
      SET_PROPERTY(TARGET pthreadpool PROPERTY IMPORTED_IMPLIB "${PTHREADPOOL_LIBRARY}")
-@@ -1182,12 +1182,12 @@ IF(NOT TARGET fxdiv)
+@@ -1182,12 +1180,11 @@ IF(NOT TARGET fxdiv)
        "${FXDIV_SOURCE_DIR}"
        "${CMAKE_BINARY_DIR}/FXdiv")
    ELSE()
@@ -60,11 +58,10 @@ index 9d35815..d129e7f 100644
      ENDIF()
      ADD_LIBRARY(fxdiv STATIC "${FXDIV_HDR}")
 -    TARGET_INCLUDE_DIRECTORIES(fxdiv INTERFACE "${FXDIV_SOURCE_DIR}/include")
-+    TARGET_INCLUDE_DIRECTORIES(fxdiv "@STAGING_DIR@/include")
      SET_PROPERTY(TARGET fxdiv PROPERTY LINKER_LANGUAGE C)
    ENDIF()
  ENDIF()
-@@ -1217,11 +1217,11 @@ IF(XNNPACK_ENABLE_KLEIDIAI)
+@@ -1217,11 +1214,10 @@ IF(XNNPACK_ENABLE_KLEIDIAI)
          "${CMAKE_BINARY_DIR}/kleidiai")
      ELSE()
        ADD_LIBRARY(kleidiai SHARED IMPORTED)
@@ -74,7 +71,6 @@ index 9d35815..d129e7f 100644
          MESSAGE(FATAL_ERROR "Cannot find KleidiAI")
        ENDIF()
 -      TARGET_INCLUDE_DIRECTORIES(kleidiai INTERFACE "${KLEIDIAI_SOURCE_DIR}")
-+      TARGET_INCLUDE_DIRECTORIES(kleidiai "@STAGING_DIR@/include")
        SET_PROPERTY(TARGET kleidiai PROPERTY IMPORTED_LOCATION "${KLEIDIAI_LIBRARY}")
        SET_PROPERTY(TARGET kleidiai PROPERTY IMPORTED_IMPLIB "${KLEIDIAI_LIBRARY}")
      ENDIF()
