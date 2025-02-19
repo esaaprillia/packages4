@@ -40,14 +40,6 @@ define Package/tensorflow-lite/description
 	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(RM) $(STAGING_DIR)/usr/bin/protoc*
-	$(RM) $(STAGING_DIR)/usr/bin/flatc
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc $(STAGING_DIR)/usr/bin/
-endef
-
 CMAKE_HOST_OPTIONS += \
 	-DBUILD_TESTING=OFF
 
@@ -56,7 +48,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_ENABLE_INSTALL=ON \
 	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR)/usr/bin" \
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/usr/bin" \
 	-DBUILD_DOC=OFF \
 	-DBUILD_DOCS=OFF \
 	-DBUILD_EXAMPLE=OFF \
@@ -71,10 +63,10 @@ CMAKE_OPTIONS += \
 	-Dgemmlowp_DIR="$(STAGING_DIR)/usr" \
 	-DCPUINFO_SOURCE_DIR="$(STAGING_DIR)/usr" \
 	-Druy_DIR="$(STAGING_DIR)/usr" \
-	-DProtobuf_INCLUDE_DIR="$(STAGING_DIR)/usr/include" \
+	-DProtobuf_INCLUDE_DIR="$(STAGING_DIR)/usr/include/google" \
 	-DProtobuf_LIBRARIES="$(STAGING_DIR)/usr/lib" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin" \
-	-DFLATBUFFERS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include" \
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin" \
+	-DFLATBUFFERS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include/flatbuffers" \
 	-DFLATBUFFERS_LIBRARIES="$(STAGING_DIR)/usr/lib"
 
 define Build/InstallDev
