@@ -24,7 +24,7 @@ define Package/gemmlowp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Low-precision matrix multiplication
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=https://github.com/google/gemmlowp
 endef
 
