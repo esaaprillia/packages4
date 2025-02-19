@@ -56,7 +56,7 @@ define Build/InstallDev
 	  $(1)/usr/include/
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*,cmake} \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
 	  $(1)/usr/lib/
 
 	$(SED) \
@@ -68,12 +68,7 @@ endef
 
 define Package/flatbuffers/install
 	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
 	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/flatc \
-	  $(1)/usr/bin/
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
