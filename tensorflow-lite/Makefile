@@ -16,7 +16,7 @@ HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/tensorflow-$(PKG_VERSION)
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
 HOST_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen/host re2/host
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen fft2d ruy
 
 CMAKE_INSTALL:=1
 #CMAKE_BINARY_SUBDIR:=tensorflow/lite
@@ -32,7 +32,7 @@ define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp
 	URL:=https://tensorflow.org/
 endef
 
@@ -46,6 +46,8 @@ CMAKE_HOST_OPTIONS += \
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
+	-DTFLITE_ENABLE_INSTALL=ON \
+	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/usr/bin" \
 	-DBUILD_DOC=OFF \
 	-DBUILD_DOCS=OFF \
@@ -54,12 +56,12 @@ CMAKE_OPTIONS += \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
 	-DBUILD_TESTING=OFF \
-	-DTFLITE_ENABLE_RUY=OFF \
-	-DTFLITE_ENABLE_RESOURCE=OFF \
-	-DTFLITE_ENABLE_NNAPI=OFF \
-	-DTFLITE_ENABLE_MMAP=OFF \
-	-DTFLITE_ENABLE_XNNPACK=OFF \
-	-DTFLITE_ENABLE_EXTERNAL_DELEGATE=OFF
+	-DSYSTEM_FARMHASH=ON \
+	-DSYSTEM_PTHREADPOOL=ON \
+	-Dfft2d_DIR="$(STAGING_DIR)/usr" \
+	-Dgemmlowp_DIR="$(STAGING_DIR)/usr" \
+	-Dcpuinfo_DIR="$(STAGING_DIR)/usr" \
+	-Druy_DIR="$(STAGING_DIR)/usr"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
