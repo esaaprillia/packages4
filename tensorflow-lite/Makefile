@@ -64,7 +64,8 @@ CMAKE_OPTIONS += \
 	-DProtobuf_DIR="$(STAGING_DIR)/usr/lib/cmake/protobuf" \
 	-Dgemmlowp_DIR="$(STAGING_DIR)/usr/lib/cmake/gemmlowp" \
 	-Dcpuinfo_DIR="$(STAGING_DIR)/usr/share/cpuinfo" \
-	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy"
+	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy" \
+	-Dre2_DIR="$(STAGING_DIR)/usr/lib/cmake/re2"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
