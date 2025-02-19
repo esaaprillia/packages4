@@ -70,7 +70,12 @@ CMAKE_OPTIONS += \
 	-DFFT2D_SOURCE_DIR="$(STAGING_DIR)/usr/include/fft2d" \
 	-Dgemmlowp_DIR="$(STAGING_DIR)/usr" \
 	-DCPUINFO_SOURCE_DIR="$(STAGING_DIR)/usr" \
-	-Druy_DIR="$(STAGING_DIR)/usr"
+	-Druy_DIR="$(STAGING_DIR)/usr" \
+	-DProtobuf_INCLUDE_DIR="$(STAGING_DIR)/usr/include" \
+	-DProtobuf_LIBRARIES="$(STAGING_DIR)/usr/lib" \
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin" \
+	-DFLATBUFFERS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include" \
+	-DFLATBUFFERS_LIBRARIES="$(STAGING_DIR)/usr/lib"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
