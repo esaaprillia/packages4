@@ -23,7 +23,7 @@ define Package/farmhash
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Automatically exported from code.google.com/p/farmhash
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=https://github.com/google/farmhash
 endef
 
