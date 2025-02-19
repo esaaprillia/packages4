@@ -33,7 +33,9 @@ define Package/ruy/description
 endef
 
 CMAKE_OPTIONS += \
-	-Wno-dev \
+	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_C_FLAGS=-fPIC \
+	-DCMAKE_CXX_FLAGS=-fPIC \
 	-DRUY_MINIMAL_BUILD=ON \
 	-DRUY_ENABLE_INSTALL=ON \
 	-DRUY_FIND_CPUINFO=ON
