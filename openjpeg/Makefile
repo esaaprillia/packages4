@@ -32,8 +32,16 @@ define Package/openjpeg/description
 	OpenJPEG is an open-source JPEG 2000 codec written in C language. It has been developed in order to promote the use of JPEG 2000, a still-image compression standard from the Joint Photographic Experts Group (JPEG). Since April 2015, it is officially recognized by ISO/IEC and ITU-T as a JPEG 2000 Reference Software.
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-DBUILD_SHARED_LIBS=OFF \
+	-DBUILD_STATIC_LIBS=ON \
+	-DBUILD_THIRDPARTY=NO \
+	-DCMAKE_INSTALL_LIBDIR=lib
+
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_STATIC_LIBS=OFF \
+	-DBUILD_THIRDPARTY=NO
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
@@ -64,15 +72,6 @@ define Package/openjpeg/install
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
 	  $(1)/usr/lib/
-endef
-
-define Host/Install
-	$(INSTALL_DIR) \
-	  $(STAGING_DIR)/usr/bin
-
-	$(CP) \
-	  $(HOST_CMAKE_BINARY_DIR)/bin/{opj_compress,opj_decompress,opj_dump} \
-	  $(STAGING_DIR)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,openjpeg))
