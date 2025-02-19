@@ -40,6 +40,19 @@ define Package/tensorflow-lite/description
 	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
 endef
 
+define Download/fft2d
+  URL:=https://storage.googleapis.com/mirror.tensorflow.org/github.com/petewarden/OouraFFT/archive
+  FILE:=v1.0.tar.gz
+  HASH:=5f4dabc2ae21e1f537425d58a49cdca1c49ea11db0d6271e2a4b27e9697548eb
+endef
+
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(call Download,fft2d)
+	mkdir -p $(PKG_BUILD_DIR)/_deps/fft2d-subbuild/fft2d-populate-prefix/src
+	$(CP) $(DL_DIR)/v1.0.tar.gz $(PKG_BUILD_DIR)/_deps/fft2d-subbuild/fft2d-populate-prefix/src/
+endef
+
 CMAKE_HOST_OPTIONS += \
 	-DBUILD_TESTING=OFF
 
