@@ -40,6 +40,14 @@ define Package/tensorflow-lite/description
 	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(RM) $(STAGING_DIR)/usr/bin/protoc*
+	$(RM) $(STAGING_DIR)/usr/bin/flatc
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc $(STAGING_DIR)/usr/bin/
+endef
+
 CMAKE_HOST_OPTIONS += \
 	-DBUILD_TESTING=OFF
 
