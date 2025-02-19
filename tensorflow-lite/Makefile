@@ -40,17 +40,12 @@ define Package/tensorflow-lite/description
 	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
 endef
 
-define Download/fft2d
-  URL:=https://storage.googleapis.com/mirror.tensorflow.org/github.com/petewarden/OouraFFT/archive
-  FILE:=v1.0.tar.gz
-  HASH:=5f4dabc2ae21e1f537425d58a49cdca1c49ea11db0d6271e2a4b27e9697548eb
-endef
-
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(call Download,fft2d)
-	mkdir -p $(PKG_BUILD_DIR)/_deps/fft2d-subbuild/fft2d-populate-prefix/src
-	$(CP) $(DL_DIR)/v1.0.tar.gz $(PKG_BUILD_DIR)/_deps/fft2d-subbuild/fft2d-populate-prefix/src/
+	$(RM) $(STAGING_DIR)/usr/bin/protoc*
+	$(RM) $(STAGING_DIR)/usr/bin/flatc
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc $(STAGING_DIR)/usr/bin/
 endef
 
 CMAKE_HOST_OPTIONS += \
@@ -61,7 +56,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_ENABLE_INSTALL=ON \
 	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/usr/bin" \
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR)/usr/bin" \
 	-DBUILD_DOC=OFF \
 	-DBUILD_DOCS=OFF \
 	-DBUILD_EXAMPLE=OFF \
