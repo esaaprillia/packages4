@@ -44,11 +44,9 @@ CMAKE_HOST_OPTIONS += \
 	-DBUILD_TESTING=OFF
 
 CMAKE_OPTIONS += \
-	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_ENABLE_INSTALL=ON \
 	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/usr/bin" \
 	-DBUILD_DOC=OFF \
 	-DBUILD_DOCS=OFF \
 	-DBUILD_EXAMPLE=OFF \
@@ -60,14 +58,13 @@ CMAKE_OPTIONS += \
 	-DSYSTEM_PTHREADPOOL=ON \
 	-DTFLITE_ENABLE_XNNPACK=OFF \
 	-DFFT2D_SOURCE_DIR="$(STAGING_DIR)/usr/include/fft2d" \
-	-Dgemmlowp_DIR="$(STAGING_DIR)/usr" \
-	-DCPUINFO_SOURCE_DIR="$(STAGING_DIR)/usr" \
-	-Druy_DIR="$(STAGING_DIR)/usr" \
-	-DProtobuf_INCLUDE_DIR="$(STAGING_DIR)/usr/include/google" \
-	-DProtobuf_LIBRARIES="$(STAGING_DIR)/usr/lib" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin" \
-	-DFLATBUFFERS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include/flatbuffers" \
-	-DFLATBUFFERS_LIBRARIES="$(STAGING_DIR)/usr/lib"
+	-Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" \
+	-DEigen3_DIR="$(STAGING_DIR)/usr/share/eigen3/cmake" \
+	-DFlatBuffers_DIR="$(STAGING_DIR)/usr/lib/cmake/flatbuffers" \
+	-DProtobuf_DIR="$(STAGING_DIR)/usr/lib/cmake/protobuf" \
+	-Dgemmlowp_DIR="$(STAGING_DIR)/usr/lib/cmake/gemmlowp" \
+	-Dcpuinfo_DIR="$(STAGING_DIR)/usr/share/cpuinfo" \
+	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
