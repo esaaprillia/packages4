@@ -1,0 +1,212 @@
+From 889f2c0071760204e32a33790cf9d8f765c3ba30 Mon Sep 17 00:00:00 2001
+From: Antonio Sanchez <cantonios@google.com>
+Date: Thu, 30 Jan 2025 15:53:49 -0800
+Subject: [PATCH] Add ml_dtypes prefix for CC includes.
+
+This simplifies integration with other projects like TensorFlow/JAX,
+making it more consistent (and hence play nicely) with other Google frameworks.
+
+PiperOrigin-RevId: 721546985
+---
+ ml_dtypes/_src/common.h         |  2 +-
+ ml_dtypes/_src/custom_float.h   |  6 +++---
+ ml_dtypes/_src/dtypes.cc        | 12 ++++++------
+ ml_dtypes/_src/intn_numpy.h     |  8 ++++----
+ ml_dtypes/_src/numpy.cc         |  2 +-
+ ml_dtypes/_src/ufuncs.h         |  4 ++--
+ ml_dtypes/include/mxfloat.h     |  2 +-
+ ml_dtypes/tests/float8_test.cc  |  2 +-
+ ml_dtypes/tests/intn_test.cc    |  2 +-
+ ml_dtypes/tests/mxfloat_test.cc |  2 +-
+ setup.py                        |  2 +-
+ 11 files changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/ml_dtypes/_src/common.h b/ml_dtypes/_src/common.h
+index 97efed26..f2b96367 100644
+--- a/ml_dtypes/_src/common.h
++++ b/ml_dtypes/_src/common.h
+@@ -18,7 +18,7 @@ limitations under the License.
+ 
+ // Must be included first
+ // clang-format off
+-#include "_src/numpy.h"
++#include "ml_dtypes/_src/numpy.h"
+ // clang-format on
+ 
+ #include <Python.h>
+diff --git a/ml_dtypes/_src/custom_float.h b/ml_dtypes/_src/custom_float.h
+index 2356ba9b..f06f629d 100644
+--- a/ml_dtypes/_src/custom_float.h
++++ b/ml_dtypes/_src/custom_float.h
+@@ -18,7 +18,7 @@ limitations under the License.
+ 
+ // Must be included first
+ // clang-format off
+-#include "_src/numpy.h" // NOLINT
++#include "ml_dtypes/_src/numpy.h" // NOLINT
+ // clang-format on
+ 
+ // Support utilities for adding custom floating-point dtypes to TensorFlow,
+@@ -35,8 +35,8 @@ limitations under the License.
+ #include <Python.h>
+ 
+ #include "Eigen/Core"
+-#include "_src/common.h"  // NOLINT
+-#include "_src/ufuncs.h"  // NOLINT
++#include "ml_dtypes/_src/common.h"  // NOLINT
++#include "ml_dtypes/_src/ufuncs.h"  // NOLINT
+ 
+ #undef copysign  // TODO(ddunleavy): temporary fix for Windows bazel build
+                  // Possible this has to do with numpy.h being included before
+diff --git a/ml_dtypes/_src/dtypes.cc b/ml_dtypes/_src/dtypes.cc
+index 06213dba..7f7088d0 100644
+--- a/ml_dtypes/_src/dtypes.cc
++++ b/ml_dtypes/_src/dtypes.cc
+@@ -18,7 +18,7 @@ limitations under the License.
+ 
+ // Must be included first
+ // clang-format off
+-#include "_src/numpy.h" //NOLINT
++#include "ml_dtypes/_src/numpy.h" //NOLINT
+ // clang-format on
+ 
+ #include <array>    // NOLINT
+@@ -31,11 +31,11 @@ limitations under the License.
+ #include <Python.h>
+ 
+ #include "Eigen/Core"
+-#include "_src/custom_float.h"
+-#include "_src/intn_numpy.h"
+-#include "include/float8.h"
+-#include "include/intn.h"
+-#include "include/mxfloat.h"
++#include "ml_dtypes/_src/custom_float.h"
++#include "ml_dtypes/_src/intn_numpy.h"
++#include "ml_dtypes/include/float8.h"
++#include "ml_dtypes/include/intn.h"
++#include "ml_dtypes/include/mxfloat.h"
+ 
+ namespace ml_dtypes {
+ 
+diff --git a/ml_dtypes/_src/intn_numpy.h b/ml_dtypes/_src/intn_numpy.h
+index a3b56c24..a18b261b 100644
+--- a/ml_dtypes/_src/intn_numpy.h
++++ b/ml_dtypes/_src/intn_numpy.h
+@@ -21,13 +21,13 @@ limitations under the License.
+ 
+ // Must be included first
+ // clang-format off
+-#include "_src/numpy.h"
++#include "ml_dtypes/_src/numpy.h"
+ // clang-format on
+ 
+ #include "Eigen/Core"
+-#include "_src/common.h"  // NOLINT
+-#include "_src/ufuncs.h"  // NOLINT
+-#include "include/intn.h"
++#include "ml_dtypes/_src/common.h"  // NOLINT
++#include "ml_dtypes/_src/ufuncs.h"  // NOLINT
++#include "ml_dtypes/include/intn.h"
+ 
+ #if NPY_ABI_VERSION < 0x02000000
+ #define PyArray_DescrProto PyArray_Descr
+diff --git a/ml_dtypes/_src/numpy.cc b/ml_dtypes/_src/numpy.cc
+index 484f3c90..92673ac8 100644
+--- a/ml_dtypes/_src/numpy.cc
++++ b/ml_dtypes/_src/numpy.cc
+@@ -17,7 +17,7 @@ limitations under the License.
+ // ImportNumpy function to populate it.
+ #define ML_DTYPES_IMPORT_NUMPY
+ 
+-#include "_src/numpy.h"
++#include "ml_dtypes/_src/numpy.h"
+ 
+ namespace ml_dtypes {
+ 
+diff --git a/ml_dtypes/_src/ufuncs.h b/ml_dtypes/_src/ufuncs.h
+index eea92196..86e8e425 100644
+--- a/ml_dtypes/_src/ufuncs.h
++++ b/ml_dtypes/_src/ufuncs.h
+@@ -18,7 +18,7 @@ limitations under the License.
+ 
+ // Must be included first
+ // clang-format off
+-#include "_src/numpy.h"
++#include "ml_dtypes/_src/numpy.h"
+ // clang-format on
+ 
+ #include <array>    // NOLINT
+@@ -29,7 +29,7 @@ limitations under the License.
+ #include <utility>  // NOLINT
+ #include <vector>   // NOLINT
+ 
+-#include "_src/common.h"  // NOLINT
++#include "ml_dtypes/_src/common.h"  // NOLINT
+ 
+ // Some versions of MSVC define a "copysign" macro which wreaks havoc.
+ #if defined(_MSC_VER) && defined(copysign)
+diff --git a/ml_dtypes/include/mxfloat.h b/ml_dtypes/include/mxfloat.h
+index b3fc6ed9..01636b56 100644
+--- a/ml_dtypes/include/mxfloat.h
++++ b/ml_dtypes/include/mxfloat.h
+@@ -25,7 +25,7 @@ limitations under the License.
+ #include <cstdint>
+ #include <limits>
+ 
+-#include "include/float8.h"
++#include "ml_dtypes/include/float8.h"
+ #include "Eigen/Core"
+ 
+ namespace ml_dtypes {
+diff --git a/ml_dtypes/tests/float8_test.cc b/ml_dtypes/tests/float8_test.cc
+index 5d5be634..c2944d80 100644
+--- a/ml_dtypes/tests/float8_test.cc
++++ b/ml_dtypes/tests/float8_test.cc
+@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
+ limitations under the License.
+ ==============================================================================*/
+ 
+-#include "include/float8.h"
++#include "ml_dtypes/include/float8.h"
+ 
+ #include <cmath>
+ #include <limits>
+diff --git a/ml_dtypes/tests/intn_test.cc b/ml_dtypes/tests/intn_test.cc
+index 55866306..ea33b80e 100644
+--- a/ml_dtypes/tests/intn_test.cc
++++ b/ml_dtypes/tests/intn_test.cc
+@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ ==============================================================================*/
+-#include "include/intn.h"
++#include "ml_dtypes/include/intn.h"
+ 
+ #include <cstdint>
+ #include <limits>
+diff --git a/ml_dtypes/tests/mxfloat_test.cc b/ml_dtypes/tests/mxfloat_test.cc
+index 733f6c78..125b41b1 100644
+--- a/ml_dtypes/tests/mxfloat_test.cc
++++ b/ml_dtypes/tests/mxfloat_test.cc
+@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
+ limitations under the License.
+ ==============================================================================*/
+ 
+-#include "include/mxfloat.h"
++#include "ml_dtypes/include/mxfloat.h"
+ 
+ #include <gtest/gtest.h>
+ 
+diff --git a/setup.py b/setup.py
+index 8bbd112f..446cee80 100644
+--- a/setup.py
++++ b/setup.py
+@@ -67,7 +67,7 @@ def find_package_modules(self, package, package_dir):
+             ],
+             include_dirs=[
+                 "third_party/eigen",
+-                "ml_dtypes",
++                ".",
+                 np.get_include(),
+             ],
+             extra_compile_args=COMPILE_ARGS,
