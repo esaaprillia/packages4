@@ -75,7 +75,8 @@ CMAKE_OPTIONS += \
 	-Dgemmlowp_DIR="$(STAGING_DIR)/usr/lib/cmake/gemmlowp" \
 	-Dcpuinfo_DIR="$(STAGING_DIR)/usr/share/cpuinfo" \
 	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy" \
-	-Dre2_DIR="$(STAGING_DIR)/usr/lib/cmake/re2"
+	-Dre2_DIR="$(STAGING_DIR)/usr/lib/cmake/re2" \
+	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
