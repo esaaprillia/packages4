@@ -13,6 +13,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
+CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=contrib
 
 PKG_BUILD_PARALLEL:=1
