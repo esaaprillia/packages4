@@ -48,6 +48,9 @@ define Build/Prepare
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc $(STAGING_DIR)/usr/bin/
 endef
 
+TARGET_CXXFLAGS += -I$(STAGING_DIR)/usr/include
+TARGET_LDFLAGS += -L$(STAGING_DIR)/usr/lib
+
 CMAKE_HOST_OPTIONS += \
 	-DBUILD_TESTING=OFF
 
