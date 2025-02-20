@@ -1,0 +1,25 @@
+From 761e68fee069e3f39db0c9d8e08df1074cfdcf98 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 20 Feb 2025 22:37:34 +0800
+Subject: [PATCH] Update Findml_dtypes.cmake
+
+---
+ tensorflow/lite/tools/cmake/modules/Findml_dtypes.cmake | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/tensorflow/lite/tools/cmake/modules/Findml_dtypes.cmake b/tensorflow/lite/tools/cmake/modules/Findml_dtypes.cmake
+index afea746..59056e0 100644
+--- a/tensorflow/lite/tools/cmake/modules/Findml_dtypes.cmake
++++ b/tensorflow/lite/tools/cmake/modules/Findml_dtypes.cmake
+@@ -18,11 +18,8 @@
+ 
+ include(ml_dtypes)
+ if(ml_dtypes_POPULATED)
+-  get_target_property(ML_DTYPES_INCLUDE_DIRS ml_dtypes INTERFACE_DIRECTORIES)
+ endif()
+ 
+ if(ml_dtypes_FOUND OR ml_dtypes_POPULATED)
+   set(ML_DTYPES_FOUND TRUE)
+-  add_library(ml_dtypes::ml_dtypes ALIAS ml_dtypes)
+-  set(ML_DTYPES_LIBRARIES ml_dtypes::ml_dtypes)
+ endif()
