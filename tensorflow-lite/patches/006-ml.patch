@@ -1,0 +1,29 @@
+From 7ae4695ed683f3fd8c5c0a322edecec4ebe938a7 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 20 Feb 2025 13:23:35 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ .../lite/tools/cmake/modules/ml_dtypes/CMakeLists.txt    | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/tensorflow/lite/tools/cmake/modules/ml_dtypes/CMakeLists.txt b/tensorflow/lite/tools/cmake/modules/ml_dtypes/CMakeLists.txt
+index 91e893e..050d1ba 100644
+--- a/tensorflow/lite/tools/cmake/modules/ml_dtypes/CMakeLists.txt
++++ b/tensorflow/lite/tools/cmake/modules/ml_dtypes/CMakeLists.txt
+@@ -22,15 +22,6 @@ if(NOT ML_DTYPES_SOURCE_DIR)
+   message(FATAL_ERROR "Must specify source directory")
+ endif()
+ 
+-add_library(ml_dtypes INTERFACE)
+-target_include_directories(ml_dtypes INTERFACE
+-  "${ML_DTYPES_SOURCE_DIR}"
+-  "${ML_DTYPES_SOURCE_DIR}/ml_dtypes")
+-file(GLOB ML_DTYPES_PUBLIC_HEADERS
+-  ${ML_DTYPES_SOURCE_DIR}/ml_dtypes/include/*.h)
+-set_target_properties(ml_dtypes PROPERTIES
+-  PUBLIC_HEADER "${ML_DTYPES_PUBLIC_HEADERS}")
+-
+ if(TFLITE_ENABLE_INSTALL)
+   install(
+     TARGETS ml_dtypes
