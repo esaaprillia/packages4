@@ -19,7 +19,7 @@ HOST_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen/host re
 PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen fft2d ruy fp16
 
 CMAKE_INSTALL:=1
-#CMAKE_BINARY_SUBDIR:=tensorflow/lite
+CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
 PKG_BUILD_PARALLEL:=1
