@@ -77,6 +77,7 @@ CMAKE_OPTIONS += \
 	-Dcpuinfo_DIR="$(STAGING_DIR)/usr/share/cpuinfo" \
 	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy" \
 	-Dre2_DIR="$(STAGING_DIR)/usr/lib/cmake/re2" \
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
 
 define Build/InstallDev
