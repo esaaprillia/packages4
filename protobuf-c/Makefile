@@ -26,7 +26,7 @@ HOST_BUILD_DEPENDS:=protobuf/host
 PKG_BUILD_DEPENDS:=protobuf
 
 CMAKE_INSTALL:=1
-CMAKE_BINARY_SUBDIR:=build-cmake
+CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=build-cmake
 
 include $(INCLUDE_DIR)/package.mk
