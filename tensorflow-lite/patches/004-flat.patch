@@ -1,0 +1,31 @@
+From c0f7605af23a90bc2b94d0298ab416275336460b Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 20 Feb 2025 08:25:13 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bce9627..25248ee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -530,7 +530,7 @@ if(TFLITE_ENABLE_XNNPACK)
+   )
+   target_link_libraries(xnnpack-delegate
+     Eigen3::Eigen
+-    flatbuffers::flatbuffers
++    FlatBuffers::FlatBuffers
+     gemmlowp::gemmlowp
+     ruy::ruy
+     )
+@@ -716,7 +716,7 @@ target_link_libraries(tensorflow-lite
+     absl::variant
+     farmhash
+     fft2d_fftsg2d
+-    flatbuffers::flatbuffers
++    FlatBuffers::FlatBuffers
+     gemmlowp::gemmlowp
+     ml_dtypes
+     ruy::ruy
