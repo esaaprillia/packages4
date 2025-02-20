@@ -32,6 +32,11 @@ define Package/python3-ml-dtypes/description
 ml_dtypes is a stand-alone implementation of several NumPy dtype extensions used in machine learning libraries, including
 endef
 
+define Build/InstallDev
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)
+endef
+
 $(eval $(call Py3Package,python3-ml-dtypes))
 $(eval $(call BuildPackage,python3-ml-dtypes))
 $(eval $(call BuildPackage,python3-ml-dtypes-src))
