@@ -35,6 +35,7 @@ CMAKE_HOST_OPTIONS += \
 
 CMAKE_OPTIONS += \
 	-DFLATBUFFERS_BUILD_TESTS=OFF \
+	-DFLATBUFFERS_BUILD_FLATLIB=OFF \
 	-DFLATBUFFERS_BUILD_SHAREDLIB=ON
 
 define Build/InstallDev
@@ -47,7 +48,7 @@ define Build/InstallDev
 	  $(1)/usr/include/
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*,*.a*,cmake} \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*,cmake} \
 	  $(1)/usr/lib/
 
 	$(SED) \
