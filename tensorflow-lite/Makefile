@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen fft2d ruy fp16 python-ml-dtypes/host python-pybind11/host
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen fft2d ruy fp16 fxdiv python-ml-dtypes/host python-pybind11/host
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
