@@ -1,14 +1,14 @@
-From 0da9f2bb98ab46d355304e7a3274f84f5d5157c7 Mon Sep 17 00:00:00 2001
+From e9bb8548fe5b2fdc98a63ee3930ce8063e56fe4f Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 20 Feb 2025 12:43:40 +0800
+Date: Fri, 21 Feb 2025 18:53:20 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- tensorflow/lite/CMakeLists.txt | 3 ---
- 1 file changed, 3 deletions(-)
+ tensorflow/lite/CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt
-index bce9627..5051e84 100644
+index bce9627..0e1a14c 100644
 --- a/tensorflow/lite/CMakeLists.txt
 +++ b/tensorflow/lite/CMakeLists.txt
 @@ -530,7 +530,6 @@ if(TFLITE_ENABLE_XNNPACK)
@@ -19,13 +19,11 @@ index bce9627..5051e84 100644
      gemmlowp::gemmlowp
      ruy::ruy
      )
-@@ -716,9 +715,7 @@ target_link_libraries(tensorflow-lite
+@@ -716,7 +715,6 @@ target_link_libraries(tensorflow-lite
      absl::variant
      farmhash
      fft2d_fftsg2d
 -    flatbuffers::flatbuffers
      gemmlowp::gemmlowp
--    ml_dtypes
+     ml_dtypes
      ruy::ruy
-     ${CMAKE_DL_LIBS}
-     ${TFLITE_TARGET_DEPENDENCIES}
