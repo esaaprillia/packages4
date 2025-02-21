@@ -75,6 +75,9 @@ CMAKE_OPTIONS += \
 	-Dre2_DIR="$(STAGING_DIR)/usr/lib/cmake/re2" \
 	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
 	-DFLATBUFFERS_FLATC_EXECUTABLE="$(STAGING_DIR)/usr/bin/flatc" \
+	-DPTHREADPOOL_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
+	-DFP16_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
+	-DXNNPACK_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
 
 define Package/tensorflow-lite/install
