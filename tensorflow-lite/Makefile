@@ -56,7 +56,7 @@ CMAKE_HOST_OPTIONS += \
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR)/usr/bin" \
-	-DTFLITE_ENABLE_EXTERNAL_DELEGATE=ON \
+	-DTFLITE_ENABLE_GPU=OFF \
 	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
 	-DBUILD_DOC=OFF \
 	-DBUILD_DOCS=OFF \
@@ -78,6 +78,7 @@ CMAKE_OPTIONS += \
 	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy" \
 	-Dre2_DIR="$(STAGING_DIR)/usr/lib/cmake/re2" \
 	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
+	-DFLATBUFFERS_FLATC_EXECUTABLE="$(STAGING_DIR)/usr/bin/flatc" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
 
 define Build/InstallDev
