@@ -31,7 +31,7 @@ define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp +python3-ml-dtypes +xnnpack
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp +python3-ml-dtypes
 	URL:=https://tensorflow.org/
 endef
 
@@ -48,6 +48,7 @@ define Build/Prepare
 endef
 
 CMAKE_OPTIONS += \
+	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_ENABLE_INSTALL=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR)/usr/bin" \
@@ -62,7 +63,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DSYSTEM_FARMHASH=ON \
 	-DSYSTEM_PTHREADPOOL=ON \
-	-DTFLITE_ENABLE_XNNPACK=ON \
+	-DTFLITE_ENABLE_XNNPACK=OFF \
 	-DFFT2D_SOURCE_DIR="$(STAGING_DIR)/usr/include/fft2d" \
 	-Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" \
 	-DEigen3_DIR="$(STAGING_DIR)/usr/share/eigen3/cmake" \
