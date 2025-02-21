@@ -12,10 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/tensorflow-$(PKG_VERSION)
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-HOST_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen/host re2/host
 PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen fft2d ruy fp16 python-ml-dtypes/host python-pybind11/host
 
 CMAKE_INSTALL:=1
@@ -26,7 +24,6 @@ PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/host-build.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
@@ -87,28 +84,29 @@ define Build/InstallDev
 	  $(1)/usr/lib
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/flatbuffers \
+	  $(PKG_INSTALL_DIR)/usr/include/tensorflow \
 	  $(1)/usr/include/
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*,cmake} \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
 	  $(1)/usr/lib/
 
 	$(SED) \
-	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
+	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/tensorflow.pc
 
 	$(SED) \
-	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
+	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/tensorflow.pc
+
+	$(SED) \
+	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/tensorflow_cc.pc
+
+	$(SED) \
+	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/tensorflow_cc.pc
 endef
 
 define Package/tensorflow-lite/install
 	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
 	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/flatc \
-	  $(1)/usr/bin/
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
@@ -116,4 +114,3 @@ define Package/tensorflow-lite/install
 endef
 
 $(eval $(call BuildPackage,tensorflow-lite))
-$(eval $(call HostBuild))
