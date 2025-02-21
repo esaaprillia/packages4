@@ -78,6 +78,7 @@ CMAKE_OPTIONS += \
 	-DPTHREADPOOL_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
 	-DFP16_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
 	-DXNNPACK_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
+	-Deigen_SOURCE_DIR="$(STAGING_DIR)/usr/include/eigen3" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
 
 define Package/tensorflow-lite/install
