@@ -47,11 +47,9 @@ define Build/Prepare
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc $(STAGING_DIR)/usr/bin/
 endef
 
-CMAKE_HOST_OPTIONS += \
-	-DBUILD_TESTING=OFF
-
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
+	-DTFLITE_ENABLE_INSTALL=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR)/usr/bin" \
 	-DTFLITE_ENABLE_GPU=OFF \
 	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
@@ -77,32 +75,6 @@ CMAKE_OPTIONS += \
 	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
 	-DFLATBUFFERS_FLATC_EXECUTABLE="$(STAGING_DIR)/usr/bin/flatc" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
-
-define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/tensorflow \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
-	  $(1)/usr/lib/
-
-	$(SED) \
-	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/tensorflow.pc
-
-	$(SED) \
-	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/tensorflow.pc
-
-	$(SED) \
-	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/tensorflow_cc.pc
-
-	$(SED) \
-	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/tensorflow_cc.pc
-endef
 
 define Package/tensorflow-lite/install
 	$(INSTALL_DIR) \
