@@ -33,7 +33,8 @@ define Package/clip/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DCLIP_X11_WITH_PNG=OFF
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
