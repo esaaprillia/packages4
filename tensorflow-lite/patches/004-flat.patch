@@ -1,33 +1,28 @@
-From 933390c11abda3d9251d4517dde99fcd7a89b733 Mon Sep 17 00:00:00 2001
+From e5c463d13b649f5a4339f2e7b8558f72a6dd23f7 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 22 Feb 2025 14:42:42 +0800
+Date: Sat, 22 Feb 2025 18:34:46 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- tensorflow/lite/CMakeLists.txt | 3 ---
- 1 file changed, 3 deletions(-)
+ tensorflow/lite/CMakeLists.txt | 5 -----
+ 1 file changed, 5 deletions(-)
 
 diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt
-index bce9627..9afca54 100644
+index bce9627..2427007 100644
 --- a/tensorflow/lite/CMakeLists.txt
 +++ b/tensorflow/lite/CMakeLists.txt
-@@ -530,7 +530,6 @@ if(TFLITE_ENABLE_XNNPACK)
+@@ -529,10 +529,6 @@ if(TFLITE_ENABLE_XNNPACK)
+     PRIVATE "${PROJECT_BINARY_DIR}"
    )
    target_link_libraries(xnnpack-delegate
-     Eigen3::Eigen
+-    Eigen3::Eigen
 -    flatbuffers::flatbuffers
-     gemmlowp::gemmlowp
-     ruy::ruy
+-    gemmlowp::gemmlowp
+-    ruy::ruy
      )
-@@ -542,7 +541,6 @@ if(TFLITE_ENABLE_XNNPACK)
-   )
  
-   list(APPEND TFLITE_TARGET_DEPENDENCIES
--    xnnpack-delegate
-     XNNPACK
-   )
-   list(APPEND TFLITE_TARGET_PUBLIC_OPTIONS "-DTFLITE_BUILD_WITH_XNNPACK_DELEGATE")
-@@ -716,7 +714,6 @@ target_link_libraries(tensorflow-lite
+   list(APPEND TFLITE_TARGET_PUBLIC_OPTIONS "-DTFLITE_KERNEL_USE_XNNPACK")
+@@ -716,7 +712,6 @@ target_link_libraries(tensorflow-lite
      absl::variant
      farmhash
      fft2d_fftsg2d
