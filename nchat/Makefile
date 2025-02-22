@@ -14,7 +14,7 @@ PKG_LICENSE:=MIT license
 PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR:=build
-CMAKE_SOURCE_SUBDIR:=lib/wmchat/go
+CMAKE_SOURCE_SUBDIR:=lib/wmchat
 
 PKG_BUILD_DEPENDS:=ncurses/host gperf/host golang/host
 
