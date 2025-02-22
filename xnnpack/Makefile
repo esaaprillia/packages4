@@ -6,7 +6,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/google/XNNPACK.git
-PKG_SOURCE_VERSION:=59daa3ecbc528c9608f7d8a776a97e78e5efffa7
+PKG_SOURCE_VERSION:=6a834a09c53765bea56b8aea9a644a90564fe3a5
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
