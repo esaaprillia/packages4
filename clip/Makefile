@@ -25,7 +25,7 @@ define Package/clip
 	CATEGORY:=Libraries
 	TITLE:=Cross-platform C++ library to copy/paste clipboard content
 	DEPENDS:=
-	URL:=https://github.com/google/brotli
+	URL:=https://github.com/dacap/clip
 endef
 
 define Package/clip/description
