@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,7 +91,11 @@ ELSE()
+ ENDIF()
+ 
+ ADD_LIBRARY(pthreadpool_interface INTERFACE)
+- TARGET_INCLUDE_DIRECTORIES(pthreadpool_interface INTERFACE include)
++ TARGET_INCLUDE_DIRECTORIES(pthreadpool_interface
++  INTERFACE
++    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
++    "$<INSTALL_INTERFACE:include>"
++ )
+ IF(NOT PTHREADPOOL_ALLOW_DEPRECATED_API)
+   TARGET_COMPILE_DEFINITIONS(pthreadpool_interface INTERFACE PTHREADPOOL_NO_DEPRECATED_API=1)
+ ENDIF()
