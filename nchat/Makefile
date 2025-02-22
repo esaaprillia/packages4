@@ -19,7 +19,7 @@ PKG_BUILD_DEPENDS:=ncurses/host gperf/host golang/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
-include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
+include $(TOPDIR)/feeds/python/lang/golang/golang-package.mk
 
 define Package/nchat
 	SECTION:=net
