@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xnnpack
-PKG_VERSION:=2025-02-18
+PKG_VERSION:=2024-09-18
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
