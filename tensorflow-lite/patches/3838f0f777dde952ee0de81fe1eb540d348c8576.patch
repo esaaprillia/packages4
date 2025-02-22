@@ -1,0 +1,49 @@
+From 3838f0f777dde952ee0de81fe1eb540d348c8576 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 22 Feb 2025 21:48:49 +0800
+Subject: [PATCH] Update xnnpack_delegate.h
+
+---
+ tensorflow/lite/delegates/xnnpack/xnnpack_delegate.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tensorflow/lite/delegates/xnnpack/xnnpack_delegate.h b/tensorflow/lite/delegates/xnnpack/xnnpack_delegate.h
+index 9a2c3b3..d2c2f44 100644
+--- a/tensorflow/lite/delegates/xnnpack/xnnpack_delegate.h
++++ b/tensorflow/lite/delegates/xnnpack/xnnpack_delegate.h
+@@ -84,7 +84,7 @@ TFL_CAPI_EXPORT bool TfLiteXNNPackDelegateCanUseInMemoryWeightCacheProvider();
+ TFL_CAPI_EXPORT const char* TfLiteXNNPackDelegateInMemoryFilePath();
+ 
+ // Returns a structure with the default XNNPack delegate options.
+-TFL_CAPI_EXPORT TfLiteXNNPackDelegateOptions
++TfLiteXNNPackDelegateOptions
+ TfLiteXNNPackDelegateOptionsDefault();
+ 
+ // Creates a new delegate instance that need to be destroyed with
+@@ -92,7 +92,7 @@ TfLiteXNNPackDelegateOptionsDefault();
+ // When `options` is set to `nullptr`, default values are used (see
+ // implementation of TfLiteXNNPackDelegateOptionsDefault in the .cc file for
+ // details).
+-TFL_CAPI_EXPORT TfLiteDelegate* TfLiteXNNPackDelegateCreate(
++TfLiteDelegate* TfLiteXNNPackDelegateCreate(
+     const TfLiteXNNPackDelegateOptions* options);
+ 
+ // Performs the same task as TfLiteXNNPackDelegateCreate, with one exception.
+@@ -105,7 +105,7 @@ TfLiteDelegate* TfLiteXNNPackDelegateCreateWithThreadpool(
+ // Can return NULL if the XNNPack delegate is single-threaded.
+ //
+ // WARNING: This API is experimental and subject to change.
+-TFL_CAPI_EXPORT void* TfLiteXNNPackDelegateGetThreadPool(
++void* TfLiteXNNPackDelegateGetThreadPool(
+     TfLiteDelegate* delegate);
+ 
+ // Returns the options in the delegate.
+@@ -122,7 +122,7 @@ TfLiteXNNPackDelegateGetOptions(TfLiteDelegate* delegate);
+ TFL_CAPI_EXPORT int TfLiteXNNPackDelegateGetFlags(TfLiteDelegate* delegate);
+ 
+ // Destroys a delegate created with `TfLiteXNNPackDelegateCreate` call.
+-TFL_CAPI_EXPORT void TfLiteXNNPackDelegateDelete(TfLiteDelegate* delegate);
++void TfLiteXNNPackDelegateDelete(TfLiteDelegate* delegate);
+ 
+ // Creates a new weights cache that can be shared with multiple delegate
+ // instances. Prefer TfLiteXNNPackDelegateWeightsCacheCreateWithSize which can
