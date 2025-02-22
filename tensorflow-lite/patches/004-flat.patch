@@ -1,41 +1,33 @@
-From b6bcbdd1f9b407a1cedf0e52383cc7fe20f410fa Mon Sep 17 00:00:00 2001
+From 933390c11abda3d9251d4517dde99fcd7a89b733 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 22 Feb 2025 20:05:18 +0800
+Date: Sat, 22 Feb 2025 14:42:42 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- tensorflow/lite/CMakeLists.txt | 9 ---------
- 1 file changed, 9 deletions(-)
+ tensorflow/lite/CMakeLists.txt | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt
-index bce9627..eb8fa28 100644
+index bce9627..9afca54 100644
 --- a/tensorflow/lite/CMakeLists.txt
 +++ b/tensorflow/lite/CMakeLists.txt
-@@ -524,13 +524,8 @@ if(TFLITE_ENABLE_XNNPACK)
-     "${TFLITE_DELEGATES_XNNPACK_SRCS}"
-     "${PROJECT_BINARY_DIR}/tensorflow/lite/delegates/xnnpack/weight_cache_schema_generated.h"
+@@ -530,7 +530,6 @@ if(TFLITE_ENABLE_XNNPACK)
    )
--  target_include_directories(xnnpack-delegate
--    PUBLIC $<BUILD_INTERFACE:${TENSORFLOW_SOURCE_DIR}> $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
--    PRIVATE "${PROJECT_BINARY_DIR}"
--  )
    target_link_libraries(xnnpack-delegate
      Eigen3::Eigen
 -    flatbuffers::flatbuffers
      gemmlowp::gemmlowp
      ruy::ruy
      )
-@@ -702,9 +697,6 @@ add_library(tensorflow-lite
- )
- set(_ALL_TFLITE_HDRS ${_ALL_TFLITE_SRCS})
- list(FILTER _ALL_TFLITE_HDRS INCLUDE REGEX ".*\\.h$")
--target_include_directories(tensorflow-lite
--  PUBLIC $<BUILD_INTERFACE:${TENSORFLOW_SOURCE_DIR}> $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
--)
- target_link_libraries(tensorflow-lite
-   PUBLIC
-     Eigen3::Eigen
-@@ -716,7 +708,6 @@ target_link_libraries(tensorflow-lite
+@@ -542,7 +541,6 @@ if(TFLITE_ENABLE_XNNPACK)
+   )
+ 
+   list(APPEND TFLITE_TARGET_DEPENDENCIES
+-    xnnpack-delegate
+     XNNPACK
+   )
+   list(APPEND TFLITE_TARGET_PUBLIC_OPTIONS "-DTFLITE_BUILD_WITH_XNNPACK_DELEGATE")
+@@ -716,7 +714,6 @@ target_link_libraries(tensorflow-lite
      absl::variant
      farmhash
      fft2d_fftsg2d
