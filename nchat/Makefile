@@ -13,7 +13,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT license
 PKG_LICENSE_FILES:=LICENSE
 
-CMAKE_BINARY_SUBDIR := build
+CMAKE_BINARY_SUBDIR:=build
+CMAKE_SOURCE_SUBDIR:=lib/wmchat/go
 
 PKG_BUILD_DEPENDS:=ncurses/host gperf/host golang/host
 
