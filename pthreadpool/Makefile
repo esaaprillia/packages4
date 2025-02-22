@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pthreadpool
-PKG_VERSION:=2024-06-17
+PKG_VERSION:=2023-08-29
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
