@@ -6,7 +6,7 @@ PKG_RELEASE:=2
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Maratyszcza/pthreadpool.git
-PKG_SOURCE_VERSION:=560c60d342a76076f0557a3946924c6478470044
+PKG_SOURCE_VERSION:=4fe0e1e183925bf8cfa6aae24237e724a96479b8
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
