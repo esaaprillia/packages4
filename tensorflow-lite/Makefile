@@ -27,6 +27,9 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
+export PROJECT_NAME=tflite_runtime
+export PACKAGE_VERSION="$(PKG_VERSION)"
+
 PYTHON3_PKG_WHEEL_NAME:=tensorflow
 PYTHON3_PKG_WHEEL_VERSION:=2.18.0
 PYTHON3_PKG_SETUP_DIR:=tensorflow/lite/tools/pip_package
