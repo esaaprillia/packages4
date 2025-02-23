@@ -24,7 +24,8 @@ PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 PYTHON3_PKG_WHEEL_NAME:=tensorflow
 PYTHON3_PKG_WHEEL_VERSION:=2.18.0
