@@ -14,46 +14,27 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host swig/host python-pybind11/host python-ml-dtypes/host numpy/host eigen fft2d ruy fp16 fxdiv
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen fft2d ruy fp16 fxdiv
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
-PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
-
-PYTHON3_PKG_WHEEL_NAME:=tensorflow
-PYTHON3_PKG_WHEEL_VERSION:=2.18.0
-PYTHON3_PKG_SETUP_DIR:=tensorflow/tools/pip_package
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp +libjpeg-turbo +zlib
-	URL:=https://www.tensorflow.org/lite/
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp
+	URL:=https://tensorflow.org/
 endef
 
 define Package/tensorflow-lite/description
 	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
-endef
-
-define Package/python3-tensorflow-lite
-	SUBMENU:=Python
-	SECTION:=lang
-	CATEGORY:=Languages
-	TITLE:=Python bindings tensorflow-lite
-	DEPENDS:=+python3-light +python3-numpy +python3-ml-dtypes +tensorflow-lite
-	URL:=https://www.tensorflow.org/lite/
-endef
-
-define Package/python3-tensorflow-lite/description
-	Python bindings tensorflow-lite
 endef
 
 define Build/Prepare
@@ -100,16 +81,6 @@ CMAKE_OPTIONS += \
 	-Deigen_SOURCE_DIR="$(STAGING_DIR)/usr/include/eigen3" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
 
-define Build/Compile
-	$(call Build/Compile/Default)
-	$(call Py3Build/Compile)
-endef
-
-define Build/Install
-	$(call Build/Install/Default)
-	$(call Py3Build/Install/Default)
-endef
-
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
@@ -134,6 +105,3 @@ define Package/tensorflow-lite/install
 endef
 
 $(eval $(call BuildPackage,tensorflow-lite))
-$(eval $(call Py3Package,python3-tensorflow-lite))
-$(eval $(call BuildPackage,python3-tensorflow-lite))
-$(eval $(call BuildPackage,python3-tensorflow-lite-src))
