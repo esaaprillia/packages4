@@ -1,0 +1,43 @@
+From 1bf4c6a9ce385d6a2538aaff0dcc42fb416a021a Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 23 Feb 2025 09:04:46 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2fcad0a..b83321b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -986,7 +986,11 @@ TARGET_INCLUDE_DIRECTORIES(normalization PRIVATE include src)
+ TARGET_INCLUDE_DIRECTORIES(packing PRIVATE include src)
+ TARGET_INCLUDE_DIRECTORIES(logging PRIVATE include src)
+ IF(XNNPACK_BUILD_LIBRARY)
+-  TARGET_INCLUDE_DIRECTORIES(XNNPACK PUBLIC include)
++  TARGET_INCLUDE_DIRECTORIES(XNNPACK
++   PUBLIC
++   "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
++   "$<INSTALL_INTERFACE:include>"
++  )
+   TARGET_INCLUDE_DIRECTORIES(XNNPACK PRIVATE . src)
+   TARGET_INCLUDE_DIRECTORIES(allocator PRIVATE include src)
+   TARGET_INCLUDE_DIRECTORIES(cache PRIVATE include src)
+@@ -1133,10 +1137,15 @@ IF(XNNPACK_BUILD_LIBRARY)
+   TARGET_LINK_LIBRARIES(operator-run PRIVATE fp16)
+ 
+   TARGET_LINK_LIBRARIES(XNNPACK PRIVATE fp16)
+-  INSTALL(TARGETS XNNPACK
++  INSTALL(TARGETS XNNPACK pthreadpool pthreadpool_interface allocator
++    EXPORT XNNPACK
+       LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+       ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+       PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
++  INSTALL(
++    EXPORT XNNPACK
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  )
+ ENDIF()
+ 
+ # ---[ Configure KleidiAI
