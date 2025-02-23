@@ -61,11 +61,13 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	mkdir -p "$(PKG_BUILD_DIR)/build-pip/tflite_runtime"
+	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/build-pip/setup.py
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/MANIFEST.in $(PKG_BUILD_DIR)/build-pip/
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/interpreter_wrapper $(PKG_BUILD_DIR)/build-pip/
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/interpreter.py $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/metrics/{metrics_interface.py,metrics_portable.py} $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
-	echo "__version__ = '$(PKG_VERSION)'" > "$(PKG_BUILD_DIR)/build-pip/tflite_runtime/__init__.py"
+	echo "__version__ = '2.18.0'" >> $(PKG_BUILD_DIR)/build-pip/tflite_runtime/__init__.py
 	$(RM) $(STAGING_DIR)/usr/bin/protoc*
 	$(RM) $(STAGING_DIR)/usr/bin/flatc
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
