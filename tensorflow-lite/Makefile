@@ -14,33 +14,52 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen fft2d ruy fp16 fxdiv
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host swig/host python-pybind11/host numpy/host eigen fft2d ruy fp16 fxdiv
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
+PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
+PYTHON3_PKG_WHEEL_NAME:=tensorflow
+PYTHON3_PKG_WHEEL_VERSION:=2.18.0
+PYTHON3_PKG_SETUP_DIR:=tensorflow/lite/tools/pip_package
+
 define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp
-	URL:=https://tensorflow.org/
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp +libjpeg-turbo +zlib
+	URL:=https://www.tensorflow.org/lite/
 endef
 
 define Package/tensorflow-lite/description
 	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
 endef
 
+define Package/python3-tensorflow-lite
+	SUBMENU:=Python
+	SECTION:=lang
+	CATEGORY:=Languages
+	TITLE:=Python bindings tensorflow-lite
+	DEPENDS:=+python3-light +python3-numpy +tensorflow-lite
+	URL:=https://www.tensorflow.org/lite/
+endef
+
+define Package/python3-tensorflow-lite/description
+	Python bindings tensorflow-lite
+endef
+
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(RM) $(STAGING_DIR)/usr/bin/protoc*
 	$(RM) $(STAGING_DIR)/usr/bin/flatc
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup.py
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc $(STAGING_DIR)/usr/bin/
 endef
@@ -105,3 +124,6 @@ define Package/tensorflow-lite/install
 endef
 
 $(eval $(call BuildPackage,tensorflow-lite))
+$(eval $(call Py3Package,python3-tensorflow-lite))
+$(eval $(call BuildPackage,python3-tensorflow-lite))
+$(eval $(call BuildPackage,python3-tensorflow-lite-src))
