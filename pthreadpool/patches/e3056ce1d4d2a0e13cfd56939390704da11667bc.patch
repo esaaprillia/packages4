@@ -1,0 +1,26 @@
+From e3056ce1d4d2a0e13cfd56939390704da11667bc Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 23 Feb 2025 09:16:55 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7fa4285..9415add 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,7 +91,11 @@ ELSE()
+ ENDIF()
+ 
+ ADD_LIBRARY(pthreadpool_interface INTERFACE)
+-TARGET_INCLUDE_DIRECTORIES(pthreadpool_interface INTERFACE include)
++TARGET_INCLUDE_DIRECTORIES(pthreadpool_interface 
++   INTERFACE 
++     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
++     "$<INSTALL_INTERFACE:include>"
++  )
+ IF(NOT PTHREADPOOL_ALLOW_DEPRECATED_API)
+   TARGET_COMPILE_DEFINITIONS(pthreadpool_interface INTERFACE PTHREADPOOL_NO_DEPRECATED_API=1)
+ ENDIF()
