@@ -24,15 +24,14 @@ PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 export PROJECT_NAME=tflite_runtime
 export PACKAGE_VERSION="$(PKG_VERSION)"
 
-PYTHON3_PKG_WHEEL_NAME:=tensorflow
+PYTHON3_PKG_WHEEL_NAME:=tflite_runtime
 PYTHON3_PKG_WHEEL_VERSION:=2.18.0
-PYTHON3_PKG_SETUP_DIR:=tensorflow/lite/tools/pip_package
+PYTHON3_PKG_SETUP_DIR:=build-pip
 
 define Package/tensorflow-lite
 	SECTION:=libs
@@ -61,9 +60,13 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
+	mkdir -p "$(PKG_BUILD_DIR)/build-pip/tflite_runtime"
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/build-pip/setup.py
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/interpreter.py $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/metrics/{metrics_interface.py,metrics_portable.py} $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
+	echo "__version__ = '$(PKG_VERSION)'" > "$(PKG_BUILD_DIR)/build-pip/tflite_runtime/__init__.py"
 	$(RM) $(STAGING_DIR)/usr/bin/protoc*
 	$(RM) $(STAGING_DIR)/usr/bin/flatc
-	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup.py
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc $(STAGING_DIR)/usr/bin/
 endef
