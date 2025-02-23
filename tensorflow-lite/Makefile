@@ -81,6 +81,20 @@ CMAKE_OPTIONS += \
 	-Deigen_SOURCE_DIR="$(STAGING_DIR)/usr/include/eigen3" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
 
+define Build/InstallDev
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/tensorflow \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{cmake,*.so*} \
+	  $(1)/usr/lib/
+endef
+
 define Package/tensorflow-lite/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/lib
