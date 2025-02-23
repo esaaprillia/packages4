@@ -20,6 +20,7 @@ CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
+PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -29,7 +30,7 @@ define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp +xnnpack
 	URL:=https://tensorflow.org/
 endef
 
@@ -63,7 +64,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DSYSTEM_FARMHASH=ON \
 	-DSYSTEM_PTHREADPOOL=ON \
-	-DTFLITE_ENABLE_XNNPACK=OFF \
+	-DTFLITE_ENABLE_XNNPACK=ON \
 	-DFFT2D_SOURCE_DIR="$(STAGING_DIR)/usr/include/fft2d" \
 	-Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" \
 	-DEigen3_DIR="$(STAGING_DIR)/usr/share/eigen3/cmake" \
@@ -78,7 +79,8 @@ CMAKE_OPTIONS += \
 	-DPTHREADPOOL_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
 	-DFP16_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
 	-DXNNPACK_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
-	-Deigen_SOURCE_DIR="$(STAGING_DIR)/usr/include/eigen3"
+	-Deigen_SOURCE_DIR="$(STAGING_DIR)/usr/include/eigen3" \
+	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
 
 define Package/tensorflow-lite/install
 	$(INSTALL_DIR) \
