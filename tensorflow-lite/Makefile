@@ -100,6 +100,16 @@ CMAKE_OPTIONS += \
 	-Deigen_SOURCE_DIR="$(STAGING_DIR)/usr/include/eigen3" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
 
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install/Default)
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
