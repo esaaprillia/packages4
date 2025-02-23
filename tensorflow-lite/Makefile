@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host swig/host python-pybind11/host numpy/host eigen fft2d ruy fp16 fxdiv
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host swig/host python-pybind11/host python-ml-dtypes/host numpy/host eigen fft2d ruy fp16 fxdiv
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
@@ -51,7 +51,7 @@ define Package/python3-tensorflow-lite
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=Python bindings tensorflow-lite
-	DEPENDS:=+python3-light +python3-numpy +tensorflow-lite
+	DEPENDS:=+python3-light +python3-numpy +python3-ml-dtypes +tensorflow-lite
 	URL:=https://www.tensorflow.org/lite/
 endef
 
