@@ -24,7 +24,8 @@ PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 export PROJECT_NAME=tflite_runtime
 export PACKAGE_VERSION="$(PKG_VERSION)"
