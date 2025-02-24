@@ -14,24 +14,22 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen fft2d ruy fp16 fxdiv swig/host python-pybind11/host python-ml-dtypes/host numpy/host
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host googletest/host eigen fft2d ruy fp16 fxdiv
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
-PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp +libjpeg-turbo +zlib +python3-light +python3-numpy +python3-ml-dtypes
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +googletest +farmhash +pthreadpool +cpuinfo +gemmlowp
 	URL:=https://tensorflow.org/
 endef
 
@@ -51,12 +49,12 @@ CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_ENABLE_INSTALL=ON \
-	-DTFLITE_ENABLE_RUY=ON \
-	-DTFLITE_PYTHON_WRAPPER_BUILD_CMAKE2=ON \
 	-DTFLITE_ENABLE_EXTERNAL_DELEGATE=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR)/usr/bin" \
 	-DTFLITE_ENABLE_GPU=OFF \
 	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
+	-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+	-DFETCHCONTENT_QUIET=OFF \
 	-DBUILD_DOC=OFF \
 	-DBUILD_DOCS=OFF \
 	-DBUILD_EXAMPLE=OFF \
@@ -66,24 +64,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DSYSTEM_FARMHASH=ON \
 	-DSYSTEM_PTHREADPOOL=ON \
-	-DXNNPACK_USE_SYSTEM_LIBS=ON \
-	-DTFLITE_ENABLE_XNNPACK=OFF \
-	-DFFT2D_SOURCE_DIR="$(STAGING_DIR)/usr/include/fft2d" \
-	-Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" \
-	-DEigen3_DIR="$(STAGING_DIR)/usr/share/eigen3/cmake" \
-	-DFlatBuffers_DIR="$(STAGING_DIR)/usr/lib/cmake/flatbuffers" \
-	-DProtobuf_DIR="$(STAGING_DIR)/usr/lib/cmake/protobuf" \
-	-Dgemmlowp_DIR="$(STAGING_DIR)/usr/lib/cmake/gemmlowp" \
-	-Dcpuinfo_DIR="$(STAGING_DIR)/usr/share/cpuinfo" \
-	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy" \
-	-Dre2_DIR="$(STAGING_DIR)/usr/lib/cmake/re2" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
-	-DFLATBUFFERS_FLATC_EXECUTABLE="$(STAGING_DIR)/usr/bin/flatc" \
-	-DPTHREADPOOL_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
-	-DFP16_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
-	-DXNNPACK_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
-	-Deigen_SOURCE_DIR="$(STAGING_DIR)/usr/include/eigen3" \
-	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/ml_dtypes/include"
+	-DTFLITE_ENABLE_XNNPACK=OFF
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
