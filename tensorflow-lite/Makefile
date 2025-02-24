@@ -58,6 +58,7 @@ CMAKE_OPTIONS += \
 	-DSYSTEM_FARMHASH=ON \
 	-DSYSTEM_PTHREADPOOL=ON \
 	-DTFLITE_ENABLE_XNNPACK=OFF \
+	-DPTHREADPOOL_LIB="$(STAGING_DIR)/usr/lib -lpthreadpool" \
 	-DFFT2D_FOUND=TRUE \
 	-DFFT2D_INCLUDE_DIRS="$(STAGING_DIR)/usr/include/fft2d" \
 	-DFLATBUFFERS_FOUND=TRUE \
@@ -65,8 +66,7 @@ CMAKE_OPTIONS += \
 	-DFLATBUFFERS_LIBRARIES="$(STAGING_DIR)/usr/lib -lflatbuffers" \
 	-DProtobuf_INCLUDE_DIR=="$(STAGING_DIR)/usr/include" \
 	-DProtobuf_LIBRARIES="$(STAGING_DIR)/usr/lib -lprotobuf" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DPTHREADPOOL_LIB="$(STAGING_DIR)/usr/lib -lpthreadpool"
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
