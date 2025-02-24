@@ -24,7 +24,7 @@ index bce9627..32b5312 100644
 +find_package(absl REQUIRED HINT "$(STAGING_DIR)/usr")
 +find_package(Eigen3 REQUIRED HINT "$(STAGING_DIR)/usr")
 +find_package(farmhash REQUIRED HINT "$(STAGING_DIR)/usr")
-+find_package(fft2d REQUIRED HINT "$(STAGING_DIR)/usr")
++find_package(fft2d REQUIRED "$(STAGING_DIR)/usr/include/fft2d")
 +find_package(FlatBuffers REQUIRED HINT "$(STAGING_DIR)/usr")
 +find_package(gemmlowp REQUIRED HINT "$(STAGING_DIR)/usr")
  if (NOT CMAKE_SYSTEM_PROCESSOR OR CMAKE_SYSTEM_PROCESSOR MATCHES "x86")
