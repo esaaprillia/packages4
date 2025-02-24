@@ -62,7 +62,7 @@ CMAKE_OPTIONS += \
 	-DFFT2D_FOUND=TRUE \
 	-DFFT2D_SOURCE_DIR="$(STAGING_DIR)/usr/include/fft2d" \
 	-DFLATBUFFERS_FOUND=TRUE \
-	-DFLATBUFFERS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include" \
+	-Dflatbuffers_SOURCE_DIR="$(STAGING_DIR)/usr/include/flatbuffers" \
 	-DFLATBUFFERS_LIBRARIES="$(STAGING_DIR)/usr/lib -lflatbuffers" \
 	-DProtobuf_INCLUDE_DIR=="$(STAGING_DIR)/usr/include" \
 	-DProtobuf_LIBRARIES="$(STAGING_DIR)/usr/lib -lprotobuf" \
