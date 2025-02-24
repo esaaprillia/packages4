@@ -44,7 +44,10 @@ CMAKE_OPTIONS += \
 	-DTFLITE_ENABLE_EXTERNAL_DELEGATE=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
 	-DTFLITE_ENABLE_GPU=OFF \
+	-DTFLITE_ENABLE_MMAP=ON \
+	-DTFLITE_ENABLE_NNAPI=OFF \
 	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
+	-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 	-DBUILD_DOC=OFF \
 	-DBUILD_DOCS=OFF \
 	-DBUILD_EXAMPLE=OFF \
@@ -54,7 +57,20 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DSYSTEM_FARMHASH=ON \
 	-DSYSTEM_PTHREADPOOL=ON \
-	-DTFLITE_ENABLE_XNNPACK=OFF
+	-DTFLITE_ENABLE_XNNPACK=OFF \
+	-Dfft2d_DIR="$(STAGING_DIR)/usr/include/fft2d" \
+	-Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" \
+	-DEigen3_DIR="$(STAGING_DIR)/usr/share/eigen3/cmake" \
+	-DFlatBuffers_DIR="$(STAGING_DIR)/usr/lib/cmake/flatbuffers" \
+	-DProtobuf_DIR="$(STAGING_DIR)/usr/lib/cmake/protobuf" \
+	-Dgemmlowp_DIR="$(STAGING_DIR)/usr/lib/cmake/gemmlowp" \
+	-Dcpuinfo_DIR="$(STAGING_DIR)/usr/share/cpuinfo" \
+	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy" \
+	-Dre2_DIR="$(STAGING_DIR)/usr/lib/cmake/re2" \
+	-Dml_dtypes_DIR="$(STAGING_DIR)/usr/include" \
+	-DPTHREADPOOL_LIB="$(STAGING_DIR)/usr/lib" \
+	-Dfp16_headers_DIR="$(STAGING_DIR)/usr/include" \
+	-DXNNPACK_DIR="$(STAGING_DIR)/usr/include"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
