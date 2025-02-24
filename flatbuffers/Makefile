@@ -39,23 +39,9 @@ CMAKE_OPTIONS += \
 	-DFLATBUFFERS_BUILD_SHAREDLIB=ON
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/flatbuffers \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*,cmake} \
-	  $(1)/usr/lib/
-
-	$(SED) \
-	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
-
-	$(SED) \
-	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
 endef
 
 define Package/flatbuffers/install
