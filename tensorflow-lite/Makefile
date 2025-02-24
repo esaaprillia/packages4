@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=flatbuffers/host eigen fft2d ruy fp16 fxdiv
+PKG_BUILD_DEPENDS:=flatbuffers/host eigen fft2d ruy fp16 fxdiv ml-dtypes
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
