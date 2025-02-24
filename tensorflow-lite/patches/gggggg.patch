@@ -1,1 +1,81 @@
-mmm
+From 062eb7ac3084b051d53866e956ef3ecd89d93a29 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 24 Feb 2025 17:55:54 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ tensorflow/lite/CMakeLists.txt | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt
+index bce9627..32b5312 100644
+--- a/tensorflow/lite/CMakeLists.txt
++++ b/tensorflow/lite/CMakeLists.txt
+@@ -163,19 +163,19 @@ set(OVERRIDABLE_FETCH_CONTENT_LICENSE_CHECK ON)
+ # Additional library dependencies based upon enabled features.
+ set(TFLITE_TARGET_DEPENDENCIES "")
+ # Find TensorFlow Lite dependencies.
+-find_package(absl REQUIRED)
+-find_package(Eigen3 REQUIRED)
+-find_package(farmhash REQUIRED)
+-find_package(fft2d REQUIRED)
+-find_package(FlatBuffers REQUIRED)
+-find_package(gemmlowp REQUIRED)
++find_package(absl REQUIRED HINT "$(STAGING_DIR)/usr")
++find_package(Eigen3 REQUIRED HINT "$(STAGING_DIR)/usr")
++find_package(farmhash REQUIRED HINT "$(STAGING_DIR)/usr")
++find_package(fft2d REQUIRED HINT "$(STAGING_DIR)/usr")
++find_package(FlatBuffers REQUIRED HINT "$(STAGING_DIR)/usr")
++find_package(gemmlowp REQUIRED HINT "$(STAGING_DIR)/usr")
+ if (NOT CMAKE_SYSTEM_PROCESSOR OR CMAKE_SYSTEM_PROCESSOR MATCHES "x86")
+-  find_package(NEON_2_SSE REQUIRED)
++  find_package(NEON_2_SSE REQUIRED HINT "$(STAGING_DIR)/usr")
+   list(APPEND TFLITE_TARGET_DEPENDENCIES NEON_2_SSE::NEON_2_SSE)
+ endif()
+-find_package(cpuinfo REQUIRED)  #CPUINFO is used by XNNPACK and RUY library
+-find_package(ml_dtypes REQUIRED)
+-find_package(ruy REQUIRED)
++find_package(cpuinfo REQUIRED HINT "$(STAGING_DIR)/usr")  #CPUINFO is used by XNNPACK and RUY library
++find_package(ml_dtypes REQUIRED HINT "$(STAGING_DIR)/usr")
++find_package(ruy REQUIRED HINT "$(STAGING_DIR)/usr")
+ # Include TSL, which is in tensorflow/third_party
+ include_directories(
+   ${TSL_SOURCE_DIR}
+@@ -185,7 +185,7 @@ include_directories(
+ if(TFLITE_ENABLE_XNNPACK)
+   # pthreadpool is used by XNNPACK.
+   if(SYSTEM_PTHREADPOOL)
+-    find_library(PTHREADPOOL_LIB pthreadpool REQUIRED)
++    find_library(PTHREADPOOL_LIB pthreadpool REQUIRED HINT "$(STAGING_DIR)/usr/lib")
+   elseif(NOT DEFINED PTHREADPOOL_SOURCE_DIR)
+       message(STATUS "Downloading pthreadpool to ${CMAKE_BINARY_DIR}/pthreadpool-source (define SYSTEM_PTHREADPOOL or PTHREADPOOL_SOURCE_DIR to avoid it)")
+       configure_file(cmake/DownloadPThreadPool.cmake "${CMAKE_BINARY_DIR}/pthreadpool-download/CMakeLists.txt")
+@@ -305,7 +305,7 @@ populate_tflite_source_vars("delegates" TFLITE_DELEGATES_SRCS)
+ if(TFLITE_ENABLE_GPU)
+   find_package(opencl_headers REQUIRED)
+   find_package(vulkan_headers REQUIRED)
+-  find_package(fp16_headers REQUIRED)
++  find_package(fp16_headers REQUIRED HINT "$(STAGING_DIR)/usr")
+   # Android NDK already has OpenGL, EGL headers.
+   if(NOT "${CMAKE_SYSTEM_NAME}" STREQUAL "Android")
+     find_package(opengl_headers REQUIRED)
+@@ -480,7 +480,7 @@ endif()
+   )
+ endif()
+ if(_TFLITE_ENABLE_NNAPI)
+-  find_package(fp16_headers REQUIRED)
++  find_package(fp16_headers REQUIRED HINT "$(STAGING_DIR)/usr")
+   populate_tflite_source_vars("delegates/nnapi"
+     TFLITE_DELEGATES_NNAPI_SRCS
+     FILTER "(_test_list|_disabled)\\.(cc|h)$"
+@@ -505,8 +505,8 @@ else()
+   )
+ endif()
+ if(TFLITE_ENABLE_XNNPACK)
+-  find_package(fp16_headers REQUIRED)
+-  find_package(XNNPACK REQUIRED)
++  find_package(fp16_headers REQUIRED HINT "$(STAGING_DIR)/usr")
++  find_package(XNNPACK REQUIRED HINT "$(STAGING_DIR)/usr")
+   populate_tflite_source_vars("delegates/xnnpack"
+     TFLITE_DELEGATES_XNNPACK_SRCS
+     FILTER ".*(_test|_tester)\\.(cc|h)"
