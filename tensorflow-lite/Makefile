@@ -58,20 +58,15 @@ CMAKE_OPTIONS += \
 	-DSYSTEM_FARMHASH=ON \
 	-DSYSTEM_PTHREADPOOL=ON \
 	-DTFLITE_ENABLE_XNNPACK=OFF \
-	-DFFT2D_SOURCE_DIR="$(STAGING_DIR)/usr/include/fft2d" \
-	-Dfft2d_DIR="$(STAGING_DIR)/usr/include/fft2d" \
-	-Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" \
-	-DEigen3_DIR="$(STAGING_DIR)/usr/share/eigen3/cmake" \
-	-DFlatBuffers_DIR="$(STAGING_DIR)/usr/lib/cmake/flatbuffers" \
-	-DProtobuf_DIR="$(STAGING_DIR)/usr/lib/cmake/protobuf" \
-	-Dgemmlowp_DIR="$(STAGING_DIR)/usr/lib/cmake/gemmlowp" \
-	-Dcpuinfo_DIR="$(STAGING_DIR)/usr/share/cpuinfo" \
-	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy" \
-	-Dre2_DIR="$(STAGING_DIR)/usr/lib/cmake/re2" \
-	-Dml_dtypes_DIR="$(STAGING_DIR)/usr/include" \
-	-DPTHREADPOOL_LIB="$(STAGING_DIR)/usr/lib" \
-	-Dfp16_headers_DIR="$(STAGING_DIR)/usr/include" \
-	-DXNNPACK_DIR="$(STAGING_DIR)/usr/include"
+	-DFFT2D_FOUND=TRUE \
+	-DFFT2D_INCLUDE_DIRS="$(STAGING_DIR)/usr/include/fft2d" \
+	-DFLATBUFFERS_FOUND=TRUE \
+	-DFLATBUFFERS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include" \
+	-DFLATBUFFERS_LIBRARIES="$(STAGING_DIR)/usr/lib -lflatbuffers" \
+	-DProtobuf_INCLUDE_DIR=="$(STAGING_DIR)/usr/include" \
+	-DProtobuf_LIBRARIES="$(STAGING_DIR)/usr/lib -lprotobuf" \
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DPTHREADPOOL_LIB="$(STAGING_DIR)/usr/lib -lpthreadpool"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
