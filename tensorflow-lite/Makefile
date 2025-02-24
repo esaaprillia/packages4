@@ -37,18 +37,12 @@ define Package/tensorflow-lite/description
 	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(RM) $(STAGING_DIR)/usr/bin/flatc
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc $(STAGING_DIR)/usr/bin/
-endef
-
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_ENABLE_INSTALL=ON \
 	-DTFLITE_ENABLE_EXTERNAL_DELEGATE=ON \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR)/usr/bin" \
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
 	-DTFLITE_ENABLE_GPU=OFF \
 	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
 	-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
