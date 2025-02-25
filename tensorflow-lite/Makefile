@@ -27,16 +27,43 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
+PYTHON3_PKG_WHEEL_NAME:=tflite_runtime
+PYTHON3_PKG_WHEEL_VERSION:=2.18.0
+PYTHON3_PKG_SETUP_DIR:=build-pip
+
 define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +abseil-cpp +farmhash +pthreadpool +cpuinfo +gemmlowp +libjpeg-turbo +zlib +python3-light +python3-numpy
-	URL:=https://tensorflow.org/
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +farmhash +pthreadpool +cpuinfo +gemmlowp
+	URL:=https://www.tensorflow.org/lite/
 endef
 
 define Package/tensorflow-lite/description
 	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
+endef
+
+define Package/python3-tensorflow-lite
+	SUBMENU:=Python
+	SECTION:=lang
+	CATEGORY:=Languages
+	TITLE:=Python bindings tensorflow-lite
+	DEPENDS:=+python3-light +python3-numpy +libjpeg-turbo +zlib +tensorflow-lite
+	URL:=https://www.tensorflow.org/lite/
+endef
+
+define Package/python3-tensorflow-lite/description
+	Python bindings tensorflow-lite
+endef
+
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/build-pip/setup.py
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/MANIFEST.in $(PKG_BUILD_DIR)/build-pip/
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/interpreter_wrapper $(PKG_BUILD_DIR)/build-pip/
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/interpreter.py $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
+	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/metrics/{metrics_interface.py,metrics_portable.py} $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
 endef
 
 CMAKE_OPTIONS += \
@@ -70,6 +97,16 @@ CMAKE_OPTIONS += \
 	-DCPUINFO_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
 	-Dfp16_headers_SOURCE_DIR="$(STAGING_DIR)/usr/include"
 
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install/Default)
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
@@ -94,3 +131,6 @@ define Package/tensorflow-lite/install
 endef
 
 $(eval $(call BuildPackage,tensorflow-lite))
+$(eval $(call Py3Package,python3-tensorflow-lite))
+$(eval $(call BuildPackage,python3-tensorflow-lite))
+$(eval $(call BuildPackage,python3-tensorflow-lite-src))
