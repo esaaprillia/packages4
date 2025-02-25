@@ -65,7 +65,8 @@ CMAKE_OPTIONS += \
 	-DPTHREADPOOL_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
 	-DFP16_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
 	-DXNNPACK_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
-	-DCPUINFO_SOURCE_DIR="$(STAGING_DIR)/usr/include"
+	-DCPUINFO_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
+	-Dfp16_headers_SOURCE_DIR="$(STAGING_DIR)/usr/include"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
