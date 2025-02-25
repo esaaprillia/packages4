@@ -56,6 +56,9 @@ define Package/python3-tensorflow-lite/description
 	Python bindings tensorflow-lite
 endef
 
+export PROJECT_NAME=tflite_runtime
+export PACKAGE_VERSION="$(PKG_VERSION)"
+
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
@@ -64,6 +67,7 @@ define Build/Prepare
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/interpreter_wrapper $(PKG_BUILD_DIR)/build-pip/
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/interpreter.py $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/metrics/{metrics_interface.py,metrics_portable.py} $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
+	echo "__version__ = '$(PKG_VERSION)'" >> $(PKG_BUILD_DIR)/build-pip/tflite_runtime/__init__.py
 endef
 
 CMAKE_OPTIONS += \
