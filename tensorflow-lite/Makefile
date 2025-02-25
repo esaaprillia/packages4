@@ -29,7 +29,7 @@ define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +abseil-cpp +farmhash +pthreadpool +cpuinfo +gemmlowp
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +abseil-cpp +farmhash +pthreadpool +cpuinfo +gemmlowp +xnnpack
 	URL:=https://tensorflow.org/
 endef
 
