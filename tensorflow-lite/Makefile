@@ -59,6 +59,7 @@ CMAKE_OPTIONS += \
 	-DSYSTEM_PTHREADPOOL=ON \
 	-DTFLITE_ENABLE_XNNPACK=OFF \
 	-DPTHREADPOOL_LIB="-L$(STAGING_DIR)/usr/lib -lpthreadpool" \
+	-DFLATBUFFERS_LIBRARIES="-L$(STAGING_DIR)/usr/lib -lflatbuffers" \
 	-DFFT2D_SOURCE_DIR="$(STAGING_DIR)/usr/include/fft2d" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/include/ml_dtypes/include"
 
