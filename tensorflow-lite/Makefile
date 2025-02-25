@@ -61,7 +61,10 @@ CMAKE_OPTIONS += \
 	-DPTHREADPOOL_LIB="-L$(STAGING_DIR)/usr/lib -lpthreadpool" \
 	-DFFT2D_SOURCE_DIR="$(STAGING_DIR)/usr/include/fft2d" \
 	-DML_DTYPES_SOURCE_DIR="$(STAGING_DIR)/usr/include/ml_dtypes/include" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DPTHREADPOOL_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
+	-DFP16_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
+	-DXNNPACK_SOURCE_DIR="$(STAGING_DIR)/usr/include"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
