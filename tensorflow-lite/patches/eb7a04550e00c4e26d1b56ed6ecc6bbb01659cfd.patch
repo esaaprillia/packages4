@@ -1,29 +1,24 @@
-From eb7a04550e00c4e26d1b56ed6ecc6bbb01659cfd Mon Sep 17 00:00:00 2001
+From be777688563e5c5981693ca977a76a527d1e77fa Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Tue, 25 Feb 2025 20:42:23 +0800
+Date: Wed, 26 Feb 2025 06:35:22 +0800
 Subject: [PATCH] Update setup_with_binary.py
 
 ---
- tensorflow/lite/tools/pip_package/setup_with_binary.py | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ tensorflow/lite/tools/pip_package/setup_with_binary.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/tensorflow/lite/tools/pip_package/setup_with_binary.py b/tensorflow/lite/tools/pip_package/setup_with_binary.py
-index ceaac8b..5d129ee 100644
+index ceaac8b..b59c68e 100644
 --- a/tensorflow/lite/tools/pip_package/setup_with_binary.py
 +++ b/tensorflow/lite/tools/pip_package/setup_with_binary.py
-@@ -24,13 +24,11 @@
+@@ -24,8 +24,8 @@
  
  from setuptools import find_packages
  from setuptools import setup
 -PACKAGE_NAME = os.environ['PROJECT_NAME']
 -PACKAGE_VERSION = os.environ['PACKAGE_VERSION']
++PACKAGE_NAME = os.environ['tflite_runtime']
++PACKAGE_VERSION = os.environ['2.18.0']
  DOCLINES = __doc__.split('\n')
  
  setup(
--    name=PACKAGE_NAME.replace('_', '-'),
--    version=PACKAGE_VERSION,
-+    name=tflite_runtime,
-+    version=2.18.0,
-     description=DOCLINES[0],
-     long_description='\n'.join(DOCLINES[2:]),
-     url='https://www.tensorflow.org/lite/',
