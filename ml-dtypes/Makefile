@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ml-dtypes
-PKG_VERSION:=0.5.1
+PKG_VERSION:=0.5.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=ml_dtypes-$(PKG_VERSION).tar.gz
