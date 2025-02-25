@@ -14,22 +14,24 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host eigen fft2d ruy fp16 fxdiv ml-dtypes
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host eigen fft2d ruy fp16 fxdiv ml-dtypes swig/host python-pybind11/host python-ml-dtypes/host numpy/host
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
+PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +abseil-cpp +farmhash +pthreadpool +cpuinfo +gemmlowp +xnnpack
+	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +abseil-cpp +farmhash +pthreadpool +cpuinfo +gemmlowp +libjpeg-turbo +zlib +python3-light +python3-numpy +python3-ml-dtypes
 	URL:=https://tensorflow.org/
 endef
 
