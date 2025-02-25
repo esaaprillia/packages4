@@ -1,0 +1,22 @@
+From b5aa3e00ce007b3d8942858f7f7b74b090533d3c Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 25 Feb 2025 08:46:11 +0800
+Subject: [PATCH] Update FindFlatBuffers.cmake
+
+---
+ tensorflow/lite/tools/cmake/modules/FindFlatBuffers.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tensorflow/lite/tools/cmake/modules/FindFlatBuffers.cmake b/tensorflow/lite/tools/cmake/modules/FindFlatBuffers.cmake
+index 12c752c..e35684b 100644
+--- a/tensorflow/lite/tools/cmake/modules/FindFlatBuffers.cmake
++++ b/tensorflow/lite/tools/cmake/modules/FindFlatBuffers.cmake
+@@ -19,7 +19,7 @@ include(flatbuffers)
+ if(flatbuffers_POPULATED)
+   set(FLATBUFFERS_FOUND TRUE)
+   get_target_property(FLATBUFFERS_INCLUDE_DIRS flatbuffers INCLUDE_DIRECTORIES)
+-  add_library(flatbuffers::flatbuffers ALIAS flatbuffers)
++  add_library(FlatBuffers::FlatBuffers ALIAS FlatBuffers)
+   set(FLATBUFFERS_LIBRARIES flatbuffers)
+   set(FLATBUFFERS_PROJECT_DIR "${flatbuffers_SOURCE_DIR}" CACHE STRING
+     "Flatbuffers project dir"
