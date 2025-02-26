@@ -37,7 +37,14 @@ MESON_ARGS += \
 	-Dlibdovi=disabled \
 	-Dshaderc=disabled \
 	-Dtests=false \
-	-Dvulkan=disabled
+	-Dvulkan=disabled \
+	-Dvulkan=disabled \
+	-Dvk-proc-addr=disabled \
+	-Dopengl=disabled \
+	-Dgl-proc-addr=disabled \
+	-Dd3d11=disabled \
+	-Dunwind=disabled \
+	-Dxxhash=disabled
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
