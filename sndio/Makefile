@@ -30,8 +30,9 @@ define Package/sndio/description
 	Sndio is designed to work for desktop applications, but pays special attention to synchronization mechanisms and reliability required by music applications. Reliability through simplicity are part of the project goals.
 endef
 
-CONFIGURE_ARGS += \
-	--prefix=/usr
+CONFIGURE_ARGS = \
+	--prefix=/usr \
+	--without-libbsd
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
