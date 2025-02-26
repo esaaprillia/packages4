@@ -21,7 +21,7 @@ define Package/mpv
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Command line video player
-	DEPENDS:=+alsa-lib +ffmpeg +libao +libarchive +pulseaudio-daemon +uchardet +zlib
+	DEPENDS:=+alsa-lib +ffmpeg +libao +libarchive +pulseaudio-daemon +libplacebo +zlib
 	URL:=https://github.com/mpv-player/mpv
 endef
 
@@ -45,7 +45,7 @@ MESON_ARGS += \
 	-Dpulse=enabled \
 	-Dsndio=disabled \
 	-Dtests=false \
-	-Duchardet=enabled \
+	-Duchardet=disabled \
 	-Dvdpau=disabled \
 	-Dvulkan=enabled \
 	-Dx11=disabled \
