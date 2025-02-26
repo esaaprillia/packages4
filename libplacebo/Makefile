@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LGPL-2.1
 PKG_LICENSE_FILES:=LICENSE
 
+PKG_BUILD_DEPENDS:=vulkan-headers
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -37,7 +38,6 @@ MESON_ARGS += \
 	-Dlibdovi=disabled \
 	-Dshaderc=disabled \
 	-Dtests=false \
-	-Dvulkan=disabled \
 	-Dvulkan=disabled \
 	-Dvk-proc-addr=disabled \
 	-Dopengl=disabled \
