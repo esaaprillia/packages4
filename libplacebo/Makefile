@@ -22,7 +22,7 @@ define Package/libplacebo
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Official mirror of libplacebo
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=http://libplacebo.org/
 endef
 
