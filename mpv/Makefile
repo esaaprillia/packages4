@@ -50,6 +50,7 @@ MESON_ARGS += \
 	-Dvulkan=enabled \
 	-Dx11=disabled \
 	-Dsixel=disabled \
+	-Dvideotoolbox-gl=disabled \
 	-Dvideotoolbox-pl=disabled
 
 define Build/InstallDev
