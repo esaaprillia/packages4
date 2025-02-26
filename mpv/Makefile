@@ -43,13 +43,14 @@ MESON_ARGS += \
 	-Djack=disabled \
 	-Dlibmpv=true \
 	-Dpulse=enabled \
-	-Dsndio=disabled \
+	-Dsndio=enabled \
 	-Dtests=false \
 	-Duchardet=enabled \
 	-Dvdpau=disabled \
 	-Dvulkan=enabled \
 	-Dx11=disabled \
-	-Dsixel=disabled
+	-Dsixel=disabled \
+	-Dvideotoolbox-pl=disabled
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
