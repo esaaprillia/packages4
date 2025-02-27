@@ -31,7 +31,7 @@ endef
 
 CONFIGURE_ARGS = \
 	--build=$(GNU_HOST_NAME) \
-	--host=$(GNU_HOST_NAME) \
+	--host=$(GNU_TARGET_NAME) \
 	--prefix=/usr \
 	--disable-static \
 	--enable-fontconfig \
