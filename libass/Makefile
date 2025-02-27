@@ -29,12 +29,6 @@ define Package/libass/description
 	libass is a portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format. It is mostly compatible with VSFilter.
 endef
 
-MESON_ARGS += \
-	-Dtest=false \
-	-Ddirectwrite=false \
-	-Dasm=false \
-	-Dlibunibreak=false
-
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
