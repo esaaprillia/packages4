@@ -105,7 +105,7 @@ CONFIGURE_ARGS = \
 		-ltcg \
 		-mimetype-database \
 		-openssl-linked \
-		-qt-doubleconversion \
+		-system-doubleconversion \
 		-system-pcre \
 		-system-zlib \
 		$(if $(findstring i386,$(ARCH)),-no-sse2 -no-sse4.1) \
@@ -136,6 +136,7 @@ CONFIGURE_ARGS = \
 		-no-pch \
 		-no-slog2 \
 		-sql-sqlite \
+		-system-sqlite \
 		-no-trace \
 		-no-tslib \
 		-no-vulkan \
@@ -188,13 +189,13 @@ define DefineQtbaseLibrary
   endef
 endef
 
-$(eval $(call DefineQtbaseLibrary,core,,+QT5_INCLUDE_ATOMIC:libatomic +libpcre2-16 +zlib))
+$(eval $(call DefineQtbaseLibrary,core,,+QT5_INCLUDE_ATOMIC:libatomic +libpcre2-16 +libdouble-conversion +zlib))
 $(eval $(call DefineQtbaseLibrary,concurrent,core,))
 $(eval $(call DefineQtbaseLibrary,dbus,core,+libdbus))
 $(eval $(call DefineQtbaseLibrary,gui,dbus,+libfreetype))
 $(eval $(call DefineQtbaseLibrary,network,core,+libopenssl +zlib))
 $(eval $(call DefineQtbaseLibrary,printsupport,widgets,))
-$(eval $(call DefineQtbaseLibrary,sql,core,))
+$(eval $(call DefineQtbaseLibrary,sql,core,+libsqlite3))
 $(eval $(call DefineQtbaseLibrary,test,core,))
 $(eval $(call DefineQtbaseLibrary,widgets,gui,))
 $(eval $(call DefineQtbaseLibrary,xml,core))
