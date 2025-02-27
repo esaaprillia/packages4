@@ -13,6 +13,7 @@ PKG_LICENSE:=ISC
 PKG_LICENSE_FILES:=COPYING
 
 PKG_BUILD_PARALLEL:=1
+PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -34,13 +35,6 @@ CONFIGURE_ARGS = \
 	--disable-directwrite \
 	--disable-libunibreak \
 	--disable-asm
-
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		CC="$(TARGET_CC)" \
-		LDFLAGS="$(TARGET_LDFLAGS)" \
-		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)"
-endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
