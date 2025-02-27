@@ -240,7 +240,7 @@ CONFIGURE_ARGS = \
 
 define Build/Compile
 	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
+		INSTALL_ROOT="$(PKG_INSTALL_DIR)" \
 		install
 endef
 
