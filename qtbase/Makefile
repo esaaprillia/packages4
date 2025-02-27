@@ -239,11 +239,9 @@ CONFIGURE_ARGS = \
 		-v
 
 define Build/Compile
-	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)
-endef
-
-define Build/InstallDev
-	$(MAKE) -C $(PKG_BUILD_DIR) install
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
+		DESTDIR="$(PKG_INSTALL_DIR)" \
+		install
 endef
 
 define Package/qt5-core/install
