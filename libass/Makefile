@@ -37,6 +37,7 @@ CONFIGURE_ARGS = \
 	--enable-fontconfig \
 	--disable-directwrite \
 	--enable-libunibreak \
+	--disable-require-system-font-provider \
 	--disable-asm
 
 define Build/InstallDev
