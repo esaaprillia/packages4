@@ -21,7 +21,7 @@ define Package/mpv
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Command line video player
-	DEPENDS:=+alsa-lib +ffmpeg +libao +libarchive +pulseaudio-daemon +libplacebo +zlib
+	DEPENDS:=+alsa-lib +ffmpeg +libao +libarchive +pulseaudio-daemon +libplacebo +libass +zlib
 	URL:=https://github.com/mpv-player/mpv
 endef
 
