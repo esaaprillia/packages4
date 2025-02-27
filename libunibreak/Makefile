@@ -4,7 +4,7 @@ PKG_NAME:=libunibreak
 PKG_VERSION:=6.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/adah1972/libunibreak/releases/download/libunibreak_6_1
 PKG_HASH:=skip
 
