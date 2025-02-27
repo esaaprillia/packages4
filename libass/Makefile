@@ -21,7 +21,7 @@ define Package/libass
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=libass is a portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format.
-	DEPENDS:=+libfreetype +fontconfig +fribidi +harfbuzz
+	DEPENDS:=+libfreetype +fontconfig +fribidi +harfbuzz +libunibreak
 	URL:=https://github.com/libass/libass
 endef
 
