@@ -13,9 +13,9 @@ PKG_LICENSE:=ISC
 PKG_LICENSE_FILES:=COPYING
 
 PKG_BUILD_PARALLEL:=1
-PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/meson.mk
 
 define Package/libass
 	SECTION:=libs
@@ -28,13 +28,6 @@ endef
 define Package/libass/description
 	libass is a portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format. It is mostly compatible with VSFilter.
 endef
-
-CONFIGURE_ARGS = \
-	--prefix=/usr \
-	--enable-fontconfig \
-	--disable-directwrite \
-	--disable-libunibreak \
-	--disable-asm
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
