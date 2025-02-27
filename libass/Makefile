@@ -30,10 +30,10 @@ define Package/libass/description
 endef
 
 MESON_ARGS += \
-	-Dtest=disabled \
-	-Ddirectwrite=disabled \
-	-Dasm=disabled \
-	-Dlibunibreak=disabled
+	-Dtest=false \
+	-Ddirectwrite=false \
+	-Dasm=false \
+	-Dlibunibreak=false
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
