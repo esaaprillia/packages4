@@ -16,7 +16,6 @@ PKG_LICENSE_FILES:=LICENSE.FDL LICENSE.GPL2 LICENSE.GPL3 LICENSE.GPL3-EXCEPT LIC
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-everywhere-src-$(PKG_VERSION)
 
-#PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_CPE_ID:=cpe:/a:qt:qt
@@ -158,6 +157,8 @@ EXTRA_LDFLAGS += -Wl,--gc-sections,--as-needed
 
 CONFIGURE_ARGS = \
 		-sysroot $(STAGING_DIR) \
+		-hostprefix $(STAGING_DIR_HOSTPKG) \
+		-extprefix $(STAGING_DIR)/usr \
 		-prefix /usr \
 		-bindir /usr/bin \
 		-headerdir /usr/include/qt5 \
@@ -237,61 +238,63 @@ CONFIGURE_ARGS = \
 		-v
 
 define Build/Compile
-	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
-		INSTALL_ROOT="$(PKG_INSTALL_DIR)" \
-		install
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
+endef
+
+define Build/InstallDev
+	$(MAKE) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) install
 endef
 
 define Package/qt5-core/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Core.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Core.* $(1)/usr/lib/
 endef
 
 define Package/qt5-concurrent/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Concurrent.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Concurrent.* $(1)/usr/lib/
 endef
 
 define Package/qt5-dbus/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5DBus.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5DBus.* $(1)/usr/lib/
 endef
 
 define Package/qt5-gui/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Gui.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Gui.* $(1)/usr/lib/
 endef
 
 define Package/qt5-network/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Network.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Network.* $(1)/usr/lib/
 endef
 
 define Package/qt5-printsupport/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5PrintSupport.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5PrintSupport.* $(1)/usr/lib/
 endef
 
 define Package/qt5-sql/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_DIR) $(1)/usr/lib/qt5/plugins/sqldrivers
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Sql.* $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/qtbase/plugins/sqldrivers/*.so $(1)/usr/lib/qt5/plugins/sqldrivers/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Sql.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/plugins/sqldrivers/*.so $(1)/usr/lib/qt5/plugins/sqldrivers/
 endef
 
 define Package/qt5-test/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Test.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Test.* $(1)/usr/lib/
 endef
 
 define Package/qt5-widgets/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Widgets.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Widgets.* $(1)/usr/lib/
 endef
 
 define Package/qt5-xml/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Xml.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Xml.* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,qt5-core))
