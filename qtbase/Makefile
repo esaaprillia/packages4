@@ -247,54 +247,54 @@ endef
 
 define Package/qt5-core/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Core.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Core.so* $(1)/usr/lib/
 endef
 
 define Package/qt5-concurrent/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Concurrent.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Concurrent.so* $(1)/usr/lib/
 endef
 
 define Package/qt5-dbus/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5DBus.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5DBus.so* $(1)/usr/lib/
 endef
 
 define Package/qt5-gui/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Gui.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Gui.so* $(1)/usr/lib/
 endef
 
 define Package/qt5-network/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Network.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Network.so* $(1)/usr/lib/
 endef
 
 define Package/qt5-printsupport/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5PrintSupport.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5PrintSupport.so* $(1)/usr/lib/
 endef
 
 define Package/qt5-sql/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_DIR) $(1)/usr/lib/qt5/plugins/sqldrivers
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Sql.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Sql.so* $(1)/usr/lib/
 	$(CP) $(PKG_BUILD_DIR)/plugins/sqldrivers/*.so $(1)/usr/lib/qt5/plugins/sqldrivers/
 endef
 
 define Package/qt5-test/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Test.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Test.so* $(1)/usr/lib/
 endef
 
 define Package/qt5-widgets/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Widgets.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Widgets.so* $(1)/usr/lib/
 endef
 
 define Package/qt5-xml/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Xml.* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/lib/libQt5Xml.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,qt5-core))
