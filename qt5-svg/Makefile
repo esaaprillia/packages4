@@ -26,7 +26,7 @@ define Package/qt5-svg
 endef
 
 define Build/Configure
-	(cd $(PKG_BUILD_DIR)) && qmake -o Makefile qtsvg.pro
+	cd $(PKG_BUILD_DIR) && qmake -o Makefile qtsvg.pro
 endef
 
 define Build/Compile
