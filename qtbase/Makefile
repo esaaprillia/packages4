@@ -1,13 +1,13 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=qtbase
+PKG_NAME:=qt
 PKG_BASE:=5.15
 PKG_BUGFIX:=16
 PKG_VERSION:=$(PKG_BASE).$(PKG_BUGFIX)
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-everywhere-opensource-src-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://download.qt.io/archive/qt/$(PKG_BASE)/$(PKG_VERSION)/submodules
+PKG_SOURCE_URL:=https://download.qt.io/archive/qt/$(PKG_BASE)/$(PKG_VERSION)/single
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -28,7 +28,7 @@ define Package/qt5-core
 	SUBMENU:=Qt5
 	TITLE:=qtbase
 	URL:=http://qt-project.org
-	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +zlib @!LINUX_2_6_36
+	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +libiconv-full +zlib @!LINUX_2_6_36
 endef
 
 define Package/qt5-core/description
@@ -205,12 +205,12 @@ CONFIGURE_ARGS = \
 		-no-gtk \
 		-gui \
 		-no-harfbuzz \
-		-no-iconv \
+		-iconv \
 		-no-icu \
 		-no-kms \
-		-no-libjpeg \
+		-system-libjpeg \
 		-no-libmd4c \
-		-no-libpng \
+		-system-libpng \
 		-no-libudev \
 		-no-mtdev \
 		-no-opengl \
