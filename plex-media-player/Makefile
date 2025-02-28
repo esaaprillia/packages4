@@ -32,7 +32,8 @@ define Package/plex-media-player/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DWEB_CLIENT_DISABLE_DESKTOP=ON
 
 define Package/plex-media-player/install
 	$(INSTALL_DIR) \
