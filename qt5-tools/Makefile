@@ -27,7 +27,7 @@ define Package/qt5-tools
 endef
 
 define Build/Configure
-	(cd $(PKG_BUILD_DIR)) && qmake -o Makefile qttools.pro
+	cd $(PKG_BUILD_DIR) && qmake -o Makefile qttools.pro
 endef
 
 define Build/Compile
