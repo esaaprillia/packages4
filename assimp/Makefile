@@ -23,7 +23,7 @@ define Package/assimp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The official Open-Asset-Importer-Library Repository. Loads 40+ 3D-file-formats into one unified and clean data structure.
-	DEPENDS:=+minizip +zlib
+	DEPENDS:=+libstdcpp +minizip +zlib
 	URL:=https://github.com/assimp/assimp
 endef
 
