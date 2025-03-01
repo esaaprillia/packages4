@@ -4,7 +4,7 @@ PKG_NAME:=md4c
 PKG_VERSION:=0.5.2
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-release-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/mity/md4c/archive/release-$(PKG_VERSION)
 PKG_HASH:=skip
 
