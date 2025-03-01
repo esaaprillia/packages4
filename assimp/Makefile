@@ -32,7 +32,8 @@ define Package/assimp/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DASSIMP_BUILD_ASSIMP_TOOLS=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
