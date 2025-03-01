@@ -16,6 +16,7 @@ PKG_LICENSE_FILES:=LICENSE.FDL LICENSE.GPL2 LICENSE.GPL3 LICENSE.GPL3-EXCEPT LIC
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-everywhere-src-$(PKG_VERSION)
 
+PKG_BUILD_DEPENDS:=gperf/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_CPE_ID:=cpe:/a:qt:qt
@@ -28,7 +29,7 @@ define Package/qt5-core
 	SUBMENU:=Qt5
 	TITLE:=qtbase
 	URL:=http://qt-project.org
-	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +libiconv-full +zlib @!LINUX_2_6_36
+	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +libiconv-full +glib2 +zlib @!LINUX_2_6_36
 endef
 
 define Package/qt5-core/description
@@ -201,7 +202,7 @@ CONFIGURE_ARGS = \
 		-no-eglfs \
 		-system-freetype \
 		-no-gbm \
-		-no-glib \
+		-glib \
 		-no-gtk \
 		-gui \
 		-no-harfbuzz \
