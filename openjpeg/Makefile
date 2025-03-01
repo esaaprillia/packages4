@@ -44,20 +44,9 @@ CMAKE_OPTIONS += \
 	-DBUILD_THIRDPARTY=OFF
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/openjpeg-2.5 \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*,cmake} \
-	  $(1)/usr/lib/
-
-	$(SED) \
-	  's,^\(libdir\)=.*,\1=$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libopenjp2.pc
 endef
 
 define Package/openjpeg/install
