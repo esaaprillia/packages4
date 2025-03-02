@@ -24,7 +24,7 @@ define Package/espeak-ng
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=eSpeak NG Text-to-Speech
-	DEPENDS:=+pcaudiolib
+	DEPENDS:=+pcaudiolib +sonic
 	URL:=https://github.com/espeak-ng/espeak-ng
 endef
 
@@ -37,7 +37,7 @@ CMAKE_OPTIONS += \
 	-DESPEAK_COMPAT=ON \
 	-DESPEAK_BUILD_MANPAGES=OFF \
 	-DUSE_MBROLA=ON \
-	-DUSE_LIBSONIC=OFF \
+	-DUSE_LIBSONIC=ON \
 	-DUSE_LIBPCAUDIO=ON
 
 define Build/InstallDev
