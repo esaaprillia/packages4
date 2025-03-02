@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=COPYRIGHT.txt LICENSE.txt
 
-CMAKE_BINARY_SUBDIR := build
+CMAKE_BINARY_SUBDIR := buildx
 
 PKG_BUILD_PARALLEL:=1
 
