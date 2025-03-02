@@ -22,7 +22,7 @@ define Package/pcaudiolib
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Portable C Audio Library
-	DEPENDS:=+alsa-lib +pulseaudio-daemon
+	DEPENDS:=+alsa-lib
 	URL:=https://github.com/espeak-ng/pcaudiolib
 endef
 
@@ -31,7 +31,8 @@ define Package/pcaudiolib/description
 endef
 
 CONFIGURE_ARGS += \
-	--prefix=/usr
+	--prefix=/usr \
+	--without-pulseaudio
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
