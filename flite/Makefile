@@ -22,7 +22,7 @@ define Package/flite
 	CATEGORY:=Libraries
 	TITLE:=A small fast portable speech synthesis system
 	DEPENDS:=+alsa-lib
-	URL:=https://sndio.org/
+	URL:=https://github.com/festvox/flite
 endef
 
 define Package/flite/description
