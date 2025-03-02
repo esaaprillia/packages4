@@ -29,7 +29,7 @@ define Package/flite/description
 	Flite is an open source small fast run-time text to speech engine. It is the latest addition to the suite of free software synthesis tools including University of Edinburgh's Festival Speech Synthesis System and Carnegie Mellon University's FestVox project, tools, scripts and documentation for building synthetic voices. However, flite itself does not require either of these systems to compile and run.
 endef
 
-CONFIGURE_ARGS = \
+CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--enable-shared \
 	--with-audio=alsa
