@@ -1,0 +1,49 @@
+From 375aa7703946fb9cbfb9dfeb4edc63f248d2e2df Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 3 Mar 2025 23:26:23 +0800
+Subject: [PATCH] Update data.cmake
+
+---
+ cmake/data.cmake | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/data.cmake b/cmake/data.cmake
+index 47709ba..7ea6840 100644
+--- a/cmake/data.cmake
++++ b/cmake/data.cmake
+@@ -65,7 +65,7 @@ set(ESPEAK_RUN_CMD ${ESPEAK_RUN_ENV} $ENV{VALGRIND} "$<TARGET_FILE:espeak-ng-bin
+ 
+ add_custom_command(
+   OUTPUT "${DATA_DIST_DIR}/intonations"
+-  COMMAND ${ESPEAK_RUN_CMD} --compile-intonations
++  COMMAND @STAGING_DIR_HOSTPKG@ --compile-intonations
+   WORKING_DIRECTORY "${PHONEME_SRC_DIR}"
+   COMMENT "Compile intonations"
+   DEPENDS
+@@ -95,7 +95,7 @@ add_custom_command(
+     "${DATA_DIST_DIR}/phondata-manifest"
+     "${DATA_DIST_DIR}/phonindex"
+     "${DATA_DIST_DIR}/phontab"
+-  COMMAND ${ESPEAK_RUN_CMD} --compile-phonemes
++  COMMAND @STAGING_DIR_HOSTPKG@ --compile-phonemes
+   WORKING_DIRECTORY "${PHONEME_SRC_DIR}"
+   COMMENT "Compile phonemes"
+   DEPENDS
+@@ -133,7 +133,7 @@ foreach(_dict_name ${_dict_compile_list})
+   add_custom_command(
+     OUTPUT "${_dict_target}"
+     COMMAND ${CMAKE_COMMAND} -E copy ${_dict_deps} "${DICT_TMP_DIR}/"
+-    COMMAND ${ESPEAK_RUN_CMD} --compile=${_dict_name}
++    COMMAND @STAGING_DIR_HOSTPKG@ --compile=${_dict_name}
+     WORKING_DIRECTORY "${DICT_TMP_DIR}"
+     DEPENDS
+       "$<TARGET_FILE:espeak-ng-bin>"
+@@ -152,7 +152,7 @@ if (HAVE_MBROLA AND USE_MBROLA)
+     list(APPEND _mbr_targets ${_mbl_out})
+     add_custom_command(
+       OUTPUT "${_mbl_out}"
+-      COMMAND ${ESPEAK_RUN_CMD} --compile-mbrola="${_mbl_src}"
++      COMMAND @STAGING_DIR_HOSTPKG@ --compile-mbrola="${_mbl_src}"
+       DEPENDS "$<TARGET_FILE:espeak-ng-bin>" "${_mbl_src}"
+     )
+   endforeach(_mbl)
