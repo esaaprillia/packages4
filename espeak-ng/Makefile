@@ -18,6 +18,7 @@ PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/espeak-ng
@@ -32,13 +33,22 @@ define Package/espeak-ng/description
 	eSpeak NG is an open source speech synthesizer that supports more than hundred languages and accents.
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-DBUILD_SHARED_LIBS=OFF \
+	-DESPEAK_COMPAT=OFF \
+	-DESPEAK_BUILD_MANPAGES=OFF \
+	-DUSE_MBROLA=OFF \
+	-DUSE_LIBSONIC=OFF \
+	-DUSE_LIBPCAUDIO=OFF
+
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DESPEAK_COMPAT=ON \
 	-DESPEAK_BUILD_MANPAGES=OFF \
 	-DUSE_MBROLA=ON \
 	-DUSE_LIBSONIC=ON \
-	-DUSE_LIBPCAUDIO=ON
+	-DUSE_LIBPCAUDIO=ON \
+	-DESPEAK_DATA_PATH="$(STAGING_DIR_HOSTPKG)/bin/espeak-ng" \
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -61,3 +71,4 @@ define Package/espeak-ng/install
 endef
 
 $(eval $(call BuildPackage,espeak-ng))
+$(eval $(call HostBuild))
