@@ -22,7 +22,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-export ESPEAK_DATA_PATH="$(STAGING_DIR_HOSTPKG)/bin/espeak-ng"
+export ESPEAK_RUN_ENV="$(STAGING_DIR_HOSTPKG)/bin/espeak-ng"
 
 define Package/espeak-ng
 	SECTION:=libs
@@ -51,7 +51,7 @@ CMAKE_OPTIONS += \
 	-DUSE_MBROLA=ON \
 	-DUSE_LIBSONIC=ON \
 	-DUSE_LIBPCAUDIO=ON \
-	-DESPEAK_RUN_CMD="$(STAGING_DIR_HOSTPKG)/bin/espeak-ng"
+	-DESPEAK_RUN_ENV="$(STAGING_DIR_HOSTPKG)/bin/espeak-ng"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
