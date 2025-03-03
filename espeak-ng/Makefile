@@ -22,6 +22,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
+export ESPEAK_DATA_PATH="$(STAGING_DIR_HOSTPKG)/bin/espeak-ng"
+
 define Package/espeak-ng
 	SECTION:=libs
 	CATEGORY:=Libraries
