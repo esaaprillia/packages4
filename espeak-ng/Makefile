@@ -49,7 +49,7 @@ CMAKE_OPTIONS += \
 	-DUSE_MBROLA=ON \
 	-DUSE_LIBSONIC=ON \
 	-DUSE_LIBPCAUDIO=ON \
-	-DESPEAK_DATA_PATH="$(STAGING_DIR_HOSTPKG)/bin/espeak-ng"
+	-DESPEAK_RUN_CMD="$(STAGING_DIR_HOSTPKG)/bin/espeak-ng"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
