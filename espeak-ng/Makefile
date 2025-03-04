@@ -24,7 +24,8 @@ include $(INCLUDE_DIR)/cmake.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(SED) 's,$$$${ESPEAK_RUN_CMD},(STAGING_DIR_HOSTPKG)/bin/espeak-ng,g' $(PKG_BUILD_DIR)/cmake/data.cmake
+	$(SED) 's,$$$${ESPEAK_RUN_CMD},@STAGING_DIR_HOSTPKG@,g' $(PKG_BUILD_DIR)/cmake/data.cmake
+	$(SED) 's,@STAGING_DIR_HOSTPKG@,$(STAGING_DIR_HOSTPKG)/bin/espeak-ng,g' $(PKG_BUILD_DIR)/cmake/data.cmake
 endef
 
 define Package/espeak-ng
