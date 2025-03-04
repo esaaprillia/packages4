@@ -34,9 +34,9 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(SED) '\_dict:\ src/espeak-ng_ s_src/espeak-ng_/usr/bin/espeak-ng_' $(PKG_BUILD_DIR)/Makefile
-	$(SED) "s_../src/espeak-ng_/usr/bin/espeak-ng_" $(PKG_BUILD_DIR)/Makefile
-	$(SED) '\_--compile_ s_src/espeak-ng_/usr/bin/espeak-ng_' $(PKG_BUILD_DIR)/Makefile
+	$(SED) '\_dict:\ src/espeak-ng_ s_src/espeak-ng_/usr/bin/espeak-ng_' $(PKG_BUILD_DIR)/Makefile.am
+	$(SED) "s_../src/espeak-ng_/usr/bin/espeak-ng_" $(PKG_BUILD_DIR)/Makefile.am
+	$(SED) '\_--compile_ s_src/espeak-ng_/usr/bin/espeak-ng_' $(PKG_BUILD_DIR)/Makefile.am
 endef
 
 HOST_CONFIGURE_ARGS += \
