@@ -65,7 +65,8 @@ endef
 define Package/espeak-ng/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
-	  $(1)/usr/lib
+	  $(1)/usr/lib \
+	  $(1)/usr/share
 	
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/bin/* \
@@ -74,6 +75,10 @@ define Package/espeak-ng/install
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
 	  $(1)/usr/lib/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/share/espeak-ng-data \
+	  $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,espeak-ng))
