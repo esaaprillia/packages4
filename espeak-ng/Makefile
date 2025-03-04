@@ -24,7 +24,7 @@ define Package/espeak-ng
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=eSpeak NG Text-to-Speech
-	DEPENDS:=+pcaudiolib +sonic
+	DEPENDS:=+pcaudiolib +sonic +libstdcpp
 	URL:=https://github.com/espeak-ng/espeak-ng
 endef
 
@@ -40,7 +40,6 @@ endef
 
 HOST_CONFIGURE_ARGS += \
 	--without-pcaudiolib \
-	--without-mbrola \
 	--without-sonic
 
 CONFIGURE_ARGS += \
