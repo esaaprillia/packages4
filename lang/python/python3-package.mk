@@ -22,6 +22,13 @@ PYTHON3PATH:=$(PYTHON3_LIB_DIR):$(STAGING_DIR)/$(PYTHON3_PKG_DIR):$(PKG_INSTALL_
 
 -include $(PYTHON3_LIB_DIR)/openwrt/Makefile-vars
 
+# These configure args are needed in detection of path to Python header files
+# using autotools.
+CONFIGURE_ARGS += \
+	_python_sysroot="$(STAGING_DIR)" \
+	_python_prefix="/usr" \
+	_python_exec_prefix="/usr"
+
 PYTHON3_VARS = \
 	CC="$(TARGET_CC)" \
 	CCSHARED="$(TARGET_CC) $(FPIC)" \
@@ -35,6 +42,9 @@ PYTHON3_VARS = \
 	_PYTHON_SYSCONFIGDATA_NAME="_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH)" \
 	PYTHONPATH="$(PYTHON3PATH)" \
 	PYTHONDONTWRITEBYTECODE=1 \
+	_python_sysroot="$(STAGING_DIR)" \
+	_python_prefix="/usr" \
+	_python_exec_prefix="/usr" \
 	$(CARGO_PKG_CONFIG_VARS) \
 	PYO3_CROSS_LIB_DIR="$(PYTHON3_LIB_DIR)" \
 	SETUPTOOLS_RUST_CARGO_PROFILE="$(CARGO_PKG_PROFILE)"
