@@ -21,6 +21,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 include $(TOPDIR)/feeds/python/lang/golang/golang-values.mk
 
+GO_PKG_BUILD_VARS += GO111MODULE=off
+
 define Package/nchat
 	SECTION:=net
 	CATEGORY:=Network
