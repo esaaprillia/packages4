@@ -14,13 +14,12 @@ PKG_LICENSE:=MIT license
 PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR:=build
-CMAKE_SOURCE_SUBDIR:=lib/wmchat
 
 PKG_BUILD_DEPENDS:=ncurses/host gperf/host golang/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
-include $(TOPDIR)/feeds/python/lang/golang/golang-package.mk
+include $(TOPDIR)/feeds/python/lang/golang/golang-values.mk
 
 define Package/nchat
 	SECTION:=net
@@ -40,10 +39,7 @@ CMAKE_OPTIONS += \
 	-DHAS_WHATSAPP=ON \
 	-DHAS_DYNAMICLOAD=ON \
 	-DHAS_MULTIPROTOCOL=ON \
-	-DHAS_COREDUMP=ON \
-	-DHAS_STATICGOLIB=OFF \
-	-DCMAKE_C_FLAGS=-fPIC \
-	-DCMAKE_CXX_FLAGS=-fPIC
+	-DHAS_COREDUMP=ON
 
 define Package/nchat/install
 	$(INSTALL_DIR) \
