@@ -25,7 +25,6 @@ PYTHON3PATH:=$(PYTHON3_LIB_DIR):$(STAGING_DIR)/$(PYTHON3_PKG_DIR):$(PKG_INSTALL_
 # These configure args are needed in detection of path to Python header files
 # using autotools.
 CONFIGURE_ARGS += \
-	_python_sysroot="$(STAGING_DIR)" \
 	_python_prefix="/usr" \
 	_python_exec_prefix="/usr"
 
@@ -42,7 +41,6 @@ PYTHON3_VARS = \
 	_PYTHON_SYSCONFIGDATA_NAME="_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH)" \
 	PYTHONPATH="$(PYTHON3PATH)" \
 	PYTHONDONTWRITEBYTECODE=1 \
-	_python_sysroot="$(STAGING_DIR)" \
 	_python_prefix="/usr" \
 	_python_exec_prefix="/usr" \
 	$(CARGO_PKG_CONFIG_VARS) \
