@@ -34,7 +34,12 @@ define Package/socks5balancerasio/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-Wno-dev \
+	-DBUILD_SHARED_LIBS=ON \
+	-DUSE_DYNAMIC_BOOST= ON \
+	-DBoost_USE_STATIC_LIBS=OFF \
+	-DNeed_ProxyHandshakeAuth=OFF \
+	-DOPENSSL_USE_STATIC_LIBS=OFF
 
 define Package/socks5balancerasio/install
 	$(INSTALL_DIR) \
