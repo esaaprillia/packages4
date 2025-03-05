@@ -21,6 +21,7 @@
  
          # The argument parsing will result in self.define being a string, but
          # it has to be a list of 2-tuples.  All the preprocessor symbols
+
 --- a/setuptools/_distutils/sysconfig.py
 +++ b/setuptools/_distutils/sysconfig.py
 @@ -25,10 +25,17 @@
