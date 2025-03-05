@@ -21,7 +21,7 @@ define Package/speech-dispatcher
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Common high-level interface to speech synthesis
-	DEPENDS:=+libintl-full +libltdl +glib2 +dotconf +libsndfile +espeak-ng-devel +libao +sonic +pulseaudio-daemon +alsa-lib
+	DEPENDS:=+libintl-full +libltdl +glib2 +dotconf +libsndfile +espeak-ng +libao +sonic +pulseaudio-daemon +alsa-lib
 	URL:=https://github.com/brailcom/speechd
 endef
 
