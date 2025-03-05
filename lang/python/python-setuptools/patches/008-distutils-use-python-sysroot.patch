@@ -1,5 +1,5 @@
---- "a/setuptools/\342\200\213_distutils/command/build_ext.py"
-+++ "b/setuptools/\342\200\213_distutils/command/build_ext.py"
+--- a/setuptools/_distutils/command/build_ext.py
++++ b/setuptools/_distutils/command/build_ext.py
 @@ -255,6 +255,20 @@ def finalize_options(self):  # noqa: C901
                  self.library_dirs.append('.')
  
@@ -21,8 +21,8 @@
  
          # The argument parsing will result in self.define being a string, but
          # it has to be a list of 2-tuples.  All the preprocessor symbols
---- "a/setuptools/\342\200\213_distutils/sysconfig.py"
-+++ "b/setuptools/\342\200\213_distutils/sysconfig.py"
+--- a/setuptools/_distutils/sysconfig.py
++++ b/setuptools/_distutils/sysconfig.py
 @@ -25,10 +25,17 @@
  IS_PYPY = '__pypy__' in sys.builtin_module_names
  
