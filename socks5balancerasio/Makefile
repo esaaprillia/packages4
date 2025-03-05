@@ -14,8 +14,6 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/Socks5BalancerAsio-$(PKG_VERSION)
 
-CMAKE_BINARY_SUBDIR := build
-
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -34,12 +32,7 @@ define Package/socks5balancerasio/description
 endef
 
 CMAKE_OPTIONS += \
-	-Wno-dev \
-	-DBUILD_SHARED_LIBS=ON \
-	-DUSE_DYNAMIC_BOOST= ON \
-	-DBoost_USE_STATIC_LIBS=OFF \
-	-DNeed_ProxyHandshakeAuth=OFF \
-	-DOPENSSL_USE_STATIC_LIBS=OFF
+	-Wno-dev
 
 define Package/socks5balancerasio/install
 	$(INSTALL_DIR) \
