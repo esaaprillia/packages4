@@ -21,9 +21,6 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 include $(TOPDIR)/feeds/python/lang/golang/golang-values.mk
 
-GO_PKG_BUILD_VARS += GOPATH=$(PKG_BUILD_DIR)/lib/wmchat/go/*.go
-GO_PKG_VARS += GOPATH=$(PKG_BUILD_DIR)/lib/wmchat/go/*.go
-
 define Package/nchat
 	SECTION:=net
 	CATEGORY:=Network
@@ -37,12 +34,9 @@ define Package/nchat/description
 endef
 
 CMAKE_OPTIONS += \
-	-DHAS_DUMMY=ON \
 	-DHAS_TELEGRAM=OFF \
-	-DHAS_WHATSAPP=ON \
-	-DHAS_DYNAMICLOAD=ON \
-	-DHAS_MULTIPROTOCOL=ON \
-	-DHAS_COREDUMP=ON
+	-DHAS_DYNAMICLOAD=OFF \
+	-DHAS_STATICGOLIB=OFF
 
 define Package/nchat/install
 	$(INSTALL_DIR) \
