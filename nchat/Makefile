@@ -21,7 +21,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 include $(TOPDIR)/feeds/python/lang/golang/golang-values.mk
 
-GO_PKG_BUILD_VARS += GOPATH=$(GO_PKG_BUILD_DIR)/lib/wmchat/go/*.go
+GO_PKG_BUILD_VARS += GOPATH=$(PKG_BUILD_DIR)/lib/wmchat/go/*.go
+GO_PKG_VARS += GOPATH=$(PKG_BUILD_DIR)/lib/wmchat/go/*.go
 
 define Package/nchat
 	SECTION:=net
