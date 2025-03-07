@@ -44,7 +44,8 @@ MESON_HOST_VARS += \
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
-	-Dgtk_doc=false
+	-Dgtk_doc=false \
+	-Dtests=false
 
 MESON_VARS += \
 	$(PYTHON3_VARS)
@@ -53,6 +54,7 @@ MESON_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
 	-Dgtk_doc=false \
+	-Dtests=false \
 	-Dgi_cross_use_prebuilt_gi=true \
 	-Dgi_cross_binary_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner-qemuwrapper" \
 	-Dgi_cross_ldd_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner-lddwrapper"
