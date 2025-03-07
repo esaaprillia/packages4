@@ -83,7 +83,5 @@ define Package/gobject-introspection/install
 	  $(1)/usr/lib/
 endef
 
-$(eval $(call Py3Package,gobject-introspection))
 $(eval $(call BuildPackage,gobject-introspection))
-$(eval $(call BuildPackage,gobject-introspection-src))
 $(eval $(call HostBuild))
