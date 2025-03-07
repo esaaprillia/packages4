@@ -104,22 +104,22 @@ define Python3/DeleteEmptyDirs
 endef
 
 
-# Py3Package
+# Package
 
-define Py3Package/filespec/Default
+define Package/filespec/Default
 +|$(PYTHON3_PKG_DIR)
 endef
 
 # $(1) => package name
 # $(2) => src directory
 # $(3) => dest directory
-define Py3Package/ProcessFilespec
-	$(eval $(call shexport,Py3Package/$(1)/filespec))
+define Package/ProcessFilespec
+	$(eval $(call shexport,Package/$(1)/filespec))
 	$(SHELL) $(python3_mk_path)python-package-install.sh \
-		"$(2)" "$(3)" "$$$$$(call shvar,Py3Package/$(1)/filespec)"
+		"$(2)" "$(3)" "$$$$$(call shvar,Package/$(1)/filespec)"
 endef
 
-define Py3Package
+define Package
   define Package/$(1)-src
     $(call Package/$(1))
     DEPENDS:=
@@ -142,12 +142,12 @@ define Py3Package
   endef
 
   # Add default PyPackage filespec none defined
-  ifeq ($(origin Py3Package/$(1)/filespec),undefined)
-    Py3Package/$(1)/filespec=$$(Py3Package/filespec/Default)
+  ifeq ($(origin Package/$(1)/filespec),undefined)
+    Package/$(1)/filespec=$$(Package/filespec/Default)
   endif
 
-  ifndef Py3Package/$(1)/install
-    define Py3Package/$(1)/install
+  ifndef Package/$(1)/install
+    define Package/$(1)/install
 	if [ -d $(PKG_INSTALL_DIR)/usr/bin ]; then \
 		$(INSTALL_DIR) $$(1)/usr/bin ; \
 		$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $$(1)/usr/bin/ ; \
@@ -157,8 +157,8 @@ define Py3Package
 
   ifndef Package/$(1)/install
     define Package/$(1)/install
-	$$(call Py3Package/$(1)/install,$$(1))
-	$$(call Py3Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
+	$$(call Package/$(1)/install,$$(1))
+	$$(call Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
 	$(FIND) $$(1) -name '*.exe' -delete
 	$$(call Python3/CompileAll,$$(1))
 	$$(call Python3/DeleteSourceFiles,$$(1))
@@ -169,8 +169,8 @@ define Py3Package
     endef
 
     define Package/$(1)-src/install
-	$$(call Py3Package/$(1)/install,$$(1))
-	$$(call Py3Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
+	$$(call Package/$(1)/install,$$(1))
+	$$(call Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
 	$$(call Python3/DeleteNonSourceFiles,$$(1))
 	$$(call Python3/DeleteEmptyDirs,$$(1))
     endef
