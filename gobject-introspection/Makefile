@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gobject-introspection
-PKG_VERSION:=1.80.1
+PKG_VERSION:=1.82.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://download.gnome.org/sources/$(PKG_NAME)/1.80
+PKG_SOURCE_URL:=https://download.gnome.org/sources/$(PKG_NAME)/1.82
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
