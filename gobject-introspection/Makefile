@@ -1,22 +1,23 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gobject-introspection
-PKG_VERSION:=1.82.0
+PKG_VERSION:=1.83.2
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://download.gnome.org/sources/$(PKG_NAME)/1.82
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GNU Library General Public License v2 only
 PKG_LICENSE_FILES:=COPYING COPYING.GPL COPYING.LGPL
 
-HOST_BUILD_DEPENDS:=glib2/host pcre2/host libffi/host meson-python/host
-PKG_BUILD_DEPENDS:=python3 meson-python/host
+HOST_BUILD_DEPENDS:=glib2/host pcre2/host libffi/host python3/host python-build/host python-installer/host python-setuptools/host meson-python/host
+PKG_BUILD_DEPENDS:=gobject-introspection/host
 
 PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
+PYTHON3_HOST_BUILD:=0
 HOST_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -37,18 +38,24 @@ define Package/gobject-introspection/description
 	The goal of the project is to describe the APIs and collect them in a uniform, machine readable format.
 endef
 
-MESON_VARS += $(PYTHON3_VARS)
+MESON_HOST_VARS += \
+	$(HOST_PYTHON3_VARS)
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
 	-Dgtk_doc=false
 
+MESON_VARS += \
+	$(PYTHON3_VARS)
+
 MESON_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
 	-Dgtk_doc=false \
-	-Dbuild_introspection_data=false
+	-Dgi_cross_use_prebuilt_gi=true \
+	-Dgi_cross_binary_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner-qemuwrapper" \
+	-Dgi_cross_ldd_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner-lddwrapper"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
