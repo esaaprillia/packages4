@@ -4,8 +4,8 @@ PKG_NAME:=gobject-introspection
 PKG_VERSION:=1.83.2
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/$(PKG_VERSION)
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+PKG_SOURCE_URL:=https://download.gnome.org/sources/$(PKG_NAME)/1.83
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -44,9 +44,7 @@ MESON_HOST_VARS += \
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
-	-Dgtk_doc=false \
-	-Dtests=false \
-	-Dglib_src_dir="$(STAGING_DIR_HOSTPKG)"
+	-Dgtk_doc=false
 
 MESON_VARS += \
 	$(PYTHON3_VARS)
