@@ -46,7 +46,7 @@ MESON_HOST_ARGS += \
 	-Ddoctool=disabled \
 	-Dgtk_doc=false \
 	-Dtests=false \
-	-Dbuild_introspection_data=false
+	-Dglib_src_dir="$(STAGING_DIR_HOSTPKG)"
 
 MESON_VARS += \
 	$(PYTHON3_VARS)
