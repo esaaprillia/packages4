@@ -38,6 +38,9 @@ define Package/gobject-introspection/description
 	The goal of the project is to describe the APIs and collect them in a uniform, machine readable format.
 endef
 
+MESON_HOST_VARS += \
+	PKG_CONFIG_PATH="$(STAGING_DIR_HOSTPKG)/lib/pkgconfig"
+
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
