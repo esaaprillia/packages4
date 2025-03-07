@@ -45,7 +45,8 @@ MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
 	-Dgtk_doc=false \
-	-Dtests=false
+	-Dtests=false \
+	-Dbuild_introspection_data=false
 
 MESON_VARS += \
 	$(PYTHON3_VARS)
