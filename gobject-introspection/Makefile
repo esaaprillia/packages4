@@ -43,7 +43,8 @@ MESON_VARS += $(PYTHON3_VARS)
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
-	-Dgtk_doc=false
+	-Dgtk_doc=false \
+	-Dstatic_library
 
 MESON_ARGS += \
 	-Dcairo=disabled \
