@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=glib2
-PKG_VERSION:=2.82.0
+PKG_VERSION:=2.84.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=glib-$(PKG_VERSION).tar.xz
@@ -68,8 +68,8 @@ COMP_ARGS+=-Dintrospection=disabled
 # set runtime dir to /var/run
 COMP_ARGS+=-Druntime_dir=/var/run
 
-MESON_HOST_ARGS += $(COMP_ARGS) -Dxattr=false -Dnls=disabled
-MESON_ARGS += $(COMP_ARGS) -Dxattr=true -Db_lto=true -Dnls=$(if $(CONFIG_BUILD_NLS),en,dis)abled
+MESON_HOST_ARGS += $(COMP_ARGS) -Ddefault_library=both -Dxattr=false -Dnls=disabled
+MESON_ARGS += $(COMP_ARGS) -Ddefault_library=both -Dxattr=true -Db_lto=true -Dnls=$(if $(CONFIG_BUILD_NLS),en,dis)abled
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/bin
