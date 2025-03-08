@@ -22,7 +22,7 @@ HOST_BUILD_PARALLEL:=1
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package2.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 
 define Package/gobject-introspection
@@ -70,8 +70,6 @@ define Build/InstallDev
 endef
 
 define Package/gobject-introspection/install
-	$$(call Py3Package/ProcessFilespec,$(1),$(PKG_INSTALL_DIR),$$(1))
-	$(FIND) $$(1) -name '*.exe' -delete
 	$$(call Python3/CompileAll,$$(1))
 	$$(call Python3/DeleteSourceFiles,$$(1))
 	$$(call Python3/DeleteEmptyDirs,$$(1))
@@ -89,6 +87,5 @@ define Package/gobject-introspection/install
 	  $(1)/usr/lib/
 endef
 
-$(eval $(call Package,gobject-introspection))
 $(eval $(call BuildPackage,gobject-introspection))
 $(eval $(call HostBuild))
