@@ -18,6 +18,7 @@ PKG_BUILD_DEPENDS:=python3 meson-python/host python-mako/host
 PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 HOST_BUILD_PARALLEL:=1
+PYTHON3_HOST_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
