@@ -68,7 +68,7 @@ COMP_ARGS+=-Dintrospection=disabled
 # set runtime dir to /var/run
 COMP_ARGS+=-Druntime_dir=/var/run
 
-MESON_HOST_ARGS += $(COMP_ARGS) -Dxattr=false -Dnls=disabled
+MESON_HOST_ARGS += $(COMP_ARGS) -Dxattr=false -Dnls=enabled
 MESON_ARGS += $(COMP_ARGS) -Dxattr=true -Db_lto=true -Dnls=$(if $(CONFIG_BUILD_NLS),en,dis)abled
 
 define Build/InstallDev
