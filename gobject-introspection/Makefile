@@ -13,7 +13,7 @@ PKG_LICENSE:=GNU Library General Public License v2 only
 PKG_LICENSE_FILES:=COPYING COPYING.GPL COPYING.LGPL
 
 HOST_BUILD_DEPENDS:=glib2/host pcre2/host libffi/host meson-python/host
-PKG_BUILD_DEPENDS:=python3 meson-python/host
+PKG_BUILD_DEPENDS:=python3 meson-python/host python-mako/host
 
 PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
@@ -47,8 +47,7 @@ MESON_HOST_ARGS += \
 MESON_ARGS += \
 	-Dcairo=disabled \
 	-Ddoctool=disabled \
-	-Dgtk_doc=false \
-	-Dbuild_introspection_data=false
+	-Dgtk_doc=false
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
@@ -71,7 +70,6 @@ endef
 
 define Package/gobject-introspection/install
 	$(call Python3/CompileAll,$(PKG_INSTALL_DIR))
-	$(call Python3/DeleteSourceFiles,$(PKG_INSTALL_DIR))
 	$(call Python3/DeleteEmptyDirs,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
