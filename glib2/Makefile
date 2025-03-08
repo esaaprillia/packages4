@@ -26,7 +26,7 @@ PKG_FORTIFY_SOURCE:=0
 PKG_BUILD_FLAGS:=gc-sections
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/glib-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=pcre2/host libffi/host libiconv-full/host gettext-full/host
+HOST_BUILD_DEPENDS:=pcre2/host libffi/host libiconv-full/host
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
@@ -68,8 +68,8 @@ COMP_ARGS+=-Dintrospection=disabled
 # set runtime dir to /var/run
 COMP_ARGS+=-Druntime_dir=/var/run
 
-MESON_HOST_ARGS += $(COMP_ARGS) -Dxattr=false -Dnls=enabled
-MESON_ARGS += $(COMP_ARGS) -Dxattr=true -Db_lto=true -Dnls=$(if $(CONFIG_BUILD_NLS),en,dis)abled
+MESON_HOST_ARGS += $(COMP_ARGS) -Dxattr=false -Ddefault_library=static -Dnls=disabled
+MESON_ARGS += $(COMP_ARGS) -Dxattr=true -Db_lto=true -Ddefault_library=both -Dnls=$(if $(CONFIG_BUILD_NLS),en,dis)abled
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/bin
