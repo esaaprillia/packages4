@@ -84,5 +84,9 @@ define Package/gobject-introspection/install
 	  $(1)/usr/lib/
 endef
 
+# Makefile does lots of pkg-config expansions, so need to provide the
+# exports even when installing.
+$(eval $(call Host/Exports,$(HOST_STAMP_INSTALLED)))
+
 $(eval $(call BuildPackage,gobject-introspection))
 $(eval $(call HostBuild))
