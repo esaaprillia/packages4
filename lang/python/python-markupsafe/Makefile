@@ -40,11 +40,6 @@ injection attacks, meaning untrusted user input can safely be displayed
 on a page.
 endef
 
-PYTHON3_HOST_WHEEL_NAME:=MarkupSafe
-PYTHON3_HOST_WHEEL_VERSION:=3.0.2
-PYTHON3_PKG_WHEEL_NAME:=MarkupSafe
-PYTHON3_PKG_WHEEL_VERSION:=3.0.2
-
 $(eval $(call Py3Package,python3-markupsafe))
 $(eval $(call BuildPackage,python3-markupsafe))
 $(eval $(call BuildPackage,python3-markupsafe-src))
