@@ -73,7 +73,6 @@ define Package/gobject-introspection/install
 	$(call Python3/CompileAll,$(PKG_INSTALL_DIR))
 	$(call Python3/DeleteSourceFiles,$(PKG_INSTALL_DIR))
 	$(call Python3/DeleteEmptyDirs,$(PKG_INSTALL_DIR))
-	$(call Python3/FixShebang,$(1)/usr/bin/*)
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
 	  $(1)/usr/lib
@@ -83,7 +82,7 @@ define Package/gobject-introspection/install
 	  $(1)/usr/bin/
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(PKG_INSTALL_DIR)/usr/lib/* \
 	  $(1)/usr/lib/
 endef
 
