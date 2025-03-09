@@ -1,0 +1,32 @@
+From daed1fa9c1e96c18bdb7bc0af242df03a5f96c1c Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 10 Mar 2025 06:47:38 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ Makefile.PL | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+ create mode 100644 Makefile.PL
+
+diff --git a/Makefile.PL b/Makefile.PL
+new file mode 100644
+index 0000000..51f527a
+--- /dev/null
++++ b/Makefile.PL
+@@ -0,0 +1,16 @@
++# This Makefile.PL creates a pass-through Makefile that simply calls
++# the equivalent Module::Build methods for each make target.  See the
++# documentation for Module::Build::Compat for more information.
++
++use 5.006001;
++
++
++use lib qw(lib);
++
++# bootstrap configure_requires prereqs
++#BEGIN { do './inc/bootstrap.pl' or die defined($@) ? $@ : $! }
++
++use Module::Build::Compat;
++
++Module::Build::Compat->run_build_pl(args => \@ARGV);
++Module::Build::Compat->write_makefile(build_class => 'Class::Mix');
