@@ -1,18 +1,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gobject-introspection
-PKG_VERSION:=1.83.4
+PKG_VERSION:=1.82.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://download.gnome.org/sources/$(PKG_NAME)/1.83
+PKG_SOURCE_URL:=https://download.gnome.org/sources/$(PKG_NAME)/1.82
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GNU Library General Public License v2 only
 PKG_LICENSE_FILES:=COPYING COPYING.GPL COPYING.LGPL
 
-HOST_BUILD_DEPENDS:=glib2/host pcre2/host libffi/host meson/host
+HOST_BUILD_DEPENDS:=glib2/host pcre2/host libffi/host python-mako/host meson/host
 PKG_BUILD_DEPENDS:=python3 meson/host python-mako/host
 
 PYTHON3_PKG_BUILD:=0
@@ -42,13 +42,13 @@ MESON_VARS += $(PYTHON3_VARS)
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
-	-Ddoctool=disabled \
-	-Dgtk_doc=false
+	-Dgtk_doc=false \
+	-Dbuild_introspection_data=false
 
 MESON_ARGS += \
 	-Dcairo=disabled \
-	-Ddoctool=disabled \
-	-Dgtk_doc=false
+	-Dgtk_doc=false \
+	-Dgi_cross_use_prebuilt_gi=true
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
