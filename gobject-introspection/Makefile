@@ -26,6 +26,12 @@ include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-compiler,g-ir-generate,g-ir-inspect} $(STAGING_DIR)/usr/bin/
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-scanner,g-ir-annotation-tool} $(STAGING_DIR)/usr/bin/
+endef
+
 define Package/gobject-introspection
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -69,19 +75,6 @@ define Build/InstallDev
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/share/* \
 	  $(1)/usr/share/
-endef
-
-define Host/Install
-	$(INSTALL_DIR) \
- 	  $(STAGING_DIR)/usr/bin
-
-	$(CP) \
-	  $(HOST_BUILD_DIR)/tools/{g-ir-compiler,g-ir-generate,g-ir-inspect} \
-	  $(STAGING_DIR)/usr/bin/
-
-	$(CP) \
-	  $(MESON_HOST_BUILD_DIR)/tools/{g-ir-scanner,g-ir-annotation-tool} \
-	  $(STAGING_DIR)/usr/bin/
 endef
 
 define Package/gobject-introspection/install
