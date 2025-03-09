@@ -49,8 +49,8 @@ MESON_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
 	-Dgi_cross_use_prebuilt_gi=true \
-	-Dgi_cross_binary_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-compiler" \
-	-Dgi_cross_ldd_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner"
+	-Dgi_cross_binary_wrapper="$(STAGING_DIR)/usr/bin/g-ir-compiler" \
+	-Dgi_cross_ldd_wrapper="$(STAGING_DIR)/usr/bin/g-ir-scanner"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
@@ -69,6 +69,19 @@ define Build/InstallDev
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/share/* \
 	  $(1)/usr/share/
+endef
+
+define Host/Install
+	$(INSTALL_DIR) \
+ 	  $(STAGING_DIR)/usr/bin
+
+	$(CP) \
+	  $(HOST_BUILD_DIR)/tools/{g-ir-compiler,g-ir-generate,g-ir-inspect} \
+	  $(STAGING_DIR)/usr/bin/
+
+	$(CP) \
+	  $(MESON_HOST_BUILD_DIR)/tools/{g-ir-scanner,g-ir-annotation-tool} \
+	  $(STAGING_DIR)/usr/bin/
 endef
 
 define Package/gobject-introspection/install
