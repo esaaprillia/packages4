@@ -29,4 +29,4 @@ index 0000000..51f527a
 +use Module::Build::Compat;
 +
 +Module::Build::Compat->run_build_pl(args => \@ARGV);
-+Module::Build::Compat->write_makefile(build_class => 'Params::Classify');
++Module::Build::Compat->write_makefile(build_class => 'Module::Build');
