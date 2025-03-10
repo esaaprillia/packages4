@@ -49,9 +49,9 @@ endef
 define perlmod/host/Configure
 	(cd $(HOST_BUILD_DIR); \
 	$(FLOCK) -s -w 300 9 || { echo perlmod/host/Configure: failed to acquire lock; exit 1; }; \
-	PERL_MM_USE_DEFAULT=1 \
+	(echo -e 'use Config;\n\n$$$${tied %Config::Config}{cpprun}="$(GNU_TARGET_NAME)-cpp -E";\n' ; cat Build.PL) | \
 	$(2) \
-	$(PERL_CMD) Makefile.PL \
+	$(PERL_CMD) Build.PL \
 		$(1) \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock;
 endef
@@ -78,7 +78,7 @@ endef
 define perlmod/Configure
 	(cd $(if $(3),$(3),$(PKG_BUILD_DIR)); \
 	 $(FLOCK) -s -w 300 9 || { echo perlmod/Configure: failed to acquire lock; exit 1; }; \
-	 (echo -e 'use Config;\n\n$$$${tied %Config::Config}{cpprun}="$(GNU_TARGET_NAME)-cpp -E";\n' ; cat Makefile.PL) | \
+	 (echo -e 'use Config;\n\n$$$${tied %Config::Config}{cpprun}="$(GNU_TARGET_NAME)-cpp -E";\n' ; cat Build.PL) | \
 	 PERL_MM_USE_DEFAULT=1 \
 	 $(2) \
 	 $(PERL_CMD) -I. -- - \
