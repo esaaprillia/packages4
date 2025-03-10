@@ -49,9 +49,8 @@ endef
 define perlmod/host/Configure
 	(cd $(HOST_BUILD_DIR); \
 	$(FLOCK) -s -w 300 9 || { echo perlmod/host/Configure: failed to acquire lock; exit 1; }; \
-	(echo -e 'use Config;\n\n$$$${tied %Config::Config}{cpprun}="$(GNU_TARGET_NAME)-cpp -E";\n' ; cat Build.PL) | \
 	$(2) \
-	$(PERL_CMD) Build.PL \
+	$(PERL_CMD) Build.PL --config cc=$(GNU_TARGET_NAME)-gcc --config ld=$(GNU_TARGET_NAME)-gcc \
 		$(1) \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock;
 endef
