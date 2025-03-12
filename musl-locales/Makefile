@@ -34,6 +34,9 @@ define Package/musl-locales/description
 	The translation files provide localisation to musl, including libc-provided error messages, date and time strings, and so forth.
 endef
 
+CMAKE_OPTIONS += \
+	-DLOCALE_PROFILE=OFF
+
 define Package/musl-locales/install
 	$(INSTALL_DIR) \
 	  $(1)/etc \
