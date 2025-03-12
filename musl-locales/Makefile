@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=musl-locales
 PKG_VERSION:=0.1.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://git.adelielinux.org/adelie/musl-locales/-/archive/$(PKG_VERSION)
@@ -18,13 +18,14 @@ PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/nls.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/musl-locales
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Locales support for musl
-	DEPENDS:=+libintl-full
+	DEPENDS:=$(INTL_DEPENDS)
 	URL:=https://git.adelielinux.org/adelie/musl-locales/-/wikis/home
 endef
 
