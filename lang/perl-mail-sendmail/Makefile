@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2006 OpenWrt.org
+# Copyright (C) 2014 - 2016 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -7,46 +7,58 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=libtool
-PKG_VERSION:=2.4
-PKG_RELEASE:=2
+PKG_NAME:=perl-mail-sendmail
+PKG_VERSION:=0.80
+PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=@GNU/libtool
-PKG_HASH:=afcce660d3dc54c63a0a5ba3cf05272239dc3c54bbeba20f6bad250f9dc007ae
+PKG_SOURCE:=Mail-Sendmail-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/N/NE/NEILB/
+PKG_HASH:=skip
 
-PKG_LICENSE:=GPL-2.0+
-PKG_LICENSE_FILES:=COPYING
+PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
+PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
-PKG_BUILD_PARALLEL:=0
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Mail-Sendmail-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
+PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Mail-Sendmail-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../perl/perlmod.mk
 
-CONFIGURE_PREFIX=$(STAGING_DIR_HOSTPKG)
-export GLOBAL_LIBDIR=$(STAGING_DIR)/usr/lib
-
-define Package/libltdl
-  SECTION:=libs
-  CATEGORY:=Libraries
-  TITLE:=A generic dynamic object loading library
-  URL:=http://www.gnu.org/software/libtool/
+define Package/perl-mail-sendmail
+  SUBMENU:=Perl
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Perl Mail-Sendmail
+  URL:=https://metacpan.org/dist/Mail-Sendmail
+  DEPENDS:=perl +perlbase-essential
 endef
 
-define Build/InstallDev
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		bindir="$(2)/libltdl/bin" \
-		datadir="$(2)/libltdl/share" \
-		prefix="$(2)/libltdl" \
-		exec_prefix="$(2)/libltdl" \
-		install
-	$(INSTALL_DIR) $(1)/usr/lib $(1)/usr/include
-	mv $(2)/libltdl/lib/* $(1)/usr/lib/
-	mv $(2)/libltdl/include/* $(1)/usr/include/
+define Host/Configure
+        $(call perlmod/host/Configure,,,)
 endef
 
-define Package/libltdl/install
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/libltdl/.libs/libltdl.so.* $(1)/usr/lib/
+define Host/Compile
+        $(call perlmod/host/Compile,,)
 endef
 
-$(eval $(call BuildPackage,libltdl))
+define Host/Install
+        $(call perlmod/host/Install,$(1),)
+endef
+
+define Build/Configure
+	$(call perlmod/Configure,,)
+endef
+
+define Build/Compile
+	$(call perlmod/Compile,,)
+endef
+
+define Package/perl-mail-sendmail/install
+	$(call perlmod/Install,$(1),Mail)
+endef
+
+$(eval $(call BuildPackage,perl-mail-sendmail))
+$(eval $(call HostBuild))
