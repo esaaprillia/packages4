@@ -31,7 +31,7 @@ define Package/libfido2
   TITLE:=FIDO2 Library
   URL:=https://github.com/Yubico/libfido2
   ABI_VERSION:=1
-  DEPENDS += +libcbor +libopenssl +libudev +zlib
+  DEPENDS += +libcbor +libopenssl +libudev-zero +zlib
 endef
 
 define Package/libfido2/description
