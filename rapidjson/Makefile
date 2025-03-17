@@ -4,9 +4,10 @@ PKG_NAME:=rapidjson
 PKG_VERSION:=1.1.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/Tencent/rapidjson/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/Tencent/rapidjson.git
+PKG_SOURCE_VERSION:=24b5e7a8b27f42fa16b96fc70aade9106cf7102f
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
