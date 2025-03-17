@@ -32,7 +32,7 @@ endef
 define Package/mysql-server
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+libmysqlclient +libpthread +libncurses +libreadline +libedit +icu +libevent2 +liblz4 +protobuf +libopenssl +libzstd +libsasl2 +libfido2 +libtirpc +libopenldap +libcurl +libkqueue +re2
+  DEPENDS:=+libmysqlclient +libpthread +libaio +libncurses +libreadline +libedit +icu +libevent2 +liblz4 +protobuf +libopenssl +libzstd +libsasl2 +libfido2 +libtirpc +libopenldap +libcurl +libkqueue +re2
   TITLE:=MySQL Server
   URL:=http://dev.mysql.com/
   SUBMENU:=database
