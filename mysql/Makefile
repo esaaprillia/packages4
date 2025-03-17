@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mysql
-PKG_VERSION:=8.0.41
+PKG_VERSION:=9.2.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://dev.mysql.com/get/Downloads/MySQL-8.0/
+PKG_SOURCE_URL:=https://dev.mysql.com/get/Downloads/MySQL-9.2/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jo-Philipp Wich <jo@mein.io>
@@ -32,7 +32,7 @@ endef
 define Package/mysql-server
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+libmysqlclient +libpthread +libncurses +libreadline +libedit +icu +libevent2 +liblz4 +protobuf +libopenssl +libzstd +libsasl2 +libfido2 +libtirpc +libopenldap +libcurl +re2
+  DEPENDS:=+libmysqlclient +libpthread +libncurses +libreadline +libedit +icu +libevent2 +liblz4 +protobuf +libopenssl +libzstd +libsasl2 +libfido2 +libtirpc +re2
   TITLE:=MySQL Server
   URL:=http://dev.mysql.com/
   SUBMENU:=database
@@ -57,6 +57,8 @@ define Build/Prepare
 endef
 
 CMAKE_OPTIONS += \
+	-DCMAKE_CROSSCOMPILING=TRUE \
+	-DSTACK_DIRECTION=1 \
 	-DDEFAULT_CHARSET=utf8mb4 \
 	-DDEFAULT_COLLATION=utf8mb4_general_ci \
 	-DINSTALL_DOCDIR=share/doc/mysql \
