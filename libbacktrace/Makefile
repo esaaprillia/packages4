@@ -23,7 +23,7 @@ define Package/libbacktrace
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A C library that may be linked into a C/C++ program to produce symbolic backtraces
-	DEPENDS:=+libunwind
+	DEPENDS:=+libunwind +zlib
 	URL:=https://github.com/ianlancetaylor/libbacktrace
 endef
 
