@@ -22,18 +22,12 @@ define Package/gcompat
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=GNU C Library compatibility layer for musl
-	DEPENDS:=@USE_MUSL
+	DEPENDS:=+libucontext
 	URL:=https://git.adelielinux.org/adelie/gcompat
 endef
 
 define Package/gcompat/description
 	This distribution contains the implementation of gcompat, a library which provides glibc-compatible APIs for use on musl libc systems.
-endef
-
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all install
 endef
 
 define Package/gcompat/install
