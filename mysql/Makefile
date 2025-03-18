@@ -17,7 +17,7 @@ PKG_USE_MIPS16:=0
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=boost rapidjson protobuf/host
-HOST_BUILD_DEPENDS:=readline/host ncurses/host libtirpc/host
+HOST_BUILD_DEPENDS:=boost/host icu/host protobuf/host rapidjson/host readline/host ncurses/host libedit/host libtirpc/host lz4/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -34,7 +34,7 @@ endef
 define Package/mysql-server
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+libmysqlclient +libpthread +libaio +libncurses +libreadline +libedit +icu +libevent2 +liblz4 +protobuf +libopenssl +libzstd +libsasl2 +libfido2 +libtirpc +libopenldap +libcurl +libkqueue +re2
+  DEPENDS:=+libmysqlclient +libpthread +libaio +libncurses +libreadline +libedit +icu +liblz4 +protobuf +libopenssl +libzstd +libsasl2 +libfido2 +libtirpc +libopenldap +libcurl +libkqueue
   TITLE:=MySQL Server
   URL:=http://dev.mysql.com/
   SUBMENU:=database
@@ -59,7 +59,14 @@ define Build/Prepare
 endef
 
 CMAKE_HOST_OPTIONS += \
-	-DHAVE_UNIX_DNS_SRV=0
+	-DWITH_BOOST=system \
+	-DWITH_EDITLINE=system \
+	-DWITH_ICU=system \
+	-DWITH_LZ4=system \
+	-DWITH_PROTOBUF=system \
+	-DWITH_RAPIDJSON=system \
+	-DWITH_SSL=system \
+	-DWITH_ZLIB=system
 
 CMAKE_OPTIONS += \
 	-DCMAKE_CROSSCOMPILING=TRUE \
@@ -88,13 +95,10 @@ CMAKE_OPTIONS += \
 	-DWITH_EDITLINE=system \
 	-DWITH_FIDO=system \
 	-DWITH_ICU=system \
-	-DWITH_LIBEVENT=system \
 	-DWITH_LZ4=system \
 	-DWITH_PROTOBUF=system \
 	-DWITH_RAPIDJSON=system \
-	-DWITH_RE2=system \
 	-DWITH_SSL=system \
-	-DWITH_UNIT_TESTS=OFF \
 	-DWITH_ZLIB=system \
 	-DWITH_ZSTD=system \
 	-DHAVE_C_FLOATING_POINT_FUSED_MADD_EXITCODE=0 \
@@ -155,4 +159,3 @@ $(eval $(call HostBuild))
 $(eval $(call BuildPackage,mysql-server))
 $(eval $(call BuildPackage,libmysqlclient))
 $(eval $(call BuildPackage,libmysqlclient-r))
-
