@@ -1,0 +1,45 @@
+From 16ea3cf394ea82133ce2165570431de2d527691b Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 18 Mar 2025 22:09:55 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ libmysql/CMakeLists.txt | 25 -------------------------
+ 1 file changed, 25 deletions(-)
+
+diff --git a/libmysql/CMakeLists.txt b/libmysql/CMakeLists.txt
+index 863b7be..61e2f64 100644
+--- a/libmysql/CMakeLists.txt
++++ b/libmysql/CMakeLists.txt
+@@ -254,31 +254,6 @@ IF(WITH_EXT_BACKTRACE)
+   LIST(APPEND LIBS_TO_MERGE backtrace)
+ ENDIF()
+ 
+-UNSET(HAVE_WIN32_DNS_SRV)
+-UNSET(HAVE_UNIX_DNS_SRV)
+-SET(HAVE_DNS_SRV 0)
+-IF(WIN32)
+-  LIST(APPEND LIBS_TO_LINK dnsapi)
+-  SET(HAVE_WIN32_DNS_SRV 1 PARENT_SCOPE)
+-  SET(HAVE_DNS_SRV 1)
+-  MESSAGE(STATUS "Found Win32 DNS SRV APIs")
+-ELSEIF(FREEBSD)
+-  SET(HAVE_DNS_SRV 1)
+-  SET(HAVE_UNIX_DNS_SRV 1 PARENT_SCOPE)
+-  MESSAGE(STATUS "BSD built in DNS SRV APIs")
+-ELSE()
+-  FIND_LIBRARY(RESOLV_LIBRARY NAMES resolv)
+-  IF (RESOLV_LIBRARY)
+-    LIST(APPEND LIBS_TO_LINK ${RESOLV_LIBRARY})
+-    SET(HAVE_UNIX_DNS_SRV 1 PARENT_SCOPE)
+-    SET(HAVE_DNS_SRV 1)
+-    MESSAGE(STATUS "Found Unix DNS SRV APIs")
+-  ENDIF()
+-ENDIF()
+-
+-IF(HAVE_DNS_SRV EQUAL 0)
+-  MESSAGE(FATAL_ERROR "Can't find neither Win32 nor Unix DNS SRV APIs")
+-ENDIF()
+ #
+ # On Windows platform client library includes the client-side
+ # Windows Native Authentication plugin.
