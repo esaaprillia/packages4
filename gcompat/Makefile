@@ -30,6 +30,13 @@ define Package/gcompat/description
 	This distribution contains the implementation of gcompat, a library which provides glibc-compatible APIs for use on musl libc systems.
 endef
 
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		LDFLAGS="$(TARGET_LDFLAGS)" \
+		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
+		CC="$(TARGET_CC)"
+endef
+
 define Package/gcompat/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/lib
