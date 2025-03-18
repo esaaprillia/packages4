@@ -17,8 +17,10 @@ PKG_USE_MIPS16:=0
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=boost rapidjson protobuf/host
+HOST_BUILD_DEPENDS:=boost/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/libmysqlclient/Default
@@ -146,6 +148,8 @@ define Package/mysql-server/conffiles
 /etc/my.cnf
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,mysql-server))
 $(eval $(call BuildPackage,libmysqlclient))
 $(eval $(call BuildPackage,libmysqlclient-r))
+
