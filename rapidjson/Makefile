@@ -18,6 +18,7 @@ CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/rapidjson
@@ -32,6 +33,13 @@ define Package/rapidjson/description
 	A fast JSON parser/generator for C++ with both SAX/DOM style API
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-DRAPIDJSON_BUILD_DOC=OFF \
+	-DRAPIDJSON_BUILD_EXAMPLES=OFF \
+	-DRAPIDJSON_BUILD_TESTS=OFF \
+	-DRAPIDJSON_BUILD_THIRDPARTY_GTEST=OFF \
+	-DRAPIDJSON_BUILD_CXX11=OFF
+
 CMAKE_OPTIONS += \
 	-DRAPIDJSON_BUILD_DOC=OFF \
 	-DRAPIDJSON_BUILD_EXAMPLES=OFF \
@@ -44,4 +52,5 @@ define Build/InstallDev
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/RapidJSON.pc
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,rapidjson))
