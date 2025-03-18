@@ -17,7 +17,7 @@ PKG_USE_MIPS16:=0
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=boost rapidjson protobuf/host
-HOST_BUILD_DEPENDS:=boost/host readline/host ncurses/host libtirpc/host
+HOST_BUILD_DEPENDS:=readline/host ncurses/host libtirpc/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -57,6 +57,9 @@ define Build/Prepare
 	$(RM) $(STAGING_DIR)/usr/bin/protoc*
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 endef
+
+CMAKE_HOST_OPTIONS += \
+	-DHAVE_DNS_SRV=0
 
 CMAKE_OPTIONS += \
 	-DCMAKE_CROSSCOMPILING=TRUE \
