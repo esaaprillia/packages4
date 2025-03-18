@@ -1,43 +1,39 @@
-# Copyright (C) 2019 Lucian Cristian <lucian.cristian@gmail.com>
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=libxext
-PKG_VERSION:=1.3.5
+PKG_NAME:=libbacktrace
+PKG_VERSION:=1.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=https://www.x.org/releases/individual/lib/
-PKG_SOURCE:=libXext-$(PKG_VERSION).tar.xz
-PKG_HASH:=skip
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/ianlancetaylor/libbacktrace.git
+PKG_SOURCE_VERSION:=0034e33946824057b48c5e686a3aefc761b37384
+PKG_MIRROR_HASH:=skip
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/libXext-$(PKG_VERSION)
-
-PKG_INSTALL:=1
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_PARALLEL:=1
-PKG_FIXUP:=autoreconf
+PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/libxext
-  SECTION:=libs
-  CATEGORY:=Libraries
-  DEPENDS:=+libxau +libx11
-  TITLE:=X11 miscellaneous extensions library
-  URL:=https://www.x.org
+define Package/libbacktrace
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=A C library that may be linked into a C/C++ program to produce symbolic backtraces
+	DEPENDS:=+libunwind
+	URL:=https://github.com/ianlancetaylor/libbacktrace
 endef
 
-TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed
+define Package/libbacktrace/description
+	The libbacktrace library may be linked into a program or library and used to produce symbolic backtraces. Sample uses would be to print a detailed backtrace when an error occurs or to gather detailed profiling information.
+endef
 
 CONFIGURE_ARGS += \
-  --prefix=/usr \
-  --without-fop \
-  --without-xmlto \
-  --enable-malloc0returnsnull
-
+	--prefix=/usr \
+	--enable-shared \
+	--with-system-libunwind
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
@@ -45,7 +41,7 @@ define Build/InstallDev
 	  $(1)/usr/lib
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(PKG_INSTALL_DIR)/usr/include/backtrace*.h \
 	  $(1)/usr/include/
 
 	$(CP) \
@@ -53,7 +49,7 @@ define Build/InstallDev
 	  $(1)/usr/lib/
 endef
 
-define Package/libxext/install
+define Package/libbacktrace/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/lib
 
@@ -62,4 +58,4 @@ define Package/libxext/install
 	  $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,libxext))
+$(eval $(call BuildPackage,libbacktrace))
