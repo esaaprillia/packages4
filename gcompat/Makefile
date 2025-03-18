@@ -30,14 +30,11 @@ define Package/gcompat/description
 	This distribution contains the implementation of gcompat, a library which provides glibc-compatible APIs for use on musl libc systems.
 endef
 
-LDFLAGS="$(TARGET_LDFLAGS) -lgcc_s"
-
 MAKE_FLAGS += \
 	WITH_LIBUCONTEXT=1 \
 	WITH_OBSTACK=musl-obstack \
 	LINKER_PATH="/lib/ld-musl-aarch64.so.1" \
-	LOADER_NAME="ld-linux-aarch64.so.1" \
-	LDFLAGS="$(TARGET_LDFLAGS) -lgcc_s"
+	LOADER_NAME="ld-linux-aarch64.so.1"
 
 define Package/gcompat/install
 	$(INSTALL_DIR) \
