@@ -25,6 +25,7 @@ include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/meson.mk
 
 MESON_BUILD_DIR:=$(PKG_BUILD_DIR)/build/meson/openwrt-build
+MESON_HOST_BUILD_DIR:=$(HOST_BUILD_DIR)/build/meson/openwrt-build
 
 define Package/lz4/Default
   SUBMENU:=Compression
