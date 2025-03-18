@@ -22,7 +22,7 @@ define Package/gcompat
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=GNU C Library compatibility layer for musl
-	DEPENDS:=+libucontext
+	DEPENDS:=+libucontext +musl-obstack
 	URL:=https://git.adelielinux.org/adelie/gcompat
 endef
 
