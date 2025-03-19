@@ -67,8 +67,8 @@ CMAKE_HOST_OPTIONS += \
 	-DWITH_PROTOBUF=system \
 	-DWITH_RAPIDJSON=system \
 	-DWITH_SSL=system \
-	-DWITH_ZSTD=system \
-	-DWITH_ZLIB=system
+	-DWITH_ZLIB=system \
+	-DWITH_ZSTD=system
 
 CMAKE_OPTIONS += \
 	-DCMAKE_CROSSCOMPILING=TRUE \
