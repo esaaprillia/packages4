@@ -17,7 +17,7 @@ PKG_USE_MIPS16:=0
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=boost rapidjson protobuf/host
-HOST_BUILD_DEPENDS:=boost/host icu/host protobuf/host rapidjson/host readline/host ncurses/host libedit/host libtirpc/host lz4/host
+HOST_BUILD_DEPENDS:=boost/host icu/host protobuf/host rapidjson/host readline/host ncurses/host libedit/host libtirpc/host lz4/host zstd/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
