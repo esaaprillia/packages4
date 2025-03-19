@@ -59,6 +59,7 @@ define Build/Prepare
 endef
 
 CMAKE_HOST_OPTIONS += \
+	-DBOOST_INCLUDE_DIR="$(STAGING_DIR_HOSTPKG)/include/boost" \
 	-DWITH_BOOST=system \
 	-DWITH_EDITLINE=system \
 	-DWITH_ICU=system \
