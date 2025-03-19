@@ -397,7 +397,7 @@ endif
 define Host/Configure
 	(cd $(HOST_BUILD_DIR); \
 		./Configure $(OPENSSL_HOST_TARGET) \
-			--prefix=/usr \
+			--prefix="$(STAGING_DIR_HOST)" \
 			--libdir=lib \
 			--openssldir=/etc/ssl \
 			$(HOST_CFLAGS) \
