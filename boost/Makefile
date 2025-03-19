@@ -495,7 +495,6 @@ define Build/InstallDev
 endef
 
 define Host/Install
-	$(call Host/Install/Default)
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
 	$(CP) $(HOST_BUILD_DIR)/tools/build/src/engine/b2 $(STAGING_DIR_HOSTPKG)/bin/
 endef
