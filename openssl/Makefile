@@ -415,7 +415,7 @@ define Host/Compile
 		CC="$(HOSTCC)" \
 		SOURCE_DATE_EPOCH=$(SOURCE_DATE_EPOCH) \
 		all
-	$(MAKE) -C $(OPENSSL_HOST_TARGET) \
+	$(MAKE) -C $(HOST_BUILD_DIR) \
 		CC="$(HOSTCC)" \
 		DESTDIR="$(STAGING_DIR_HOST)" \
 		install_sw install_ssldirs
