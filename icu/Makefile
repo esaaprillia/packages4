@@ -97,7 +97,7 @@ CONFIGURE_ARGS:= \
 	--with-data-packaging=archive \
 	--disable-tests \
 	--disable-samples \
-	--with-cross-build="$(STAGING_DIR_HOSTPKG)" \
+	--with-cross-build="$(STAGING_DIR_HOSTPKG)/share/icu/$(PKG_VERSION)" \
 	--prefix=/usr
 
 HOST_CONFIGURE_CMD:= ./runConfigureICU
@@ -134,6 +134,23 @@ define Build/InstallDev
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/icu-config $(1)/usr/bin/
 	$(SED) 's,^\(prefix\|execprefix\)=.*,\1=$(STAGING_DIR)/usr,g' $(1)/usr/bin/icu-config
 	$(LN) $(STAGING_DIR)/usr/bin/icu-config $(2)/bin/
+endef
+
+define Host/Install
+	$(call Host/Install/Default)
+	$(INSTALL_DIR)  $(STAGING_DIR_HOSTPKG)/share/icu/$(PKG_VERSION)/config
+	$(INSTALL_DIR)  $(STAGING_DIR_HOSTPKG)/share/icu/$(PKG_VERSION)/bin
+	$(INSTALL_DIR)  $(STAGING_DIR_HOSTPKG)/share/icu/$(PKG_VERSION)/lib
+	$(INSTALL_DATA) $(HOST_BUILD_DIR)/config/icucross.* $(STAGING_DIR_HOSTPKG)/share/icu/$(PKG_VERSION)/config/
+	$(INSTALL_BIN)  $(HOST_BUILD_DIR)/bin/icupkg $(STAGING_DIR_HOSTPKG)/share/icu/$(PKG_VERSION)/bin/
+	$(INSTALL_BIN)  $(HOST_BUILD_DIR)/bin/pkgdata $(STAGING_DIR_HOSTPKG)/share/icu/$(PKG_VERSION)/bin/
+ifeq ($(HOST_OS),Darwin)
+	$(CP)           $(HOST_BUILD_DIR)/lib/*.dylib* $(STAGING_DIR_HOSTPKG)/share/icu/$(PKG_VERSION)/lib/
+else
+	$(CP)           $(HOST_BUILD_DIR)/lib/*.so* $(STAGING_DIR_HOSTPKG)/share/icu/$(PKG_VERSION)/lib/
+endif
+	$(RM)           $(STAGING_DIR_HOSTPKG)/share/icu/current
+	(cd $(STAGING_DIR_HOSTPKG)/share/icu;$(LN) $(PKG_VERSION) current)
 endef
 
 define Package/icu/install
