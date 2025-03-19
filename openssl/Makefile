@@ -403,7 +403,7 @@ define Host/Configure
 			$(HOST_CFLAGS) \
 			$(HOST_CPPFLAGS) \
 			$(HOST_LDFLAGS) \
-			shared zlib-dynamic && \
+			static no-shared && \
 		{ [ -f $(HOST_STAMP_CONFIGURED) ] || make clean; } \
 	)
 endef
@@ -413,7 +413,6 @@ HOST_CFLAGS += $(HOST_FPIC)
 define Host/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(HOST_BUILD_DIR) \
 		CC="$(HOSTCC)" \
-		SOURCE_DATE_EPOCH=$(SOURCE_DATE_EPOCH) \
 		all
 	$(MAKE) -C $(HOST_BUILD_DIR) \
 		CC="$(HOSTCC)" \
