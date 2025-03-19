@@ -18,7 +18,7 @@ Signed-off-by: Eneas U de Queiroz <cote2004-github@yahoo.com>
 +    if ($target =~ m/openwrt$/) {
          push @{$config{engdirs}}, "afalg";
 -    } else {
-+    } else (grep { $_ eq 'afalgeng' } @{$target{enable}}) {
++    } elsif (grep { $_ eq 'afalgeng' } @{$target{enable}}) {
          disable('not-linux', 'afalgeng');
      }
  }
