@@ -393,6 +393,7 @@ define Host/Configure
 		./Configure \
 			--prefix="$(STAGING_DIR_HOST)" \
 			--libdir=lib \
+			--openssldir="$(STAGING_DIR_HOST)/etc/ssl" \
 			$(HOST_CFLAGS) \
 			$(HOST_CPPFLAGS) \
 			$(HOST_LDFLAGS) \
@@ -407,6 +408,10 @@ define Host/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(HOST_BUILD_DIR) \
 		CC="$(HOSTCC)" \
 		all
+	$(MAKE) -C $(HOST_BUILD_DIR) \
+		CC="$(HOSTCC)" \
+		DESTDIR="$(STAGING_DIR_HOST)" \
+		install_sw install_ssldirs
 endef
 
 define Build/InstallDev
