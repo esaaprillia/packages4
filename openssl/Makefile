@@ -388,18 +388,11 @@ define Build/Compile
 		install_sw install_ssldirs
 endef
 
-ifeq ($(HOST_ARCH),x86_64)
-	OPENSSL_HOST_TARGET:=linux-x86_64
-else
-	OPENSSL_HOST_TARGET:=linux-generic32
-endif
-
 define Host/Configure
 	(cd $(HOST_BUILD_DIR); \
-		./Configure $(OPENSSL_HOST_TARGET) \
+		./Configure \
 			--prefix="$(STAGING_DIR_HOST)" \
 			--libdir=lib \
-			--openssldir=/etc/ssl \
 			$(HOST_CFLAGS) \
 			$(HOST_CPPFLAGS) \
 			$(HOST_LDFLAGS) \
