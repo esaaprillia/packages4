@@ -828,7 +828,7 @@ index b78a288cc08c..fd5c4c24565d 100644
 -    goto err;
 -  }
 -
-+  if (!mysql_real_connect(kill_mysql, current_host, current_user, opt_password,
++  if (!mysql_real_connect(kill_mysql, current_host, current_user, nullptr,
 +                           "", opt_mysql_port, opt_mysql_unix_port, 0)) {
  #ifdef HAVE_SETNS
    if (opt_network_namespace && restore_original_network_namespace()) goto err;
@@ -866,7 +866,7 @@ index b78a288cc08c..fd5c4c24565d 100644
 -                             opt_mysql_port, opt_mysql_unix_port,
 -                             connect_flag | CLIENT_MULTI_STATEMENTS);
 -  if (!ret) {
-+  if (!mysql_real_connect(&mysql, host, user, password, database,
++  if (!mysql_real_connect(&mysql_handle, host, user, nullptr, database,
 +                           opt_mysql_port, opt_mysql_unix_port,
 +                           connect_flag | CLIENT_MULTI_STATEMENTS)) {
  #ifdef HAVE_SETNS
