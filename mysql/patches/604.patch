@@ -1,0 +1,874 @@
+From 967d242905b82a65af6ccaf6de51604235de4afd Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 14:13:34 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ unittest/gunit/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/unittest/gunit/CMakeLists.txt b/unittest/gunit/CMakeLists.txt
+index 8679ab116a14..0ce51a57d525 100644
+--- a/unittest/gunit/CMakeLists.txt
++++ b/unittest/gunit/CMakeLists.txt
+@@ -115,7 +115,6 @@ SET(TESTS
+   cost_estimate
+   dbug
+   decimal
+-  dns_srv_data
+   dphyp
+   filesort_buffer
+   filesort_compare
+
+From 564e75fbb4ea873a65836ea37b84a98376883c7e Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 14:07:14 +0800
+Subject: [PATCH] Delete unittest/gunit/dns_srv_data-t.cc
+
+---
+ unittest/gunit/dns_srv_data-t.cc | 143 -------------------------------
+ 1 file changed, 143 deletions(-)
+ delete mode 100644 unittest/gunit/dns_srv_data-t.cc
+
+diff --git a/unittest/gunit/dns_srv_data-t.cc b/unittest/gunit/dns_srv_data-t.cc
+deleted file mode 100644
+index b39105aa8674..000000000000
+--- a/unittest/gunit/dns_srv_data-t.cc
++++ /dev/null
+@@ -1,143 +0,0 @@
+-/* Copyright (c) 2020, 2024, Oracle and/or its affiliates.
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License, version 2.0,
+-   as published by the Free Software Foundation.
+-
+-   This program is designed to work with certain software (including
+-   but not limited to OpenSSL) that is licensed under separate terms,
+-   as designated in a particular file or component or in included license
+-   documentation.  The authors of MySQL hereby grant you an additional
+-   permission to link the program and your derivative works with the
+-   separately licensed software that they have either included with
+-   the program or referenced in the documentation.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License, version 2.0, for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program; if not, write to the Free Software
+-   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
+-
+-#include <gtest/gtest.h>
+-
+-#include <libmysql/dns_srv_data.h>
+-#include <unordered_set>
+-
+-namespace dns_srv_data_unittest {
+-
+-class dns_srv_data_test : public ::testing::Test {
+- protected:
+-  void SetUp() override {}
+-
+-  void TearDown() override {
+-    data.clear();
+-    host.clear();
+-    port = 0;
+-  }
+-
+-  Dns_srv_data data;
+-  std::string host;
+-  unsigned port;
+-};
+-
+-TEST_F(dns_srv_data_test, empty_list) {
+-  host = "nothost";
+-  port = 100;
+-  ASSERT_EQ(data.pop_next(host, port), true);
+-  ASSERT_STREQ(host.c_str(), "nothost");
+-  ASSERT_EQ(port, 100);
+-}
+-
+-TEST_F(dns_srv_data_test, one_element) {
+-  data.add("h1", 12, 0, 0);
+-
+-  ASSERT_EQ(data.pop_next(host, port), false);
+-  ASSERT_STREQ(host.c_str(), "h1");
+-  ASSERT_EQ(port, 12);
+-  host = "h2";
+-  port = 13;
+-  ASSERT_EQ(data.pop_next(host, port), true);
+-}
+-
+-TEST_F(dns_srv_data_test, different_prio) {
+-  const std::string low("low");
+-  const std::string high("high");
+-  // push low prio first, high prio next
+-  data.add(low, 13, 2, 0);
+-  data.add(high, 12, 1, 0);
+-
+-  // pop and expect high prio
+-  ASSERT_EQ(data.pop_next(host, port), false);
+-  ASSERT_STREQ(host.c_str(), high.c_str());
+-  ASSERT_EQ(port, 12);
+-
+-  // pop and expect low prio
+-  ASSERT_EQ(data.pop_next(host, port), false);
+-  ASSERT_STREQ(host.c_str(), low.c_str());
+-  ASSERT_EQ(port, 13);
+-
+-  // expect empty
+-  ASSERT_EQ(data.pop_next(host, port), true);
+-}
+-
+-TEST_F(dns_srv_data_test, different_weight) {
+-  const std::string low("low");
+-  const std::string high("high");
+-  bool got_low = false, got_high = false;
+-  // push low prio first, high weight next
+-  data.add(low, 13, 1, 1);
+-  data.add(high, 12, 1, 2);
+-
+-  while (!data.pop_next(host, port)) {
+-    if (host == high && port == 12)
+-      got_high = true;
+-    else if (host == low && port == 13)
+-      got_low = true;
+-    else
+-      ASSERT_TRUE(host == high || host == low);
+-  }
+-  ASSERT_TRUE(got_high && got_low);
+-}
+-
+-TEST_F(dns_srv_data_test, zero_weight) {
+-  const std::string zero("zero");
+-  const std::string nonzero("nonzero");
+-  std::unordered_set<unsigned> s = {12, 13, 14, 15};
+-  data.add(zero, 13, 1, 0);
+-  data.add(zero, 12, 1, 0);
+-  data.add(nonzero, 14, 1, 1);
+-  data.add(nonzero, 15, 1, 2);
+-
+-  while (!data.pop_next(host, port)) {
+-    std::unordered_set<unsigned>::iterator i = s.find(port);
+-    ASSERT_TRUE(i != s.end());
+-    s.erase(i);
+-  }
+-  ASSERT_TRUE(s.empty());
+-}
+-
+-TEST_F(dns_srv_data_test, mixed_weight) {
+-  const std::string p1("p1");
+-  const std::string p2("p2");
+-  std::unordered_set<unsigned> s = {12, 13, 14, 15};
+-  data.add(p1, 13, 1, 0);
+-  data.add(p1, 12, 1, 1);
+-  data.add(p2, 14, 2, 0);
+-  data.add(p2, 15, 2, 1);
+-
+-  while (!data.pop_next(host, port)) {
+-    std::unordered_set<unsigned>::iterator i = s.find(port);
+-    ASSERT_TRUE(i != s.end());
+-    if (s.size() > 2)
+-      ASSERT_STREQ(host.c_str(), p1.c_str());
+-    else
+-      ASSERT_STREQ(host.c_str(), p2.c_str());
+-    s.erase(i);
+-  }
+-  ASSERT_TRUE(s.empty());
+-}
+-
+-}  // namespace dns_srv_data_unittest
+
+From 0f0399d5d8fe1956de2b9fd7bd4e0e29a4dd316e Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 14:37:30 +0800
+Subject: [PATCH 01/10] Update mysql_client_test.cc
+
+---
+ testclients/mysql_client_test.cc | 37 --------------------------------
+ 1 file changed, 37 deletions(-)
+
+diff --git a/testclients/mysql_client_test.cc b/testclients/mysql_client_test.cc
+index 408e3924e5f0..e7aa0cf19e33 100644
+--- a/testclients/mysql_client_test.cc
++++ b/testclients/mysql_client_test.cc
+@@ -14619,42 +14619,6 @@ static void test_bug12744() {
+   DIE_UNLESS(rc == 0);
+ }
+ 
+-static void test_wl13905() {
+-  MYSQL_STMT *prep_stmt = nullptr;
+-  MYSQL *lmysql;
+-  int rc = 0;
+-  bool connected = false;
+-  myheader("test_wl13905: This test needs a DNS with valid entries for mysql");
+-
+-  lmysql = mysql_client_init(nullptr);
+-  DIE_UNLESS(lmysql);
+-
+-  if (!mysql_real_connect_dns_srv(lmysql, "_mysql1._tcp.localhost", "root",
+-                                  "mypass", current_db, 0)) {
+-    fprintf(stdout, "Failed to connect with DNS to the database\n");
+-    fprintf(stdout,
+-            "DNS is a literal until permanent test DNS will be available!\n");
+-    fprintf(stdout, "Error: %s\n", mysql_error(lmysql));
+-    connected = false;
+-    mysql_close(lmysql);
+-  } else {
+-    connected = true;
+-  }
+-
+-  if (connected) {
+-    prep_stmt = mysql_stmt_init(lmysql);
+-    rc = mysql_stmt_prepare(
+-        prep_stmt, "SELECT host,ip FROM performance_schema.host_cach", 48);
+-    mysql_close(lmysql);
+-    rc = mysql_stmt_execute(prep_stmt);
+-    DIE_UNLESS(rc);
+-    rc = mysql_stmt_reset(prep_stmt);
+-    DIE_UNLESS(rc);
+-    rc = mysql_stmt_close(prep_stmt);
+-    DIE_UNLESS(rc);
+-  }
+-}
+-
+ /* Bug #16143: mysql_stmt_sqlstate returns an empty string instead of '00000' */
+ 
+ static void test_bug16143() {
+@@ -24013,7 +23977,6 @@ static struct my_tests_st my_tests[] = {
+     {"test_bug31048553", test_bug31048553},
+     {"test_bug31082201", test_bug31082201},
+     {"test_bug31104389", test_bug31104389},
+-    {"test_wl13905", test_wl13905},
+     {"test_wl12542", test_wl12542},
+     {"test_bug31691060_1", test_bug31691060_1},
+     {"test_bug31691060_2", test_bug31691060_2},
+
+From 021affa16c55ae748ad7fc588e6bea9fbc56d2c3 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 14:41:33 +0800
+Subject: [PATCH 02/10] Update errmsg.cc
+
+---
+ libmysql/errmsg.cc | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libmysql/errmsg.cc b/libmysql/errmsg.cc
+index 6916e0a4487b..b476069c18ff 100644
+--- a/libmysql/errmsg.cc
++++ b/libmysql/errmsg.cc
+@@ -115,7 +115,6 @@ const char *client_errors[] = {
+     "LOAD DATA LOCAL INFILE file request rejected due to restrictions on "
+     "access.",
+     "Determining the real path for '%s' failed with error (%d): %s",
+-    "DNS SRV lookup failed with error : %d",
+     "Client does not recognise tracker type %d marked as mandatory by server.",
+     "Invalid first argument for MYSQL_OPT_USER_PASSWORD option. Valid value "
+     "should be between 1 and 3 inclusive.",
+
+From 2fb695b8a0d77e55e240c85c95e6f07a551d7134 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 14:42:57 +0800
+Subject: [PATCH 03/10] Delete libmysql/dns_srv_data.h
+
+---
+ libmysql/dns_srv_data.h | 119 ----------------------------------------
+ 1 file changed, 119 deletions(-)
+ delete mode 100644 libmysql/dns_srv_data.h
+
+diff --git a/libmysql/dns_srv_data.h b/libmysql/dns_srv_data.h
+deleted file mode 100644
+index f6d42d4033d7..000000000000
+--- a/libmysql/dns_srv_data.h
++++ /dev/null
+@@ -1,119 +0,0 @@
+-/* Copyright (c) 2020, 2024, Oracle and/or its affiliates.
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License, version 2.0,
+-   as published by the Free Software Foundation.
+-
+-   This program is designed to work with certain software (including
+-   but not limited to OpenSSL) that is licensed under separate terms,
+-   as designated in a particular file or component or in included license
+-   documentation.  The authors of MySQL hereby grant you an additional
+-   permission to link the program and your derivative works with the
+-   separately licensed software that they have either included with
+-   the program or referenced in the documentation.
+-
+-   Without limiting anything contained in the foregoing, this file,
+-   which is part of C Driver for MySQL (Connector/C), is also subject to the
+-   Universal FOSS Exception, version 1.0, a copy of which can be found at
+-   http://oss.oracle.com/licenses/universal-foss-exception.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License, version 2.0, for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program; if not, write to the Free Software
+-   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
+-
+-#ifndef DNS_SRV_DATA_H
+-#define DNS_SRV_DATA_H
+-
+-#include <assert.h>
+-#include <cstdlib>
+-#include <list>
+-#include <map>
+-#include <string>
+-
+-/**
+- A RFC2782 compliant SRV records storage
+-
+- Stores host/port/weight/priority entries
+- into a data structure that then allows retrieving
+- these via the Dns_srv_data::pop_next() method.
+-
+- Entries can be stored by calling Dns_srv_data::add()
+- in any order.
+-
+- This usage pattern is roughly as follows:
+- 1. Dns_srv_data construct
+- 2. one or more Dns_srv_data::add()
+- 3. one or more Dns_srv_data::pop_next()
+- 4. Dns_srv_data destructor
+-
+- @sa mysql_real_connect_dns_srv
+-*/
+-class Dns_srv_data {
+-  class Dns_entry {
+-    std::string host_;
+-    unsigned port_{0}, weight_{0};
+-    unsigned long weight_sum_{0};
+-
+-    Dns_entry() = delete;  // disable copy constructor
+-
+-   public:
+-    Dns_entry(const std::string &host, unsigned port, unsigned weight)
+-        : host_(host), port_(port), weight_(weight) {}
+-
+-    unsigned port() const { return port_; }
+-    std::string host() const { return host_; }
+-    unsigned long weight_sum() const { return weight_sum_; }
+-    void add_weight_sum(unsigned long &weight_sum) {
+-      weight_sum_ = (weight_sum += weight_);
+-    }
+-  };
+-  using dns_entry_list_t = std::list<Dns_entry>;
+-  using dns_entry_data_t = std::map<unsigned, Dns_srv_data::dns_entry_list_t>;
+-  dns_entry_data_t data_;
+-
+- public:
+-  void clear() { data_.clear(); }
+-  void add(const std::string &host, unsigned port, unsigned priority,
+-           unsigned weight) {
+-    const dns_entry_data_t::iterator list = data_.find(priority);
+-    if (list == data_.cend())
+-      data_.emplace(priority,
+-                    dns_entry_list_t(1, Dns_entry(host, port, weight)));
+-    else {
+-      // RFC2782: put the 0 weight at the front, rest at the back
+-      if (weight > 0)
+-        list->second.emplace_back(host, port, weight);
+-      else
+-        list->second.emplace_front(host, port, weight);
+-    }
+-  }
+-  bool pop_next(std::string &host, unsigned &port) {
+-    if (data_.empty()) return true;
+-
+-    dns_entry_list_t &list = data_.begin()->second;
+-    assert(!list.empty());
+-
+-    unsigned long sum = 0;
+-    for (Dns_entry &elt : list) elt.add_weight_sum(sum);
+-
+-    const unsigned long draw = (std::rand() * 1UL * sum) / RAND_MAX;
+-
+-    dns_entry_list_t::const_iterator iter = list.cbegin();
+-    while (iter->weight_sum() < draw) iter++;
+-    assert(iter != list.end());
+-
+-    host = iter->host();
+-    port = iter->port();
+-
+-    list.erase(iter);
+-    if (list.empty()) data_.erase(data_.begin());
+-    return false;
+-  }
+-};
+-
+-#endif  // !DNS_SRV_DATA_H
+
+From 7868f62d13b02688c75a4b75f69abf1fe4eda4da Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 14:45:52 +0800
+Subject: [PATCH 04/10] Delete libmysql/dns_srv.cc
+
+---
+ libmysql/dns_srv.cc | 197 --------------------------------------------
+ 1 file changed, 197 deletions(-)
+ delete mode 100644 libmysql/dns_srv.cc
+
+diff --git a/libmysql/dns_srv.cc b/libmysql/dns_srv.cc
+deleted file mode 100644
+index 6be61f343811..000000000000
+--- a/libmysql/dns_srv.cc
++++ /dev/null
+@@ -1,197 +0,0 @@
+-/* Copyright (c) 2020, 2024, Oracle and/or its affiliates.
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License, version 2.0,
+-   as published by the Free Software Foundation.
+-
+-   This program is designed to work with certain software (including
+-   but not limited to OpenSSL) that is licensed under separate terms,
+-   as designated in a particular file or component or in included license
+-   documentation.  The authors of MySQL hereby grant you an additional
+-   permission to link the program and your derivative works with the
+-   separately licensed software that they have either included with
+-   the program or referenced in the documentation.
+-
+-   Without limiting anything contained in the foregoing, this file,
+-   which is part of C Driver for MySQL (Connector/C), is also subject to the
+-   Universal FOSS Exception, version 1.0, a copy of which can be found at
+-   http://oss.oracle.com/licenses/universal-foss-exception.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License, version 2.0, for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program; if not, write to the Free Software
+-   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
+-
+-#include <my_config.h>
+-#include <sql_common.h>
+-#include "dns_srv_data.h"
+-
+-#ifdef HAVE_UNIX_DNS_SRV
+-
+-#ifdef __FreeBSD__
+-#include <netinet/in.h>
+-#endif
+-#include <netdb.h>
+-#include <resolv.h>
+-
+-// POSIX version
+-
+-static bool get_dns_srv(Dns_srv_data &data, const char *dnsname, int &error) {
+-#ifdef LINUX_ALPINE
+-  res_init();
+-#else
+-  struct __res_state state {};
+-  res_ninit(&state);
+-#endif
+-  unsigned char query_buffer[NS_PACKETSZ];
+-  bool ret = true;
+-
+-  data.clear();
+-
+-#ifdef LINUX_ALPINE
+-  int res = res_search(dnsname, ns_c_in, ns_t_srv, query_buffer,
+-                       sizeof(query_buffer));
+-#else
+-  int res = res_nsearch(&state, dnsname, ns_c_in, ns_t_srv, query_buffer,
+-                        sizeof(query_buffer));
+-#endif
+-  if (res >= 0) {
+-    ns_msg msg;
+-    ns_initparse(query_buffer, res, &msg);
+-
+-    for (int x = 0; x < ns_msg_count(msg, ns_s_an); x++) {
+-      // Get next DNS SRV record and its data
+-
+-      ns_rr rr;
+-      ns_parserr(&msg, ns_s_an, x, &rr);
+-      const unsigned char *srv_data = ns_rr_rdata(rr);
+-
+-      // Read port, priority and weight.
+-      // Note: Each NS_GET16 call moves srv_data to next value
+-
+-      uint16_t port, prio, weight;
+-
+-      NS_GET16(prio, srv_data);
+-      NS_GET16(weight, srv_data);
+-      NS_GET16(port, srv_data);
+-
+-      // Read host name
+-
+-      char name_buffer[NS_MAXDNAME];
+-
+-      dn_expand(ns_msg_base(msg), ns_msg_end(msg), srv_data, name_buffer,
+-                sizeof(name_buffer));
+-      data.add(name_buffer, port, prio, weight);
+-    }
+-    ret = false;
+-  } else {
+-    ret = true;
+-    error = h_errno;
+-  }
+-
+-#ifdef LINUX_ALPINE
+-  // nothing
+-#else
+-  res_nclose(&state);
+-#endif
+-  return ret;
+-}
+-
+-#elif defined(HAVE_WIN32_DNS_SRV)
+-#include <windns.h>
+-#include <winsock2.h>
+-
+-// Windows version
+-
+-static bool get_dns_srv(Dns_srv_data &data, const char *dnsname, int &error) {
+-  DNS_STATUS status;                 // Return value of  DnsQuery_A() function.
+-  PDNS_RECORD pDnsRecord = nullptr;  // Pointer to DNS_RECORD structure.
+-
+-  data.clear();
+-  status = DnsQuery(dnsname, DNS_TYPE_SRV, DNS_QUERY_STANDARD, nullptr,
+-                    &pDnsRecord, nullptr);
+-
+-  if (status == ERROR_SUCCESS) {
+-    // Iterate over linked list of DNS records
+-
+-    PDNS_RECORD pRecord = pDnsRecord;
+-    while (pRecord) {
+-      if (pRecord->wType == DNS_TYPE_SRV) {
+-        data.add(pRecord->Data.Srv.pNameTarget, pRecord->Data.Srv.wPort,
+-                 pRecord->Data.Srv.wPriority, pRecord->Data.Srv.wWeight);
+-      }
+-      pRecord = pRecord->pNext;
+-    }
+-
+-    DnsRecordListFree(pDnsRecord, DnsFreeRecordListDeep);
+-  } else
+-    error = status;
+-  return status != ERROR_SUCCESS;
+-}
+-#else
+-
+-#error "No DNS SRV Support detected for your OS. Consider adjusting Cmake."
+-
+-#if 0
+-// dummy function returning an error in case it's not supported by the OS
+-
+-static bool get_dns_srv(Dns_srv_data &data, const char *dnsname, int &error) {
+-  error = -1;  // set a special error code for not supported
+-  return true;
+-}
+-#endif
+-#endif
+-
+-/**
+-  Connect to a server using a DNS SRV name
+-
+-  See rfc2782 for what a DNS SRV is and how is one read
+-
+-  @param mysql a MySQL handle to use
+-  @param dns_srv_name  the name of the DNS SRV resource to query. ANSI
+-  @param user  the user name to pass to @ref mysql_real_connect
+-  @param passwd the password to pass to @ref mysql_real_connect
+-  @param db the database to pass to @ref mysql_real_connect
+-  @param client_flag the client flag to pass to @ref mysql_real_connect
+-
+-  @retval NULL an error has occurred
+-  @retval non-NULL the connected MySQL handle to use
+-
+-  If the OS doesn't support it the function returns OS error -1.
+-
+-  SRV FORMAT:
+-  _service._proto.name. TTL class SRV priority weight port target.
+-
+-  Example:
+-  _sip._tcp.example.com. 86400 IN SRV 0 5 5060 sipserver.example.com.
+-
+-  @sa mysql_real_connect
+-*/
+-MYSQL *STDCALL mysql_real_connect_dns_srv(MYSQL *mysql,
+-                                          const char *dns_srv_name,
+-                                          const char *user, const char *passwd,
+-                                          const char *db,
+-                                          unsigned long client_flag) {
+-  Dns_srv_data data;
+-  int err = 0;
+-
+-  if (get_dns_srv(data, dns_srv_name, err)) {
+-    set_mysql_extended_error(mysql, CR_DNS_SRV_LOOKUP_FAILED, unknown_sqlstate,
+-                             ER_CLIENT(CR_DNS_SRV_LOOKUP_FAILED), err);
+-    return nullptr;
+-  }
+-
+-  std::string host;
+-  uint port;
+-  while (!data.pop_next(host, port)) {
+-    MYSQL *ret =
+-        mysql_real_connect(mysql, host.c_str(), user, passwd, db, port, nullptr,
+-                           client_flag | CLIENT_REMEMBER_OPTIONS);
+-    if (ret) return ret;
+-  }
+-  return nullptr;
+-}
+
+From 748ba1699f7dde418c39947bede52b464fa81535 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 14:53:12 +0800
+Subject: [PATCH 05/10] Update CMakeLists.txt
+
+---
+ libmysql/CMakeLists.txt | 27 ---------------------------
+ 1 file changed, 27 deletions(-)
+
+diff --git a/libmysql/CMakeLists.txt b/libmysql/CMakeLists.txt
+index 863b7be3f274..f013dbb19655 100644
+--- a/libmysql/CMakeLists.txt
++++ b/libmysql/CMakeLists.txt
+@@ -141,7 +141,6 @@ SET(CLIENT_API_FUNCTIONS
+   mysql_thread_safe
+   mysql_use_result
+   mysql_warning_count
+-  mysql_real_connect_dns_srv
+   mysql_bind_param
+   mysql_plugin_get_option
+   mysql_get_ssl_session_reused
+@@ -189,7 +188,6 @@ SET(CLIENT_API_NONBLOCKING_FUNCTIONS
+ SET(CLIENT_SOURCES
+   libmysql.cc
+   errmsg.cc
+-  dns_srv.cc
+   ../sql-common/client.cc
+   ../sql-common/client_plugin.cc
+   ../sql-common/client_authentication.cc
+@@ -254,31 +252,6 @@ IF(WITH_EXT_BACKTRACE)
+   LIST(APPEND LIBS_TO_MERGE backtrace)
+ ENDIF()
+ 
+-UNSET(HAVE_WIN32_DNS_SRV)
+-UNSET(HAVE_UNIX_DNS_SRV)
+-SET(HAVE_DNS_SRV 0)
+-IF(WIN32)
+-  LIST(APPEND LIBS_TO_LINK dnsapi)
+-  SET(HAVE_WIN32_DNS_SRV 1 PARENT_SCOPE)
+-  SET(HAVE_DNS_SRV 1)
+-  MESSAGE(STATUS "Found Win32 DNS SRV APIs")
+-ELSEIF(FREEBSD)
+-  SET(HAVE_DNS_SRV 1)
+-  SET(HAVE_UNIX_DNS_SRV 1 PARENT_SCOPE)
+-  MESSAGE(STATUS "BSD built in DNS SRV APIs")
+-ELSE()
+-  FIND_LIBRARY(RESOLV_LIBRARY NAMES resolv)
+-  IF (RESOLV_LIBRARY)
+-    LIST(APPEND LIBS_TO_LINK ${RESOLV_LIBRARY})
+-    SET(HAVE_UNIX_DNS_SRV 1 PARENT_SCOPE)
+-    SET(HAVE_DNS_SRV 1)
+-    MESSAGE(STATUS "Found Unix DNS SRV APIs")
+-  ENDIF()
+-ENDIF()
+-
+-IF(HAVE_DNS_SRV EQUAL 0)
+-  MESSAGE(FATAL_ERROR "Can't find neither Win32 nor Unix DNS SRV APIs")
+-ENDIF()
+ #
+ # On Windows platform client library includes the client-side
+ # Windows Native Authentication plugin.
+
+From 1184cbfe7f310500be6b4d1471f1cf918782dfa9 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 15:00:13 +0800
+Subject: [PATCH 06/10] Update mysql.h.pp
+
+---
+ include/mysql.h.pp | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/include/mysql.h.pp b/include/mysql.h.pp
+index 00cb5969fbc0..7bd4055f4015 100644
+--- a/include/mysql.h.pp
++++ b/include/mysql.h.pp
+@@ -833,9 +833,4 @@
+ int mysql_stmt_next_result(MYSQL_STMT *stmt);
+ void mysql_close(MYSQL *sock);
+ void mysql_reset_server_public_key(void);
+-MYSQL * mysql_real_connect_dns_srv(MYSQL *mysql,
+-                                          const char *dns_srv_name,
+-                                          const char *user, const char *passwd,
+-                                          const char *db,
+-                                          unsigned long client_flag);
+ enum connect_stage mysql_get_connect_nonblocking_stage(MYSQL *mysql);
+
+From 6ea5a50beef5535a8d5623059e149cd93eb14192 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 15:04:47 +0800
+Subject: [PATCH 07/10] Update mysql.h
+
+---
+ include/mysql.h | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/include/mysql.h b/include/mysql.h
+index a72992ffc69a..5899b11425db 100644
+--- a/include/mysql.h
++++ b/include/mysql.h
+@@ -816,12 +816,6 @@ void STDCALL mysql_reset_server_public_key(void);
+ 
+ #define HAVE_MYSQL_REAL_CONNECT
+ 
+-MYSQL *STDCALL mysql_real_connect_dns_srv(MYSQL *mysql,
+-                                          const char *dns_srv_name,
+-                                          const char *user, const char *passwd,
+-                                          const char *db,
+-                                          unsigned long client_flag);
+-
+ enum connect_stage STDCALL mysql_get_connect_nonblocking_stage(MYSQL *mysql);
+ 
+ #ifdef __cplusplus
+
+From 454ad7ec2a0064e9600c6eb0bc8532af4e171b48 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 15:07:14 +0800
+Subject: [PATCH 08/10] Update errmsg.h
+
+---
+ include/errmsg.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/include/errmsg.h b/include/errmsg.h
+index eb7d45a977c7..4b1095d75582 100644
+--- a/include/errmsg.h
++++ b/include/errmsg.h
+@@ -129,7 +129,6 @@ extern const char *client_errors[]; /* Error messages */
+ #define CR_KERBEROS_USER_NOT_FOUND 2067
+ #define CR_LOAD_DATA_LOCAL_INFILE_REJECTED 2068
+ #define CR_LOAD_DATA_LOCAL_INFILE_REALPATH_FAIL 2069
+-#define CR_DNS_SRV_LOOKUP_FAILED 2070
+ #define CR_MANDATORY_TRACKER_NOT_FOUND 2071
+ #define CR_INVALID_FACTOR_NO 2072
+ #define CR_CANT_GET_SESSION_DATA 2073
+
+From bc51c7b3d0ac41f4721a6fb8535496bc88b65d3e Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 15:12:40 +0800
+Subject: [PATCH 09/10] Update config.h.cmake
+
+---
+ config.h.cmake | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/config.h.cmake b/config.h.cmake
+index 8add57581ec9..a3918bf1437a 100644
+--- a/config.h.cmake
++++ b/config.h.cmake
+@@ -352,10 +352,6 @@
+ #define SO_EXT "@CMAKE_SHARED_MODULE_SUFFIX@"
+ 
+ 
+-/* From libmysql/CMakeLists.txt */
+-#cmakedefine HAVE_UNIX_DNS_SRV @HAVE_UNIX_DNS_SRV@
+-#cmakedefine HAVE_WIN32_DNS_SRV @HAVE_WIN32_DNS_SRV@
+-
+ /* ARM crc32 support */
+ #cmakedefine HAVE_ARMV8_CRC32_INTRINSIC @HAVE_ARMV8_CRC32_INTRINSIC@
+ 
+
+From 0bad8f20d226521a483c92821057944f80d663c8 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 20 Mar 2025 15:28:04 +0800
+Subject: [PATCH] Update mysql.cc
+
+---
+ client/mysql.cc | 40 +++++-----------------------------------
+ 1 file changed, 5 insertions(+), 35 deletions(-)
+
+diff --git a/client/mysql.cc b/client/mysql.cc
+index b78a288cc08c..fd5c4c24565d 100644
+--- a/client/mysql.cc
++++ b/client/mysql.cc
+@@ -193,7 +193,6 @@ static int connect_flag = CLIENT_INTERACTIVE;
+ static bool opt_binary_mode = false;
+ static bool opt_connect_expired_password = false;
+ static char *current_host;
+-static char *dns_srv_name;
+ static char *current_db;
+ static char *current_user = nullptr;
+ static char *current_prompt = nullptr;
+@@ -1610,7 +1609,6 @@ void mysql_end(int sig) {
+   my_free(opt_mysql_unix_port);
+   my_free(current_db);
+   my_free(current_host);
+-  my_free(dns_srv_name);
+   my_free(current_user);
+   my_free(full_username);
+   my_free(part_username);
+@@ -1707,24 +1705,8 @@ static void kill_query(const char *reason) {
+   }
+ #endif
+ 
+-  MYSQL *ret;
+-  if (dns_srv_name)
+-    ret = mysql_real_connect_dns_srv(kill_mysql, dns_srv_name, current_user,
+-                                     nullptr, "", 0);
+-  else
+-    ret = mysql_real_connect(kill_mysql, current_host, current_user, nullptr,
+-                             "", opt_mysql_port, opt_mysql_unix_port, 0);
+-  if (!ret) {
+-#ifdef HAVE_SETNS
+-    if (opt_network_namespace) (void)restore_original_network_namespace();
+-#endif
+-    tee_fprintf(stdout,
+-                "%s -- Sorry, cannot connect to the server to kill "
+-                "query, giving up ...\n",
+-                reason);
+-    goto err;
+-  }
+-
++  if (!mysql_real_connect(kill_mysql, current_host, current_user, opt_password,
++                           "", opt_mysql_port, opt_mysql_unix_port, 0)) {
+ #ifdef HAVE_SETNS
+   if (opt_network_namespace && restore_original_network_namespace()) goto err;
+ #endif
+@@ -1882,9 +1864,6 @@ static struct my_option my_long_options[] = {
+      nullptr, GET_BOOL, NO_ARG, 0, 0, 0, nullptr, 0, nullptr},
+     {"host", 'h', "Connect to host.", &current_host, &current_host, nullptr,
+      GET_STR_ALLOC, REQUIRED_ARG, 0, 0, 0, nullptr, 0, nullptr},
+-    {"dns-srv-name", 0, "Connect to a DNS SRV resource", &dns_srv_name,
+-     &dns_srv_name, nullptr, GET_STR_ALLOC, REQUIRED_ARG, 0, 0, 0, nullptr, 0,
+-     nullptr},
+     {"html", 'H', "Produce HTML output.", &opt_html, &opt_html, nullptr,
+      GET_BOOL, NO_ARG, 0, 0, 0, nullptr, 0, nullptr},
+     {"xml", 'X', "Produce XML output.", &opt_xml, &opt_xml, nullptr, GET_BOOL,
+@@ -4565,8 +4544,6 @@ static int com_connect(String *buffer, char *line) {
+       if (tmp) {
+         my_free(current_host);
+         current_host = my_strdup(PSI_NOT_INSTRUMENTED, tmp, MYF(MY_WME));
+-        my_free(dns_srv_name);
+-        dns_srv_name = nullptr;
+       }
+     } else {
+       /* Quick re-connect */
+@@ -4985,16 +4962,9 @@ static int sql_real_connect(char *host, char *database, char *user, char *,
+     return ignore_errors ? -1 : 1;  // Abort
+   }
+ #endif
+-  MYSQL *ret;
+-  if (dns_srv_name)
+-    ret = mysql_real_connect_dns_srv(&mysql_handle, dns_srv_name, user, nullptr,
+-                                     database,
+-                                     connect_flag | CLIENT_MULTI_STATEMENTS);
+-  else
+-    ret = mysql_real_connect(&mysql_handle, host, user, nullptr, database,
+-                             opt_mysql_port, opt_mysql_unix_port,
+-                             connect_flag | CLIENT_MULTI_STATEMENTS);
+-  if (!ret) {
++  if (!mysql_real_connect(&mysql, host, user, password, database,
++                           opt_mysql_port, opt_mysql_unix_port,
++                           connect_flag | CLIENT_MULTI_STATEMENTS)) {
+ #ifdef HAVE_SETNS
+     if (opt_network_namespace) (void)restore_original_network_namespace();
+ #endif
