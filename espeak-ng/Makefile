@@ -12,13 +12,13 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0 Apache-2.0 BSD-2-Clause License
 PKG_LICENSE_FILES:=COPYING COPYING.APACHE COPYING.BSD2 COPYING.UCD
 
-PKG_BUILD_DEPENDS:=espeak-ng/host
+CMAKE_BINARY_SUBDIR := build
+
 PKG_BUILD_PARALLEL:=1
-PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/host-build.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/espeak-ng
 	SECTION:=libs
@@ -32,34 +32,19 @@ define Package/espeak-ng/description
 	eSpeak NG is an open source speech synthesizer that supports more than hundred languages and accents.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) 's,../src/espeak-ng --compile,$(STAGING_DIR_HOSTPKG)/bin/espeak-ng --compile,g' $(PKG_BUILD_DIR)/Makefile.am
-	$(SED) 's,src/espeak-ng --compile,$(STAGING_DIR_HOSTPKG)/bin/espeak-ng --compile,g' $(PKG_BUILD_DIR)/Makefile.am
-endef
-
-HOST_CONFIGURE_ARGS += \
-	--without-pcaudiolib \
-	--without-sonic
-
-CONFIGURE_ARGS += \
-	--prefix=/usr \
-	--with-pcaudiolib \
-	--with-mbrola \
-	--with-sonic
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
+	-DESPEAK_COMPAT=ON \
+	-DESPEAK_BUILD_MANPAGES=OFF \
+	-DUSE_MBROLA=ON \
+	-DUSE_LIBSONIC=ON \
+	-DUSE_LIBPCAUDIO=ON \
+	-DCMAKE_C_COMPILER="$(CMAKE_HOST_C_COMPILER)"
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/espeak-ng \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
-	  $(1)/usr/lib/
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/espeak-ng.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/espeak-ng.pc
 endef
 
 define Package/espeak-ng/install
@@ -82,4 +67,3 @@ define Package/espeak-ng/install
 endef
 
 $(eval $(call BuildPackage,espeak-ng))
-$(eval $(call HostBuild))
