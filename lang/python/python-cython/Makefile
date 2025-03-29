@@ -51,9 +51,6 @@ This makes Cython the ideal language for wrapping external C libraries,
 and for fast C modules that speed up the execution of Python code.
 endef
 
-PYTHON3_HOST_WHEEL_NAME:=Cython
-PYTHON3_HOST_WHEEL_VERSION:=3.0.11
-
 $(eval $(call Py3Package,python3-cython))
 $(eval $(call BuildPackage,python3-cython))
 $(eval $(call BuildPackage,python3-cython-src))
