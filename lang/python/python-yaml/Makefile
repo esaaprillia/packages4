@@ -41,10 +41,6 @@ define Package/python3-yaml/description
   PyYAML is a YAML parser and emitter for the Python programming language.
 endef
 
-PYTHON3_HOST_WHEEL_NAME:=PyYAML
-PYTHON3_HOST_WHEEL_VERSION:=6.0.2
-PYTHON3_PKG_WHEEL_NAME:=PyYAML
-PYTHON3_PKG_WHEEL_VERSION:=6.0.2
 PYTHON3_PKG_BUILD_VARS:=PYYAML_FORCE_LIBYAML=1
 
 $(eval $(call Py3Package,python3-yaml))
