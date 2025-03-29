@@ -24,6 +24,7 @@ define Package/python3-grpcio
   TITLE:=HTTP/2-based RPC framework
   URL:=https://grpc.io/
   DEPENDS:= \
+	@!OPENSSL_WITH_NPN \
 	+libatomic \
 	+libcares \
 	+libopenssl \
