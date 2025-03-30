@@ -5,8 +5,8 @@ PKG_VERSION:=1.5.0
 PKG_RELEASE:=4
 
 PYPI_NAME:=pynacl
-PYPI_SOURCE_NAME:=PyNaCl
-PKG_HASH:=8ac7448f09ab85811607bdd21ec2464495ac8b7c66d146bf545b0f08fb9220ba
+PKG_SOURCE_URL:=https://github.com/pyca/pynacl/archive/$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Javier Marcet <javier@marcet.info>
 PKG_LICENSE:=Apache-2.0
