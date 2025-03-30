@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyzmq
-PKG_VERSION:=26.2.1
+PKG_VERSION:=26.3.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyzmq
-PKG_HASH:=17d72a74e5e9ff3829deb72897a175333d3ef5b5413948cae3cf7ebf0b02ecca
+PKG_HASH:=f1cd68b8236faab78138a8fc703f7ca0ad431b17a3fcac696358600d4e6243b3
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
