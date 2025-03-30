@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-h5py
-PKG_VERSION:=3.12.1
+PKG_VERSION:=3.13.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=h5py
-PKG_HASH:=326d70b53d31baa61f00b8aa5f95c2fcb9621a3ee8365d770c551a13dbbcbfdf
+PKG_HASH:=1870e46518720023da85d0895a1960ff2ce398c5671eac3b1a41ec696b7105c3
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
