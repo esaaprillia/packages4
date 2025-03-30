@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-grpcio-reflection
-PKG_VERSION:=1.70.0
+PKG_VERSION:=1.71.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=grpcio_reflection
-PKG_HASH:=af46ce13e57fd7602deaef5b1d1903f6644f8982cc00f62fa9fa5b928acf6a49
+PKG_HASH:=51504e977057ffabe66d1ed55557b15e969c42bb3a1f28ee45d730dd5f983bb5
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
