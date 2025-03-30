@@ -4,7 +4,7 @@ PKG_NAME:=python-pynacl
 PKG_VERSION:=1.5.0
 PKG_RELEASE:=4
 
-PYPI_NAME:=PyNaCl
+PYPI_SOURCE_NAME:=PyNaCl
 PKG_HASH:=8ac7448f09ab85811607bdd21ec2464495ac8b7c66d146bf545b0f08fb9220ba
 
 PKG_MAINTAINER:=Javier Marcet <javier@marcet.info>
