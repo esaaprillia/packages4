@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-scikit-build-core
-PKG_VERSION:=0.10.7
+PKG_VERSION:=0.11.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=scikit_build_core
-PKG_HASH:=04cbb59fe795202a7eeede1849112ee9dcbf3469feebd9b8b36aa541336ac4f8
+PKG_HASH:=4e5988df5cd33f0bdb9967b72663ca99f50383c9bc21d8b24fa40c0661ae72b7
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
