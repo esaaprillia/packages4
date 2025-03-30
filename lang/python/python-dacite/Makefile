@@ -1,12 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-dacite
-PKG_VERSION:=1.8.1
+PKG_VERSION:=1.9.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=dacite
-PKG_SOURCE_URL:=https://github.com/konradhalas/dacite/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+PKG_HASH:=6ccc3b299727c7aa17582f0021f6ae14d5de47c7227932c47fec4cdfefd26f09
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
