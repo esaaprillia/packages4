@@ -28,9 +28,6 @@ define Package/python3-gtts/description
 gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Google Translate's text-to-speech API. Write spoken mp3 data to a file, a file-like object (bytestring) for further audio manipulation, or stdout. https://gtts.readthedocs.io/
 endef
 
-PYTHON3_PKG_WHEEL_NAME:=gTTS
-PYTHON3_PKG_WHEEL_VERSION:=2.5.4
-
 $(eval $(call Py3Package,python3-gtts))
 $(eval $(call BuildPackage,python3-gtts))
 $(eval $(call BuildPackage,python3-gtts-src))
