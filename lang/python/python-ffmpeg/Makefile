@@ -8,7 +8,8 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PYPI_NAME:=ffmpeg-python
+PYPI_NAME:=ffmpeg_python
+PYPI_SOURCE_NAME:=ffmpeg-python
 PKG_HASH:=65225db34627c578ef0e11c8b1eb528bb35e024752f6f10b78c011f6f64c4127
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
@@ -29,9 +30,6 @@ endef
 define Package/python3-ffmpeg/description
 There are tons of Python FFmpeg wrappers out there but they seem to lack complex filter support. ffmpeg-python works well for simple as well as complex signal graphs.
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=ffmpeg_python
-PYTHON3_PKG_WHEEL_VERSION:=0.2.0
 
 $(eval $(call Py3Package,python3-ffmpeg))
 $(eval $(call BuildPackage,python3-ffmpeg))
