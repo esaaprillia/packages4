@@ -42,9 +42,6 @@ finite-state automata (particularly deterministic finite-state
 transducers).
 endef
 
-PYTHON3_PKG_WHEEL_NAME:=Automat
-PYTHON3_PKG_WHEEL_VERSION:=24.8.1
-
 define Py3Package/python3-automat/filespec
 +|$(PYTHON3_PKG_DIR)
 -|$(PYTHON3_PKG_DIR)/automat/_visualize.py
