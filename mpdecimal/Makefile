@@ -34,6 +34,13 @@ CONFIGURE_ARGS += \
 	--disable-static \
 	--disable-doc
 
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		LDXXFLAGS="$(TARGET_LDFLAGS)" \
+		LDXX="$(TARGET_CXX)" \
+		LD="$(TARGET_CC)"
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/{decimal.hh,mpdecimal.h} $(1)/usr/include/
