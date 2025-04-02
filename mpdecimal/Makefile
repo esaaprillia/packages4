@@ -29,39 +29,24 @@ define Package/mpdecimal/description
 	Package for correctly-rounded arbitrary precision decimal floating point arithmetic
 endef
 
-HOST_CONFIGURE_ARGS +=--disable-cxx
-CONFIGURE_ARGS +=--disable-cxx
-
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		LDFLAGS="$(TARGET_LDFLAGS)" \
-		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-		CC="$(TARGET_CC)" \
-		LD="$(TARGET_CC)"
-endef
+CONFIGURE_ARGS += \
+	--prefix=/usr \
+	--disable-static \
+	--disable-doc
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/{decimal.hh,mpdecimal.h} $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/{libmpdec++.pc,libmpdec.pc} $(1)/usr/lib/pkgconfig/
 endef
 
 define Package/mpdecimal/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/lib
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,mpdecimal))
 $(eval $(call HostBuild))
+$(eval $(call BuildPackage,mpdecimal))
