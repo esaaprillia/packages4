@@ -60,5 +60,5 @@ define Package/c-blosc/install
 	  $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,c-blosc))
 $(eval $(call HostBuild))
+$(eval $(call BuildPackage,c-blosc))
