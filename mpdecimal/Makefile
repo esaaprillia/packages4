@@ -22,7 +22,7 @@ define Package/mpdecimal
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=complete implementation of the General Decimal Arithmetic Specification
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=https://www.bytereef.org/mpdecimal/index.html
 endef
 
