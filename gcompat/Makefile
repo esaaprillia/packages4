@@ -37,7 +37,7 @@ MAKE_FLAGS += \
 	LOADER_NAME="ld-linux-aarch64.so.1" \
 	LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
 	CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-	CC="$(TARGET_CC)"
+	CC="$(TARGET_CXX)"
 
 define Package/gcompat/install
 	$(INSTALL_DIR) \
