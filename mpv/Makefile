@@ -47,12 +47,11 @@ MESON_ARGS += \
 	-Dtests=false \
 	-Duchardet=disabled \
 	-Dvdpau=disabled \
-	-Dvulkan=enabled \
+	-Dvulkan=disabled \
 	-Dx11=disabled \
 	-Dsixel=disabled \
 	-Dvideotoolbox-gl=disabled \
-	-Dvideotoolbox-pl=disabled \
-	-Dvulkan=disabled
+	-Dvideotoolbox-pl=disabled
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
