@@ -1,51 +1,42 @@
-#
-# Copyright (C) 2013 
-#                           
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ccminer
-PKG_VERSION:=3.8.0
+PKG_NAME:=libmemcached
+PKG_VERSION:=1.1.4
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/monkins1010/ccminer.git
-PKG_SOURCE_DATE:=2023-06-05
-PKG_SOURCE_VERSION:=1667394ad4120d64b0c57367e71cb832ad2e3645
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/awesomized/libmemcached/archive/$(PKG_VERSION)
+PKG_HASH:=skip
 
+PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
+PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE_FILES:=COPYING
 
-PKG_MAINTAINER:=
-PKG_INSTALL:=1
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/ccminer
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	+libpthread +libncurses +jansson +libopenssl-devcrypto +zlib +libstdcpp +getopt \
-	+PACKAGE_curl:curl +PACKAGE_libopenssl:libopenssl @!OPENSSL_ENGINE_BUILTIN
+define Package/libmemcached
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Client library to the memcached server
+	URL:=https://awesomized.github.io/libmemcached/
+	DEPENDS:=+libstdcpp +libevent2 +libsasl2
 endef
 
-define Package/ccminer/description
-ARM CPU ONLY CCminer Verushash2.2
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libmemcached.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libmemcached.pc
 endef
 
-define Build/Configure
-	(cd $(PKG_BUILD_DIR); ./autogen.sh );
-	$(call Build/Configure/Default)
+define Package/libmemcached/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
-define Package/ccminer/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,ccminer))
+$(eval $(call BuildPackage,libmemcached))
