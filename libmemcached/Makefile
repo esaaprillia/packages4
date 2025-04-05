@@ -21,7 +21,7 @@ define Package/libmemcached
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Client library to the memcached server
-	URL:=https://awesomized.github.io/libmemcached/
+	URL:=https://libmemcached.org/libMemcached.html
 	DEPENDS:=+libstdcpp +libevent2 +libsasl2
 endef
 
