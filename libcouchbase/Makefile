@@ -1,174 +1,48 @@
-#
-# Copyright (C) 2007-2018 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=coova-chilli
-PKG_VERSION:=1.6
-PKG_RELEASE:=2
+PKG_NAME:=libcouchbase
+PKG_VERSION:=3.3.15
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/coova/coova-chilli/tar.gz/$(PKG_VERSION)?
-PKG_HASH:=26b2bead6fd9c18eb736fb0a0f8709922de4e4fedee1122193f82706eb2b9305
+PKG_SOURCE_URL:=https://github.com/couchbase/libcouchbase/archive/$(PKG_VERSION)
+PKG_HASH:=skip
 
-PKG_MAINTAINER:=Jaehoon You <teslamint@gmail.com>
-PKG_LICENSE:=GPL-2.0-or-later
-PKG_LICENSE_FILES:=COPYING
+PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
+PKG_LICENSE:=Apache-2.0
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_FIXUP:=autoreconf
-PKG_INSTALL:=1
-PKG_BUILD_PARALLEL:=0
-
-PKG_CONFIG_DEPENDS:= \
-  COOVACHILLI_JSONINTERFACE \
-  COOVACHILLI_LARGELIMITS \
-  COOVACHILLI_MINIPORTAL \
-  COOVACHILLI_NOSSL \
-  COOVACHILLI_OPENSSL \
-  COOVACHILLI_POLL \
-  COOVACHILLI_PROXY \
-  COOVACHILLI_REDIR \
-  COOVACHILLI_UAMDOMAINFILE \
-  COOVACHILLI_USERAGENT \
-  COOVACHILLI_LAYER3 \
-  COOVACHILLI_PROXYVSA \
-  COOVACHILLI_BINSTATUSFILE \
-  COOVACHILLI_SCRIPT \
-  COOVACHILLI_RADSEC \
-  COOVACHILLI_L2TPPPP \
-  COOVACHILLI_EAPOL \
-  COOVACHILLI_REDIRDNSREQ \
-  COOVACHILLI_MULTILAN \
-  COOVACHILLI_MULTIROUTE \
-  COOVACHILLI_EXTADMVSA \
-  COOVACHILLI_WOLFSSL \
-  IPV6
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/kernel.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/coova-chilli
-  SUBMENU:=Captive Portals
-  SECTION:=net
-  CATEGORY:=Network
-  DEPENDS:=+kmod-tun +librt +COOVACHILLI_MINIPORTAL:haserl \
-  +COOVACHILLI_WOLFSSL:libwolfssl +COOVACHILLI_OPENSSL:libopenssl \
-  +COOVACHILLI_JSONINTERFACE:libjson-c
-  TITLE:=Wireless LAN HotSpot controller (Coova Chilli Version)
-  URL:=https://coova.github.io/
-  MENU:=1
+define Package/libcouchbase
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=The couchbase client for C
+	URL:=https://github.com/couchbase/libcouchbase/
+	DEPENDS:=+libstdcpp +libevent2 +libev +libuv +libopenssl
 endef
 
-define Package/coova-chilli/description
-	CoovaChilli is an open source access controller for wireless LAN
-	access points and is based on ChilliSpot. It is used for authenticating
-	users of a wireless (or wired) LAN. It supports web based login (UAM)
-	which is today's standard for public HotSpots and it supports Wireless
-	Protected Access (WPA) which is the standard of the future.
-	Authentication,	authorization and accounting (AAA) is handled by your
-	favorite radius server.
+define Package/libcouchbase/description
+	This is the C client library for Couchbase It communicates with the cluster and speaks the relevant protocols necessary to connect to the cluster and execute data operations.
 endef
 
-define Package/coova-chilli/config
-  source "$(SOURCE)/Config.in"
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
+	-DLCB_NO_MOCK=ON \
+	-DLCB_SKIP_GIT_VERSION=ON
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libcouchbase.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libcouchbase.pc
 endef
 
-define KernelPackage/ipt-coova
-  URL:=http://www.coova.org/CoovaChilli
-  SUBMENU:=Netfilter Extensions
-  DEPENDS:=+kmod-ipt-core +libxtables
-  TITLE:=Coova netfilter module
-  FILES:=$(PKG_BUILD_DIR)/src/linux/xt_*.$(LINUX_KMOD_SUFFIX)
-  AUTOLOAD:=$(call AutoProbe,xt_coova)
+define Package/libcouchbase/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
-define KernelPackage/ipt-coova/description
-	Netfilter kernel module for CoovaChilli
-endef
-
-DISABLE_NLS=
-
-TARGET_CFLAGS += $(FPIC) -Wno-error
-
-CONFIGURE_VARS += \
-       ARCH="$(LINUX_KARCH)" \
-       KERNEL_DIR="$(LINUX_DIR)"
-
-MAKE_FLAGS += \
-       ARCH="$(LINUX_KARCH)" \
-       KERNEL_DIR="$(LINUX_DIR)"
-
-MAKE_INSTALL_FLAGS += \
-       ARCH="$(LINUX_KARCH)" \
-       KERNEL_DIR="$(LINUX_DIR)" \
-       INSTALL_MOD_PATH="$(PKG_INSTALL_DIR)"
-
-define Build/Prepare
-$(call Build/Prepare/Default)
-	( cd $(PKG_BUILD_DIR) ; \
-		[ -f ./configure ] || { \
-			./bootstrap ; \
-		} \
-	)
-endef
-
-define Build/Configure
-	$(call Build/Configure/Default, \
-	$(if $(CONFIG_COOVACHILLI_PROXY),--enable,--disable)-chilliproxy \
-	$(if $(CONFIG_COOVACHILLI_REDIR),--enable,--disable)-chilliredir \
-	$(if $(CONFIG_COOVACHILLI_MINIPORTAL),--enable,--disable)-miniportal \
-	$(if $(CONFIG_COOVACHILLI_USERAGENT),--enable,--disable)-useragent \
-	$(if $(CONFIG_COOVACHILLI_LARGELIMITS),--enable,--disable)-largelimits \
-	$(if $(CONFIG_COOVACHILLI_JSONINTERFACE),--enable,--disable)-libjson \
-	$(if $(CONFIG_COOVACHILLI_JSONINTERFACE),--enable,--disable)-json \
-	$(if $(CONFIG_COOVACHILLI_UAMDOMAINFILE),--enable,--disable)-uamdomainfile \
-	$(if $(CONFIG_COOVACHILLI_LAYER3),--enable,--disable)-layer3 \
-	$(if $(CONFIG_COOVACHILLI_PROXYVSA),--enable,--disable)-proxyvsa \
-	$(if $(CONFIG_COOVACHILLI_BINSTATUSFILE),--enable,--disable)-binstatusfile \
-	$(if $(CONFIG_COOVACHILLI_SCRIPT),--enable,--disable)-chilliscript \
-	$(if $(CONFIG_COOVACHILLI_RADSEC),--enable,--disable)-chilliradsec \
-	$(if $(CONFIG_COOVACHILLI_L2TPPPP),--enable,--disable)-l2tpppp \
-	$(if $(CONFIG_COOVACHILLI_EAPOL),--enable,--disable)-eapol \
-	$(if $(CONFIG_COOVACHILLI_REDIRDNSREQ),--enable,--disable)-redirdnsreq \
-	$(if $(CONFIG_COOVACHILLI_MULTILAN),--enable,--disable)-multilan \
-	$(if $(CONFIG_COOVACHILLI_MULTIROUTE),--enable,--disable)-multiroute \
-	$(if $(CONFIG_COOVACHILLI_EXTADMVSA),--enable,--disable)-extadmvsa \
-	$(if $(CONFIG_IPV6),--with,--without)-ipv6 \
-	$(if $(CONFIG_COOVACHILLI_WOLFSSL),--with,--without)-cyassl \
-	$(if $(CONFIG_COOVACHILLI_OPENSSL),--with,--without)-openssl \
-	$(if $(CONFIG_COOVACHILLI_POLL),--with,--without)-poll \
-	$(if $(CONFIG_PACKAGE_kmod-ipt-coova),--with-nfcoova) \
-	)
-endef
-
-define Package/coova-chilli/conffiles
-/etc/config/chilli
-endef
-
-define Package/coova-chilli/install
-	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/etc/chilli.conf $(1)/etc/
-	$(INSTALL_DIR) $(1)/etc/chilli
-	$(CP) $(PKG_INSTALL_DIR)/etc/chilli/* $(1)/etc/chilli/
-	$(INSTALL_DIR) $(1)/etc/hotplug.d/iface
-	$(INSTALL_DATA) ./files/chilli.hotplug $(1)/etc/hotplug.d/iface/30-chilli
-	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/chilli* $(1)/usr/sbin/
-	$(INSTALL_DIR) $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/lib*.so.* $(1)/usr/lib/
-	$(if $(CONFIG_PACKAGE_kmod-ipt-coova), \
-		$(INSTALL_DIR) $(1)/usr/lib/iptables; \
-		$(CP) $(PKG_INSTALL_DIR)/usr/lib/iptables/lib*.so $(1)/usr/lib/iptables/ \
-	)
-	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) files/chilli.init $(1)/etc/init.d/chilli
-	$(INSTALL_DIR) $(1)/etc/config
-	$(INSTALL_DATA) files/chilli.config $(1)/etc/config/chilli
-endef
-
-$(eval $(call BuildPackage,coova-chilli))
-$(eval $(call KernelPackage,ipt-coova))
+$(eval $(call BuildPackage,libcouchbase))
