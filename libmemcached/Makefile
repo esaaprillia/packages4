@@ -26,7 +26,8 @@ define Package/libmemcached
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DENABLE_SASL=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
