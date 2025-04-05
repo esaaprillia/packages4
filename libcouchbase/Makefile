@@ -22,7 +22,7 @@ define Package/libcouchbase
 	CATEGORY:=Libraries
 	TITLE:=The couchbase client for C
 	URL:=https://github.com/couchbase/libcouchbase/
-	DEPENDS:=+libstdcpp +libevent2 +libev +libuv +libopenssl
+	DEPENDS:=+libstdcpp +libevent2 +libev +libuv +libopenssl +zlib
 endef
 
 define Package/libcouchbase/description
@@ -30,6 +30,7 @@ define Package/libcouchbase/description
 endef
 
 CMAKE_OPTIONS += \
+	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
 	-DLCB_NO_MOCK=ON \
 	-DLCB_SKIP_GIT_VERSION=ON
