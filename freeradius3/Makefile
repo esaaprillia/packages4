@@ -768,7 +768,7 @@ CONFIGURE_ARGS+= \
 	--without-rlm_sql_firebird \
 	--without-rlm_sql_freetds \
 	--without-rlm_sql_iodbc \
-	--without-rlm_sql_oracle \
+	--without-rlm_sql_oracle
 
 CONFIGURE_LIBS+= -latomic
 
@@ -778,7 +778,7 @@ PKG_DICTIONARIES:= \
 	rfc2865 rfc2866 rfc2867 rfc2868 rfc2869 rfc3162 rfc3576 rfc3580 \
 	rfc4072 rfc4372 rfc4675 rfc4679 rfc4818 rfc5580 rfc6911 \
 	microsoft \
-	wispr \
+	wispr
 
 ifneq ($(SDK)$(CONFIG_PACKAGE_freeradius3-mod-cache-redis),)
   CONFIGURE_ARGS+= \
@@ -1027,7 +1027,7 @@ define Package/freeradius3-common/install
 	chmod 771 $(1)/etc/freeradius3
 	$(CP) $(PKG_INSTALL_DIR)/etc/freeradius3/dictionary $(1)/etc/freeradius3/ ; \
 	$(INSTALL_DIR) $(1)/usr/lib/freeradius3
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/freeradius3/libfreeradius-{dhcp,eap,radius,server}.so $(1)/usr/lib/freeradius3
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/freeradius3/libfreeradius-{dhcp,eap,radius,server}.so $(1)/usr/lib/freeradius3/
 	$(INSTALL_DIR) $(1)/usr/share/freeradius3
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/freeradius3/dictionary $(1)/usr/share/freeradius3/
 	$(SED) "s,^\(\$$$$INCLUDE\),#\1,g" $(1)/usr/share/freeradius3/dictionary
