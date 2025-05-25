@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-gevent
-PKG_VERSION:=24.11.1
+PKG_VERSION:=25.5.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=gevent
-PKG_HASH:=8bd1419114e9e4a3ed33a5bad766afff9a3cf765cb440a582a1b3a9bc80c1aca
+PKG_HASH:=582c948fa9a23188b890d0bc130734a506d039a2e5ad87dae276a456cc683e61
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
