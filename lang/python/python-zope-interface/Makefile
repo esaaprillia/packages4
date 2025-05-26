@@ -13,7 +13,6 @@ PKG_VERSION:=7.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=zope_interface
-PYPI_SOURCE_NAME:=zope.interface
 PKG_HASH:=8b49f1a3d1ee4cdaf5b32d2e738362c7f5e40ac8b46dd7d1a65e82a4872728fe
 
 PKG_LICENSE:=ZPL-2.1
@@ -39,6 +38,9 @@ Python. Interfaces are a mechanism for labeling objects as conforming to
 a given API or contract. So, this package can be considered as
 implementation of the Design By Contract methodology support in Python.
 endef
+
+PYTHON3_PKG_WHEEL_NAME:=zope_interface
+PYTHON3_PKG_WHEEL_VERSION:=7.2
 
 $(eval $(call Py3Package,python3-zope-interface))
 $(eval $(call BuildPackage,python3-zope-interface))
