@@ -33,6 +33,7 @@ define Package/python3-gevent
 	+python3-light \
 	+python3-cffi \
 	+python3-greenlet \
+	+python3-zope-event \
 	+python3-zope-interface \
 	+libcares \
 	+libev \
