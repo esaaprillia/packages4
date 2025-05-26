@@ -12,7 +12,7 @@ PKG_NAME:=python-zope-interface
 PKG_VERSION:=7.2
 PKG_RELEASE:=1
 
-PYPI_NAME:=zope_interface
+PYPI_NAME:=zope.interface
 PKG_HASH:=8b49f1a3d1ee4cdaf5b32d2e738362c7f5e40ac8b46dd7d1a65e82a4872728fe
 
 PKG_LICENSE:=ZPL-2.1
