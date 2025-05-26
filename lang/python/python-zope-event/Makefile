@@ -30,6 +30,9 @@ An event publishing API, intended for use by applications which are unaware of a
 A very simple synchronous event-dispatching system, on which more sophisticated event dispatching systems can be built. For example, a type-based event dispatching system that builds on zope.event can be found in zope.component.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=zope_event
+PYTHON3_PKG_WHEEL_VERSION:=5.0
+
 $(eval $(call Py3Package,python3-zope-event))
 $(eval $(call BuildPackage,python3-zope-event))
 $(eval $(call BuildPackage,python3-zope-event-src))
