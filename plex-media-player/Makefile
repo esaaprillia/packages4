@@ -31,10 +31,15 @@ define Package/plex-media-player/description
 	Note: Plex is no longer actively maintaining Plex Media Player. This repository is preserved as it was when last developed. See https://www.plex.tv/media-server-downloads/#plex-app for replacement applications.
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	mkdir -p $(PKG_BUILD_DIR)/build/dependencies
+	$(CP) ./files/* $(PKG_BUILD_DIR)/build/dependencies/
+	$(CP) ./files/* $(PKG_BUILD_DIR)/
+endef
+
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
-	-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
+	-DBUILD_SHARED_LIBS=ON
 
 define Package/plex-media-player/install
 	$(INSTALL_DIR) \
