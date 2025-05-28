@@ -23,7 +23,7 @@ define Package/plex-media-player
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Next generation Plex Desktop/Embedded Client
-	DEPENDS:=
+	DEPENDS:=+qt5-core
 	URL:=https://github.com/plexinc/plex-media-player
 endef
 
@@ -39,7 +39,8 @@ define Build/Prepare
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DQTROOT=$(STAGING_DIR)/usr
 
 define Package/plex-media-player/install
 	$(INSTALL_DIR) \
