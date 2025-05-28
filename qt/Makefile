@@ -22,6 +22,7 @@ PKG_USE_MIPS16:=0
 PKG_CPE_ID:=cpe:/a:qt:qt
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/nls.mk
 
 define Package/qt5-qt3d
 	SECTION:=libs
@@ -42,7 +43,7 @@ define Package/qt5-qtbase
 	SUBMENU:=Qt5
 	TITLE:=qtbase
 	URL:=http://qt-project.org
-	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +libiconv-full +glib2 +md4c +libdbus +libfreetype +libopenssl +libsqlite3 +icu +fontconfig +libinput +libzstd +zlib @!LINUX_2_6_36
+	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo $(ICONV_DEPENDS) +glib2 +md4c +libdbus +libfreetype +libopenssl +libsqlite3 +icu +fontconfig +libinput +libzstd +zlib @!LINUX_2_6_36
 endef
 
 define Package/qt5-qtbase/description
