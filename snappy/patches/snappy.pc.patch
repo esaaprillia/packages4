@@ -1,0 +1,26 @@
+From 0b4e42fe9bfa55d1d2e5648e14752518a5100d08 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 28 May 2025 23:38:55 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ snappy.pc.in | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+ create mode 100644 snappy.pc.in
+
+diff --git a/snappy.pc.in b/snappy.pc.in
+new file mode 100644
+index 0000000..9c1a347
+--- /dev/null
++++ b/snappy.pc.in
+@@ -0,0 +1,10 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${prefix}/lib
++includedir=${prefix}/include
++
++Name: snappy
++Description: Fast compressor/decompressor library.
++Version: @PROJECT_VERSION@
++Libs: -L${libdir} -lsnappy
++Cflags: -I${includedir}
