@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qt
 PKG_BASE:=5.15
-PKG_BUGFIX:=16
+PKG_BUGFIX:=17
 PKG_VERSION:=$(PKG_BASE).$(PKG_BUGFIX)
 PKG_RELEASE:=1
 
@@ -23,134 +23,355 @@ PKG_CPE_ID:=cpe:/a:qt:qt
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/qt5-core
+define Package/qt5-qt3d
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qt3d
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +assimp
+endef
+
+define Package/qt5-qt3d/description
+Qt5 - C++ and QML APIs for easy inclusion of 3D graphics
+endef
+
+define Package/qt5-qtbase
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
 	TITLE:=qtbase
 	URL:=http://qt-project.org
-	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +libiconv-full +glib2 +md4c +zlib @!LINUX_2_6_36
+	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +libiconv-full +glib2 +md4c +libdbus +libfreetype +libopenssl +libsqlite3 +icu +fontconfig +libinput +libzstd +zlib @!LINUX_2_6_36
 endef
 
-define Package/qt5-core/description
-
+define Package/qt5-qtbase/description
+Qt5 - QtBase components
 endef
 
-define Package/qt5-concurrent
+define Package/qt5-qtcharts
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtbase
+	TITLE:=qtcharts
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-core
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/qt5-concurrent/description
-
+define Package/qt5-qtcharts/description
+Qt5 - Support for rendering and displaying SVG
 endef
 
-define Package/qt5-dbus
+define Package/qt5-qtconnectivity
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtbase
+	TITLE:=qtconnectivity
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-core +libdbus
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +bluez-libs
 endef
 
-define Package/qt5-dbus/description
-
+define Package/qt5-qtconnectivity/description
+Qt5 - Tools for the Bluetooth protocol stack (libraries)
 endef
 
-define Package/qt5-gui
+define Package/qt5-qtdatavis3d
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtbase
+	TITLE:=qtdatavis3d
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-dbus +libfreetype
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/qt5-gui/description
-
+define Package/qt5-qtdatavis3d/description
+Qt5 - Qt Data Visualization module
 endef
 
-define Package/qt5-network
+define Package/qt5-qtdeclarative
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtbase
+	TITLE:=qtdeclarative
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-core +libopenssl +zlib
+	DEPENDS:=+qt5-qtbase
 endef
 
-define Package/qt5-network/description
-
+define Package/qt5-qtdeclarative/description
+Qt5 - QtDeclarative component
 endef
 
-define Package/qt5-printsupport
+define Package/qt5-qtgamepad
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtbase
+	TITLE:=qtgamepad
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-widgets
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/qt5-printsupport/description
-
+define Package/qt5-qtgamepad/description
+Qt5 - Adds support for getting events from gamepad devices
 endef
 
-define Package/qt5-sql
+define Package/qt5-qtgraphicaleffects
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtbase
+	TITLE:=qtgraphicaleffects
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-core +libsqlite3
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/qt5-sql/description
-
+define Package/qt5-qtgraphicaleffects/description
+Qt5 - QtGraphicalEffects component
 endef
 
-define Package/qt5-test
+define Package/qt5-qtimageformats
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtbase
+	TITLE:=qtimageformats
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-core
+	DEPENDS:=+qt5-qtbase +jasper +libmng +libtiff +libwebp
 endef
 
-define Package/qt5-test/description
-
+define Package/qt5-qtimageformats/description
+Qt5 - QtImageFormats component
 endef
 
-define Package/qt5-widgets
+define Package/qt5-qtlocation
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtbase
+	TITLE:=qtlocation
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-gui
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/qt5-widgets/description
-
+define Package/qt5-qtlocation/description
+Qt5 - Location component
 endef
 
-define Package/qt5-xml
+define Package/qt5-qtlottie
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtbase
+	TITLE:=qtlottie
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-core
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/qt5-xml/description
+define Package/qt5-qtlottie/description
+Qt5 - A family of player software for a certain json-based file format for describing 2d vector graphics animations
+endef
 
+define Package/qt5-qtmultimedia
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtmultimedia
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +alsa-lib
+endef
+
+define Package/qt5-qtmultimedia/description
+Qt5 - Multimedia support
+endef
+
+define Package/qt5-qtnetworkauth
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtnetworkauth
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qtnetworkauth/description
+Qt5 - Network authentication module
+endef
+
+define Package/qt5-qtquick3d
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtquick3d
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +assimp
+endef
+
+define Package/qt5-qtquick3d/description
+Qt5 - Qt module and API for defining 3D content in Qt Quick
+endef
+
+define Package/qt5-qtquickcontrols
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtquickcontrols
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtquickcontrols/description
+Qt5 - module with set of QtQuick controls
+endef
+
+define Package/qt5-qtquickcontrols2
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtquickcontrols2
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtgraphicaleffects
+endef
+
+define Package/qt5-qtquickcontrols2/description
+Qt5 - module with set of QtQuick controls for embedded
+endef
+
+define Package/qt5-qtquicktimeline
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtquicktimeline
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtquicktimeline/description
+Qt5 - Qt module that enables keyframe-based animations and parameterization
+endef
+
+define Package/qt5-qtremoteobjects
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtremoteobjects
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtremoteobjects/description
+Qt5 - Qt Remote Objects (QtRO) is an inter-process communication (IPC) module developed for Qt
+endef
+
+define Package/qt5-qtscript
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtscript
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qtscript/description
+Qt5 - QtScript component
+endef
+
+define Package/qt5-qtscxml
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtscxml
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtscxml/description
+Qt5 - Static and runtime integration of SCXML models into Qt code
+endef
+
+define Package/qt5-qtsensors
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtsensors
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtsensors/description
+Qt - The Qt Sensors API provides access to sensor hardware via QML and C++
+endef
+
+define Package/qt5-qtserialbus
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtserialbus
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qtserialbus/description
+Qt5 - Qt module for general purpose serial bus access
+endef
+
+define Package/qt5-qtserialport
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtserialport
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qtserialport/description
+Qt5 - QtSerialPort module
+endef
+
+define Package/qt5-qtspeech
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtspeech
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtmultimedia
+endef
+
+define Package/qt5-qtspeech/description
+Qt5 - Qt module to make text to speech and speech recognition easy
+endef
+
+define Package/qt5-qtsvg
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtsvg
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qtsvg/description
+Qt5 - Support for rendering and displaying SVG
+endef
+
+define Package/qt5-qtwebchannel
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtwebchannel
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtwebchannel/description
+Library for seamless integration of C++ +and QML applications with HTML/JavaScript clients.
+endef
+
+define Package/qt5-qtwebengine
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtwebengine
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +lcms2 +libpng +libjpeg-turbo +libfreetype
+endef
+
+define Package/qt5-qtwebengine/description
+Qt5 - QtWebEngine components
 endef
 
 EXTRA_CFLAGS += $(FPIC) -ffunction-sections -fdata-sections -flto
@@ -207,7 +428,7 @@ CONFIGURE_ARGS = \
 		-gui \
 		-no-harfbuzz \
 		-iconv \
-		-no-icu \
+		-icu \
 		-no-kms \
 		-system-libjpeg \
 		-system-libmd4c \
@@ -221,13 +442,16 @@ CONFIGURE_ARGS = \
 		-no-slog2 \
 		-sql-sqlite \
 		-system-sqlite \
+		-system-assimp \
+		-system-tiff \
+		-system-webp \
 		-no-trace \
 		-no-tslib \
 		-no-vulkan \
 		-widgets \
 		-no-xcb \
 		-no-xkbcommon \
-		-no-zstd \
+		-zstd \
 		-no-compile-examples \
 		-feature-concurrent \
 		-no-feature-gssapi \
@@ -246,65 +470,234 @@ define Build/InstallDev
 	$(MAKE) -C $(PKG_BUILD_DIR) install
 endef
 
-define Package/qt5-core/install
+define Package/qt5-qt3d/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qt3d/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Core.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qt3d/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qt3d/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qt3d/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-concurrent/install
+define Package/qt5-qtbase/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtbase/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Concurrent.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtbase/metatypes $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtbase/plugins $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-dbus/install
+define Package/qt5-qtcharts/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5DBus.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtcharts/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtcharts/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-gui/install
+define Package/qt5-qtconnectivity/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtconnectivity/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Gui.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtconnectivity/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtconnectivity/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-network/install
+define Package/qt5-qtdatavis3d/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Network.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtdatavis3d/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtdatavis3d/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-printsupport/install
+define Package/qt5-qtdeclarative/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5PrintSupport.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/metatypes/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-sql/install
+define Package/qt5-qtgamepad/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(INSTALL_DIR) $(1)/usr/lib/qt5/plugins/sqldrivers
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Sql.so* $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/qtbase/plugins/sqldrivers/*.so $(1)/usr/lib/qt5/plugins/sqldrivers/
+	$(CP) $(PKG_BUILD_DIR)/qtgamepad/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtgamepad/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtgamepad/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-test/install
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Test.so* $(1)/usr/lib/
+define Package/qt5-qtgraphicaleffects/install
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtgraphicaleffects/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-widgets/install
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Widgets.so* $(1)/usr/lib/
+define Package/qt5-qtimageformats/install
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtimageformats/plugins $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-xml/install
+define Package/qt5-qtlocation/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/libQt5Xml.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtlocation/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtlocation/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtlocation/qml $(1)/usr/lib/qt5/
 endef
 
-$(eval $(call BuildPackage,qt5-core))
-$(eval $(call BuildPackage,qt5-concurrent))
-$(eval $(call BuildPackage,qt5-dbus))
-$(eval $(call BuildPackage,qt5-gui))
-$(eval $(call BuildPackage,qt5-network))
-$(eval $(call BuildPackage,qt5-printsupport))
-$(eval $(call BuildPackage,qt5-sql))
-$(eval $(call BuildPackage,qt5-test))
-$(eval $(call BuildPackage,qt5-widgets))
-$(eval $(call BuildPackage,qt5-xml))
+define Package/qt5-qtlottie/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtlottie/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtlottie/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtmultimedia/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtmultimedia/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtmultimedia/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtmultimedia/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtnetworkauth/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtnetworkauth/lib/*.so* $(1)/usr/lib/
+endef
+
+define Package/qt5-qtquick3d/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtquick3d/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtquick3d/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtquick3d/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtquick3d/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtquickcontrols/install
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtquickcontrols/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtquickcontrols2/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtquickcontrols2/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtquickcontrols2/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtquicktimeline/install
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtquicktimeline/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtremoteobjects/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtremoteobjects/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtremoteobjects/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtremoteobjects/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtscript/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtscript/lib/*.so* $(1)/usr/lib/
+endef
+
+define Package/qt5-qtscxml/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtscxml/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtscxml/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtscxml/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtsensors/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtsensors/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtsensors/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtsensors/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtserialbus/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtserialbus/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtserialbus/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtserialbus/plugins $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtserialport/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtserialport/lib/*.so* $(1)/usr/lib/
+endef
+
+define Package/qt5-qtspeech/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtspeech/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtspeech/plugins $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtsvg/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtsvg/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtsvg/plugins $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtwebchannel/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtwebchannel/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtwebchannel/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtwebengine/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/libexec $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/qml $(1)/usr/lib/qt5/
+endef
+
+$(eval $(call BuildPackage,qt5-qt3d))
+$(eval $(call BuildPackage,qt5-qtbase))
+$(eval $(call BuildPackage,qt5-qtcharts))
+$(eval $(call BuildPackage,qt5-qtconnectivity))
+$(eval $(call BuildPackage,qt5-qtdatavis3d))
+$(eval $(call BuildPackage,qt5-qtdeclarative))
+$(eval $(call BuildPackage,qt5-qtgamepad))
+$(eval $(call BuildPackage,qt5-qtgraphicaleffects))
+$(eval $(call BuildPackage,qt5-qtimageformats))
+$(eval $(call BuildPackage,qt5-qtlocation))
+$(eval $(call BuildPackage,qt5-qtlottie))
+$(eval $(call BuildPackage,qt5-qtmultimedia))
+$(eval $(call BuildPackage,qt5-qtnetworkauth))
+$(eval $(call BuildPackage,qt5-qtquick3d))
+$(eval $(call BuildPackage,qt5-qtquickcontrols))
+$(eval $(call BuildPackage,qt5-qtquickcontrols2))
+$(eval $(call BuildPackage,qt5-qtquicktimeline))
+$(eval $(call BuildPackage,qt5-qtremoteobjects))
+$(eval $(call BuildPackage,qt5-qtscript))
+$(eval $(call BuildPackage,qt5-qtscxml))
+$(eval $(call BuildPackage,qt5-qtsensors))
+$(eval $(call BuildPackage,qt5-qtserialbus))
+$(eval $(call BuildPackage,qt5-qtserialport))
+$(eval $(call BuildPackage,qt5-qtspeech))
+$(eval $(call BuildPackage,qt5-qtsvg))
+$(eval $(call BuildPackage,qt5-qtwebchannel))
+$(eval $(call BuildPackage,qt5-qtwebengine))
