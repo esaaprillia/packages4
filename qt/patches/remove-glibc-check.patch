@@ -1,13 +1,17 @@
-Qt checks if glibc is available and if not disables large part of Qt5WebEngine and thus cripples functionality.
-However these parts work fine with Musl so there is no need to disable them.
-Just remove the check so it builds again. Since 5.15.1 is the last version of Qt to be released with this build system it'll be obsolete with Qt6 and there is no real point in fixing this upstream.
+From 0cc5beea4ade479b6a38bce0a8d37c103106764f Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 29 May 2025 09:10:32 +0800
+Subject: [PATCH] Update support.pri
 
+---
+ qtwebengine/src/buildtools/config/support.pri | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
 diff --git a/qtwebengine/src/buildtools/config/support.pri b/qtwebengine/src/buildtools/config/support.pri
-index e7f869a1..de18523d 100644
+index a9df3d2..371822e 100644
 --- a/qtwebengine/src/buildtools/config/support.pri
 +++ b/qtwebengine/src/buildtools/config/support.pri
-@@ -189,15 +189,6 @@ defineTest(qtwebengine_checkForHostPkgCfg) {
+@@ -189,24 +189,6 @@ defineTest(qtwebengine_checkForHostPkgCfg) {
      return(true)
  }
  
@@ -20,14 +24,32 @@ index e7f869a1..de18523d 100644
 -    return(true)
 -}
 -
- defineTest(qtwebengine_checkForKhronos) {
+-defineTest(qtwebengine_checkForKhronos) {
+-    module = $$1
+-    !qtConfig(webengine-system-khr) {
+-        qtwebengine_skipBuild("Khronos development headers required to build $${module} are missing (see mesa/libegl1-mesa-dev)")
+-        return(false)
+-    }
+-    return(true)
+-}
+-
+ defineTest(qtwebengine_checkForPackage) {
      module = $$1
-     !qtConfig(webengine-system-khr) {
+     package = $$2
+From cad5db7da8a37f04a5e49266e89493a55564ff83 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 29 May 2025 09:24:17 +0800
+Subject: [PATCH] Update configure.json
+
+---
+ qtwebengine/src/buildtools/configure.json | 39 +----------------------
+ 1 file changed, 1 insertion(+), 38 deletions(-)
+
 diff --git a/qtwebengine/src/buildtools/configure.json b/qtwebengine/src/buildtools/configure.json
-index 88d1790c..8623f6d7 100644
+index 5e5d9d7..353e26f 100644
 --- a/qtwebengine/src/buildtools/configure.json
 +++ b/qtwebengine/src/buildtools/configure.json
-@@ -264,18 +264,6 @@
+@@ -286,33 +286,10 @@
              "label": "system gn",
              "type": "detectGn"
          },
@@ -46,15 +68,41 @@ index 88d1790c..8623f6d7 100644
          "webengine-gperf": {
              "label": "gperf",
              "type": "detectGperf"
-@@ -379,7 +367,6 @@
+         },
+-        "webengine-khr": {
+-            "label": "khr",
+-            "type": "compile",
+-            "test": {
+-                "include": "KHR/khrplatform.h",
+-                "qmake" : [
+-                    "!isEmpty(QMAKE_INCDIR_EGL): INCLUDEPATH += $$QMAKE_INCDIR_EGL",
+-                    "!isEmpty(QMAKE_INCDIR_OPENGL): INCLUDEPATH += $$QMAKE_INCDIR_OPENGL"
+-                ]
+-            }
+-        },
+         "webengine-ninja": {
+             "label": "system ninja",
+             "type": "detectNinja"
+@@ -401,8 +378,6 @@
                           && (!config.sanitizer || features.webengine-sanitizer)
                           && (!config.linux || features.pkg-config)
                           && (!config.linux || features.webengine-host-pkg-config)
 -                         && (!config.linux || features.webengine-system-glibc)
-                          && (!config.linux || features.webengine-system-khr)
+-                         && (!config.linux || features.webengine-system-khr)
                           && (!config.linux || features.webengine-system-nss)
                           && (!config.linux || features.webengine-system-dbus)
-@@ -517,11 +504,6 @@
+                          && (!config.linux || features.webengine-system-fontconfig)
+@@ -529,21 +504,11 @@
+             "condition": "tests.webengine-gn",
+             "output": [ "privateFeature" ]
+         },
+-        "webengine-system-khr" : {
+-            "label": "khr",
+-            "condition": "config.unix && tests.webengine-khr",
+-            "output": [ "privateFeature" ]
+-        },
+         "webengine-system-nss": {
+             "label": "nss",
              "condition": "config.unix && !config.darwin && libs.webengine-nss",
              "output": [ "privateFeature" ]
          },
@@ -66,13 +114,14 @@ index 88d1790c..8623f6d7 100644
          "webengine-system-x11" : {
              "label": "x11",
              "condition": "config.unix && libs.webengine-x11",
-@@ -782,8 +764,7 @@
+@@ -808,9 +773,7 @@
+                     "entries": [
                          "webengine-system-fontconfig",
                          "webengine-system-dbus",
-                         "webengine-system-nss",
+-                        "webengine-system-nss",
 -                        "webengine-system-khr",
 -                        "webengine-system-glibc"
-+                        "webengine-system-khr"
++                        "webengine-system-nss"
                      ]
                  },
                  {
