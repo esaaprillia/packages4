@@ -43,7 +43,7 @@ define Package/qt5-qtbase
 	SUBMENU:=Qt5
 	TITLE:=qtbase
 	URL:=http://qt-project.org
-	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo $(ICONV_DEPENDS) +glib2 +md4c +libdbus +libfreetype +libopenssl +libsqlite3 +icu +fontconfig +libinput +libzstd +zlib @!LINUX_2_6_36
+	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +libiconv-full +glib2 +md4c +libdbus +libfreetype +libopenssl +libsqlite3 +icu +fontconfig +libinput +libzstd +zlib @!LINUX_2_6_36
 endef
 
 define Package/qt5-qtbase/description
@@ -368,7 +368,7 @@ define Package/qt5-qtwebengine
 	SUBMENU:=Qt5
 	TITLE:=qtwebengine
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +lcms2 +libpng +libjpeg-turbo +libfreetype
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +libxslt +lcms2 +libpng +libjpeg-turbo +libfreetype
 endef
 
 define Package/qt5-qtwebengine/description
@@ -428,8 +428,8 @@ CONFIGURE_ARGS = \
 		-no-gtk \
 		-gui \
 		-no-harfbuzz \
-		-iconv \
-		-icu \
+		-no-iconv \
+		-no-icu \
 		-no-kms \
 		-system-libjpeg \
 		-system-libmd4c \
