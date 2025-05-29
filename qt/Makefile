@@ -429,7 +429,7 @@ CONFIGURE_ARGS = \
 		-gui \
 		-no-harfbuzz \
 		-no-iconv \
-		-no-icu \
+		-icu \
 		-no-kms \
 		-system-libjpeg \
 		-system-libmd4c \
