@@ -368,7 +368,7 @@ define Package/qt5-qtwebengine
 	SUBMENU:=Qt5
 	TITLE:=qtwebengine
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +libxslt +lcms2 +libpng +libjpeg-turbo +libfreetype
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +libxslt +lcms2 +libpng +libjpeg-turbo +libfreetype +harfbuzz
 endef
 
 define Package/qt5-qtwebengine/description
@@ -427,7 +427,7 @@ CONFIGURE_ARGS = \
 		-glib \
 		-no-gtk \
 		-gui \
-		-no-harfbuzz \
+		-system-harfbuzz \
 		-no-iconv \
 		-icu \
 		-no-kms \
