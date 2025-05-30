@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cairo
-PKG_VERSION:=1.18.2
+PKG_VERSION:=1.18.4
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://cairo.freedesktop.org/releases/
-PKG_HASH:=a62b9bb42425e844cc3d6ddde043ff39dbabedd1542eba57a2eb79f85889d45a
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
 PKG_LICENSE:=LGPL-2.1-or-later MPL-1.1
