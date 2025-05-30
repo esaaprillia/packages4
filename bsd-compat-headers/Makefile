@@ -26,6 +26,10 @@ define Package/bsd-compat-headers/description
 	BSD compatibility headers (cdefs, queue, tree)
 endef
 
+define Build/Compile
+	true
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) ./files/sys $(1)/usr/include/
