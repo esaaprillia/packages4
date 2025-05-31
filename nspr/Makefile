@@ -25,6 +25,7 @@ PKG_FIXUP:=autoreconf
 PKG_BUILD_FLAGS:=lto
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 
 CONFIGURE_PATH = ./nspr
 MAKE_PATH = ./nspr
@@ -88,4 +89,5 @@ define Package/nspr/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,nspr))
