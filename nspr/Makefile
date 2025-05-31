@@ -27,9 +27,9 @@ PKG_BUILD_FLAGS:=lto
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 
-HOST_CONFIGURE_CMD = ./nspr
-HOST_MAKE_PATH = ./nspr
-HOST_AUTOMAKE_PATHS = $(HOST_BUILD_DIR)/nspr
+#HOST_CONFIGURE_CMD = ./nspr
+#HOST_MAKE_PATH = ./nspr
+#HOST_AUTOMAKE_PATHS = $(HOST_BUILD_DIR)/nspr
 CONFIGURE_PATH = ./nspr
 MAKE_PATH = ./nspr
 PKG_AUTOMAKE_PATHS = $(PKG_BUILD_DIR)/nspr
@@ -60,9 +60,15 @@ define Build/Compile
 	$(call Build/Compile/Default)
 endef
 
+define Host/Configure
+	$(call Host/Configure/Default,$(1),$(2),$(CONFIGURE_PATH)/$(3))
+endef
+
 define Host/Compile
-	$(MAKE) -C $(HOST_BUILD_DIR)/nspr/config
-	$(call Host/Compile/Default)
+	+$(HOST_MAKE_VARS) \
+	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) \
+		$(HOST_MAKE_FLAGS) \
+		$(1)
 endef
 
 define Package/nspr
