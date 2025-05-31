@@ -102,6 +102,21 @@ define Build/Compile
 	$(call Build/Compile/Default,nss_build_all)
 endef
 
+define Host/Configure
+	$(call Host/Configure/Default,$(1),$(2),$(CONFIGURE_PATH)/$(3))
+endef
+
+define Host/Compile
+	+$(HOST_MAKE_VARS) \
+	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) \
+		$(HOST_MAKE_FLAGS) \
+		$(1)
+endef
+
+define Host/Install
+	$(MAKE) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) install
+endef
+
 define Package/libnss/conffiles
 /etc/pki/nssdb
 endef
