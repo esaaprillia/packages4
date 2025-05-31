@@ -24,6 +24,7 @@ PKG_CPE_ID:=cpe:/a:mozilla:network_security_services
 PKG_BUILD_PARALLEL:=0
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 
 define Package/libnss
   SECTION:=libs
@@ -158,5 +159,6 @@ define Package/libnss/install
 	ln -s /etc/pki/nssdb/pkcs11.txt $(1)/etc/ipsec.d/pkcs11.txt
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,nss-utils))
 $(eval $(call BuildPackage,libnss))
