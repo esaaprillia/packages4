@@ -379,7 +379,6 @@ EXTRA_CFLAGS += $(FPIC) -ffunction-sections -fdata-sections -flto
 EXTRA_LDFLAGS += -Wl,--gc-sections,--as-needed
 
 CONFIGURE_ARGS = \
-		-sysroot $(STAGING_DIR) \
 		-hostprefix $(STAGING_DIR_HOSTPKG) \
 		-extprefix $(STAGING_DIR)/usr \
 		-prefix /usr \
@@ -475,9 +474,7 @@ define Build/Compile
 	TARGET_INCDIRS="$(TARGET_INCDIRS)" \
 	TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
 	STAGING_DIR="$(STAGING_DIR)" \
-	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
-	PKG_CONFIG="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
-	PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" \
+	STAGING_DIR_HOST="$(STAGING_DIR_HOST)" \
 	TARGET_CPPFLAGS+="-I$(STAGING_DIR)/usr/include" \
 	TARGET_LDFLAGS+="-L$(STAGING_DIR)/usr/lib" \
 	CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
