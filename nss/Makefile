@@ -24,6 +24,8 @@ PKG_CPE_ID:=cpe:/a:mozilla:network_security_services
 HOST_BUILD_DEPENDS:=nspr/host
 PKG_BUILD_PARALLEL:=0
 
+HOST_PATCH_DIR := ./patches-host
+
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 
