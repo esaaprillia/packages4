@@ -59,6 +59,11 @@ define Build/Compile
 	$(call Build/Compile/Default)
 endef
 
+define Host/Compile
+	$(MAKE) -C $(HOST_BUILD_DIR)/nspr/config
+	$(call Host/Compile/Default)
+endef
+
 define Package/nspr
   SECTION:=libs
   CATEGORY:=Libraries
