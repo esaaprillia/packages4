@@ -71,6 +71,10 @@ define Host/Compile
 		$(1)
 endef
 
+define Host/Install
+	$(MAKE) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) install
+endef
+
 define Package/nspr
   SECTION:=libs
   CATEGORY:=Libraries
