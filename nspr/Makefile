@@ -29,6 +29,7 @@ include $(INCLUDE_DIR)/host-build.mk
 
 HOST_CONFIGURE_CMD = ./nspr
 HOST_MAKE_PATH = ./nspr
+HOST_AUTOMAKE_PATHS = $(HOST_BUILD_DIR)/nspr
 CONFIGURE_PATH = ./nspr
 MAKE_PATH = ./nspr
 PKG_AUTOMAKE_PATHS = $(PKG_BUILD_DIR)/nspr
