@@ -362,25 +362,25 @@ define Package/qt5-qtwebchannel/description
 Library for seamless integration of C++ +and QML applications with HTML/JavaScript clients.
 endef
 
-define Package/qt5-qtwebengine
-	SECTION:=libs
-	CATEGORY:=Libraries
-	SUBMENU:=Qt5
-	TITLE:=qtwebengine
-	URL:=http://qt-project.org
-	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +libxslt +lcms2 +libpng +libjpeg-turbo +libfreetype +harfbuzz
-endef
+#define Package/qt5-qtwebengine
+#	SECTION:=libs
+#	CATEGORY:=Libraries
+#	SUBMENU:=Qt5
+#	TITLE:=qtwebengine
+#	URL:=http://qt-project.org
+#	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +libxslt +lcms2 +libpng +libjpeg-turbo +libfreetype +harfbuzz
+#endef
 
-define Package/qt5-qtwebengine/description
-Qt5 - QtWebEngine components
-endef
+#define Package/qt5-qtwebengine/description
+#Qt5 - QtWebEngine components
+#endef
 
 EXTRA_CFLAGS += $(FPIC) -ffunction-sections -fdata-sections -flto
 EXTRA_LDFLAGS += -Wl,--gc-sections,--as-needed
 
 CONFIGURE_ARGS = \
 		-sysroot $(STAGING_DIR) \
-		-hostprefix $(STAGING_DIR)/host \
+		-hostprefix $(STAGING_DIR_HOSTPKG) \
 		-extprefix $(STAGING_DIR)/usr \
 		-prefix /usr \
 		-bindir /usr/bin \
@@ -397,9 +397,9 @@ CONFIGURE_ARGS = \
 		-sysconfdir /etc/xdg \
 		-examplesdir /usr/share/qt5/examples \
 		-testsdir /usr/share/qt5/tests \
-		-hostbindir $(STAGING_DIR)/host/bin \
-		-hostlibdir $(STAGING_DIR)/host/lib \
-		-hostdatadir $(STAGING_DIR)/host/share \
+		-hostbindir $(STAGING_DIR_HOSTPKG)/bin \
+		-hostlibdir $(STAGING_DIR_HOSTPKG)/lib \
+		-hostdatadir $(STAGING_DIR_HOSTPKG)/share \
 		-device linux-generic-g++ \
 		-device-option CROSS_COMPILE="$(TARGET_CROSS)" \
 		-device-option COMPILER_FLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)" \
@@ -467,26 +467,11 @@ CONFIGURE_ARGS = \
 		-v
 
 define Build/Compile
-	TARGET_CC="$(TARGET_CROSS)gcc" \
-	TARGET_CXX="$(TARGET_CROSS)g++" \
-	TARGET_AR="$(TARGET_CROSS)ar cqs" \
-	TARGET_OBJCOPY="$(TARGET_CROSS)objcopy" \
-	TARGET_RANLIB="$(TARGET_CROSS)ranlib" \
-	TARGET_CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-	TARGET_CXXFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-	TARGET_LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) -ldl -lpthread -lrt" \
-	TARGET_INCDIRS="$(TARGET_INCDIRS)" \
-	TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
-	STAGING_DIR="$(STAGING_DIR)" \
-	STAGING_DIR_HOST="$(STAGING_DIR_HOST)" \
-	TARGET_CPPFLAGS+="-I$(STAGING_DIR)/usr/include" \
-	TARGET_LDFLAGS+="-L$(STAGING_DIR)/usr/lib" \
-	CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-	$(MAKE) -j4 -C $(PKG_BUILD_DIR)
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
 endef
 
 define Build/InstallDev
-	$(MAKE) -C $(PKG_BUILD_DIR) install
+	$(MAKE) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) install
 endef
 
 define Package/qt5-qt3d/install
@@ -682,16 +667,16 @@ define Package/qt5-qtwebchannel/install
 	$(CP) $(PKG_BUILD_DIR)/qtwebchannel/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-qtwebengine/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/lib/*.so* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/lib/qt5
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/libexec $(1)/usr/lib/qt5/
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/plugins $(1)/usr/lib/qt5/
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/qml $(1)/usr/lib/qt5/
-endef
+#define Package/qt5-qtwebengine/install
+#	$(INSTALL_DIR) $(1)/usr/bin
+#	$(CP) $(PKG_BUILD_DIR)/qtwebengine/bin/* $(1)/usr/bin/
+#	$(INSTALL_DIR) $(1)/usr/lib
+#	$(CP) $(PKG_BUILD_DIR)/qtwebengine/lib/*.so* $(1)/usr/lib/
+#	$(INSTALL_DIR) $(1)/usr/lib/qt5
+#	$(CP) $(PKG_BUILD_DIR)/qtwebengine/libexec $(1)/usr/lib/qt5/
+#	$(CP) $(PKG_BUILD_DIR)/qtwebengine/plugins $(1)/usr/lib/qt5/
+#	$(CP) $(PKG_BUILD_DIR)/qtwebengine/qml $(1)/usr/lib/qt5/
+#endef
 
 $(eval $(call BuildPackage,qt5-qt3d))
 $(eval $(call BuildPackage,qt5-qtbase))
@@ -719,4 +704,4 @@ $(eval $(call BuildPackage,qt5-qtserialport))
 $(eval $(call BuildPackage,qt5-qtspeech))
 $(eval $(call BuildPackage,qt5-qtsvg))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
-$(eval $(call BuildPackage,qt5-qtwebengine))
+#$(eval $(call BuildPackage,qt5-qtwebengine))
