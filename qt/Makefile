@@ -380,7 +380,7 @@ EXTRA_LDFLAGS += -Wl,--gc-sections,--as-needed
 
 CONFIGURE_ARGS = \
 		-sysroot $(STAGING_DIR) \
-		-hostprefix $(STAGING_DIR_HOSTPKG) \
+		-hostprefix $(STAGING_DIR)/host \
 		-extprefix $(STAGING_DIR)/usr \
 		-prefix /usr \
 		-bindir /usr/bin \
@@ -397,9 +397,9 @@ CONFIGURE_ARGS = \
 		-sysconfdir /etc/xdg \
 		-examplesdir /usr/share/qt5/examples \
 		-testsdir /usr/share/qt5/tests \
-		-hostbindir $(STAGING_DIR_HOSTPKG)/bin \
-		-hostlibdir $(STAGING_DIR_HOSTPKG)/lib \
-		-hostdatadir $(STAGING_DIR_HOSTPKG)/share/qt5 \
+		-hostbindir $(STAGING_DIR)/host/bin \
+		-hostlibdir $(STAGING_DIR)/host/lib \
+		-hostdatadir $(STAGING_DIR)/host/share \
 		-device linux-generic-g++ \
 		-device-option CROSS_COMPILE="$(TARGET_CROSS)" \
 		-device-option COMPILER_FLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)" \
