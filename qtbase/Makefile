@@ -103,7 +103,6 @@ endef
 define Package/qtbase/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/lib/*.so* $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/metatypes $(1)/usr/lib/
 	$(CP) $(PKG_BUILD_DIR)/plugins $(1)/usr/lib/
 endef
 
