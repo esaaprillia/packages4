@@ -29,7 +29,7 @@ define Package/qtbase
 	SUBMENU:=Qt5
 	TITLE:=qtbase
 	URL:=http://qt-project.org
-	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libpng +libjpeg-turbo +libiconv-full +glib2 +libdbus +libfreetype +libopenssl +libsqlite3 +icu +fontconfig +libinput +libzstd +harfbuzz +zlib @!LINUX_2_6_36
+	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libpng +libjpeg-turbo +libiconv-full +glib2 +libdbus +libfreetype +libopenssl +libsqlite3 +icu +fontconfig +libinput +libzstd +libdouble-conversion +md4c +harfbuzz +zlib @!LINUX_2_6_36
 endef
 
 define Package/qtbase/description
@@ -75,16 +75,20 @@ CONFIGURE_ARGS = \
 	-gui \
 	-widgets \
 	-dbus-linked \
+	-system-doubleconversion \
 	-glib \
-	-iconv \
+	-no-iconv \
 	-icu \
 	-system-pcre \
 	-system-zlib \
 	-openssl-linked \
 	-system-freetype \
 	-system-harfbuzz \
+	-no-opengl \
+	-no-opengles3
 	-system-libpng \
 	-system-libjpeg \
+	-system-libmd4c \
 	-sql-sqlite \
 	-system-sqlite
 
