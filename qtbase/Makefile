@@ -85,7 +85,7 @@ CONFIGURE_ARGS = \
 	-system-freetype \
 	-system-harfbuzz \
 	-no-opengl \
-	-no-opengles3
+	-no-opengles3 \
 	-system-libpng \
 	-system-libjpeg \
 	-system-libmd4c \
