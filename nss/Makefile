@@ -118,7 +118,7 @@ endef
 
 define Host/Compile
 	+$(HOST_MAKE_VARS) \
-	$(MAKE) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) \
+	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) \
 		$(HOST_MAKE_FLAGS) \
 		$(1)
 endef
