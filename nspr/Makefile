@@ -65,7 +65,7 @@ define Host/Configure
 endef
 
 define Host/Compile
-	+$(HOST_MAKE_VARS) \
+	CFLAGS="$(HOST_CFLAGS)" LDFLAGS="" CC="$(HOSTCC)" \
 	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) \
 		$(HOST_MAKE_FLAGS) \
 		$(1)
