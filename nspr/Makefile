@@ -62,9 +62,7 @@ define Host/Configure
 endef
 
 define Host/Compile
-	CFLAGS="$(HOST_CFLAGS)" LDFLAGS="" CC="$(HOSTCC)" \
-	    $(MAKE) -C $(HOST_BUILD_DIR)/nspr/config
-	$(call Host/Compile/Default)
+	CFLAGS="$(HOST_CFLAGS)" LDFLAGS="" CC="$(HOSTCC)" $(MAKE) -C $(HOST_BUILD_DIR)
 endef
 
 define Package/nspr
