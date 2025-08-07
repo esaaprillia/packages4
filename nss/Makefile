@@ -78,13 +78,11 @@ export NATIVE_CC=$(HOSTCC)
 export NATIVE_FLAGS=$(HOST_CFLAGS)
 export NSS_ENABLE_WERROR=0
 
-HOST_CFLAGS += -I$(STAGING_DIR_HOSTPKG)/include/nspr
-HOST_CPPFLAGS += -I$(STAGING_DIR_HOSTPKG)/include/nspr
-
 HOST_MAKE_FLAGS += \
-	NSPR_INCLUDE_DIR=$(STAGING_DIR_HOSTPKG)/include/nspr \
+	NSDISTMODE=copy \
 	NSS_DISABLE_GTESTS=1 \
-	fpic="$(FPIC)"
+	fpic="$(FPIC)" \
+	NSPR_INCLUDE_DIR=$(STAGING_DIR_HOSTPKG)/include/nspr
 
 MAKE_FLAGS += \
 	CROSS_COMPILE=1 \
@@ -113,6 +111,10 @@ endef
 
 define Build/Compile
 	$(call Build/Compile/Default,nss_build_all)
+endef
+
+define Host/Compile
+	$(call Host/Compile/Default,nss_build_all)
 endef
 
 define Package/libnss/conffiles
