@@ -60,12 +60,6 @@ define Build/Compile
 	$(call Build/Compile/Default)
 endef
 
-define Host/Compile
-	CFLAGS="-DXP_UNIX $(HOST_CFLAGS)" LDFLAGS="HOST_LDFLAGS" CC="$(HOSTCC)" \
-	    $(MAKE) -C $(HOST_BUILD_DIR)/nspr/config
-	$(call Host/Compile/Default)
-endef
-
 define Package/nspr
   SECTION:=libs
   CATEGORY:=Libraries
