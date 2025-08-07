@@ -9,17 +9,6 @@
  #endif
  #endif
  
---- a/nss/coreconf/rules.mk
-+++ b/nss/coreconf/rules.mk
-@@ -176,7 +176,7 @@ $(LIBRARY): $(OBJS) | $$(@D)/d
- ifeq (,$(filter-out _WIN%,$(NS_USE_GCC)_$(OS_TARGET)))
- 	$(AR) $(subst /,\\,$(OBJS))
- else
--	$(AR) $(OBJS)
-+	$(AR) rcs $@ $(OBJS)
- endif
- 	$(RANLIB) $@
- 
 --- a/nss/coreconf/arch.mk
 +++ b/nss/coreconf/arch.mk
 @@ -284,7 +284,7 @@ else
