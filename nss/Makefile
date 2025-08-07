@@ -53,6 +53,8 @@ define Package/libnss/description
   PKCS 11, PKCS 12, S/MIME, X.509 v3 certificates, and other security standards.
 endef
 
+HOST_CONFIGURE_PATH = ./nss
+HOST_MAKE_PATH = ./nss
 CONFIGURE_PATH = ./nss
 MAKE_PATH = ./nss
 
@@ -111,21 +113,6 @@ endef
 
 define Build/Compile
 	$(call Build/Compile/Default,nss_build_all)
-endef
-
-define Host/Configure
-	$(call Host/Configure/Default,$(1),$(2),$(CONFIGURE_PATH)/$(3))
-endef
-
-define Host/Compile
-	+$(HOST_MAKE_VARS) \
-	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) \
-		$(HOST_MAKE_FLAGS) \
-		$(1)
-endef
-
-define Host/Install
-	$(MAKE) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) install
 endef
 
 define Package/libnss/conffiles
