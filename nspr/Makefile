@@ -60,6 +60,19 @@ define Build/Compile
 	$(call Build/Compile/Default)
 endef
 
+HOST_CONFIGURE_VARS = \
+	CC="$(HOSTCC)" \
+	CFLAGS="$(HOST_CFLAGS)" \
+	CXX="$(HOSTCXX)" \
+	CPPFLAGS="$(HOST_CPPFLAGS)" \
+	CXXFLAGS="$(HOST_CXXFLAGS)" \
+	LDFLAGS="$(HOST_LDFLAGS)"
+
+HOST_CONFIGURE_ARGS = \
+	--target=$(GNU_HOST_NAME) \
+	--host=$(GNU_HOST_NAME) \
+	--build=$(GNU_HOST_NAME)
+
 define Package/nspr
   SECTION:=libs
   CATEGORY:=Libraries
