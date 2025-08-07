@@ -55,19 +55,15 @@ CONFIGURE_ARGS += \
     $(conf)
 
 define Build/Compile
-	CROSS_COMPILE=1 CFLAGS="-DXP_UNIX $(HOST_CFLAGS)" LDFLAGS="HOST_LDFLAGS" CC="$(HOSTCC)" \
+	CROSS_COMPILE=1 CFLAGS="-DXP_UNIX $(HOST_CFLAGS)" LDFLAGS="" CC="$(HOSTCC)" \
 	    $(MAKE) -C $(PKG_BUILD_DIR)/nspr/config
 	$(call Build/Compile/Default)
 endef
 
 define Host/Compile
-	CFLAGS="-DXP_UNIX $(HOST_CFLAGS)" LDFLAGS="" CC="$(HOSTCC)" \
+	CFLAGS="-DXP_UNIX $(HOST_CFLAGS)" LDFLAGS="HOST_LDFLAGS" CC="$(HOSTCC)" \
 	    $(MAKE) -C $(HOST_BUILD_DIR)/nspr/config
 	$(call Host/Compile/Default)
-endef
-
-define Host/Install
-	$(MAKE) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) install
 endef
 
 define Package/nspr
