@@ -27,7 +27,7 @@ PKG_BUILD_FLAGS:=lto
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 
-HOST_CONFIGURE_CMD = ./nspr/configure
+HOST_CONFIGURE_PATH = ./nspr
 HOST_MAKE_PATH = ./nspr
 HOST_AUTOMAKE_PATHS = $(HOST_BUILD_DIR)/nspr
 CONFIGURE_PATH = ./nspr
