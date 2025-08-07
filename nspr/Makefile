@@ -54,24 +54,19 @@ CONFIGURE_ARGS += \
     $(if $(CONFIG_IPV6),--enable-ipv6,--disable-ipv6) \
     $(conf)
 
+HOST_CONFIGURE_ARGS += \
+    --build=$(GNU_HOST_NAME) \
+    --host=$(GNU_HOST_NAME) \
+    --target=$(GNU_HOST_NAME) \
+    --disable-debug \
+    --with-pthreads \
+    --enable-64bit
+
 define Build/Compile
 	CROSS_COMPILE=1 CFLAGS="-DXP_UNIX $(HOST_CFLAGS)" LDFLAGS="" CC="$(HOSTCC)" \
 	    $(MAKE) -C $(PKG_BUILD_DIR)/nspr/config
 	$(call Build/Compile/Default)
 endef
-
-HOST_CONFIGURE_VARS = \
-	CC="$(HOSTCC)" \
-	CFLAGS="$(HOST_CFLAGS)" \
-	CXX="$(HOSTCXX)" \
-	CPPFLAGS="$(HOST_CPPFLAGS)" \
-	CXXFLAGS="$(HOST_CXXFLAGS)" \
-	LDFLAGS="$(HOST_LDFLAGS)"
-
-HOST_CONFIGURE_ARGS = \
-	--target=$(GNU_HOST_NAME) \
-	--host=$(GNU_HOST_NAME) \
-	--build=$(GNU_HOST_NAME)
 
 define Package/nspr
   SECTION:=libs
