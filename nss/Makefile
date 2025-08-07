@@ -144,6 +144,19 @@ define Build/InstallDev
 	  $(2)/bin/
 endef
 
+define Host/Install
+	$(CP) $(HOST_BUILD_DIR)/dist/private/nss \
+	  $(STAGING_DIR_HOSTPKG)/include/
+	$(CP) $(HOST_BUILD_DIR)/dist/public/nss \
+	  $(STAGING_DIR_HOSTPKG)/include/
+	$(CP) $(HOST_BUILD_DIR)/dist/build_dir/lib/{*.so,*.a} \
+	  $(STAGING_DIR_HOSTPKG)/lib/
+	$(CP) $(HOST_BUILD_DIR)/nss/config/*.pc \
+	  $(STAGING_DIR_HOSTPKG)/lib/pkgconfig/
+	$(CP) $(HOST_BUILD_DIR)/nss/config/nss-config \
+	  $(STAGING_DIR_HOSTPKG)/bin/
+endef
+
 define Package/nss-utils/install
 	$(INSTALL_DIR) \
 	 $(1)/usr/bin
