@@ -52,5 +52,3 @@ define Package/harfbuzz/install
 endef
 
 $(eval $(call BuildPackage,harfbuzz))
-
-
