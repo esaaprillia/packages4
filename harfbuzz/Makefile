@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=harfbuzz
-PKG_VERSION:=11.2.1
+PKG_VERSION:=11.3.3
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
 PKG_LICENSE:=LGPL-2.1
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_DEPENDS:=glib2/host
+#PKG_BUILD_DEPENDS:=glib2/host
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -52,3 +52,4 @@ define Package/harfbuzz/install
 endef
 
 $(eval $(call BuildPackage,harfbuzz))
+
