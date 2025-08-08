@@ -160,6 +160,8 @@ define Host/Install
 	  $(STAGING_DIR_HOSTPKG)/lib/pkgconfig/
 	$(CP) $(HOST_BUILD_DIR)/nss/config/nss-config \
 	  $(STAGING_DIR_HOSTPKG)/bin/
+	$(SED) 's,^\(prefix\)=.*,\1=$(STAGING_DIR_HOSTPKG),g' \
+	  $(STAGING_DIR_HOSTPKG)/bin/nss-config
 endef
 
 define Package/nss-utils/install
