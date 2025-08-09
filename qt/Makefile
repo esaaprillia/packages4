@@ -24,6 +24,7 @@ PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
+include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
 
 define Package/qt5-qt3d
 	SECTION:=libs
@@ -706,6 +707,7 @@ $(eval $(call BuildPackage,qt5-qtspeech))
 $(eval $(call BuildPackage,qt5-qtsvg))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebengine))
+
 
 
 
