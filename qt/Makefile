@@ -464,7 +464,6 @@ CONFIGURE_ARGS = \
 		-nomake examples \
 		-nomake tests \
 		-nomake tools \
-		-webengine-icu \
 		-v
 
 define Build/Compile
@@ -706,5 +705,6 @@ $(eval $(call BuildPackage,qt5-qtspeech))
 $(eval $(call BuildPackage,qt5-qtsvg))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebengine))
+
 
 
