@@ -16,7 +16,7 @@ PKG_LICENSE_FILES:=LICENSE.FDL LICENSE.GPL2 LICENSE.GPL3 LICENSE.GPL3-EXCEPT LIC
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-everywhere-src-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=gperf/host bsd-compat-headers python3
+PKG_BUILD_DEPENDS:=gperf/host bsd-compat-headers
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_CPE_ID:=cpe:/a:qt:qt
@@ -432,7 +432,7 @@ CONFIGURE_ARGS = \
 		-gui \
 		-system-harfbuzz \
 		-no-iconv \
-		-system-icu \
+		-icu \
 		-no-kms \
 		-system-libjpeg \
 		-system-libmd4c \
@@ -464,6 +464,7 @@ CONFIGURE_ARGS = \
 		-nomake examples \
 		-nomake tests \
 		-nomake tools \
+		-webengine-icu \
 		-v
 
 define Build/Compile
@@ -705,4 +706,3 @@ $(eval $(call BuildPackage,qt5-qtspeech))
 $(eval $(call BuildPackage,qt5-qtsvg))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebengine))
-
