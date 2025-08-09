@@ -16,7 +16,7 @@ PKG_LICENSE_FILES:=LICENSE.FDL LICENSE.GPL2 LICENSE.GPL3 LICENSE.GPL3-EXCEPT LIC
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-everywhere-src-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=gperf/host bsd-compat-headers
+PKG_BUILD_DEPENDS:=gperf/host bsd-compat-headers python3
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_CPE_ID:=cpe:/a:qt:qt
@@ -705,3 +705,4 @@ $(eval $(call BuildPackage,qt5-qtspeech))
 $(eval $(call BuildPackage,qt5-qtsvg))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebengine))
+
