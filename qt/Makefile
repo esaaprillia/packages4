@@ -26,7 +26,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
 include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
 
-export PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real"
+#export PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real"
 export GN_PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real"
 
 define Package/qt5-qt3d
@@ -710,3 +710,4 @@ $(eval $(call BuildPackage,qt5-qtspeech))
 $(eval $(call BuildPackage,qt5-qtsvg))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebengine))
+
