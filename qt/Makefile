@@ -16,7 +16,7 @@ PKG_LICENSE_FILES:=LICENSE.FDL LICENSE.GPL2 LICENSE.GPL3 LICENSE.GPL3-EXCEPT LIC
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-everywhere-src-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=gperf/host python3 nss/host gn/host
+PKG_BUILD_DEPENDS:=gperf/host python3 nss/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_CPE_ID:=cpe:/a:qt:qt
@@ -469,6 +469,7 @@ CONFIGURE_ARGS = \
 		-nomake examples \
 		-nomake tests \
 		-nomake tools \
+		-no-webengine-embedded-build \
 		-v
 
 define Build/Compile
