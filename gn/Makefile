@@ -1,45 +1,58 @@
-# SPDX-License-Identifier: GPL-2.0-only
+# SPDX-License-Identifier: GPL-3.0-only
 #
-# Copyright (C) 2023 Luca Barbato and Donald Hoskins
+# Copyright (C) 2022 ImmortalWrt.org
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=boringtun-cli
-PKG_VERSION:=0.5.2
+PKG_NAME:=gn
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/cloudflare/boringtun/tar.gz/$(PKG_VERSION)?
-PKG_HASH:=skip
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://gn.googlesource.com/gn.git
+PKG_SOURCE_DATE:=2025-06-19
+PKG_SOURCE_VERSION:=3f7fb0dd45372b97fa050df7b277e706595621f3
+PKG_MIRROR_HASH:=2d0abc1e1a572644bd1b74c4415e91dde322eee4e20c99f0e7d5975a5badad29
 
-PKG_MAINTAINER:=Luca Barbato <lu_zero@luminem.org>
-PKG_LICENSE:=MIT Unlicense
-PKG_LICENSE_FILES:=LICENSE-MIT UNLICENSE
+PKG_LICENSE:=BSD 3-Clause
+PKG_LICENSE_FILES:=LICENSE
+PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/boringtun-$(PKG_NAME)-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=rust/host
+PKG_HOST_ONLY:=1
+HOST_BUILD_PARALLEL:=1
 
-#RUST_PKG_FEATURES:=boringtun-cli
-
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/rust/rust-package.mk
 
-define Build/Compile
-	$(call Build/Compile/Cargo,boringtun-cli)
-	$(call Build/Compile/Cargo)
+define Package/gn
+  SECTION:=devel
+  CATEGORY:=Development
+  TITLE:=A meta-build system that generates build files for Ninja
+  URL:=https://gn.googlesource.com/gn/
+  BUILDONLY:=1
 endef
 
-define Package/boringtun-cli
-  SECTION:=utils
-  CATEGORY:=Utilities
-  TITLE:=Userspace WireGuard® Implementation in Rust
-  DEPENDS:=$(RUST_ARCH_DEPENDS)
-  URL:=https://github.com/cloudflare/boringtun
+define Package/gn/description
+  GN can generate Ninja build files for C, C++, Rust, Objective C,
+  and Swift source on most popular platforms.
 endef
 
-define Package/boringtun-cli/description
-  BoringTun is an implementation of the WireGuard® protocol designed for portability and speed.
+define Host/Configure
+	$(PYTHON) $(HOST_BUILD_DIR)/build/gen.py \
+		--no-last-commit-position
 endef
 
-$(eval $(call RustBinPackage,boringtun-cli))
-$(eval $(call BuildPackage,boringtun-cli))
+define Host/Compile
+	+$(NINJA) -C $(HOST_BUILD_DIR)/out
+endef
+
+define Host/Install
+	$(INSTALL_DIR) $(STAGING_DIR_HOST)/bin/
+	$(INSTALL_BIN) $(HOST_BUILD_DIR)/out/gn $(STAGING_DIR_HOST)/bin/
+endef
+
+define Host/Clean
+	$(RM) $(STAGING_DIR_HOSTPKG)/bin/gn
+endef
+
+$(eval $(call HostBuild))
+$(eval $(call BuildPackage,gn))
