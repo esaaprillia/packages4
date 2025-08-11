@@ -51,7 +51,7 @@ define Host/Install
 endef
 
 define Host/Clean
-	$(RM) $(STAGING_DIR_HOSTPKG)/bin/gn
+	$(RM) $(STAGING_DIR_HOST)/bin/gn
 endef
 
 $(eval $(call HostBuild))
