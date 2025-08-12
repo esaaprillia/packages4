@@ -1,0 +1,35 @@
+From 29d48d93e3734a9686597d8657b9937be56beb2e Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 12 Aug 2025 18:41:08 +0800
+Subject: [PATCH] Update linux.pri
+
+---
+ qtwebengine/src/buildtools/config/linux.pri | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/qtwebengine/src/buildtools/config/linux.pri b/qtwebengine/src/buildtools/config/linux.pri
+index 7507d51..4f36525 100644
+--- a/qtwebengine/src/buildtools/config/linux.pri
++++ b/qtwebengine/src/buildtools/config/linux.pri
+@@ -134,21 +134,6 @@ host_build {
+     } else {
+         gn_args += host_cpu=\"$$GN_TARGET_CPU\"
+     }
+-    !contains(QT_CONFIG, no-pkg-config) {
+-        # Strip '>2 /dev/null' from $$pkgConfigExecutable()
+-        PKGCONFIG = $$first($$list($$pkgConfigExecutable()))
+-        gn_args += pkg_config=\"$$PKGCONFIG\"
+-        PKG_CONFIG_HOST = $$(GN_PKG_CONFIG_HOST)
+-        pkgConfigLibDir = $$(PKG_CONFIG_LIBDIR)
+-        pkgConfigSysrootDir = $$(PKG_CONFIG_SYSROOT_DIR)
+-        isEmpty(PKG_CONFIG_HOST): cross_compile {
+-            !isEmpty(pkgConfigLibDir)|!isEmpty(pkgConfigSysrootDir) {
+-                PKG_CONFIG_HOST = $$pkgConfigHostExecutable()
+-            }
+-        }
+-        isEmpty(PKG_CONFIG_HOST): PKG_CONFIG_HOST = $$QMAKE_PKG_CONFIG_HOST
+-        gn_args += host_pkg_config=\"$$PKG_CONFIG_HOST\"
+-    }
+ 
+     qtConfig(webengine-system-zlib) {
+         qtConfig(webengine-system-minizip): gn_args += use_system_zlib=true use_system_minizip=true
