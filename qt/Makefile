@@ -16,7 +16,7 @@ PKG_LICENSE_FILES:=LICENSE.FDL LICENSE.GPL2 LICENSE.GPL3 LICENSE.GPL3-EXCEPT LIC
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-everywhere-src-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=gperf/host python3 nss/host
+PKG_BUILD_DEPENDS:=gperf/host python3 nss/host gn/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_CPE_ID:=cpe:/a:qt:qt
@@ -470,6 +470,8 @@ CONFIGURE_ARGS = \
 		-nomake tests \
 		-nomake tools \
 		-no-webengine-embedded-build \
+		-feature-webengine-system-ninja \
+		-feature-webengine-system-gn \
 		-v
 
 define Build/Compile
@@ -479,6 +481,7 @@ define Build/Compile
 	PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" \
 	PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
 	GN_PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
+	GN_HOST_TOOLCHAIN_EXTRA_CPPFLAGS="-I$(STAGING_DIR_HOSTPKG)/include" \
 	$(MAKE) -j4 -C $(PKG_BUILD_DIR)
 endef
 
@@ -717,4 +720,3 @@ $(eval $(call BuildPackage,qt5-qtspeech))
 $(eval $(call BuildPackage,qt5-qtsvg))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebengine))
-
