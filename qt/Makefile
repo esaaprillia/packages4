@@ -473,7 +473,13 @@ CONFIGURE_ARGS = \
 		-v
 
 define Build/Compile
-	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
+	STAGING_DIR="$(STAGING_DIR)" \
+	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
+	PKG_CONFIG="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
+	PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" \
+	PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
+	GN_PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
+	$(MAKE) -j4 -C $(PKG_BUILD_DIR)
 endef
 
 define Build/InstallDev
@@ -711,3 +717,4 @@ $(eval $(call BuildPackage,qt5-qtspeech))
 $(eval $(call BuildPackage,qt5-qtsvg))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebengine))
+
