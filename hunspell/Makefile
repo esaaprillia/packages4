@@ -22,7 +22,7 @@ define Package/hunspell
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The most popular spellchecking library.
-	DEPENDS:=+libreadline +libncurses $(ICONV_DEPENDS) $(INTL_DEPENDS)
+	DEPENDS:=+libreadline +libncurses +libintl-full +libiconv-full
 	URL:=https://github.com/hunspell/hunspell
 endef
 
@@ -34,7 +34,9 @@ CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--disable-static \
 	--with-ui \
-	--with-readline
+	--with-readline \
+	--with-libiconv-prefix="$(STAGING_DIR)/usr" \
+	--with-libintl-prefix="$(STAGING_DIR)/usr"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
