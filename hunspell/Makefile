@@ -22,7 +22,7 @@ define Package/hunspell
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The most popular spellchecking library.
-	DEPENDS:=+libreadline +libncurses $(ICONV_DEPENDS) $(INTL_DEPENDS)
+	DEPENDS:=+libstdcpp +libreadline +libncurses $(ICONV_DEPENDS) $(INTL_DEPENDS)
 	URL:=https://github.com/hunspell/hunspell
 endef
 
