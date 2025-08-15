@@ -16,7 +16,6 @@ PKG_LICENSE_FILES:=LICENSE.FDL LICENSE.GPL2 LICENSE.GPL3 LICENSE.GPL3-EXCEPT LIC
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-everywhere-src-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=gperf/host python3 nss/host gn/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_CPE_ID:=cpe:/a:qt:qt
@@ -24,10 +23,6 @@ PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
-include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
-
-#export PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real"
-#export GN_PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real"
 
 define Package/qt5-qt3d
 	SECTION:=libs
@@ -48,7 +43,7 @@ define Package/qt5-qtbase
 	SUBMENU:=Qt5
 	TITLE:=qtbase
 	URL:=http://qt-project.org
-	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +libiconv-full +glib2 +md4c +libdbus +libfreetype +libopenssl +libsqlite3 +icu +fontconfig +libinput +libzstd +zlib @!LINUX_2_6_36
+	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +glib2 +md4c +libdbus +libfreetype +libopenssl +libsqlite3 +icu +fontconfig +libinput +libzstd +zlib $(ICONV_DEPENDS) $(INTL_DEPENDS) @!LINUX_2_6_36
 endef
 
 define Package/qt5-qtbase/description
@@ -354,6 +349,32 @@ define Package/qt5-qtsvg/description
 Qt5 - Support for rendering and displaying SVG
 endef
 
+define Package/qt5-qttranslations
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qttranslations
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qttranslations/description
+Qt5 - QtTranslations module
+endef
+
+define Package/qt5-qtvirtualkeyboard
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtvirtualkeyboard
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtsvg +hunspell
+endef
+
+define Package/qt5-qtvirtualkeyboard/description
+Qt5 - Virtual keyboard framework
+endef
+
 define Package/qt5-qtwebchannel
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -367,17 +388,30 @@ define Package/qt5-qtwebchannel/description
 Library for seamless integration of C++ +and QML applications with HTML/JavaScript clients.
 endef
 
-define Package/qt5-qtwebengine
+define Package/qt5-qtwebsockets
 	SECTION:=libs
 	CATEGORY:=Libraries
 	SUBMENU:=Qt5
-	TITLE:=qtwebengine
+	TITLE:=qtwebsockets
 	URL:=http://qt-project.org
-	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +libxslt +lcms2 +libpng +libjpeg-turbo +libfreetype +harfbuzz
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/qt5-qtwebengine/description
-Qt5 - QtWebEngine components
+define Package/qt5-qtwebsockets/description
+Qt5 - Provides WebSocket communication compliant with RFC 6455
+endef
+
+define Package/qt5-qtxmlpatterns
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtxmlpatterns
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtxmlpatterns/description
+Qt5 - QtXmlPatterns component
 endef
 
 EXTRA_CFLAGS += $(FPIC) -ffunction-sections -fdata-sections -flto
@@ -436,7 +470,7 @@ CONFIGURE_ARGS = \
 		-no-gtk \
 		-gui \
 		-system-harfbuzz \
-		-no-iconv \
+		-iconv \
 		-icu \
 		-no-kms \
 		-system-libjpeg \
@@ -461,32 +495,18 @@ CONFIGURE_ARGS = \
 		-no-xcb \
 		-no-xkbcommon \
 		-zstd \
-		-no-compile-examples \
 		-feature-concurrent \
-		-no-feature-gssapi \
 		-feature-testlib \
 		-make libs \
-		-nomake examples \
-		-nomake tests \
-		-nomake tools \
-		-no-webengine-embedded-build \
-		-feature-webengine-system-ninja \
-		-feature-webengine-system-gn \
+		-skip webengine \
 		-v
 
 define Build/Compile
-	STAGING_DIR="$(STAGING_DIR)" \
-	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
-	PKG_CONFIG="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
-	PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" \
-	PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
-	GN_PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
-	GN_HOST_TOOLCHAIN_EXTRA_CPPFLAGS="-I$(STAGING_DIR_HOSTPKG)/include" \
-	$(MAKE) -j4 -C $(PKG_BUILD_DIR)
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
 endef
 
 define Build/InstallDev
-	$(MAKE) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) install
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) install
 endef
 
 define Package/qt5-qt3d/install
@@ -675,6 +695,21 @@ define Package/qt5-qtsvg/install
 	$(CP) $(PKG_BUILD_DIR)/qtsvg/plugins $(1)/usr/lib/qt5/
 endef
 
+define Package/qt5-qttranslations/install
+	$(INSTALL_DIR) $(1)/usr/share/qt5
+	$(CP) $(PKG_BUILD_DIR)/qttranslations/translations $(1)/usr/share/qt5/
+endef
+
+define Package/qt5-qtvirtualkeyboard/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtvirtualkeyboard/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtvirtualkeyboard/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtvirtualkeyboard/qml $(1)/usr/lib/qt5/
+	$(INSTALL_DIR) $(1)/usr/share/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtvirtualkeyboard/lipi_toolkit $(1)/usr/share/qt5/
+endef
+
 define Package/qt5-qtwebchannel/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtwebchannel/lib/*.so* $(1)/usr/lib/
@@ -682,15 +717,20 @@ define Package/qt5-qtwebchannel/install
 	$(CP) $(PKG_BUILD_DIR)/qtwebchannel/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-qtwebengine/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/bin/* $(1)/usr/bin/
+define Package/qt5-qtwebsockets/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtwebsockets/lib/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/qt5
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/libexec $(1)/usr/lib/qt5/
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/plugins $(1)/usr/lib/qt5/
-	$(CP) $(PKG_BUILD_DIR)/qtwebengine/qml $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtwebsockets/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtxmlpatterns/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtxmlpatterns/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtxmlpatterns/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtxmlpatterns/qml $(1)/usr/lib/qt5/
 endef
 
 $(eval $(call BuildPackage,qt5-qt3d))
@@ -718,5 +758,8 @@ $(eval $(call BuildPackage,qt5-qtserialbus))
 $(eval $(call BuildPackage,qt5-qtserialport))
 $(eval $(call BuildPackage,qt5-qtspeech))
 $(eval $(call BuildPackage,qt5-qtsvg))
+$(eval $(call BuildPackage,qt5-qttranslations))
+$(eval $(call BuildPackage,qt5-qtvirtualkeyboard))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
-$(eval $(call BuildPackage,qt5-qtwebengine))
+$(eval $(call BuildPackage,qt5-qtwebsockets))
+$(eval $(call BuildPackage,qt5-qtxmlpatterns))
