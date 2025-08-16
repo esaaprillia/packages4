@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mpv
-PKG_VERSION:=0.39.0
+PKG_VERSION:=0.40.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -88,3 +88,4 @@ define Package/mpv/install
 endef
 
 $(eval $(call BuildPackage,mpv))
+
