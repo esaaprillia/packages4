@@ -30,15 +30,15 @@ define Package/perl-module-build
 endef
 
 define Host/Configure
-	(cd $(HOST_BUILD_DIR); $(PERL_CMD) ./Build.PL --config cc="$(HOSTCC)" installdirs="$(HOST_PERL_PREFIX)");
+	(cd $(HOST_BUILD_DIR); $(PERL_CMD) ./Build.PL --config cc="$(HOSTCC)" installdirs="$(HOST_PERL_PREFIX)")
 endef
 
 define Host/Compile
-	(cd $(HOST_BUILD_DIR); $(PERL_CMD) ./Build);
+	(cd $(HOST_BUILD_DIR); $(PERL_CMD) ./Build)
 endef
 
 define Host/Install
-	(cd $(HOST_BUILD_DIR); $(PERL_CMD) ./Build install);
+	(cd $(HOST_BUILD_DIR); $(PERL_CMD) ./Build install)
 endef
 
 define Build/Configure
@@ -57,3 +57,4 @@ endef
 
 $(eval $(call BuildPackage,perl-module-build))
 $(eval $(call HostBuild))
+
