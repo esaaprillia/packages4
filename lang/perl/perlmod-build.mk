@@ -50,7 +50,7 @@ define perlmod/host/Configure
 	(cd $(HOST_BUILD_DIR); \
 	$(FLOCK) -s -w 300 9 || { echo perlmod/host/Configure: failed to acquire lock; exit 1; }; \
 	$(2) \
-	$(PERL_CMD) Build.PL --config cc=$(GNU_TARGET_NAME)-gcc --config ld=$(GNU_TARGET_NAME)-gcc \
+	$(PERL_CMD) Build.PL --config cc=$(HOSTCC) \
 		$(1) \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock;
 endef
