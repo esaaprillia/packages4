@@ -20,8 +20,6 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
-HOST_CONFIGURE_CMD=./Build
-
 define Package/perl-params-classify
   SUBMENU:=Perl
   SECTION:=lang
@@ -32,7 +30,7 @@ define Package/perl-params-classify
 endef
 
 define Host/Configure
-	(cd $(HOST_BUILD_DIR); $(HOST_CONFIGURE_OPTS) CPPFLAGS="$(HOST_CPPFLAGS)" LDFLAGS="$(HOST_LDFLAGS)" $(PERL_CMD) Build.PL --config ld=)
+	(cd $(HOST_BUILD_DIR); $(HOST_CONFIGURE_OPTS) CPPFLAGS="$(HOST_CPPFLAGS)" LDFLAGS="$(HOST_LDFLAGS)" $(PERL_CMD) Build.PL)
 endef
 
 define Host/Compile
@@ -57,4 +55,3 @@ endef
 
 $(eval $(call BuildPackage,perl-params-classify))
 $(eval $(call HostBuild))
-
