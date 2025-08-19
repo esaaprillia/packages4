@@ -30,7 +30,7 @@ define Package/perl-params-classify
 endef
 
 define Host/Configure
-	(cd $(HOST_BUILD_DIR); $(HOST_CONFIGURE_OPTS) CPPFLAGS="$(HOST_CPPFLAGS)" LDFLAGS="$(HOST_LDFLAGS)" $(PERL_CMD) Build.PL --config CC=$(GNU_HOST_NAME) --config LD=$(GNU_HOST_NAME))
+	(cd $(HOST_BUILD_DIR); $(HOST_CONFIGURE_OPTS) CPPFLAGS="$(HOST_CPPFLAGS)" LDFLAGS="$(HOST_LDFLAGS)" $(PERL_CMD) Build.PL --config cc=$(GNU_HOST_NAME) --config ld=$(GNU_HOST_NAME))
 endef
 
 define Host/Compile
