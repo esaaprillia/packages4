@@ -18,7 +18,7 @@ HOST_BUILD_DEPENDS:=perl/host perl-software-license/host perl-try-tiny/host perl
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../perl/perlmod-build.mk
+include ../perl/perlmod.mk
 
 define Package/perl-module-build
   SUBMENU:=Perl
@@ -30,15 +30,15 @@ define Package/perl-module-build
 endef
 
 define Host/Configure
-        $(call perlmod/host/Configure,,,)
+	(cd $(HOST_BUILD_DIR); $(PERL_CMD) Build.PL --config CC=$(HOSTCC))
 endef
 
 define Host/Compile
-        $(call perlmod/host/Compile,,)
+	(cd $(HOST_BUILD_DIR); ./Build)
 endef
 
 define Host/Install
-        $(call perlmod/host/Install,$(1),)
+	(cd $(HOST_BUILD_DIR); ./Build install)
 endef
 
 define Build/Configure
