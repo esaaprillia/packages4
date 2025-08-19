@@ -42,11 +42,15 @@ define Host/Install
 endef
 
 define Build/Configure
-	$(call perlmod/Configure,,)
+	(cd $(PKG_BUILD_DIR); $(TARGET_CONFIGURE_OPTS) CPPFLAGS="$(TARGET_CPPFLAGS)" LDFLAGS="$(TARGET_LDFLAGS)" $(PERL_CMD) Build.PL)
 endef
 
 define Build/Compile
-	$(call perlmod/Compile,,)
+	(cd $(PKG_BUILD_DIR); ./Build)
+endef
+
+define Build/Install
+	(cd $(PKG_BUILD_DIR); ./Build install --destdir="$(PKG_INSTALL_DIR)" install)
 endef
 
 define Package/perl-params-classify/install
