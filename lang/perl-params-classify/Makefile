@@ -34,7 +34,7 @@ define Host/Configure
 endef
 
 define Host/Compile
-	(cd $(HOST_BUILD_DIR); +$(HOST_MAKE_VARS) ./Build)
+	(cd $(HOST_BUILD_DIR); $(HOST_CONFIGURE_VARS) $(HOST_CONFIGURE_OPTS) CPPFLAGS="$(HOST_CPPFLAGS)" LDFLAGS="$(HOST_LDFLAGS)" ./Build)
 endef
 
 define Host/Install
