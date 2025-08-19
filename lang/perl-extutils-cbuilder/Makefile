@@ -11,7 +11,7 @@ PKG_NAME:=perl-extutils-cbuilder
 PKG_VERSION:=0.280224
 PKG_RELEASE:=1
 
-PKG_SOURCE:=DBI-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=ExtUtils-CBuilder-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://www.cpan.org/authors/id/A/AM/AMBS/
 PKG_HASH:=skip
 
