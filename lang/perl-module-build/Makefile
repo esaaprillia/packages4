@@ -14,7 +14,7 @@ PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Module-Build-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=perl/host perl-software-license/host perl-try-tiny/host perl-inc-latest/host perl-par-dist/host
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Module-Build-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-software-license/host perl-try-tiny/host perl-inc-latest/host perl-par-dist/host
+HOST_BUILD_DEPENDS:=perl/host perl-extutils-cbuilder/host perl-software-license/host perl-try-tiny/host perl-inc-latest/host perl-par-dist/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
