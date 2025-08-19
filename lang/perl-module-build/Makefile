@@ -20,8 +20,6 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
-HOST_CONFIGURE_CMD=./Build
-
 define Package/perl-module-build
   SUBMENU:=Perl
   SECTION:=lang
