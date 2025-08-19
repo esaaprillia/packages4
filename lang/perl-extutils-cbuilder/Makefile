@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2013 
-#                           
+# Copyright (C) 2014, 2015 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,44 +7,59 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ccminer
-PKG_VERSION:=3.8.0
+PKG_NAME:=perl-extutils-cbuilder
+PKG_VERSION:=0.280224
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/monkins1010/ccminer.git
-PKG_SOURCE_DATE:=2023-06-05
-PKG_SOURCE_VERSION:=1667394ad4120d64b0c57367e71cb832ad2e3645
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=DBI-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://www.cpan.org/authors/id/A/AM/AMBS/
+PKG_HASH:=skip
 
+PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
+PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_MAINTAINER:=
-PKG_INSTALL:=1
+PKG_BUILD_DIR:=$(BUILD_DIR)/perl/ExtUtils-CBuilder-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/ExtUtils-CBuilder-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../perl/perlmod.mk
 
-define Package/ccminer
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	+libpthread +libncurses +jansson +libopenssl-devcrypto +zlib +libstdcpp +getopt \
-	+PACKAGE_curl:curl +PACKAGE_libopenssl:libopenssl @!OPENSSL_ENGINE_BUILTIN
-endef
-
-define Package/ccminer/description
-ARM CPU ONLY CCminer Verushash2.2
+define Package/perl-extutils-cbuilder
+  SUBMENU:=Perl
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Compile and link C code for Perl modules
+  URL:=https://metacpan.org/dist/ExtUtils-CBuilder
+  DEPENDS:=perl +perlbase-base +perlbase-config +perlbase-cwd +perlbase-data +perlbase-dynaloader +perlbase-errno +perlbase-essential +perlbase-fcntl +perlbase-file +perlbase-io +perlbase-ipc +perlbase-scalar +perlbase-storable +perlbase-symbol +perlbase-tie +perlbase-universal +perlbase-utf8
 endef
 
 define Build/Configure
-	(cd $(PKG_BUILD_DIR); ./autogen.sh );
-	$(call Build/Configure/Default)
+	$(call perlmod/Configure,,)
 endef
 
-define Package/ccminer/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
+define Build/Compile
+	$(call perlmod/Compile,,)
 endef
 
-$(eval $(call BuildPackage,ccminer))
+define Host/Configure
+	$(call perlmod/host/Configure,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
+endef
+
+define Package/perl-extutils-cbuilder/install
+	$(call perlmod/Install,$(1),DB* auto/DBI,DBI/W32ODBC.pm auto/DBI/*.h)
+endef
+
+
+$(eval $(call BuildPackage,perl-extutils-cbuilder))
+$(eval $(call HostBuild))
