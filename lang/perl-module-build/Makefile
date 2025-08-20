@@ -38,12 +38,7 @@ define Host/Compile
 endef
 
 define Host/Install
-	($(FLOCK) -s -w 300 9 || { echo perlmod/host/Install: failed to acquire lock; exit 1; }; \
-	$(2) \
-	$(MAKE) -C $(HOST_BUILD_DIR) \
-		$(1) \
-		install \
-	) 9> $(TMP_DIR)/.perlmod-perl.flock
+        $(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -62,4 +57,3 @@ endef
 
 $(eval $(call BuildPackage,perl-module-build))
 $(eval $(call HostBuild))
-
