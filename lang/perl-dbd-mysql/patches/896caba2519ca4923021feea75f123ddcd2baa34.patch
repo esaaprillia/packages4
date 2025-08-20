@@ -16,7 +16,7 @@ index 0bf733c..cbe2f06 100644
  use ExtUtils::MakeMaker;
  use Data::Dumper;
 -use Devel::CheckLib;
-+# use Devel::CheckLib;
++#use Devel::CheckLib;
  use File::Path;
  use File::Copy;
  use File::Basename;
