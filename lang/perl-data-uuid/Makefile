@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2013 
-#                           
+# Copyright (C) 2014, 2015 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,43 +7,58 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ccminer
-PKG_VERSION:=3.8.0
+PKG_NAME:=perl-data-uuid
+PKG_VERSION:=1.227
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/monkins1010/ccminer.git
-PKG_SOURCE_DATE:=2023-06-05
-PKG_SOURCE_VERSION:=1667394ad4120d64b0c57367e71cb832ad2e3645
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=Data-UUID-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/G/GT/GTERMARS/
+PKG_HASH:=skip
 
+PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
+PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_MAINTAINER:=
-PKG_INSTALL:=1
+PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Data-UUID-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Data-UUID-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../perl/perlmod.mk
 
-define Package/ccminer
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	+libpthread +libncurses +jansson +zlib +libstdcpp +curl +libopenssl
-endef
-
-define Package/ccminer/description
-ARM CPU ONLY CCminer Verushash2.2
+define Package/perl-data-uuid
+  SUBMENU:=Perl
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Globally/Universally Unique Identifiers (GUIDs/UUIDs)
+  URL:=https://metacpan.org/release/Data-UUID/
+  DEPENDS:=perl +perlbase-base
 endef
 
 define Build/Configure
-	(cd $(PKG_BUILD_DIR); ./autogen.sh );
-	$(call Build/Configure/Default)
+	$(call perlmod/Configure,,)
 endef
 
-define Package/ccminer/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
+define Build/Compile
+	$(call perlmod/Compile,,)
 endef
 
-$(eval $(call BuildPackage,ccminer))
+define Host/Configure
+	$(call perlmod/host/Configure,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
+endef
+
+define Package/perl-data-uuid/install
+	$(call perlmod/Install,$(1),Data auto/Data)
+endef
+
+$(eval $(call BuildPackage,perl-data-uuid))
+$(eval $(call HostBuild))
