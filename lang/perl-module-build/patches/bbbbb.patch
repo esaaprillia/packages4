@@ -1,0 +1,22 @@
+From 5a86986728faf9cb7ce7f23876e3a456072f62a3 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 21 Aug 2025 06:15:55 +0800
+Subject: [PATCH] Update Makefile.PL
+
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 0a94ca3..0a88f31 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -8,7 +8,7 @@ use 5.006001;
+ use lib qw(lib);
+ 
+ # bootstrap configure_requires prereqs
+-BEGIN { do './inc/bootstrap.pl' or die defined($@) ? $@ : $! }
++#BEGIN { do './inc/bootstrap.pl' or die defined($@) ? $@ : $! }
+ 
+ use Module::Build::Compat;
+ 
