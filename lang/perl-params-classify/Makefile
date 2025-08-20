@@ -42,7 +42,7 @@ define Host/Install
 endef
 
 define Build/Configure
-	(cd $(PKG_BUILD_DIR); $(TARGET_CONFIGURE_OPTS) CPPFLAGS="$(TARGET_CPPFLAGS)" LDFLAGS="$(TARGET_LDFLAGS)" $(PERL_CMD) Build.PL)
+	(cd $(PKG_BUILD_DIR); $(TARGET_CONFIGURE_OPTS) CPPFLAGS="$(TARGET_CPPFLAGS)" LDFLAGS="$(TARGET_LDFLAGS)" $(PERL_CMD) Build.PL --config cc=$(GNU_TARGET_NAME)-gcc --config ld=$(GNU_TARGET_NAME)-gcc)
 endef
 
 define Build/Compile
