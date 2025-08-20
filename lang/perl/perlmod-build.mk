@@ -135,7 +135,7 @@ define perlmod/Compile
 	($(FLOCK) -s -w 300 9 || { echo perlmod/Compile: failed to acquire lock; exit 1; }; \
 	PERL5LIB=$(PERL_LIB) \
 	$(2) \
-	$(if $(3),$(3),$(PKG_BUILD_DIR) ./Build) \
+	(cd $(if $(3),$(3),$(PKG_BUILD_DIR); ./Build) \
 		$(1) \
 		install \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock
