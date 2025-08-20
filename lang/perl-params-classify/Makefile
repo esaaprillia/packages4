@@ -18,7 +18,7 @@ PKG_BUILD_DEPENDS:=perl/host perl-module-build/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../perl/perlmod.mk
+include ../perl/perlmod-build.mk
 
 define Package/perl-params-classify
   SUBMENU:=Perl
@@ -30,27 +30,23 @@ define Package/perl-params-classify
 endef
 
 define Host/Configure
-	(cd $(HOST_BUILD_DIR); $(HOST_CONFIGURE_OPTS) CPPFLAGS="$(HOST_CPPFLAGS)" LDFLAGS="$(HOST_LDFLAGS)" $(PERL_CMD) Build.PL)
+        $(call perlmod/host/Configure,,,)
 endef
 
 define Host/Compile
-	(cd $(HOST_BUILD_DIR); ./Build)
+        $(call perlmod/host/Compile,,)
 endef
 
 define Host/Install
-	(cd $(HOST_BUILD_DIR); ./Build install)
+        $(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
-	(cd $(PKG_BUILD_DIR); $(PERL_CMD) Build.PL --config cc=$(GNU_TARGET_NAME)-gcc --config ld=$(GNU_TARGET_NAME)-gcc)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-	(cd $(PKG_BUILD_DIR); ./Build)
-endef
-
-define Build/Install
-	(cd $(PKG_BUILD_DIR); ./Build install --destdir="$(PKG_INSTALL_DIR)" install)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-params-classify/install
