@@ -14,7 +14,7 @@ PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Module-Build-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=perl/host perl-software-license/host perl-try-tiny/host perl-inc-latest/host perl-par-dist/host
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Module-Build-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-extutils-cbuilder/host perl-software-license/host perl-try-tiny/host perl-inc-latest/host perl-par-dist/host
+HOST_BUILD_DEPENDS:=perl/host perl-software-license/host perl-try-tiny/host perl-inc-latest/host perl-par-dist/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -30,15 +30,15 @@ define Package/perl-module-build
 endef
 
 define Host/Configure
-	(cd $(HOST_BUILD_DIR); $(HOST_CONFIGURE_OPTS) CPPFLAGS="$(HOST_CPPFLAGS)" LDFLAGS="$(HOST_LDFLAGS)" $(PERL_CMD) Build.PL)
+        $(call perlmod/host/Configure,,,)
 endef
 
 define Host/Compile
-	(cd $(HOST_BUILD_DIR); ./Build)
+        $(call perlmod/host/Compile,,)
 endef
 
 define Host/Install
-	(cd $(HOST_BUILD_DIR); ./Build install)
+        $(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
