@@ -12,9 +12,8 @@ PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Data-OptList-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-params-util/host perl-sub-install/host
+HOST_BUILD_DEPENDS:=perl/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Data-OptList-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host perl-params-util/host perl-sub-install/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
