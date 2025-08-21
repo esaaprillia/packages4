@@ -12,9 +12,9 @@ PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Archive-Zip-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-test-mockmodule/host
+HOST_BUILD_DEPENDS:=perl/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Archive-Zip-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host perl-test-mockmodule/host
+PKG_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -26,7 +26,7 @@ define Package/perl-archive-zip
   CATEGORY:=Languages
   TITLE:=Perl Archive Zip
   URL:=https://metacpan.org/dist/Archive-Zip
-  DEPENDS:=perl +perlbase-base +perl-test-mockmodule
+  DEPENDS:=perl +perlbase-base
 endef
 
 define Host/Configure
