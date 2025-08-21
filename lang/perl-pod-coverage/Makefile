@@ -12,9 +12,8 @@ PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Pod-Coverage-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-devel-symdump/host perl-pod-parser/host
+HOST_BUILD_DEPENDS:=perl/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Pod-Coverage-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host perl-devel-symdump/host perl-pod-parser/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
