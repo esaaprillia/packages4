@@ -19,9 +19,8 @@ PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Test-Fatal-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-try-tiny/host
+HOST_BUILD_DEPENDS:=perl/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Test-Fatal-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host perl-try-tiny/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -33,7 +32,7 @@ define Package/perl-test-fatal
   CATEGORY:=Languages
   TITLE:=Perl Test Fatal
   URL:=https://metacpan.org/dist/Test-Fatal
-  DEPENDS:=perl +perl-try-tiny
+  DEPENDS:=perl +perlbase-essential +perl-try-tiny
 endef
 
 define Host/Configure
