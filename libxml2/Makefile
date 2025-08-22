@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libxml2
-PKG_VERSION:=2.13.4
+PKG_VERSION:=2.14.5
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=@GNOME/libxml2/$(basename $(PKG_VERSION))
-PKG_HASH:=65d042e1c8010243e617efb02afda20b85c2160acdbfbcb5b26b80cec6515650
+PKG_HASH:=03d006f3537616833c16c53addcdc32a0eb20e55443cba4038307e3fa7d8d44b
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
@@ -160,9 +160,6 @@ define Build/InstallDev
 
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libxml-2.0.pc $(1)/usr/lib/pkgconfig/
-
-	$(INSTALL_DIR) $(2)/share/aclocal/
-	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/share/aclocal/* $(2)/share/aclocal
 endef
 
 define Host/Install
@@ -190,9 +187,6 @@ define Package/libxml2-dev/install
 	$(INSTALL_DIR) $(1)/usr/lib/{cmake,pkgconfig}
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/{cmake,pkgconfig} $(1)/usr/lib/
 	$(SED) "s,$(STAGING_DIR),,g" $(1)/usr/lib/pkgconfig/*.pc
-
-	$(INSTALL_DIR) $(1)/usr/share/aclocal
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/aclocal/* $(1)/usr/share/aclocal
 endef
 
 define Package/libxml2-utils/install
