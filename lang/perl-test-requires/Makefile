@@ -12,9 +12,8 @@ PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Test-Requires-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-test-requires/host
+HOST_BUILD_DEPENDS:=perl/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Test-Requires-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host perl-test-requires/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
