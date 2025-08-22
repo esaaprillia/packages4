@@ -61,5 +61,12 @@ define Package/perl-xml-sax/install
 	$(call perlmod/Install,$(1),XML)
 endef
 
+define Package/perl-xml-sax/postinst
+#!/bin/sh
+
+perl -MXML::SAX -e \
+	"XML::SAX->add_parser(q(XML::SAX::PurePerl))->save_parsers()" 2>&1 >/dev/null
+endef
+
 $(eval $(call BuildPackage,perl-xml-sax))
 $(eval $(call HostBuild))
