@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 Philip Prindeville <philipp@redfish-solutions.com>
+# Copyright (C) 2014 - 2016 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -7,30 +7,44 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-authen-sasl
-PKG_VERSION:=2.16
-PKG_RELEASE:=2
+PKG_NAME:=perl-extutils-pkgconfig
+PKG_VERSION:=1.16
+PKG_RELEASE:=1
 
-PKG_SOURCE_NAME:=Authen-SASL
-PKG_SOURCE_URL:=http://www.cpan.org/authors/id/G/GB/GBARR/
-PKG_SOURCE:=$(PKG_SOURCE_NAME)-$(PKG_VERSION).tar.gz
-PKG_HASH:=6614fa7518f094f853741b63c73f3627168c5d3aca89b1d02b1016dc32854e09
+PKG_SOURCE:=ExtUtils-PkgConfig-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/X/XA/XAOC/
+PKG_HASH:=skip
 
+PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
-PKG_MAINTAINER:=Philip Prindeville <philipp@redfish-solutions.com>
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/$(PKG_SOURCE_NAME)-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/ExtUtils-PkgConfig-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
+PKG_BUILD_DIR:=$(BUILD_DIR)/perl/ExtUtils-PkgConfig-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
-define Package/perl-authen-sasl
+define Package/perl-extutils-pkgconfig
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Generic network authentication protocol framework.
-  URL:=http://search.cpan.org/dist/$(PKG_SOURCE_NAME)/
-  DEPENDS:=perl +perlbase-digest
+  TITLE:=Perl ExtUtils PkgConfig
+  URL:=https://metacpan.org/release/ExtUtils-PkgConfig
+  DEPENDS:=perl +perlbase-base
+endef
+
+define Host/Configure
+        $(call perlmod/host/Configure,,,)
+endef
+
+define Host/Compile
+        $(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+        $(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -41,9 +55,10 @@ define Build/Compile
 	$(call perlmod/Compile,,)
 endef
 
-define Package/perl-authen-sasl/install
-	$(call perlmod/Install,$(1),Authen)
+define Package/perl-extutils-pkgconfig/install
+	$(call perlmod/Install,$(1),ExtUtils)
 endef
 
 
-$(eval $(call BuildPackage,perl-authen-sasl))
+$(eval $(call BuildPackage,perl-extutils-pkgconfig))
+$(eval $(call HostBuild))
