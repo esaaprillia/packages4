@@ -7,32 +7,32 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-extutils-pkgconfig
-PKG_VERSION:=1.16
+PKG_NAME:=perl-net-gemini
+PKG_VERSION:=0.10
 PKG_RELEASE:=1
 
-PKG_SOURCE:=ExtUtils-PkgConfig-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/X/XA/XAOC/
+PKG_SOURCE:=Net-Gemini-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/J/JM/JMATES/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
-HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/ExtUtils-PkgConfig-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Net-Gemini-$(PKG_VERSION)
 HOST_BUILD_DEPENDS:=perl/host
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/ExtUtils-PkgConfig-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Net-Gemini-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
-define Package/perl-extutils-pkgconfig
+define Package/perl-net-gemini
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Perl ExtUtils PkgConfig
-  URL:=https://metacpan.org/release/ExtUtils-PkgConfig
-  DEPENDS:=perl +perlbase-base
+  TITLE:=Small Gemini client library
+  URL:=https://metacpan.org/release/Net-Gemini/
+  DEPENDS:=perl +perlbase-base +perl-cpanel-json-xs +perl-uri +perl-io-socket-ssl +perl-net-ssleay +perl-parse-mime +perl-file-slurper 
 endef
 
 define Host/Configure
@@ -55,10 +55,11 @@ define Build/Compile
 	$(call perlmod/Compile,,)
 endef
 
-define Package/perl-extutils-pkgconfig/install
-	$(call perlmod/Install,$(1),ExtUtils)
+define Package/perl-net-gemini/install
+	$(call perlmod/Install,$(1),Net)
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/gmitool $(1)/usr/bin/
 endef
 
-
-$(eval $(call BuildPackage,perl-extutils-pkgconfig))
+$(eval $(call BuildPackage,perl-net-gemini))
 $(eval $(call HostBuild))
