@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-alien-libxml2
-PKG_VERSION:=0.19
+PKG_VERSION:=0.20
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Alien-Libxml2-$(PKG_VERSION).tar.gz
