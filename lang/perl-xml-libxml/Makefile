@@ -33,7 +33,7 @@ define Package/perl-xml-libxml
   CATEGORY:=Languages
   TITLE:=Perl XML LibXML
   URL:=https://metacpan.org/dist/XML-LibXML
-  DEPENDS:=perl +perl-xml-sax-base +perl-xml-namespacesupport +libxml2 +perl-xml-sax +perl-alien-libxml2
+  DEPENDS:=perl +perl-xml-sax-base +perl-xml-namespacesupport +libxml2 +perl-xml-sax +perl-alien-build +perl-alien-libxml2
 endef
 
 define Host/Configure
