@@ -23,7 +23,7 @@ define Package/perl-test-failwarnings
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Perl inc latest
+  TITLE:=Add test failures if warnings are caught
   URL:=https://metacpan.org/release/Test-FailWarnings
   DEPENDS:=perl +perlbase-base +perl-capture-tiny
 endef
