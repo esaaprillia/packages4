@@ -1,93 +1,49 @@
-From 3bd67bf63ee68c88cc05a66607a79c5cd314a6d2 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
-Date: Tue, 14 Jul 2015 14:25:57 +0200
-Subject: [PATCH] Respect Config's cc ccflags and ldflags
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+perl-Net-LibIDN: cross-compile
 
-The ExtUils::MakeMaker expects LIBS contains only libs and INC contain
-only include paths. Thus you cannot put ldflags od ccflags there. They
-will be injected later when generating the Makefile.
+Upstream-Status: Pending
 
-However to use the flags when checking for libidn, you have to use
-apply them manually only for the manual check.
+Add support for cross-compile allowing the compiler binary to be
+specified into the perl Makefile instead of using the default 'gcc'.
 
-This patch adds cc and ccflags into consideration as some systems
-needs them when using cusotm ldflags.
-
-Signed-off-by: Petr Písař <ppisar@redhat.com>
+Signed-off-by: Greg Moffatt <greg.moffatt@windriver.com>
 ---
- Makefile.PL | 31 +++++++++++++++++++------------
- 1 file changed, 19 insertions(+), 12 deletions(-)
 
-diff --git a/Makefile.PL b/Makefile.PL
-index 6709fe1..47f63db 100644
---- a/Makefile.PL
-+++ b/Makefile.PL
-@@ -47,23 +47,17 @@ sub InitMakeParams
- 		"disable-tld" => \$disable_tld
+--- perl-Net-LibIDN-0.12.orig/Makefile.PL	2009-02-26 07:09:45.000000000 -0500
++++ perl-Net-LibIDN-0.12/Makefile.PL	2010-10-19 09:34:22.811173965 -0400
+@@ -9,6 +9,7 @@
+ my $options;
+ my $testno=1;
+ my %MakeParams = InitMakeParams();
++my $compiler;
+ 
+ WriteMakefile(%MakeParams);
+ 
+@@ -44,7 +45,8 @@
+ 	(
+ 		"with-libidn=s" => \$libdir,
+ 		"with-libidn-inc=s" => \$incdir,
+-		"disable-tld" => \$disable_tld
++		"disable-tld" => \$disable_tld,
++		"compiler=s" => \$compiler
  	);
  
-+	$Params{LIBS} = '';
  	if ($libdir)
- 	{
--		$Params{LIBS} = "-L$libdir -lidn";
--	}
--	else
--	{
--		$Params{LIBS} = $Config{ldflags} . ' -lidn';
-+		$Params{LIBS} .= "-L$libdir ";
- 	}
-+	$Params{LIBS} .= '-lidn';
- 
- 	if ($incdir)
- 	{
- 		$Params{INC} = "-I$incdir";
- 	}
--	else
--	{
--		$Params{INC} = '';
--	}
- 
- 	my $libidn = CheckLibidn($Params{INC}, $Params{LIBS});
- 
-@@ -146,11 +140,24 @@ sub FilterTLD
- 	}
- }
- 
-+sub concat {
-+	my ($a, $b) = @_;
-+	if (!defined $a)
-+	{
-+		$a = '';
-+	}
-+	if (!defined $b)
-+	{
-+		$b = '';
-+	};
-+	return ($a . ' ' . $b);
-+}
-+
- sub CheckCCode
- {
- 	my $code = shift;
--	my $cflags = shift;
--	my $ldflags = shift;
-+	my $cflags = concat($Config{ccflags}, shift);
-+	my $ldflags = concat($Config{ldflags}, shift);
- 	my $output = shift;
- 	my $test = '__test'.$testno++;
- 	local * FILE;
-@@ -165,7 +172,7 @@ sub CheckCCode
+@@ -165,12 +167,17 @@
  		return 0;
  	}
  
 -	foreach my $cc (qw/cc gcc/)
-+	foreach my $cc ($Config{cc}, qw/cc gcc/)
++	foreach my $cc ($compiler, qw/cc gcc/)
  	{
  		unlink($test);
  		system "$cc $cflags -o $test $test.c $ldflags";
--- 
-2.4.3
-
+ 		next if ($? >> 8);
+ 
++		if ($compiler == $cc)
++		{
++			return 1;
++		}
++
+ 		if (open(FILE, "./$test|"))
+ 		{
+ 			my $match;
