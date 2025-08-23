@@ -48,7 +48,7 @@ define Host/Install
 endef
 
 define Build/Configure
-	$(call perlmod/Configure,,)
+	$(call perlmod/Configure,,LIBS="$(STAGING_DIR)/usr/lib" INC="$(STAGING_DIR)/usr/include",)
 endef
 
 define Build/Compile
