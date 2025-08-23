@@ -47,11 +47,6 @@ define Host/Install
         $(call perlmod/host/Install,$(1),)
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) 's,@STAGING_DIR@,$(STAGING_DIR)/usr,g' $(PKG_BUILD_DIR)/Makefile.PL
-endef
-
 define Build/Configure
 	$(call perlmod/Configure,,)
 endef
