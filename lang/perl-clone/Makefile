@@ -16,7 +16,7 @@ PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/
 PKG_HASH:=skip
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Clone-$(PKG_VERSION)
-HOST_BUILD_DIR:=$(BUILD_DIR)/perl/Clone-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Clone-$(PKG_VERSION)
 HOST_BUILD_DEPENDS:=perl/host
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
