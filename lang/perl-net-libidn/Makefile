@@ -47,8 +47,10 @@ define Host/Install
         $(call perlmod/host/Install,$(1),)
 endef
 
+MOD_CFLAGS_PERL += --with-libidn=$(STAGING_DIR)/usr/lib --with-libidn-inc=$(STAGING_DIR)/usr/include
+
 define Build/Configure
-	$(call perlmod/Configure,,with-libidn="$(STAGING_DIR)/usr/lib" with-libidn-inc="$(STAGING_DIR)/usr/include",)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
