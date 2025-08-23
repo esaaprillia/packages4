@@ -7,31 +7,31 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-extutils-pkgconfig
-PKG_VERSION:=1.16
+PKG_NAME:=perl-xml-writer
+PKG_VERSION:=0.900
 PKG_RELEASE:=1
 
-PKG_SOURCE:=ExtUtils-PkgConfig-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/X/XA/XAOC/
+PKG_SOURCE:=XML-Writer-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/J/JO/JOSEPHW/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
-HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/ExtUtils-PkgConfig-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/XML-Writer-$(PKG_VERSION)
 HOST_BUILD_DEPENDS:=perl/host
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/ExtUtils-PkgConfig-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/perl/XML-Writer-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
-define Package/perl-extutils-pkgconfig
+define Package/perl-xml-writer
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Perl ExtUtils PkgConfig
-  URL:=https://metacpan.org/release/ExtUtils-PkgConfig
+  TITLE:=Perl extension for writing XML documents
+  URL:=https://metacpan.org/dist/XML-Writer
   DEPENDS:=perl +perlbase-base
 endef
 
@@ -55,10 +55,9 @@ define Build/Compile
 	$(call perlmod/Compile,,)
 endef
 
-define Package/perl-extutils-pkgconfig/install
-	$(call perlmod/Install,$(1),ExtUtils)
+define Package/perl-xml-writer/install
+	$(call perlmod/Install,$(1),XML)
 endef
 
-
-$(eval $(call BuildPackage,perl-extutils-pkgconfig))
+$(eval $(call BuildPackage,perl-xml-writer))
 $(eval $(call HostBuild))
