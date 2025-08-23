@@ -7,32 +7,32 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=perl-extutils-pkgconfig
-PKG_VERSION:=1.16
+PKG_NAME:=perl-anyevent-xmpp
+PKG_VERSION:=0.55
 PKG_RELEASE:=1
 
-PKG_SOURCE:=ExtUtils-PkgConfig-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/X/XA/XAOC/
+PKG_SOURCE:=AnyEvent-XMPP-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/J/JO/JOSEPHW/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 
-HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/ExtUtils-PkgConfig-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/AnyEvent-XMPP-$(PKG_VERSION)
 HOST_BUILD_DEPENDS:=perl/host
-PKG_BUILD_DIR:=$(BUILD_DIR)/perl/ExtUtils-PkgConfig-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/perl/AnyEvent-XMPP-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
-define Package/perl-extutils-pkgconfig
+define Package/perl-anyevent-xmpp
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Perl ExtUtils PkgConfig
-  URL:=https://metacpan.org/release/ExtUtils-PkgConfig
-  DEPENDS:=perl +perlbase-base
+  TITLE:=AnyEvent implementation of the XMPP Protocol
+  URL:=https://metacpan.org/release/AnyEvent-XMPP/
+  DEPENDS:=perl +perlbase-base +perl-anyevent +perl-authen-sasl +perl-net-libidn +perl-net-ssleay +perl-object-event +perl-xml-parser +perl-xml-twig +perl-xml-writer
 endef
 
 define Host/Configure
@@ -55,10 +55,9 @@ define Build/Compile
 	$(call perlmod/Compile,,)
 endef
 
-define Package/perl-extutils-pkgconfig/install
-	$(call perlmod/Install,$(1),ExtUtils)
+define Package/perl-anyevent-xmpp/install
+	$(call perlmod/Install,$(1),AnyEvent)
 endef
 
-
-$(eval $(call BuildPackage,perl-extutils-pkgconfig))
+$(eval $(call BuildPackage,perl-anyevent-xmpp))
 $(eval $(call HostBuild))
