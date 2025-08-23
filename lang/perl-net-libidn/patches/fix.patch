@@ -1,24 +1,63 @@
-From 32e5d505527045fd5ddfddd13ac90b65b6ec5452 Mon Sep 17 00:00:00 2001
+From 0248c1d1ed643bf0bdee15a4455d9bf8d132f16d Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Sat, 23 Aug 2025 15:21:26 +0800
+Date: Sat, 23 Aug 2025 16:19:26 +0800
 Subject: [PATCH] Update Makefile.PL
 
 ---
- Makefile.PL | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ Makefile.PL | 46 ----------------------------------------------
+ 1 file changed, 46 deletions(-)
 
 diff --git a/Makefile.PL b/Makefile.PL
-index 6709fe1..c98ce2d 100644
+index 6709fe1..779c0ff 100644
 --- a/Makefile.PL
 +++ b/Makefile.PL
-@@ -42,8 +42,8 @@ sub InitMakeParams
+@@ -193,49 +193,3 @@ sub CheckCCode
+ 	return 0;
+ }
  
- 	GetOptions
- 	(
--		"with-libidn=s" => \$libdir,
--		"with-libidn-inc=s" => \$incdir,
-+		"with-libidn=@STAGING_DIR@/lib" => \$libdir,
-+		"with-libidn-inc=@STAGING_DIR@/include" => \$incdir,
- 		"disable-tld" => \$disable_tld
- 	);
- 
+-sub CheckLibidn
+-{
+-	my $cflags = shift;
+-	my $ldflags = shift;
+-	my $result;
+-	my $final;
+-	local * FILE;
+-
+-	my $test1 = <<EOT;
+-#include <idna.h>
+-#include <stdio.h>
+-int main(void)
+-{
+-	char * output;
+-	int res;
+-	
+-	res = idna_to_ascii_8z("libidn", &output, 0);
+-	printf("%d-%s", res, output);
+-
+-	return 0;
+-}
+-EOT
+-	return $result unless CheckCCode($test1, $cflags, $ldflags, "0-libidn");
+-
+-	$result = 1;
+-
+-	my $test2 = <<EOT;
+-#include <tld.h>
+-#include <stdio.h>
+-int main(void)
+-{
+-	char * output;
+-	int res;
+-
+-	res =tld_get_z ("libidn.idn", &output);	
+-	printf("%d-%s", res, output);
+-	
+-	return 0;
+-}
+-EOT
+-
+-	return $result unless CheckCCode($test2, $cflags, $ldflags, "0-idn");
+-	
+-	return 2;
+-}
+-
