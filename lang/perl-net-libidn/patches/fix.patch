@@ -1,0 +1,24 @@
+From 32e5d505527045fd5ddfddd13ac90b65b6ec5452 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 23 Aug 2025 15:21:26 +0800
+Subject: [PATCH] Update Makefile.PL
+
+---
+ Makefile.PL | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 6709fe1..c98ce2d 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -42,8 +42,8 @@ sub InitMakeParams
+ 
+ 	GetOptions
+ 	(
+-		"with-libidn=s" => \$libdir,
+-		"with-libidn-inc=s" => \$incdir,
++		"with-libidn=@STAGING_DIR@/lib" => \$libdir,
++		"with-libidn-inc=@STAGING_DIR@/include" => \$incdir,
+ 		"disable-tld" => \$disable_tld
+ 	);
+ 
