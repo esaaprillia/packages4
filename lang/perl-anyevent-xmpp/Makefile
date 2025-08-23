@@ -12,7 +12,7 @@ PKG_VERSION:=0.55
 PKG_RELEASE:=1
 
 PKG_SOURCE:=AnyEvent-XMPP-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/J/JO/JOSEPHW/
+PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
