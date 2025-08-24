@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSES
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/DBD-mysql-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=perl-dbi/host perl-devel-checklib/host
+PKG_BUILD_DEPENDS:=perl-dbi/host
 
 include $(INCLUDE_DIR)/package.mk
 include ../perl/perlmod.mk
