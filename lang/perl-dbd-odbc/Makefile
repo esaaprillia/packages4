@@ -29,7 +29,7 @@ define Package/perl-dbd-odbc
 endef
 
 define Build/Configure
-	$(call perlmod/Configure,,)
+	$(call perlmod/Configure,,ODBCHOME="$(STAGING_DIR)/usr",)
 endef
 
 define Build/Compile
