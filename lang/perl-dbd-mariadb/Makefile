@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-dbd-mariadb
-PKG_VERSION:=1.23
+PKG_VERSION:=1.24
 PKG_RELEASE:=1
 
 PKG_SOURCE:=DBD-MariaDB-$(PKG_VERSION).tar.gz
