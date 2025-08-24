@@ -29,7 +29,7 @@ define Package/perl-dbd-mysql
 endef
 
 define Build/Configure
-	$(call perlmod/Configure,,LIBS="-L$(STAGING_DIR)/usr/lib -lmariadb",)
+	$(call perlmod/Configure,LIBS="-L$(STAGING_DIR)/usr/lib -lmariadb",,)
 endef
 
 define Build/Compile
