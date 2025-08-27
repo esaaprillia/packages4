@@ -749,6 +749,7 @@ class Project():
             # interpreter path that may have been specified in user
             # provided native files
             f'--native-file={os.fspath(self._meson_native_file)}',
+            f'--cross-file={os.fspath(self._meson_cross_file)}',
         ]
         if reconfigure:
             setup_args.insert(0, '--reconfigure')
