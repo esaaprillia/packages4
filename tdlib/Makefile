@@ -1,49 +1,68 @@
-#
-# Copyright (C) 2016 Nikil Mehta <nikil.mehta@gmail.com>
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=nss-mdns
-PKG_VERSION:=0.15.1
+PKG_NAME:=tdlib
+PKG_VERSION:=1.8.52
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/avahi/nss-mdns/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=skip
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/tdlib/td.git
+PKG_SOURCE_VERSION:=4269f54e16b9cf564efc2db5bcd29743a2eec6ee
+PKG_MIRROR_HASH:=skip
 
-PKG_MAINTAINER:=Nikil Mehta <nikil.mehta@gmail.com>
-PKG_LICENSE:=BSD-4-Clause
-PKG_LICENSE_FILES:=COPYING
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=BSL-1.0 license
+PKG_LICENSE_FILES:=LICENSE_1_0.txt
 
-PKG_INSTALL:=1
-PKG_FIXUP:=autoreconf
-PKG_BUILD_PARALLEL:=1
+CMAKE_BINARY_SUBDIR := build
 
+HOST_BUILD_DEPENDS:=gperf/host
+PKG_BUILD_DEPENDS:=gperf/host
+
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/nss-mdns
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=sends ICMP ECHO_REQUEST packets to network hosts
-  URL:=https://fping.org/
+define Package/tdlib
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Cross-platform library for building Telegram clients
+	DEPENDS:=+libstdcpp +zlib +libopenssl
+	URL:=https://github.com/tdlib/td
 endef
 
-define Package/nss-mdns/description
-  fping is a ping like program which uses the Internet Control Message Protocol
-  (ICMP) echo request to determine if a target host is responding.  fping
-  differs from ping in that you can specify any number of targets on the command
-  line, or specify a file containing the lists of targets to ping.  Instead of
-  sending to one target until it times out or replies, fping will send out a
-  ping packet and move on to the next target in a round-robin fashion.
+define Package/tdlib/description
+	TDLib (Telegram Database library) is a cross-platform library for building Telegram clients.
+	It can be easily used from almost any programming language.
 endef
 
-define Package/nss-mdns/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_SUID) $(PKG_INSTALL_DIR)/usr/sbin/fping $(1)/usr/bin/
+CMAKE_OPTIONS += \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_CROSSCOMPILING=ON \
+	-DBUILD_SHARED_LIBS=ON \
+	-DTD_ALWAYS_GENERATE_SOURCE=ON
+
+define Build/InstallDev
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/td \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,cmake,*.so*,*.a} \
+	  $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,nss-mdns))
+define Package/tdlib/install
+	$(INSTALL_DIR) \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(1)/usr/lib/
+endef
+
+$(eval $(call HostBuild))
+$(eval $(call BuildPackage,tdlib))
