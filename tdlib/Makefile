@@ -41,6 +41,13 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DTD_ALWAYS_GENERATE_SOURCE=ON
 
+define Build/Compile
+	touch $(PKG_BUILD_DIR)/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir/generate_mime_types_gperf.cpp.o
+	$(HOSTCC) $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf.cpp \
+		-o $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf
+	$(call Build/Compile/Default)
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/include \
