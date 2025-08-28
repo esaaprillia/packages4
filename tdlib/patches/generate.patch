@@ -1,14 +1,14 @@
-From 0487e3e582012846be6c17f8deabda7890bbac10 Mon Sep 17 00:00:00 2001
+From 4e3a273e191d086dfd3f83ccc8f6787c61daaf79 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Thu, 28 Aug 2025 15:24:10 +0800
+Date: Thu, 28 Aug 2025 17:35:51 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- td/generate/CMakeLists.txt | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ td/generate/CMakeLists.txt | 48 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
 diff --git a/td/generate/CMakeLists.txt b/td/generate/CMakeLists.txt
-index 9e71ad2a1101..c41c3a1a9ea5 100644
+index 9e71ad2a1101..cba357cdfd2f 100644
 --- a/td/generate/CMakeLists.txt
 +++ b/td/generate/CMakeLists.txt
 @@ -185,6 +185,14 @@ if (NOT CMAKE_CROSSCOMPILING)
@@ -18,11 +18,83 @@ index 9e71ad2a1101..c41c3a1a9ea5 100644
 +
 +if(DEFINED TL_GENERATE_MTPROTO_CXX_COMPILER)
 +	set(CMAKE_CXX_COMPILER "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
-+	set(CMAKE_CXX_FLAGS "")
-+	set(CMAKE_EXE_LINKER_FLAGS "${TL_GENERATE_MTPROTO_EXE_LINKER_FLAGS}")
++	set(CMAKE_CXX_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_EXE_LINKER_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
 +	set(CMAKE_SYSROOT "")
 +endif()
 +
    target_link_libraries(generate_mtproto PRIVATE tdtl tl_writer_cpp)
    add_custom_target(tl_generate_mtproto
      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/auto
+@@ -194,6 +202,14 @@ if (NOT CMAKE_CROSSCOMPILING)
+   )
+ 
+   add_executable(generate_common ${TL_GENERATE_COMMON_SOURCE})
++
++if(DEFINED TL_GENERATE_MTPROTO_CXX_COMPILER)
++	set(CMAKE_CXX_COMPILER "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_CXX_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_EXE_LINKER_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_SYSROOT "")
++endif()
++
+   target_link_libraries(generate_common PRIVATE tdtl tl_writer_cpp)
+   add_custom_target(tl_generate_common
+     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/auto
+@@ -206,6 +222,14 @@ if (NOT CMAKE_CROSSCOMPILING)
+   endif()
+ 
+   add_executable(generate_c ${TL_GENERATE_C_SOURCE})
++
++if(DEFINED TL_GENERATE_MTPROTO_CXX_COMPILER)
++	set(CMAKE_CXX_COMPILER "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_CXX_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_EXE_LINKER_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_SYSROOT "")
++endif()
++
+   target_link_libraries(generate_c PRIVATE tdtl)
+   add_custom_target(tl_generate_c
+     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/auto
+@@ -215,10 +239,26 @@ if (NOT CMAKE_CROSSCOMPILING)
+   )
+ 
+   add_executable(td_generate_java_api ${TL_GENERATE_JAVA_SOURCE})
++
++if(DEFINED TL_GENERATE_MTPROTO_CXX_COMPILER)
++	set(CMAKE_CXX_COMPILER "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_CXX_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_EXE_LINKER_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_SYSROOT "")
++endif()
++
+   target_link_libraries(td_generate_java_api PRIVATE tdtl)
+   target_compile_definitions(td_generate_java_api PRIVATE GIT_COMMIT_HASH=${TD_GIT_COMMIT_HASH})
+ 
+   add_executable(generate_json ${TL_GENERATE_JSON_SOURCE})
++
++if(DEFINED TL_GENERATE_MTPROTO_CXX_COMPILER)
++	set(CMAKE_CXX_COMPILER "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_CXX_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_EXE_LINKER_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_SYSROOT "")
++endif()
++
+   target_link_libraries(generate_json PRIVATE tdtl tdutils)
+   add_custom_target(tl_generate_json
+     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/auto
+@@ -241,6 +281,14 @@ if (NOT CMAKE_CROSSCOMPILING)
+     endif()
+ 
+     add_executable(td_generate_dotnet_api generate_dotnet.cpp tl_writer_dotnet.h)
++
++if(DEFINED TL_GENERATE_MTPROTO_CXX_COMPILER)
++	set(CMAKE_CXX_COMPILER "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_CXX_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_EXE_LINKER_FLAGS "${TL_GENERATE_MTPROTO_CXX_COMPILER}")
++	set(CMAKE_SYSROOT "")
++endif()
++
+     target_link_libraries(td_generate_dotnet_api PRIVATE tdtl)
+     add_custom_target(generate_dotnet_api
+       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/auto
