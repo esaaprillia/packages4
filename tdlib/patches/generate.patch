@@ -1,0 +1,27 @@
+From 3528aff5bd77aafcaf3013ae0cdc3f766f3352b1 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 28 Aug 2025 14:53:51 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ td/generate/CMakeLists.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/td/generate/CMakeLists.txt b/td/generate/CMakeLists.txt
+index 9e71ad2a1101..32b176a961be 100644
+--- a/td/generate/CMakeLists.txt
++++ b/td/generate/CMakeLists.txt
+@@ -6,6 +6,13 @@ if (NOT DEFINED CMAKE_INSTALL_BINDIR)
+   set(CMAKE_INSTALL_BINDIR "bin")
+ endif()
+ 
++if(DEFINED GENERATE_CXX_COMPILER)
++	set(CMAKE_CXX_COMPILER "${GENERATE_CXX_COMPILER}")
++	set(CMAKE_CXX_FLAGS "")
++	set(CMAKE_EXE_LINKER_FLAGS "")
++	set(CMAKE_SYSROOT "")
++endif()
++
+ file(MAKE_DIRECTORY auto/td/telegram)
+ file(MAKE_DIRECTORY auto/td/mtproto)
+ file(MAKE_DIRECTORY auto/tlo)
