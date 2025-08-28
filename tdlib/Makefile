@@ -45,10 +45,10 @@ CMAKE_OPTIONS += \
 	-DTD_ALWAYS_GENERATE_SOURCE=ON
 
 define Build/Compile
-	mkdir -p $(CMAKE_BINARY_SUBDIR)/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir
-	touch $(CMAKE_BINARY_SUBDIR)/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir/generate_mime_types_gperf.cpp.o
-	$(HOSTCXX_NOCACHE) $(CMAKE_BINARY_SUBDIR)/tdutils/generate/generate_mime_types_gperf.cpp \
-		-o $(CMAKE_BINARY_SUBDIR)/tdutils/generate/generate_mime_types_gperf
+	mkdir -p $(CMAKE_BINARY_DIR)/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir
+	touch $(CMAKE_BINARY_DIR)/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir/generate_mime_types_gperf.cpp.o
+	$(HOSTCXX_NOCACHE) $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf.cpp \
+		-o $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf
 	$(call Build/Compile/Default)
 endef
 
