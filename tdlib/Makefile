@@ -42,15 +42,8 @@ CMAKE_OPTIONS += \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_CROSSCOMPILING=OFF \
 	-DBUILD_SHARED_LIBS=ON \
-	-DTD_ALWAYS_GENERATE_SOURCE=ON
-
-define Build/Compile
-	mkdir -p $(PKG_BUILD_DIR)/build/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir
-	touch $(PKG_BUILD_DIR)/build/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir/generate_mime_types_gperf.cpp.o
-	$(HOSTCXX) $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf.cpp \
-		-o $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf
-	$(call Build/Compile/Default)
-endef
+	-DTD_ALWAYS_GENERATE_SOURCE=ON \
+	-DGPERF_CXX_COMPILER="$(CMAKE_HOST_CXX_COMPILER)"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
