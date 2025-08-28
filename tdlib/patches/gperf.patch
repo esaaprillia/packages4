@@ -1,0 +1,27 @@
+From 910ec7df1556c21bf648ad8058c757cd947fc4ed Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 28 Aug 2025 12:55:49 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ tdutils/generate/CMakeLists.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/tdutils/generate/CMakeLists.txt b/tdutils/generate/CMakeLists.txt
+index 389f553f6aae..4e0cd8774f1c 100644
+--- a/tdutils/generate/CMakeLists.txt
++++ b/tdutils/generate/CMakeLists.txt
+@@ -37,6 +37,13 @@ if (NOT CMAKE_CROSSCOMPILING)
+ 
+   add_executable(generate_mime_types_gperf ${GPERF_GEN_SOURCE})
+ 
++if(DEFINED GPERF_CXX_COMPILER)
++	set(CMAKE_CXX_COMPILER "${GPERF_CXX_COMPILER}")
++	set(CMAKE_CXX_FLAGS "")
++	set(CMAKE_EXE_LINKER_FLAGS "")
++	set(CMAKE_SYSROOT "")
++endif()
++
+   add_custom_command(
+     OUTPUT ${GPERF_FILES}
+     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
