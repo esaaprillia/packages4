@@ -43,7 +43,7 @@ CMAKE_OPTIONS += \
 
 define Build/Compile
 	touch $(PKG_BUILD_DIR)/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir/generate_mime_types_gperf.cpp.o
-	$(HOSTCC) $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf.cpp \
+	$(HOSTCXX_NOCACHE) $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf.cpp \
 		-o $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf
 	$(call Build/Compile/Default)
 endef
