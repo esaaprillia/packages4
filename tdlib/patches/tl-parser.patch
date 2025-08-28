@@ -1,0 +1,27 @@
+From f81a48f3810f11f52436e38459316e85ed677f0f Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 28 Aug 2025 13:52:19 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ td/generate/tl-parser/CMakeLists.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/td/generate/tl-parser/CMakeLists.txt b/td/generate/tl-parser/CMakeLists.txt
+index 6778c80b07f5..82556d9ab937 100644
+--- a/td/generate/tl-parser/CMakeLists.txt
++++ b/td/generate/tl-parser/CMakeLists.txt
+@@ -14,6 +14,13 @@ endif()
+ 
+ add_executable(${PROJECT_NAME} ${SOURCES})
+ 
++if(DEFINED TL_PARSER_C_COMPILER)
++	set(CMAKE_C_COMPILER "${TL_PARSER_C_COMPILER}")
++	set(CMAKE_C_FLAGS "")
++	set(CMAKE_EXE_LINKER_FLAGS "")
++	set(CMAKE_SYSROOT "")
++endif()
++
+ if (NOT WIN32)
+   target_link_libraries(${PROJECT_NAME} PRIVATE m)
+ endif()
