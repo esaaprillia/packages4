@@ -18,6 +18,9 @@ CMAKE_BINARY_SUBDIR := build
 HOST_BUILD_DEPENDS:=gperf/host
 PKG_BUILD_DEPENDS:=gperf/host
 
+PKG_USE_NINJA:=0
+PKG_BUILD_PARALLEL:=1
+
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -37,14 +40,14 @@ endef
 
 CMAKE_OPTIONS += \
 	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_CROSSCOMPILING=OFF \
+	-DCMAKE_CROSSCOMPILING=ON \
 	-DBUILD_SHARED_LIBS=ON \
 	-DTD_ALWAYS_GENERATE_SOURCE=ON
 
 define Build/Compile
-	touch $(PKG_BUILD_DIR)/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir/generate_mime_types_gperf.cpp.o
-	$(HOSTCXX_NOCACHE) $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf.cpp \
-		-o $(PKG_BUILD_DIR)/tdutils/generate/generate_mime_types_gperf
+	touch $(CMAKE_BINARY_SUBDIR)/tdutils/generate/CMakeFiles/generate_mime_types_gperf.dir/generate_mime_types_gperf.cpp.o
+	$(HOSTCXX_NOCACHE) $(CMAKE_BINARY_SUBDIR)/tdutils/generate/generate_mime_types_gperf.cpp \
+		-o $(CMAKE_BINARY_SUBDIR)/tdutils/generate/generate_mime_types_gperf
 	$(call Build/Compile/Default)
 endef
 
