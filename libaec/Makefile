@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libaec
-PKG_VERSION:=1.1.3
+PKG_VERSION:=1.1.4
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
