@@ -20,7 +20,6 @@ PKG_HOST_ONLY:=1
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(INCLUDE_DIR)/meson.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
