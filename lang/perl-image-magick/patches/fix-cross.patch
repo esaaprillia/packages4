@@ -28,3 +28,25 @@ index 0c16f9a..ce0b1cc 100644
  
  if (($^O eq 'MSWin32') && ($Config{cc} =~ /gcc/)) {
    my($Ipaths, $Lpaths) = AutodetectWin32gcc();
+
+From 6da889b98e9c0839a4f7ceb77d1204c2bdf405da Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 30 Aug 2025 20:35:44 +0800
+Subject: [PATCH] Update Makefile.PL
+
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 0c16f9a..6700232 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -266,6 +266,6 @@ sub MY::makeaperl {
+      # tries to insert our library path first. Also, use the same compiler used
+      # to build perlmain.c to link so that a C++ compiler may be used if
+      # necessary.
+-     $inherited =~ s:MAP_LINKCMD\s.*\s*\$\(CC\):MAP_LINKCMD   = \$(PERLMAINCC) -L/usr/local/lib: ;
++     $inherited =~ s:MAP_LINKCMD\s.*\s*\$\(CC\):MAP_LINKCMD   = \$(PERLMAINCC) -L@STAGING_DIR@/lib: ;
+      $inherited;
+  }
