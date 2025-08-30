@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-matplotlib
-PKG_VERSION:=3.10.0
+PKG_VERSION:=3.10.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=matplotlib
-PKG_HASH:=b886d02a581b96704c9d1ffe55709e49b4d2d52709ccebc4be42db856e511278
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LICENSE
