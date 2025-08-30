@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-contourpy
-PKG_VERSION:=1.3.1
+PKG_VERSION:=1.3.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=contourpy
-PKG_HASH:=dfd97abd83335045a913e3bcc4a09c0ceadbe66580cf573fe961f4a825efa699
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
