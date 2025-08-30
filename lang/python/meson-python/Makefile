@@ -19,6 +19,7 @@ PKG_HOST_ONLY:=1
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
+include $(INCLUDE_DIR)/meson.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
@@ -47,6 +48,12 @@ define Host/Prepare
 	$(SED) 's,@STAGING_DIR_HOST@,$(STAGING_DIR_HOST),' \
 		$(HOST_BUILD_DIR)/pyproject.toml
 endef
+
+define FixPython
+	$(SED) "s,^python.*,python = '$(STAGING_DIR_HOSTPKG)/bin/python3'," \
+		$(HOST_BUILD_DIR)/openwrt-*.txt
+endef
+Hooks/HostCompile/Pre += FixPython
 
 define Host/Uninstall
 	rm -rf $(HOST_PYTHON3_PKG_DIR)/mesonpy
