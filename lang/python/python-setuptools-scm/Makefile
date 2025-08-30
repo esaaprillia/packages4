@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-setuptools-scm
-PKG_VERSION:=8.3.1
+PKG_VERSION:=9.2.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=setuptools-scm
 PYPI_SOURCE_NAME:=setuptools_scm
-PKG_HASH:=3d555e92b75dacd037d32bafdf94f97af51ea29ae8c7b234cf94b7a5bd242a63
+PKG_HASH:=skip
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
