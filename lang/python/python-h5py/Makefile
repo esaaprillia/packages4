@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-h5py
-PKG_VERSION:=3.13.0
+PKG_VERSION:=3.14.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=h5py
@@ -18,7 +18,7 @@ include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
 PYTHON3_PKG_SETUP_VARS += \
-	HDF5_VERSION=1.14.5 \
+	HDF5_VERSION=1.14.6 \
 	H5PY_ROS3=0 \
 	H5PY_DIRECT_VFD=0 \
 	HDF5_INCLUDEDIR="$(STAGING_DIR)/usr/include" \
