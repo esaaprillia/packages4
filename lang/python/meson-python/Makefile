@@ -49,12 +49,6 @@ define Host/Prepare
 		$(HOST_BUILD_DIR)/pyproject.toml
 endef
 
-define FixPython
-	$(SED) "s,^python.*,python = '$(STAGING_DIR_HOSTPKG)/bin/python3'," \
-		$(HOST_BUILD_DIR)/openwrt-*.txt
-endef
-Hooks/HostCompile/Pre += FixPython
-
 define Host/Uninstall
 	rm -rf $(HOST_PYTHON3_PKG_DIR)/mesonpy
 	rm -rf $(HOST_PYTHON3_PKG_DIR)/$(PYPI_NAME)-$(PKG_VERSION).dist-info
