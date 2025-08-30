@@ -4,7 +4,7 @@
  [build-system]
  build-backend = "backend"
  requires = [
--  "setuptools>=67.8",
+-  "setuptools>=77",
 +  "setuptools",
  ]
  backend-path = [
