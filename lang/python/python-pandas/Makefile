@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pandas
-PKG_VERSION:=2.2.3
+PKG_VERSION:=2.3.2
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=pandas
-PKG_HASH:=4f18ba62b61d7e192368b84517265a99b4d7ee8912f8708660fb4a366cc82667
+PKG_HASH:=skip
 
 HOST_BUILD_DEPENDS:=numpy/host python-cython/host meson-python/host python-versioneer/host
 PKG_BUILD_DEPENDS:=numpy/host python-cython/host meson-python/host python-versioneer/host
