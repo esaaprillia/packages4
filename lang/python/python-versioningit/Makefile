@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-versioningit
-PKG_VERSION:=3.1.2
+PKG_VERSION:=3.3.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=versioningit
-PKG_HASH:=4db83ed99f56b07d83940bee3445ca46ca120d13b6b304cdb5fb44e5aa4edec0
+PKG_HASH:=skip
 
 HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host
 
