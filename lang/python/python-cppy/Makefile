@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cppy
-PKG_VERSION:=1.3.0
+PKG_VERSION:=1.3.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=cppy
-PKG_HASH:=da7413a286d5d31626ba35ed2c70ddfb033520cc81310088ba5a57d34039f604
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
