@@ -14,6 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host pyproject-metadata/host
 HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host pyproject-metadata/host
 
+MESON_USE_STAGING_PYTHON:=1
 PKG_HOST_ONLY:=1
 
 include ../pypi.mk
