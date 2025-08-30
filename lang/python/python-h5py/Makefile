@@ -5,7 +5,7 @@ PKG_VERSION:=3.14.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=h5py
-PKG_HASH:=1870e46518720023da85d0895a1960ff2ce398c5671eac3b1a41ec696b7105c3
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
