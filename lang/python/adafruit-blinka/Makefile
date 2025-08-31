@@ -24,7 +24,7 @@ define Package/python3-adafruit-blinka
   SUBMENU:=Python
   TITLE:=CircuitPython APIs for non-CircuitPython versions of Python such as CPython on Linux and MicroPython.
   URL:=https://github.com/adafruit/Adafruit_Blinka
-  DEPENDS:=+python3-light +python3-adafruit-platformdetect +python3-adafruit-pureIo +python3-binho-host-adapter +python3-pyftdi +python3-adafruit-circuitpython-typing +python3-sysv-ipc
+  DEPENDS:=+python3-light +python3-adafruit-platformdetect +python3-adafruit-pureio +python3-binho-host-adapter +python3-pyftdi +python3-adafruit-circuitpython-typing +python3-sysv-ipc
 endef
 
 define Package/python3-adafruit-blinka/description
