@@ -5,7 +5,6 @@ PKG_VERSION:=8.65.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=Adafruit-Blinka
-PYPI_SOURCE_NAME:=adafruit_blinka
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
