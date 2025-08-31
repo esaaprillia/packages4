@@ -23,7 +23,8 @@ define Package/python3-adafruit-circuitpython-requests
   CATEGORY:=Languages
   TITLE:=A requests-like library for web interfacing
   URL:=https://github.com/adafruit/Adafruit_CircuitPython_Requests
-  DEPENDS:=+python3 +python3-requests +python3-adafruit-blinka +python3-adafruit-circuitpython-connectionmanager
+  DEPENDS:=+python3 +python3-requests +python3-adafruit-circuitpython-connectionmanager
+  EXTRA_DEPENDS:=python3-adafruit-blinka
 endef
 
 define Package/python3-adafruit-circuitpython-requests/description
