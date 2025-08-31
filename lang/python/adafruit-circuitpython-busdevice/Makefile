@@ -23,7 +23,8 @@ define Package/python3-adafruit-circuitpython-busdevice
   CATEGORY:=Languages
   TITLE:=CircuitPython bus device classes to manage bus sharing.
   URL:=https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
-  DEPENDS:=+python3 +python3-adafruit-circuitpython-typing
+  DEPENDS:=+python3
+  EXTRA_DEPENDS:=python3-adafruit-blinka, python3-adafruit-circuitpython-typing
 endef
 
 define Package/python3-adafruit-circuitpython-busdevice/description
