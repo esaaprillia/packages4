@@ -4,8 +4,7 @@ PKG_NAME:=adafruit-pureio
 PKG_VERSION:=1.1.11
 PKG_RELEASE:=1
 
-PYPI_NAME:=Adafruit-PureIO
-PYPI_SOURCE_NAME:=adafruit_pureio
+PYPI_NAME:=Adafruit_PureIO
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
