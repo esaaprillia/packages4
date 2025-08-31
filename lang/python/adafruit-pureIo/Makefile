@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=adafruit-pureIo
+PKG_NAME:=adafruit-pureio
 PKG_VERSION:=1.1.11
 PKG_RELEASE:=1
 
@@ -18,7 +18,7 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-define Package/python3-adafruit-pureIo
+define Package/python3-adafruit-pureio
   SECTION:=lang
   CATEGORY:=Languages
   SUBMENU:=Python
@@ -27,10 +27,10 @@ define Package/python3-adafruit-pureIo
   DEPENDS:=+python3-light
 endef
 
-define Package/python3-adafruit-pureIo/description
+define Package/python3-adafruit-pureio/description
 Pure python (i.e. no native extensions) access to Linux IO including I2C and SPI. Drop in replacement for smbus and spidev modules.
 endef
 
-$(eval $(call Py3Package,python3-adafruit-pureIo))
-$(eval $(call BuildPackage,python3-adafruit-pureIo))
-$(eval $(call BuildPackage,python3-adafruit-pureIo-src))
+$(eval $(call Py3Package,python3-adafruit-pureio))
+$(eval $(call BuildPackage,python3-adafruit-pureio))
+$(eval $(call BuildPackage,python3-adafruit-pureio-src))
