@@ -27,7 +27,7 @@ define Package/python3-adafruit-circuitpython-pixelbuf
 endef
 
 define Package/python3-adafruit-circuitpython-pixelbuf/description
-Sysv_ipc gives Python programs access to System V semaphores, shared memory and message queues. Most (all?) Unixes (including OS X) support System V IPC. Windows+Cygwin 1.7 might also work.
+Pure python implementation of adafruit_pixelbuf for smaller boards
 endef
 
 $(eval $(call Py3Package,python3-adafruit-circuitpython-pixelbuf))
