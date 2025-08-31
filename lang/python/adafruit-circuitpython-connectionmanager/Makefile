@@ -23,7 +23,8 @@ define Package/python3-adafruit-circuitpython-connectionmanager
   CATEGORY:=Languages
   TITLE:=A urllib3.poolmanager/urllib3.connectionpool-like library for managing sockets and connections
   URL:=https://github.com/adafruit/Adafruit_CircuitPython_ConnectionManager
-  DEPENDS:=+python3 +python3-adafruit-blinka
+  DEPENDS:=+python3
+  EXTRA_DEPENDS:=python3-adafruit-blinka
 endef
 
 define Package/python3-adafruit-circuitpython-connectionmanager/description
