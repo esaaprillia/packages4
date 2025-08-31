@@ -1,6 +1,6 @@
-From 0c394a6decd7a9dd7433d9477818b2a0b632e1e5 Mon Sep 17 00:00:00 2001
+From dfdbe5ce6849ba6b59e13a316843615b042f821b Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sun, 31 Aug 2025 23:44:23 +0800
+Date: Mon, 1 Sep 2025 00:29:24 +0800
 Subject: [PATCH] Update pyproject.toml
 
 ---
@@ -8,15 +8,15 @@ Subject: [PATCH] Update pyproject.toml
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index 99856c0bd9..39218c21b7 100644
+index 60fce65dcc..658bb597d9 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -1,7 +1,7 @@
  # This file is protected via CODEOWNERS
  
  [build-system]
--requires = ["hatchling>=1.27.0,<2", "hatch-vcs>=0.4.0,<0.6.0", "setuptools-scm>=8,<9"]
-+requires = ["hatchling>=1.27.0,<2", "hatch-vcs>=0.4.0,<0.6.0", "setuptools-scm"]
+-requires = ["hatchling>=1.6.0,<2", "hatch-vcs>=0.4.0,<0.6.0", "setuptools-scm>=8,<9"]
++requires = ["hatchling>=1.6.0,<2", "hatch-vcs>=0.4.0,<0.6.0", "setuptools-scm"]
  build-backend = "hatchling.build"
  
  [project]
