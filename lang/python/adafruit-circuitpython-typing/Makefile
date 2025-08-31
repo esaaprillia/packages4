@@ -23,7 +23,7 @@ define Package/python3-adafruit-circuitpython-typing
   CATEGORY:=Languages
   TITLE:=Definitions not in the standard typing module that are needed for type annotation of CircuitPython code.
   URL:=https://github.com/adafruit/Adafruit_CircuitPython_Typing
-  DEPENDS:=+python3 +python3-adafruit-circuitpython-busdevice +python3-adafruit-circuitpython-requests +python3-typing-extensions
+  DEPENDS:=+python3 +python3-adafruit-blinka +python3-adafruit-circuitpython-busdevice +python3-adafruit-circuitpython-requests +python3-typing-extensions
 endef
 
 define Package/python3-adafruit-circuitpython-typing/description
