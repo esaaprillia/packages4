@@ -8,7 +8,7 @@ PYPI_NAME:=rpi_ws281x
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=BSD-2-Clause
+PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 include ../pypi.mk
