@@ -17,6 +17,13 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(RM) $(PKG_BUILD_DIR)/src/adafruit_blinka/microcontroller/bcm283x
+	$(RM) $(PKG_BUILD_DIR)/src/adafruit_blinka/microcontroller/amlogic/meson_g12_common
+	$(RM) $(PKG_BUILD_DIR)/src/adafruit_blinka/microcontroller/amlogic/a311d
+endef
+
 define Package/python3-adafruit-blinka
   SECTION:=lang
   CATEGORY:=Languages
