@@ -1,0 +1,792 @@
+From 7e1e636451feabbb3201249754d55210d1af0840 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 1 Sep 2025 12:50:45 +0800
+Subject: [PATCH] Delete src/adafruit_blinka/microcontroller/amlogic/a311d
+ directory
+
+---
+ .../microcontroller/amlogic/a311d/__init__.py |   0
+ .../microcontroller/amlogic/a311d/pin.py      | 164 ----------------
+ .../amlogic/a311d/pulseio/PulseIn.py          | 183 ------------------
+ .../amlogic/a311d/pulseio/__init__.py         |   0
+ .../amlogic/a311d/pulseio/libgpiod_pulsein    | Bin 20372 -> 0 bytes
+ .../a311d/pulseio/libgpiod_pulsein.license    |   3 -
+ .../amlogic/a311d/pulseio/libgpiod_pulsein64  | Bin 25832 -> 0 bytes
+ .../a311d/pulseio/libgpiod_pulsein64.license  |   3 -
+ 8 files changed, 353 deletions(-)
+ delete mode 100644 src/adafruit_blinka/microcontroller/amlogic/a311d/__init__.py
+ delete mode 100644 src/adafruit_blinka/microcontroller/amlogic/a311d/pin.py
+ delete mode 100644 src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/PulseIn.py
+ delete mode 100644 src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/__init__.py
+ delete mode 100755 src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein
+ delete mode 100644 src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein.license
+ delete mode 100755 src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein64
+ delete mode 100644 src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein64.license
+
+diff --git a/src/adafruit_blinka/microcontroller/amlogic/a311d/__init__.py b/src/adafruit_blinka/microcontroller/amlogic/a311d/__init__.py
+deleted file mode 100644
+index e69de29b..00000000
+diff --git a/src/adafruit_blinka/microcontroller/amlogic/a311d/pin.py b/src/adafruit_blinka/microcontroller/amlogic/a311d/pin.py
+deleted file mode 100644
+index 3213e38e..00000000
+--- a/src/adafruit_blinka/microcontroller/amlogic/a311d/pin.py
++++ /dev/null
+@@ -1,164 +0,0 @@
+-# SPDX-FileCopyrightText: 2021 Melissa LeBlanc-Williams for Adafruit Industries
+-#
+-# SPDX-License-Identifier: MIT
+-"""
+-G12A, G12B, and SM1 Common Definitions
+-Ref:
+-Linux kernel 4.9.y (hardkernel)
+-    linux/include/dt-bindings/gpio/meson-g12a-gpio.h
+-Linux kernel 5.4.y (mainline)
+-    linux/include/dt-bindings/gpio/meson-g12a-gpio.h
+-    linux/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
+-"""
+-
+-import gpiod
+-from adafruit_blinka.microcontroller.alias import get_dts_alias
+-from adafruit_blinka.microcontroller.generic_linux.libgpiod_pin import Pin
+-
+-chip0 = gpiod.Chip("0")
+-chip1 = gpiod.Chip("1")
+-
+-if chip0.num_lines() < 20:
+-    aobus = 0
+-    periphs = 1
+-    periphs_offset = chip1.num_lines() - 85
+-else:
+-    aobus = 1
+-    periphs = 0
+-    periphs_offset = chip0.num_lines() - 85
+-
+-chip0.close()
+-chip1.close()
+-
+-GPIOAO_0 = GPIO496 = Pin((aobus, 0))
+-GPIOAO_1 = GPIO497 = Pin((aobus, 1))
+-GPIOAO_2 = GPIO498 = Pin((aobus, 2))
+-GPIOAO_3 = GPIO499 = Pin((aobus, 3))
+-GPIOAO_4 = GPIO500 = Pin((aobus, 4))
+-GPIOAO_5 = GPIO501 = Pin((aobus, 5))
+-GPIOAO_6 = GPIO502 = Pin((aobus, 6))
+-GPIOAO_7 = GPIO503 = Pin((aobus, 7))
+-GPIOAO_8 = GPIO504 = Pin((aobus, 8))
+-GPIOAO_9 = GPIO505 = Pin((aobus, 9))
+-GPIOAO_10 = GPIO506 = Pin((aobus, 10))
+-GPIOAO_11 = GPIO507 = Pin((aobus, 11))
+-
+-GPIOE_0 = GPIO508 = Pin((aobus, 12))
+-GPIOE_1 = GPIO509 = Pin((aobus, 13))
+-GPIOE_2 = GPIO510 = Pin((aobus, 14))
+-
+-GPIOZ_0 = GPIO427 = Pin((periphs, 0 + periphs_offset))
+-GPIOZ_1 = GPIO428 = Pin((periphs, 1 + periphs_offset))
+-GPIOZ_2 = GPIO429 = Pin((periphs, 2 + periphs_offset))
+-GPIOZ_3 = GPIO430 = Pin((periphs, 3 + periphs_offset))
+-GPIOZ_4 = GPIO431 = Pin((periphs, 4 + periphs_offset))
+-GPIOZ_5 = GPIO432 = Pin((periphs, 5 + periphs_offset))
+-GPIOZ_6 = GPIO433 = Pin((periphs, 6 + periphs_offset))
+-GPIOZ_7 = GPIO434 = Pin((periphs, 7 + periphs_offset))
+-GPIOZ_8 = GPIO435 = Pin((periphs, 8 + periphs_offset))
+-GPIOZ_9 = GPIO436 = Pin((periphs, 9 + periphs_offset))
+-GPIOZ_10 = GPIO437 = Pin((periphs, 10 + periphs_offset))
+-GPIOZ_11 = GPIO438 = Pin((periphs, 11 + periphs_offset))
+-GPIOZ_12 = GPIO439 = Pin((periphs, 12 + periphs_offset))
+-GPIOZ_13 = GPIO440 = Pin((periphs, 13 + periphs_offset))
+-GPIOZ_14 = GPIO441 = Pin((periphs, 14 + periphs_offset))
+-GPIOZ_15 = GPIO442 = Pin((periphs, 15 + periphs_offset))
+-
+-GPIOH_0 = GPIO443 = Pin((periphs, 16 + periphs_offset))
+-GPIOH_1 = GPIO444 = Pin((periphs, 17 + periphs_offset))
+-GPIOH_2 = GPIO445 = Pin((periphs, 18 + periphs_offset))
+-GPIOH_3 = GPIO446 = Pin((periphs, 19 + periphs_offset))
+-GPIOH_4 = GPIO447 = Pin((periphs, 20 + periphs_offset))
+-GPIOH_5 = GPIO448 = Pin((periphs, 21 + periphs_offset))
+-GPIOH_6 = GPIO449 = Pin((periphs, 22 + periphs_offset))
+-GPIOH_7 = GPIO450 = Pin((periphs, 23 + periphs_offset))
+-GPIOH_8 = GPIO451 = Pin((periphs, 24 + periphs_offset))
+-
+-BOOT_0 = GPIO452 = Pin((periphs, 25 + periphs_offset))
+-BOOT_1 = GPIO453 = Pin((periphs, 26 + periphs_offset))
+-BOOT_2 = GPIO454 = Pin((periphs, 27 + periphs_offset))
+-BOOT_3 = GPIO455 = Pin((periphs, 28 + periphs_offset))
+-BOOT_4 = GPIO456 = Pin((periphs, 29 + periphs_offset))
+-BOOT_5 = GPIO457 = Pin((periphs, 30 + periphs_offset))
+-BOOT_6 = GPIO458 = Pin((periphs, 31 + periphs_offset))
+-BOOT_7 = GPIO459 = Pin((periphs, 32 + periphs_offset))
+-BOOT_8 = GPIO460 = Pin((periphs, 33 + periphs_offset))
+-BOOT_9 = GPIO461 = Pin((periphs, 34 + periphs_offset))
+-BOOT_10 = GPIO462 = Pin((periphs, 35 + periphs_offset))
+-BOOT_11 = GPIO463 = Pin((periphs, 36 + periphs_offset))
+-BOOT_12 = GPIO464 = Pin((periphs, 37 + periphs_offset))
+-BOOT_13 = GPIO465 = Pin((periphs, 38 + periphs_offset))
+-BOOT_14 = GPIO466 = Pin((periphs, 39 + periphs_offset))
+-BOOT_15 = GPIO467 = Pin((periphs, 40 + periphs_offset))
+-
+-GPIOC_0 = GPIO468 = Pin((periphs, 41 + periphs_offset))
+-GPIOC_1 = GPIO469 = Pin((periphs, 42 + periphs_offset))
+-GPIOC_2 = GPIO470 = Pin((periphs, 43 + periphs_offset))
+-GPIOC_3 = GPIO471 = Pin((periphs, 44 + periphs_offset))
+-GPIOC_4 = GPIO472 = Pin((periphs, 45 + periphs_offset))
+-GPIOC_5 = GPIO473 = Pin((periphs, 46 + periphs_offset))
+-GPIOC_6 = GPIO474 = Pin((periphs, 47 + periphs_offset))
+-GPIOC_7 = GPIO475 = Pin((periphs, 48 + periphs_offset))
+-
+-GPIOA_0 = GPIO460 = Pin((periphs, 49 + periphs_offset))
+-GPIOA_1 = GPIO461 = Pin((periphs, 50 + periphs_offset))
+-GPIOA_2 = GPIO462 = Pin((periphs, 51 + periphs_offset))
+-GPIOA_3 = GPIO463 = Pin((periphs, 52 + periphs_offset))
+-GPIOA_4 = GPIO464 = Pin((periphs, 53 + periphs_offset))
+-GPIOA_5 = GPIO465 = Pin((periphs, 54 + periphs_offset))
+-GPIOA_6 = GPIO466 = Pin((periphs, 55 + periphs_offset))
+-GPIOA_7 = GPIO467 = Pin((periphs, 56 + periphs_offset))
+-GPIOA_8 = GPIO468 = Pin((periphs, 57 + periphs_offset))
+-GPIOA_9 = GPIO469 = Pin((periphs, 58 + periphs_offset))
+-GPIOA_10 = GPIO470 = Pin((periphs, 59 + periphs_offset))
+-GPIOA_11 = GPIO471 = Pin((periphs, 60 + periphs_offset))
+-GPIOA_12 = GPIO472 = Pin((periphs, 61 + periphs_offset))
+-GPIOA_13 = GPIO473 = Pin((periphs, 62 + periphs_offset))
+-GPIOA_14 = GPIO474 = Pin((periphs, 63 + periphs_offset))
+-GPIOA_15 = GPIO475 = Pin((periphs, 64 + periphs_offset))
+-
+-GPIOX_0 = GPIO476 = Pin((periphs, 65 + periphs_offset))
+-GPIOX_1 = GPIO477 = Pin((periphs, 66 + periphs_offset))
+-GPIOX_2 = GPIO478 = Pin((periphs, 67 + periphs_offset))
+-GPIOX_3 = GPIO479 = Pin((periphs, 68 + periphs_offset))
+-GPIOX_4 = GPIO480 = Pin((periphs, 69 + periphs_offset))
+-GPIOX_5 = GPIO481 = Pin((periphs, 70 + periphs_offset))
+-GPIOX_6 = GPIO482 = Pin((periphs, 71 + periphs_offset))
+-GPIOX_7 = GPIO483 = Pin((periphs, 72 + periphs_offset))
+-GPIOX_8 = GPIO484 = Pin((periphs, 73 + periphs_offset))
+-GPIOX_9 = GPIO485 = Pin((periphs, 74 + periphs_offset))
+-GPIOX_10 = GPIO486 = Pin((periphs, 75 + periphs_offset))
+-GPIOX_11 = GPIO487 = Pin((periphs, 76 + periphs_offset))
+-GPIOX_12 = GPIO488 = Pin((periphs, 77 + periphs_offset))
+-GPIOX_13 = GPIO489 = Pin((periphs, 78 + periphs_offset))
+-GPIOX_14 = GPIO490 = Pin((periphs, 79 + periphs_offset))
+-GPIOX_15 = GPIO491 = Pin((periphs, 80 + periphs_offset))
+-GPIOX_16 = GPIO492 = Pin((periphs, 81 + periphs_offset))
+-GPIOX_17 = GPIO493 = Pin((periphs, 82 + periphs_offset))
+-GPIOX_18 = GPIO494 = Pin((periphs, 83 + periphs_offset))
+-GPIOX_19 = GPIO495 = Pin((periphs, 84 + periphs_offset))
+-
+-SPI0_SCLK = GPIOA_1
+-SPI0_MCLK0 = GPIOA_0
+-SPI0_SDO = GPIOA_3
+-SPI0_SDI = GPIOA_4
+-
+-# ordered as spiId, sckId, mosiId, misoId
+-spiPorts = ((0, SPI0_SCLK, SPI0_MCLK0, SPI0_SDO, SPI0_SDI),)
+-
+-UART1_TX = GPIOH_7
+-UART1_RX = GPIOH_6
+-
+-# ordered as uartId, txId, rxId
+-uartPorts = ((1, UART1_TX, UART1_RX),)
+-
+-# ordered as i2cId, sclId, sdaId
+-i2cPorts = []
+-
+-alias = get_dts_alias("ff805000.i2c")
+-if alias is not None:
+-    globals()[alias + "_SCL"] = GPIOX_18
+-    globals()[alias + "_SDA"] = GPIOX_17
+-    i2cPorts.append((int(alias[3]), GPIOX_18, GPIOX_17))
+-
+-i2cPorts = tuple(i2cPorts)
+diff --git a/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/PulseIn.py b/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/PulseIn.py
+deleted file mode 100644
+index 4f7ae362..00000000
+--- a/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/PulseIn.py
++++ /dev/null
+@@ -1,183 +0,0 @@
+-# SPDX-FileCopyrightText: 2021 Melissa LeBlanc-Williams for Adafruit Industries
+-#
+-# SPDX-License-Identifier: MIT
+-"""Custom PulseIn Class to read PWM signals"""
+-import time
+-import subprocess
+-import os
+-import atexit
+-import random
+-import struct
+-import sysv_ipc
+-
+-DEBUG = False
+-queues = []
+-procs = []
+-
+-
+-# The message queues live outside of python space, and must be formally cleaned!
+-def final():
+-    """In case the program is cancelled or quit, we need to clean up the PulseIn
+-    helper process and also the message queue, this is called at exit to do so"""
+-    if DEBUG:
+-        print("Cleaning up message queues", queues)
+-        print("Cleaning up processes", procs)
+-    for q in queues:
+-        q.remove()
+-    for proc in procs:
+-        proc.terminate()
+-
+-
+-atexit.register(final)
+-
+-
+-# pylint: disable=c-extension-no-member
+-class PulseIn:
+-    """PulseIn Class to read PWM signals"""
+-
+-    def __init__(self, pin, maxlen=2, idle_state=False):
+-        """Create a PulseIn object associated with the given pin.
+-        The object acts as a read-only sequence of pulse lengths with
+-        a given max length. When it is active, new pulse lengths are
+-        added to the end of the list. When there is no more room
+-        (len() == maxlen) the oldest pulse length is removed to make room."""
+-        self._pin = pin
+-        self._maxlen = maxlen
+-        self._idle_state = idle_state
+-        self._queue_key = random.randint(1, 9999)
+-        try:
+-            self._mq = sysv_ipc.MessageQueue(None, flags=sysv_ipc.IPC_CREX)
+-            if DEBUG:
+-                print("Message Queue Key: ", self._mq.key)
+-            queues.append(self._mq)
+-        except sysv_ipc.ExistentialError:
+-            raise RuntimeError(
+-                "Message queue creation failed"
+-            ) from sysv_ipc.ExistentialError
+-
+-        # Check if OS is 64-bit
+-        if struct.calcsize("P") * 8 == 64:  # pylint: disable=no-member
+-            libgpiod_filename = "libgpiod_pulsein64"
+-        else:
+-            libgpiod_filename = "libgpiod_pulsein"
+-
+-        dir_path = os.path.dirname(os.path.realpath(__file__))
+-        cmd = [
+-            dir_path + "/" + libgpiod_filename,
+-            "--pulses",
+-            str(maxlen),
+-            "--queue",
+-            str(self._mq.key),
+-        ]
+-        if idle_state:
+-            cmd.append("-i")
+-        cmd.append("gpiochip0")
+-        cmd.append(str(pin))
+-        if DEBUG:
+-            print(cmd)
+-
+-        self._process = subprocess.Popen(cmd)  # pylint: disable=consider-using-with
+-        procs.append(self._process)
+-
+-        # wait for it to start up
+-        if DEBUG:
+-            print("Waiting for startup success message from subprocess")
+-        message = self._wait_receive_msg(timeout=0.25)
+-        if message[0] != b"!":
+-            raise RuntimeError("Could not establish message queue with subprocess")
+-        self._paused = False
+-
+-    # pylint: disable=redefined-builtin
+-    def _wait_receive_msg(self, timeout=0, type=2):
+-        """Internal helper that will wait for new messages of a given type,
+-        and throw an exception on timeout"""
+-        if timeout > 0:
+-            stamp = time.monotonic()
+-            while (time.monotonic() - stamp) < timeout:
+-                try:
+-                    message = self._mq.receive(block=False, type=type)
+-                    return message
+-                except sysv_ipc.BusyError:
+-                    time.sleep(0.001)  # wait a bit then retry!
+-            # uh-oh timed out
+-            raise RuntimeError(
+-                "Timed out waiting for PulseIn message. Make sure libgpiod is installed."
+-            )
+-        message = self._mq.receive(block=True, type=type)
+-        return message
+-
+-    # pylint: enable=redefined-builtin
+-
+-    def deinit(self):
+-        """Deinitialises the PulseIn and releases any hardware and software
+-        resources for reuse."""
+-        # Clean up after ourselves
+-        self._process.terminate()
+-        procs.remove(self._process)
+-        self._mq.remove()
+-        queues.remove(self._mq)
+-
+-    def __enter__(self):
+-        """No-op used by Context Managers."""
+-        return self
+-
+-    def __exit__(self, exc_type, exc_value, tb):
+-        """Automatically deinitializes the hardware when exiting a context."""
+-        self.deinit()
+-
+-    def resume(self, trigger_duration=0):
+-        """Resumes pulse capture after an optional trigger pulse."""
+-        if trigger_duration != 0:
+-            self._mq.send("t%d" % trigger_duration, True, type=1)
+-        else:
+-            self._mq.send("r", True, type=1)
+-        self._paused = False
+-
+-    def pause(self):
+-        """Pause pulse capture"""
+-        self._mq.send("p", True, type=1)
+-        self._paused = True
+-
+-    @property
+-    def paused(self):
+-        """True when pulse capture is paused as a result of pause() or
+-        an error during capture such as a signal that is too fast."""
+-        return self._paused
+-
+-    @property
+-    def maxlen(self):
+-        """The maximum length of the PulseIn. When len() is equal to maxlen,
+-        it is unclear which pulses are active and which are idle."""
+-        return self._maxlen
+-
+-    def clear(self):
+-        """Clears all captured pulses"""
+-        self._mq.send("c", True, type=1)
+-
+-    def popleft(self):
+-        """Removes and returns the oldest read pulse."""
+-        self._mq.send("^", True, type=1)
+-        message = self._wait_receive_msg()
+-        reply = int(message[0].decode("utf-8"))
+-        # print(reply)
+-        if reply == -1:
+-            raise IndexError("pop from empty list")
+-        return reply
+-
+-    def __len__(self):
+-        """Returns the current pulse length"""
+-        self._mq.send("l", True, type=1)
+-        message = self._wait_receive_msg()
+-        return int(message[0].decode("utf-8"))
+-
+-    # pylint: disable=redefined-builtin
+-    def __getitem__(self, index, type=None):
+-        """Returns the value at the given index or values in slice."""
+-        self._mq.send("i%d" % index, True, type=1)
+-        message = self._wait_receive_msg()
+-        ret = int(message[0].decode("utf-8"))
+-        if ret == -1:
+-            raise IndexError("list index out of range")
+-        return ret
+-
+-    # pylint: enable=redefined-builtin
+diff --git a/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/__init__.py b/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/__init__.py
+deleted file mode 100644
+index e69de29b..00000000
+diff --git a/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein b/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein
+deleted file mode 100755
+index 0291c1b4669cd98f02f2d1c9d489ed13f1d9ca2f..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 20372
+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
+L_`J;o&j$YwmyIb%
+
+diff --git a/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein.license b/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein.license
+deleted file mode 100644
+index cc693300..00000000
+--- a/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein.license
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# SPDX-FileCopyrightText: 2021 Melissa LeBlanc-Williams for Adafruit Industries
+-#
+-# SPDX-License-Identifier: MIT
+diff --git a/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein64 b/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein64
+deleted file mode 100755
+index 0143060ba9a7451f75a73c7cea934fcb8a6304da..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 25832
+zcmeHwdwf*Ywf~++LU;$lBZ!id@DwGy5=;<f^1vj3h#|IGe|2UuGa)0%WSE&?5DNqK
+zQ?Y0-(?p3P7-@U2Nxk=Sy?Srx<JZ*M{<yWhABvWXwt6Q4y;Q74k-}7Pe&4kpGiOd_
+zu%A!=yC2Vo$vXSH*IIk+wb$NfpL6!v>{zw-HnYjZ)L~)&&L}l$x<G6)qxq}y1jNS5
+z*hu`H!LDQ3NLx83@@;}3R~(n5YDIG-ZUH5^GP3}TR2I(^RTdJ>5+Z5;hDrpiDC4ye
+zf63PMD@6YK6+)w;m&h0#{>g$WIWmvr9JdJEaf^^slu7#)RrMov^lOm$Mp`Y@F-3`&
+zj`i<`+;o0;Ax{pYrv=OuRdRPij_mwvk6g)EFU!m1m&4RhI22Xwu&~A3xUj{&pvCKJ
+z?^xh;23*a{N{WMR#fwF~Nk8${th<ZE8L1h;&qV$tiBbNGAFjUkg_}RQ_&>jX`9Jo2
+zV@v+C_qy6iR{f;dUrj7*G|N>L)Ja)bKATseY9KOxisVEck2-xJ1Ac!7d^`j-C9J0z
+z_!lBBiu8Q){C)6GNP{2CpyyNu{`JtGu3pX1oeuxU4EUA|<^D$oye)%0;SBn3&0y!h
+zX3#%61OM+b=zk>xo}WQaLk9laGuSgF1AYVaX!seANCy6|Wx#3NOxIpN$bf$@1Ab42
+z`hGJ5|3?{cYX&_}qoV2TTn=0_IsxhW40`ruD0f!|e0B!BECbFkZf*2?+uSr(En)V$
+zhTH9KPr$R$8w_~@4YyadwD~*@&c+rGv)ebew)yPAkTVdn+XZV{My}89YWDi=8$BUA
+zhC~n3VQqeo&)&Gz?sK*(oLKAu&*pYdFl29Q5Bb|eQbOjmc$~o$<{%VrakjLlfJ%ec
+zXHY<92yRr@A8HPGoV>z|m`vDP+e4lXdnmBArOmY|fx5sL@+6XiDTPBo?Y=ai*XIq9
+zdtKz(Wz5roWSc+a^|@KlyV2)tVX!hte_YMZ0Ba3y47j#1XJcC+1YbLYK@a@g<n*?%
+zU?>o3<D|voW38T6)SmcJEs@vW!djgzuz>|#%^tTM`TV54#S@@1oq>&DM7#20g0KLh
+z!0l+=jjZW`fETp{6!Nxu+M3+Xtx^y9%^&c#A%CmA)!6~NTpdn(lNZ)|AEc0=`pJ-J
+zb$Wd)=mWnm)Wn(s9uKQoTUS|SUsAmICKd8#Obig}xc-SVkzz8Hq;y7Hbe&9csx#6i
+z&IJcu8%^vSP`b=%`0a~4iOau*-A8J0P`(3wKwSn!zB!Sv<~<fUfylj9$lWdHMG8ME
+zCtwZ(er$o@4;%2467MnKQHc*2@N*K68t_XJXL7!!>|w>CT+M*zNZe+?b0yxq63)P(
+z^c<Zh^mG{T{5u6-*nrnc{ICJ<ka)iVua)`-4EXbs|EK})k%Q+k1AbWYpETh85?>_e
+zGpb%HZ8PBc(hq*A$Aos*&lh*=a5aY|5AD_ABZbTO-)<c~T8H=OaQ!^yc^xi8jY~y!
+z_*|VHW)tmThMjT>%5!scxSIP?My?Lm-yh`ba5euVeocq#>pM?}k0M5SEYjg)6bM?T
+z!^i4yn+_kR!)tXo%^B6PUWcnbOL=$eaQ*ewp~Lf(63}KHPIGK^_;q;V76+LfI(&*^
+z1`X@*sXBbO4$s%&dv*9U9p0_OuhHQ>I$Yi3QTFpXTpuTgb@+8UJ^ea-h7KRl;RQPU
+zs1Db3_%R(`sKZa{@FE=^)!{RB_!%8OONXD+;j?x4B^^FThcnrKDgNb9!gF(U`1Lye
+zTpd1Nhv(~Xnv<$S)8RKN5cJBnpY&d_u*k2?tn13QpFTfev7gXovvbJb%h<6ApVh>2
+zhgL>3bHRxM&GK9IL*BUwW?L-R%y=G8XCqytOOHajQkNcwbfYdk5$RpJ^c18I>C)FA
+z{faI<1L+}Mx(I2rDOvs;q>FUv`AApl(#1$O>e5S)-la<~L;8>|y&UORbm?1>9@3>N
+zkv5x?<==*MkuJR&=}KLC9ny`ubUo6$bm=c4eMp!73evCW()S@fq)Rs<ZMG!KZ$i3A
+zm%bnAN?qEAbfYdEKzf%hy#?t*y7YrczoJWTM|wz?-i5T;nk@etNEhkS-$c4nm;M&g
+zjk@%=k=`ZJx%s<}$6bqFyRwb(xV-4H^zK9a<+E`8r@^e={fM`1r>v37|5+2eaId-d
+zg3BC<ZL;?M#bWB40-kAK3)i3DVCp?@Ve_LK%#kxo*_AVvxig|Sv)JjIZLu(PS;C7W
+zi1EXNmTUUVY;h!N$(#RA@%X-hF_&&C7%*)f7{wY|Ev%v7SEkJx&c|ls{FrI;Pl266
+zxm~cKYgble7RswMh3f|`llvUZ7JImem7iM4VmCuqcpN(ty~7qewbB-2%vP>lj+Z#W
+zL*=sYlE{nT(I8(2TF_(K+(Tu27iCyk1L>!{@UE=#*W>Z21t)<oXLPH2m}!e6J0OD*
+zyPkY?Wt*+{{Dz9&3-?y`UUXIU#x_;=ei~fWduFNa3jDZ-`g6gnkS}8mpTKryZ`f>$
+zO@N+1lb>KG*~l)&OLhY1<wTc69+ftZCmZ*gHb1v)xDJNA95#1`($RARD=mX<--F#}
+zO|0t#=ne}je-1Qku_em?__O%Fn67N?JjzDC@XzAN{j%(H;0vS8*s&V0+l~aymNl-2
+zzSg<J%r@U;vF!O{4r|zv%{H^etf42{7Nb}hL`+aU8#cKvorL`P_iJK<sH4Noj%cW7
+zw3wA*wz1a+I|~PvM9zb!z{>t5ynr>Fz&IGSOzL|NnC(XPlGAKE@(gs2gFQR{R1?z}
+zi)r)OOIzl!(#h0DXe$=2F7KJeN;;8GX;TlCWsAi~M-eNf_UtHRrQOhjHjNbSuyryU
+ziyW}9uBU*RPSwP4KYfgJ{}Pz?yPBAZg^yo=JoMpFQ200-sEK_<`hFtvKEyeu{(CLR
+zt7PR7;)#CU9Qgn^o>7!CJkrJQFtaV?_1lfMpqP3F`R7lWBNr`}$fw^iN0vd3#&Rq2
+zX5xG(zVrB?C9f}PnLPi`b{4w?eq2vCkB!G0;=k0&qL!+1>Lb)I3XXz~27S!5*)|dM
+zuxYa+4-|dHMtBGM(iBj{wdqQ{f!c)Zbj)Fqx1e_x>Uqk-`c9+IL@n07Q;)DCr)pU2
+zBJvn~f|!gw34aW69$Rb(eVF*Dz2e_zM~2X!Pu19BJD7RX`;%Ei)M8#U_=xRD0kdqn
+zAL$*iyOLQ(&qO&Dhj(5x7(}16So)}sz9Y*RvP|zA4BC!RStcv%8bnM|pH;jRKa{`H
+z$`%ixj;FqFJK`>4V*D_LkDIk(j33s%)3EI>@X{DlfjSPtcZ9D1M)sqfFir@+{sXY@
+zqCf0JEDS<U8`xgXK8cr7+xAm=(6P+Q%9jn?TK=@;BcABT@e<-$3H(Lyb?Wk%F7Nxu
+z)BAcV(m8D7K^`Nh?;50|kF4%JRkQo}DO1nKMQd%5N>&uHGs{_OkH<}{p(tGS8;g|z
+zpZgokmnY%5QG=2n8b6|UIdlw-uj!3`*%pJp&zcY)(R=CKeD<}^;tdqH6tgt$Mo}L#
+z_y^+g(lGjn*)(Uy&Rwg@$>*b}zaf7+^6jWkA=-+362*Al4ot;?6>&g*Av_4YLGn^t
+z4CamKCETmy&jCNxS;;gZ&w_GK^YIvCzoG5kyE44(ehtjnc4g30in5Df=MaxuGxsOi
+zISAiUoz{@8h@+uI9GUxWgPe+^!9T_uPFYOz2NA=q(1o#lBK$r-inJGL<sS#ekXO)e
+zF;-5!h%t=!=YeIBL5xX7&`16GdDxg3v)Pi!wGuxBoW>oxPKC2=KhDv#8K&Q%UEqJR
+zF$aDRXR{x_4&5eOxISu`GXEpUT!0-I3l|UIT1VrAne966fREAk^+%9zWjpyeLAZ+N
+zKLMxlvk);b%Nnj<Me&bVr<gCoIgKUnqCcFrSjx|U_g_&ajjN(Qr4f>+y0n9G%(g7@
+z3yJwb2QeNCyfkuJ;`b}wXi4OU67zsQhid@m4VOgTl(=2-4lIov#`!8nV|?EHdvH$v
+zyAC$a!0%ne{vfVFLo-?AJ<N&26vL-$VqXV!{k|slFzCZC)x?63c^W^S|3*#B#@I{W
+zz7n5G*IHobn3fgU30erclCiTrcrAqVvBG|gL*Ug|!3lm{#<*+bFJ$bs!pl{ig_kS#
+z;Me&a_;*3J@*J++IJZgJE8G4rpC6qc&0?J>%Tc+i9Jdyw(07cz%CAE&aoydv*j(89
+zmb{)iDznPZkG93GY<q>z^`nTl0@y+K0gSE}Ju@S8KhOjjk)9QC;oOF?`*DRiW=HN*
+z=RLC{_o{QpoXFkkT$>xYOP$;1Md}mh*GKM1oX?M}O`P8lslz$lgYa_MjgeLGX+aL#
+zY=i&EUstyMpqJXhYz`kM8(l}m9PkP9E!vOdT!?KpupmNnK$<(oX0jNS_wrCptOxzc
+zjJT)k8O?kCXl4z#r#*}gczBYP-I+hLIC8PFI1&q*B6)~M@(alfTBh~I?d-^1kR7z!
+zjzlf_eU;GptT}HJeBKbuW)q^8seQKq`)^=QjDO^>3Z&7u>wj_?V>NgvZzryUG5DP7
+zLUo`yEZMK@dkg)Y?E6RbzbUZm1ni-@kbPtm)rsuA1p6-*!B*6d?A6<OL&DCfefiQ(
+z^zS~hGYot4fE8GToiumk^TwIB7}-1tc{G>2vh5c<KFDt3rR(<vZuh@&yJ^miIm<cQ
+zsp@jFkLp3T(H#BE-0aqor`f{y7mjEh7|TjgzjJWJF`7rQy~mCZ%s%sRKgR!yZ`H&`
+zV~h^tnszhlhWY#PY4}B}F#cDWBT>u+qE)uodHAmf;~2Br%JZ&e0S$Gaa-%t{RLM|2
+z>HHM^8e>s8>HGua!YDJ3u0t4)oJjL)5ZUp87zZB%_6d!>$bTE>4I?hyM7r_Pxg?6Y
+z1zq!Y0Ds?7*Sh*m=Y8y?^S;%lH3hZh-WgP;NwbxskCw18G@doi$km!>JURk%9?K*i
+z8{15*qz85tut}R3?4FK#l74FA^1LUXuDi}V<C104{9nMg6hmb?8%?IIGgwsE*@3vA
+z{Fjh_4!kF_S>!pCKVY8rS`I5Zs97<_kJM)5{IqBW`ubF5`+D&I0k&T+ZNDD2zl{8y
+zh#`jgBXbl-3eVKU3Ng2S9K19R=YdkasSRvWUbUME?UmG3QGk1dsTh9_2ho<~!`<Mo
+z!&pP-kK&x-KmIB8>mT=$Zi;ytv(A5qMdCNGBPHM&0x$Y+eH3ZMFUF{!@ff6jcxBrU
+zQ~C?VT*<X;BE{TAi+Mi!L*G5n_1qzh-|#2((JZ9Hh>@LUhU;5?-v!v=7{N;aY%z)X
+zGWtXgcpN`?wEpz=f;`)pLjeo!9~+PDuYVVFqrvUk{zljHfp;-Sy12b)|I*7%oldiL
+z&CvAf-ix0FI+s4A?Z1e0@Uy1Q;P#zszC3W#p5Qku(}UYB(_bH0x@U(u>uf99{36;a
+zc)aR2LG#Gp#Lecj6bE>}DCbjC`u+!Y4Wa*0UIopg=F&VW@9b!t<J!mT@(b{w@0L<M
+z3S>R$JPMqdS*iXW@XEHIbHDNSwJnUC2M_uF0P#|r4-`i}lvuaIq6;H`kXR=u`5Q5E
+zjM}TP2YnF!MnCC$6?qr(SnSMPOKUWXm0n2ra&q6x$U9@HZq>(1=a_JPj*PvLriuc(
+zxB6%B(Hz5uF%DzWW+&>&;|=%G-z6O*k~++YH*NG8jO`l_7NYNwF4B>cRauaOKA1Dj
+zF(ap<amHJaV-?yA?uR@Z?5k=`@q=Sg<X^x;ez=!-$q%UW3ljShsED&4^^z?-PEqF|
+zVq*j1g6e$XXDpKU(9-=hUWhgiufg1=?*Y<>xEVyu42`eq4IO9G2N5$}+u8IDh=b5T
+z$)0D;rn5A!Mtvh)h=nf1f~xZlv^$MyR6fOp3;Kqpi?N6FQ$EGTP=PIGXOnnbsCr)6
+z_9|~{x_;xi`Cb!#WINT*HBc5Q)NY9!GKcF~_?F01&`a|Mj6EOC%D4SR)v*U<Qrn)#
+z9GYc?k1qwEW@azp1~OJ~nf2z40Sz;Z^A)%*h<O8*Mf#~cUKZ|WsVvrWOXQWTaQ$}Z
+z$jAd*in1}^1CI@J8ng$lhr)i+Np>al_DH>ud1XYnz8Ny)r!eHmHnL014Km0xlduc&
+zyK=(ycT0JPiM?bF+saL2Fvn)B6z9Da%(Mq{th0qQ2V1o3X}YJls%}S8_o0!v-b1$o
+zcHvqOyQ<tkQmzsGgZv$azpa?NRD)*0F7soy-klvq{Z{Du9<DDg+>1GLUVVDzW7hqa
+z92ToYx&rB<-PZkhW{kM7oE@C{>@}v(^M_^@{)pZZsT_;zz48aj#q$-6ow!%UIfD&h
+zj5oJEW9zMk4bF}^{Xa*U&!No1F6;gZlo@9xUS@?X6Jz(ptJXW5Ec?*7aQ%h9pe<!A
+z4qz^(%6E}3P(I7SGc~kLwbd4T7VUyIYam;)V27*2(NEWknT#DFo9wWG+Xdf{4WDaE
+zRN7*@HPV<Hu0Kw;Ag;)sYV-{no3h{!x*vX5`eOjs@(S~%o7}LW@F830N@hKa`?CfY
+z>?B(XnPtyR*y4QHy8pQjXMY83BU_sG+Ay~cPyBE2n=m*0tL(E`L_5L0T@%CgebPQn
+z#VyL)1>cwuw=3ZrYJ0@%{HyxEN9sghFi#HGKLMRQUg7Jj$}wxA4-G-?5y)NH_9Jos
+zfibcR*Z;1@#cD2l_~pvQkuLM(*JzF{uFs~vOBQoq*Jo9or(^MbA=CkLS^nJVI}Zjg
+z4dFUQ<KiIZH*_EBU@K2xZhe;SCsVI$VyvTfQufkVp?_~-VrE9iT|wtY&vH$z{;>Po
+zTY?_1PrLVy^$m4*tlRKaZ3Qjh&}fmyLSK7pqbG2ywxX@62}=uZg?v?;4=Wkk+uDOI
+zTQz@MOAA!_JQ`nQp*02CS~aIuv%c;QjkJLO4lI0V^95=73qLe%LGz8;f(6Z<7XR{*
+zBi-Jhzs0##3pIO#TB|2W)@e?kTjQ%HAOZd@#J|N82tv_vodil1pk4s{UgGz<TRgNr
+zA>>&;5~ia7kFb<7G@hY_+O*obnp$n1+tcK13288)rR{<1m7RXl!~GLnK2o?sYirU3
+zLc+mNTfn2id06?dQEO~(YQm}udBBbk$@7&J?V*H%R<A427WBB<eC{CWc);lmX^oyH
+z(xmE4Dj@IX@&PZFdjyt`+~9#%oIVui4SAg{npiC(tRb^}nqD=@Zzg#xt!ak~>Z-M5
+z4L01f;Y%9N&`_>cx4w#(7bN~5Jg|J^mpyY~PoUlBqnfq((5RF_9&GQ>TAgTIpXbI=
+zST;j-aA8qMV*sw!+Jg)Ho&YNC+N3QIL4jsP`}*3bmRcy#PE4p@z~l0Gw|LyzhPs-%
+zbq$GE%(LCXfj4S`-sPh;NK^`~-4RVV+dYaUacW&2gW!=%h#;CKpXwSC?i6mL64LNN
+zk61{Qnx8D+-Od|aRU2W+*bU8Fy#A1z4eMB278NhTVo<LSUBv5#Gdg6Ox!T%&q2=0a
+z@&-%fD+96MXJe>2k)6z^l{$zgqnv2YO`feXht^&3j@;TF<gO3;JuYvP*CYLl21V1t
+zv%Ir%|A|hnr58~4b9TYWOR94E=7tafSj!}vl2=FPS6cSPM+4$dv~$w$Jf93eJ{ndY
+z$$YUED=|3mil%M1*=`CG-gKiFjW4814iPLl9*6>@pPA^*jLCk=q<Ti-PMpT}6w-`2
+z-CLYKm&fjJ!>T8AdzUxhYHx7{>=*{@d<B@`Ou_lus5E%MgCI_W2WhQU8r<ddJ6%|s
+zg{&0)wE8U_Kky~#a9T%}4)=RJo6_N)RzEKkc`4;KwYRjS;m2@T>{2-VLZ@Ps)aJ}V
+z{88mx04POt!L1^f_!RDThMej0P17wmp9bG_{LT%<<419MJA5`Czl?MgG#3-){14*s
+zS)dNkTF_=t2PpevJRSx;3Hm(f-Vft(T3>n;4-iVAC+DMh{BF>WkK^&Zp#JmmxMson
+zgHNCbbUmm8Gzz*KG#?LudO+_6?FT&!dJOao=o!%FKgZ+D3VzUhQ2)hvd=Y5wCFlcn
+zfI2|CK|4V6@gVF4P&#r2VWtP`nYCkvY5JG~j^X(nd*S_fT&-CkJ~}@NtW3&ipf>zI
+z09FgiD#mFCtOqTXo#u7#y!|>~jx!0c8^2umOcqI;jMkhyL?^(ziB^ouJzzd)YJBHy
+zE;kDho?EdF<e#Mc>T!+(V-Aj9^+e8-BWgQGb&cGY-JSK6buF@9#cv*b-%orMg0GVJ
+z>bgdDj;iX;+LvAZly&_ZuUDM>uZlOT-+BADC&m#UX(2YDiL_&#5mZc~HiJI?twhDR
+z9@BwI2lFbQ8uRq%n$C$`6Q0O@a{Rt=-DCHUdS+x+ZBAC*h{~+h*;#9{G{~-p>|<!}
+z6*xy3iw<NT%&O|Nu2%ji0gQPVdmcP~Q1GljFzVpQ$|tg)%&P3n=^9bF&)RJ<uNw8v
+z+y8a)w<lhI1E#_*lB2cq(LcrGpWs}{Rg*~76WJA6b(XAJ>&8*Pt;nv+uB||MT(SYI
+zry-}|fpZ8ilvw4sfx?Od-PVKqtd;w|ZS9U&tM-4(`po0j>L<FaPj*@>pW17E`tPjO
+zoljc3p0HMB)jnq3F)F+E?RS3n`#0Z8T14%$0<l|*n3jIG9mqL2qN+2yE34`WYZJUo
+z7EA)48+<3hHxK8qo3}H`KLq>?@Vx@(u~Xe??lP@K<z>Z5{=48?k3LgEd{si8@E-y9
+z1LwY8mBilw-c5as_}3=!4}hNpPHl{M;&zZ8yyIe*fb)2~D~VqV+<`vYLHrF#yaf0F
+z@W%+hCyB2GUWUF*am&7%#NEUXd_Cc-llVixF9Fxvvj{9*!1K}fxjhx*xL+%!U!SzB
+z+Gp-IZAeCk=)*@L<A#it%J|~=!UJD;;0q6Y;ejta@P!BdS9(BwN20zPQQwIeE88pq
+z^}UEOe~Sd7>N^kvgIA{2_aiiA)gNw|P~VXl^ZkmsSezL1Lo#1|S7OZHEc4a(B}$#5
+z;^~I?hLtcSujo0+sM7rY4A>ZntM6CUHwC}qlT^m0$$a(w4&4XRK~rct)EayB9nZA_
+zPUK?^VH-i+m~+yRB?vnwKL%0Xg!IdN^<cs))0pz}BVW?Vk}87f9zV{=?>eLy>yQ~V
+zucbqMi!oIsS+}gX!Y_>!8LD1AQjvu5C9gO>jf?sq#aTa->3+!=muY1OruDr3Uy=E^
+z<>YB&J*4`-nK<P4Na}kdrBHomq`oUs_~%jey^;F9NPSPFz8_NG3#speK2P7GT*2`L
+zy}BQiAJz9&s^6;bs%omLmTU8>J&j&Gt1c^ETD)k%vg^f(63s|07#;XMy@7+i8C3fQ
+z=(Fe>z>o@PU4{h@TU5W+!Qjqfsz0aV*@=FiijQEbf286$O!cc&d?Zu-H5DI~=+~)u
+zrtkB|FcpWX{9~Dl?^JvoQ{!SPKAuJ8c$tdlCiYWE#V4?Cy1_LZ7B&(4MW~ieW?EPt
+zQ{!tArSH@xF-Kbd$=E+4ot`PoA;-y7JyV$)KU4AH`xj8Y1y_aj73uV=t3gr=aaq|%
+z@gyS7R&g>s-fB5MHnAUwk`w&H{k#SY>GUf-Yt;oyD*6_vnT=%%SJwx@KRiwZKD^!c
+zU$xxP>{>a_$zqw(^Ts@d2>Q-d^^9ft>Vhi8J_05C72Yjzp?`SX3cpQb4nunhJfErW
+zHl-RS@ZoWF84M<UyvgQQ?Q+IYFM&^Bxr>!%L9-xtwf1rt+KZkqQ+<v2M2YV;@T+>M
+zaZ{B}-|dqgHBVId&A?5%ct(;RLeKDix0>@0$2Uv;YCfv;3q8a8_1Czb;kfeK3x@GQ
+z;KTdfGthH2f1aGFED`jdq@4;^%_j7ZXN%<gR7w4u+nK~wSid82o8+G;1ujbbZUdf+
+z>xYSrXMTz2N&f34zT3cGDe)eOPm%ohO1xj<6C_U8C(?h+pyzRkpE2<Ny~No<p+MRH
+z6N%?bT-kY2;)@LY%5Sw2m*&WRG=W`GFN9>qN6>S%_EPgKqn>#s3K29@KT`4IH}GHK
+z_D^6&oV2C0XEdKbPaJmLp=ZG+jOWJd%WTPSyndB&eE4+`-zW$@hU?LLcyMb@v!9L_
+z--chWozOFp`n3#X_1t%}#P`k;{!;GvI>!a3|4WO-R1D~Gd_<5I|Dn{sTYeneFNNs&
+zv!+)d&)4BbM@zFG&}s1JV*IH!jL#nfp8#CV+tqOJ7g_FMd0jXu^=G5v#P5`P&<*)9
+z0eHH4EtUN0en9D80lY}c>dBWmzaA0i_e(v^hH`Jr67?FmQ&}ST9|V6c{9vr_PT=Y6
+z?BO`BcXNb%hcw|uUam~&2-b+D)$^9r!)6KQy;A0b4E$EupU$3X93RVaWxSP1J)5Xq
+z%){piH)Qa`O&RpB&VYXvxEkwp)n$IpKbGap7U<nFb5{mE&q#io{CK?#;{qM{wv@+@
+zU$$e<c!9r|L618}@Vg~H+{lk(8Te0Sz%OUOC!oKi^Z$H~k7XU2C~t)z>}HAYm2tw~
+zNg;17aEiBi(oV_F?&16@m81`4!1rdr|2YHxOW;~kZQ|@r;1kUG%s4-JFN2;-#E*Wh
+z?!#3-9f1cI6L7s#_Z`arQ-ITWsLd5cJ|jz>$MJ+2iIegS_?;PWH^;{^b)9-hY6@lG
+zpNhDm@y$36Jd%OG8~6mYmztL%%=l5y{WJW&;CmVL^h-TuhH>d<9G}M2a}1^bKe?W<
+zY+$Y^Z@nyc5O_NK|G@brla5@L{KoMuNA{N%Lw~srIJH-g40ir*8v2SPzk0r++V^_S
+zuPacVu8{m{p07sTJu-gO^BJ)5qb7r%uW)=Un<p;<pGbbc#2vE*pvJv#NL-sK@P5gE
+z064|D(GR_nzgy~2@$&=Vnv~U(QK&e@f3CcasCxZB;OWMPH@JSi266sj2HcG2a_RIG
+za(pc7*MvM@qkz+5i65OMa5er^WYEJFwg&@z^TLfT*Fw2(q1?rAqpy8o*}~#t`EPjU
+z23H`oxVVkYa<f?-f0HIC@<I`o(zVzh@HjWwn|yz(J|FZMS8ZV#65pQ6&X<MJ=2zGR
+zE67lKFob2B$WHEkW)HR6U9|gI5Zhe2+w2=#+8UiLb~hG#2JO!F4(4iW^|yFJ9(Qrs
+zlEur?GtpLAUb{08aBj7Gd{`%meX+2j*6wa^ZQTkHU5c+3OJUWotrBaf46DtG{n(1F
+zcoFohuV2;BaF6}AyVh0F@?E>VxMUHxDP6{r(hL$yGpSlyl1ZX0Lq^HcOc|LZN;8#F
+zTAo4GGIDyl3f_c`?9yjo8@86F1+*@&xNQTNZmX}jeU*LHx@y|cF0}>R%wB!Zx{BND
+zs#0_K{&#?|Q>T4Zt<+FkUC-<_YwxJ6SZlxIw%azWYOps{RIXh`S`maUyDQkvW5KXs
+zjy6f-ySufw*lfDp(tu&*X9`5Cf>Qty$#UW1)i>^I3<eYX_BA3Jy;!M;J?QMsSYl0E
+z#692)+WpS<AXbH@-4HLOTw0@PZw(nYgG=ENo6V&_WWOEz2dWj8b`P!TOS55Jij=+&
+zV39i3FN*E#Qkc}Hb17hoBwva7SL{KE^_Oy^z!Y)5u+eTOH)8oUVnuA=mr|bCfG-7t
+zso3o=1xiuNmp%%sxKq{sg>v~aEvv`kT)Wt>&`!&+(N@Fu+)L3fHU~_B^!xgyX3)Nm
+ze0xT|Pvhror%0~Bs^!FffT@v8OGq(HqD4iZW!OM4P5HDsIk`_{YWPvJrHH6(u^2cd
+z%eXzI-5qR`0WLOGOyQ=L+hUce2<5svV7J@rv-3`n(n@?4EJ81sq5u^}^YRT8Q*f~@
+zV+y1j0(cyX?Hp5BXhm=efDZ$L?X8{w-y~CP4VjYP<it*yhz?wbl2u7<60u6xE+ZB?
+zu<v7v4iV5|Jd?fBp7QYk-_cPl@|K%KrpW8oQl|v5*sK%Ra#{%;^1!8bd<}q(kDWDB
+zJeyd*+}Ix6YNt;iP(ET_eiwm&!Um*rbWRaOYg}dj(Ui?IQ!IuY?X{VT$?lch+%q+s
+zK8#U&lBO6TR%@$>)NcfuqJR|#x3-3yjiA`ZlhbB(#@CGdSus9~@Dx{6)-4D*H_8+y
+zU&W2>UTi7tb+ckhH9LdNtk}KP2YrHu0wPB(Zs%+=VMkuT)8ZrndFF2kv0@&9#n|i=
+z=QKG%UK<~Xi#^S9I@0WhtV#(9F)tAk>YSvg2q@s@I1xLrrwxknr<j)}G-KRk#h5O&
+zVhSXtrGN8ZdaO=!ZTWa0@xD+!FEBiI=e+tt>2?6OLJ4{GUQtm^&x~_*f1_Y}ZJ?J|
+z?;jPF({IH-Ouia9SO(sv?C+K*ie4)v@%VusxIIWY)*(e}50rerJW;ev8jRa3ybnvR
+zhseh{9bdwaa3!zSJ1DBwHxMr!>b^##7`qQAw3a~0tM{V`DjAjiicir^$fvalDy`n5
+zDr%GRWIyp3>;E7ys-lut?^_k^kr}FdC9mrLu#~R^r9-W^P*knYAbDDoVU+(CF!Bl6
+zM~7OUqUa<6C;rOjNTeUdnO<JK=T+3NDkddz4YbQ3ukOzky-~f8kaEg?nPg8J<kfp)
+zMOAr<-)Mi2lvie|=RArYQ;v}ejO9OXkT>q{e_F~ZVl4mP4D#xIwW7bL;MN_+@&}MN
+z4nM`F-V3OG|Bd`At>~{HOOGIxyn6qAx4hw2d|=^+N-KI2D7C+mSMSLk>W1CW;gp=v
+z#@M?!QGJ^*^}a*>zYMBlsAf>|s$D;XOiKCkJ%<Ay%hIu1ki=glujqN?=;hV>`7=`9
+zmcf1{f7u|fo`24(5JhT&B>pNn1(>0qFy%k>zQ0z=`&C7yfFa37Kpy|tBBfALC9lR`
+zl})^K=&6c*kt6;#R|vXWJ`5*4cKnq6YW%_Dn1t;@Li{~fFK8n%=nhq`f=IopyTXXp
+P{~wW}_tN^qkYxWKpokL+
+
+diff --git a/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein64.license b/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein64.license
+deleted file mode 100644
+index cc693300..00000000
+--- a/src/adafruit_blinka/microcontroller/amlogic/a311d/pulseio/libgpiod_pulsein64.license
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# SPDX-FileCopyrightText: 2021 Melissa LeBlanc-Williams for Adafruit Industries
+-#
+-# SPDX-License-Identifier: MIT
