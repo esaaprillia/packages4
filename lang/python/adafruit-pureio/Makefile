@@ -30,6 +30,9 @@ define Package/python3-adafruit-pureio/description
 Pure python (i.e. no native extensions) access to Linux IO including I2C and SPI. Drop in replacement for smbus and spidev modules.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=adafruit_pureio
+PYTHON3_PKG_WHEEL_VERSION:=1.1.11
+
 $(eval $(call Py3Package,python3-adafruit-pureio))
 $(eval $(call BuildPackage,python3-adafruit-pureio))
 $(eval $(call BuildPackage,python3-adafruit-pureio-src))
