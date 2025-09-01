@@ -9,7 +9,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=pyftdi
-PKG_SOURCE_URL:=https://github.com/eblot/pyftdi/archive/$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/eblot/pyftdi/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 include ../pypi.mk
