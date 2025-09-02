@@ -17,7 +17,6 @@ PKG_INSTALL:=1
 PKG_BUILD_DIR:=$(BUILD_DIR)/GraphicsMagick-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/nls.mk
 
 define Package/graphicsmagick
 	SECTION:=libs
