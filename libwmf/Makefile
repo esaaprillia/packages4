@@ -1,90 +1,89 @@
-#
-# Copyright (C) 2007-2014 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=coova-chilli
-PKG_VERSION:=1.3.0
-PKG_RELEASE:=5
+PKG_NAME:=libwmf
+PKG_VERSION:=0.2.13
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://coova.github.io/coova-chilli/
-PKG_HASH:=e624c11211c0d8acf41fa9410aec57acc8ea22d26668c4d519f04d1bd8455cbb
+PKG_SOURCE_URL:=https://github.com/caolanm/libwmf/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=GPL-2.0
+PKG_LICENSE_FILES:=COPYING
+
+PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
-
-PKG_CONFIG_DEPENDS := \
-  COOVACHILLI_MINIPORTAL \
-  COOVACHILLI_REDIR \
-  COOVACHILLI_USERAGENT \
-  COOVACHILLI_DNSLOG \
-  COOVACHILLI_UAMDOMAINFILE \
-  COOVACHILLI_LARGELIMITS \
-  COOVACHILLI_NOSSL \
-  COOVACHILLI_MATRIXSSL \
-  COOVACHILLI_CYASSL \
-  COOVACHILLI_OPENSSL
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/coova-chilli
-  SUBMENU:=Captive Portals
-  SECTION:=net
-  CATEGORY:=Network
-  DEPENDS:=+kmod-tun +librt +COOVACHILLI_MATRIXSSL:libmatrixssl +COOVACHILLI_CYASSL:libcyassl +COOVACHILLI_OPENSSL:libopenssl
-  TITLE:=Wireless LAN HotSpot controller (Coova Chilli Version)
-  URL:=http://www.coova.org/CoovaChilli
-  MAINTAINER:=Imre Kaloz <kaloz@openwrt.org>
-  MENU:=1
+define Package/libwmf
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=A library for parsing Windows MetaFile vector graphics (WMF).
+	DEPENDS:=+libexpat +libfreetype +libjpeg-turbo +libpng +zlib
+	URL:=https://github.com/caolanm/libwmf
 endef
 
-define Package/coova-chilli/description
-	CoovaChilli is an open source access controller for wireless LAN
-	access points and is based on ChilliSpot. It is used for authenticating
-	users of a wireless (or wired) LAN. It supports web based login (UAM)
-	which is today's standard for public HotSpots and it supports Wireless
-	Protected Access (WPA) which is the standard of the future.
-	Authentication,	authorization and accounting (AAA) is handled by your
-	favorite radius server.
+define Package/libwmf/description
+A library for parsing Windows MetaFile vector graphics (WMF).
 endef
 
-define Package/coova-chilli/config
-  source "$(SOURCE)/Config.in"
+CONFIGURE_ARGS += \
+	--prefix=/usr \
+	--with-gsfontdir=/usr/share/fonts/Type1 \
+	--with-fontdir=/usr/share/fonts/Type1 \
+	--with-gsfontmap=/usr/share/ghostscript/9.10/lib/Fontmap.GS
+
+define Build/InstallDev
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(2)/usr/bin \
+	  $(1)/usr/lib \
+	  $(1)/usr/include
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/libwmf \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
+	  $(1)/usr/lib/
+	
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/libwmf-config \
+	  $(1)/usr/bin/
+	
+	$(SED) \
+	  's,^\(prefix\|exec_prefix\)=.*,\1=$(STAGING_DIR)/usr,g' \
+	  $(1)/usr/bin/libwmf-config
+	
+	$(LN) ../../usr/bin/libwmf-config $(2)/bin/libwmf-config
+	
+	$(SED) \
+	  's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libwmf.pc
+
+	$(SED) \
+	  's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libwmf.pc
 endef
 
-define Build/Configure
-	$(call Build/Configure/Default, \
-	$(if $(CONFIG_COOVACHILLI_REDIR),--enable,--disable)-chilliredir \
-	$(if $(CONFIG_COOVACHILLI_DNSLOG),--enable,--disable)-dnslog \
-	$(if $(CONFIG_COOVACHILLI_MINIPORTAL),--enable,--disable)-miniportal \
-	$(if $(CONFIG_COOVACHILLI_USERAGENT),--enable,--disable)-useragent \
-	$(if $(CONFIG_COOVACHILLI_LARGELIMITS),--enable,--disable)-largelimits \
-	$(if $(CONFIG_COOVACHILLI_UAMDOMAINFILE),--enable,--disable)-uamdomainfile \
-	$(if $(CONFIG_COOVACHILLI_MATRIXSSL),--with,--without)-matrixssl \
-	$(if $(CONFIG_COOVACHILLI_CYASSL),--with,--without)-cyaxssl \
-	$(if $(CONFIG_COOVACHILLI_OPENSSL),--with,--without)-openssl \
-	)
+define Package/libwmf/install
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(1)/usr/lib \
+	  $(1)/usr/share
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/{libwmf-fontmap,wmf2*} \
+	  $(1)/usr/bin/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(1)/usr/lib/
+	
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/share/* \
+	  $(1)/usr/share/
 endef
 
-define Package/coova-chilli/conffiles
-/etc/chilli.conf
-endef
-
-define Package/coova-chilli/install
-	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/etc/chilli.conf $(1)/etc/
-	$(INSTALL_DIR) $(1)/etc/chilli
-	$(CP) $(PKG_INSTALL_DIR)/etc/chilli/* $(1)/etc/chilli/
-	$(INSTALL_DIR) $(1)/etc/hotplug.d/iface
-	$(INSTALL_DATA) ./files/chilli.hotplug $(1)/etc/hotplug.d/iface/30-chilli
-	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/chilli* $(1)/usr/sbin/
-	$(INSTALL_DIR) $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/lib*.so.* $(1)/usr/lib/
-endef
-
-$(eval $(call BuildPackage,coova-chilli))
+$(eval $(call BuildPackage,libwmf))
