@@ -21,7 +21,7 @@ define Package/numactl
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Simple NUMA policy support
-	DEPENDS:=
+	DEPENDS:=+libatomic
 	URL:=https://github.com/numactl/numactl
 endef
 
