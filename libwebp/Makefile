@@ -1,90 +1,61 @@
-#
-# Copyright (C) 2007-2014 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=coova-chilli
-PKG_VERSION:=1.3.0
-PKG_RELEASE:=5
+PKG_NAME:=libwebp
+PKG_VERSION:=1.4.0
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://coova.github.io/coova-chilli/
-PKG_HASH:=e624c11211c0d8acf41fa9410aec57acc8ea22d26668c4d519f04d1bd8455cbb
+PKG_SOURCE_URL:=https://storage.googleapis.com/downloads.webmproject.org/releases/webp
+PKG_HASH:=61f873ec69e3be1b99535634340d5bde750b2e4447caa1db9f61be3fd49ab1e5
 
-PKG_INSTALL:=1
+PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
+PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE_FILES:=COPYING
 
-PKG_CONFIG_DEPENDS := \
-  COOVACHILLI_MINIPORTAL \
-  COOVACHILLI_REDIR \
-  COOVACHILLI_USERAGENT \
-  COOVACHILLI_DNSLOG \
-  COOVACHILLI_UAMDOMAINFILE \
-  COOVACHILLI_LARGELIMITS \
-  COOVACHILLI_NOSSL \
-  COOVACHILLI_MATRIXSSL \
-  COOVACHILLI_CYASSL \
-  COOVACHILLI_OPENSSL
+CMAKE_INSTALL:=1
+PKG_BUILD_FLAGS:=lto
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/coova-chilli
-  SUBMENU:=Captive Portals
-  SECTION:=net
-  CATEGORY:=Network
-  DEPENDS:=+kmod-tun +librt +COOVACHILLI_MATRIXSSL:libmatrixssl +COOVACHILLI_CYASSL:libcyassl +COOVACHILLI_OPENSSL:libopenssl
-  TITLE:=Wireless LAN HotSpot controller (Coova Chilli Version)
-  URL:=http://www.coova.org/CoovaChilli
-  MAINTAINER:=Imre Kaloz <kaloz@openwrt.org>
-  MENU:=1
+define Package/libwebp
+  SECTION:=libs
+  CATEGORY:=Libraries
+  TITLE:=WebP library
+  URL:=https://www.webmproject.org
 endef
 
-define Package/coova-chilli/description
-	CoovaChilli is an open source access controller for wireless LAN
-	access points and is based on ChilliSpot. It is used for authenticating
-	users of a wireless (or wired) LAN. It supports web based login (UAM)
-	which is today's standard for public HotSpots and it supports Wireless
-	Protected Access (WPA) which is the standard of the future.
-	Authentication,	authorization and accounting (AAA) is handled by your
-	favorite radius server.
+define Package/libwebp/description
+  The libwebp package contains a library for the WebP format.
 endef
 
-define Package/coova-chilli/config
-  source "$(SOURCE)/Config.in"
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
+	-DWEBP_BUILD_ANIM_UTILS=OFF \
+	-DWEBP_BUILD_CWEBP=OFF \
+	-DWEBP_BUILD_DWEBP=OFF \
+	-DWEBP_BUILD_GIF2WEBP=OFF \
+	-DWEBP_BUILD_IMG2WEBP=OFF \
+	-DWEBP_BUILD_VWEBP=OFF \
+	-DWEBP_BUILD_WEBPINFO=OFF \
+	-DWEBP_BUILD_WEBPMUX=OFF \
+	-DWEBP_BUILD_EXTRAS=OFF
+
+ifneq ($(findstring arm,$(CONFIG_ARCH)),)
+ifeq ($(findstring neon,$(CONFIG_CPU_TYPE)),)
+CMAKE_OPTIONS += -DWEBP_ENABLE_SIMD=OFF
+endif
+endif
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libwebp.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libwebp.pc
 endef
 
-define Build/Configure
-	$(call Build/Configure/Default, \
-	$(if $(CONFIG_COOVACHILLI_REDIR),--enable,--disable)-chilliredir \
-	$(if $(CONFIG_COOVACHILLI_DNSLOG),--enable,--disable)-dnslog \
-	$(if $(CONFIG_COOVACHILLI_MINIPORTAL),--enable,--disable)-miniportal \
-	$(if $(CONFIG_COOVACHILLI_USERAGENT),--enable,--disable)-useragent \
-	$(if $(CONFIG_COOVACHILLI_LARGELIMITS),--enable,--disable)-largelimits \
-	$(if $(CONFIG_COOVACHILLI_UAMDOMAINFILE),--enable,--disable)-uamdomainfile \
-	$(if $(CONFIG_COOVACHILLI_MATRIXSSL),--with,--without)-matrixssl \
-	$(if $(CONFIG_COOVACHILLI_CYASSL),--with,--without)-cyaxssl \
-	$(if $(CONFIG_COOVACHILLI_OPENSSL),--with,--without)-openssl \
-	)
+define Package/libwebp/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/lib*.s* $(1)/usr/lib/
 endef
 
-define Package/coova-chilli/conffiles
-/etc/chilli.conf
-endef
-
-define Package/coova-chilli/install
-	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/etc/chilli.conf $(1)/etc/
-	$(INSTALL_DIR) $(1)/etc/chilli
-	$(CP) $(PKG_INSTALL_DIR)/etc/chilli/* $(1)/etc/chilli/
-	$(INSTALL_DIR) $(1)/etc/hotplug.d/iface
-	$(INSTALL_DATA) ./files/chilli.hotplug $(1)/etc/hotplug.d/iface/30-chilli
-	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/chilli* $(1)/usr/sbin/
-	$(INSTALL_DIR) $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/lib*.so.* $(1)/usr/lib/
-endef
-
-$(eval $(call BuildPackage,coova-chilli))
+$(eval $(call BuildPackage,libwebp))
