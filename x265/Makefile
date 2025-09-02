@@ -12,6 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=COPYING
 
+PKG_BUILD_DEPENDS:=nasm/host
+
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)
@@ -36,10 +38,13 @@ endef
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
-	-DX265_DEPTH=12 \
-	-DX265_DEPTH=10 \
+	-DHIGH_BIT_DEPTH=TRUE \
+	-DMAIN12=TRUE \
+	-DEXPORT_C_API=FALSE \
+	-DENABLE_CLI=FALSE \
+	-DNUMA_ROOT_DIR="$(STAGING_DIR)/usr" \
 	-DENABLE_ASSEMBLY=OFF \
-	-DNUMA_ROOT_DIR="$(STAGING_DIR)/usr"
+	-DCMAKE_ASM_NASM_FLAGS=-w-macro-params-legacy
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
