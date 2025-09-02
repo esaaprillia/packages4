@@ -32,6 +32,7 @@ endef
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
+	--with-freetype="$(STAGING_DIR)/usr" \
 	--with-gsfontdir=/usr/share/fonts/Type1 \
 	--with-fontdir=/usr/share/fonts/Type1 \
 	--with-gsfontmap=/usr/share/ghostscript/9.10/lib/Fontmap.GS
