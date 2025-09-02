@@ -40,7 +40,7 @@ CONFIGURE_ARGS += \
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin \
-	  $(2)/usr/bin \
+	  $(2)/bin \
 	  $(1)/usr/lib \
 	  $(1)/usr/include
 
