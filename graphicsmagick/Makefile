@@ -22,7 +22,7 @@ define Package/graphicsmagick
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Image processing system
-	DEPENDS:=+libbz2 +libfreetype +libheif +libjpeg-turbo +libltdl +libpng +libtiff +libwebp +libwmflite +libxml2 +zlib +libzstd
+	DEPENDS:=+libbz2 +libfreetype +libheif +libjpeg-turbo +libltdl +libpng +libtiff +libwebp +libwmf +libxml2 +zlib +libzstd
 	URL:=http://www.graphicsmagick.org/
 endef
 
