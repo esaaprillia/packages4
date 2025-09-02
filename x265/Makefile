@@ -1,90 +1,61 @@
-#
-# Copyright (C) 2007-2014 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=coova-chilli
-PKG_VERSION:=1.3.0
-PKG_RELEASE:=5
+PKG_NAME:=x265
+PKG_VERSION:=4.1
+PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://coova.github.io/coova-chilli/
-PKG_HASH:=e624c11211c0d8acf41fa9410aec57acc8ea22d26668c4d519f04d1bd8455cbb
+PKG_SOURCE:=$(PKG_NAME)_$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://bitbucket.org/multicoreware/x265_git/downloads/
+PKG_HASH:=skip
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=GPL-2.0
+PKG_LICENSE_FILES:=COPYING
+
+PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)
 
-PKG_CONFIG_DEPENDS := \
-  COOVACHILLI_MINIPORTAL \
-  COOVACHILLI_REDIR \
-  COOVACHILLI_USERAGENT \
-  COOVACHILLI_DNSLOG \
-  COOVACHILLI_UAMDOMAINFILE \
-  COOVACHILLI_LARGELIMITS \
-  COOVACHILLI_NOSSL \
-  COOVACHILLI_MATRIXSSL \
-  COOVACHILLI_CYASSL \
-  COOVACHILLI_OPENSSL
+CMAKE_BINARY_SUBDIR := build
+CMAKE_SOURCE_SUBDIR := source
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/coova-chilli
-  SUBMENU:=Captive Portals
-  SECTION:=net
-  CATEGORY:=Network
-  DEPENDS:=+kmod-tun +librt +COOVACHILLI_MATRIXSSL:libmatrixssl +COOVACHILLI_CYASSL:libcyassl +COOVACHILLI_OPENSSL:libopenssl
-  TITLE:=Wireless LAN HotSpot controller (Coova Chilli Version)
-  URL:=http://www.coova.org/CoovaChilli
-  MAINTAINER:=Imre Kaloz <kaloz@openwrt.org>
-  MENU:=1
+define Package/x265
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Open Source H265/HEVC video encoder
+	DEPENDS:=+numactl
+	URL:=https://bitbucket.org/multicoreware/x265_git
 endef
 
-define Package/coova-chilli/description
-	CoovaChilli is an open source access controller for wireless LAN
-	access points and is based on ChilliSpot. It is used for authenticating
-	users of a wireless (or wired) LAN. It supports web based login (UAM)
-	which is today's standard for public HotSpots and it supports Wireless
-	Protected Access (WPA) which is the standard of the future.
-	Authentication,	authorization and accounting (AAA) is handled by your
-	favorite radius server.
+define Package/x265/description
+Open Source H265/HEVC video encoder
 endef
 
-define Package/coova-chilli/config
-  source "$(SOURCE)/Config.in"
+CMAKE_OPTIONS += \
+	-DHIGH_BIT_DEPTH=TRUE \
+	-DENABLE_ASSEMBLY=OFF
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/x265.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/x265.pc
 endef
 
-define Build/Configure
-	$(call Build/Configure/Default, \
-	$(if $(CONFIG_COOVACHILLI_REDIR),--enable,--disable)-chilliredir \
-	$(if $(CONFIG_COOVACHILLI_DNSLOG),--enable,--disable)-dnslog \
-	$(if $(CONFIG_COOVACHILLI_MINIPORTAL),--enable,--disable)-miniportal \
-	$(if $(CONFIG_COOVACHILLI_USERAGENT),--enable,--disable)-useragent \
-	$(if $(CONFIG_COOVACHILLI_LARGELIMITS),--enable,--disable)-largelimits \
-	$(if $(CONFIG_COOVACHILLI_UAMDOMAINFILE),--enable,--disable)-uamdomainfile \
-	$(if $(CONFIG_COOVACHILLI_MATRIXSSL),--with,--without)-matrixssl \
-	$(if $(CONFIG_COOVACHILLI_CYASSL),--with,--without)-cyaxssl \
-	$(if $(CONFIG_COOVACHILLI_OPENSSL),--with,--without)-openssl \
-	)
+define Package/x265/install
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/x265 \
+	  $(1)/usr/bin/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(1)/usr/lib/
 endef
 
-define Package/coova-chilli/conffiles
-/etc/chilli.conf
-endef
-
-define Package/coova-chilli/install
-	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/etc/chilli.conf $(1)/etc/
-	$(INSTALL_DIR) $(1)/etc/chilli
-	$(CP) $(PKG_INSTALL_DIR)/etc/chilli/* $(1)/etc/chilli/
-	$(INSTALL_DIR) $(1)/etc/hotplug.d/iface
-	$(INSTALL_DATA) ./files/chilli.hotplug $(1)/etc/hotplug.d/iface/30-chilli
-	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/chilli* $(1)/usr/sbin/
-	$(INSTALL_DIR) $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/lib*.so.* $(1)/usr/lib/
-endef
-
-$(eval $(call BuildPackage,coova-chilli))
+$(eval $(call BuildPackage,x265))
