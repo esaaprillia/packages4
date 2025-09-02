@@ -53,6 +53,12 @@ CMAKE_OPTIONS += \
 	-DEXPAT_NS=OFF \
 	-DEXPAT_DEV_URANDOM=OFF
 
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/expat.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/expat.pc
+endef
+
 define Package/libexpat/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libexpat.so.* $(1)/usr/lib/
