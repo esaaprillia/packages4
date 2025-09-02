@@ -26,7 +26,7 @@ define Package/x265
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open Source H265/HEVC video encoder
-	DEPENDS:=+numactl
+	DEPENDS:=+numactl +libstdcpp
 	URL:=https://bitbucket.org/multicoreware/x265_git
 endef
 
@@ -35,8 +35,11 @@ Open Source H265/HEVC video encoder
 endef
 
 CMAKE_OPTIONS += \
-	-DHIGH_BIT_DEPTH=TRUE \
+	-Wno-dev \
+	-DX265_DEPTH=12 \
+	-DX265_DEPTH=10 \
 	-DENABLE_ASSEMBLY=OFF
+	-DNUMA_ROOT_DIR="$(STAGING_DIR)/usr"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
