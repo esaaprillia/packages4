@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=x265-12bit
 PKG_VERSION:=4.1
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=x265_$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://bitbucket.org/multicoreware/x265_git/downloads/
@@ -43,6 +43,7 @@ CMAKE_OPTIONS += -Wno-dev \
 	-DEXPORT_C_API=FALSE \
 	-DENABLE_CLI=FALSE \
 	-DENABLE_SHARED=FALSE \
+	-DENABLE_ASSEMBLY=OFF \
 	-DCMAKE_ASM_NASM_FLAGS=-w-macro-params-legacy \
 	-DENABLE_PIC=ON
 
