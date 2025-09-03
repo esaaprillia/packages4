@@ -40,10 +40,11 @@ CMAKE_OPTIONS += -Wno-dev \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DEXTRA_LIB='x265_main10.a;x265_main12.a' \
-	-DEXTRA_LINK_FLAGS='-L$(STAGING_DIR)/usr/lib' \
+	-DEXTRA_LINK_FLAGS='-L.' \
 	-DLINKED_10BIT=TRUE \
 	-DLINKED_12BIT=TRUE \
-	-DCMAKE_ASM_NASM_FLAGS=-w-macro-params-legacy
+	-DCMAKE_ASM_NASM_FLAGS=-w-macro-params-legacy \
+	-DENABLE_PIC=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
