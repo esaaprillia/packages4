@@ -43,7 +43,7 @@ CMAKE_OPTIONS += -Wno-dev \
 	-DLINKED_10BIT=TRUE \
 	-DLINKED_12BIT=TRUE \
 	-DCMAKE_ASM_NASM_FLAGS=-w-macro-params-legacy \
-	-DCMAKE_CXX_FLAGS=-fPIC
+	-DENABLE_PIC=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
