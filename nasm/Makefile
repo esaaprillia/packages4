@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nasm
-PKG_VERSION:=2.16.01
+PKG_VERSION:=2.16.03
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://www.nasm.us/pub/nasm/releasebuilds/$(PKG_VERSION)/
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_HASH:=c77745f4802375efeee2ec5c0ad6b7f037ea9c87c92b149a9637ff099f162558
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Oskari Rauta <oskari.rauta@gmail.com>
 PKG_LICENSE:=BSD-2-Clause
