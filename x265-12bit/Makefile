@@ -44,8 +44,7 @@ CMAKE_OPTIONS += -Wno-dev \
 	-DENABLE_CLI=FALSE \
 	-DENABLE_SHARED=FALSE \
 	-DENABLE_ASSEMBLY=OFF \
-	-DCMAKE_ASM_NASM_FLAGS=-w-macro-params-legacy \
-	-DENABLE_PIC=ON
+	-DCMAKE_ASM_NASM_FLAGS=-w-macro-params-legacy
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/lib
