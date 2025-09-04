@@ -34,7 +34,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DENABLE_DOCS=OFF \
-	-ENABLE_TESTS=OFF \
+	-DENABLE_TESTS=OFF \
 	-DBUILD_SHARED_LIBS=ON
 
 define Build/InstallDev
