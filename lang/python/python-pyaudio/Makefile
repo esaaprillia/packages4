@@ -32,6 +32,9 @@ define Package/python3-pyaudio/description
 PyAudio provides Python bindings for PortAudio v19, the cross-platform audio I/O library. With PyAudio, you can easily use Python to play and record audio on a variety of platforms, such as GNU/Linux, Microsoft Windows, and Apple macOS.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=PyAudio
+PYTHON3_PKG_WHEEL_VERSION:=0.2.14
+
 $(eval $(call Py3Package,python3-pyaudio))
 $(eval $(call BuildPackage,python3-pyaudio))
 $(eval $(call BuildPackage,python3-pyaudio-src))
