@@ -5,11 +5,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-maturin
-PKG_VERSION:=1.8.3
+PKG_VERSION:=1.9.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=maturin
-PKG_HASH:=304762f86fd53a8031b1bf006d12572a2aa0a5235485031113195cc0152e1e12
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Luca Barbato <lu_zero@luminem.org>
 PKG_LICENSE:=Apache-2.0 MIT
