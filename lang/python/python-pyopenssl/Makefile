@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyopenssl
-PKG_VERSION:=25.0.0
+PKG_VERSION:=25.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyopenssl
-PKG_HASH:=cd2cef799efa3936bb08e8ccb9433a575722b9dd986023f1cabc4ae64e9dac16
+PKG_HASH:=skip
 
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
@@ -38,9 +38,6 @@ endef
 define Package/python3-pyopenssl/description
 Python wrapper module around the OpenSSL library
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=pyOpenSSL
-PYTHON3_PKG_WHEEL_VERSION:=25.0.0
 
 $(eval $(call Py3Package,python3-pyopenssl))
 $(eval $(call BuildPackage,python3-pyopenssl))
