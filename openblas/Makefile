@@ -28,7 +28,7 @@ define Package/openblas
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=fast BSD-licensed BLAS based on gotoBLAS2, with LAPACK
-	DEPENDS:=+INSTALL_GFORTRAN:libgfortran
+	DEPENDS:=+libgfortran
 	URL:=https://www.openblas.net/
 endef
 
@@ -38,12 +38,10 @@ endef
 
 CMAKE_HOST_OPTIONS += \
 	-Wno-dev \
-	-DNOFORTRAN=1
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
-	-DBUILD_SHARED_LIBS=ON \
-	-DNOFORTRAN=1
+	-DBUILD_SHARED_LIBS=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
