@@ -3,6 +3,7 @@ c = [@CC@]
 c_ld = [@LD@]
 cpp = [@CXX@]
 cpp_ld = [@LD@]
+fortran = ['aarch64-openwrt-linux-musl-gfortran']
 ar = '@AR@'
 strip = '@STRIP@'
 nm = '@NM@'
