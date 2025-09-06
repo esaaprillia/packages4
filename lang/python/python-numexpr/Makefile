@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-numexpr
-PKG_VERSION:=2.10.2
+PKG_VERSION:=2.11.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
 PYPI_NAME:=numexpr
-PKG_HASH:=b0aff6b48ebc99d2f54f27b5f73a58cb92fde650aeff1b397c71c8788b4fff1a
+PKG_HASH:=skip
 
 HOST_BUILD_DEPENDS:=numpy/host
 PKG_BUILD_DEPENDS:=numpy/host
