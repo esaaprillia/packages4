@@ -39,9 +39,9 @@ endef
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
-	-DLAPACKE=OFF \
-	-DCBLAS=OFF \
-	-DTEST_FORTRAN_COMPILER=OFF
+	-DLAPACKE=ON \
+	-DCBLAS=ON \
+	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
@@ -67,3 +67,4 @@ define Package/lapack/install
 endef
 
 $(eval $(call BuildPackage,lapack))
+
