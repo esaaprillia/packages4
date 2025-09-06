@@ -50,9 +50,10 @@ define Build/Prepare
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/numpy-config $(STAGING_DIR_HOSTPKG)/bin
-	$(SED) 's,/usr/bin/python,$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3),g' $(STAGING_DIR_HOSTPKG)/bin/numpy-config
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/pkgconfig/numpy.pc $(1)/usr/lib/pkgconfig/
 endef
 
 $(eval $(call Py3Package,python3-numpy))
