@@ -28,7 +28,7 @@ define Package/openblas
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=fast BSD-licensed BLAS based on gotoBLAS2, with LAPACK
-	DEPENDS:=+libgfortran
+	DEPENDS:=+INSTALL_GFORTRAN:libgfortran
 	URL:=https://www.openblas.net/
 endef
 
@@ -60,3 +60,4 @@ endef
 
 $(eval $(call BuildPackage,openblas))
 $(eval $(call HostBuild))
+
