@@ -1,51 +1,51 @@
-#
-# Copyright (C) 2013 
-#                           
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ccminer
-PKG_VERSION:=3.8.0
+PKG_NAME:=python-scipy
+PKG_VERSION:=1.16.1
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/monkins1010/ccminer.git
-PKG_SOURCE_DATE:=2023-06-05
-PKG_SOURCE_VERSION:=1667394ad4120d64b0c57367e71cb832ad2e3645
-PKG_MIRROR_HASH:=skip
+PYPI_NAME:=scipy
+PKG_HASH:=skip
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_MAINTAINER:=
-PKG_INSTALL:=1
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-cython/host meson-python/host python-pybind11/host python-pythran/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-cython/host meson-python/host python-pybind11/host python-pythran/host
 
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../meson/meson.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
-define Package/ccminer
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	+libpthread +libncurses +jansson +libopenssl-devcrypto +zlib +libstdcpp +getopt \
-	+PACKAGE_curl:curl +PACKAGE_libopenssl:libopenssl @!OPENSSL_ENGINE_BUILTIN
+define Package/python3-scipy
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Fundamental algorithms for scientific computing in Python
+  URL:=https://scipy.org
+  DEPENDS:=+INSTALL_GFORTRAN:libgfortran +python3 +python3-numpy +openblas +python3-pooch
 endef
 
-define Package/ccminer/description
-ARM CPU ONLY CCminer Verushash2.2
+define Package/python3-scipy/description
+  SciPy (pronounced “Sigh Pie”) is an open-source software for mathematics, science, and engineering.
+  It includes modules for statistics, optimization, integration, linear algebra, Fourier transforms, signal and image processing, ODE solvers
 endef
 
-define Build/Configure
-	(cd $(PKG_BUILD_DIR); ./autogen.sh );
-	$(call Build/Configure/Default)
+define Host/Prepare
+	$(call Host/Prepare/Default)
+	$(INSTALL_CONF) files/native/__init__.py $(HOST_PYTHON3_PKG_DIR)/mesonpy/
 endef
 
-define Package/ccminer/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(INSTALL_CONF) files/cross/__init__.py $(HOST_PYTHON3_PKG_DIR)/mesonpy/
 endef
 
-$(eval $(call BuildPackage,ccminer))
+$(eval $(call Py3Package,python3-scipy))
+$(eval $(call BuildPackage,python3-scipy))
+$(eval $(call BuildPackage,python3-scipy-src))
+$(eval $(call HostBuild))
