@@ -1,51 +1,40 @@
-#
-# Copyright (C) 2013 
-#                           
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ccminer
-PKG_VERSION:=3.8.0
+PKG_NAME:=python-pythran
+PKG_VERSION:=0.16.1
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/monkins1010/ccminer.git
-PKG_SOURCE_DATE:=2023-06-05
-PKG_SOURCE_VERSION:=1667394ad4120d64b0c57367e71cb832ad2e3645
-PKG_MIRROR_HASH:=skip
+PYPI_NAME:=pythran
+PKG_HASH:=861748c0f9c7d422b32724b114b3817d818ed4eab86c09781aa0a3f7ceabb7f9
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_MAINTAINER:=
-PKG_INSTALL:=1
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
-define Package/ccminer
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	+libpthread +libncurses +jansson +libopenssl-devcrypto +zlib +libstdcpp +getopt \
-	+PACKAGE_curl:curl +PACKAGE_libopenssl:libopenssl @!OPENSSL_ENGINE_BUILTIN
+define Package/python3-pythran
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Ahead of Time compiler for numeric kernels
+  URL:=pythran.readthedocs.io
+  DEPENDS:=+python3 +python3-beniget +python3-gast +python3-numpy +python3-ply
 endef
 
-define Package/ccminer/description
-ARM CPU ONLY CCminer Verushash2.2
+define Package/python3-pythran/description
+  Pythran is an ahead of time compiler for a subset of the Python language, with a focus on scientific computing.
+  It takes a Python module annotated with a few interface descriptions and turns it into a native Python module with the same interface, but (hopefully) faster.
 endef
 
-define Build/Configure
-	(cd $(PKG_BUILD_DIR); ./autogen.sh );
-	$(call Build/Configure/Default)
-endef
-
-define Package/ccminer/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,ccminer))
+$(eval $(call Py3Package,python3-pythran))
+$(eval $(call BuildPackage,python3-pythran))
+$(eval $(call BuildPackage,python3-pythran-src))
+$(eval $(call HostBuild))
