@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-cython/host meson-python/host python-numpy/host python-pybind11/host python-pythran/host
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-cython/host meson-python/host python-numpy/host python-pybind11/host python-pythran/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-cython/host meson-python/host numpy/host python-pybind11/host python-pythran/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-cython/host meson-python/host numpy/host python-pybind11/host python-pythran/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -49,4 +49,3 @@ $(eval $(call Py3Package,python3-scipy))
 $(eval $(call BuildPackage,python3-scipy))
 $(eval $(call BuildPackage,python3-scipy-src))
 $(eval $(call HostBuild))
-
