@@ -1,51 +1,40 @@
-#
-# Copyright (C) 2013 
-#                           
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ccminer
-PKG_VERSION:=3.8.0
+PKG_NAME:=python-beniget
+PKG_VERSION:=0.4.2.post1
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/monkins1010/ccminer.git
-PKG_SOURCE_DATE:=2023-06-05
-PKG_SOURCE_VERSION:=1667394ad4120d64b0c57367e71cb832ad2e3645
-PKG_MIRROR_HASH:=skip
+PYPI_NAME:=beniget
+PKG_HASH:=a0258537e65e7e14ec33a86802f865a667f949bb6c73646d55e42f7c45a052ae
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_MAINTAINER:=
-PKG_INSTALL:=1
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
-define Package/ccminer
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	+libpthread +libncurses +jansson +libopenssl-devcrypto +zlib +libstdcpp +getopt \
-	+PACKAGE_curl:curl +PACKAGE_libopenssl:libopenssl @!OPENSSL_ENGINE_BUILTIN
+define Package/python3-beniget
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Extract semantic information about static Python code
+  URL:=https://github.com/serge-sans-paille/beniget
+  DEPENDS:=+python3 +python3-gast
 endef
 
-define Package/ccminer/description
-ARM CPU ONLY CCminer Verushash2.2
+define Package/python3-beniget/description
+  Beniget is a collection of Compile-time analyse on Python Abstract Syntax Tree(AST). It's a building block to write static analyzer or compiler for Python.
+  Beniget relies on gast to provide a cross version abstraction of the AST, effectively working across all Python 3 versions greater than 3.6.
 endef
 
-define Build/Configure
-	(cd $(PKG_BUILD_DIR); ./autogen.sh );
-	$(call Build/Configure/Default)
-endef
-
-define Package/ccminer/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,ccminer))
+$(eval $(call Py3Package,python3-beniget))
+$(eval $(call BuildPackage,python3-beniget))
+$(eval $(call BuildPackage,python3-beniget-src))
+$(eval $(call HostBuild))
