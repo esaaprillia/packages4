@@ -14,8 +14,6 @@ PKG_LICENSE_FILES:=LICENSE.txt
 HOST_BUILD_DEPENDS:=python-cython/host meson-python/host numpy/host python-pybind11/host python-pythran/host
 PKG_BUILD_DEPENDS:=python-cython/host meson-python/host numpy/host python-pybind11/host python-pythran/host
 
-CFLAGS += $(FPIC)
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -45,10 +43,10 @@ endef
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(INSTALL_CONF) files/cross/__init__.py $(HOST_PYTHON3_PKG_DIR)/mesonpy/
+	$(INSTALL_BIN) files/libnpymath.a $(HOST_PYTHON3_PKG_DIR)/numpy/_core/lib/
 endef
 
 $(eval $(call Py3Package,python3-scipy))
 $(eval $(call BuildPackage,python3-scipy))
 $(eval $(call BuildPackage,python3-scipy-src))
 $(eval $(call HostBuild))
-
