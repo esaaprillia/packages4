@@ -12,7 +12,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 PKG_CPE_ID:=cpe:/a:numpy:numpy
 
-HOST_BUILD_DEPENDS:=python-cython/host meson-python/host openblas/host
+HOST_BUILD_DEPENDS:=python-cython/host meson-python/host
 PKG_BUILD_DEPENDS:=python-cython/host meson-python/host
 
 include ../pypi.mk
@@ -47,13 +47,6 @@ endef
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(INSTALL_CONF) files/cross/__init__.py $(HOST_PYTHON3_PKG_DIR)/mesonpy/
-endef
-
-define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy $(1)/usr/include/
-	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/pkgconfig/numpy.pc $(1)/usr/lib/pkgconfig/
 endef
 
 $(eval $(call Py3Package,python3-numpy))
