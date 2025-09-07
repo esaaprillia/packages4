@@ -54,7 +54,7 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/numpy-config $(1)/usr/bin
-	$(SED) 's,/usr/bin/python,$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3),g' $(STAGING_DIR_HOSTPKG)/bin/numpy-config
+	$(SED) 's,/usr/bin/python,$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3),g' $(1)/usr/bin/numpy-config
 	$(INSTALL_DIR) $(2)/bin
 	$(LN) ../../usr/bin/numpy-config $(2)/bin/numpy-config
 endef
