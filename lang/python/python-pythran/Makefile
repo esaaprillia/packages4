@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pythran
-PKG_VERSION:=0.16.1
+PKG_VERSION:=0.18.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pythran
-PKG_HASH:=861748c0f9c7d422b32724b114b3817d818ed4eab86c09781aa0a3f7ceabb7f9
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
