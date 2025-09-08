@@ -1,45 +1,38 @@
-# SPDX-License-Identifier: GPL-2.0-only
-#
-# Copyright (C) 2023 Luca Barbato and Donald Hoskins
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=boringtun-cli
-PKG_VERSION:=0.5.2
+PKG_NAME:=python-fastjsonschema
+PKG_VERSION:=2.21.2
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/cloudflare/boringtun/tar.gz/$(PKG_VERSION)?
+PYPI_NAME:=validate_pyproject
 PKG_HASH:=skip
 
-PKG_MAINTAINER:=Luca Barbato <lu_zero@luminem.org>
-PKG_LICENSE:=MIT Unlicense
-PKG_LICENSE_FILES:=LICENSE-MIT UNLICENSE
+PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
+PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/boringtun-$(PKG_NAME)-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=rust/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
-#RUST_PKG_FEATURES:=boringtun-cli
-
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/rust/rust-package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
-define Build/Compile
-	$(call Build/Compile/Cargo,boringtun-cli)
-	$(call Build/Compile/Cargo)
+define Package/python3-fastjsonschema
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Fast JSON schema validator for Python.
+  URL:=https://horejsek.github.io/python-fastjsonschema/
+  DEPENDS:=+python3
 endef
 
-define Package/boringtun-cli
-  SECTION:=utils
-  CATEGORY:=Utilities
-  TITLE:=Userspace WireGuard® Implementation in Rust
-  DEPENDS:=$(RUST_ARCH_DEPENDS)
-  URL:=https://github.com/cloudflare/boringtun
+define Package/python3-fastjsonschema/description
+Fast JSON schema validator for Python.
 endef
 
-define Package/boringtun-cli/description
-  BoringTun is an implementation of the WireGuard® protocol designed for portability and speed.
-endef
-
-$(eval $(call RustBinPackage,boringtun-cli))
-$(eval $(call BuildPackage,boringtun-cli))
+$(eval $(call Py3Package,python3-fastjsonschema))
+$(eval $(call BuildPackage,python3-fastjsonschema))
+$(eval $(call BuildPackage,python3-fastjsonschema-src))
+$(eval $(call HostBuild))
