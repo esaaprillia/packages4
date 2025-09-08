@@ -1,45 +1,40 @@
-# SPDX-License-Identifier: GPL-2.0-only
-#
-# Copyright (C) 2023 Luca Barbato and Donald Hoskins
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=boringtun-cli
-PKG_VERSION:=0.5.2
+PKG_NAME:=validate-pyproject
+PKG_VERSION:=0.24.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/cloudflare/boringtun/tar.gz/$(PKG_VERSION)?
+PYPI_NAME:=validate_pyproject
 PKG_HASH:=skip
 
-PKG_MAINTAINER:=Luca Barbato <lu_zero@luminem.org>
-PKG_LICENSE:=MIT Unlicense
-PKG_LICENSE_FILES:=LICENSE-MIT UNLICENSE
+PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
+PKG_LICENSE:=MPL-2.0 MIT BSD-3-Clause
+PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/boringtun-$(PKG_NAME)-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=rust/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-setuptools-scm/host
 
-#RUST_PKG_FEATURES:=boringtun-cli
-
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/rust/rust-package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
-define Build/Compile
-	$(call Build/Compile/Cargo,boringtun-cli)
-	$(call Build/Compile/Cargo)
+define Package/python3-validate-pyproject
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Validation library and CLI tool for checking on 'pyproject.toml' files using JSON Schema
+  URL:=https://validate-pyproject.readthedocs.io/
+  DEPENDS:=+python3 +python3-fastjsonschema
 endef
 
-define Package/boringtun-cli
-  SECTION:=utils
-  CATEGORY:=Utilities
-  TITLE:=Userspace WireGuard® Implementation in Rust
-  DEPENDS:=$(RUST_ARCH_DEPENDS)
-  URL:=https://github.com/cloudflare/boringtun
+define Package/python3-validate-pyproject/description
+With the approval of PEP 517 and PEP 518, the Python community shifted towards a strong focus on standardisation for packaging software, which allows more freedom when choosing tools during development and make sure packages created using different technologies can interoperate without the need for custom installation procedures.
+This shift became even more clear when PEP 621 was also approved, as a standardised way of specifying project metadata and dependencies.
+validate-pyproject was born in this context, with the mission of validating pyproject.toml files, and make sure they are compliant with the standards and PEPs. Behind the scenes, validate-pyproject relies on JSON Schema files, which, in turn, are also a standardised way of checking if a given data structure complies with a certain specification.
 endef
 
-define Package/boringtun-cli/description
-  BoringTun is an implementation of the WireGuard® protocol designed for portability and speed.
-endef
-
-$(eval $(call RustBinPackage,boringtun-cli))
-$(eval $(call BuildPackage,boringtun-cli))
+$(eval $(call Py3Package,python3-validate-pyproject))
+$(eval $(call BuildPackage,python3-validate-pyproject))
+$(eval $(call BuildPackage,python3-validate-pyproject-src))
+$(eval $(call HostBuild))
