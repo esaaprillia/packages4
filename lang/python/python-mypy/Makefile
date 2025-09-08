@@ -26,7 +26,7 @@ define Package/python3-mypy
   CATEGORY:=Languages
   TITLE:=Optional static typing for Python
   URL:=https://www.mypy-lang.org/
-  DEPENDS:=+python3 +python3-typing-extensions +python3-mypy-extensions
+  DEPENDS:=+python3 +python3-typing-extensions +python3-mypy-extensions +python3-typing-extensions +python3-pathspec
 endef
 
 define Package/python3-mypy/description
