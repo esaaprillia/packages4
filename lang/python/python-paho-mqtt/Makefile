@@ -15,9 +15,13 @@ PKG_LICENSE_FILES:=epl-v20 edl-v10 LICENSE.txt
 PYPI_NAME:=paho_mqtt
 PKG_HASH:=12d6e7511d4137555a3f6ea167ae846af2c7357b10bc6fa4f7c3968fc1723834
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-paho-mqtt
   SECTION:=lang
@@ -32,6 +36,7 @@ define Package/python3-paho-mqtt/description
   MQTT version 3.1/3.1.1/5.0 client class
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-paho-mqtt))
 $(eval $(call BuildPackage,python3-paho-mqtt))
 $(eval $(call BuildPackage,python3-paho-mqtt-src))
