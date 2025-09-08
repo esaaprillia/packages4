@@ -1,11 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tinytuya
-PKG_VERSION:=1.16.1
+PKG_VERSION:=1.17.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=tinytuya
-PKG_SOURCE_URL:=https://github.com/jasonacox/tinytuya/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
