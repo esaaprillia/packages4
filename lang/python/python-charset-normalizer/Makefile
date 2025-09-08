@@ -8,18 +8,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-charset-normalizer
-PKG_VERSION:=3.4.1
+PKG_VERSION:=3.4.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=charset_normalizer
-PKG_HASH:=44251f18cd68a75b56585dd00dae26183e102cd5e0f9f1466e6df5da2ed64ea3
+PKG_HASH:=skip
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-mypy/host
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-mypy/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
