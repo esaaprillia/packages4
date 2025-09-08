@@ -11,8 +11,8 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=pandas
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=numpy/host python-cython/host meson-python/host python-versioneer/host
-PKG_BUILD_DEPENDS:=numpy/host python-cython/host meson-python/host python-versioneer/host
+HOST_BUILD_DEPENDS:=numpy/host python-versioneer/host
+PKG_BUILD_DEPENDS:=numpy/host python-versioneer/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -50,3 +50,4 @@ $(eval $(call Py3Package,python3-pandas))
 $(eval $(call BuildPackage,python3-pandas))
 $(eval $(call BuildPackage,python3-pandas-src))
 $(eval $(call HostBuild))
+
