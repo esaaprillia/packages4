@@ -40,6 +40,9 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
+CMAKE_HOST_OPTIONS += \
+	-DNOFORTRAN=1
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/openblas.pc
@@ -55,5 +58,5 @@ define Package/openblas/install
 	  $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,openblas))
 $(eval $(call HostBuild))
+$(eval $(call BuildPackage,openblas))
