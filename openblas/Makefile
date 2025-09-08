@@ -36,10 +36,8 @@ define Package/openblas/description
 	OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 endef
 
-CMAKE_HOST_OPTIONS += \
-	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
-
 CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
 	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
 define Build/InstallDev
