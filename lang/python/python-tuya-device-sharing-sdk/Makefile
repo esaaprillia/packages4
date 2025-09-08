@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tuya-device-sharing-sdk
-PKG_VERSION:=0.2.1
+PKG_VERSION:=0.2.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=tuya-device-sharing-sdk
-PKG_HASH:=72e2c97c22109a7c9208dd727b3c72aad1669d351d843f6d63db0160d87d8942
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
