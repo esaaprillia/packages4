@@ -43,7 +43,7 @@ endef
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(INSTALL_CONF) files/cross/__init__.py $(HOST_PYTHON3_PKG_DIR)/mesonpy/
-	#$(INSTALL_BIN) files/libnpymath.a $(HOST_PYTHON3_PKG_DIR)/numpy/_core/lib/
+	$(INSTALL_BIN) files/libnpymath.a $(HOST_PYTHON3_PKG_DIR)/numpy/_core/lib/
 endef
 
 $(eval $(call Py3Package,python3-scipy))
