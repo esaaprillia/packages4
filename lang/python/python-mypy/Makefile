@@ -11,8 +11,8 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=mypy
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python-types-psutil/host python-mypy-extensions/host python-types-setuptools/host
-PKG_BUILD_DEPENDS:=python-types-psutil/host python-mypy-extensions/host python-types-setuptools/host
+HOST_BUILD_DEPENDS:=python-types-psutil/host python-mypy-extensions/host python-types-setuptools/host python-typing-extensions/host python-pathspec/host
+PKG_BUILD_DEPENDS:=python-types-psutil/host python-mypy-extensions/host python-types-setuptools/host python-typing-extensions/host python-pathspec/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
