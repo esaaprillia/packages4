@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-audioop-lts
-PKG_VERSION:=0.2.1
+PKG_VERSION:=0.2.2
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=audioop_lts
-PKG_HASH:=e81268da0baa880431b68b1308ab7257eb33f356e57a5f9b1f915dfb13dd1387
+PKG_HASH:=skip
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
