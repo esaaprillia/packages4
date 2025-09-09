@@ -397,7 +397,7 @@ define Host/Configure
 			$(HOST_CFLAGS) \
 			$(HOST_CPPFLAGS) \
 			$(HOST_LDFLAGS) \
-			no-shared no-tests no-asm idea && \
+			no-shared no-tests no-asm enable-idea && \
 		{ [ -f $(HOST_STAMP_CONFIGURED) ] || make clean; } \
 	)
 endef
@@ -463,3 +463,4 @@ $(eval $(call BuildPackage,libopenssl-devcrypto))
 $(eval $(call BuildPackage,libopenssl-legacy))
 $(eval $(call BuildPackage,libopenssl-padlock))
 $(eval $(call BuildPackage,openssl-util))
+
