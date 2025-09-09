@@ -11,9 +11,13 @@ PKG_MAINTAINER:=Javier Marcet <javier@marcet.info>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-websocket-client
   SECTION:=lang
@@ -36,6 +40,7 @@ define Py3Package/python3-websocket-client/filespec
 -|$(PYTHON3_PKG_DIR)/websocket/tests
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-websocket-client))
 $(eval $(call BuildPackage,python3-websocket-client))
 $(eval $(call BuildPackage,python3-websocket-client-src))
