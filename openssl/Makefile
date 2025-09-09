@@ -61,6 +61,7 @@ PKG_CONFIG_DEPENDS:= \
 	CONFIG_OPENSSL_WITH_WHIRLPOOL
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/openssl-module.mk
 
 ifneq ($(CONFIG_CCACHE),)
@@ -387,6 +388,32 @@ define Build/Compile
 		install_sw install_ssldirs
 endef
 
+define Host/Configure
+	(cd $(HOST_BUILD_DIR); \
+		./Configure \
+			--prefix="$(STAGING_DIR_HOST)" \
+			--libdir=lib \
+			--openssldir="$(STAGING_DIR_HOST)/etc/ssl" \
+			$(HOST_CFLAGS) \
+			$(HOST_CPPFLAGS) \
+			$(HOST_LDFLAGS) \
+			no-shared no-tests no-asm && \
+		{ [ -f $(HOST_STAMP_CONFIGURED) ] || make clean; } \
+	)
+endef
+
+HOST_CFLAGS += $(HOST_FPIC)
+
+define Host/Compile
+	+$(MAKE) $(PKG_JOBS) -C $(HOST_BUILD_DIR) \
+		CC="$(HOSTCC)" \
+		all
+	$(MAKE) -C $(HOST_BUILD_DIR) \
+		CC="$(HOSTCC)" \
+		DESTDIR="$(STAGING_DIR_HOST)" \
+		install_sw install_ssldirs
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/openssl $(1)/usr/include/
@@ -428,6 +455,7 @@ define Package/openssl-util/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/openssl $(1)/usr/bin/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,libopenssl))
 $(eval $(call BuildPackage,libopenssl-conf))
 $(eval $(call BuildPackage,libopenssl-afalg))
