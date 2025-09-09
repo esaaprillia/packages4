@@ -10,15 +10,14 @@ Signed-off-by: Eneas U de Queiroz <cote2004-github@yahoo.com>
 
 --- a/Configure
 +++ b/Configure
-@@ -1788,9 +1788,9 @@ $config{CFLAGS} = [ map { $_ eq '--ossl-strict-warnings'
+@@ -1678,7 +1678,9 @@ $config{CFLAGS} = [ map { $_ eq '--ossl-
  
  unless ($disabled{afalgeng}) {
      $config{afalgeng}="";
 -    if (grep { $_ eq 'afalgeng' } @{$target{enable}}) {
 +    if ($target =~ m/openwrt$/) {
-         push @{$config{engdirs}}, "afalg";
--    } else {
++        push @{$config{engdirs}}, "afalg";
 +    } elsif (grep { $_ eq 'afalgeng' } @{$target{enable}}) {
-         disable('not-linux', 'afalgeng');
-     }
- }
+         my $minver = 4*10000 + 1*100 + 0;
+         if ($config{CROSS_COMPILE} eq "") {
+             my $verstr = `uname -r`;
