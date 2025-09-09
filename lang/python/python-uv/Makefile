@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-uv
-PKG_VERSION:=0.5.24
+PKG_VERSION:=0.8.15
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=Apache-2.0 MIT
 PKG_LICENSE_FILES:=LICENSE-APACHE LICENSE-MIT
 
 PYPI_NAME:=uv
-PKG_HASH:=b7895b66a182bf5e5b88e470ab04beaf76361a64970db6058363293a18c9dd2a
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-maturin/host
 
