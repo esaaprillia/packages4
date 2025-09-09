@@ -1,45 +1,35 @@
-# SPDX-License-Identifier: GPL-2.0-only
-#
-# Copyright (C) 2023 Luca Barbato and Donald Hoskins
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=boringtun-cli
-PKG_VERSION:=0.5.2
+PKG_NAME:=python-tuya-iot-py-sdk
+PKG_VERSION:=0.6.6
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/cloudflare/boringtun/tar.gz/$(PKG_VERSION)?
+PYPI_NAME:=tuya-iot-py-sdk
 PKG_HASH:=skip
 
-PKG_MAINTAINER:=Luca Barbato <lu_zero@luminem.org>
-PKG_LICENSE:=MIT Unlicense
-PKG_LICENSE_FILES:=LICENSE-MIT UNLICENSE
+PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
+PKG_LICENSE:=MIT
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/boringtun-$(PKG_NAME)-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=rust/host
+PKG_BUILD_DEPENDS:=python-paho-mqtt/host python-requests/host python-cryptodome/host python-websocket-client/host
 
-#RUST_PKG_FEATURES:=boringtun-cli
-
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/rust/rust-package.mk
+include ../python3-package.mk
 
-define Build/Compile
-	$(call Build/Compile/Cargo,boringtun-cli)
-	$(call Build/Compile/Cargo)
+define Package/python3-tuya-iot-py-sdk
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=A Python sdk for Tuya Open API, which provides IoT capabilities, maintained by Tuya official
+  URL:=https://github.com/tuya/tuya-iot-py-sdk
+  DEPENDS:=+python3 +python3-paho-mqtt +python3-requests +python3-cryptodome +python3-websocket-client
 endef
 
-define Package/boringtun-cli
-  SECTION:=utils
-  CATEGORY:=Utilities
-  TITLE:=Userspace WireGuard® Implementation in Rust
-  DEPENDS:=$(RUST_ARCH_DEPENDS)
-  URL:=https://github.com/cloudflare/boringtun
+define Package/python3-tuya-iot-py-sdk/description
+A Python sdk for Tuya Open API, which provides basic IoT capabilities like device management, asset management and industry capabilities, helping you create IoT solutions. With diversified devices and industries, Tuya Cloud Development Platform opens basic IoT capabilities like device management, AI scenarios, and data analytics services, as well as industry capabilities, helping you create IoT solutions.
 endef
 
-define Package/boringtun-cli/description
-  BoringTun is an implementation of the WireGuard® protocol designed for portability and speed.
-endef
-
-$(eval $(call RustBinPackage,boringtun-cli))
-$(eval $(call BuildPackage,boringtun-cli))
+$(eval $(call Py3Package,python3-tuya-iot-py-sdk))
+$(eval $(call BuildPackage,python3-tuya-iot-py-sdk))
+$(eval $(call BuildPackage,python3-tuya-iot-py-sdk-src))
