@@ -397,7 +397,7 @@ define Host/Configure
 			$(HOST_CFLAGS) \
 			$(HOST_CPPFLAGS) \
 			$(HOST_LDFLAGS) \
-			no-shared no-tests no-asm && \
+			shared no-tests no-asm && \
 		{ [ -f $(HOST_STAMP_CONFIGURED) ] || make clean; } \
 	)
 endef
@@ -411,7 +411,7 @@ define Host/Compile
 	$(MAKE) -C $(HOST_BUILD_DIR) \
 		CC="$(HOSTCC)" \
 		DESTDIR="$(STAGING_DIR_HOST)" \
-		install_sw install_ssldirs
+		install
 endef
 
 define Build/InstallDev
@@ -463,3 +463,4 @@ $(eval $(call BuildPackage,libopenssl-devcrypto))
 $(eval $(call BuildPackage,libopenssl-legacy))
 $(eval $(call BuildPackage,libopenssl-padlock))
 $(eval $(call BuildPackage,openssl-util))
+
