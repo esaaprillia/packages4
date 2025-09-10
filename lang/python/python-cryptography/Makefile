@@ -28,6 +28,8 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
+HOST_LDFLAGS += -lssl -lcrypto
+
 define Package/python3-cryptography
   SECTION:=lang
   CATEGORY:=Languages
