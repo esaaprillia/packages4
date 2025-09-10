@@ -30,12 +30,6 @@ define Package/python3-tuya-device-sharing-sdk/description
 A Python sdk for Tuya Open API, which provides basic IoT capabilities like device management capabilities, helping you create IoT solutions. With diversified devices and industries, Tuya IoT Development Platform opens basic IoT capabilities like device management, AI scenarios, and data analytics services, as well as industry capabilities, helping you create IoT solutions.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(RM) $(HOST_PYTHON3_PKG_DIR)/cryptography/hazmat/bindings/_rust.abi3.so
-	$(INSTALL_BIN) files/_rust.abi3.so $(HOST_PYTHON3_PKG_DIR)/cryptography/hazmat/bindings/
-endef
-
 $(eval $(call Py3Package,python3-tuya-device-sharing-sdk))
 $(eval $(call BuildPackage,python3-tuya-device-sharing-sdk))
 $(eval $(call BuildPackage,python3-tuya-device-sharing-sdk-src))
