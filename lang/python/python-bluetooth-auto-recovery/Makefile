@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bluetooth-auto-recovery
-PKG_VERSION:=1.4.2
+PKG_VERSION:=1.5.2
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=bluetooth_auto_recovery
-PKG_HASH:=7146bacf1864b07c6ef0ed989b8e7784aa5597426a80c05735558f72b255b7d8
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
 
