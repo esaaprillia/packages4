@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-voluptuous-openapi
-PKG_VERSION:=0.0.6
+PKG_VERSION:=0.2.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=voluptuous_openapi
-PKG_HASH:=4078c2acef23e04ceeab1ba58252590fcdc3ba6e3ed34521e8595374ab4de884
+PKG_HASH:=skip
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
