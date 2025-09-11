@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-httpcore
-PKG_VERSION:=1.0.7
+PKG_VERSION:=1.0.9
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,9 +9,9 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.md
 
 PYPI_NAME:=httpcore
-PKG_HASH:=8551cb62a169ec7162ac7be8d4817d561f60e08eaa485234898414bb5a8a0b4c
+PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host python-h11/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 
 include ../pypi.mk
