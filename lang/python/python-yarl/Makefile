@@ -34,6 +34,7 @@ define Package/python3-yarl
   +python3-light \
   +python3-multidict \
   +python3-urllib \
+  +python3-idna \
   +python3-idna
 endef
 
