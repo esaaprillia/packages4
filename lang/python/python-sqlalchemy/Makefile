@@ -31,7 +31,7 @@ define Package/python3-sqlalchemy
   SUBMENU:=Python
   TITLE:=Database Abstraction Library
   URL:=https://www.sqlalchemy.org
-  DEPENDS:=+python3 +python3-typing-extensions
+  DEPENDS:=+python3 +python3-greenlet +python3-typing-extensions
 endef
 
 define Package/python3-sqlalchemy/description
