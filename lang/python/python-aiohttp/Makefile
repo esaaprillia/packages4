@@ -21,7 +21,9 @@ PKG_CPE_ID:=cpe:/a:aiohttp:aiohttp
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-aiohttp
   SECTION:=lang
@@ -46,6 +48,7 @@ define Package/python3-aiohttp/description
   Asynchronous HTTP client/server framework for asyncio and Python3.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-aiohttp))
 $(eval $(call BuildPackage,python3-aiohttp))
 $(eval $(call BuildPackage,python3-aiohttp-src))
