@@ -35,7 +35,7 @@ define Package/python3-yarl
   +python3-multidict \
   +python3-urllib \
   +python3-idna \
-  +python3-idna
+  +python3-propcache
 endef
 
 define Package/python3-yarl/description
