@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-psutil
-PKG_VERSION:=6.1.0
+PKG_VERSION:=7.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=psutil
-PKG_HASH:=353815f59a7f64cdaca1c0307ee13558a0512f6db064e92fe833784f08539c7a
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
