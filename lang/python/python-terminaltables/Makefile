@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-terminaltables
-PKG_VERSION:=3.1.10
+PKG_VERSION:=3.1.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,8 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=terminaltables
-PKG_HASH:=ba6eca5cb5ba02bba4c9f4f985af80c54ec3dccf94cfcd190154386255e47543
+PKG_SOURCE_URL:=https://github.com/jasonacox/tinytuya/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host
 
