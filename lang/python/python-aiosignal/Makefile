@@ -28,7 +28,7 @@ define Package/python3-aiosignal
   SUBMENU:=Python
   TITLE:=List of registered asynchronous callbacks
   URL:=https://github.com/aio-libs/aiosignal
-  DEPENDS:=+python3-light +python3-frozenlist
+  DEPENDS:=+python3-light +python3-frozenlist +python3-typing-extensions
 endef
 
 define Package/python3-aiosignal/description
