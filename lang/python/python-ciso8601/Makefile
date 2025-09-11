@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ciso8601
-PKG_VERSION:=2.3.2
+PKG_VERSION:=2.3.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=ciso8601
-PKG_HASH:=ec1616969aa46c51310b196022e5d3926f8d3fa52b80ec17f6b4133623bd5434
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=MIT
