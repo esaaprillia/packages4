@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=aiooui
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python-poetry-core/host python-requests/host python-aiohttp/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host python-requests/host python-aiohttp/host python-charset-normalizer/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/python3-aiooui
   CATEGORY:=Languages
   TITLE:=Async OUI lookups
   URL:=https://github.com/bluetooth-devices/aiooui
-  DEPENDS:=+python3 +python3-requests +python3-aiohttp
+  DEPENDS:=+python3 +python3-requests +python3-aiohttp +python3-charset-normalizer
 endef
 
 define Package/python3-aiooui/description
