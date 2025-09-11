@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-propcache
-PKG_VERSION:=0.2.1
+PKG_VERSION:=0.3.2
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=propcache
-PKG_HASH:=3f77ce728b19cb537714499928fe800c3dda29e8d9428778fc7c186da4c09a64
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-expandvars/host python-cython/host
 
