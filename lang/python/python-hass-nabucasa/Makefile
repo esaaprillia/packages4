@@ -9,7 +9,7 @@ PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=hass_nabucasa
-PKG_HASH:=b39fd272eb84915431ff0c691b7de826e3fe48fad95a92c6bb0c39de97c89d09
+PKG_HASH:=skip
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
