@@ -42,9 +42,6 @@ persistence patterns, designed for efficient and high-performing
 database access, adapted into a simple and Pythonic domain language.
 endef
 
-PYTHON3_PKG_WHEEL_NAME:=SQLAlchemy
-PYTHON3_PKG_WHEEL_VERSION:=2.0.37
-
 $(eval $(call Py3Package,python3-sqlalchemy))
 $(eval $(call BuildPackage,python3-sqlalchemy))
 $(eval $(call BuildPackage,python3-sqlalchemy-src))
