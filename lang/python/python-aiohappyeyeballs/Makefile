@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiohappyeyeballs
-PKG_VERSION:=2.4.4
+PKG_VERSION:=2.6.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiohappyeyeballs
-PKG_HASH:=5fdd7d87889c63183afc18ce9271f9b0a7d32c2303e394468dd45d514a757745
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
