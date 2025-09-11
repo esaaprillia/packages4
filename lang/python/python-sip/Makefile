@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-sip
-PKG_VERSION:=6.10.0
+PKG_VERSION:=6.12.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=sip
-PKG_HASH:=fa0515697d4c98dbe04d9e898d816de1427e5b9ae5d0e152169109fd21f5d29c
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=BSD-2-Clause
