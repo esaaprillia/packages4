@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=bluetooth_data_tools
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python-poetry-core/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host python-cython/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
