@@ -11,8 +11,8 @@ PKG_NAME:=python-voluptuous-serialize
 PKG_VERSION:=2.7.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=voluptuous-serialize
-PKG_HASH:=79acdc58239582a393144402d827fa8efd6df0f5350cdc606d9242f6f9bca7c4
+PYPI_NAME:=voluptuous_serialize
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=Apache-2.0
