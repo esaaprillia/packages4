@@ -23,7 +23,7 @@ define Package/python3-habluetooth
   CATEGORY:=Languages
   TITLE:=High availability Bluetooth
   URL:=https://github.com/bluetooth-devices/habluetooth
-  DEPENDS:=+python3-light +python3-bleak +python3-bleak-retry-connector +python3-bluetooth-data-tools +python3-bluetooth-adapters +python3-bluetooth-auto-recovery +python3-async-interrupt
+  DEPENDS:=+python3-light +python3-bleak +python3-bleak-retry-connector +python3-bluetooth-data-tools +python3-bluetooth-adapters +python3-bluetooth-auto-recovery +python3-async-interrupt +python3-dbus-fast +python3-btsocket
 endef
 
 define Package/python3-habluetooth/description
