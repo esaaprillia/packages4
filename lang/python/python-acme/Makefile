@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-acme
-PKG_VERSION:=3.0.1
+PKG_VERSION:=5.0.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE.txt
 
 PYPI_NAME:=acme
-PKG_HASH:=2f4ae207c8a6791a2bc74cd18d60274766f483c2059145b0142cbb43e761331c
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
