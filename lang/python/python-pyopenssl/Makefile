@@ -32,7 +32,7 @@ define Package/python3-pyopenssl
   DEPENDS:= \
       +python3-light \
       +python3-openssl \
-      +python3-cryptography
+      +python3-cryptography +python3-typing-extensions
 endef
 
 define Package/python3-pyopenssl/description
