@@ -7,11 +7,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bleak
-PKG_VERSION:=0.22.3
+PKG_VERSION:=1.1.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=bleak
-PKG_HASH:=3149c3c19657e457727aa53d9d6aeb89658495822cd240afd8aeca4dd09c045c
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Quintin Hill <stuff@quintin.me.uk>
 PKG_LICENSE:=MIT
