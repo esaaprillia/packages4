@@ -19,6 +19,9 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.txt
 PKG_CPE_ID:=cpe:/a:aiohttp:aiohttp
 
+PKG_BUILD_DEPENDS:=python-pkgconfig/host
+HOST_BUILD_DEPENDS:=python-pkgconfig/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
