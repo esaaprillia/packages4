@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-anyio
-PKG_VERSION:=4.8.0
+PKG_VERSION:=4.10.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,9 +9,9 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=anyio
-PKG_HASH:=1d9fe889df5212298c0c0723fa20479d1b94883a2df44bd3897aa91083316f7a
+PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-sniffio/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
 include ../pypi.mk
