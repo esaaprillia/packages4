@@ -21,7 +21,7 @@ define Package/python3-dill
   CATEGORY:=Languages
   TITLE:=serialize all of Python
   URL:=http://dill.rtfd.io/
-  DEPENDS:=+python3 +python3-ctypes +python3-objgraph +python3-gprof2dot
+  DEPENDS:=+python3 +python3-ctypes +python3-readline +python3-objgraph +python3-gprof2dot
 endef
 
 define Package/python3-dill/description
