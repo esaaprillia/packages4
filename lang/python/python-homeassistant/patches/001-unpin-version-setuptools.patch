@@ -13,7 +13,7 @@ index ef8ce79..8442e05 100644
 +++ b/pyproject.toml
 @@ -1,5 +1,5 @@
  [build-system]
--requires = ["setuptools==75.1.0"]
+-requires = ["setuptools==78.1.1"]
 +requires = ["setuptools"]
  build-backend = "setuptools.build_meta"
  
