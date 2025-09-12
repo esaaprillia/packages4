@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-snitun
-PKG_VERSION:=0.41.7
+PKG_VERSION:=0.45.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=snitun
-PKG_HASH:=eabac3f32cd9e0e2e2decb2d98405341236914133d6a36b7396f018f0dc04c00
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
