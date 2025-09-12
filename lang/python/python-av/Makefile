@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-av
-PKG_VERSION:=14.2.0
+PKG_VERSION:=15.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=av
-PKG_HASH:=132b5d52ca262b97b0356e8f48cbbe54d0ac232107a722ab8cc8c0c19eafa17b
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
