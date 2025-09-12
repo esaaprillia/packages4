@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-mashumaro
-PKG_VERSION:=3.15
+PKG_VERSION:=3.16
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=mashumaro
-PKG_HASH:=32a2a38a1e942a07f2cbf9c3061cb2a247714ee53e36a5958548b66bd116d0a9
+PKG_HASH:=skip
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
