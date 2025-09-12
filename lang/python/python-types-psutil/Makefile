@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-types-psutil
-PKG_VERSION:=7.0.0.20250218
+PKG_VERSION:=7.0.0.20250822
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=types_psutil
-PKG_HASH:=1e642cdafe837b240295b23b1cbd4691d80b08a07d29932143cbbae30eb0db9c
+PKG_HASH:=skip
 
 HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
