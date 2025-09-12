@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-asyncinotify
-PKG_VERSION:=4.2.0
+PKG_VERSION:=4.2.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=asyncinotify
-PKG_HASH:=dac1d75e16a4919c6eab84a90ff51218db622c5524a84a5c501a0b62ea7ec7ea
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MPL-2.0
@@ -36,3 +36,4 @@ endef
 $(eval $(call Py3Package,python3-asyncinotify))
 $(eval $(call BuildPackage,python3-asyncinotify))
 $(eval $(call BuildPackage,python3-asyncinotify-src))
+
