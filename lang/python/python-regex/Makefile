@@ -31,5 +31,3 @@ endef
 $(eval $(call Py3Package,python3-regex))
 $(eval $(call BuildPackage,python3-regex))
 $(eval $(call BuildPackage,python3-regex-src))
-
-
