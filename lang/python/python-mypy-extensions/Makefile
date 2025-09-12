@@ -37,4 +37,3 @@ $(eval $(call Py3Package,python3-mypy-extensions))
 $(eval $(call BuildPackage,python3-mypy-extensions))
 $(eval $(call BuildPackage,python3-mypy-extensions-src))
 $(eval $(call HostBuild))
-
