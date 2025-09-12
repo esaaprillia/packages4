@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=zlib-ng
-PKG_VERSION:=2.2.4
+PKG_VERSION:=2.2.5
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -33,8 +33,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
-	-DWITH_GTEST=OFF \
-	-DWITH_UNALIGNED=OFF
+	-DWITH_GTEST=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
