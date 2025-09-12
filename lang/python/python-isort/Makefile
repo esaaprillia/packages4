@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-isort
-PKG_VERSION:=5.13.2
+PKG_VERSION:=6.0.1
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -23,7 +23,7 @@ define Package/python3-isort
   CATEGORY:=Languages
   TITLE:=A Python utility / library to sort imports.
   URL:=https://pycqa.github.io/isort/
-  DEPENDS:=+python3 +python3-toml +python3-colorama
+  DEPENDS:=+python3
 endef
 
 define Package/python3-isort/description
