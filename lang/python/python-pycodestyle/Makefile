@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pycodestyle
-PKG_VERSION:=2.12.1
+PKG_VERSION:=2.14.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=pycodestyle
-PKG_HASH:=6838eae08bbce4f6accd5d5572075c63626a15ee3e6f842df996bf62f6d73521
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
