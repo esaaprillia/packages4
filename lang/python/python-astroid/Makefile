@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-astroid
-PKG_VERSION:=3.3.8
+PKG_VERSION:=3.3.11
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=astroid
-PKG_HASH:=a88c7994f914a4ea8572fac479459f4955eeccc877be3f2d959a33273b0cf40b
+PKG_HASH:=skip
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
