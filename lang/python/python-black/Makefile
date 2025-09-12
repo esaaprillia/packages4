@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-black
-PKG_VERSION:=24.10.0
+PKG_VERSION:=25.1.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=black
-PKG_HASH:=846ea64c97afe3bc677b761787993be4991810ecc7a4a937816dd6bddedc4875
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatch-fancy-pypi-readme/host python-hatch-vcs/host python-hatchling/host
 
