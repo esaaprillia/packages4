@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pygments
-PKG_VERSION:=2.18.0
+PKG_VERSION:=2.19.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=pygments
-PKG_HASH:=786ff802f32e91311bff3889f6e9a86e81505fe99f2735bb6d60ae0c5004f199
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=BSD-2-Clause
@@ -41,3 +41,4 @@ endef
 $(eval $(call Py3Package,python3-pygments))
 $(eval $(call BuildPackage,python3-pygments))
 $(eval $(call BuildPackage,python3-pygments-src))
+
