@@ -5,7 +5,7 @@ PKG_VERSION:=2025.9.1
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=Apache-2.0 CNRI-Python
 PKG_LICENSE_FILES:=LICENSE.txt
 
 PYPI_NAME:=regex
@@ -31,4 +31,5 @@ endef
 $(eval $(call Py3Package,python3-regex))
 $(eval $(call BuildPackage,python3-regex))
 $(eval $(call BuildPackage,python3-regex-src))
+
 
