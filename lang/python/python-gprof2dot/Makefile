@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-gprof2dot
-PKG_VERSION:=2024.6.6
+PKG_VERSION:=2025.4.14
 PKG_RELEASE:=1
 
 PYPI_NAME:=gprof2dot
-PKG_HASH:=fa1420c60025a9eb7734f65225b4da02a10fc6dd741b37fa129bc6b41951e5ab
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LGPL-3.0
