@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-dill
-PKG_VERSION:=0.3.9
+PKG_VERSION:=0.4.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=dill
-PKG_HASH:=81aa267dddf68cbfe8029c42ca9ec6a4ab3b22371d1c450abc54422577b4512c
+PKG_HASH:=skip
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
