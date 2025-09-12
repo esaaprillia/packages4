@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zlib-ng
-PKG_VERSION:=0.5.1
+PKG_VERSION:=1.0.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=zlib_ng
-PKG_HASH:=32a46649e8efc21ddd74776a55366a8d8be4e3a95b93dc1f0ffe3880718990d9
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host python-versioningit/host
 
