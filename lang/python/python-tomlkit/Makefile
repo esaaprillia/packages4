@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tomlkit
-PKG_VERSION:=0.13.2
+PKG_VERSION:=0.13.3
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=tomlkit
-PKG_HASH:=fff5fe59a87295b278abd31bec92c15d9bc4a06885ab12bcea52c71119392e79
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host
 
@@ -36,3 +36,4 @@ endef
 $(eval $(call Py3Package,python3-tomlkit))
 $(eval $(call BuildPackage,python3-tomlkit))
 $(eval $(call BuildPackage,python3-tomlkit-src))
+
