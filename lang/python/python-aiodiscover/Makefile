@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiodiscover
-PKG_VERSION:=2.2.0
+PKG_VERSION:=2.7.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiodiscover
-PKG_HASH:=e5911d34b31ed3840740af123b94fa12617a97a295cf0cfd2f2516bdab065fa8
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
@@ -33,3 +33,4 @@ endef
 $(eval $(call Py3Package,python3-aiodiscover))
 $(eval $(call BuildPackage,python3-aiodiscover))
 $(eval $(call BuildPackage,python3-aiodiscover-src))
+
