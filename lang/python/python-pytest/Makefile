@@ -34,7 +34,7 @@ define Package/python3-pytest
 	+python3 \
 	+python3-iniconfig \
 	+python3-packaging \
-	+python3-pluggy
+	+python3-pluggy +python3-pygments
 endef
 
 define Package/python3-pytest/description
