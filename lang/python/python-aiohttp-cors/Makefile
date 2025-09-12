@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=aiohttp-cors
-PKG_VERSION:=0.7.0
-PKG_RELEASE:=3
+PKG_VERSION:=0.8.1
+PKG_RELEASE:=1
 
 PYPI_NAME:=aiohttp_cors
 PYPI_SOURCE_NAME:=aiohttp-cors
-PKG_HASH:=4d39c6d7100fd9764ed1caf8cebf0eb01bf5e3f24e2e073fda6234bc48b19f5d
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=Apache-2.0
