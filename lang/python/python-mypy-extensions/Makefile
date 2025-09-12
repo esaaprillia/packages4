@@ -11,7 +11,8 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=mypy_extensions
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+PKG_BUILD_DEPENDS:=python-flit-core/host
+HOST_BUILD_DEPENDS:=python-flit-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -36,3 +37,4 @@ $(eval $(call Py3Package,python3-mypy-extensions))
 $(eval $(call BuildPackage,python3-mypy-extensions))
 $(eval $(call BuildPackage,python3-mypy-extensions-src))
 $(eval $(call HostBuild))
+
