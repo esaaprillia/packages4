@@ -31,5 +31,3 @@ endef
 $(eval $(call Py3Package,python3-graphviz))
 $(eval $(call BuildPackage,python3-graphviz))
 $(eval $(call BuildPackage,python3-graphviz-src))
-
-
