@@ -5,7 +5,6 @@ PKG_VERSION:=1.6.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pynacl
-PKG_SOURCE_URL:=https://github.com/pyca/pynacl/archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Javier Marcet <javier@marcet.info>
