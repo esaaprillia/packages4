@@ -21,7 +21,7 @@ define Package/python3-hass-nabucasa
   CATEGORY:=Languages
   TITLE:=Home Assistant cloud integration by Nabu Casa, Inc.
   URL:=https://github.com/NabuCasa/hass-nabucasa
-  DEPENDS:=+python3-light +python3-acme +python3-aiohttp +python3-atomicwrites-homeassistant +python3-attrs +python3-ciso8601 +python3-cryptography +python3-pycognito +python3-pyjwt +python3-snitun +python3-webrtc-models
+  DEPENDS:=+python3-light +python3-acme +python3-aiohttp +python3-atomicwrites-homeassistant +python3-attrs +python3-ciso8601 +python3-cryptography +python3-pycognito +python3-pyjwt +python3-snitun +python3-webrtc-models +python3-yarl +python3-sentence-stream
 endef
 
 define Package/python3-hass-nabucasa/description
