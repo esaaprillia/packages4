@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-unicode-rbnf
-PKG_VERSION:=2.1.0
+PKG_VERSION:=2.3.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=unicode_rbnf
-PKG_HASH:=cbe723a11673c5223ffb37cd472e3f80c8854a4f5a99f5b3ff03b43d9aa60bef
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
