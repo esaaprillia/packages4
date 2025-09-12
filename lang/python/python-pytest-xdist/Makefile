@@ -37,7 +37,7 @@ define Package/python3-pytest-xdist
 	+python3-light \
 	+python3-uuid \
 	+python3-execnet \
-	+python3-pytest
+	+python3-pytest +python3-psutil
 endef
 
 define Package/python3-pytest-xdist/description
