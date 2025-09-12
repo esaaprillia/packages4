@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiozoneinfo
-PKG_VERSION:=0.2.1
+PKG_VERSION:=0.2.3
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=aiozoneinfo
-PKG_HASH:=457e2c665a2c7e093119efb87cc5e0da29e6f59aac504a544bec822c5be1cb6b
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
 
