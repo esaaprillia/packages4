@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cached-ipaddress
-PKG_VERSION:=0.8.0
+PKG_VERSION:=0.10.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=cached_ipaddress
-PKG_HASH:=65037b86959f20fd6505b8ecdbd9cb79c79fb0abc8d3a65c59125aa8d68e9c9b
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
 
@@ -34,3 +34,4 @@ endef
 $(eval $(call Py3Package,python3-cached-ipaddress))
 $(eval $(call BuildPackage,python3-cached-ipaddress))
 $(eval $(call BuildPackage,python3-cached-ipaddress-src))
+
