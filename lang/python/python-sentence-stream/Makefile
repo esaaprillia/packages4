@@ -1,50 +1,36 @@
-#
-# Copyright (C) 2013 
-#                           
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ccminer
-PKG_VERSION:=3.8.0
+PKG_NAME:=python-sentence-stream
+PKG_VERSION:=1.2.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/monkins1010/ccminer.git
-PKG_SOURCE_DATE:=2023-06-05
-PKG_SOURCE_VERSION:=1667394ad4120d64b0c57367e71cb832ad2e3645
-PKG_MIRROR_HASH:=skip
+PYPI_NAME:=sentence_stream
+PKG_HASH:=skip
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=Apache-2.0
+PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_MAINTAINER:=
-PKG_INSTALL:=1
-
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
-define Package/ccminer
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	+libpthread +libncurses +jansson +zlib +libstdcpp +curl +libopenssl
+define Package/python3-sentence-stream
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=A small sentence splitter for text streams
+  URL:=https://github.com/OHF-Voice/sentence-stream
+  DEPENDS:=+python3 +python3-regex
 endef
 
-define Package/ccminer/description
-ARM CPU ONLY CCminer Verushash2.2
+define Package/python3-sentence-stream/description
+  A small sentence splitter for text streams
 endef
 
-define Build/Configure
-	(cd $(PKG_BUILD_DIR); ./autogen.sh );
-	$(call Build/Configure/Default)
-endef
-
-define Package/ccminer/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,ccminer))
+$(eval $(call HostBuild))
+$(eval $(call Py3Package,python3-sentence-stream))
+$(eval $(call BuildPackage,python3-sentence-stream))
+$(eval $(call BuildPackage,python3-sentence-stream-src))
