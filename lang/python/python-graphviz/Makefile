@@ -5,7 +5,6 @@ PKG_VERSION:=0.21
 PKG_RELEASE:=1
 
 PYPI_NAME:=graphviz
-PYPI_SOURCE_EXT:=zip
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -32,4 +31,5 @@ endef
 $(eval $(call Py3Package,python3-graphviz))
 $(eval $(call BuildPackage,python3-graphviz))
 $(eval $(call BuildPackage,python3-graphviz-src))
+
 
