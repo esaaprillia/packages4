@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-graphviz
-PKG_VERSION:=0.20.3
+PKG_VERSION:=0.21
 PKG_RELEASE:=1
 
 PYPI_NAME:=graphviz
 PYPI_SOURCE_EXT:=zip
-PKG_HASH:=09d6bc81e6a9fa392e7ba52135a9d49f1ed62526f96499325930e87ca1b5925d
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
@@ -32,3 +32,4 @@ endef
 $(eval $(call Py3Package,python3-graphviz))
 $(eval $(call BuildPackage,python3-graphviz))
 $(eval $(call BuildPackage,python3-graphviz-src))
+
