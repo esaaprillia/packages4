@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=envs
 PKG_HASH:=9d8435c6985d1cdd68299e04c58e2bdb8ae6cf66b2596a8079e6f9a93f2a0398
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
