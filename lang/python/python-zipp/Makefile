@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host  # setuptools_scm[toml] >= 3.4.1
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-coherent-licensed/host  # setuptools_scm[toml] >= 3.4.1
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
