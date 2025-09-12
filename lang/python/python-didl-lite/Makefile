@@ -23,7 +23,7 @@ define Package/python3-didl-lite
   CATEGORY:=Languages
   TITLE:=DIDL-Lite (Digital Item Declaration Language) tools for Python
   URL:=https://github.com/StevenLooman/python-didl-lite
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-defusedxml
 endef
 
 define Package/python3-didl-lite/description
