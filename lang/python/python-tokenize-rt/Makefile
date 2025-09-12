@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tokenize-rt
-PKG_VERSION:=6.1.0
+PKG_VERSION:=6.2.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=tokenize_rt
-PKG_HASH:=e8ee836616c0877ab7c7b54776d2fefcc3bde714449a206762425ae114b53c86
+PKG_HASH:=skip
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
