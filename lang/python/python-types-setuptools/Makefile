@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-types-setuptools
-PKG_VERSION:=78.1.0.20250329
+PKG_VERSION:=80.9.0.20250822
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=types_setuptools
-PKG_HASH:=31e62950c38b8cc1c5114b077504e36426860a064287cac11b9666ab3a483234
+PKG_HASH:=skip
 
 HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
