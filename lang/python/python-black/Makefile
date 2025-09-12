@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=black
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatch-fancy-pypi-readme/host python-hatch-vcs/host python-hatchling/host
+PKG_BUILD_DEPENDS:=python-hatch-fancy-pypi-readme/host python-hatch-vcs/host python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
