@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pynacl
-PKG_VERSION:=1.5.0
-PKG_RELEASE:=4
+PKG_VERSION:=1.6.0
+PKG_RELEASE:=1
 
 PYPI_NAME:=pynacl
 PKG_SOURCE_URL:=https://github.com/pyca/pynacl/archive/$(PKG_VERSION)
