@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiodhcpwatcher
-PKG_VERSION:=1.0.2
+PKG_VERSION:=1.2.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiodhcpwatcher
-PKG_HASH:=0e5e6acbe34928eacaa85c5598aae0116ac13c5c796d7f44bc4859fe4903f570
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
