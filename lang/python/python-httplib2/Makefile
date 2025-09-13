@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-httplib2
-PKG_VERSION:=0.22.0
+PKG_VERSION:=0.31.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=httplib2
-PKG_HASH:=d7a10bc5ef5ab08322488bde8c726eeee5c8618723fdb399597ec58f3d82df81
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
