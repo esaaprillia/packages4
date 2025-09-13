@@ -19,10 +19,13 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-pytest
   SUBMENU:=Python
@@ -34,7 +37,8 @@ define Package/python3-pytest
 	+python3 \
 	+python3-iniconfig \
 	+python3-packaging \
-	+python3-pluggy +python3-pygments
+	+python3-pluggy \
+	+python3-pygments
 endef
 
 define Package/python3-pytest/description
@@ -42,6 +46,7 @@ The pytest framework makes it easy to write small tests, yet scales to
 support complex functional testing for applications and libraries.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pytest))
 $(eval $(call BuildPackage,python3-pytest))
 $(eval $(call BuildPackage,python3-pytest-src))
