@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pydantic-core
-PKG_VERSION:=2.27.2
+PKG_VERSION:=2.39.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pydantic_core
-PKG_HASH:=eb026e5a4c1fee05726072337ff51d1efb6f59090b7da90d30ea58625b1ffb39
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
