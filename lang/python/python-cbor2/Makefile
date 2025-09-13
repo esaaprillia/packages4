@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cbor2
-PKG_VERSION:=5.6.5
+PKG_VERSION:=5.7.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=cbor2
-PKG_HASH:=b682820677ee1dbba45f7da11898d2720f92e06be36acec290867d5ebf3d7e09
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
