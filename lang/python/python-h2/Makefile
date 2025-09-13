@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-h2
-PKG_VERSION:=4.1.0
+PKG_VERSION:=4.3.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=h2
-PKG_HASH:=a83aca08fbe7aacb79fec788c9c0bac936343560ed9ec18b82a13a12c28d2abb
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=License
