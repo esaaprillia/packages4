@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pysnmp-pysmi
-PKG_VERSION:=1.1.3
+PKG_VERSION:=1.1.12
 PKG_RELEASE:=1
 
 PYPI_NAME:=pysnmp_pysmi
