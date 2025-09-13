@@ -1,50 +1,38 @@
-#
-# Copyright (C) 2013 
-#                           
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ccminer
-PKG_VERSION:=3.8.0
+PKG_NAME:=python-pygatt
+PKG_VERSION:=5.0.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/monkins1010/ccminer.git
-PKG_SOURCE_DATE:=2023-06-05
-PKG_SOURCE_VERSION:=1667394ad4120d64b0c57367e71cb832ad2e3645
-PKG_MIRROR_HASH:=skip
+PYPI_NAME:=pygatt
+PKG_HASH:=skip
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=Apache 2.0 and MIT
+PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_MAINTAINER:=
-PKG_INSTALL:=1
+PKG_BUILD_DEPENDS:=python-coverage/host python-pytest/host
 
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
 
-define Package/ccminer
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	+libpthread +libncurses +jansson +zlib +libstdcpp +curl +libopenssl
+define Package/python3-pygatt
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Python Bluetooth LE (Low Energy) and GATT Library
+  URL:=https://github.com/peplin/pygatt
+  DEPENDS:=+python3 +python3-pyserial +python3-enum-compat +python3-pexpect
 endef
 
-define Package/ccminer/description
-ARM CPU ONLY CCminer Verushash2.2
+define Package/python3-pygatt/description
+  This Module allows reading and writing to GATT descriptors on devices such as fitness trackers, sensors, and anything implementing standard GATT Descriptor behavior.
 endef
 
-define Build/Configure
-	(cd $(PKG_BUILD_DIR); ./autogen.sh );
-	$(call Build/Configure/Default)
-endef
-
-define Package/ccminer/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,ccminer))
+$(eval $(call HostBuild))
+$(eval $(call Py3Package,python3-pygatt))
+$(eval $(call BuildPackage,python3-pygatt))
+$(eval $(call BuildPackage,python3-pygatt-src))
