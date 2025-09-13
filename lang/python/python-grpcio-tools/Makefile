@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-grpcio-tools
-PKG_VERSION:=1.71.0
+PKG_VERSION:=1.74.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=grpcio_tools
-PKG_HASH:=38dba8e0d5e0fb23a034e09644fdc6ed862be2371887eee54901999e8f6792a8
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
