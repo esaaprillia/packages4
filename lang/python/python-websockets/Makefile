@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-websockets
-PKG_VERSION:=14.2
+PKG_VERSION:=15.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=websockets
-PKG_HASH:=5059ed9c54945efb321f097084b4c7e52c246f2c869815876a69d1efc4ad6eb5
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Michal Vasilek <michal.vasilek@nic.cz>
 PKG_LICENSE:=BSD-3-Clause
