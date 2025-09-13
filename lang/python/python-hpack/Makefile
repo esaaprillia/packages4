@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hpack
-PKG_VERSION:=4.0.0
+PKG_VERSION:=4.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=hpack
-PKG_HASH:=fc41de0c63e687ebffde81187a948221294896f6bdc0ae2312708df339430095
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
