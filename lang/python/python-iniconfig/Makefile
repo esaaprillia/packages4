@@ -19,10 +19,13 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-iniconfig
   SUBMENU:=Python
@@ -37,6 +40,7 @@ define Package/python3-iniconfig/description
   iniconfig is a small and simple INI-file parser module.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-iniconfig))
 $(eval $(call BuildPackage,python3-iniconfig))
 $(eval $(call BuildPackage,python3-iniconfig-src))
