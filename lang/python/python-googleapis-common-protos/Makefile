@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-googleapis-common-protos
-PKG_VERSION:=1.66.0
+PKG_VERSION:=1.70.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=googleapis_common_protos
-PKG_HASH:=c3e7b33d15fdca5374cc0a7346dd92ffa847425cc4ea941d970f13680052ec8c
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
