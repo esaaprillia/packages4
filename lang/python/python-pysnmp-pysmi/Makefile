@@ -5,7 +5,7 @@ PKG_VERSION:=1.1.12
 PKG_RELEASE:=1
 
 PYPI_NAME:=pysnmp_pysmi
-PKG_HASH:=skip
+PKG_HASH:=7d12ee12fb99c08449318430ce1b1633f6eee5d938e880215f41cc9976ecdcbb
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-2-Clause
