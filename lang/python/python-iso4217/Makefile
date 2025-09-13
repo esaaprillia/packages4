@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-iso4217
-PKG_VERSION:=1.12.20240625
+PKG_VERSION:=1.14.20250512
 PKG_RELEASE:=1
 
 PYPI_NAME:=iso4217
-PKG_HASH:=5756023b09f017ef59caa7017d0dfda7267419b12611b44f9e178c33598ab579
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=PD
