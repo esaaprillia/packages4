@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pubnub
-PKG_VERSION:=10.0.0
+PKG_VERSION:=10.4.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=pubnub
-PKG_HASH:=010d0801d75d7480f7e30655252fcd54da4dc9f75568df832936d9d896181351
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
