@@ -32,9 +32,6 @@ define Package/python3-cbor2/description
   The specification is fully compatible with the original RFC 7049.
 endef
 
-PYTHON3_PKG_SETUP_VARS += \
-	CBOR2_BUILD_C_EXTENSION=1
-
 $(eval $(call Py3Package,python3-cbor2))
 $(eval $(call BuildPackage,python3-cbor2))
 $(eval $(call BuildPackage,python3-cbor2-src))
