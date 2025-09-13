@@ -25,7 +25,7 @@ define Package/python3-coverage
   CATEGORY:=Languages
   TITLE:=Code coverage measurement for Python
   URL:=https://github.com/nedbat/coveragepy
-  DEPENDS:=+python3
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-coverage/description
