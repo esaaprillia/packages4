@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=re2
-PKG_VERSION:=2024-07-02
+PKG_VERSION:=2025-08-12
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/google/re2/archive/$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/google/re2/releases/download/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
