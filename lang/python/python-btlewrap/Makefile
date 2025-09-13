@@ -21,7 +21,7 @@ define Package/python3-btlewrap
   SUBMENU:=Python
   TITLE:=wrapper around different bluetooth low energy backends
   URL:=https://github.com/ChristianKuehnel/btlewrap
-  DEPENDS:=+python3-logging
+  DEPENDS:=+python3 +python3-bluepy +python3-pygatt +python3-pytest
 endef
 
 define Package/python3-btlewrap/description
