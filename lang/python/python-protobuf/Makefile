@@ -21,7 +21,7 @@ define Package/python3-protobuf
   CATEGORY:=Languages
   TITLE:=Protocol Buffers Python
   URL:=https://protobuf.dev/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +protobuf
 endef
 
 define Package/python3-protobuf/description
