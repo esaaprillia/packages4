@@ -34,11 +34,6 @@ define Package/python3-matplotlib/description
   Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(INSTALL_CONF) files/cross/__init__.py $(HOST_PYTHON3_PKG_DIR)/mesonpy/
-endef
-
 MESON_ARGS += \
 	-Dsystem-freetype=true \
 	-Dsystem-qhull=true
