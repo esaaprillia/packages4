@@ -470,7 +470,7 @@ CONFIGURE_ARGS = \
 		-no-gtk \
 		-gui \
 		-system-harfbuzz \
-		-iconv \
+		-no-iconv \
 		-icu \
 		-no-kms \
 		-system-libjpeg \
