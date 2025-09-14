@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-scipy
-PKG_VERSION:=1.16.1
+PKG_VERSION:=1.16.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=scipy
@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 
-HOST_BUILD_DEPENDS:=numpy/host python-pybind11/host python-beniget/host python-ply/host python-gast/host python-pythran/host
 PKG_BUILD_DEPENDS:=numpy/host python-pybind11/host python-beniget/host python-ply/host python-gast/host python-pythran/host
+HOST_BUILD_DEPENDS:=numpy/host python-pybind11/host python-beniget/host python-ply/host python-gast/host python-pythran/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -40,7 +40,7 @@ define Build/Prepare
 	$(INSTALL_BIN) files/libnpymath.a $(HOST_PYTHON3_PKG_DIR)/numpy/_core/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-scipy))
 $(eval $(call BuildPackage,python3-scipy))
 $(eval $(call BuildPackage,python3-scipy-src))
-$(eval $(call HostBuild))
