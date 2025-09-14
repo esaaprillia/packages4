@@ -26,7 +26,7 @@ define Package/python3-cppy
   CATEGORY:=Languages
   TITLE:=A collection of C++ headers which make it easier to write Python C extension modules.
   URL:=https://github.com/nucleic/cppy
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-setuptools
 endef
 
 define Package/python3-cppy/description
