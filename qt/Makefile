@@ -537,7 +537,7 @@ define Package/qt5-qtbase/install
 	$(CP) $(PKG_BUILD_DIR)/qtbase/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/*.so* $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/qtbase/metatypes $(1)/usr/lib/
+#	$(CP) $(PKG_BUILD_DIR)/qtbase/metatypes $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/qt5
 	$(CP) $(PKG_BUILD_DIR)/qtbase/plugins $(1)/usr/lib/qt5/
 endef
@@ -570,7 +570,7 @@ define Package/qt5-qtdeclarative/install
 	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/lib/*.so* $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/metatypes/*.so* $(1)/usr/lib/
+#	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/metatypes/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/qt5
 	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/plugins $(1)/usr/lib/qt5/
 	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/qml $(1)/usr/lib/qt5/
