@@ -32,7 +32,7 @@ include $(INCLUDE_DIR)/nls.mk
 #	URL:=http://qt-project.org
 #	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +assimp
 #endef
-
+#
 #define Package/qt5-qt3d/description
 #Qt5 - C++ and QML APIs for easy inclusion of 3D graphics
 #endef
@@ -784,4 +784,3 @@ $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebsockets))
 $(eval $(call BuildPackage,qt5-qtwebview))
 $(eval $(call BuildPackage,qt5-qtxmlpatterns))
-
