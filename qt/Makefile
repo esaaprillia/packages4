@@ -498,7 +498,7 @@ CONFIGURE_ARGS = \
 		-no-slog2 \
 		-sql-sqlite \
 		-system-sqlite \
-		-system-assimp \
+		-no-assimp \
 		-system-tiff \
 		-system-webp \
 		-no-trace \
@@ -784,3 +784,4 @@ $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebsockets))
 $(eval $(call BuildPackage,qt5-qtwebview))
 $(eval $(call BuildPackage,qt5-qtxmlpatterns))
+
