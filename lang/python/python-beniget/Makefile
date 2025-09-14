@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -34,7 +34,7 @@ define Package/python3-beniget/description
   Beniget relies on gast to provide a cross version abstraction of the AST, effectively working across all Python 3 versions greater than 3.6.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-beniget))
 $(eval $(call BuildPackage,python3-beniget))
 $(eval $(call BuildPackage,python3-beniget-src))
-$(eval $(call HostBuild))
