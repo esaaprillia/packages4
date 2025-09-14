@@ -24,6 +24,19 @@ PYTHON3_PKG_BUILD:=0
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
 
+#define Package/qt5-qt3d
+#	SECTION:=libs
+#	CATEGORY:=Libraries
+#	SUBMENU:=Qt5
+#	TITLE:=qt3d
+#	URL:=http://qt-project.org
+#	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +assimp
+#endef
+#
+#define Package/qt5-qt3d/description
+#Qt5 - C++ and QML APIs for easy inclusion of 3D graphics
+#endef
+
 define Package/qt5-qtbase
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -509,6 +522,16 @@ define Build/InstallDev
 	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) install
 endef
 
+#define Package/qt5-qt3d/install
+#	$(INSTALL_DIR) $(1)/usr/bin
+#	$(CP) $(PKG_BUILD_DIR)/qt3d/bin/* $(1)/usr/bin/
+#	$(INSTALL_DIR) $(1)/usr/lib
+#	$(CP) $(PKG_BUILD_DIR)/qt3d/lib/*.so* $(1)/usr/lib/
+#	$(INSTALL_DIR) $(1)/usr/lib/qt5
+#	$(CP) $(PKG_BUILD_DIR)/qt3d/plugins $(1)/usr/lib/qt5/
+#	$(CP) $(PKG_BUILD_DIR)/qt3d/qml $(1)/usr/lib/qt5/
+#endef
+
 define Package/qt5-qtbase/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_BUILD_DIR)/qtbase/bin/* $(1)/usr/bin/
@@ -730,6 +753,7 @@ define Package/qt5-qtxmlpatterns/install
 	$(CP) $(PKG_BUILD_DIR)/qtxmlpatterns/qml $(1)/usr/lib/qt5/
 endef
 
+#$(eval $(call BuildPackage,qt5-qt3d))
 $(eval $(call BuildPackage,qt5-qtbase))
 $(eval $(call BuildPackage,qt5-qtcharts))
 $(eval $(call BuildPackage,qt5-qtconnectivity))
