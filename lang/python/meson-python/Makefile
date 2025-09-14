@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=meson-python
-PKG_VERSION:=0.17.1
+PKG_VERSION:=0.18.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=meson_python
@@ -36,7 +36,7 @@ define Package/meson-python/description
   meson-python is best suited for building Python packages containing extension modules implemented in languages such as C, C++, Cython, Fortran, Pythran, or Rust. Consult the documentation for more details.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,meson-python))
 $(eval $(call BuildPackage,meson-python))
 $(eval $(call BuildPackage,meson-python-src))
-$(eval $(call HostBuild))
