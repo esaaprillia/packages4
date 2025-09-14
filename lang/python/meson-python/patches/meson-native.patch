@@ -16,7 +16,7 @@ index 4d785a3..ad4b70f 100644
      ) -> None:
          self._source_dir = pathlib.Path(source_dir).absolute()
 -        self._build_dir = pathlib.Path(build_dir).absolute()
-+        self._build_dir = pathlib.Path(openwrt-build).absolute()
++        self._build_dir = pathlib.Path('openwrt-build').absolute()
          self._editable_verbose = editable_verbose
 -        self._meson_native_file = self._build_dir / 'meson-python-native-file.ini'
 -        self._meson_cross_file = self._build_dir / 'meson-python-cross-file.ini'
