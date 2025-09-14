@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE.txt
 
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -33,7 +33,7 @@ define Package/python3-pooch/description
   Pooch is a Python library that can manage data by downloading files from a server (only when needed) and storing them locally in a data cache (a folder on your computer).
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pooch))
 $(eval $(call BuildPackage,python3-pooch))
 $(eval $(call BuildPackage,python3-pooch-src))
-$(eval $(call HostBuild))
