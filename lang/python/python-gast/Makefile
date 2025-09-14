@@ -11,8 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -34,7 +33,7 @@ define Package/python3-gast/description
   GAST provides a compatibility layer between the AST of various Python versions, as produced by ast.parse from the standard ast module.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-gast))
 $(eval $(call BuildPackage,python3-gast))
 $(eval $(call BuildPackage,python3-gast-src))
-$(eval $(call HostBuild))
