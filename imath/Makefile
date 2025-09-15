@@ -4,7 +4,7 @@ PKG_NAME:=imath
 PKG_VERSION:=3.2.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=Imath-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/AcademySoftwareFoundation/Imath/releases/download/v$(PKG_VERSION)
 PKG_HASH:=skip
 
@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.md
 
+PKG_BUILD_DIR:=$(BUILD_DIR)/Imath-$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=numpy/host
