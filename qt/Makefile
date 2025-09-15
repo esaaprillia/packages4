@@ -523,8 +523,6 @@ define Build/InstallDev
 endef
 
 #define Package/qt5-qt3d/install
-#	$(INSTALL_DIR) $(1)/usr/bin
-#	$(CP) $(PKG_BUILD_DIR)/qt3d/bin/* $(1)/usr/bin/
 #	$(INSTALL_DIR) $(1)/usr/lib
 #	$(CP) $(PKG_BUILD_DIR)/qt3d/lib/*.so* $(1)/usr/lib/
 #	$(INSTALL_DIR) $(1)/usr/lib/qt5
@@ -548,8 +546,6 @@ define Package/qt5-qtcharts/install
 endef
 
 define Package/qt5-qtconnectivity/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/qtconnectivity/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtconnectivity/lib/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/qt5
@@ -564,8 +560,6 @@ define Package/qt5-qtdatavis3d/install
 endef
 
 define Package/qt5-qtdeclarative/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/lib/*.so* $(1)/usr/lib/
 	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/lib/metatypes $(1)/usr/lib/
@@ -621,8 +615,6 @@ define Package/qt5-qtnetworkauth/install
 endef
 
 define Package/qt5-qtquick3d/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/qtquick3d/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtquick3d/lib/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/qt5
@@ -648,8 +640,6 @@ define Package/qt5-qtquicktimeline/install
 endef
 
 define Package/qt5-qtremoteobjects/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/qtremoteobjects/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtremoteobjects/lib/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/qt5
@@ -662,8 +652,6 @@ define Package/qt5-qtscript/install
 endef
 
 define Package/qt5-qtscxml/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/qtscxml/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtscxml/lib/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/qt5
@@ -679,8 +667,6 @@ define Package/qt5-qtsensors/install
 endef
 
 define Package/qt5-qtserialbus/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/qtserialbus/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtserialbus/lib/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/qt5
@@ -743,8 +729,6 @@ define Package/qt5-qtwebview/install
 endef
 
 define Package/qt5-qtxmlpatterns/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/qtxmlpatterns/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtxmlpatterns/lib/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/qt5
@@ -782,4 +766,3 @@ $(eval $(call BuildPackage,qt5-qtwebchannel))
 $(eval $(call BuildPackage,qt5-qtwebsockets))
 $(eval $(call BuildPackage,qt5-qtwebview))
 $(eval $(call BuildPackage,qt5-qtxmlpatterns))
-
