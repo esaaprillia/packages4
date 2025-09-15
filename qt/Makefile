@@ -76,18 +76,18 @@ define Package/qt5-qtconnectivity/description
 Qt5 - Tools for the Bluetooth protocol stack (libraries)
 endef
 
-define Package/qt5-qtdatavis3d
-	SECTION:=libs
-	CATEGORY:=Libraries
-	SUBMENU:=Qt5
-	TITLE:=qtdatavis3d
-	URL:=http://qt-project.org
-	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
-endef
-
-define Package/qt5-qtdatavis3d/description
-Qt5 - Qt Data Visualization module
-endef
+#define Package/qt5-qtdatavis3d
+#	SECTION:=libs
+#	CATEGORY:=Libraries
+#	SUBMENU:=Qt5
+#	TITLE:=qtdatavis3d
+#	URL:=http://qt-project.org
+#	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+#endef
+#
+#define Package/qt5-qtdatavis3d/description
+#Qt5 - Qt Data Visualization module
+#endef
 
 define Package/qt5-qtdeclarative
 	SECTION:=libs
@@ -552,12 +552,12 @@ define Package/qt5-qtconnectivity/install
 	$(CP) $(PKG_BUILD_DIR)/qtconnectivity/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/qt5-qtdatavis3d/install
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/qtdatavis3d/lib/*.so* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/lib/qt5
-	$(CP) $(PKG_BUILD_DIR)/qtdatavis3d/qml $(1)/usr/lib/qt5/
-endef
+#define Package/qt5-qtdatavis3d/install
+#	$(INSTALL_DIR) $(1)/usr/lib
+#	$(CP) $(PKG_BUILD_DIR)/qtdatavis3d/lib/*.so* $(1)/usr/lib/
+#	$(INSTALL_DIR) $(1)/usr/lib/qt5
+#	$(CP) $(PKG_BUILD_DIR)/qtdatavis3d/qml $(1)/usr/lib/qt5/
+#endef
 
 define Package/qt5-qtdeclarative/install
 	$(INSTALL_DIR) $(1)/usr/lib
@@ -739,7 +739,7 @@ endef
 $(eval $(call BuildPackage,qt5-qtbase))
 $(eval $(call BuildPackage,qt5-qtcharts))
 $(eval $(call BuildPackage,qt5-qtconnectivity))
-$(eval $(call BuildPackage,qt5-qtdatavis3d))
+#$(eval $(call BuildPackage,qt5-qtdatavis3d))
 $(eval $(call BuildPackage,qt5-qtdeclarative))
 $(eval $(call BuildPackage,qt5-qtgamepad))
 $(eval $(call BuildPackage,qt5-qtgraphicaleffects))
