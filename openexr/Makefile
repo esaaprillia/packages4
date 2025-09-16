@@ -22,7 +22,7 @@ define Package/openexr
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A high dynamic-range image file format library
-	DEPENDS:=+libstdcpp +libdeflate
+	DEPENDS:=+libstdcpp +libdeflate +imath
 	URL:=http://www.openexr.com/
 endef
 
