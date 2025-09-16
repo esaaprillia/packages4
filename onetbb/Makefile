@@ -38,7 +38,8 @@ endef
 CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
 	-DTBB_STRICT=OFF \
-	-DTBB_TEST=OFF
+	-DTBB_TEST=OFF \
+	-DTBB_DISABLE_HWLOC_AUTOMATIC_SEARCH=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
