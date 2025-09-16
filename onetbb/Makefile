@@ -37,12 +37,6 @@ endef
 
 PYTHON3_PKG_SETUP_DIR:=python
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) 's,@CC@,$(TARGET_CC),g' $(PKG_BUILD_DIR)/build/python/setup.py
-	$(SED) 's,@CXX@,$(TARGET_CXX),g' $(PKG_BUILD_DIR)/build/python/setup.py
-endef
-
 CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
 	-DTBB_STRICT=OFF \
