@@ -37,7 +37,7 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(SED) 's,@PYTHON3_VARS@,$(PYTHON3_VARS),g' $(PKG_BUILD_DIR)/python/CMakeLists.txt
+	$(SED) "s|@PYTHON3_VARS@|$(PYTHON3_VARS)|g" $(PKG_BUILD_DIR)/python/CMakeLists.txt
 endef
 
 CMAKE_OPTIONS += \
