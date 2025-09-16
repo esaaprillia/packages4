@@ -1,0 +1,28 @@
+From fd850da7b625647ed8d2bc9de741b80ef8445b73 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 16 Sep 2025 21:24:35 +0800
+Subject: [PATCH] Update setup.py
+
+---
+ python/setup.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/python/setup.py b/python/setup.py
+index edf8580f..7c10168d 100644
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -25,11 +25,11 @@
+ 
+ if any(i in os.environ for i in ["CC", "CXX"]):
+     if "CC" not in os.environ:
+-        os.environ['CC'] = os.environ['CXX']
++        os.environ['CC'] = os.environ['@CXX@']
+     if "CXX" not in os.environ:
+-        os.environ['CXX'] = os.environ['CC']
++        os.environ['CXX'] = os.environ['@CC@']
+     if platform.system() == 'Linux':
+-        os.environ['LDSHARED'] = os.environ['CXX'] + " -shared"
++        os.environ['LDSHARED'] = os.environ['@CXX@'] + " -shared"
+     print("Environment specifies CC=%s CXX=%s"%(os.environ['CC'], os.environ['CXX']))
+ 
+ intel_compiler = os.getenv('CC', '') in ['icl', 'icpc', 'icc']
