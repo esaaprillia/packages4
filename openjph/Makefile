@@ -36,9 +36,10 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON
 
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
-	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/openjph.pc
-	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/openjph.pc
+	$(INSTALL_DIR) $(1)/usr/include $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/openjph $(1)/usr/include/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/openjph.pc $(1)/usr/lib/pkgconfig/
 endef
 
 define Package/openjph/install
