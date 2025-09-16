@@ -38,9 +38,7 @@ endef
 CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
 	-DTBB_STRICT=OFF \
-	-DTBB_TEST=OFF \
-	-DCMAKE_HWLOC_2_LIBRARY_PATH="$(STAGING_DIR)/usr/lib" \
-	-DCMAKE_HWLOC_2_INCLUDE_PATH="$(STAGING_DIR)/usr/include"
+	-DTBB_TEST=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
