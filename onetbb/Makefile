@@ -35,11 +35,6 @@ define Package/onetbb/description
 	oneTBB is a flexible C++ library that simplifies the work of adding parallelism to complex applications, even if you are not a threading expert.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) "s|@PYTHON3_VARS@|$(PYTHON3_VARS)|" $(PKG_BUILD_DIR)/python/CMakeLists.txt
-endef
-
 CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
 	-DTBB_STRICT=OFF \
