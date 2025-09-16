@@ -36,6 +36,7 @@ define Package/onetbb/description
 endef
 
 MAKE_PATH:=python
+MAKE_VARS +=$(PYTHON3_VARS)
 
 CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
