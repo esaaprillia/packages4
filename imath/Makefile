@@ -39,10 +39,11 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/Imath $(1)/usr/include/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/{Imath.pc,PyImath.pc} $(1)/usr/lib/pkgconfig/
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/Imath.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/Imath.pc
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/PyImath.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/PyImath.pc
 endef
 
 define Package/imath/install
