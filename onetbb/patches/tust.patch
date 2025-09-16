@@ -16,7 +16,7 @@ index 748921a5..01cc259d 100644
      DEPENDS tbb python_copy
      COMMAND
 -    ${PYTHON_EXECUTABLE} ${PYTHON_BUILD_WORK_DIR}/setup.py
-+    @PYTHON3_VARS@ ${PYTHON_EXECUTABLE} @PYTHON3_VARS@ ${PYTHON_BUILD_WORK_DIR}/setup.py
++    @PYTHON3_VARS@ ${PYTHON_EXECUTABLE} ${PYTHON_BUILD_WORK_DIR}/setup.py
          build -b${PYTHON_BUILD_WORK_DIR}
          build_ext ${TBB4PY_INCLUDE_STRING} -L$<TARGET_FILE_DIR:TBB::tbb>
          install --prefix build -f
