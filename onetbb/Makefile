@@ -27,7 +27,7 @@ define Package/onetbb
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=oneAPI Threading Building Blocks (oneTBB)
-	DEPENDS:=+libstdcpp +python3 +libhwloc
+	DEPENDS:=+libstdcpp +python3 +libhwloc +libucontext
 	URL:=https://uxlfoundation.github.io/oneTBB/
 endef
 
