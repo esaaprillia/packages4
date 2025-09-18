@@ -16,6 +16,24 @@ PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
+export PAC_FC_MAX_REAL_PRECISION=15
+export PAC_C_MAX_REAL_PRECISION=17
+export PAC_FC_ALL_INTEGER_KINDS="{1,2,4,8,16}"
+export PAC_FC_ALL_REAL_KINDS="{4,8}"
+export H5CONFIG_F_NUM_RKIND="INTEGER, PARAMETER :: num_rkinds = 2"
+export H5CONFIG_F_NUM_IKIND="INTEGER, PARAMETER :: num_ikinds = 5"
+export H5CONFIG_F_RKIND="INTEGER, DIMENSION(1:num_rkinds) :: rkind = (/4,8/)"
+export H5CONFIG_F_IKIND="INTEGER, DIMENSION(1:num_ikinds) :: ikind = (/1,2,4,8,16/)"
+export PAC_FORTRAN_NATIVE_INTEGER_SIZEOF="                    4"
+export PAC_FORTRAN_NATIVE_INTEGER_KIND="           4"
+export PAC_FORTRAN_NATIVE_REAL_SIZEOF="                    4"
+export PAC_FORTRAN_NATIVE_REAL_KIND="           4"
+export PAC_FORTRAN_NATIVE_DOUBLE_SIZEOF="                    8"
+export PAC_FORTRAN_NATIVE_DOUBLE_KIND="           8"
+export PAC_FORTRAN_NUM_INTEGER_KINDS="5"
+export PAC_FC_ALL_REAL_KINDS_SIZEOF="{4,8}"
+export PAC_FC_ALL_INTEGER_KINDS_SIZEOF="{1,2,4,8,16}"
+
 define Package/hdf5
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -30,24 +48,7 @@ define Package/hdf5/description
 endef
 
 CONFIGURE_VARS += \
-	FC=aarch64-openwrt-linux-musl-gfortran \
-	PAC_FC_MAX_REAL_PRECISION=15 \
-	PAC_C_MAX_REAL_PRECISION=17 \
-	PAC_FC_ALL_INTEGER_KINDS="{1,2,4,8,16}" \
-	PAC_FC_ALL_REAL_KINDS="{4,8}" \
-	H5CONFIG_F_NUM_RKIND="INTEGER, PARAMETER :: num_rkinds = 2" \
-	H5CONFIG_F_NUM_IKIND="INTEGER, PARAMETER :: num_ikinds = 5" \
-	H5CONFIG_F_RKIND="INTEGER, DIMENSION(1:num_rkinds) :: rkind = (/4,8/)" \
-	H5CONFIG_F_IKIND="INTEGER, DIMENSION(1:num_ikinds) :: ikind = (/1,2,4,8,16/)" \
-	PAC_FORTRAN_NATIVE_INTEGER_SIZEOF="4" \
-	PAC_FORTRAN_NATIVE_INTEGER_KIND="4" \
-	PAC_FORTRAN_NATIVE_REAL_SIZEOF="4" \
-	PAC_FORTRAN_NATIVE_REAL_KIND="4" \
-	PAC_FORTRAN_NATIVE_DOUBLE_SIZEOF="8" \
-	PAC_FORTRAN_NATIVE_DOUBLE_KIND="8" \
-	PAC_FORTRAN_NUM_INTEGER_KINDS="5" \
-	PAC_FC_ALL_REAL_KINDS_SIZEOF="{4,8}" \
-	PAC_FC_ALL_INTEGER_KINDS_SIZEOF="{1,2,4,8,16}"
+	FC=aarch64-openwrt-linux-musl-gfortran
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
