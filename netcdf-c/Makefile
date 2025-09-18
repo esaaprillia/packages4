@@ -30,7 +30,6 @@ define Package/netcdf-c/description
 endef
 
 CMAKE_OPTIONS += \
-    -DNETCDF_WITH_PLUGIN_DIR=/usr/lib/netcdf-c/plugin \
     -DENABLE_BYTERANGE=ON \
     -DENABLE_CDF5=ON \
     -DENABLE_DAP_LONG_TESTS=ON \
@@ -40,8 +39,7 @@ CMAKE_OPTIONS += \
     -DENABLE_FILTER_TESTING=ON \
     -DENABLE_LARGE_FILE_TESTS=ON \
     -DENABLE_UNIT_TESTS=ON \
-    -DNETCDF_ENABLE_LOGGING=ON \
-    -DENABLE_PLUGIN_INSTALL=ON
+    -DNETCDF_ENABLE_LOGGING=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -54,7 +52,6 @@ define Package/netcdf-c/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/netcdf-c $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,netcdf-c))
