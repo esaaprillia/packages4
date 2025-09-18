@@ -1,45 +1,60 @@
-# SPDX-License-Identifier: GPL-2.0-only
-#
-# Copyright (C) 2023 Luca Barbato and Donald Hoskins
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=boringtun-cli
-PKG_VERSION:=0.5.2
+PKG_NAME:=netcdf-c
+PKG_VERSION:=4.9.3
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/cloudflare/boringtun/tar.gz/$(PKG_VERSION)?
+PKG_SOURCE_URL:=https://github.com/Unidata/netcdf-c/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
-PKG_MAINTAINER:=Luca Barbato <lu_zero@luminem.org>
-PKG_LICENSE:=MIT Unlicense
-PKG_LICENSE_FILES:=LICENSE-MIT UNLICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=Apache-2.0
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/boringtun-$(PKG_NAME)-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=rust/host
-
-#RUST_PKG_FEATURES:=boringtun-cli
+CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/rust/rust-package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Build/Compile
-	$(call Build/Compile/Cargo,boringtun-cli)
-	$(call Build/Compile/Cargo)
+define Package/netcdf-c
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Official GitHub repository for netCDF-C libraries and utilities.
+	DEPENDS:=+hdf5 +libcurl +libxml2 +libaec +c-blosc +bzip2 +libzip +zstd
+	URL:=https://github.com/Unidata/netcdf-c
 endef
 
-define Package/boringtun-cli
-  SECTION:=utils
-  CATEGORY:=Utilities
-  TITLE:=Userspace WireGuard® Implementation in Rust
-  DEPENDS:=$(RUST_ARCH_DEPENDS)
-  URL:=https://github.com/cloudflare/boringtun
+define Package/netcdf-c/description
+	The Unidata network Common Data Form (netCDF) is an interface for scientific data access and a freely-distributed software library that provides an implementation of the interface.
 endef
 
-define Package/boringtun-cli/description
-  BoringTun is an implementation of the WireGuard® protocol designed for portability and speed.
+CMAKE_OPTIONS += \
+    -DNETCDF_WITH_PLUGIN_DIR=/usr/lib/netcdf-c/plugin \
+    -DENABLE_BYTERANGE=ON \
+    -DENABLE_CDF5=ON \
+    -DENABLE_DAP_LONG_TESTS=ON \
+    -DENABLE_DAP_REMOTE_TESTS=ON \
+    -DENABLE_EXAMPLE_TESTS=ON \
+    -DENABLE_EXTRA_TESTS=ON \
+    -DENABLE_FILTER_TESTING=ON \
+    -DENABLE_LARGE_FILE_TESTS=ON \
+    -DENABLE_UNIT_TESTS=ON \
+    -DNETCDF_ENABLE_LOGGING=ON \
+    -DENABLE_PLUGIN_INSTALL=ON
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/netcdf.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/netcdf.pc
 endef
 
-$(eval $(call RustBinPackage,boringtun-cli))
-$(eval $(call BuildPackage,boringtun-cli))
+define Package/netcdf-c/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/netcdf-c $(1)/usr/lib/
+endef
+
+$(eval $(call BuildPackage,netcdf-c))
