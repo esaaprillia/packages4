@@ -100,6 +100,7 @@ define Build/Configure/Default
 		PYTHON_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
 		PYTHON_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
 		PYTHON_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
+		Python3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON3_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
