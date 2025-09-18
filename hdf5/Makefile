@@ -20,7 +20,7 @@ define Package/hdf5
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=HDF5 is a data model, library, and file format for storing and managing data
-	DEPENDS:=+libaec +zlib +libstdcpp
+	DEPENDS:=+libaec +zlib +libstdcpp +INSTALL_GFORTRAN:libgfortran
 	URL:=https://github.com/HDFGroup/hdf5/
 endef
 
