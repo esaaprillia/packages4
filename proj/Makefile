@@ -30,7 +30,7 @@ define Package/proj/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=OFF \
+	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_TESTING=OFF
 
 define Build/InstallDev
