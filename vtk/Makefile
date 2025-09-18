@@ -18,6 +18,7 @@ PKG_BUILD_PARALLEL:=1
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
@@ -33,8 +34,13 @@ define Package/vtk/description
 	The Visualization Toolkit (VTK) is open source software for manipulating and displaying scientific data. It comes with state-of-the-art tools for 3D rendering, a suite of widgets for 3D interaction, and extensive 2D plotting capability.
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-DVTK_BUILD_COMPILE_TOOLS_ONLY=ON \
+	-DVTK_BUILD_TESTING=OFF
+
 CMAKE_OPTIONS += \
     -DBUILD_SHARED_LIBS=ON \
+    -DVTKCompileTools_DIR=$(STAGING_DIR_HOSTPKG) \
     -DVTK_PYTHON_VERSION="3" \
     -DVTK_WRAP_PYTHON=ON \
     -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5=ON \
@@ -53,4 +59,5 @@ define Package/vtk/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,vtk))
