@@ -39,7 +39,7 @@ CONFIGURE_ARGS += \
 	--enable-build-mode=production \
 	--enable-hl \
 	--enable-cxx \
-	--disable-fortran \
+	--enable-fortran \
 	--disable-java \
 	--with-pic \
 	--with-zlib \
