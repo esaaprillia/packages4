@@ -21,7 +21,7 @@ define Package/proj
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=PROJ coordinate transformation software library
-	DEPENDS:=+libcurl +libsqlite3 +libtiff
+	DEPENDS:=+libstdcpp +libcurl +libsqlite3 +libtiff
 	URL:=https://proj.org/
 endef
 
