@@ -49,17 +49,10 @@ define Build/InstallDev
 endef
 
 define Package/hdf5/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/* \
-	  $(1)/usr/bin/
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,hdf5))
