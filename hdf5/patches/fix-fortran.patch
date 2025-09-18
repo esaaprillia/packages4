@@ -1,0 +1,41 @@
+From 5858bf47e3407b2d4e49d68af645d27a57585d44 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 18 Sep 2025 11:40:30 +0800
+Subject: [PATCH] Update configure
+
+---
+ configure | 21 ---------------------
+ 1 file changed, 21 deletions(-)
+
+diff --git a/configure b/configure
+index 5d6661c..231e576 100644
+--- a/configure
++++ b/configure
+@@ -7567,27 +7567,6 @@ main (void)
+ }
+ 
+ _ACEOF
+-        if test "$cross_compiling" = yes
+-then :
+-  { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-printf "%s\n" "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error $? "cannot run test program while cross compiling
+-See \`config.log' for more details" "$LINENO" 5; }
+-else $as_nop
+-  if ac_fn_c_try_run "$LINENO"
+-then :
+-
+-            MY_LDBL_DIG=$(./conftest$EXEEXT 2>&1 | sed -n '1p')
+-            MY_FLT128_DIG=$(./conftest$EXEEXT 2>&1 | sed -n '2p')
+-
+-else $as_nop
+-
+-            as_fn_error $? "C program fails to build or run!" "$LINENO" 5
+-
+-fi
+-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+-  conftest.$ac_objext conftest.beam
+-fi
+ 
+ 
+ 
