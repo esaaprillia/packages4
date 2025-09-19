@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=openjpeg/host numpy/host protobuf/host flatbuffers/host
+PKG_BUILD_DEPENDS:=openjpeg/host numpy/host protobuf/host flatbuffers/host eigen
 
 CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR:=build
@@ -29,7 +29,7 @@ define Package/opencv
   CATEGORY:=Libraries
   TITLE:=OpenCV
   URL:=https://opencv.org/
-  DEPENDS:=+libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +libtiff +libpng +protobuf +flatbuffers +libwebp +libgphoto2 +openjpeg +openblas
+  DEPENDS:=+libpthread +librt +libatomic +libstdcpp +zlib +libjpeg +libfreetype +ffmpeg +libtiff +libpng +protobuf +libdc1394 +flatbuffers +gst1-plugins-base +gstreamer1 +jasper +harfbuzz +openexr +onetbb +hdf5 +libwebp +libgphoto2 +openjpeg +openblas
 endef
 
 define Package/python3-opencv
@@ -54,12 +54,6 @@ define Package/python3-opencv/description
   Open source computer vision and machine learning library (python modules)
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(RM) $(STAGING_DIR)/usr/bin/protoc*
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
-endef
-
 CMAKE_OPTIONS += \
 	-DCMAKE_CXX_STANDARD=17 \
 	-DBUILD_ZLIB=OFF \
@@ -80,12 +74,12 @@ CMAKE_OPTIONS += \
 	-DBUILD_EXAMPLES=OFF \
 	-DWITH_TIFF=ON \
 	-DWITH_OPENJPEG=ON \
-	-DWITH_JASPER=OFF \
+	-DWITH_JASPER=ON \
 	-DWITH_JPEG=ON \
 	-DWITH_PNG=ON \
-	-DWITH_OPENEXR=OFF \
+	-DWITH_OPENEXR=ON \
 	-DWITH_WEBP=ON \
-	-DWITH_TBB=OFF \
+	-DWITH_TBB=ON \
 	-DWITH_IPP=OFF \
 	-DWITH_ITT=OFF \
 	-DWITH_GTK=OFF \
@@ -98,6 +92,7 @@ CMAKE_OPTIONS += \
 	-DWITH_GPHOTO2=ON \
 	-DPROTOBUF_INCLUDE_DIR="$(STAGING_DIR)/usr/include" \
 	-DPROTOBUF_LIBRARIES="$(STAGING_DIR)/usr/lib" \
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin" \
 	-DPROTOBUF_UPDATE_FILES=ON \
 	-DINSTALL_C_EXAMPLES=OFF \
 	-DINSTALL_PYTHON_EXAMPLES=OFF \
@@ -105,14 +100,14 @@ CMAKE_OPTIONS += \
 	-DOPENCV_GENERATE_PKGCONFIG=ON \
 	-DOPENCV_ENABLE_NONFREE=OFF \
 	-DOPENCV_GENERATE_SETUPVARS=OFF \
-	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION)/site-packages/numpy/_core/include" \
+	-DEIGEN_INCLUDE_PATH="$(STAGING_DIR)/usr/include/eigen3" \
 	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)"
 
 TARGET_LDFLAGS += -latomic
 
 PYTHON3_PKG_BUILD_PATH:=modules/python/package
 PYTHON3_PKG_WHEEL_NAME:=opencv
-PYTHON3_PKG_WHEEL_VERSION:=4.11.0
+PYTHON3_PKG_WHEEL_VERSION:=4.12.0
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
