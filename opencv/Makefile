@@ -54,6 +54,12 @@ define Package/python3-opencv/description
   Open source computer vision and machine learning library (python modules)
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(RM) $(STAGING_DIR)/usr/bin/protoc*
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
+endef
+
 CMAKE_OPTIONS += \
 	-DCMAKE_CXX_STANDARD=17 \
 	-DBUILD_ZLIB=OFF \
@@ -92,7 +98,6 @@ CMAKE_OPTIONS += \
 	-DWITH_GPHOTO2=ON \
 	-DPROTOBUF_INCLUDE_DIR="$(STAGING_DIR)/usr/include" \
 	-DPROTOBUF_LIBRARIES="$(STAGING_DIR)/usr/lib" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin" \
 	-DPROTOBUF_UPDATE_FILES=ON \
 	-DINSTALL_C_EXAMPLES=OFF \
 	-DINSTALL_PYTHON_EXAMPLES=OFF \
