@@ -24,6 +24,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
+PYTHON3_PKG_SETUP_DIR:=modules/python/package
+
 define Package/opencv
   SECTION:=libs
   CATEGORY:=Libraries
@@ -110,10 +112,6 @@ CMAKE_OPTIONS += \
 	-DPYTHON3_PACKAGES_PATH="$(PYTHON3_PKG_DIR)"
 
 TARGET_LDFLAGS += -latomic
-
-PYTHON3_PKG_BUILD_PATH:=modules/python/package
-PYTHON3_PKG_WHEEL_NAME:=opencv
-PYTHON3_PKG_WHEEL_VERSION:=4.12.0
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
