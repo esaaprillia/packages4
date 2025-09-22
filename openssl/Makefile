@@ -389,15 +389,15 @@ define Build/Compile
 endef
 
 define Host/Prepare
-	$(RM) $(STAGING_DIR_HOST)/bin/openssl
-	$(RM) $(STAGING_DIR_HOST)/bin/.openssl.bin
-	$(RM) $(STAGING_DIR_HOST)/etc/ssl
-	$(RM) $(STAGING_DIR_HOST)/lib/libssl.*
-	$(RM) $(STAGING_DIR_HOST)/lib/libcrypto.*
-	$(RM) $(STAGING_DIR_HOST)/include/openssl
-	$(RM) $(STAGING_DIR_HOST)/lib/pkgconfig/libssl.pc
-	$(RM) $(STAGING_DIR_HOST)/lib/pkgconfig/libcrypto.pc
-	$(RM) $(STAGING_DIR_HOST)/lib/pkgconfig/openssl.pc
+	$(RM) -rf $(STAGING_DIR_HOST)/bin/openssl
+	$(RM) -rf $(STAGING_DIR_HOST)/bin/.openssl.bin
+	$(RM) -rf $(STAGING_DIR_HOST)/etc/ssl
+	$(RM) -rf $(STAGING_DIR_HOST)/lib/libssl.*
+	$(RM) -rf $(STAGING_DIR_HOST)/lib/libcrypto.*
+	$(RM) -rf $(STAGING_DIR_HOST)/include/openssl
+	$(RM) -rf $(STAGING_DIR_HOST)/lib/pkgconfig/libssl.pc
+	$(RM) -rf $(STAGING_DIR_HOST)/lib/pkgconfig/libcrypto.pc
+	$(RM) -rf $(STAGING_DIR_HOST)/lib/pkgconfig/openssl.pc
 endef
 
 define Host/Configure
