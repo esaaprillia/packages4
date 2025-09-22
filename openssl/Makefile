@@ -414,12 +414,12 @@ define Host/Configure
 			$(HOST_CFLAGS) \
 			$(HOST_CPPFLAGS) \
 			$(HOST_LDFLAGS) \
-			no-shared no-modules no-tests no-asm && \
+			no-shared no-pic no-tests no-asm && \
 		{ [ -f $(HOST_STAMP_CONFIGURED) ] || make clean; } \
 	)
 endef
 
-HOST_CFLAGS += $(HOST_FPIC)
+#HOST_CFLAGS += $(HOST_FPIC)
 
 define Host/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(HOST_BUILD_DIR) \
