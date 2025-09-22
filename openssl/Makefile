@@ -388,6 +388,18 @@ define Build/Compile
 		install_sw install_ssldirs
 endef
 
+define Host/Prepare
+	$(RM) $(STAGING_DIR_HOST)/bin/openssl
+	$(RM) $(STAGING_DIR_HOST)/bin/.openssl.bin
+	$(RM) $(STAGING_DIR_HOST)/etc/ssl
+	$(RM) $(STAGING_DIR_HOST)/lib/libssl.*
+	$(RM) $(STAGING_DIR_HOST)/lib/libcrypto.*
+	$(RM) $(STAGING_DIR_HOST)/include/openssl
+	$(RM) $(STAGING_DIR_HOST)/lib/pkgconfig/libssl.pc
+	$(RM) $(STAGING_DIR_HOST)/lib/pkgconfig/libcrypto.pc
+	$(RM) $(STAGING_DIR_HOST)/lib/pkgconfig/openssl.pc
+endef
+
 define Host/Configure
 	(cd $(HOST_BUILD_DIR); \
 		./Configure \
@@ -412,16 +424,6 @@ define Host/Compile
 		CC="$(HOSTCC)" \
 		DESTDIR="$(STAGING_DIR_HOST)" \
 		install_sw install_ssldirs
-endef
-
-define Host/Install
-	$(RM) -f $(STAGING_DIR_HOST)/bin/openssl
-	$(RM) -f $(STAGING_DIR_HOST)/bin/.openssl.bin
-	$(RM) -f $(STAGING_DIR_HOST)/etc/ssl
-	$(RM) -f $(STAGING_DIR_HOST)/lib/libssl.*
-	$(RM) -f $(STAGING_DIR_HOST)/lib/libcrypto.*
-	$(RM) -f $(STAGING_DIR_HOST)/include/openssl
-	$(call Host/Install/Default)
 endef
 
 define Build/InstallDev
