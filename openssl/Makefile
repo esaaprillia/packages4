@@ -389,6 +389,7 @@ define Build/Compile
 endef
 
 define Host/Prepare
+	$(call Host/Prepare/Default)
 	$(RM) -rf $(STAGING_DIR_HOST)/bin/openssl
 	$(RM) -rf $(STAGING_DIR_HOST)/bin/.openssl.bin
 	$(RM) -rf $(STAGING_DIR_HOST)/etc/ssl
