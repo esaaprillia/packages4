@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tenacity
-PKG_VERSION:=9.0.0
+PKG_VERSION:=9.1.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=tenacity
-PKG_HASH:=807f37ca97d62aa361264d497b0e31e92b8027044942bfa756160d908320d73b
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
