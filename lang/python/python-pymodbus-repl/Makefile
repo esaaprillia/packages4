@@ -1,48 +1,35 @@
-#
-# Copyright (C) 2013 
-#                           
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=crosstool-ng
-PKG_VERSION:=1.25.0
+PKG_NAME:=python-pymodbus-repl
+PKG_VERSION:=2.0.4
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=http://crosstool-ng.org/download/crosstool-ng/
+PYPI_NAME:=pymodbus_repl
 PKG_HASH:=skip
 
-PKG_INSTALL:=1
-PKG_MAINTAINER:=
+PKG_LICENSE:=MIT
+PKG_LICENSE_FILES:=LICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 
+PKG_BUILD_DEPENDS:=python-poetry-core/host
+
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include ../python3-package.mk
 
-define Package/crosstool-ng
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	  +libc
+define Package/python3-pymodbus-repl
+  SECTION:=lang
+  CATEGORY:=Languages
+  SUBMENU:=Python
+  TITLE:=REPL client and server for pymodbus
+  URL:=https://github.com/pymodbus-dev/repl
+  DEPENDS:=+python3 +python3-typer +python3-prompt-toolkit +python3-pygments +python3-tabulate
 endef
 
-define Package/crosstool-ng/description
-ARM CPU ONLY CCminer Verushash2.2
+define Package/python3-pymodbus-repl/description
+Pymodbus-REPL is a REPL (Read-Eval-Print Loop) tool for working with Modbus devices using the Pymodbus library.
 endef
 
-CONFIGURE_ARGS+= \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--mandir=/usr/share/man \
-	--infodir=/usr/share/info
-
-define Package/crosstool-ng/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,crosstool-ng))
+$(eval $(call Py3Package,python3-pymodbus-repl))
+$(eval $(call BuildPackage,python3-pymodbus-repl))
+$(eval $(call BuildPackage,python3-pymodbus-repl-src))
