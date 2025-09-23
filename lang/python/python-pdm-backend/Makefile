@@ -15,7 +15,9 @@ HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-pdm-backend
   SECTION:=lang
@@ -30,6 +32,7 @@ define Package/python3-pdm-backend/description
 This is the backend for PDM projects that is fully-compatible with PEP 517 spec, but you can also use it alone. It reads the metadata of PEP 621 format and coverts it to Core metadata.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pdm-backend))
 $(eval $(call BuildPackage,python3-pdm-backend))
 $(eval $(call BuildPackage,python3-pdm-backend-src))
