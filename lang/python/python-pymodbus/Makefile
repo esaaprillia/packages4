@@ -21,7 +21,7 @@ define Package/python3-pymodbus
   SUBMENU:=Python
   TITLE:=A fully featured modbus protocol stack in python
   URL:=https://github.com/pymodbus-dev/pymodbus/
-  DEPENDS:=+python3 +python3-pyserial
+  DEPENDS:=+python3 +python3-pyserial +python3-pymodbus-repl
 endef
 
 define Package/python3-pymodbus/description
