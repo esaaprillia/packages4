@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tuf
-PKG_VERSION:=5.1.0
+PKG_VERSION:=6.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=tuf
-PKG_HASH:=1865737bf8e05893ae31b4511617da7f02cf070562fa3c931074d29ef5fb46d7
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0 MIT
@@ -23,7 +23,7 @@ define Package/python3-tuf
   SUBMENU:=Python
   TITLE:=A secure updater framework for Python
   URL:=https://theupdateframework.com/
-  DEPENDS:=+python3 +python3-requests +python3-securesystemslib
+  DEPENDS:=+python3 +python3-requests +python3-securesystemslib +python3-urllib3
 endef
 
 define Package/python3-tuf/description
