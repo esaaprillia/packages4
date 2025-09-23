@@ -11,8 +11,6 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
@@ -23,7 +21,7 @@ define Package/python3-tenacity
   CATEGORY:=Languages
   TITLE:=Retrying library for Python
   URL:=http://tenacity.readthedocs.io/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-six
 endef
 
 define Package/python3-tenacity/description
