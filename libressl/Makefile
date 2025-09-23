@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2013 
-#                           
+# Copyright (C) 2016-2017 LEDE project
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,41 +7,34 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=crosstool-ng
-PKG_VERSION:=1.25.0
-PKG_RELEASE:=1
+PKG_NAME:=libressl
+PKG_VERSION:=3.7.3
+PKG_HASH:=7948c856a90c825bd7268b6f85674a8dcd254bae42e221781b24e3f8dc335db3
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=http://crosstool-ng.org/download/crosstool-ng/
-PKG_HASH:=skip
+PKG_CPE_ID:=cpe:/a:openbsd:libressl
 
-PKG_INSTALL:=1
-PKG_MAINTAINER:=
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://mirror.ox.ac.uk/pub/OpenBSD/LibreSSL \
+	http://ftp.jaist.ac.jp/pub/OpenBSD/LibreSSL \
+	https://ftp.openbsd.org/pub/OpenBSD/LibreSSL
 
-include $(INCLUDE_DIR)/package.mk
+HOST_BUILD_PARALLEL:=1
 
-define Package/crosstool-ng
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	  +libc
+include $(INCLUDE_DIR)/host-build.mk
+
+HOSTCC := $(HOSTCC_NOCACHE)
+
+HOST_CFLAGS += $(HOST_FPIC)
+
+HOST_CONFIGURE_ARGS += \
+	--enable-static \
+	--disable-shared \
+	--disable-asm \
+	--with-pic \
+	--disable-tests
+
+define Host/Uninstall
+	-$(call Host/Compile/Default,uninstall)
 endef
 
-define Package/crosstool-ng/description
-ARM CPU ONLY CCminer Verushash2.2
-endef
-
-CONFIGURE_ARGS+= \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--mandir=/usr/share/man \
-	--infodir=/usr/share/info
-
-define Package/crosstool-ng/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,crosstool-ng))
+$(eval $(call HostBuild))
