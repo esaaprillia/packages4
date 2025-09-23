@@ -31,7 +31,7 @@ A complete PKCS#11 wrapper for Python. You can use any PKCS#11 (aka CryptoKi) mo
 endef
 
 PYTHON3_PKG_WHEEL_NAME:=PyKCS11
-PYTHON3_PKG_WHEEL_VERSION:=1.5.17
+PYTHON3_PKG_WHEEL_VERSION:=1.5.18
 
 $(eval $(call Py3Package,python3-pykcs11))
 $(eval $(call BuildPackage,python3-pykcs11))
