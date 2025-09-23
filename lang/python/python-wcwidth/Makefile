@@ -9,11 +9,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-wcwidth
-PKG_VERSION:=0.2.13
+PKG_VERSION:=0.2.14
 PKG_RELEASE:=1
 
 PYPI_NAME:=wcwidth
-PKG_HASH:=72ea0c06399eb286d978fdedb6923a9eb47e1c486ce63e9b4e64fc18303972b5
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
