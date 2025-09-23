@@ -1,48 +1,33 @@
-#
-# Copyright (C) 2013 
-#                           
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=crosstool-ng
-PKG_VERSION:=1.25.0
+PKG_NAME:=python-pymodbus
+PKG_VERSION:=3.11.2
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=http://crosstool-ng.org/download/crosstool-ng/
+PYPI_NAME:=pymodbus
 PKG_HASH:=skip
 
-PKG_INSTALL:=1
-PKG_MAINTAINER:=
+PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE_FILES:=LICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include ../python3-package.mk
 
-define Package/crosstool-ng
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=CPU ONLY CCminer Verushash2.2
-  URL:=https://github.com/monkins1010/ccminer
-  DEPENDS:= \
-	  +libc
+define Package/python3-pymodbus
+  SECTION:=lang
+  CATEGORY:=Languages
+  SUBMENU:=Python
+  TITLE:=A fully featured modbus protocol stack in python
+  URL:=https://github.com/pymodbus-dev/pymodbus/
+  DEPENDS:=+python3 +python3-pyserial
 endef
 
-define Package/crosstool-ng/description
-ARM CPU ONLY CCminer Verushash2.2
+define Package/python3-pymodbus/description
+Pymodbus is a full Modbus protocol implementation offering a client and server with synchronous/asynchronous API and simulators.
 endef
 
-CONFIGURE_ARGS+= \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--mandir=/usr/share/man \
-	--infodir=/usr/share/info
-
-define Package/crosstool-ng/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ccminer $(1)/usr/bin/
-endef
-
-$(eval $(call BuildPackage,crosstool-ng))
+$(eval $(call Py3Package,python3-pymodbus))
+$(eval $(call BuildPackage,python3-pymodbus))
+$(eval $(call BuildPackage,python3-pymodbus-src))
