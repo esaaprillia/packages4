@@ -18,23 +18,42 @@ PKG_SOURCE_URL:=https://mirror.ox.ac.uk/pub/OpenBSD/LibreSSL \
 	http://ftp.jaist.ac.jp/pub/OpenBSD/LibreSSL \
 	https://ftp.openbsd.org/pub/OpenBSD/LibreSSL
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=ISC
+PKG_LICENSE_FILES:=COPYING
+
+PKG_HOST_ONLY:=1
 HOST_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/host-build.mk
+include $(INCLUDE_DIR)/package.mk
 
 HOSTCC := $(HOSTCC_NOCACHE)
 
 HOST_CFLAGS += $(HOST_FPIC)
 
+define Package/libressl
+  SECTION:=libs
+  CATEGORY:=Libraries
+  TITLE:=Free version of the TLS/crypto stack forked from OpenSSL
+  URL:=https://www.libressl.org/
+  BUILDONLY:=1
+endef
+
 HOST_CONFIGURE_ARGS += \
+	--prefix=$(STAGING_DIR_HOST) \
+	--with-openssldir=$(STAGING_DIR_HOST)/etc/ssl \
+	--libdir=$(STAGING_DIR_HOST)/lib \
+	--includedir=$(STAGING_DIR_HOST)/include/openssl \
 	--enable-static \
-	--disable-shared \
+	--enable-shared \
 	--disable-asm \
 	--with-pic \
 	--disable-tests
 
-define Host/Uninstall
-	-$(call Host/Compile/Default,uninstall)
+define Package/libressl/description
+  LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with goals of modernizing the codebase, improving security, and applying best practice development processes.
 endef
 
 $(eval $(call HostBuild))
+$(eval $(call BuildPackage,libressl))
