@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pykcs11
-PKG_VERSION:=1.5.17
+PKG_VERSION:=1.5.18
 PKG_RELEASE:=1
 
 PYPI_NAME:=pykcs11
-PKG_HASH:=7b667e959fa0b6ad0750b03e2081a059cbe9a62789766143e50f90988a338994
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0
