@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-augeas
-PKG_VERSION:=1.1.0
-PKG_RELEASE:=3
+PKG_VERSION:=1.2.0
+PKG_RELEASE:=1
 
 PYPI_NAME:=python-augeas
-PKG_HASH:=5194a49e86b40ffc57055f73d833f87e39dce6fce934683e7d0d5bbb8eff3b8c
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=LGPL-2.1-or-later
