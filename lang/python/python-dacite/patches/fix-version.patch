@@ -1,0 +1,22 @@
+From daad7e4a15569321d3cf118f8083a71a65d7e044 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mateusz=20Ciszczo=C5=84?= <contact@mciszczon.pl>
+Date: Wed, 5 Feb 2025 10:19:01 +0100
+Subject: [PATCH] Fix version in setup.py
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 5443ef3..f2c33b0 100644
+--- a/setup.py
++++ b/setup.py
+@@ -2,7 +2,7 @@
+ 
+ setup(
+     name="dacite",
+-    version="1.9.1",
++    version="1.9.2",
+     description="Simple creation of data classes from dictionaries.",
+     long_description=open("README.md").read(),
+     long_description_content_type="text/markdown",
