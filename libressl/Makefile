@@ -40,6 +40,23 @@ define Package/libressl
   BUILDONLY:=1
 endef
 
+define Host/Prepare
+	$(call Host/Prepare/Default)
+	rm -rf $(STAGING_DIR_HOST)/bin/openssl
+	rm -rf $(STAGING_DIR_HOST)/bin/ocspcheck
+	rm -rf $(STAGING_DIR_HOST)/bin/.openssl.bin
+	rm -rf $(STAGING_DIR_HOST)/bin/.ocspcheck.bin
+	rm -rf $(STAGING_DIR_HOST)/etc/ssl
+	rm -rf $(STAGING_DIR_HOST)/lib/libssl.*
+	rm -rf $(STAGING_DIR_HOST)/lib/libtls.*
+	rm -rf $(STAGING_DIR_HOST)/lib/libcrypto.*
+	rm -rf $(STAGING_DIR_HOST)/include/openssl
+	rm -rf $(STAGING_DIR_HOST)/lib/pkgconfig/libssl.pc
+	rm -rf $(STAGING_DIR_HOST)/lib/pkgconfig/libtls.pc
+	rm -rf $(STAGING_DIR_HOST)/lib/pkgconfig/libcrypto.pc
+	rm -rf $(STAGING_DIR_HOST)/lib/pkgconfig/openssl.pc
+endef
+
 HOST_CONFIGURE_ARGS += \
 	--prefix=$(STAGING_DIR_HOST) \
 	--with-openssldir=$(STAGING_DIR_HOST)/etc/ssl \
