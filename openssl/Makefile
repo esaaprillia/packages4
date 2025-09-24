@@ -414,7 +414,7 @@ define Host/Configure
 			$(HOST_CFLAGS) \
 			$(HOST_CPPFLAGS) \
 			$(HOST_LDFLAGS) \
-			no-shared no-tests no-asm && \
+			shared no-tests no-asm && \
 		{ [ -f $(HOST_STAMP_CONFIGURED) ] || make clean; } \
 	)
 endef
