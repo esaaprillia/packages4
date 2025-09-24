@@ -25,8 +25,6 @@ PKG_LICENSE_FILES:=COPYING
 PKG_HOST_ONLY:=1
 HOST_BUILD_PARALLEL:=1
 
-HOST_BUILD_PREFIX:=$(STAGING_DIR_HOST)
-
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
 
@@ -60,11 +58,6 @@ define Host/Prepare
 endef
 
 HOST_CONFIGURE_ARGS += \
-	--prefix=$(STAGING_DIR_HOST) \
-	--with-openssldir=$(STAGING_DIR_HOST)/etc/ssl \
-	--bindir=$(STAGING_DIR_HOST)/bin \
-	--libdir=$(STAGING_DIR_HOST)/lib \
-	--includedir=$(STAGING_DIR_HOST)/include/openssl \
 	--enable-static \
 	--enable-shared \
 	--disable-asm \
