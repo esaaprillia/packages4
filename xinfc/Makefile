@@ -35,7 +35,7 @@ endef
 
 define Package/xinfc/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/xinfc-wsc $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,xinfc))
