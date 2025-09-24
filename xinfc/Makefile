@@ -31,7 +31,6 @@ endef
 define Build/Compile
 	( cd $(PKG_BUILD_DIR) ; \
 		$(TARGET_CXX) -O2 -Wall -Iinclude src/xinfc-wsc.cpp -o xinfc-wsc)
-	$(call Build/Compile/Default)
 endef
 
 define Package/xinfc/install
