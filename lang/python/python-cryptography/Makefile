@@ -19,7 +19,7 @@ PKG_LICENSE_FILES:=LICENSE.APACHE LICENSE.BSD
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 PKG_CPE_ID:=cpe:/a:cryptography_project:cryptography
 
-HOST_BUILD_DEPENDS:=libffi/host python-cffi/host python-flit-core/host python-setuptools-rust/host python-maturin/host openssl/host
+HOST_BUILD_DEPENDS:=libffi/host python-cffi/host python-flit-core/host python-setuptools-rust/host python-maturin/host
 PKG_BUILD_DEPENDS:=libffi/host python-cffi/host python-flit-core/host python-setuptools-rust/host python-maturin/host
 
 include ../pypi.mk
@@ -49,9 +49,6 @@ cryptography is a package which provides cryptographic recipes and
 primitives to Python developers. Our goal is for it to be your
 "cryptographic standard library".
 endef
-
-PYTHON3_HOST_BUILD_VARS += \
-	CRYPTOGRAPHY_BUILD_OPENSSL_NO_LEGACY=1
 
 $(eval $(call Py3Package,python3-cryptography))
 $(eval $(call BuildPackage,python3-cryptography))
