@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aenum
-PKG_VERSION:=3.1.15
+PKG_VERSION:=3.1.16
 PKG_RELEASE:=1
 
 PYPI_NAME:=aenum
-PKG_HASH:=8cbd76cd18c4f870ff39b24284d3ea028fbe8731a58df3aa581e434c575b9559
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
