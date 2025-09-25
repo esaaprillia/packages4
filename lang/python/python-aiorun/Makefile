@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiorun
-PKG_VERSION:=2024.8.1
+PKG_VERSION:=2025.1.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiorun
-PKG_HASH:=87ea66b6146756ced58175d2f5ae64519ef96c4657f46b0e0c036e541a22c764
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
