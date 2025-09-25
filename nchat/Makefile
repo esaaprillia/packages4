@@ -33,9 +33,7 @@ define Package/nchat/description
 endef
 
 CMAKE_OPTIONS += \
-	-DHAS_TELEGRAM=OFF \
-	-DCMAKE_C_FLAGS=-fPIC \
-	-DCMAKE_CXX_FLAGS=-fPIC
+	-DHAS_TELEGRAM=OFF
 
 define Package/nchat/install
 	$(INSTALL_DIR) \
