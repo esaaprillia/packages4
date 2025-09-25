@@ -6,8 +6,8 @@ PKG_RELEASE:=1
 
 PYPI_NAME:=home_assistant_chip_clusters
 PKG_SOURCE:=$(PYPI_NAME)-$(PKG_VERSION)-py3-none-any.whl
-PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/6c/a4/c2731067e449453ae6315a97c91bbc54782fe54f0c2f526b7bd0376cd5c1/
-PKG_HASH:=604307f6357ebfb8c74fd3c8178393c37e8cbce2a8540c371e38051e62844a36
+PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/bb/ee/1f80b7d35087b4da2343cc7e9f6af7796247a982f2d12a4598fa1c6029b1/
+PKG_HASH:=skip
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/pypi/$(PYPI_NAME)-$(PKG_VERSION)
 
