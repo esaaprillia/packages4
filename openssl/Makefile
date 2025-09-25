@@ -13,7 +13,6 @@ PKG_RELEASE:=3
 PKG_BUILD_FLAGS:=no-mips16 gc-sections no-lto
 
 PKG_BUILD_PARALLEL:=1
-HOST_BUILD_PREFIX:=$(STAGING_DIR_HOST)
 
 PKG_BASE:=$(subst $(space),.,$(wordlist 1,2,$(subst .,$(space),$(PKG_VERSION))))
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -409,9 +408,9 @@ endef
 define Host/Configure
 	(cd $(HOST_BUILD_DIR); \
 		./Configure \
-			--prefix="$(STAGING_DIR_HOST)" \
+			--prefix="$(STAGING_DIR_HOSTPKG)" \
 			--libdir=lib \
-			--openssldir="$(STAGING_DIR_HOST)/etc/ssl" \
+			--openssldir="$(STAGING_DIR_HOSTPKG)/etc/ssl" \
 			$(HOST_CFLAGS) \
 			$(HOST_CPPFLAGS) \
 			$(HOST_LDFLAGS) \
@@ -428,7 +427,7 @@ define Host/Compile
 		all
 	$(MAKE) -C $(HOST_BUILD_DIR) \
 		CC="$(HOSTCC)" \
-		DESTDIR="$(STAGING_DIR_HOST)" \
+		DESTDIR="$(STAGING_DIR_HOSTPKG)" \
 		install_sw install_ssldirs
 endef
 
