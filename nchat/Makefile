@@ -17,7 +17,7 @@ CMAKE_BINARY_SUBDIR:=build
 PKG_BUILD_DEPENDS:=ncurses/host gperf/host golang/host
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake-golang.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake-golang.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/nchat
