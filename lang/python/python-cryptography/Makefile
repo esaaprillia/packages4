@@ -50,7 +50,8 @@ primitives to Python developers. Our goal is for it to be your
 "cryptographic standard library".
 endef
 
-PYTHON3_HOST_BUILD_VARS += CRYPTOGRAPHY_OSSLCONF="OPENSSL_NO_IDEA"
+PYTHON3_HOST_BUILD_VARS += \
+	CRYPTOGRAPHY_BUILD_OPENSSL_NO_LEGACY=1
 
 $(eval $(call Py3Package,python3-cryptography))
 $(eval $(call BuildPackage,python3-cryptography))
