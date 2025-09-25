@@ -19,7 +19,7 @@ PKG_BUILD_DEPENDS:=ncurses/host gperf/host golang/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
-include $(TOPDIR)/feeds/python/lang/golang/golang-values.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-values.mk
 
 define Package/nchat
 	SECTION:=net
@@ -36,7 +36,7 @@ endef
 CMAKE_OPTIONS += \
 	-DHAS_TELEGRAM=OFF \
 	-DCMAKE_C_FLAGS=-fPIC \
-	-DCMAKE_CXX_FLAGS=-fPIC \
+	-DCMAKE_CXX_FLAGS=-fPIC
 
 define Package/nchat/install
 	$(INSTALL_DIR) \
