@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cachetools
-PKG_VERSION:=5.5.0
+PKG_VERSION:=6.2.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=cachetools
-PKG_HASH:=2cc24fb4cbe39633fb7badd9db9ca6295d766d9c2995f245725a46715d050f2a
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
