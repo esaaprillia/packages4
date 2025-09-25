@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-humanfriendly
-PKG_VERSION:=9.1
+PKG_VERSION:=10.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=humanfriendly
-PKG_HASH:=066562956639ab21ff2676d1fda0b5987e985c534fc76700a19bd54bcb81121d
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
