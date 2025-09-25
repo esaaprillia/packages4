@@ -16,7 +16,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-#PKG_BUILD_DEPENDS:=python-requests/host python-paho-mqtt/host python-cryptography/host
+PKG_BUILD_DEPENDS:=python-requests/host python-paho-mqtt/host python-cryptography/host
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/pypi/$(PYPI_NAME)-$(PKG_VERSION)
 
