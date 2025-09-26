@@ -118,7 +118,7 @@ CONFIGURE_ARGS := \
 	$(if $(CONFIG_SQLITE3_SESSION),--enable-session,--disable-session)
 
 HOST_CONFIGURE_ARGS := \
-	$(filter-out --target=% $(HOST_CONFIGURE_ARGS))
+	$(filter-out --target=% ,$(HOST_CONFIGURE_ARGS))
 
 ifeq ($(CONFIG_SQLITE3_LIBEDIT),y)
 CONFIGURE_ARGS+=--disable-readline
