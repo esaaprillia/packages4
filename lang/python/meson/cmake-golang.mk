@@ -93,6 +93,7 @@ define Build/Configure/Default
 		CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)" \
 		LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
 		$(GO_PKG_VARS) \
+		$(GO_PKG_INSTALL_ARGS) \
 		cmake \
 			--no-warn-unused-cli \
 			-DCMAKE_SYSTEM_NAME=Linux \
