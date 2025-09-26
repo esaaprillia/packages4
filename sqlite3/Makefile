@@ -117,6 +117,9 @@ CONFIGURE_ARGS := \
 	$(if $(CONFIG_SQLITE3_RTREE),--enable-rtree,--disable-rtree) \
 	$(if $(CONFIG_SQLITE3_SESSION),--enable-session,--disable-session)
 
+HOST_CONFIGURE_ARGS := \
+	--target=$(GNU_HOST_NAME)
+
 ifeq ($(CONFIG_SQLITE3_LIBEDIT),y)
 CONFIGURE_ARGS+=--disable-readline
 else ifeq ($(CONFIG_SQLITE3_READLINE),y)
