@@ -16,7 +16,7 @@ index 2c5ca032..cfb81570 100644
    DEPENDS ${SRCS}
    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 -  COMMAND env GOPATH=${GOPATH} CGO_ENABLED=1 go build -buildmode=${BUILDMODE} ${CUSTOM_GO_FLAGS}
-+  COMMAND env GOPATH=${GOPATH} CGO_ENABLED=1 go build -v -buildvcs=false -trimpath -ldflags "all=-buildid '1758316778' -linkmode external -extldflags '-L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/lib -fuse-ld=bfd -Wl,-z,now -Wl,-z,relro'" -buildmode=${BUILDMODE} ${CUSTOM_GO_FLAGS}
++  COMMAND env GOPATH=${GOPATH} CGO_ENABLED=1 go build -v -buildvcs=false -trimpath -ldflags "all=-buildid '1758316778' -linkmode external -extldflags '-L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/lib'" -buildmode=${BUILDMODE} ${CUSTOM_GO_FLAGS}
    -o "${OUTPUT_DIR}/${LIB}"
    ${CMAKE_GO_FLAGS} ./...
    COMMENT "Building Go library")
