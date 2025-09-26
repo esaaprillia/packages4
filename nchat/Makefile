@@ -34,8 +34,8 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	mkdir -p $(PKG_BUILD_DIR)/build/lib/wmchat/go
-	$(CP) ./files/* $(PKG_BUILD_DIR)/build/lib/wmchat/go/
+	#mkdir -p $(PKG_BUILD_DIR)/build/lib/wmchat/go
+	$(CP) ./files/* $(PKG_BUILD_DIR)/lib/wmchat/go/
 endef
 
 CMAKE_OPTIONS += \
