@@ -21,6 +21,7 @@ PKG_LICENSE_FILES:=
 PKG_MAINTAINER:=
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-autoconf-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/$(PKG_NAME)-autoconf-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
@@ -38,6 +39,7 @@ PKG_CONFIG_DEPENDS := \
 	CONFIG_SQLITE3_SESSION
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 
 define Package/sqlite3/Default
   SUBMENU:=Database
@@ -141,5 +143,6 @@ define Package/sqlite3-cli/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/sqlite3 $(1)/usr/bin
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,libsqlite3))
 $(eval $(call BuildPackage,sqlite3-cli))
