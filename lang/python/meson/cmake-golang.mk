@@ -1,3 +1,9 @@
+ifeq ($(origin GO_INCLUDE_DIR),undefined)
+  GO_INCLUDE_DIR:=$(dir $(lastword $(MAKEFILE_LIST)))
+endif
+
+include $(GO_INCLUDE_DIR)/golang-values.mk
+
 cmake_bool = $(patsubst %,-D%:BOOL=$(if $($(1)),ON,OFF),$(2))
 
 PKG_USE_NINJA ?= 1
@@ -92,7 +98,6 @@ define Build/Configure/Default
 		CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 		CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)" \
 		LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
-		$(GO_PKG_VARS) \
 		cmake \
 			--no-warn-unused-cli \
 			-DCMAKE_SYSTEM_NAME=Linux \
