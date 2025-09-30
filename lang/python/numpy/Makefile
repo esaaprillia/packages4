@@ -12,8 +12,8 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 PKG_CPE_ID:=cpe:/a:numpy:numpy
 
-HOST_BUILD_DEPENDS:=python-cython/host meson-python/host
 PKG_BUILD_DEPENDS:=python-cython/host meson-python/host
+HOST_BUILD_DEPENDS:=python-cython/host meson-python/host openblas/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -39,7 +39,7 @@ For some modules to be available, the INSTALL_GFORTRAN symbol needs
 to be enabled in the OpenWrt core/toolchain.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-numpy))
 $(eval $(call BuildPackage,python3-numpy))
 $(eval $(call BuildPackage,python3-numpy-src))
-$(eval $(call HostBuild))
