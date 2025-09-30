@@ -41,7 +41,7 @@ CMAKE_OPTIONS += \
 	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
 CMAKE_HOST_OPTIONS += \
-	-DNOFORTRAN=1
+	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-gfortran
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
