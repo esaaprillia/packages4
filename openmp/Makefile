@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openmp
-PKG_VERSION:=21.1.2
+PKG_VERSION:=18.1.7
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).src.tar.xz
