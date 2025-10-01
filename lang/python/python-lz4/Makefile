@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-lz4
-PKG_VERSION:=4.4.3
+PKG_VERSION:=4.4.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=lz4
-PKG_HASH:=91ed5b71f9179bf3dbfe85d92b52d4b53de2e559aa4daa3b7de18e0dd24ad77d
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
