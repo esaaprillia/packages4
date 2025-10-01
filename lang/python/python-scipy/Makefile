@@ -35,11 +35,6 @@ define Package/python3-scipy/description
   It includes modules for statistics, optimization, integration, linear algebra, Fourier transforms, signal and image processing, ODE solvers
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(INSTALL_BIN) files/libnpymath.a $(HOST_PYTHON3_PKG_DIR)/numpy/_core/lib/
-endef
-
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-scipy))
 $(eval $(call BuildPackage,python3-scipy))
