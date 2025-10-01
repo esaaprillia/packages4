@@ -20,8 +20,8 @@ index 4d785a3..ad4b70f 100644
          self._editable_verbose = editable_verbose
 -        self._meson_native_file = self._build_dir / 'meson-python-native-file.ini'
 -        self._meson_cross_file = self._build_dir / 'meson-python-cross-file.ini'
-+        self._meson_native_file = self._source_dir / 'openwrt-native.txt'
-+        self._meson_cross_file = self._source_dir / 'openwrt-cross.txt'
++        self._meson_native_file = self._build_dir / 'openwrt-native.txt'
++        self._meson_cross_file = self._build_dir / 'openwrt-cross.txt'
          self._meson_args: MesonArgs = collections.defaultdict(list)
          self._limited_api = False
  
