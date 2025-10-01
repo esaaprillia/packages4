@@ -41,6 +41,7 @@ CMAKE_OPTIONS += \
 	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
 CMAKE_HOST_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
 	-DCMAKE_Fortran_COMPILER=gfortran
 
 define Build/InstallDev
