@@ -29,7 +29,7 @@ The Open MPI Project is an open source Message Passing Interface implementation 
 endef
 
 CONFIGURE_VARS += \
-	FCFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)"
+	FCFLAGS= -fdefault-integer-8
 
 CONFIGURE_ARGS += \
 	--enable-ipv6 \
