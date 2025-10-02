@@ -134,3 +134,26 @@ index 0f3718e4fe7..7f3b416ce7b 100644
  #include <stdlib.h>
  #include <stdio.h>
  #include <mpi.h>
+
+From e083dee9cfbeae2c151606b04db86b609c94a856 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 2 Oct 2025 21:07:36 +0800
+Subject: [PATCH] Update spc_test.c
+
+Signed-off-by: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+---
+ test/spc/spc_test.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/spc/spc_test.c b/test/spc/spc_test.c
+index 43c3804f5ba..fd91087503f 100644
+--- a/test/spc/spc_test.c
++++ b/test/spc/spc_test.c
+@@ -6,6 +6,7 @@
+  * Simple example usage of SPCs through MPI_T.
+  */
+ 
++#include <stdint.h>
+ #include "mpi.h"
+ #include <stdio.h>
+ #include <stdlib.h>
