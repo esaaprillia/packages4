@@ -5,7 +5,7 @@ PKG_VERSION:=5.0.8
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://download.open-mpi.org/release/open-mpi/v5.0/$(PKG_VERSION)/
+PKG_SOURCE_URL:=https://download.open-mpi.org/release/open-mpi/v5.0/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
