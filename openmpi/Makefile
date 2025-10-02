@@ -143,7 +143,6 @@ CONFIGURE_ARGS += \
 	$(if $(CONFIG_IPV6),--enable-ipv6,--disable-ipv6) \
 	--sysconfdir=/etc/openmpi \
 	--with-hwloc="$(STAGING_DIR)/usr" \
-	--enable-script-wrapper-compilers \
 	--disable-static
 
 define Build/InstallDev
