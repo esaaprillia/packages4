@@ -33,7 +33,7 @@ CONFIGURE_VARS += \
 
 CONFIGURE_ARGS += \
 	--enable-ipv6 \
-	--with-hwloc=/usr
+	--with-hwloc=$(STAGING_DIR)/usr \
 	--disable-static
 
 define Build/InstallDev
