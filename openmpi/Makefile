@@ -28,9 +28,12 @@ define Package/openmpi/description
 The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners. Open MPI is therefore able to combine the expertise, technologies, and resources from all across the High Performance Computing community in order to build the best MPI library available. Open MPI offers advantages for system and software vendors, application developers and computer science researchers.
 endef
 
+CONFIGURE_VARS += \
+	FCFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)"
+
 CONFIGURE_ARGS += \
 	--enable-ipv6 \
-	--with-hwloc=$(STAGING_DIR)/usr \
+	--with-hwloc="$(STAGING_DIR)/usr" \
 	--disable-static
 
 define Build/InstallDev
