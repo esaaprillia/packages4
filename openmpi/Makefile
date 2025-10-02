@@ -20,7 +20,7 @@ define Package/openmpi
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A High Performance Message Passing Library
-	DEPENDS:=+libhwloc +libevent2-core +libevent2-pthreads
+	DEPENDS:=+libhwloc +libevent2-core +libevent2-pthreads +zlib
 	URL:=https://www.open-mpi.org/
 endef
 
@@ -139,7 +139,8 @@ export ompi_cv_fortran_use_only=yes
 export ompi_cv_real16_c_equiv=yes
 
 CONFIGURE_ARGS += \
-	--enable-ipv6 \
+	$(if $(CONFIG_IPV6),--enable-ipv6,--disable-ipv6) \
+	--sysconfdir=/etc/openmpi \
 	--with-hwloc="$(STAGING_DIR)/usr" \
 	--disable-static
 
