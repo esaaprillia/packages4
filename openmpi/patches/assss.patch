@@ -1,0 +1,21 @@
+From 1f3d29915ef726bb47da891e97566d85d5511a11 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 2 Oct 2025 19:18:01 +0800
+Subject: [PATCH] Update adio.h
+
+---
+ 3rd-party/romio341/adio/include/adio.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/3rd-party/romio341/adio/include/adio.h b/3rd-party/romio341/adio/include/adio.h
+index cefb178..841ccde 100644
+--- a/3rd-party/romio341/adio/include/adio.h
++++ b/3rd-party/romio341/adio/include/adio.h
+@@ -62,6 +62,7 @@
+ #define ROMIOCONF_H_INCLUDED
+ #endif
+ 
++#include <stdint.h>
+ #include "mpi.h"
+ #include "mpio.h"
+ #ifdef HAVE_FCNTL_H
