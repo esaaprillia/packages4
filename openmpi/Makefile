@@ -21,7 +21,7 @@ define Package/openmpi
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A High Performance Message Passing Library
-	DEPENDS:=+libhwloc +libevent2-core +libevent2-pthreads +zlib
+	DEPENDS:=+libatomic +libhwloc +libevent2-core +libevent2-pthreads +zlib
 	URL:=https://www.open-mpi.org/
 endef
 
