@@ -42,3 +42,95 @@ index a10338c84a4..d67e4431b6a 100644
  #include "mpi.h"
  #include <stdio.h>
  #include <string.h>
+
+From b8df8ceae13e8a4d3d0ccfe0e25886b8a8bcd626 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 2 Oct 2025 20:30:55 +0800
+Subject: [PATCH] Update check_monitoring.c
+
+Signed-off-by: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+---
+ test/monitoring/check_monitoring.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/monitoring/check_monitoring.c b/test/monitoring/check_monitoring.c
+index eacc616de54..8e19f91e821 100644
+--- a/test/monitoring/check_monitoring.c
++++ b/test/monitoring/check_monitoring.c
+@@ -19,6 +19,7 @@
+   mpirun -n 4 --mca pml_monitoring_enable 2 ./check_monitoring
+ */
+ 
++#include <stdint.h>
+ #include <mpi.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+
+From 3bf2f28a2f4859e37ca3156b2647d9528ec78949 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 2 Oct 2025 20:25:36 +0800
+Subject: [PATCH] Update example_reduce_count.c
+
+Signed-off-by: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+---
+ test/monitoring/example_reduce_count.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/monitoring/example_reduce_count.c b/test/monitoring/example_reduce_count.c
+index 12319db5388..4f2bde913df 100644
+--- a/test/monitoring/example_reduce_count.c
++++ b/test/monitoring/example_reduce_count.c
+@@ -7,6 +7,7 @@
+  * $HEADER$
+  */
+ 
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <mpi.h>
+
+From 4e2be5d1c734beebab242e942ce6015d4a31d38a Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 2 Oct 2025 20:33:39 +0800
+Subject: [PATCH] Update test_overhead.c
+
+Signed-off-by: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+---
+ test/monitoring/test_overhead.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/monitoring/test_overhead.c b/test/monitoring/test_overhead.c
+index 5356761334a..dddccc691f0 100644
+--- a/test/monitoring/test_overhead.c
++++ b/test/monitoring/test_overhead.c
+@@ -20,6 +20,7 @@
+ 
+ */
+ 
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/time.h>
+
+From 748568f95f6d84c6aeeb09b63bab020bf22a4eb5 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 2 Oct 2025 20:35:34 +0800
+Subject: [PATCH] Update test_pvar_access.c
+
+Signed-off-by: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+---
+ test/monitoring/test_pvar_access.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/monitoring/test_pvar_access.c b/test/monitoring/test_pvar_access.c
+index 0f3718e4fe7..7f3b416ce7b 100644
+--- a/test/monitoring/test_pvar_access.c
++++ b/test/monitoring/test_pvar_access.c
+@@ -41,6 +41,7 @@ I       3       2       20 bytes        4 msgs sent
+ 
+ */
+ 
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <mpi.h>
