@@ -19,3 +19,26 @@ index cefb178..841ccde 100644
  #include "mpi.h"
  #include "mpio.h"
  #ifdef HAVE_FCNTL_H
+
+From 41ac40c06ad05c5e3d66a1c1ae985309a19f9d30 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 2 Oct 2025 19:58:14 +0800
+Subject: [PATCH] Update monitoring_test.c
+
+Signed-off-by: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+---
+ test/monitoring/monitoring_test.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/monitoring/monitoring_test.c b/test/monitoring/monitoring_test.c
+index a10338c84a4..d67e4431b6a 100644
+--- a/test/monitoring/monitoring_test.c
++++ b/test/monitoring/monitoring_test.c
+@@ -62,6 +62,7 @@ A2A     1       0 bytes 0 msgs sent
+ */
+ 
+ 
++#include <stdint.h>
+ #include "mpi.h"
+ #include <stdio.h>
+ #include <string.h>
