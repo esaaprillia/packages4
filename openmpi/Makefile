@@ -56,7 +56,7 @@ export ompi_cv_fortran_common_alignment=16
 export ompi_cv_fortran_asynchronous=yes
 export ompi_cv_fortran_c_funloc=yes
 export ompi_cv_fortran_elemental=yes
-#export ompi_cv_fortran_external_symbol='double underscore'
+#export ompi_cv_fortran_external_symbol='single underscore'
 export ompi_cv_fortran_f08_assumed_rank=yes
 export ompi_cv_fortran_handle_max=2147483647
 export ompi_cv_fortran_have_CHARACTER=yes
@@ -143,39 +143,27 @@ CONFIGURE_ARGS += \
 	$(if $(CONFIG_IPV6),--enable-ipv6,--disable-ipv6) \
 	--sysconfdir=/etc/openmpi \
 	--with-hwloc="$(STAGING_DIR)/usr" \
+	--enable-script-wrapper-compilers \
 	--disable-static
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin
+	$(SED) 's,/usr/lib,$(STAGING_DIR)/usr/lib,g' $(1)/usr/bin/ompi_wrapper_script
+	$(SED) 's,/usr/include,$(STAGING_DIR)/usr/include,g' $(1)/usr/bin/ompi_wrapper_script
 endef
 
 define Package/openmpi/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
-	  $(1)/usr/lib \
-	  $(1)/etc
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/* \
-	  $(1)/usr/bin/
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/etc/openmpi \
-	  $(1)/etc/
+	#$(INSTALL_DIR) $(1)/usr/bin
+	#$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/etc/openmpi
+	$(CP) $(PKG_INSTALL_DIR)/etc/openmpi $(1)/etc/openmpi
 endef
 
 $(eval $(call BuildPackage,openmpi))
