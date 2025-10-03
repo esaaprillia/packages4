@@ -1,0 +1,31 @@
+From f6a9a5a9f59fd2b15725ea3b4ce9bf3b88a91165 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 3 Oct 2025 15:45:33 +0800
+Subject: [PATCH] Update mpidistutils.py
+
+---
+ conf/mpidistutils.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/conf/mpidistutils.py b/conf/mpidistutils.py
+index f747e71..0f867e6 100644
+--- a/conf/mpidistutils.py
++++ b/conf/mpidistutils.py
+@@ -378,7 +378,7 @@ def run_test(self, code, lang="c"):
+             level = log.set_threshold(log.WARN)
+         try:
+             body = self.gen_test(code)
+-            headers = ["stdlib.h", "mpi.h"]
++            headers = ["stdint.h", "stdlib.h", "mpi.h"]
+             ok = self.config_cmd.try_link(body, headers=headers, lang=lang)
+             return ok
+         finally:
+@@ -970,7 +970,7 @@ def configure_dl(ext, config_cmd):
+ def configure_mpi(ext, config_cmd):
+     from textwrap import dedent
+ 
+-    headers = ["stdlib.h", "mpi.h"]
++    headers = ["stdint.h", "stdlib.h", "mpi.h"]
+     #
+     log.info("checking for MPI compile and link ...")
+     ConfigTest = dedent("""\
