@@ -153,7 +153,6 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ompi_wrapper_script $(1)/usr/bin/
-	$(SED) 's,-I${exec_prefix}/lib,-I${libdir},g' $(1)/usr/bin/ompi_wrapper_script
 	$(SED) 's,/usr/lib,$(STAGING_DIR)/usr/lib,g' $(1)/usr/bin/ompi_wrapper_script
 	$(SED) 's,/usr/include,$(STAGING_DIR)/usr/include,g' $(1)/usr/bin/ompi_wrapper_script
 	$(INSTALL_DIR) $(2)/bin
