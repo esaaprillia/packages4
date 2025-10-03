@@ -152,12 +152,18 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/{ompi_wrapper_script,mpiCC,mpic++,mpicc,mpicxx,mpif77,mpif90,mpifort} $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ompi_wrapper_script $(1)/usr/bin/
 	$(SED) 's,-I${exec_prefix}/lib,-I${libdir},g' $(1)/usr/bin/ompi_wrapper_script
 	$(SED) 's,/usr/lib,$(STAGING_DIR)/usr/lib,g' $(1)/usr/bin/ompi_wrapper_script
 	$(SED) 's,/usr/include,$(STAGING_DIR)/usr/include,g' $(1)/usr/bin/ompi_wrapper_script
 	$(INSTALL_DIR) $(2)/bin
-	$(LN) ../../usr/bin/{ompi_wrapper_script,mpiCC,mpic++,mpicc,mpicxx,mpif77,mpif90,mpifort} $(2)/bin/
+	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpiCC
+	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpic++
+	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpicc
+	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpicxx
+	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpif77
+	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpif90
+	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpifort
 endef
 
 define Package/openmpi/install
