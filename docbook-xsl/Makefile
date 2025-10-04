@@ -36,12 +36,6 @@ define Package/docbook-xsl/description
 	DocBook XSLT 1.0 Stylesheets
 endef
 
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all install
-endef
-
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	  $(1)/usr/share
