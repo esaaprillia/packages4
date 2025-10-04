@@ -32,21 +32,13 @@ define Package/elixir/description
 	Elixir is a dynamic, functional language for building scalable and maintainable applications
 endef
 
-define Host/Compile
-	$(MAKE) -C $(HOST_BUILD_DIR) \
-		ELIXIR_ERL_OPTIONS="+fnu"
-	$(MAKE) -C $(HOST_BUILD_DIR) \
-		PREFIX="$(HOST_BUILD_PREFIX)" \
-		install
-endef
+MAKE_VARS += \
+	ELIXIR_ERL_OPTIONS="+fnu" \
+	PREFIX="$(PKG_INSTALL_DIR)"
 
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		ELIXIR_ERL_OPTIONS="+fnu"
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		PREFIX="$(PKG_INSTALL_DIR)" \
-		install
-endef
+HOST_MAKE_VARS += \
+	ELIXIR_ERL_OPTIONS="+fnu" \
+	PREFIX="$(HOST_BUILD_PREFIX)"
 
 define Package/elixir/install
 	$(INSTALL_DIR) $(1)/usr/bin
