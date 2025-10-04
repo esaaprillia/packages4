@@ -34,10 +34,8 @@ MAKE_VARS += \
 	RMQ_ROOTDIR="/usr/lib/rabbitmq" \
 	MANDIR=/usr/share/man
 
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all install
+define Build/Install
+	DESTDIR="$(PKG_INSTALL_DIR)" PREFIX=/usr $(MAKE) -C $(PKG_BUILD_DIR) install
 endef
 
 define Package/rabbitmq-server/install
