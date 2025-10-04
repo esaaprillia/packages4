@@ -14,7 +14,6 @@ PKG_LICENSE_FILES:=LICENSE
 
 HOST_BUILD_DEPENDS:=erlang/host
 
-PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 HOST_BUILD_PARALLEL:=1
 
@@ -44,7 +43,7 @@ define Host/Install
 endef
 
 define Build/Install
-	DESTDIR="$(PKG_INSTALL_DIR)/usr" $(MAKE) -C $(PKG_BUILD_DIR) install
+	DESTDIR="$(PKG_INSTALL_DIR)" PREFIX=/usr $(MAKE) -C $(PKG_BUILD_DIR) install
 endef
 
 define Package/elixir/install
