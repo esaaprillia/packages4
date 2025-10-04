@@ -12,8 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_DEPENDS:=libxml2/host libxslt/host
-HOST_BUILD_DEPENDS:=libxml2/host libxslt/host
+PKG_BUILD_DEPENDS:=libxml2/host libxslt/host docbook-xsl/host
+HOST_BUILD_DEPENDS:=libxml2/host libxslt/host docbook-xsl/host
 
 PKG_FIXUP:=autoreconf
 HOST_FIXUP:=autoreconf
