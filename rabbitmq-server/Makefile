@@ -29,21 +29,10 @@ define Package/rabbitmq-server/description
 	RabbitMQ is a feature rich, multi-protocol messaging and streaming broker.
 endef
 
-CONFIGURE_ARGS += \
-	--prefix=/usr \
-	--docdir=/usr/share/doc/hdf5/ \
-	--with-examplesdir=/usr/share/doc/hdf5/examples/ \
-	--with-default-plugindir=/usr/lib/hdf5/lib/plugin/ \
-	--disable-static \
-	--disable-sharedlib-rpath \
-	--enable-build-mode=production \
-	--enable-hl \
-	--enable-cxx \
-	--disable-fortran \
-	--disable-java \
-	--with-pic \
-	--with-zlib \
-	--with-szlib
+MAKE_VARS += \
+	PREFIX=/usr \
+	RMQ_ROOTDIR="/usr/lib/rabbitmq" \
+	MANDIR=/usr/share/man
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
