@@ -40,11 +40,11 @@ HOST_MAKE_FLAGS += \
 	ELIXIR_ERL_OPTIONS="+fnu"
 
 define Host/Install
-	DESTDIR="$(HOST_INSTALL_DIR)" $(MAKE) -C $(HOST_BUILD_DIR) install
+	DESTDIR="$(HOST_BUILD_PREFIX)" $(MAKE) -C $(HOST_BUILD_DIR) install
 endef
 
 define Build/Install
-	DESTDIR="$(PKG_INSTALL_DIR)" PREFIX=/usr $(MAKE) -C $(PKG_BUILD_DIR) install
+	DESTDIR="$(PKG_INSTALL_DIR)/usr" $(MAKE) -C $(PKG_BUILD_DIR) install
 endef
 
 define Package/elixir/install
