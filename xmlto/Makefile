@@ -24,8 +24,8 @@ include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
 
 define Package/xmlto
-	SECTION:=xorg
-	CATEGORY:=Xorg
+	SECTION:=utils
+	CATEGORY:=Utilities
 	DEPENDS:=+libxslt
 	TITLE:=Convert xml to many other formats
 	URL:=http://xorg.freedesktop.org/
