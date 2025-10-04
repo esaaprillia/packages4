@@ -34,16 +34,16 @@ endef
 
 define Host/Compile
 	$(MAKE) -C $(HOST_BUILD_DIR) \
-		LANG="C.UTF-8" \
-		ELIXIR_ERL_OPTIONS="+fnu" \
+		ELIXIR_ERL_OPTIONS="+fnu"
+	$(MAKE) -C $(HOST_BUILD_DIR) \
 		PREFIX="$(HOST_BUILD_PREFIX)" \
 		install
 endef
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
-		LANG="C.UTF-8" \
-		ELIXIR_ERL_OPTIONS="+fnu" \
+		ELIXIR_ERL_OPTIONS="+fnu"
+	$(MAKE) -C $(PKG_BUILD_DIR) \
 		PREFIX="$(PKG_INSTALL_DIR)" \
 		install
 endef
