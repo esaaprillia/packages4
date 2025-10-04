@@ -28,7 +28,7 @@ define Package/xmlto
 	CATEGORY:=Utilities
 	DEPENDS:=+libxslt
 	TITLE:=Convert xml to many other formats
-	URL:=http://xorg.freedesktop.org/
+	URL:=https://pagure.io/xmlto/
 endef
 
 define Package/xmlto/description
