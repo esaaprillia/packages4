@@ -1,19 +1,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xmlto
-PKG_VERSION:=0.0.28
+PKG_VERSION:=0.0.29
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://releases.pagure.org/xmlto/
-PKG_HASH:=2f986b7c9a0e9ac6728147668e776d405465284e13c74d4146c9cbc51fd8aad3
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
 
 HOST_BUILD_DEPENDS:=libxml2/host libxslt/host
-PKG_BUILD_DEPENDS:=libxml2/host libxslt/host
 
 HOST_BUILD_PARALLEL:=1
 PKG_BUILD_PARALLEL:=1
