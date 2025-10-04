@@ -33,9 +33,11 @@ define Package/elixir/description
 	Elixir is a dynamic, functional language for building scalable and maintainable applications
 endef
 
-HOST_MAKE_VARS += \
-	LANG="C.UTF-8" \
-	PREFIX="$(HOST_BUILD_PREFIX)"
+define Host/Compile
+	LANG="C.UTF-8" $(MAKE) -C $(HOST_BUILD_DIR) \
+		DESTDIR="$(HOST_BUILD_PREFIX)" \
+		install
+endef
 
 define Package/elixir/install
 	$(INSTALL_DIR) $(1)/usr/bin
