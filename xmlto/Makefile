@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
 
-HOST_BUILD_DEPENDS:=libxml2/host libxslt/host
+HOST_BUILD_DEPENDS:=libxslt/host
 
 HOST_BUILD_PARALLEL:=1
 PKG_BUILD_PARALLEL:=1
@@ -24,7 +24,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/xmlto
 	SECTION:=xorg
 	CATEGORY:=Xorg
-	DEPENDS:=+libxml2 +libxslt
+	DEPENDS:=+libxslt
 	TITLE:=Convert xml to many other formats
 	URL:=http://xorg.freedesktop.org/
 endef
