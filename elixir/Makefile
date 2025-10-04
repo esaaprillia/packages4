@@ -33,10 +33,11 @@ define Package/elixir/description
 	Elixir is a dynamic, functional language for building scalable and maintainable applications
 endef
 
-MAKE_FLAGS+= \
+MAKE_FLAGS += \
+	PREFIX=/usr \
 	ELIXIR_ERL_OPTIONS="+fnu"
 
-HOST_MAKE_FLAGS+= \
+HOST_MAKE_FLAGS += \
 	ELIXIR_ERL_OPTIONS="+fnu"
 
 define Build/Install
