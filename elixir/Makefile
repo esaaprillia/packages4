@@ -39,8 +39,12 @@ MAKE_FLAGS+= \
 HOST_MAKE_FLAGS+= \
 	ELIXIR_ERL_OPTIONS="+fnu"
 
+define Build/Install
+	$(call Build/Install/Default
+endef
+
 define Host/Install
-	DESTDIR="$(HOST_BUILD_PREFIX)" $(MAKE) -C $(HOST_BUILD_DIR) install
+	$(call Host/Install/Default
 endef
 
 define Package/elixir/install
