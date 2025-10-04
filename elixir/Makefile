@@ -34,11 +34,18 @@ define Package/elixir/description
 endef
 
 MAKE_FLAGS += \
-	PREFIX=/usr \
 	ELIXIR_ERL_OPTIONS="+fnu"
 
 HOST_MAKE_FLAGS += \
 	ELIXIR_ERL_OPTIONS="+fnu"
+
+define Host/Install
+	DESTDIR="$(HOST_INSTALL_DIR)" $(MAKE) -C $(HOST_BUILD_DIR) install
+endef
+
+define Build/Install
+	DESTDIR="$(PKG_INSTALL_DIR)" PREFIX=/usr $(MAKE) -C $(PKG_BUILD_DIR) install
+endef
 
 define Package/elixir/install
 	$(INSTALL_DIR) $(1)/usr/bin
