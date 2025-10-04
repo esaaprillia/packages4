@@ -35,7 +35,7 @@ MAKE_VARS += \
 	MANDIR=/usr/share/man
 
 define Build/Install
-	DESTDIR="$(PKG_INSTALL_DIR)" PREFIX=/usr $(MAKE) -C $(PKG_BUILD_DIR) install
+	DESTDIR="$(PKG_INSTALL_DIR)" PREFIX=/usr $(MAKE) -C $(PKG_BUILD_DIR) install install-bin
 endef
 
 define Package/rabbitmq-server/install
