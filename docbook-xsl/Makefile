@@ -13,6 +13,7 @@ PKG_LICENSE:=LicenseRef-docbook-XSL
 PKG_LICENSE_FILES:=COPYING
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/docbook-xsl-nons-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/docbook-xsl-nons-$(PKG_VERSION)
 
 PKG_BUILD_DEPENDS:=libxml2/host libxslt/host
 HOST_BUILD_DEPENDS:=libxml2/host libxslt/host
