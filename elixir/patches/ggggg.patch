@@ -1,0 +1,19 @@
+From 4623fee78575e93e75b6804d904a833e80d6b536 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 5 Oct 2025 00:26:37 +0800
+Subject: [PATCH] Update Makefile
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8d0270a5757..261aef45599 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-PREFIX ?= /usr/local
++PREFIX ?=
+ TEST_FILES ?= "*_test.exs"
+ SHARE_PREFIX ?= $(PREFIX)/share
+ MAN_PREFIX ?= $(SHARE_PREFIX)/man
