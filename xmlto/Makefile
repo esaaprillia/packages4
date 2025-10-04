@@ -33,16 +33,10 @@ define Package/xmlto/description
 endef
 
 define Package/xmlto/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
-	  $(1)/usr/share
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/{xmlto,xmlif} \
-	  $(1)/usr/bin/
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/share/xmlto \
-	  $(1)/usr/share/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/{xmlto,xmlif} $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/xmlto $(1)/usr/share/
 endef
 
 $(eval $(call HostBuild))
