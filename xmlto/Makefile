@@ -23,7 +23,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/xmlto
 	SECTION:=utils
 	CATEGORY:=Utilities
-	DEPENDS:=+libxml2 +libxslt
+	DEPENDS:=+libxslt
 	TITLE:=Convert xml to many other formats
 	URL:=https://pagure.io/xmlto/
 endef
