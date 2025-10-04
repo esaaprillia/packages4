@@ -40,14 +40,6 @@ MAKE_FLAGS += \
 HOST_MAKE_FLAGS += \
 	ELIXIR_ERL_OPTIONS="+fnu"
 
-define Build/Install
-	$(call Build/Install/Default)
-endef
-
-define Host/Install
-	$(call Host/Install/Default)
-endef
-
 define Package/elixir/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
