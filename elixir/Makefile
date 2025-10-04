@@ -33,7 +33,7 @@ define Package/elixir/description
 	Elixir is a dynamic, functional language for building scalable and maintainable applications
 endef
 
-HOST_MAKE_VARS = \
+HOST_MAKE_VARS += \
 	LANG="C.UTF-8" \
 	PREFIX="$(HOST_BUILD_PREFIX)"
 
