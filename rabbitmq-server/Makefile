@@ -13,7 +13,7 @@ PKG_LICENSE:=MPL-2.0
 PKG_LICENSE_FILES:=LICENSE LICENSE-APACHE2 LICENSE-MPL-RabbitMQ
 
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=libxslt/host xmlto/host elixir/host
+PKG_BUILD_DEPENDS:=libxslt/host xmlto/host elixir/host socat/host python-simplejson/host
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -21,7 +21,7 @@ define Package/rabbitmq-server
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open source RabbitMQ: core server and tier 1 (built-in) plugins
-	DEPENDS:=+erlang +libstdcpp
+	DEPENDS:=+erlang +libstdcpp +socat +python3-simplejson
 	URL:=www.rabbitmq.com/
 endef
 
