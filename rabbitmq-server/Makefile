@@ -12,6 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MPL-2.0
 PKG_LICENSE_FILES:=LICENSE LICENSE-APACHE2 LICENSE-MPL-RabbitMQ
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_DEPENDS:=libxslt/host xmlto/host elixir/host socat/host python-simplejson/host
