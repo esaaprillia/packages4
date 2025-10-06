@@ -22,6 +22,7 @@ PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 
 define Package/socat
   SECTION:=net
@@ -90,4 +91,5 @@ define Package/socat/install
 	$(INSTALL_BIN) ./files/socat.init $(1)/etc/init.d/socat
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,socat))
