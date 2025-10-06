@@ -35,13 +35,13 @@ define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) install install-bin install-man \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		PREFIX=/usr \
-		PYTHON=python3.13 \
-		PYTHONPATH="$(HOST_PYTHON3PATH)"
+		RMQ_ROOTDIR="/usr/lib/rabbitmq" \
+		PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 endef
 
 define Package/rabbitmq-server/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	#$(INSTALL_DIR) $(1)/usr/bin
+	#$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 	#$(INSTALL_DIR) $(1)/usr/sbin
