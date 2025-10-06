@@ -36,6 +36,7 @@ define Build/Compile
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		PREFIX=/usr \
 		RMQ_ROOTDIR="/usr/lib/rabbitmq" \
+		PROJECT_VERSION="$(PKG_VERSION)" \
 		PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 endef
 
