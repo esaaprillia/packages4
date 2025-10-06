@@ -35,6 +35,7 @@ define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) install install-bin install-man \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		PREFIX=/usr \
+		PYTHON=python3.13 \
 		PYTHONPATH="$(HOST_PYTHON3PATH)"
 endef
 
