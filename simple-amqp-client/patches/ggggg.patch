@@ -1,3 +1,28 @@
+From d271adb8a795e6aa98c09507b3401fc4d8ab21c1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Liru=20F=C3=A6rs?= <liru@cubbi.com>
+Date: Wed, 15 Jan 2025 18:26:02 -0500
+Subject: [PATCH] Allow the build environment to override CMAKE_CXX_STANDARD
+
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7fae33c..af87507 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,7 +7,9 @@ cmake_minimum_required(VERSION 3.5)
+ 
+ project(SimpleAmqpClient LANGUAGES CXX)
+ 
+-set(CMAKE_CXX_STANDARD 98)
++if(NOT DEFINED CMAKE_CXX_STANDARD)
++  set(CMAKE_CXX_STANDARD 98)
++endif()
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
+
 From 28161505a04585780d54e7aa8a01c30517c41170 Mon Sep 17 00:00:00 2001
 From: Michael Cho <michael@michaelcho.dev>
 Date: Sun, 10 Aug 2025 21:35:05 -0400
