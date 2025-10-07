@@ -23,7 +23,7 @@ define Package/rabbitmq-c
 	CATEGORY:=Libraries
 	TITLE:=RabbitMQ C client
 	DEPENDS:=+libstdcpp +libpopt +libopenssl
-	URL:=www.rabbitmq.com/
+	URL:=https://github.com/alanxz/rabbitmq-c
 endef
 
 define Package/rabbitmq-c/description
