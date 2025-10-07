@@ -40,6 +40,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_CXX_STANDARD=14 \
 	-DENABLE_TESTING=OFF
 
 define Package/simple-amqp-client/install
