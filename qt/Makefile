@@ -15,6 +15,7 @@ PKG_LICENSE:=FDL GPL2 GPL3 GPL3-EXCEPT LGPL3 LGPLv3 QT-LICENSE-AGREEMENT
 PKG_LICENSE_FILES:=LICENSE.FDL LICENSE.GPL2 LICENSE.GPL3 LICENSE.GPL3-EXCEPT LICENSE.LGPL3 LICENSE.LGPLv3 LICENSE.QT-LICENSE-AGREEMENT
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-everywhere-src-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=gperf/host python3 nspr/host nss/host
 
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
@@ -23,6 +24,7 @@ PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
+include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
 
 #define Package/qt5-qt3d
 #	SECTION:=libs
@@ -388,6 +390,19 @@ define Package/qt5-qtwebchannel/description
 Library for seamless integration of C++ +and QML applications with HTML/JavaScript clients.
 endef
 
+define Package/qt5-qtwebengine
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtwebengine
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +libxslt +lcms2 +libpng +libjpeg-turbo +libfreetype +harfbuzz
+endef
+
+define Package/qt5-qtwebengine/description
+Qt5 - QtWebEngine components
+endef
+
 define Package/qt5-qtwebsockets
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -498,7 +513,7 @@ CONFIGURE_ARGS = \
 		-no-slog2 \
 		-sql-sqlite \
 		-system-sqlite \
-		-no-assimp \
+		-system-assimp \
 		-system-tiff \
 		-system-webp \
 		-no-trace \
@@ -511,7 +526,6 @@ CONFIGURE_ARGS = \
 		-feature-concurrent \
 		-feature-testlib \
 		-make libs \
-		-skip webengine \
 		-v
 
 define Build/Compile
@@ -714,6 +728,17 @@ define Package/qt5-qtwebchannel/install
 	$(CP) $(PKG_BUILD_DIR)/qtwebchannel/qml $(1)/usr/lib/qt5/
 endef
 
+define Package/qt5-qtwebengine/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/libexec $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/qml $(1)/usr/lib/qt5/
+endef
+
 define Package/qt5-qtwebsockets/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/qtwebsockets/lib/*.so* $(1)/usr/lib/
@@ -763,6 +788,7 @@ $(eval $(call BuildPackage,qt5-qtsvg))
 $(eval $(call BuildPackage,qt5-qttranslations))
 $(eval $(call BuildPackage,qt5-qtvirtualkeyboard))
 $(eval $(call BuildPackage,qt5-qtwebchannel))
+$(eval $(call BuildPackage,qt5-qtwebengine))
 $(eval $(call BuildPackage,qt5-qtwebsockets))
 $(eval $(call BuildPackage,qt5-qtwebview))
 $(eval $(call BuildPackage,qt5-qtxmlpatterns))
