@@ -529,7 +529,7 @@ CONFIGURE_ARGS = \
 		-v
 
 define Build/Compile
-	$(RM) $(STAGING_DIR)/usr/lib/{libz.a,libnspr4.so,libplc4.so,libplds4.so,libnss3.so,libnssutil3.so,libsmime3.so,libsoftokn3.so}
+	$(RM) $(STAGING_DIR)/usr/lib/{libz.a,libz.so,libnspr4.so,libplc4.so,libplds4.so,libnss3.so,libnssutil3.so,libsmime3.so,libsoftokn3.so}
 	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libz.so $(STAGING_DIR)/usr/lib/libz.so
 	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnspr4.so $(STAGING_DIR)/usr/lib/libnspr4.so
 	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libplc4.so $(STAGING_DIR)/usr/lib/libplc4.so
