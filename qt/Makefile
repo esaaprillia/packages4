@@ -446,7 +446,7 @@ EXTRA_CFLAGS += $(FPIC) -ffunction-sections -fdata-sections -flto
 EXTRA_LDFLAGS += -Wl,--gc-sections,--as-needed
 
 CONFIGURE_ARGS = \
-		-sysroot $(TOOLCHAIN_ROOT_DIR) \
+		-sysroot $(STAGING_DIR) \
 		-hostprefix $(STAGING_DIR_HOSTPKG) \
 		-extprefix $(STAGING_DIR)/usr \
 		-prefix /usr \
@@ -792,3 +792,4 @@ $(eval $(call BuildPackage,qt5-qtwebengine))
 $(eval $(call BuildPackage,qt5-qtwebsockets))
 $(eval $(call BuildPackage,qt5-qtwebview))
 $(eval $(call BuildPackage,qt5-qtxmlpatterns))
+
