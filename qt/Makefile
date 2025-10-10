@@ -529,16 +529,10 @@ CONFIGURE_ARGS = \
 		-v
 
 define Build/Compile
-	$(RM) $(STAGING_DIR)/usr/lib/libz.a
-	$(LN) $(STAGING_DIR_HOST)/lib/libz.a $(STAGING_DIR)/usr/lib/libz.a
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnspr4.so $(STAGING_DIR)/usr/lib/libnspr4.a
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libplc4.so $(STAGING_DIR)/usr/lib/libplc4.a
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libplds4.so $(STAGING_DIR)/usr/lib/libplds4.a
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnss3.so $(STAGING_DIR)/usr/lib/libnss3.a
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnssutil3.so $(STAGING_DIR)/usr/lib/libnssutil3.a
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libsmime3.so $(STAGING_DIR)/usr/lib/libsmime3.a
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libsoftokn3.so $(STAGING_DIR)/usr/lib/libsoftokn3.a
-	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
+	PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" \
+	PKG_CONFIG="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
+	PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" PKG_CONFIG="$(STAGING_DIR_HOST)/bin/pkg-config.real" PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real"
 endef
 
 define Build/InstallDev
