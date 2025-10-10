@@ -529,6 +529,15 @@ CONFIGURE_ARGS = \
 		-v
 
 define Build/Compile
+	$(RM) $(STAGING_DIR)/usr/lib/libz.a
+	$(LN) $(STAGING_DIR_HOST)/lib/libz.a $(STAGING_DIR)/usr/lib/libz.a
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnspr4.so $(STAGING_DIR)/usr/lib/libnspr4.a
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libplc4.so $(STAGING_DIR)/usr/lib/libplc4.a
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libplds4.so $(STAGING_DIR)/usr/lib/libplds4.a
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnss3.so $(STAGING_DIR)/usr/lib/libnss3.a
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnssutil3.so $(STAGING_DIR)/usr/lib/libnssutil3.a
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libsmime3.so $(STAGING_DIR)/usr/lib/libsmime3.a
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libsoftokn3.so $(STAGING_DIR)/usr/lib/libsoftokn3.a
 	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
 endef
 
@@ -792,4 +801,3 @@ $(eval $(call BuildPackage,qt5-qtwebengine))
 $(eval $(call BuildPackage,qt5-qtwebsockets))
 $(eval $(call BuildPackage,qt5-qtwebview))
 $(eval $(call BuildPackage,qt5-qtxmlpatterns))
-
