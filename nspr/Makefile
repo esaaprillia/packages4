@@ -82,6 +82,14 @@ define Package/nspr/description
   of Red Hat's and Oracle's server applications, and other software offerings.
 endef
 
+define Host/Install
+	$(call Host/Install/Default)
+	$(INSTALL_DIR) \
+	    $(STAGING_DIR)/usr/lib \
+
+	$(CP) $(STAGING_DIR_HOSTPKG)/lib/{libnspr4.a,libplc4.a,libplds4.a} $(STAGING_DIR)/usr/lib/
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) \
 	    $(1)/usr/include \
