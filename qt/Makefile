@@ -1,383 +1,803 @@
-#
-# Copyright (C) 2007-2015 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=apache
-PKG_VERSION:=2.4.52
+PKG_NAME:=qt
+PKG_BASE:=5.15
+PKG_BUGFIX:=17
+PKG_VERSION:=$(PKG_BASE).$(PKG_BUGFIX)
 PKG_RELEASE:=1
-PKG_SOURCE_NAME:=httpd
 
-PKG_SOURCE:=$(PKG_SOURCE_NAME)-$(PKG_VERSION).tar.bz2
-PKG_SOURCE_URL:=@APACHE/httpd/
-PKG_HASH:=0127f7dc497e9983e9c51474bed75e45607f2f870a7675a86dc90af6d572f5c9
+PKG_SOURCE:=$(PKG_NAME)-everywhere-opensource-src-$(PKG_VERSION).tar.xz
+PKG_SOURCE_URL:=https://download.qt.io/archive/qt/$(PKG_BASE)/$(PKG_VERSION)/single
+PKG_HASH:=skip
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_SOURCE_NAME)-$(PKG_VERSION)
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=FDL GPL2 GPL3 GPL3-EXCEPT LGPL3 LGPLv3 QT-LICENSE-AGREEMENT
+PKG_LICENSE_FILES:=LICENSE.FDL LICENSE.GPL2 LICENSE.GPL3 LICENSE.GPL3-EXCEPT LICENSE.LGPL3 LICENSE.LGPLv3 LICENSE.QT-LICENSE-AGREEMENT
 
-PKG_MAINTAINER:=Thomas Heil <heil@terminal-consulting.de>
-PKG_LICENSE:=Apache-2.0
-PKG_LICENSE_FILES:=LICENSE
-
-PKG_CPE_ID:=cpe:/a:apache:http_server
-
-PKG_BUILD_DEPENDS:=openssl
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-everywhere-src-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=gperf/host python3 nspr/host nss/host
 
 PKG_BUILD_PARALLEL:=1
-
-PKG_CONFIG_DEPENDS:= \
-	CONFIG_PACKAGE_apache-mod-deflate \
-	CONFIG_PACKAGE_apache-mod-http2 \
-	CONFIG_PACKAGE_apache-mod-ldap \
-	CONFIG_PACKAGE_apache-mod-lua \
-	CONFIG_PACKAGE_apache-mod-md \
-	CONFIG_PACKAGE_apache-mod-proxy \
-	CONFIG_PACKAGE_apache-mod-proxy-html \
-	CONFIG_PACKAGE_apache-mod-session-crypto \
-	CONFIG_PACKAGE_apache-mod-suexec \
-	CONFIG_PACKAGE_apache-mod-webdav \
-	CONFIG_PACKAGE_apache-suexec
-
-PKG_FIXUP:=autoreconf
-
-PKG_INSTALL:=1
+PKG_USE_MIPS16:=0
+PKG_CPE_ID:=cpe:/a:qt:qt
+PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
-# without nls.mk mod_xml2enc might not find the iconv headers
 include $(INCLUDE_DIR)/nls.mk
+include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
 
-define Package/apache/Default
-  SECTION:=net
-  CATEGORY:=Network
-  SUBMENU:=Web Servers/Proxies
-  TITLE:=The Apache Web Server
-  URL:=https://httpd.apache.org/
+#define Package/qt5-qt3d
+#	SECTION:=libs
+#	CATEGORY:=Libraries
+#	SUBMENU:=Qt5
+#	TITLE:=qt3d
+#	URL:=http://qt-project.org
+#	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +assimp
+#endef
+#
+#define Package/qt5-qt3d/description
+#Qt5 - C++ and QML APIs for easy inclusion of 3D graphics
+#endef
+
+define Package/qt5-qtbase
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtbase
+	URL:=http://qt-project.org
+	DEPENDS:=+libgcc +libstdcpp +libatomic +libpcre2-16 +libdouble-conversion +libpng +libjpeg-turbo +glib2 +md4c +libdbus +libfreetype +libopenssl +libsqlite3 +harfbuzz +icu +fontconfig +libinput +libzstd +zlib $(ICONV_DEPENDS) $(INTL_DEPENDS) @!LINUX_2_6_36
 endef
 
-define Package/apache/Default/description
-The Apache HTTP Server Project is a collaborative software development
-effort aimed at creating a robust, commercial-grade, featureful, and
-freely-available source code implementation of an HTTP (Web) server.
+define Package/qt5-qtbase/description
+Qt5 - QtBase components
 endef
 
-define Package/apache
-$(call Package/apache/Default)
-  USERID:=apache=377:apache=377
-  DEPENDS:=+libapr +libaprutil +libpcre
+define Package/qt5-qtcharts
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtcharts
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/apache/description
-$(call Package/apache/Default/description)
-
-This package contains the Apache web server and utility programs.
-
+define Package/qt5-qtcharts/description
+Qt5 - Support for rendering and displaying SVG
 endef
 
-define Package/apache/conffiles
-/etc/apache2/apache2.conf
-/etc/apache2/extra/httpd-autoindex.conf
-/etc/apache2/extra/httpd-dav.conf
-/etc/apache2/extra/httpd-default.conf
-/etc/apache2/extra/httpd-info.conf
-/etc/apache2/extra/httpd-languages.conf
-/etc/apache2/extra/httpd-manual.conf
-/etc/apache2/extra/httpd-mpm.conf
-/etc/apache2/extra/httpd-multilang-errordoc.conf
-/etc/apache2/extra/httpd-ssl.conf
-/etc/apache2/extra/httpd-userdir.conf
-/etc/apache2/extra/httpd-vhosts.conf
-/etc/apache2/extra/proxy-html.conf
-/etc/apache2/magic
-/etc/apache2/mime.types
-/etc/init.d/apache2
+define Package/qt5-qtconnectivity
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtconnectivity
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +bluez-libs
 endef
 
-define Package/apache-ab
-$(call Package/apache/Default)
-  TITLE:=Apache benchmark utility
-  DEPENDS:=apache +libopenssl
+define Package/qt5-qtconnectivity/description
+Qt5 - Tools for the Bluetooth protocol stack (libraries)
 endef
 
-define Package/apache-ab/description
-$(call Package/apache/Default/description)
+#define Package/qt5-qtdatavis3d
+#	SECTION:=libs
+#	CATEGORY:=Libraries
+#	SUBMENU:=Qt5
+#	TITLE:=qtdatavis3d
+#	URL:=http://qt-project.org
+#	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+#endef
+#
+#define Package/qt5-qtdatavis3d/description
+#Qt5 - Qt Data Visualization module
+#endef
 
-Apache server benchmarking utility.
-
+define Package/qt5-qtdeclarative
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtdeclarative
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
 endef
 
-define Package/apache-error
-$(call Package/apache/Default)
-  TITLE:=Error documents
-  DEPENDS:=apache
+define Package/qt5-qtdeclarative/description
+Qt5 - QtDeclarative component
 endef
 
-define Package/apache-error/description
-$(call Package/apache/Default/description)
-
-Apache multi language custom error documents.
-
+define Package/qt5-qtgamepad
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtgamepad
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/apache-icons
-$(call Package/apache/Default)
-  TITLE:=Icons from Apache
-  DEPENDS:=apache
+define Package/qt5-qtgamepad/description
+Qt5 - Adds support for getting events from gamepad devices
 endef
 
-define Package/apache-icons/description
-$(call Package/apache/Default/description)
-
-This package contains the icons from Apache.
-
+define Package/qt5-qtgraphicaleffects
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtgraphicaleffects
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/apache-suexec
-$(call Package/apache/Default)
-  TITLE:=Apache suEXEC
-  DEPENDS:=apache
-  # Directory "/usr/lib/apache2/suexec_dir" is installed with mode 0750
-  # and is only accessible by root and the group apache. This way apache
-  # can access the SUID binary "suexec" contained within while others
-  # cannot.
-  FILE_MODES:=/usr/lib/apache2/suexec_dir:root:apache:0750
+define Package/qt5-qtgraphicaleffects/description
+Qt5 - QtGraphicalEffects component
 endef
 
-define Package/apache-suexec/description
-$(call Package/apache/Default/description)
-
-This package contains the suEXEC utility from Apache.
-
+define Package/qt5-qtimageformats
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtimageformats
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +jasper +libmng +libtiff +libwebp
 endef
 
-define Package/apache-utils
-$(call Package/apache/Default)
-  TITLE:=Apache utilities
-  DEPENDS:=apache
+define Package/qt5-qtimageformats/description
+Qt5 - QtImageFormats component
 endef
 
-define Package/apache-utils/description
-$(call Package/apache/Default/description)
-
-Apache utility programs for webservers.
-
+define Package/qt5-qtlocation
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtlocation
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
 endef
 
-define Package/apache/install/mod
-	$(INSTALL_DIR) $(1)/usr/lib/apache2
-	$(INSTALL_BIN) \
-		$(PKG_INSTALL_DIR)/usr/lib/apache2/mod_$(2).so \
-					$(1)/usr/lib/apache2
+define Package/qt5-qtlocation/description
+Qt5 - Location component
 endef
 
-EXTRA_CFLAGS+= -DBIG_SECURITY_HOLE
+define Package/qt5-qtlottie
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtlottie
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
 
-CONFIGURE_ARGS+= \
-	--$(if $(CONFIG_PACKAGE_apache-mod-http2),en,dis)able-http2 \
-	--$(if $(CONFIG_PACKAGE_apache-mod-lua),en,dis)able-lua \
-	--$(if $(CONFIG_PACKAGE_apache-mod-md),en,dis)able-md \
-	--$(if $(CONFIG_PACKAGE_apache-mod-proxy),en,dis)able-proxy \
-	--$(if $(CONFIG_PACKAGE_apache-mod-session-crypto),en,dis)able-session-crypto \
-	--$(if $(CONFIG_PACKAGE_apache-mod-ssl),en,dis)able-ssl \
-	--datadir=/usr/share/apache2 \
-	--disable-imagemap \
-	--disable-luajit \
-	--enable-authn-alias \
-	--enable-authn-anon \
-	--enable-cache \
-	--enable-cgi \
-	--enable-cgid \
-	--enable-dbd \
-	--enable-disk-cache \
-	--enable-exception-hook \
-	--enable-file-cache \
-	--enable-layout=OpenWrt \
-	--enable-mem-cache \
-	--enable-mods-shared=all \
-	--enable-mpms-shared=all \
-	--enable-so \
-	--libexecdir=/usr/lib/apache2 \
-	--sysconfdir=/etc/apache2 \
-	--with-apr-util="$(STAGING_DIR)/usr/bin/apu-1-config" \
-	--with-apr="$(STAGING_DIR)/usr/bin/apr-1-config" \
-	--with-mpm=prefork \
-	--with-pcre="$(STAGING_DIR)/usr/bin/pcre-config" \
-	--with-program-name=apache2 \
-	--with-ssl
+define Package/qt5-qtlottie/description
+Qt5 - A family of player software for a certain json-based file format for describing 2d vector graphics animations
+endef
 
-ifneq ($(CONFIG_PACKAGE_apache-mod-deflate),)
-CONFIGURE_ARGS+= \
-	--enable-deflate \
-	--with-z="$(STAGING_DIR)/usr"
-else
-CONFIGURE_ARGS+= \
-	--disable-deflate \
-	--without-z
-endif
+define Package/qt5-qtmultimedia
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtmultimedia
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +alsa-lib
+endef
 
-ifneq ($(CONFIG_PACKAGE_apache-mod-ldap),)
-CONFIGURE_ARGS+= \
-	--enable-authnz-ldap \
-	--enable-ldap
-else
-CONFIGURE_ARGS+= \
-	--disable-authnz-ldap \
-	--disable-ldap
-endif
+define Package/qt5-qtmultimedia/description
+Qt5 - Multimedia support
+endef
 
-ifneq ($(CONFIG_PACKAGE_apache-mod-proxy),)
-CONFIGURE_ARGS+= \
-	--enable-proxy \
-	--enable-proxy-connect \
-	--enable-proxy-ftp \
-	--enable-proxy-http
-else
-CONFIGURE_ARGS+= \
-	--disable-proxy
-endif
+define Package/qt5-qtnetworkauth
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtnetworkauth
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
 
-ifneq ($(CONFIG_PACKAGE_apache-mod-proxy-html),)
-CONFIGURE_ARGS+= \
-	--enable-proxy-html \
-	--enable-xml2enc \
-	--with-libxml2="$(STAGING_DIR)/usr"
-else
-CONFIGURE_ARGS+= \
-	--disable-proxy-html \
-	--disable-xml2enc
-endif
+define Package/qt5-qtnetworkauth/description
+Qt5 - Network authentication module
+endef
 
-ifneq ($(CONFIG_PACKAGE_apache-mod-suexec)$(CONFIG_PACKAGE_apache-suexec),)
-CONFIGURE_ARGS+= \
-	--enable-suexec \
-	--with-suexec-bin=/usr/lib/apache2/suexec_dir/suexec \
-	--with-suexec-caller=apache \
-	--with-suexec-logfile=/var/log/apache2/suexec.log
-else
-CONFIGURE_ARGS+= \
-	--disable-suexec
-endif
+define Package/qt5-qtquick3d
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtquick3d
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +assimp
+endef
 
-ifneq ($(CONFIG_PACKAGE_apache-mod-webdav),)
-CONFIGURE_ARGS+= \
-	--enable-dav \
-	--enable-dav-fs \
-	--enable-dav-lock
-else
-CONFIGURE_ARGS+= \
-	--disable-dav
-endif
+define Package/qt5-qtquick3d/description
+Qt5 - Qt module and API for defining 3D content in Qt Quick
+endef
 
-CONFIGURE_VARS += \
-	ac_cv_gettid=yes \
-	ap_cv_void_ptr_lt_long=no
+define Package/qt5-qtquickcontrols
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtquickcontrols
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtquickcontrols/description
+Qt5 - module with set of QtQuick controls
+endef
+
+define Package/qt5-qtquickcontrols2
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtquickcontrols2
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtgraphicaleffects
+endef
+
+define Package/qt5-qtquickcontrols2/description
+Qt5 - module with set of QtQuick controls for embedded
+endef
+
+define Package/qt5-qtquicktimeline
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtquicktimeline
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtquicktimeline/description
+Qt5 - Qt module that enables keyframe-based animations and parameterization
+endef
+
+define Package/qt5-qtremoteobjects
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtremoteobjects
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtremoteobjects/description
+Qt5 - Qt Remote Objects (QtRO) is an inter-process communication (IPC) module developed for Qt
+endef
+
+define Package/qt5-qtscript
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtscript
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qtscript/description
+Qt5 - QtScript component
+endef
+
+define Package/qt5-qtscxml
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtscxml
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtscxml/description
+Qt5 - Static and runtime integration of SCXML models into Qt code
+endef
+
+define Package/qt5-qtsensors
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtsensors
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtsensors/description
+Qt - The Qt Sensors API provides access to sensor hardware via QML and C++
+endef
+
+define Package/qt5-qtserialbus
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtserialbus
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qtserialbus/description
+Qt5 - Qt module for general purpose serial bus access
+endef
+
+define Package/qt5-qtserialport
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtserialport
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qtserialport/description
+Qt5 - QtSerialPort module
+endef
+
+define Package/qt5-qtspeech
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtspeech
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtmultimedia
+endef
+
+define Package/qt5-qtspeech/description
+Qt5 - Qt module to make text to speech and speech recognition easy
+endef
+
+define Package/qt5-qtsvg
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtsvg
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qtsvg/description
+Qt5 - Support for rendering and displaying SVG
+endef
+
+define Package/qt5-qttranslations
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qttranslations
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase
+endef
+
+define Package/qt5-qttranslations/description
+Qt5 - QtTranslations module
+endef
+
+define Package/qt5-qtvirtualkeyboard
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtvirtualkeyboard
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtsvg +hunspell
+endef
+
+define Package/qt5-qtvirtualkeyboard/description
+Qt5 - Virtual keyboard framework
+endef
+
+define Package/qt5-qtwebchannel
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtwebchannel
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtwebchannel/description
+Library for seamless integration of C++ +and QML applications with HTML/JavaScript clients.
+endef
+
+define Package/qt5-qtwebengine
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtwebengine
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative +qt5-qtlocation +qt5-qtwebchannel +fontconfig +libdbus +libnss +icu +libwebp +libvpx +snappy +glib2 +zlib +minizip +libevent2 +libxml2 +libxslt +lcms2 +libpng +libjpeg-turbo +libfreetype +harfbuzz
+endef
+
+define Package/qt5-qtwebengine/description
+Qt5 - QtWebEngine components
+endef
+
+define Package/qt5-qtwebsockets
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtwebsockets
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtwebsockets/description
+Qt5 - Provides WebSocket communication compliant with RFC 6455
+endef
+
+define Package/qt5-qtwebview
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtwebview
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtwebview/description
+Qt5 - Provides a way to display web content in a QML application
+endef
+
+define Package/qt5-qtxmlpatterns
+	SECTION:=libs
+	CATEGORY:=Libraries
+	SUBMENU:=Qt5
+	TITLE:=qtxmlpatterns
+	URL:=http://qt-project.org
+	DEPENDS:=+qt5-qtbase +qt5-qtdeclarative
+endef
+
+define Package/qt5-qtxmlpatterns/description
+Qt5 - QtXmlPatterns component
+endef
+
+EXTRA_CFLAGS += $(FPIC) -ffunction-sections -fdata-sections -flto
+EXTRA_LDFLAGS += -Wl,--gc-sections,--as-needed
+
+CONFIGURE_ARGS = \
+		-sysroot $(STAGING_DIR) \
+		-hostprefix $(STAGING_DIR_HOSTPKG) \
+		-extprefix $(STAGING_DIR)/usr \
+		-prefix /usr \
+		-bindir /usr/bin \
+		-headerdir /usr/include/qt5 \
+		-libdir /usr/lib \
+		-archdatadir /usr/lib/qt5 \
+		-plugindir /usr/lib/qt5/plugins \
+		-libexecdir /usr/lib/qt5/libexec \
+		-importdir /usr/lib/qt5/imports \
+		-qmldir /usr/lib/qt5/qml \
+		-datadir /usr/share/qt5 \
+		-docdir /usr/share/doc/qt5 \
+		-translationdir /usr/share/qt5/translations \
+		-sysconfdir /etc/xdg \
+		-examplesdir /usr/share/qt5/examples \
+		-testsdir /usr/share/qt5/tests \
+		-hostbindir $(STAGING_DIR_HOSTPKG)/bin \
+		-hostlibdir $(STAGING_DIR_HOSTPKG)/lib \
+		-hostdatadir $(STAGING_DIR_HOSTPKG)/share \
+		-device linux-generic-g++ \
+		-device-option CROSS_COMPILE="$(TARGET_CROSS)" \
+		-device-option COMPILER_FLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)" \
+		-device-option LINKER_FLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
+		-confirm-license \
+		-opensource \
+		-release \
+		-shared \
+		-strip \
+		-no-rpath \
+		-no-use-gold-linker \
+		-ltcg \
+		-mimetype-database \
+		-openssl-linked \
+		-system-doubleconversion \
+		-system-pcre \
+		-system-zlib \
+		$(if $(findstring i386,$(ARCH)),-no-sse2 -no-sse4.1) \
+		-no-angle \
+		-no-cups \
+		-dbus-linked \
+		-no-directfb \
+		-no-dtls\
+		-no-egl \
+		-no-eglfs \
+		-system-freetype \
+		-no-gbm \
+		-glib \
+		-no-gtk \
+		-gui \
+		-system-harfbuzz \
+		-no-iconv \
+		-icu \
+		-no-kms \
+		-system-libjpeg \
+		-system-libmd4c \
+		-system-libpng \
+		-no-libudev \
+		-no-mtdev \
+		-no-opengl \
+		-no-opengles3 \
+		-no-openvg \
+		-no-pch \
+		-no-slog2 \
+		-sql-sqlite \
+		-system-sqlite \
+		-system-assimp \
+		-system-tiff \
+		-system-webp \
+		-no-trace \
+		-no-tslib \
+		-no-vulkan \
+		-widgets \
+		-no-xcb \
+		-no-xkbcommon \
+		-zstd \
+		-feature-concurrent \
+		-feature-testlib \
+		-make libs \
+		-v
+
+define Build/Compile
+	$(RM) $(STAGING_DIR)/usr/lib/{libz.a,libnspr4.so,libplc4.so,libplds4.so,libnss3.so,libnssutil3.so,libsmime3.so,libsoftokn3.so}
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libz.so $(STAGING_DIR)/usr/lib/libz.so
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnspr4.so $(STAGING_DIR)/usr/lib/libnspr4.so
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libplc4.so $(STAGING_DIR)/usr/lib/libplc4.so
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libplds4.so $(STAGING_DIR)/usr/lib/libplds4.so
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnss3.so $(STAGING_DIR)/usr/lib/libnss3.so
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnssutil3.so $(STAGING_DIR)/usr/lib/libnssutil3.so
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libsmime3.so $(STAGING_DIR)/usr/lib/libsmime3.so
+	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libsoftokn3.so $(STAGING_DIR)/usr/lib/libsoftokn3.so
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
+endef
 
 define Build/InstallDev
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) install
+endef
+
+#define Package/qt5-qt3d/install
+#	$(INSTALL_DIR) $(1)/usr/lib
+#	$(CP) $(PKG_BUILD_DIR)/qt3d/lib/*.so* $(1)/usr/lib/
+#	$(INSTALL_DIR) $(1)/usr/lib/qt5
+#	$(CP) $(PKG_BUILD_DIR)/qt3d/plugins $(1)/usr/lib/qt5/
+#	$(CP) $(PKG_BUILD_DIR)/qt3d/qml $(1)/usr/lib/qt5/
+#endef
+
+define Package/qt5-qtbase/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtbase/lib/metatypes $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtbase/plugins $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtcharts/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtcharts/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtcharts/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtconnectivity/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtconnectivity/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtconnectivity/qml $(1)/usr/lib/qt5/
+endef
+
+#define Package/qt5-qtdatavis3d/install
+#	$(INSTALL_DIR) $(1)/usr/lib
+#	$(CP) $(PKG_BUILD_DIR)/qtdatavis3d/lib/*.so* $(1)/usr/lib/
+#	$(INSTALL_DIR) $(1)/usr/lib/qt5
+#	$(CP) $(PKG_BUILD_DIR)/qtdatavis3d/qml $(1)/usr/lib/qt5/
+#endef
+
+define Package/qt5-qtdeclarative/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/lib/metatypes $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtdeclarative/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtgamepad/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtgamepad/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtgamepad/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtgamepad/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtgraphicaleffects/install
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtgraphicaleffects/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtimageformats/install
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtimageformats/plugins $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtlocation/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtlocation/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtlocation/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtlocation/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtlottie/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtlottie/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtlottie/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtmultimedia/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtmultimedia/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtmultimedia/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtmultimedia/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtnetworkauth/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtnetworkauth/lib/*.so* $(1)/usr/lib/
+endef
+
+define Package/qt5-qtquick3d/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtquick3d/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtquick3d/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtquick3d/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtquickcontrols/install
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtquickcontrols/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtquickcontrols2/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtquickcontrols2/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtquickcontrols2/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtquicktimeline/install
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtquicktimeline/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtremoteobjects/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtremoteobjects/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtremoteobjects/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtscript/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtscript/lib/*.so* $(1)/usr/lib/
+endef
+
+define Package/qt5-qtscxml/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtscxml/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtscxml/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtsensors/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtsensors/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtsensors/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtsensors/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtserialbus/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtserialbus/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtserialbus/plugins $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtserialport/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtserialport/lib/*.so* $(1)/usr/lib/
+endef
+
+define Package/qt5-qtspeech/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtspeech/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtspeech/plugins $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtsvg/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtsvg/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtsvg/plugins $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qttranslations/install
+	$(INSTALL_DIR) $(1)/usr/share/qt5
+	$(CP) $(PKG_BUILD_DIR)/qttranslations/translations $(1)/usr/share/qt5/
+endef
+
+define Package/qt5-qtvirtualkeyboard/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtvirtualkeyboard/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtvirtualkeyboard/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtvirtualkeyboard/qml $(1)/usr/lib/qt5/
+#	$(INSTALL_DIR) $(1)/usr/share/qt5
+#	$(CP) $(PKG_BUILD_DIR)/qtvirtualkeyboard/lipi_toolkit $(1)/usr/share/qt5/
+endef
+
+define Package/qt5-qtwebchannel/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtwebchannel/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtwebchannel/qml $(1)/usr/lib/qt5/
+endef
+
+define Package/qt5-qtwebengine/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/apxs $(1)/usr/bin
-	$(INSTALL_DIR) $(1)/usr/include/apache2
-	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/include/apache2/* \
-					$(1)/usr/include/apache2
-	$(INSTALL_DIR) $(1)/usr/lib/apache2
-	$(INSTALL_DIR) $(1)/usr/share/apache2/build
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/apache2/build/* \
-				$(1)/usr/share/apache2/build
-	$(SED) 's%"/usr/bin"%"$(STAGING_DIR)/usr/bin"%' $(1)/usr/bin/apxs
-	$(SED) 's%/usr/share/apache2/build%$(STAGING_DIR)/usr/share/apache2/build%' \
-		$(1)/usr/bin/apxs
-	$(SED) 's%^prefix =.*%prefix = $(STAGING_DIR)/usr%' \
-		$(1)/usr/share/apache2/build/config_vars.mk
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/libexec $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/plugins $(1)/usr/lib/qt5/
+	$(CP) $(PKG_BUILD_DIR)/qtwebengine/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/apache/install
-	$(INSTALL_DIR) $(1)/etc/apache2/extra
-	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/etc/apache2/extra/* \
-					$(1)/etc/apache2/extra
-	$(SED) '/^LoadModule session_crypto_module/s/^/#/' \
-		$(PKG_INSTALL_DIR)/etc/apache2/apache2.conf
-	$(INSTALL_DATA) \
-		$(PKG_INSTALL_DIR)/etc/apache2/{apache2.conf,magic,mime.types} \
-								$(1)/etc/apache2
-	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/apache2.init $(1)/etc/init.d/apache2
-	$(INSTALL_DIR) $(1)/usr/lib/apache2
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/lib/apache2/*.so \
-					$(1)/usr/lib/apache2
-	rm -f $(1)/usr/lib/apache2/mod_{*ldap,dav*,deflate,http2,lbmethod_*,lua,md,proxy*,proxy_html,session_crypto,ssl,suexec,xml2enc}.so
-	$(INSTALL_DIR) $(1)/usr/share/apache2/{cgi-bin,htdocs}
-	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/share/apache2/cgi-bin/* \
-					$(1)/usr/share/apache2/cgi-bin
-	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/share/apache2/htdocs/* \
-					$(1)/usr/share/apache2/htdocs
-	$(INSTALL_DIR) $(1)/usr/{,s}bin
-	$(INSTALL_BIN) \
-		$(PKG_INSTALL_DIR)/usr/bin/{dbmmanage,htdbm,htdigest,htpasswd,httxt2dbm,logresolve} \
-											$(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/{apachectl,apache2} \
-							$(1)/usr/sbin
+define Package/qt5-qtwebsockets/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtwebsockets/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtwebsockets/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/apache-ab/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/ab $(1)/usr/bin
+define Package/qt5-qtwebview/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtwebview/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtwebview/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/apache-error/install
-	$(INSTALL_DIR) $(1)/usr/share/apache2/error
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/apache2/error/* \
-				$(1)/usr/share/apache2/error
+define Package/qt5-qtxmlpatterns/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/qtxmlpatterns/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/qt5
+	$(CP) $(PKG_BUILD_DIR)/qtxmlpatterns/qml $(1)/usr/lib/qt5/
 endef
 
-define Package/apache-icons/install
-	$(INSTALL_DIR) $(1)/usr/share/apache2
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/apache2/icons \
-				$(1)/usr/share/apache2
-endef
-
-define Package/apache-suexec/install
-	$(INSTALL_DIR) $(1)/usr/lib/apache2/suexec_dir
-	$(INSTALL_SUID) $(PKG_INSTALL_DIR)/usr/sbin/suexec \
-			$(1)/usr/lib/apache2/suexec_dir
-endef
-
-define Package/apache-utils/install
-	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) \
-		$(PKG_INSTALL_DIR)/usr/sbin/{checkgid,envvars*,htcacheclean,rotatelogs} \
-									$(1)/usr/sbin
-endef
-
-define Package/apache/Module
-define Package/apache-mod-$(1)
-$(call Package/apache/Default)
-  TITLE:=$(2) module
-  DEPENDS:=apache $(patsubst +%,+PACKAGE_apache-mod-$(1):%,$(4))
-endef
-define Package/apache-mod-$(1)/description
-$(subst \n,$(newline),$(3))
-endef
-define Package/apache-mod-$(1)/install
-$(foreach m,$(5),$(call Package/apache/install/mod,$$(1),$(m));)
-endef
-$$(eval $$(call BuildPackage,apache-mod-$(1)))
-endef
-
-$(eval $(call BuildPackage,apache))
-$(eval $(call BuildPackage,apache-ab))
-$(eval $(call BuildPackage,apache-error))
-$(eval $(call BuildPackage,apache-icons))
-$(eval $(call BuildPackage,apache-suexec))
-$(eval $(call BuildPackage,apache-utils))
-$(eval $(call Package/apache/Module,deflate,Deflate,Deflate support for the Apache HTTP server.,+zlib,deflate))
-$(eval $(call Package/apache/Module,http2,HTTP2,HTTP/2 transport layer for the Apache HTTP Server.,+libnghttp2 +libopenssl,http2))
-$(eval $(call Package/apache/Module,ldap,LDAP,LDAP authentication/authorization module for the Apache HTTP Server.,+libaprutil-ldap,authnz_ldap ldap))
-$(eval $(call Package/apache/Module,lua,Lua,Lua support for the Apache HTTP server.,+liblua,lua))
-$(eval $(call Package/apache/Module,md,Managed Domain handling,Managed Domain handling.,+libcurl +jansson +libopenssl,md))
-$(eval $(call Package/apache/Module,proxy,Proxy,Proxy modules for the Apache HTTP Server.,,proxy proxy_ajp proxy_balancer proxy_connect proxy_express proxy_fcgi proxy_fdpass proxy_ftp proxy_hcheck proxy_http proxy_scgi proxy_uwsgi proxy_wstunnel lbmethod_byrequests lbmethod_heartbeat lbmethod_bytraffic lbmethod_bybusyness))
-$(eval $(call Package/apache/Module,proxy-html,Proxy HTML,HTML and XML content filters for the Apache HTTP Server.,+apache-mod-proxy +libxml2,proxy_html xml2enc))
-$(eval $(call Package/apache/Module,session-crypto,Session crypto,Session encryption support for the Apache HTTP Server.,+libaprutil-crypto-openssl,session_crypto))
-$(eval $(call Package/apache/Module,ssl,SSL/TLS,SSL/TLS module for the Apache HTTP Server.,+libopenssl,ssl))
-$(eval $(call Package/apache/Module,suexec,suEXEC,suEXEC module for the Apache HTTP Server.,+apache-suexec,suexec))
-$(eval $(call Package/apache/Module,webdav,WebDAV,WebDAV support for the Apache HTTP Server.,,dav dav_fs dav_lock))
+#$(eval $(call BuildPackage,qt5-qt3d))
+$(eval $(call BuildPackage,qt5-qtbase))
+$(eval $(call BuildPackage,qt5-qtcharts))
+$(eval $(call BuildPackage,qt5-qtconnectivity))
+#$(eval $(call BuildPackage,qt5-qtdatavis3d))
+$(eval $(call BuildPackage,qt5-qtdeclarative))
+$(eval $(call BuildPackage,qt5-qtgamepad))
+$(eval $(call BuildPackage,qt5-qtgraphicaleffects))
+$(eval $(call BuildPackage,qt5-qtimageformats))
+$(eval $(call BuildPackage,qt5-qtlocation))
+$(eval $(call BuildPackage,qt5-qtlottie))
+$(eval $(call BuildPackage,qt5-qtmultimedia))
+$(eval $(call BuildPackage,qt5-qtnetworkauth))
+$(eval $(call BuildPackage,qt5-qtquick3d))
+$(eval $(call BuildPackage,qt5-qtquickcontrols))
+$(eval $(call BuildPackage,qt5-qtquickcontrols2))
+$(eval $(call BuildPackage,qt5-qtquicktimeline))
+$(eval $(call BuildPackage,qt5-qtremoteobjects))
+$(eval $(call BuildPackage,qt5-qtscript))
+$(eval $(call BuildPackage,qt5-qtscxml))
+$(eval $(call BuildPackage,qt5-qtsensors))
+$(eval $(call BuildPackage,qt5-qtserialbus))
+$(eval $(call BuildPackage,qt5-qtserialport))
+$(eval $(call BuildPackage,qt5-qtspeech))
+$(eval $(call BuildPackage,qt5-qtsvg))
+$(eval $(call BuildPackage,qt5-qttranslations))
+$(eval $(call BuildPackage,qt5-qtvirtualkeyboard))
+$(eval $(call BuildPackage,qt5-qtwebchannel))
+$(eval $(call BuildPackage,qt5-qtwebengine))
+$(eval $(call BuildPackage,qt5-qtwebsockets))
+$(eval $(call BuildPackage,qt5-qtwebview))
+$(eval $(call BuildPackage,qt5-qtxmlpatterns))
