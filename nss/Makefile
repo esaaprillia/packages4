@@ -155,7 +155,7 @@ define Host/Install
 	  $(STAGING_DIR_HOSTPKG)/include/nss/
 	$(CP) $(HOST_BUILD_DIR)/dist/public/nss/*.h \
 	  $(STAGING_DIR_HOSTPKG)/include/nss/
-	$(CP) $(HOST_BUILD_DIR)/dist/build_dir/lib/*.a \
+	$(CP) $(HOST_BUILD_DIR)/dist/build_dir/lib/{libfreebl3.a,libnss3.a,libnssckbi.a,libnssutil3.a,libsmime3.a,libsoftokn3.a,libssl3.a} \
 	  $(STAGING_DIR)/usr/lib/
 	$(CP) $(HOST_BUILD_DIR)/dist/build_dir/lib/*.a \
 	  $(STAGING_DIR_HOSTPKG)/lib/
