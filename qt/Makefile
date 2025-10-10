@@ -530,9 +530,10 @@ CONFIGURE_ARGS = \
 
 define Build/Compile
 	PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" \
+	GN_PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
 	PKG_CONFIG="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
 	PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
-	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" PKG_CONFIG="$(STAGING_DIR_HOST)/bin/pkg-config.real" PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real"
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" PKG_CONFIG="$(STAGING_DIR_HOST)/bin/pkg-config.real" PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" GN_PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real"
 endef
 
 define Build/InstallDev
@@ -795,3 +796,4 @@ $(eval $(call BuildPackage,qt5-qtwebengine))
 $(eval $(call BuildPackage,qt5-qtwebsockets))
 $(eval $(call BuildPackage,qt5-qtwebview))
 $(eval $(call BuildPackage,qt5-qtxmlpatterns))
+
