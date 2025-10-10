@@ -149,12 +149,15 @@ define Host/Install
 	 $(STAGING_DIR_HOSTPKG)/bin \
 	 $(STAGING_DIR_HOSTPKG)/include/nss \
 	 $(STAGING_DIR_HOSTPKG)/lib \
+	 $(STAGING_DIR)/usr/lib \
 	 $(STAGING_DIR_HOSTPKG)/lib/pkgconfig
 	$(CP) $(HOST_BUILD_DIR)/dist/private/nss/*.h \
 	  $(STAGING_DIR_HOSTPKG)/include/nss/
 	$(CP) $(HOST_BUILD_DIR)/dist/public/nss/*.h \
 	  $(STAGING_DIR_HOSTPKG)/include/nss/
-	$(CP) $(HOST_BUILD_DIR)/dist/build_dir/lib/{*.so,*.a} \
+	$(CP) $(HOST_BUILD_DIR)/dist/build_dir/lib/*.a \
+	  $(STAGING_DIR)/usr/lib/
+	$(CP) $(HOST_BUILD_DIR)/dist/build_dir/lib/*.a \
 	  $(STAGING_DIR_HOSTPKG)/lib/
 	$(CP) $(HOST_BUILD_DIR)/nss/config/*.pc \
 	  $(STAGING_DIR_HOSTPKG)/lib/pkgconfig/
