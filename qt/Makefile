@@ -540,19 +540,6 @@ define Build/Configure
 	)
 endef
 
-define Build/Compile
-	$(RM) $(STAGING_DIR)/usr/lib/{libz.a,libz.so,libnspr4.so,libplc4.so,libplds4.so,libnss3.so,libnssutil3.so,libsmime3.so,libsoftokn3.so}
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libz.so $(STAGING_DIR)/usr/lib/libz.so
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnspr4.so $(STAGING_DIR)/usr/lib/libnspr4.so
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libplc4.so $(STAGING_DIR)/usr/lib/libplc4.so
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libplds4.so $(STAGING_DIR)/usr/lib/libplds4.so
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnss3.so $(STAGING_DIR)/usr/lib/libnss3.so
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libnssutil3.so $(STAGING_DIR)/usr/lib/libnssutil3.so
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libsmime3.so $(STAGING_DIR)/usr/lib/libsmime3.so
-	$(LN) $(STAGING_DIR_HOSTPKG)/lib/libsoftokn3.so $(STAGING_DIR)/usr/lib/libsoftokn3.so
-	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
-endef
-
 define Build/InstallDev
 	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) install
 endef
