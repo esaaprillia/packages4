@@ -1,0 +1,24 @@
+From 8e64c50bd4839ef7858bcc6edbc27e6878839bf3 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sun, 12 Oct 2025 07:51:03 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ Receivers/unix/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Receivers/unix/CMakeLists.txt b/Receivers/unix/CMakeLists.txt
+index 8245240..6978883 100644
+--- a/Receivers/unix/CMakeLists.txt
++++ b/Receivers/unix/CMakeLists.txt
+@@ -11,8 +11,8 @@ if (PULSEAUDIO_ENABLE)
+   pkg_check_modules(PULSEAUDIO libpulse-simple)
+   if (PULSEAUDIO_FOUND)
+     include_directories(${PULSEAUDIO_INCLUDE_DIRS})
+-    target_link_directories(${PROJECT_NAME} PUBLIC ${PULSEAUDIO_LIBRARY_DIRS})
+-    target_link_libraries(${PROJECT_NAME} ${PULSEAUDIO_LIBRARIES})
++    target_link_directories(${PROJECT_NAME} PUBLIC ${PC_PULSEAUDIO_LIBRARIES})
++    target_link_libraries(${PROJECT_NAME} ${PC_PULSEAUDIO_LIBRARIES})
+     target_sources(${PROJECT_NAME} PRIVATE pulseaudio.c)
+   else ()
+     set(PULSEAUDIO_ENABLE OFF)
