@@ -22,7 +22,7 @@ define Package/scream
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Virtual network sound card for Microsoft Windows
-	DEPENDS:=+alsa-lib +pulseaudio-daemon-avahi
+	DEPENDS:=+alsa-lib
 	URL:=https://github.com/duncanthrax/scream
 endef
 
