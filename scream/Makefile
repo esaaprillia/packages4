@@ -30,13 +30,6 @@ define Package/scream/description
 	Scream is a virtual device driver for Windows that provides a discrete sound device. Audio played through this device is published on your local network as a PCM multicast stream.
 endef
 
-CMAKE_OPTIONS += \
-	-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
-	-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
-	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH \
-	-DCMAKE_INSTALL_RPATH="$(STAGING_DIR)/usr/lib" \
-	-DCMAKE_SKIP_RPATH=FALSE
-
 define Package/scream/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin
