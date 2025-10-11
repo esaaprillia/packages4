@@ -541,7 +541,7 @@ define Build/Configure
 endef
 
 define Build/Compile
-	$(MAKE) -j$(nproc) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
+	$(MAKE) -C $(PKG_BUILD_DIR)/$(MAKE_PATH)
 endef
 
 define Build/InstallDev
