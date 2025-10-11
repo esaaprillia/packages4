@@ -445,7 +445,17 @@ endef
 EXTRA_CFLAGS += $(FPIC) -ffunction-sections -fdata-sections -flto
 EXTRA_LDFLAGS += -Wl,--gc-sections,--as-needed
 
-CONFIGURE_ARGS = \
+define Build/Configure
+	( cd $(PKG_BUILD_DIR) ; \
+		TARGET_CROSS="$(TARGET_CROSS)" \
+		TARGET_CFLAGS="$(TARGET_CFLAGS)" \
+		TARGET_CXXFLAGS="$(TARGET_CFLAGS) $(TARGET_CXXFLAGS)" \
+		TARGET_LDFLAGS="$(TARGET_LDFLAGS)" \
+		PKG_CONFIG="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
+		PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
+		GN_PKG_CONFIG_HOST="$(STAGING_DIR_HOST)/bin/pkg-config.real" \
+		PKG_CONFIG_SYSROOT_DIR="$(STAGING_DIR)" \
+		./configure \
 		-sysroot $(STAGING_DIR) \
 		-hostprefix $(STAGING_DIR_HOSTPKG) \
 		-extprefix $(STAGING_DIR)/usr \
@@ -526,7 +536,9 @@ CONFIGURE_ARGS = \
 		-feature-concurrent \
 		-feature-testlib \
 		-make libs \
-		-v
+		-v \
+	)
+endef
 
 define Build/Compile
 	$(RM) $(STAGING_DIR)/usr/lib/{libz.a,libz.so,libnspr4.so,libplc4.so,libplds4.so,libnss3.so,libnssutil3.so,libsmime3.so,libsoftokn3.so}
