@@ -9,7 +9,7 @@ PKG_VERSION:=3.12.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/nlohmann/json/archive/v$(PKG_VERSION)?
+PKG_SOURCE_URL:=https://github.com/nlohmann/json/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/json-$(PKG_VERSION)
 
