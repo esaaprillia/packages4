@@ -23,7 +23,7 @@ define Package/python3-dnspython
   CATEGORY:=Languages
   TITLE:=powerful DNS toolkit for python
   URL:=http://www.dnspython.org/
-  DEPENDS:=+python3 +python3-cryptography +python3-curio +python3-idna +python3-requests-toolbelt +python3-sniffio +python3-trio
+  DEPENDS:=+python3 +python3-cryptography +python3-httpcore +python3-httpx +python3-h2 +python3-aioquic +python3-idna +python3-trio
 endef
 
 define Package/python3-dnspython/description
@@ -37,4 +37,3 @@ endef
 $(eval $(call Py3Package,python3-dnspython))
 $(eval $(call BuildPackage,python3-dnspython))
 $(eval $(call BuildPackage,python3-dnspython-src))
-
