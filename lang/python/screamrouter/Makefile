@@ -16,7 +16,7 @@ PKG_MAINTAINER:=
 PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_DEPENDS:=python-pybind11/host python-yaml/host
+PKG_BUILD_DEPENDS:=python-pybind11/host python-pybind11-stubgen/host python-yaml/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
