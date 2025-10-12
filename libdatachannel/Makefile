@@ -15,6 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
+PKG_BUILD_DEPENDS:=plog
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -23,7 +24,7 @@ define Package/libdatachannel
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=libdatachannel - C/C++ WebRTC network library
-	DEPENDS:=+libnice +usrsctp +libsrtp +nlohmannjson +libopenssl +plog
+	DEPENDS:=+libnice +usrsctp +libsrtp +nlohmannjson +libopenssl
 	URL:=https://libdatachannel.org/
 endef
 
