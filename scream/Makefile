@@ -30,6 +30,8 @@ define Package/scream/description
 	Scream is a virtual device driver for Windows that provides a discrete sound device. Audio played through this device is published on your local network as a PCM multicast stream.
 endef
 
+TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
+
 define Package/scream/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/bin
