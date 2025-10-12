@@ -23,7 +23,14 @@ include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 
+PYTHON3_PKG_SETUP_VARS:= \
+	$(CONFIGURE_ARGS) \
+	$(CONFIGURE_VARS)
+
 PYTHON3_PKG_SETUP_GLOBAL_ARGS += build_ext
+
+CONFIGURE_ARGS:=
+CONFIGURE_VARS:=
 
 define Package/python3-screamrouter
   SECTION:=lang
