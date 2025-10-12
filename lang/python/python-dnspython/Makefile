@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-dnspython
-PKG_VERSION:=2.7.0
+PKG_VERSION:=2.8.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=dnspython
-PKG_HASH:=ce9c432eda0dc91cf618a5cedf1a4e142651196bbcd2c80e89ed5a907e5cfaf1
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
@@ -37,3 +37,4 @@ endef
 $(eval $(call Py3Package,python3-dnspython))
 $(eval $(call BuildPackage,python3-dnspython))
 $(eval $(call BuildPackage,python3-dnspython-src))
+
