@@ -23,6 +23,14 @@ include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 
+export $(CONFIGURE_ARGS)
+export $(CONFIGURE_VARS)
+export CC="$(TARGET_CC)"
+export CXX="$(TARGET_CXX)"
+export CFLAGS="$(TARGET_CFLAGS)"
+export LDFLAGS="$(TARGET_LDFLAGS)"
+export CPPFLAGS="$(TARGET_CPPFLAGS)"
+
 PYTHON3_PKG_SETUP_VARS:= \
 	$(CONFIGURE_ARGS) \
 	$(CONFIGURE_VARS)
