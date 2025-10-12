@@ -22,6 +22,8 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
+PYTHON3_PKG_SETUP_GLOBAL_ARGS += build_ext
+
 define Package/python3-screamrouter
   SECTION:=lang
   CATEGORY:=Languages
