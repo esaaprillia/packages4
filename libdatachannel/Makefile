@@ -23,7 +23,7 @@ define Package/libdatachannel
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=libdatachannel - C/C++ WebRTC network library
-	DEPENDS:=+libnice +libusrsctp +libsrtp +nlohmannjson +libopenssl +plog
+	DEPENDS:=+libnice +usrsctp +libsrtp +nlohmannjson +libopenssl +plog
 	URL:=https://libdatachannel.org/
 endef
 
