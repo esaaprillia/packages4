@@ -5,10 +5,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nlohmannjson
-PKG_VERSION:=3.11.2
+PKG_VERSION:=3.12.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).zip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/nlohmann/json/zip/v$(PKG_VERSION)?
 PKG_HASH:=95651d7d1fcf2e5c3163c3d37df6d6b3e9e5027299e6bd050d157322ceda9ac9
 PKG_BUILD_DIR:=$(BUILD_DIR)/json-$(PKG_VERSION)
@@ -32,6 +32,9 @@ endef
 define Package/nlohmannjson/description
   Niels Lohmann's JSON headers-only library for modern C++
 endef
+
+CMAKE_OPTIONS += \
+	-DJSON_MultipleHeaders=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
