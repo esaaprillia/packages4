@@ -9,8 +9,8 @@ PKG_VERSION:=3.12.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/nlohmann/json/zip/v$(PKG_VERSION)?
-PKG_HASH:=95651d7d1fcf2e5c3163c3d37df6d6b3e9e5027299e6bd050d157322ceda9ac9
+PKG_SOURCE_URL:=https://github.com/nlohmann/json/archive/v$(PKG_VERSION)?
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/json-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Leonid Esman <leonid.esman@gmail.com>
