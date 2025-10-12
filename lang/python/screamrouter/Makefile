@@ -30,7 +30,7 @@ define Package/python3-screamrouter
   SUBMENU:=Python
   TITLE:=ScreamRouter audio routing system with web interface and C++ audio engine
   URL:=https://screamrouter.net/
-  DEPENDS:=+python3-light +lame +libopus +libopenssl +libdatachannel +libsamplerate +python3-cryptography +python3-dnspython +python3-fastapi +python3-httpx +python3-jinja2 +python3-netifaces +python3-numpy +python3-pydantic +python3-pyopenssl +python3-yaml +python3-setproctitle +python3-starlette +python3-uvicorn +python3-websockets +python3-zeroconf
+  DEPENDS:=+python3-light +lame +libopus +libopenssl +libdatachannel +libsamplerate +libjuice +python3-cryptography +python3-dnspython +python3-fastapi +python3-httpx +python3-jinja2 +python3-netifaces +python3-numpy +python3-pydantic +python3-pyopenssl +python3-yaml +python3-setproctitle +python3-starlette +python3-uvicorn +python3-websockets +python3-zeroconf
 endef
 
 define Package/python3-screamrouter/description
