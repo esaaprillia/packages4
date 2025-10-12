@@ -33,6 +33,7 @@ define Package/libdatachannel/description
 endef
 
 CMAKE_OPTIONS += \
+	-Dnlohmann_json_DIR="$(STAGING_DIR)/usr/lib" \
 	-DUSE_NICE=1 \
 	-DPREFER_SYSTEM_LIB=1
 
