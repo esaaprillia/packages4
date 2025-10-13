@@ -21,7 +21,6 @@ PKG_BUILD_DEPENDS:=python-pybind11/host python-pybind11-stubgen/host python-yaml
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 
 export $(CONFIGURE_ARGS)
 export $(CONFIGURE_VARS)
