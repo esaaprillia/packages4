@@ -1,0 +1,22 @@
+From 7f2ec40fc4ef603574ed741659ef968e69415af6 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 14 Oct 2025 07:38:17 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ build_system/builders/autotools_builder.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build_system/builders/autotools_builder.py b/build_system/builders/autotools_builder.py
+index 32ede9e..623336d 100644
+--- a/build_system/builders/autotools_builder.py
++++ b/build_system/builders/autotools_builder.py
+@@ -53,7 +53,7 @@ def configure(self) -> bool:
+             return False
+         
+         # Build configure command
+-        configure_script_name = self.build_config.get("configure_script", "./configure")
++        configure_script_name = self.build_config.get("configure_script", "./configure --target=@GNU_TARGET_NAME@ --host=@GNU_TARGET_NAME@ --build=@GNU_HOST_NAME@")
+         cmd = [configure_script_name]
+         
+         # Add configure arguments (check if prefix is already included)
