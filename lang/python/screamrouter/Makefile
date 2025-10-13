@@ -22,8 +22,6 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-export $(CONFIGURE_ARGS)
-export $(CONFIGURE_VARS)
 export CC="$(TARGET_CC)"
 export CXX="$(TARGET_CXX)"
 export CFLAGS="$(TARGET_CFLAGS)"
@@ -38,6 +36,10 @@ PYTHON3_PKG_SETUP_GLOBAL_ARGS += build_ext
 
 CONFIGURE_ARGS:=
 CONFIGURE_VARS:=
+CONFIGURE_VARS += \
+	--target=$(GNU_TARGET_NAME) \
+	--host=$(GNU_TARGET_NAME) \
+	--build=$(GNU_HOST_NAME)
 
 define Package/python3-screamrouter
   SECTION:=lang
