@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=screamrouter
-PKG_VERSION:=0.3.12
+PKG_VERSION:=0.3.15
 PKG_RELEASE:=1
 
 PYPI_NAME:=screamrouter
@@ -9,7 +9,7 @@ PYPI_NAME:=screamrouter
 
 PKG_SOURCE_URL:=https://github.com/netham45/screamrouter.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=6228e4a35a2517db8233225554af68e89d49cf55
+PKG_SOURCE_VERSION:=75169dd726bb2816ff5d1667e64369b90d50c459
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=
