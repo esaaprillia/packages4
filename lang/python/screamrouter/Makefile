@@ -50,12 +50,6 @@ define Package/python3-screamrouter/description
   ScreamRouter is a versatile audio routing and management system with a Python frontend/configuration layer and C++ backend, designed for network audio streaming. It supports Scream and RTP audio sources, along with Scream receivers and web-based MP3 streamers.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) 's,@GNU_HOST_NAME@,$(GNU_HOST_NAME),g' $(PKG_BUILD_DIR)/build_system/builders/autotools_builder.py
-	$(SED) 's,@GNU_TARGET_NAME@,$(GNU_TARGET_NAME),g' $(PKG_BUILD_DIR)/build_system/builders/autotools_builder.py
-endef
-
 $(eval $(call Py3Package,python3-screamrouter))
 $(eval $(call BuildPackage,python3-screamrouter))
 $(eval $(call BuildPackage,python3-screamrouter-src))
