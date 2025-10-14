@@ -16,6 +16,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/meson.mk
 
 define Package/libucontext
@@ -39,6 +40,9 @@ define Package/libucontext/description
   libraries/applications which need the SYS-V ucontext API.
 endef
 
+MESON_HOST_ARGS += \
+	-Ddefault_library=both
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include $(1)/usr/lib/pkgconfig
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/libucontext $(1)/usr/include/
@@ -57,5 +61,6 @@ define Package/libucontext-tests/install
 	$(INSTALL_BIN) $(MESON_BUILD_DIR)/test_libucontext $(1)/usr/bin/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,libucontext))
 $(eval $(call BuildPackage,libucontext-tests))
