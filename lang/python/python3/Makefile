@@ -30,7 +30,7 @@ include ../python3-host.mk
 PYTHON3_PKG_BUILD:=0
 include ../python3-package.mk
 
-PKG_FIXUP:=autoreconf
+#PKG_FIXUP:=autoreconf
 PKG_BUILD_PARALLEL:=1
 HOST_BUILD_PARALLEL:=1
 # LTO is handled here individually, see --with-lto below
