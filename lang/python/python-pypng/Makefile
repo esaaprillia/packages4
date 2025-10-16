@@ -1,11 +1,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pypng
-PKG_VERSION:=0.20220715.0
+PKG_VERSION:=0.20250521.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pypng
-PKG_HASH:=739c433ba96f078315de54c0db975aee537cbc3e1d0ae4ed9aab0ca1e427e2c1
+
+PKG_SOURCE:=pypng-pypng-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://gitlab.com/drj11/pypng/-/archive/$(PKG_VERSION)
+PKG_HASH:=skip
+
+PKG_BUILD_DIR:=$(BUILD_DIR)/pypi/pypng-pypng-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
