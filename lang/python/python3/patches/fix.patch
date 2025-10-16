@@ -34,3 +34,25 @@ index af7a962..3ea78c3 100644
  case "$ac_sys_system" in
    Linux*)
      if test "$ac_cv_func_explicit_bzero" = "no"; then
+
+From 97bccbbe354bf6a3232b963241bcdc6a9bedc78f Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 16 Oct 2025 08:31:41 +0800
+Subject: [PATCH] Update lowstar_endianness.h
+
+---
+ Modules/_hacl/include/krml/lowstar_endianness.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Modules/_hacl/include/krml/lowstar_endianness.h b/Modules/_hacl/include/krml/lowstar_endianness.h
+index af6b882..9e5d5cf 100644
+--- a/Modules/_hacl/include/krml/lowstar_endianness.h
++++ b/Modules/_hacl/include/krml/lowstar_endianness.h
+@@ -6,6 +6,7 @@
+ 
+ #include <string.h>
+ #include <inttypes.h>
++#include <endian.h>
+ 
+ /******************************************************************************/
+ /* Implementing C.fst (part 2: endian-ness macros)                            */
