@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pandas-stubs
-PKG_VERSION:=2.2.3.241126
+PKG_VERSION:=2.3.2.250926
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=pandas_stubs
-PKG_HASH:=cf819383c6d9ae7d4dabf34cd47e1e45525bb2f312e6ad2939c2c204cb708acd
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host python-pandas/host
 
