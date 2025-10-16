@@ -23,7 +23,7 @@ define Package/python3-pytap2
   CATEGORY:=Languages
   TITLE:=Object-oriented wrapper around the Linux Tun/Tap device
   URL:=https://github.com/johnthagen/pytap2
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +mii-tool +net-tools-netstat +net-tools-route
 endef
 
 define Package/python3-pytap2/description
