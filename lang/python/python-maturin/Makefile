@@ -5,7 +5,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-maturin
-PKG_VERSION:=1.9.4
+PKG_VERSION:=1.9.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=maturin
