@@ -1,0 +1,21 @@
+From 696e1c53e009ac9a5620d793aed889d04264cf91 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 16 Oct 2025 10:54:34 +0800
+Subject: [PATCH] Update _ssl.c
+
+---
+ Modules/_ssl.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Modules/_ssl.c b/Modules/_ssl.c
+index 21c3991..e36b845 100644
+--- a/Modules/_ssl.c
++++ b/Modules/_ssl.c
+@@ -911,7 +911,6 @@ newPySSLSocket(PySSLContext *sslctx, PySocketSockObject *sock,
+     X509_VERIFY_PARAM *ssl_verification_params = SSL_get0_param(self->ssl);
+     X509_VERIFY_PARAM *ssl_ctx_verification_params = SSL_CTX_get0_param(ctx);
+ 
+-    unsigned int ssl_ctx_host_flags = X509_VERIFY_PARAM_get_hostflags(ssl_ctx_verification_params);
+     X509_VERIFY_PARAM_set_hostflags(ssl_verification_params, ssl_ctx_host_flags);
+ #endif
+     SSL_set_app_data(self->ssl, self);
