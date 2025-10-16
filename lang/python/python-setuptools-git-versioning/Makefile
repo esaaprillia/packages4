@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-setuptools-git-versioning
-PKG_VERSION:=1.13.6
+PKG_VERSION:=2.1.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=setuptools-git-versioning
-PKG_HASH:=75e3e8c4528fa21ca2417a1f222fdaaa4d2ca7d8536c44affad827c6ec9ba0d4
+PYPI_NAME:=setuptools_git_versioning
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
@@ -41,3 +41,4 @@ $(eval $(call Py3Package,python3-setuptools-git-versioning))
 $(eval $(call BuildPackage,python3-setuptools-git-versioning))
 $(eval $(call BuildPackage,python3-setuptools-git-versioning-src))
 $(eval $(call HostBuild))
+
