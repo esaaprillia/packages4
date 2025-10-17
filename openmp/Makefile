@@ -39,14 +39,9 @@ define Build/Prepare
 	$(CP) -r files/Modules/* $(PKG_BUILD_DIR)/cmake/
 endef
 
-CC=clang
-CXX=clang++
-
 CMAKE_OPTIONS += \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_C_COMPILER=clang \
-	-DCMAKE_CXX_COMPILER=clang++ \
 	-DLIBOMP_INSTALL_ALIASES=OFF \
 	-DCLANG_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/clang" \
 	-DLINK_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/llvm-link" \
