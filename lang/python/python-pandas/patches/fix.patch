@@ -16,7 +16,7 @@ index d5a7f71391fef..47be5a903d515 100644
  
  [tool.meson-python.args]
 -setup = ['--vsenv'] # For Windows
-+setup = [''] # For Windows
++#setup = ['--vsenv'] # For Windows
  
  [tool.cibuildwheel]
  skip = "cp38-* *_i686 *_ppc64le *_s390x"
