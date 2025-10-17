@@ -42,16 +42,12 @@ endef
 CMAKE_OPTIONS += \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
-	-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
-	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH \
-	-DCMAKE_SKIP_RPATH=FALSE \
 	-DLIBOMP_INSTALL_ALIASES=OFF \
-	-DCLANG_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/clang" \
-	-DLINK_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/llvm-link" \
-	-DOPT_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/opt" \
-	-DPACKAGER_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/clang-offload-packager" \
-	-DOPENMP_LLVM_TOOLS_DIR="$(STAGING_DIR_HOST)/llvm-bpf/bin"
+	-DCLANG_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin/clang" \
+	-DLINK_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin/llvm-link" \
+	-DOPT_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin/opt" \
+	-DPACKAGER_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin/clang-offload-packager" \
+	-DOPENMP_LLVM_TOOLS_DIR="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
