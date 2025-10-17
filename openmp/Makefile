@@ -36,7 +36,7 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(CP) -r files/* $(PKG_BUILD_DIR)/cmake/
+	$(CP) -r files/Modules/* $(PKG_BUILD_DIR)/cmake/
 endef
 
 TARGET_CC=clang
