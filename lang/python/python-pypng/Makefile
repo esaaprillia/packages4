@@ -5,9 +5,12 @@ PKG_VERSION:=0.20250521.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pypng
-PYPI_SOURCE_NAME:=pypng-pypng
+
+PKG_SOURCE:=pypng-pypng-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://gitlab.com/drj11/pypng/-/archive/pypng-$(PKG_VERSION)/
 PKG_HASH:=skip
+
+PKG_BUILD_DIR:=$(BUILD_DIR)/pypi/pypng-pypng-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
