@@ -39,12 +39,16 @@ define Build/Prepare
 	$(CP) -r files/* $(PKG_BUILD_DIR)/cmake/
 endef
 
+TARGET_CC=clang
+TARGET_CXX=clang++
+
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DLIBOMP_INSTALL_ALIASES=OFF \
-	-DCLANG_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin" \
-	-DLINK_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin" \
-	-DOPT_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin" \
+	-DCLANG_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/clang" \
+	-DLINK_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/llvm-link" \
+	-DOPT_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/opt" \
 	-DPACKAGER_TOOL="$(STAGING_DIR_HOST)/llvm-bpf/bin/clang-offload-packager" \
 	-DOPENMP_LLVM_TOOLS_DIR="$(STAGING_DIR_HOST)/llvm-bpf/bin"
 
