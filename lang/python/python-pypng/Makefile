@@ -5,11 +5,9 @@ PKG_VERSION:=0.20250521.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pypng
-
-PKG_SOURCE_URL:=https://gitlab.com/drj11/pypng.git
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=b2500eca7bafac80847f16125071c674123bc2dc
-PKG_MIRROR_HASH:=skip
+PYPI_SOURCE_NAME:=pypng-pypng
+PKG_SOURCE_URL:=https://gitlab.com/drj11/pypng/-/archive/pypng-$(PKG_VERSION)/
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
