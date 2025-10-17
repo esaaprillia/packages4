@@ -7,12 +7,9 @@ PKG_RELEASE:=1
 PYPI_NAME:=pandas-datareader
 PKG_HASH:=9fc3c63d39bc0c10c2683f1c6d503ff625020383e38f6cbe14134826b454d5a6
 
-PKG_LICENSE:=License
+PKG_LICENSE:=BSD
 PKG_LICENSE_FILES:=LICENSES.md
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
