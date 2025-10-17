@@ -8,8 +8,8 @@ PKG_NAME:=python-werkzeug
 PKG_VERSION:=3.1.3
 PKG_RELEASE:=1
 
-PYPI_NAME:=Werkzeug
-PKG_HASH:=60723ce945c19328679790e3282cc758aa4a6040e4bb330f53d30fa546d44746
+PYPI_NAME:=werkzeug
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
