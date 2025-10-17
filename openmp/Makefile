@@ -34,11 +34,6 @@ define Package/openmp/description
 	LLVM OpenMP Runtime Library
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(CP) -r files/Modules/* $(PKG_BUILD_DIR)/cmake/
-endef
-
 TARGET_CC=clang
 TARGET_CXX=clang++
 
