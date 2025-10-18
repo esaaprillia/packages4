@@ -12,10 +12,13 @@ PYPI_NAME:=uv
 PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-maturin/host
+HOST_BUILD_DEPENDS:=python-maturin/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-uv
   SUBMENU:=Python
