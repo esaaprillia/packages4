@@ -20,7 +20,7 @@ define Package/python3-prompt-toolkit
   CATEGORY:=Languages
   SUBMENU:=Python
   TITLE:=Library for building powerful interactive command lines in Python
-  URL:=https://github.com/pdm-project/pdm-backend
+  URL:=https://python-prompt-toolkit.readthedocs.io/
   DEPENDS:=+python3 +python3-wcwidth
 endef
 
