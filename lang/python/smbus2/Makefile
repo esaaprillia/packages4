@@ -22,7 +22,7 @@ define Package/python3-smbus2
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=smbus2 is a drop-in replacement for smbus-cffi/smbus-python in pure Python
-  URL:=https://luma-core.readthedocs.io/
+  URL:=https://github.com/kplindegaard/smbus2
   DEPENDS:=+python3
 endef
 
