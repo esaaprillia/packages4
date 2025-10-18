@@ -16,7 +16,9 @@ HOST_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-tomlkit
   SUBMENU:=Python
@@ -34,6 +36,7 @@ You can also create new TOML documents from scratch using the provided helpers.
 Part of the implementation has been adapted, improved and fixed from Molten.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-tomlkit))
 $(eval $(call BuildPackage,python3-tomlkit))
 $(eval $(call BuildPackage,python3-tomlkit-src))
