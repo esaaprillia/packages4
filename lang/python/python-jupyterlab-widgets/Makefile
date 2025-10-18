@@ -25,7 +25,7 @@ define Package/python3-jupyterlab-widgets
   CATEGORY:=Languages
   TITLE:=Jupyter interactive widgets for JupyterLab
   URL:=https://ipywidgets.readthedocs.io/
-  DEPENDS:=+python3 +python3-hatch-jupyter-builder
+  DEPENDS:=+python3
 endef
 
 define Package/python3-jupyterlab-widgets/description
