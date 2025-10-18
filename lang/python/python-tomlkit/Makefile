@@ -11,7 +11,8 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=tomlkit
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host
+HOST_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -36,4 +37,3 @@ endef
 $(eval $(call Py3Package,python3-tomlkit))
 $(eval $(call BuildPackage,python3-tomlkit))
 $(eval $(call BuildPackage,python3-tomlkit-src))
-
