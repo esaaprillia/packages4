@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:= LICENSE
 
-PKG_BUILD_DEPENDS:=python-cffi/host
-HOST_BUILD_DEPENDS:=python-cffi/host
+PKG_BUILD_DEPENDS:=python-cffi/host python-packaging/host
+HOST_BUILD_DEPENDS:=python-cffi/host python-packaging/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
