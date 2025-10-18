@@ -23,7 +23,9 @@ HOST_BUILD_DEPENDS:=python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-userpath
   SECTION:=lang
@@ -38,6 +40,7 @@ define Package/python3-userpath/description
 This is a tool for modifying a user's PATH.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-userpath))
 $(eval $(call BuildPackage,python3-userpath))
 $(eval $(call BuildPackage,python3-userpath-src))
