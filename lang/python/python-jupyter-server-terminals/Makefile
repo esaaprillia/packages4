@@ -26,7 +26,7 @@ define Package/python3-jupyter-server-terminals
   CATEGORY:=Languages
   TITLE:=A Jupyter Server Extension Providing Terminals.
   URL:=https://github.com/jupyter-server/jupyter_server_terminals
-  DEPENDS:=+python3 +python3-pywinpty +python3-terminado
+  DEPENDS:=+python3 +python3-terminado
 endef
 
 define Package/python3-jupyter-server-terminals/description
