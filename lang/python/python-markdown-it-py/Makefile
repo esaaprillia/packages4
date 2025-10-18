@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-markdown-it-py
-PKG_VERSION:=3.0.0
+PKG_VERSION:=4.0.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=markdown-it-py
-PKG_HASH:=e3f60a94fa066dc52ec76661e37c851cb232d92f9886b15cb560aaada2df8feb
+PYPI_NAME:=markdown_it_py
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
