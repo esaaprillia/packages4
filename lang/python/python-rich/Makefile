@@ -16,7 +16,9 @@ HOST_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-rich
   SECTION:=lang
@@ -33,6 +35,7 @@ Rich is a Python library for rich text and beautiful formatting in the terminal.
 The Rich API makes it easy to add color and style to terminal output. Rich can also render pretty tables, progress bars, markdown, syntax highlighted source code, tracebacks, and more — out of the box.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-rich))
 $(eval $(call BuildPackage,python3-rich))
 $(eval $(call BuildPackage,python3-rich-src))
