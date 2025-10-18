@@ -16,7 +16,9 @@ HOST_BUILD_DEPENDS:= \
 	python3/host \
 	python-build/host \
 	python-installer/host \
-	python-hatchling/host
+	python-hatchling/host \
+	python-tomlkit/host \
+	python-deprecation/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
