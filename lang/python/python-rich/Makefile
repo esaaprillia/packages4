@@ -1,17 +1,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-rich
-PKG_VERSION:=13.9.4
+PKG_VERSION:=14.2.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=rich
-PKG_HASH:=439594978a49a09530cff7ebc4b5c7103ef57baf48d5ea3184f21d9a2befa098
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
+HOST_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
