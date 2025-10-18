@@ -25,7 +25,7 @@ define Package/python3-matplotlib-inline
   CATEGORY:=Languages
   TITLE:=Inline Matplotlib backend for Jupyter
   URL:=https://github.com/ipython/matplotlib-inline
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-traitlets
 endef
 
 define Package/python3-matplotlib-inline/description
