@@ -12,10 +12,13 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:= LICENSE
 
 PKG_BUILD_DEPENDS:=python-cffi/host
+HOST_BUILD_DEPENDS:=python-cffi/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-zstandard
   SUBMENU:=Python
@@ -30,6 +33,7 @@ define Package/python3-zstandard/description
 This project provides Python bindings for interfacing with the Zstandard compression library. A C extension and CFFI interface are provided.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-zstandard))
 $(eval $(call BuildPackage,python3-zstandard))
 $(eval $(call BuildPackage,python3-zstandard-src))
