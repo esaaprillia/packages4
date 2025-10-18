@@ -33,6 +33,7 @@ define Package/python3-uv/description
 An extremely fast Python package and project manager, written in Rust.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-uv))
 $(eval $(call BuildPackage,python3-uv))
 $(eval $(call BuildPackage,python3-uv-src))
