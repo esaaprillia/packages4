@@ -31,6 +31,9 @@ QR codes can be saved as SVG, PNG (by using the pypng module), and plain text. T
 The pyqrcode module attempts to follow the QR code standard as closely as possible. The terminology and the encodings used in pyqrcode come directly from the standard. This module also follows the algorithm laid out in the standard.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=pyqrcode
+PYTHON3_PKG_WHEEL_VERSION:=1.2.1
+
 $(eval $(call Py3Package,python3-pyqrcode))
 $(eval $(call BuildPackage,python3-pyqrcode))
 $(eval $(call BuildPackage,python3-pyqrcode-src))
