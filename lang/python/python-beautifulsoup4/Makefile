@@ -23,7 +23,7 @@ define Package/python3-beautifulsoup4
   SUBMENU:=Python
   TITLE:=Screen-scraping library
   URL:=https://www.crummy.com/software/BeautifulSoup/
-  DEPENDS:=+python3-light +python3-soupsieve
+  DEPENDS:=+python3-light +python3-soupsieve +python3-typing-extensions
 endef
 
 define Package/python3-beautifulsoup4/description
