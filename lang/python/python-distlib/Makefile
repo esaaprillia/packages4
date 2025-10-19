@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-distlib
-PKG_VERSION:=0.3.9
+PKG_VERSION:=0.4.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=distlib
-PKG_HASH:=a60f20dea646b8a33f3e7772f74dc0b2d0772d2837ee1342a00645c81edf9403
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=License
