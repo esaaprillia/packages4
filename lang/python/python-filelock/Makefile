@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-filelock
-PKG_VERSION:=3.16.1
+PKG_VERSION:=3.20.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=filelock
-PKG_HASH:=c249fbfcd5db47e5e2d6d62198e565475ee65e4831e2561c8e313fa7eb961435
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Unlicense
@@ -33,3 +33,4 @@ endef
 $(eval $(call Py3Package,python3-filelock))
 $(eval $(call BuildPackage,python3-filelock))
 $(eval $(call BuildPackage,python3-filelock-src))
+
