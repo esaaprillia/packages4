@@ -23,7 +23,7 @@ define Package/python3-filelock
   SUBMENU:=Python
   TITLE:=A platform independent file lock.
   URL:=https://py-filelock.readthedocs.io/
-  DEPENDS:=+python3-light +python3-typing-extensions
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-filelock/description
@@ -33,4 +33,3 @@ endef
 $(eval $(call Py3Package,python3-filelock))
 $(eval $(call BuildPackage,python3-filelock))
 $(eval $(call BuildPackage,python3-filelock-src))
-
