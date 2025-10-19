@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyasn1-modules
-PKG_VERSION:=0.4.1
+PKG_VERSION:=0.4.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyasn1_modules
-PKG_HASH:=c28e2dbf9c06ad61c71a075c7e0f9fd0f1b0bb2d2ad4377f240d33ac2ab60a7c
+PKG_HASH:=skip
 
 PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
