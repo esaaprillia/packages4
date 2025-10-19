@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host python-httpx/host python-jupyter-server/host python-tornado/host python-traitlets/host python-ipykernel/host python-notebook-shim/host python-async-lru/host python-jinja2/host python-jupyterlab-server/host python-jupyter-lsp/host python-jupyter-core/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host python-httpx/host python-jupyter-server/host python-tornado/host python-traitlets/host python-ipykernel/host python-notebook-shim/host python-async-lru/host python-jinja2/host python-jupyterlab-server/host python-jupyter-lsp/host python-jupyter-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
