@@ -21,7 +21,9 @@ PKG_CPE_ID:=cpe:/a:tornadoweb:tornado
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-tornado
   SECTION:=lang
@@ -40,6 +42,7 @@ define Package/python3-tornado/description
   a long-lived connection to each user.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-tornado))
 $(eval $(call BuildPackage,python3-tornado))
 $(eval $(call BuildPackage,python3-tornado-src))
