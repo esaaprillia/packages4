@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-virtualenv
-PKG_VERSION:=20.28.0
+PKG_VERSION:=20.35.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=virtualenv
-PKG_HASH:=2c9c3262bb8e7b87ea801d715fae4495e6032450c71d2309be9550e7364049aa
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
@@ -33,3 +33,4 @@ endef
 $(eval $(call Py3Package,python3-virtualenv))
 $(eval $(call BuildPackage,python3-virtualenv))
 $(eval $(call BuildPackage,python3-virtualenv-src))
+
