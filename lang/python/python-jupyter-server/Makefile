@@ -26,7 +26,7 @@ define Package/python3-jupyter-server
   CATEGORY:=Languages
   TITLE:=The backend—i.e. core services, APIs, and REST endpoints—to Jupyter web applications.
   URL:=https://jupyter-server.readthedocs.io/
-  DEPENDS:=+python3 +python3-anyio +python3-argon2-cffi +python3-jinja2 +python3-jupyter-client +python3-jupyter-core +python3-jupyter-server-terminals +python3-nbconvert +python3-nbformat +python3-packaging +python3-prometheus-client +python3-pywinpty +python3-pyzmq +python3-send2trash +python3-terminado +python3-tornado +python3-traitlets +python3-websocket-client +python3-jupyter-events +python3-overrides
+  DEPENDS:=+python3 +python3-anyio +python3-argon2-cffi +python3-jinja2 +python3-jupyter-client +python3-jupyter-core +python3-jupyter-server-terminals +python3-nbconvert +python3-nbformat +python3-packaging +python3-prometheus-client +python3-pyzmq +python3-send2trash +python3-terminado +python3-tornado +python3-traitlets +python3-websocket-client +python3-jupyter-events +python3-overrides
 endef
 
 define Package/python3-jupyter-server/description
