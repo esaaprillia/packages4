@@ -25,7 +25,7 @@ define Package/python3-jupyterlab
   CATEGORY:=Languages
   TITLE:=JupyterLab computational environment
   URL:=https://jupyterlab.readthedocs.io/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-async-lru +python3-httpx +python3-importlib-metadata +python3-ipykernel +python3-jinja2 +python3-jupyter-core +python3-jupyter-server +python3-jupyter-lsp +python3-jupyterlab-server +python3-notebook-shim python3-packaging +python3-setuptools +python3-tornado +python3-traitlets
 endef
 
 define Package/python3-jupyterlab/description
