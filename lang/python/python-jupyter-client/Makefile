@@ -26,7 +26,7 @@ define Package/python3-jupyter-client
   CATEGORY:=Languages
   TITLE:=Jupyter protocol implementation and client libraries
   URL:=https://jupyter-client.readthedocs.io/
-  DEPENDS:=+python3 +python3-importlib-metadata +python3-jupyter-core +python3-python-dateutil +python3-pyzmq +python3-tornado +python3-traitlets
+  DEPENDS:=+python3 +python3-importlib-metadata +python3-jupyter-core +python3-dateutil +python3-pyzmq +python3-tornado +python3-traitlets
 endef
 
 define Package/python3-jupyter-client/description
