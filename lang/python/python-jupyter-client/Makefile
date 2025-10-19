@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-hatchling/host python-dateutil/host python-pyzmq/host python-jupyter-core/host python-platformdirs/host
-HOST_BUILD_DEPENDS:=python-hatchling/host python-dateutil/host python-pyzmq/host python-jupyter-core/host python-platformdirs/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-dateutil/host python-six/host python-pyzmq/host python-jupyter-core/host python-platformdirs/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-dateutil/host python-six/host python-pyzmq/host python-jupyter-core/host python-platformdirs/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
