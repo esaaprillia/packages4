@@ -17,10 +17,13 @@ PKG_HASH:=78e73e19c63f5b20ffa567001531680d939dc042bf7850431877645523c66709
 PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-dateutil
   SUBMENU:=Python
@@ -35,6 +38,7 @@ define Package/python3-dateutil/description
   Extensions to the standard Python datetime module
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-dateutil))
 $(eval $(call BuildPackage,python3-dateutil))
 $(eval $(call BuildPackage,python3-dateutil-src))
