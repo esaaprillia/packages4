@@ -12,10 +12,13 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.md
 
 PKG_BUILD_DEPENDS:=python-cffi/host python-cython/host python-packaging/host python-scikit-build-core/host
+HOST_BUILD_DEPENDS:=python-cffi/host python-cython/host python-packaging/host python-scikit-build-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-pyzmq
   SUBMENU:=Python
@@ -30,6 +33,7 @@ define Package/python3-pyzmq/description
 This package contains Python bindings for ZeroMQ. ØMQ is a lightweight and fast messaging implementation.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pyzmq))
 $(eval $(call BuildPackage,python3-pyzmq))
 $(eval $(call BuildPackage,python3-pyzmq-src))
