@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tomli
-PKG_VERSION:=2.0.1
+PKG_VERSION:=2.3.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=tomli
-PKG_HASH:=de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
