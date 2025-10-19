@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=rpi-ws281x
+PKG_NAME:=python-rpi-ws281x
 PKG_VERSION:=5.0.0
 PKG_RELEASE:=1
 
