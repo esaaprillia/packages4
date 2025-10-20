@@ -30,6 +30,9 @@ define Package/python3-luma-led-matrix/description
   Python 3 library interfacing LED matrix displays with the MAX7219 driver (using SPI), WS2812 (NeoPixels, inc Pimoroni Unicorn pHat/Hat and Unicorn Hat HD) and APA102 (DotStar) on the Raspberry Pi and other Linux-based single board computers - it provides a Pillow-compatible drawing canvas, and other functionality to support
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=luma_led_matrix
+PYTHON3_PKG_WHEEL_VERSION:=1.7.1
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-luma-led-matrix))
 $(eval $(call BuildPackage,python3-luma-led-matrix))
