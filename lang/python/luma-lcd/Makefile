@@ -30,6 +30,9 @@ define Package/python3-luma-lcd/description
   luma.lcd provides a Python 3 interface to small LCD displays connected to Raspberry Pi and other Linux-based single-board computers (SBC). It provides a Pillow-compatible drawing canvas, and other functionality to support
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=luma_lcd
+PYTHON3_PKG_WHEEL_VERSION:=2.11.0
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-luma-lcd))
 $(eval $(call BuildPackage,python3-luma-lcd))
