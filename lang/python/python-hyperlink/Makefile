@@ -18,9 +18,13 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-hyperlink
   SECTION:=lang
@@ -45,6 +49,7 @@ define Py3Package/python3-hyperlink/filespec
 -|$(PYTHON3_PKG_DIR)/hyperlink/hypothesis.py
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-hyperlink))
 $(eval $(call BuildPackage,python3-hyperlink))
 $(eval $(call BuildPackage,python3-hyperlink-src))
