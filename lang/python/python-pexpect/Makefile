@@ -8,8 +8,10 @@ PYPI_NAME:=pexpect
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=ISC license
+PKG_LICENSE:=ISC
 PKG_LICENSE_FILES:=LICENSE
+
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
