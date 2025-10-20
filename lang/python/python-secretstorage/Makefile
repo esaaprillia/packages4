@@ -23,7 +23,7 @@ define Package/python3-secretstorage
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Store and access your passwords safely.
+  TITLE:=Python bindings to FreeDesktop.org Secret Service API
   URL:=https://secretstorage.readthedocs.io
   DEPENDS:=+python3 +python3-cryptography +python3-jeepney
 endef
