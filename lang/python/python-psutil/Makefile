@@ -19,9 +19,13 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:psutil_project:psutil
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-psutil
   SUBMENU:=Python
@@ -37,6 +41,7 @@ define Package/python3-psutil/description
   on running processes and system utilization.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-psutil))
 $(eval $(call BuildPackage,python3-psutil))
 $(eval $(call BuildPackage,python3-psutil-src))
