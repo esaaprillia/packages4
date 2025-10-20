@@ -32,6 +32,7 @@ define Package/python3-debugpy/description
 debugpy is an implementation of the Debug Adapter Protocol for Python.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-debugpy))
 $(eval $(call BuildPackage,python3-debugpy))
 $(eval $(call BuildPackage,python3-debugpy-src))
