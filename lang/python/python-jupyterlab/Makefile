@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host python-httpx/host python-jupyter-server/host python-tornado/host python-traitlets/host python-ipykernel/host python-notebook-shim/host python-async-lru/host python-jinja2/host python-jupyterlab-server/host python-jupyter-lsp/host python-jupyter-core/host python-jupyter-server-terminals/host python-prometheus-client/host python-nbconvert/host python-debugpy/host python-anyio/host python-terminado/host python-jsonschema/host python-nbformat/host python-jupyter-events/host python-websocket-client/host python-nest-asyncio/host python-certifi/host python-matplotlib-inline/host python-ipython/host python-argon2-cffi/host python-send2trash/host python-json5/host python-idna/host python-httpcore/host python-requests/host python-babel/host python-psutil/host
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host python-httpx/host python-jupyter-server/host python-tornado/host python-traitlets/host python-ipykernel/host python-notebook-shim/host python-async-lru/host python-jinja2/host python-jupyterlab-server/host python-jupyter-lsp/host python-jupyter-core/host python-jupyter-server-terminals/host python-prometheus-client/host python-nbconvert/host python-debugpy/host python-anyio/host python-terminado/host python-jsonschema/host python-nbformat/host python-jupyter-events/host python-websocket-client/host python-nest-asyncio/host python-certifi/host python-matplotlib-inline/host python-ipython/host python-argon2-cffi/host python-send2trash/host python-json5/host python-idna/host python-httpcore/host python-requests/host python-babel/host python-psutil/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
