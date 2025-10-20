@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-hatchling/host python-dateutil/host python-six/host python-pyzmq/host python-jupyter-core/host python-platformdirs/host
-HOST_BUILD_DEPENDS:=python-hatchling/host python-dateutil/host python-six/host python-pyzmq/host python-jupyter-core/host python-platformdirs/host
+PKG_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:=python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -26,7 +26,7 @@ define Package/python3-jupyter-client
   CATEGORY:=Languages
   TITLE:=Jupyter protocol implementation and client libraries
   URL:=https://jupyter-client.readthedocs.io/
-  DEPENDS:=+python3 +python3-importlib-metadata +python3-jupyter-core +python3-dateutil +python3-pyzmq +python3-tornado +python3-traitlets
+  DEPENDS:=+python3 +python3-jupyter-core +python3-dateutil +python3-pyzmq +python3-tornado +python3-traitlets
 endef
 
 define Package/python3-jupyter-client/description
