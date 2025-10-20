@@ -26,7 +26,7 @@ define Package/python3-jupyterlab-server
   CATEGORY:=Languages
   TITLE:=A set of server components for JupyterLab and JupyterLab like applications.
   URL:=http://jupyterlab-server.readthedocs.io
-  DEPENDS:=+python3 +python3-babel +python3-importlib-metadata +python3-jinja2 +python3-json5 +python3-jsonschema +python3-jupyter-server +python3-packaging +python3-requests
+  DEPENDS:=+python3 +python3-babel +python3-jinja2 +python3-json5 +python3-jsonschema +python3-jupyter-server +python3-packaging +python3-requests
 endef
 
 define Package/python3-jupyterlab-server/description
