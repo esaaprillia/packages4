@@ -41,6 +41,7 @@ define Package/python3-jsonschema/description
   jsonschema is an implementation of JSON Schema validation for Python.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-jsonschema))
 $(eval $(call BuildPackage,python3-jsonschema))
 $(eval $(call BuildPackage,python3-jsonschema-src))
