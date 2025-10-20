@@ -12,12 +12,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
 PKG_HOST_ONLY:=1
-HOST_BUILD_DEPENDS:= \
-	python3/host \
-	python-build/host \
-	python-installer/host \
-	python-hatchling/host \
-	python-hatch-vcs/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-hatchling/host python-hatch-vcs/host python-zstandard/host python-httpx/host python-click/host python-userpath/host python-shellingham/host python-uv/host python-rich/host python-tomlkit/host python-virtualenv/host python-tomli-w/host python-jupyter-packaging/host python-platformdirs/host python-keyring/host python-hyperlink/host python-pexpect/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
