@@ -34,6 +34,8 @@ endef
 
 PYTHON3_PKG_WHEEL_NAME:=send2trash
 PYTHON3_PKG_WHEEL_VERSION:=1.8.3
+PYTHON3_HOST_WHEEL_NAME:=send2trash
+PYTHON3_HOST_WHEEL_VERSION:=1.8.3
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-send2trash))
