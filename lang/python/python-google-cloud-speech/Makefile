@@ -21,7 +21,7 @@ define Package/python3-google-cloud-speech
   SUBMENU:=Python
   TITLE:=Google Cloud Speech API client library
   URL:=https://github.com/googleapis/google-cloud-python
-  DEPENDS:=+python3 +python3-google-api-core +python3-google-auth +python3-proto-plus +python3-protobuf
+  DEPENDS:=+python3 +python3-google-api-core +python3-google-auth +python3-grpcio +python3-proto-plus +python3-protobuf
 endef
 
 define Package/python3-google-cloud-speech/description
