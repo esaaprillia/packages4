@@ -26,7 +26,7 @@ define Package/python3-keyring
   CATEGORY:=Languages
   TITLE:=Store and access your passwords safely.
   URL:=https://github.com/jaraco/keyring
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-secretstorage +python3-jeepney +python3-jaraco-classes +python3-jaraco-functools +python3-jaraco-context
 endef
 
 define Package/python3-keyring/description
