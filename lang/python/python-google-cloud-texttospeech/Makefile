@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-cloud-texttospeech
-PKG_VERSION:=2.24.0
+PKG_VERSION:=2.32.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_cloud_texttospeech
-PKG_HASH:=c9f5f3bcbe4d345e267015531890f4f991d76c19cb9b6bfadc0e63c600b1034e
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache 2.0
