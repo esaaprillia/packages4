@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-calver
-PKG_VERSION:=2025.4.17
+PKG_VERSION:=2025.10.20
 PKG_RELEASE:=1
 
 PYPI_NAME:=calver
