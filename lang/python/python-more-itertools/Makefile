@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-more-itertools
-PKG_VERSION:=10.5.0
+PKG_VERSION:=10.8.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=more-itertools
-PKG_HASH:=5482bfef7849c25dc3c6dd53a6173ae4795da2a41a80faea6700d9f5846c5da6
+PYPI_NAME:=more_itertools
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
