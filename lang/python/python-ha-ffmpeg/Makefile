@@ -21,7 +21,7 @@ define Package/python3-ha-ffmpeg
   SUBMENU:=Python
   TITLE:=A library that handling with ffmpeg for home-assistant
   URL:=https://github.com/home-assistant-libs/ha-ffmpeg
-  DEPENDS:=+python3-light +python3-async-timeout +ffmpeg +libffmpeg-full
+  DEPENDS:=+python3-light +python3-async-timeout +ffmpeg
 endef
 
 define Package/python3-ha-ffmpeg/description
@@ -35,3 +35,4 @@ endef
 $(eval $(call Py3Package,python3-ha-ffmpeg))
 $(eval $(call BuildPackage,python3-ha-ffmpeg))
 $(eval $(call BuildPackage,python3-ha-ffmpeg-src))
+
