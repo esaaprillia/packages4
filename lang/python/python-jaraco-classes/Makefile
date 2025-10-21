@@ -26,7 +26,7 @@ define Package/python3-jaraco-classes
   CATEGORY:=Languages
   TITLE:=Utility functions for Python class constructs
   URL:=https://github.com/jaraco/jaraco.classes
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-more-itertools
 endef
 
 define Package/python3-jaraco-classes/description
