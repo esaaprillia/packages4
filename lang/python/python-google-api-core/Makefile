@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-api-core
-PKG_VERSION:=2.24.0
+PKG_VERSION:=2.26.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_api_core
-PKG_HASH:=e255640547a597a4da010876d333208ddac417d60add22b6851a0c66a831fcaf
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
