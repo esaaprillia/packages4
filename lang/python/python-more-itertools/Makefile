@@ -38,6 +38,7 @@ define Package/python3-more-itertools/description
   recipes, and routines for working with Python iterables.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-more-itertools))
 $(eval $(call BuildPackage,python3-more-itertools))
 $(eval $(call BuildPackage,python3-more-itertools-src))
