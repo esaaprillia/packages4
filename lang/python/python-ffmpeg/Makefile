@@ -24,7 +24,7 @@ define Package/python3-ffmpeg
   CATEGORY:=Languages
   TITLE:=Python bindings for FFmpeg - with complex filtering support
   URL:=https://github.com/kkroening/ffmpeg-python
-  DEPENDS:=+python3 +python3-future +libffmpeg-full
+  DEPENDS:=+python3 +python3-future +ffmpeg
 endef
 
 define Package/python3-ffmpeg/description
