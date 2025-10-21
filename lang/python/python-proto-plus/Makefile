@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-proto-plus
-PKG_VERSION:=1.25.0
+PKG_VERSION:=1.26.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=proto_plus
-PKG_HASH:=fbb17f57f7bd05a68b7707e745e26528b0b3c34e378db91eef93912c54982d91
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache 2.0
