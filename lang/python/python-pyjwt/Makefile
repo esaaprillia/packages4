@@ -28,9 +28,6 @@ define Package/python3-pyjwt/description
 A Python implementation of RFC 7519. Original implementation was written by @progrium.
 endef
 
-PYTHON3_PKG_WHEEL_NAME:=PyJWT
-PYTHON3_PKG_WHEEL_VERSION:=2.10.1
-
 $(eval $(call Py3Package,python3-pyjwt))
 $(eval $(call BuildPackage,python3-pyjwt))
 $(eval $(call BuildPackage,python3-pyjwt-src))
