@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-coverage
-PKG_VERSION:=7.10.6
+PKG_VERSION:=7.11.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=coverage
@@ -36,3 +36,4 @@ $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-coverage))
 $(eval $(call BuildPackage,python3-coverage))
 $(eval $(call BuildPackage,python3-coverage-src))
+
