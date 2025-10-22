@@ -23,7 +23,7 @@ define Package/python3-cchardet
   SUBMENU:=Python
   TITLE:=cChardet is high speed universal character encoding detector.
   URL:=https://github.com/PyYoshi/cChardet
-  DEPENDS:=+python3 +uchardet
+  DEPENDS:=+python3
 endef
 
 define Package/python3-cchardet/description
