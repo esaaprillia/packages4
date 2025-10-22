@@ -23,7 +23,8 @@ HOST_BUILD_DEPENDS:= \
   python-chardet/host \
   python-idna/host \
   python-urllib3/host \
-  python-certifi/host
+  python-certifi/host \
+  python-charset-normalizer/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -42,7 +43,8 @@ define Package/python3-requests
 	  +python3-chardet  \
 	  +python3-idna  \
 	  +python3-urllib3  \
-	  +python3-certifi
+	  +python3-certifi  \
+	  +python3-charset-normalizer
 endef
 
 define Package/python3-requests/description
