@@ -23,7 +23,7 @@ define Package/python3-snitun
   CATEGORY:=Languages
   TITLE:=SNI proxy with TCP multiplexer
   URL:=https://github.com/NabuCasa/snitun
-  DEPENDS:=+python3 +python3-aiohttp +python3-async-timeout +python3-attrs +python3-cryptography
+  DEPENDS:=+python3 +python3-aiohttp +python3-cryptography
 endef
 
 define Package/python3-snitun/description
