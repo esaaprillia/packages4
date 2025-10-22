@@ -23,7 +23,7 @@ define Package/python3-acme
   CATEGORY:=Languages
   TITLE:=ACME protocol implementation in Python
   URL:=https://github.com/certbot/certbot
-  DEPENDS:=+python3 +python3-cryptography +python3-josepy +python3-pyopenssl +python3-pyrfc3339 +python3-pytz +python3-requests
+  DEPENDS:=+python3 +python3-cryptography +python3-josepy +python3-pyopenssl +python3-pyrfc3339 +python3-requests
 endef
 
 define Package/python3-acme/description
