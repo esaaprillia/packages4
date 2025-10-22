@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-av
-PKG_VERSION:=15.1.0
+PKG_VERSION:=16.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=av
@@ -23,7 +23,7 @@ define Package/python3-av
   CATEGORY:=Languages
   TITLE:=Pythonic bindings for FFmpeg's libraries.
   URL:=https://github.com/home-assistant-libs/ha-ffmpeg
-  DEPENDS:=+python3-light +ffmpeg +libffmpeg-full
+  DEPENDS:=+python3-light +ffmpeg
 endef
 
 define Package/python3-av/description
