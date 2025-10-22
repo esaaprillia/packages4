@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiohttp
-PKG_VERSION:=3.12.15
+PKG_VERSION:=3.13.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiohttp
@@ -38,9 +38,7 @@ define Package/python3-aiohttp
 	+python3 \
 	+python3-aiohappyeyeballs \
 	+python3-aiosignal \
-	+python3-async-timeout \
 	+python3-attrs \
-	+python3-charset-normalizer \
 	+python3-frozenlist \
 	+python3-multidict \
 	+python3-propcache \
