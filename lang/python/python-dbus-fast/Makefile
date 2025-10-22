@@ -30,7 +30,7 @@ define Package/python3-dbus-fast
   SUBMENU:=Python
   TITLE:=A faster version of dbus-next
   URL:=https://github.com/Bluetooth-Devices/dbus-fast
-  DEPENDS:=+python3-light +python3-async-timeout +python3-asyncio \
+  DEPENDS:=+python3-light +python3-asyncio \
 	+python3-logging +python3-urllib +python3-xml
 endef
 
