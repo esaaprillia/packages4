@@ -1,9 +1,9 @@
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -1,7 +1,7 @@
- [build-system]
+@@ -2,7 +2,7 @@
  build-backend = "backend"
  requires = [
+   "pybind11",
 -  "setuptools>=77",
 +  "setuptools",
  ]
