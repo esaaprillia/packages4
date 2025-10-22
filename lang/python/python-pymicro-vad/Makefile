@@ -11,8 +11,6 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=pymicro_vad
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python-pybind11/host
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
