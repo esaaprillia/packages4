@@ -7,6 +7,7 @@ PKG_RELEASE:=1
 PYPI_NAME:=aiofiles
 PKG_HASH:=skip
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
@@ -33,4 +34,5 @@ endef
 $(eval $(call Py3Package,python3-aiofiles))
 $(eval $(call BuildPackage,python3-aiofiles))
 $(eval $(call BuildPackage,python3-aiofiles-src))
+
 
