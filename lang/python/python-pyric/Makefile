@@ -38,9 +38,6 @@ PyRIC (is a Linux only) library providing wireless developers and pentesters the
 At it's heart, PyRIC is a Python port of (a subset of) iw and by extension, a Python port of Netlink w.r.t nl80211 functionality. The original goal of PyRIC was to provide a simple interface to the underlying nl80211 kernel support, handling the complex operations of Netlink seamlessy while maintaining a minimum of "code walking" to understand, modify and extend. But, why stop there? Since it's initial inception, PyRIC has grown. PyRIC puts iw, ifconfig, rfkill, udevadm, airmon-ng and macchanger in your hands (or your program).
 endef
 
-PYTHON3_PKG_WHEEL_NAME:=PyRIC
-PYTHON3_PKG_WHEEL_VERSION:=0.1.6.3
-
 $(eval $(call Py3Package,python3-pyric))
 $(eval $(call BuildPackage,python3-pyric))
 $(eval $(call BuildPackage,python3-pyric-src))
