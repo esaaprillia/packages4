@@ -29,7 +29,8 @@ define Package/python3-pubnub
 	+python3-logging \
 	+python3-requests \
 	+python3-urllib \
-	+python3-yarl +python3-httpx +python3-h2
+	+python3-httpx \
+	+python3-h2
 endef
 
 define Package/python3-pubnub/description
