@@ -34,4 +34,3 @@ endef
 $(eval $(call Py3Package,python3-securesystemslib))
 $(eval $(call BuildPackage,python3-securesystemslib))
 $(eval $(call BuildPackage,python3-securesystemslib-src))
-
