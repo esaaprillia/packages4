@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cronsim
-PKG_VERSION:=2.6
+PKG_VERSION:=2.7
 PKG_RELEASE:=1
 
 PYPI_NAME:=cronsim
-PKG_HASH:=5aab98716ef90ab5ac6be294b2c3965dbf76dc869f048846a0af74ebb506c10d
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
