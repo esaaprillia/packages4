@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyspeex-noise
-PKG_VERSION:=1.0.2
+PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyspeex_noise
-PKG_HASH:=56a888ca2ef7fdea2316aa7fad3636d2fcf5f4450f3a0db58caa7c10a614b254
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
