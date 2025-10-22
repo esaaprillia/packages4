@@ -34,5 +34,3 @@ endef
 $(eval $(call Py3Package,python3-aiofiles))
 $(eval $(call BuildPackage,python3-aiofiles))
 $(eval $(call BuildPackage,python3-aiofiles-src))
-
-
