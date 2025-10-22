@@ -24,7 +24,6 @@ define Package/python3-pysnmp-pyasn1
   TITLE:=ASN.1 types and codecs
   URL:=https://github.com/pysnmp/pyasn1
   DEPENDS:=+python3-logging
-  PROVIDES:=python3-pyasn1
 endef
 
 define Package/python3-pysnmp-pyasn1/description
