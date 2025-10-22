@@ -12,7 +12,7 @@ PYPI_NAME:=mypy_extensions
 PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-flit-core/host
-HOST_BUILD_DEPENDS:=python-flit-core/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-flit-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
