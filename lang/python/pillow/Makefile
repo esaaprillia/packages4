@@ -13,7 +13,7 @@ PKG_RELEASE:=1
 PYPI_NAME:=pillow
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-pybind11/host
 
 PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 PKG_LICENSE:=HPND
