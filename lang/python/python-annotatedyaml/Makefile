@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-annotatedyaml
-PKG_VERSION:=1.0.0
+PKG_VERSION:=1.0.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=annotatedyaml
@@ -36,3 +36,4 @@ $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-annotatedyaml))
 $(eval $(call BuildPackage,python3-annotatedyaml))
 $(eval $(call BuildPackage,python3-annotatedyaml-src))
+
