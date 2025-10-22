@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cached-ipaddress
-PKG_VERSION:=0.10.0
+PKG_VERSION:=1.0.1
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -34,4 +34,3 @@ endef
 $(eval $(call Py3Package,python3-cached-ipaddress))
 $(eval $(call BuildPackage,python3-cached-ipaddress))
 $(eval $(call BuildPackage,python3-cached-ipaddress-src))
-
