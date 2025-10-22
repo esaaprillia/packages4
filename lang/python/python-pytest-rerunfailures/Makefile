@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pytest-rerunfailures
-PKG_VERSION:=16.0.1
+PKG_VERSION:=16.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=pytest_rerunfailures
@@ -31,3 +31,4 @@ endef
 $(eval $(call Py3Package,python3-pytest-rerunfailures))
 $(eval $(call BuildPackage,python3-pytest-rerunfailures))
 $(eval $(call BuildPackage,python3-pytest-rerunfailures-src))
+
