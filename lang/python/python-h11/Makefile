@@ -25,7 +25,7 @@ define Package/python3-h11
   CATEGORY:=Languages
   TITLE:=A pure-Python, bring-your-own-I/O implementation of HTTP/1.1
   URL:=https://github.com/python-hyper/h11
-  DEPENDS:=+python3-light +python3-typing-extensions
+  DEPENDS:=+python3-light
 endef
 
 define Package/python3-h11/description
