@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pymicro-vad
-PKG_VERSION:=1.0.2
+PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=pymicro_vad
-PKG_HASH:=b386ff00fad76e29fa145a8af472cde9e1275c2716ef5c350e7a143b8d97f507
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-pybind11/host
 
