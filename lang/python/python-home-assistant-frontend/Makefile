@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-home-assistant-frontend
-PKG_VERSION:=20250903.3
+PKG_VERSION:=20251001.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=home_assistant_frontend
@@ -22,7 +22,7 @@ define Package/python3-home-assistant-frontend
   CATEGORY:=Languages
   TITLE:=Frontend for Home Assistant
   URL:=https://github.com/home-assistant/frontend
-  DEPENDS:=+python3-light
+  DEPENDS:=+python3
 endef
 
 define Package/python3-home-assistant-frontend/description
@@ -32,4 +32,3 @@ endef
 $(eval $(call Py3Package,python3-home-assistant-frontend))
 $(eval $(call BuildPackage,python3-home-assistant-frontend))
 $(eval $(call BuildPackage,python3-home-assistant-frontend-src))
-
