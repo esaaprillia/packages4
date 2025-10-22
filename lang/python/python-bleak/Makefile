@@ -29,7 +29,7 @@ define Package/python3-bleak
   SUBMENU:=Python
   TITLE:=Bluetooth Low Energy platform Agnostic Klient
   URL:=https://github.com/hbldh/bleak
-  DEPENDS:=+python3-light +python3-async-timeout +python3-asyncio \
+  DEPENDS:=+python3-light +python3-asyncio \
 	+python3-dbus-fast +python3-ctypes +python3-typing-extensions +python3-logging
 endef
 
