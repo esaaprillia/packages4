@@ -23,7 +23,7 @@ define Package/python3-josepy
   CATEGORY:=Languages
   TITLE:=JOSE protocol implementation in Python
   URL:=https://josepy.readthedocs.io/en/latest/
-  DEPENDS:=+python3 +python3-cryptography +python3-pyopenssl
+  DEPENDS:=+python3 +python3-cryptography
 endef
 
 define Package/python3-josepy/description
