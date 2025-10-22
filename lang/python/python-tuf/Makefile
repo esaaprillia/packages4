@@ -23,7 +23,7 @@ define Package/python3-tuf
   SUBMENU:=Python
   TITLE:=A secure updater framework for Python
   URL:=https://theupdateframework.com/
-  DEPENDS:=+python3 +python3-requests +python3-securesystemslib +python3-urllib3
+  DEPENDS:=+python3 +python3-securesystemslib +python3-urllib3
 endef
 
 define Package/python3-tuf/description
