@@ -30,7 +30,7 @@ define Package/python3-frozenlist
   SUBMENU:=Python
   TITLE:=List-like structure
   URL:=https://github.com/aio-libs/frozenlist
-  DEPENDS:=+python3-light
+  DEPENDS:=+python3-light +libstdcpp
 endef
 
 define Package/python3-frozenlist/description
