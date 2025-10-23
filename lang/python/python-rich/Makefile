@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-poetry-core/host
-HOST_BUILD_DEPENDS:=python-poetry-core/host
+PKG_BUILD_DEPENDS:=python-poetry-core/host python-pygments/host python-markdown-it-py/host
+HOST_BUILD_DEPENDS:=python-poetry-core/host python-pygments/host python-markdown-it-py/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
