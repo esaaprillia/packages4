@@ -25,7 +25,7 @@ define Package/python3-plotly
   CATEGORY:=Languages
   TITLE:=An open-source interactive data visualization library for Python
   URL:=https://plotly.com/python/
-  DEPENDS:=+python3 +python3-narwhals +python3-packaging
+  DEPENDS:=+python3 +python3-narwhals +python3-packaging +python3-numpy +python3-kaleido
 endef
 
 define Package/python3-plotly/description
