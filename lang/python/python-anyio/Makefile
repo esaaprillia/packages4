@@ -11,8 +11,8 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=anyio
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-idna/host python-sniffio/host +python-typing-extensions/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-idna/host python-sniffio/host +python-typing-extensions/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -35,7 +35,7 @@ AnyIO is an asynchronous networking and concurrency library that works on top of
 Applications and libraries written against AnyIO’s API will run unmodified on either asyncio or trio. AnyIO can also be adopted into a library or application incrementally – bit by bit, no full refactoring necessary. It will blend in with the native libraries of your chosen backend.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-anyio))
 $(eval $(call BuildPackage,python3-anyio))
 $(eval $(call BuildPackage,python3-anyio-src))
-$(eval $(call HostBuild))
