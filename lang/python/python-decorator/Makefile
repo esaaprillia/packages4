@@ -13,9 +13,13 @@ PKG_CPE_ID:=cpe:/a:python:decorator
 PYPI_NAME:=decorator
 PKG_HASH:=skip
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-decorator
   SECTION:=lang
@@ -26,6 +30,7 @@ define Package/python3-decorator
   DEPENDS:=+python3-light
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-decorator))
 $(eval $(call BuildPackage,python3-decorator))
 $(eval $(call BuildPackage,python3-decorator-src))
