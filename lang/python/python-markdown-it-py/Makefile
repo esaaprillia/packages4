@@ -16,7 +16,9 @@ HOST_BUILD_DEPENDS:=python-flit-core/host python-mdurl/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-markdown-it-py
   SECTION:=lang
@@ -37,6 +39,7 @@ define Package/python3-markdown-it-py/description
 This is a Python port of markdown-it, and some of its associated plugins. For more details see: https://markdown-it-py.readthedocs.io.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-markdown-it-py))
 $(eval $(call BuildPackage,python3-markdown-it-py))
 $(eval $(call BuildPackage,python3-markdown-it-py-src))
