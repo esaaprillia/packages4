@@ -36,6 +36,9 @@ endef
 PYTHON3_PKG_WHEEL_NAME:=jaraco_classes
 PYTHON3_PKG_WHEEL_VERSION:=3.4.0
 
+PYTHON3_HOST_WHEEL_NAME:=jaraco_classes
+PYTHON3_HOST_WHEEL_VERSION:=3.4.0
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-jaraco-classes))
 $(eval $(call BuildPackage,python3-jaraco-classes))
