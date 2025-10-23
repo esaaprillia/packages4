@@ -12,10 +12,13 @@ PYPI_NAME:=propcache
 PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-expandvars/host python-cython/host
+HOST_BUILD_DEPENDS:=python-expandvars/host python-cython/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-propcache
   SUBMENU:=Python
@@ -30,6 +33,7 @@ define Package/python3-propcache/description
 The module provides a fast implementation of cached properties for Python 3.9+.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-propcache))
 $(eval $(call BuildPackage,python3-propcache))
 $(eval $(call BuildPackage,python3-propcache-src))
