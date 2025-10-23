@@ -14,6 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DEPENDS:=python-hatchling/host
 HOST_BUILD_DEPENDS:= \
 	python3/host \
+	python-hatchling/host \
 	python-jupyter-core/host \
 	python-dateutil/host \
 	python-pyzmq/host \
