@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python-hatch/host python-jupyter-packaging/host
+PKG_BUILD_DEPENDS:=python-hatch/host python-jupyter-packaging/host python-jupyterlab/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -25,7 +25,7 @@ define Package/python3-plotly
   CATEGORY:=Languages
   TITLE:=An open-source interactive data visualization library for Python
   URL:=https://plotly.com/python/
-  DEPENDS:=+python3 +python3-narwhals +python3-packaging +python3-numpy +python3-kaleido
+  DEPENDS:=+python3 +python3-narwhals +python3-packaging
 endef
 
 define Package/python3-plotly/description
