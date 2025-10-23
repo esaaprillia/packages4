@@ -20,7 +20,16 @@ PKG_LICENSE_FILES:=LICENSE.txt
 PKG_CPE_ID:=cpe:/a:aiohttp:aiohttp
 
 PKG_BUILD_DEPENDS:=python-pkgconfig/host
-HOST_BUILD_DEPENDS:=python-pkgconfig/host
+HOST_BUILD_DEPENDS:= \
+	python3/host \
+	python-pkgconfig/host \
+	python-aiohappyeyeballs/host \
+	python-aiosignal/host \
+	python-attrs/host \
+	python-frozenlist/host \
+	python-multidict/host \
+	python-propcache/host \
+	python-yarl/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
