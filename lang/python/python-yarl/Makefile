@@ -19,10 +19,13 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-expandvars/host python-cython/host
+HOST_BUILD_DEPENDS:=python-expandvars/host python-cython/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-yarl
   SECTION:=lang
@@ -42,6 +45,7 @@ define Package/python3-yarl/description
 Yet another URL library
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-yarl))
 $(eval $(call BuildPackage,python3-yarl))
 $(eval $(call BuildPackage,python3-yarl-src))
