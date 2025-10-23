@@ -12,10 +12,13 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
+HOST_BUILD_DEPENDS:=python-poetry-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-aiohappyeyeballs
   SUBMENU:=Python
@@ -31,6 +34,7 @@ This library exists to allow connecting with Happy Eyeballs (RFC 8305) when you 
 The stdlib version of loop.create_connection() will only work when you pass in an unresolved name which is not a good fit when using DNS caching or resolving names via another method such as zeroconf.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-aiohappyeyeballs))
 $(eval $(call BuildPackage,python3-aiohappyeyeballs))
 $(eval $(call BuildPackage,python3-aiohappyeyeballs-src))
