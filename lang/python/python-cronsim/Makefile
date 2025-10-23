@@ -5,6 +5,7 @@ PKG_VERSION:=2.7
 PKG_RELEASE:=1
 
 PYPI_NAME:=cronsim
+PKG_SOURCE_URL:=https://github.com/cuu508/cronsim/archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
