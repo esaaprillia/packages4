@@ -12,10 +12,13 @@ PKG_LICENSE:=Unlicense
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-filelock
   SECTION:=lang
@@ -30,6 +33,7 @@ define Package/python3-filelock/description
 This package contains a single module, which implements a platform independent file lock in Python, which provides a simple way of inter-process communication
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-filelock))
 $(eval $(call BuildPackage,python3-filelock))
 $(eval $(call BuildPackage,python3-filelock-src))
