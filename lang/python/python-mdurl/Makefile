@@ -12,10 +12,13 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-flit-core/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-flit-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-mdurl
   SECTION:=lang
@@ -30,6 +33,7 @@ define Package/python3-mdurl/description
 This is a Python port of the JavaScript mdurl package. See the upstream README.md file for API documentation.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-mdurl))
 $(eval $(call BuildPackage,python3-mdurl))
 $(eval $(call BuildPackage,python3-mdurl-src))
