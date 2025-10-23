@@ -18,9 +18,13 @@ PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-multidict
   SECTION:=lang
@@ -36,6 +40,7 @@ Multidict is dict-like collection of key-value pairs where key might be
 occurred more than once in the container.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-multidict))
 $(eval $(call BuildPackage,python3-multidict))
 $(eval $(call BuildPackage,python3-multidict-src))
