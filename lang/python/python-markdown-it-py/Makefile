@@ -11,7 +11,8 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-flit-core/host
+PKG_BUILD_DEPENDS:=python-flit-core/host python-mdurl/host
+HOST_BUILD_DEPENDS:=python-flit-core/host python-mdurl/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
