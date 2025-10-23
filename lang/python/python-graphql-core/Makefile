@@ -23,7 +23,7 @@ define Package/python3-graphql-core
   SUBMENU:=Python
   TITLE:=A Python 3.6+ port of the GraphQL.js reference implementation of GraphQL.
   URL:=https://github.com/graphql-python/graphql-core
-  DEPENDS:=+python3 +python3-typing-extensions
+  DEPENDS:=+python3
 endef
 
 define Package/python3-graphql-core/description
