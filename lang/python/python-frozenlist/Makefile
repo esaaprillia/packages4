@@ -18,11 +18,14 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-expandvars/host python-cython/host
+PKG_BUILD_DEPENDS:=python-expandvars/host python-cython/host
+HOST_BUILD_DEPENDS:=python-expandvars/host python-cython/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-frozenlist
   SECTION:=lang
@@ -40,6 +43,7 @@ FrozenList.freeze is called, after which list modifications raise
 RuntimeError.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-frozenlist))
 $(eval $(call BuildPackage,python3-frozenlist))
 $(eval $(call BuildPackage,python3-frozenlist-src))
