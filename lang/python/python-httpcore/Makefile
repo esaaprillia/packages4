@@ -11,8 +11,8 @@ PKG_LICENSE_FILES:=LICENSE.md
 PYPI_NAME:=httpcore
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
-PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host python-certifi/host python-h11/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host python-certifi/host python-h11/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -44,7 +44,7 @@ Some things HTTP Core does do:
 • Async backend support for asyncio and trio.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-httpcore))
 $(eval $(call BuildPackage,python3-httpcore))
 $(eval $(call BuildPackage,python3-httpcore-src))
-$(eval $(call HostBuild))
