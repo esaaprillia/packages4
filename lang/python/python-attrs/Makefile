@@ -19,10 +19,13 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-attrs
   SECTION:=lang
@@ -39,6 +42,7 @@ the chores of implementing the most common attribute-related object
 protocols.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-attrs))
 $(eval $(call BuildPackage,python3-attrs))
 $(eval $(call BuildPackage,python3-attrs-src))
