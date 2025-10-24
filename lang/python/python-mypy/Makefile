@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-mypy
-PKG_VERSION:=1.18.1
+PKG_VERSION:=1.18.2
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -11,8 +11,8 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=mypy
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python-types-psutil/host python-mypy-extensions/host python-types-setuptools/host python-typing-extensions/host python-pathspec/host
 PKG_BUILD_DEPENDS:=python-types-psutil/host python-mypy-extensions/host python-types-setuptools/host python-typing-extensions/host python-pathspec/host
+HOST_BUILD_DEPENDS:=python-types-psutil/host python-mypy-extensions/host python-types-setuptools/host python-typing-extensions/host python-pathspec/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -33,7 +33,7 @@ define Package/python3-mypy/description
 Add type annotations to your Python programs, and use mypy to type check them. Mypy is essentially a Python linter on steroids, and it can catch many programming errors by analyzing your program, without actually having to run it. Mypy has a powerful type system with features such as type inference, gradual typing, generics and union types.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-mypy))
 $(eval $(call BuildPackage,python3-mypy))
 $(eval $(call BuildPackage,python3-mypy-src))
-$(eval $(call HostBuild))
