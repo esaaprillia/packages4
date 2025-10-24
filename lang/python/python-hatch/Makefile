@@ -30,8 +30,7 @@ HOST_BUILD_DEPENDS:= \
 	python-userpath/host \
 	python-uv/host \
 	python-virtualenv/host \
-	python-zstandard/host \
-	python-jupyter-packaging/host
+	python-zstandard/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
