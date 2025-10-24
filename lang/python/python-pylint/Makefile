@@ -21,7 +21,7 @@ define Package/python3-pylint
   CATEGORY:=Languages
   TITLE:=python code static checker
   URL:=https://pylint.readthedocs.io/en/latest/
-  DEPENDS:=+python3 +python3-astroid +python3-colorama +python3-dill +python3-isort +python3-mccabe +python3-platformdirs +python3-tomlkit
+  DEPENDS:=+python3 +python3-astroid +python3-dill +python3-isort +python3-mccabe +python3-platformdirs +python3-tomlkit
 endef
 
 define Package/python3-pylint/description
