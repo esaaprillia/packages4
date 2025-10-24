@@ -20,8 +20,8 @@ define Package/python3-astroid
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=An abstract syntax tree for Python with inference support.
-  URL:=https://pylint.readthedocs.io/projects/astroid/en/latest/
-  DEPENDS:=+python3 +python3-typing-extensions
+  URL:=https://pylint.readthedocs.io
+  DEPENDS:=+python3
 endef
 
 define Package/python3-astroid/description
