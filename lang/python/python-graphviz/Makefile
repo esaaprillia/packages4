@@ -21,7 +21,7 @@ define Package/python3-graphviz
   SUBMENU:=Python
   TITLE:=Simple Python interface for Graphviz
   URL:=https://github.com/xflr6/graphviz
-  DEPENDS:=+python3-logging +python3-pydoc +python3-unittest
+  DEPENDS:=+python3
 endef
 
 define Package/python3-graphviz/description
