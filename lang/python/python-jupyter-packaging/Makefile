@@ -14,10 +14,11 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_HOST_ONLY:=1
 HOST_BUILD_DEPENDS:= \
 	python3/host \
-	python-build/host \
-	python-installer/host \
 	python-hatchling/host \
+	python-packaging/host \
 	python-tomlkit/host \
+	python-setuptools/host \
+	python-wheel/host \
 	python-deprecation/host
 
 include ../pypi.mk
