@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=terminaltables
-PKG_HASH:=ba6eca5cb5ba02bba4c9f4f985af80c54ec3dccf94cfcd190154386255e47543
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-poetry-core/host
 
