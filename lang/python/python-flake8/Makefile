@@ -23,7 +23,7 @@ define Package/python3-flake8
   CATEGORY:=Languages
   TITLE:=the modular source code checker: pep8 pyflakes and co
   URL:=https://flake8.pycqa.org/
-  DEPENDS:=+python3 +python3-entrypoints +python3-pyflakes +python3-pycodestyle +python3-mccabe
+  DEPENDS:=+python3 +python3-pyflakes +python3-pycodestyle +python3-mccabe
 endef
 
 define Package/python3-flake8/description
