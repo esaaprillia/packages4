@@ -22,7 +22,7 @@ define Package/python3-av
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Pythonic bindings for FFmpeg's libraries.
-  URL:=https://github.com/home-assistant-libs/ha-ffmpeg
+  URL:=https://pyav.basswood-io.com/
   DEPENDS:=+python3-light +ffmpeg
 endef
 
