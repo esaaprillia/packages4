@@ -4,7 +4,8 @@ PKG_NAME:=python-av
 PKG_VERSION:=16.0.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=av
+PYPI_NAME:=PyAV
+PKG_SOURCE_URL:=https://github.com/PyAV-Org/PyAV/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
