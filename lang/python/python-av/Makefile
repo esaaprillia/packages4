@@ -1,11 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-av
-PKG_VERSION:=16.0.1
+PKG_VERSION:=15.0.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=PyAV
-PKG_SOURCE_URL:=https://github.com/PyAV-Org/PyAV/archive/v$(PKG_VERSION)
+PYPI_NAME:=av
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -24,15 +23,12 @@ define Package/python3-av
   CATEGORY:=Languages
   TITLE:=Pythonic bindings for FFmpeg's libraries.
   URL:=https://pyav.basswood-io.com/
-  DEPENDS:=+python3-light +ffmpeg +libffmpeg-full
+  DEPENDS:=+python3-light +ffmpeg
 endef
 
 define Package/python3-av/description
 PyAV is a Pythonic binding for the FFmpeg libraries. We aim to provide all of the power and control of the underlying library, but manage the gritty details as much as possible.
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=av
-PYTHON3_PKG_WHEEL_VERSION:=16.0.1
 
 $(eval $(call Py3Package,python3-av))
 $(eval $(call BuildPackage,python3-av))
