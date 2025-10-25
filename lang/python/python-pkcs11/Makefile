@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pkcs11
-PKG_VERSION:=0.7.0
+PKG_VERSION:=0.9.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=python-pkcs11
-PKG_HASH:=9737e0c24cabb8bc9d48bf8c57c3df2a70f8cdd96b70c50290803286f9e46bf7
+PYPI_NAME:=python_pkcs11
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
