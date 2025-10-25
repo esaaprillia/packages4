@@ -19,9 +19,13 @@ PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-wcwidth
   SECTION:=lang
@@ -37,6 +41,7 @@ Python library that measures the width of unicode strings rendered to a
 terminal
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-wcwidth))
 $(eval $(call BuildPackage,python3-wcwidth))
 $(eval $(call BuildPackage,python3-wcwidth-src))
