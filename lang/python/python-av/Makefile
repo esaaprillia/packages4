@@ -31,6 +31,9 @@ define Package/python3-av/description
 PyAV is a Pythonic binding for the FFmpeg libraries. We aim to provide all of the power and control of the underlying library, but manage the gritty details as much as possible.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=av
+PYTHON3_PKG_WHEEL_VERSION:=16.0.1
+
 $(eval $(call Py3Package,python3-av))
 $(eval $(call BuildPackage,python3-av))
 $(eval $(call BuildPackage,python3-av-src))
