@@ -8,15 +8,13 @@ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/lexus2k/ssd1306/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
+PKG_INSTALL:=1
+
 PKG_MAINTAINER:=
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-CMAKE_INSTALL:=1
-CMAKE_BINARY_SUBDIR := build
-
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
 
 define Package/ssd1306
 	SECTION:=libs
@@ -29,9 +27,6 @@ endef
 define Package/ssd1306/description
 	SSD1306 driver is Arduino style C/C++ library with unicode support. The library can be compiled for plain Linux (for example, raspberry spi), or you can use it with plain avr-gcc compiler without Arduino IDE. It supports monochrome and RGB oleds and has debug mode, allowing to execute code on PC, using SDL2.0. Initially the library is intended for very small microcontrollers (with a little of RAM). It was developed to use as few resources as possible, but still has powerful capabilities (NanoEngine), allowing to develop nice animation. It works on any powerful devices like raspberry pi, esp32; and can be easily ported to new platform.
 endef
-
-CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
 
 define Package/ssd1306/install
 	$(INSTALL_DIR) $(1)/usr/lib
