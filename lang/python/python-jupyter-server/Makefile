@@ -12,7 +12,28 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host
+HOST_BUILD_DEPENDS:= \
+	python3/host \
+	python-hatchling/host \
+	python-hatch-jupyter-builder/host \
+	python-anyio/host \
+	python-argon2-cffi/host \
+	python-jinja2/host \
+	python-jupyter-client/host \
+	python-jupyter-core/host \
+	python-jupyter-server-terminals/host \
+	python-nbconvert/host \
+	python-nbformat/host \
+	python-packaging/host \
+	python-prometheus-client/host \
+	python-pyzmq/host \
+	python-send2trash/host \
+	python-terminado/host \
+	python-tornado/host \
+	python-traitlets/host \
+	python-websocket-client/host \
+	python-jupyter-events/host \
+	python-overrides/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
