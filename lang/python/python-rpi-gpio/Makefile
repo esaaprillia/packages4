@@ -28,6 +28,9 @@ define Package/python3-rpi-gpio/description
 This package provides a Python module to control the GPIO on a Raspberry Pi.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=rpi_gpio
+PYTHON3_PKG_WHEEL_VERSION:=0.7.1
+
 $(eval $(call Py3Package,python3-rpi-gpio))
 $(eval $(call BuildPackage,python3-rpi-gpio))
 $(eval $(call BuildPackage,python3-rpi-gpio-src))
