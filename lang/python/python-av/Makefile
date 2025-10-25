@@ -23,7 +23,7 @@ define Package/python3-av
   CATEGORY:=Languages
   TITLE:=Pythonic bindings for FFmpeg's libraries.
   URL:=https://pyav.basswood-io.com/
-  DEPENDS:=+python3-light +ffmpeg
+  DEPENDS:=+python3-light +ffmpeg +libffmpeg-full
 endef
 
 define Package/python3-av/description
