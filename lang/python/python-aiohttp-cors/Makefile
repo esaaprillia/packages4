@@ -12,7 +12,6 @@ PKG_VERSION:=0.8.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiohttp_cors
-PYPI_SOURCE_NAME:=aiohttp-cors
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
