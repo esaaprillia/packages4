@@ -23,7 +23,7 @@ define Package/python3-rabbitmq-amqp-python-client
   CATEGORY:=Languages
   TITLE:=Python RabbitMQ client for AMQP 1.0 protocol
   URL:=https://github.com/rabbitmq/rabbitmq-amqp-python-client
-  DEPENDS:=+python3 +python3-python-qpid-proton +python3-typing-extensions +python3-packaging
+  DEPENDS:=+python3 +python3-qpid-proton +python3-typing-extensions +python3-packaging
 endef
 
 define Package/python3-rabbitmq-amqp-python-client/description
