@@ -21,7 +21,7 @@ define Package/python3-zope-event
   SUBMENU:=Python
   TITLE:=Very basic event publishing system
   URL:=https://github.com/zopefoundation/zope.event
-  DEPENDS:=+python3-light +python3-logging
+  DEPENDS:=+python3-light +python3-logging +python3-setuptools
 endef
 
 define Package/python3-zope-event/description
