@@ -1,0 +1,711 @@
+From 7abe2896813d79636218de5345eedaef74571686 Mon Sep 17 00:00:00 2001
+From: Marc Mueller <30130371+cdce8p@users.noreply.github.com>
+Date: Wed, 15 Oct 2025 20:50:16 +0200
+Subject: [PATCH] Add support for Python 3.14 (#153939)
+
+---
+ homeassistant/components/apple_tv/__init__.py | 73 ++++++++++++-------
+ .../components/apple_tv/manifest.json         |  2 +-
+ homeassistant/components/harmony/__init__.py  | 13 +++-
+ .../components/harmony/manifest.json          |  2 +-
+ homeassistant/components/profiler/__init__.py |  4 +
+ .../components/profiler/manifest.json         |  2 +-
+ .../components/python_script/manifest.json    |  5 +-
+ homeassistant/components/recorder/executor.py | 17 ++++-
+ homeassistant/components/xmpp/manifest.json   |  5 +-
+ homeassistant/components/xmpp/notify.py       | 24 ++++--
+ homeassistant/package_constraints.txt         |  4 +-
+ homeassistant/util/frozen_dataclass_compat.py | 19 ++++-
+ pyproject.toml                                | 28 +++++++
+ requirements_all.txt                          | 15 ++--
+ requirements_test_all.txt                     | 11 ++-
+ script/gen_requirements_all.py                |  4 +-
+ tests/components/apple_tv/__init__.py         |  7 +-
+ tests/components/apple_tv/conftest.py         | 14 +++-
+ tests/components/harmony/conftest.py          | 11 ++-
+ tests/components/profiler/test_init.py        | 22 ++++++
+ 21 files changed, 215 insertions(+), 69 deletions(-)
+
+diff --git a/homeassistant/components/apple_tv/__init__.py b/homeassistant/components/apple_tv/__init__.py
+index b911b3cec998f2..7c0004d44c52e9 100644
+--- a/homeassistant/components/apple_tv/__init__.py
++++ b/homeassistant/components/apple_tv/__init__.py
+@@ -5,14 +5,9 @@
+ import asyncio
+ import logging
+ from random import randrange
++import sys
+ from typing import Any, cast
+ 
+-from pyatv import connect, exceptions, scan
+-from pyatv.conf import AppleTV
+-from pyatv.const import DeviceModel, Protocol
+-from pyatv.convert import model_str
+-from pyatv.interface import AppleTV as AppleTVInterface, DeviceListener
+-
+ from homeassistant.components import zeroconf
+ from homeassistant.config_entries import ConfigEntry
+ from homeassistant.const import (
+@@ -29,7 +24,11 @@
+     Platform,
+ )
+ from homeassistant.core import Event, HomeAssistant, callback
+-from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
++from homeassistant.exceptions import (
++    ConfigEntryAuthFailed,
++    ConfigEntryNotReady,
++    HomeAssistantError,
++)
+ from homeassistant.helpers import device_registry as dr
+ from homeassistant.helpers.aiohttp_client import async_get_clientsession
+ from homeassistant.helpers.dispatcher import async_dispatcher_send
+@@ -43,6 +42,18 @@
+     SIGNAL_DISCONNECTED,
+ )
+ 
++if sys.version_info < (3, 14):
++    from pyatv import connect, exceptions, scan
++    from pyatv.conf import AppleTV
++    from pyatv.const import DeviceModel, Protocol
++    from pyatv.convert import model_str
++    from pyatv.interface import AppleTV as AppleTVInterface, DeviceListener
++else:
++
++    class DeviceListener:
++        """Dummy class."""
++
++
+ _LOGGER = logging.getLogger(__name__)
+ 
+ DEFAULT_NAME_TV = "Apple TV"
+@@ -53,31 +64,41 @@
+ 
+ PLATFORMS = [Platform.MEDIA_PLAYER, Platform.REMOTE]
+ 
+-AUTH_EXCEPTIONS = (
+-    exceptions.AuthenticationError,
+-    exceptions.InvalidCredentialsError,
+-    exceptions.NoCredentialsError,
+-)
+-CONNECTION_TIMEOUT_EXCEPTIONS = (
+-    OSError,
+-    asyncio.CancelledError,
+-    TimeoutError,
+-    exceptions.ConnectionLostError,
+-    exceptions.ConnectionFailedError,
+-)
+-DEVICE_EXCEPTIONS = (
+-    exceptions.ProtocolError,
+-    exceptions.NoServiceError,
+-    exceptions.PairingError,
+-    exceptions.BackOffError,
+-    exceptions.DeviceIdMissingError,
+-)
++if sys.version_info < (3, 14):
++    AUTH_EXCEPTIONS = (
++        exceptions.AuthenticationError,
++        exceptions.InvalidCredentialsError,
++        exceptions.NoCredentialsError,
++    )
++    CONNECTION_TIMEOUT_EXCEPTIONS = (
++        OSError,
++        asyncio.CancelledError,
++        TimeoutError,
++        exceptions.ConnectionLostError,
++        exceptions.ConnectionFailedError,
++    )
++    DEVICE_EXCEPTIONS = (
++        exceptions.ProtocolError,
++        exceptions.NoServiceError,
++        exceptions.PairingError,
++        exceptions.BackOffError,
++        exceptions.DeviceIdMissingError,
++    )
++else:
++    AUTH_EXCEPTIONS = ()
++    CONNECTION_TIMEOUT_EXCEPTIONS = ()
++    DEVICE_EXCEPTIONS = ()
++
+ 
+ type AppleTvConfigEntry = ConfigEntry[AppleTVManager]
+ 
+ 
+ async def async_setup_entry(hass: HomeAssistant, entry: AppleTvConfigEntry) -> bool:
+     """Set up a config entry for Apple TV."""
++    if sys.version_info >= (3, 14):
++        raise HomeAssistantError(
++            "Apple TV is not supported on Python 3.14. Please use Python 3.13."
++        )
+     manager = AppleTVManager(hass, entry)
+ 
+     if manager.is_on:
+diff --git a/homeassistant/components/apple_tv/manifest.json b/homeassistant/components/apple_tv/manifest.json
+index fe500d2bfb0813..ac618221526f8c 100644
+--- a/homeassistant/components/apple_tv/manifest.json
++++ b/homeassistant/components/apple_tv/manifest.json
+@@ -7,7 +7,7 @@
+   "documentation": "https://www.home-assistant.io/integrations/apple_tv",
+   "iot_class": "local_push",
+   "loggers": ["pyatv", "srptools"],
+-  "requirements": ["pyatv==0.16.1"],
++  "requirements": ["pyatv==0.16.1;python_version<'3.14'"],
+   "zeroconf": [
+     "_mediaremotetv._tcp.local.",
+     "_companion-link._tcp.local.",
+diff --git a/homeassistant/components/harmony/__init__.py b/homeassistant/components/harmony/__init__.py
+index e4b6f1c7c2ca19..17b6cf08910217 100644
+--- a/homeassistant/components/harmony/__init__.py
++++ b/homeassistant/components/harmony/__init__.py
+@@ -1,15 +1,20 @@
+ """The Logitech Harmony Hub integration."""
+ 
++from __future__ import annotations
++
+ import logging
++import sys
+ 
+ from homeassistant.components.remote import ATTR_ACTIVITY, ATTR_DELAY_SECS
+ from homeassistant.const import CONF_HOST, CONF_NAME, EVENT_HOMEASSISTANT_STOP
+ from homeassistant.core import Event, HomeAssistant, callback
++from homeassistant.exceptions import HomeAssistantError
+ from homeassistant.helpers import entity_registry as er
+ from homeassistant.helpers.dispatcher import async_dispatcher_send
+ 
+-from .const import HARMONY_OPTIONS_UPDATE, PLATFORMS
+-from .data import HarmonyConfigEntry, HarmonyData
++if sys.version_info < (3, 14):
++    from .const import HARMONY_OPTIONS_UPDATE, PLATFORMS
++    from .data import HarmonyConfigEntry, HarmonyData
+ 
+ _LOGGER = logging.getLogger(__name__)
+ 
+@@ -20,6 +25,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: HarmonyConfigEntry) -> b
+     # when setting up a config entry, we fallback to adding
+     # the options to the config entry and pull them out here if
+     # they are missing from the options
++    if sys.version_info >= (3, 14):
++        raise HomeAssistantError(
++            "Logitech Harmony Hub is not supported on Python 3.14. Please use Python 3.13."
++        )
+     _async_import_options_from_data_if_missing(hass, entry)
+ 
+     address = entry.data[CONF_HOST]
+diff --git a/homeassistant/components/harmony/manifest.json b/homeassistant/components/harmony/manifest.json
+index f74bff314a454e..795c9c5ed882fa 100644
+--- a/homeassistant/components/harmony/manifest.json
++++ b/homeassistant/components/harmony/manifest.json
+@@ -7,7 +7,7 @@
+   "documentation": "https://www.home-assistant.io/integrations/harmony",
+   "iot_class": "local_push",
+   "loggers": ["aioharmony", "slixmpp"],
+-  "requirements": ["aioharmony==0.5.3"],
++  "requirements": ["aioharmony==0.5.3;python_version<'3.14'"],
+   "ssdp": [
+     {
+       "manufacturer": "Logitech",
+diff --git a/homeassistant/components/profiler/__init__.py b/homeassistant/components/profiler/__init__.py
+index 66b35eaff210e1..6a8ce39b32b725 100644
+--- a/homeassistant/components/profiler/__init__.py
++++ b/homeassistant/components/profiler/__init__.py
+@@ -453,6 +453,10 @@ async def _async_generate_memory_profile(hass: HomeAssistant, call: ServiceCall)
+     # Imports deferred to avoid loading modules
+     # in memory since usually only one part of this
+     # integration is used at a time
++    if sys.version_info >= (3, 14):
++        raise HomeAssistantError(
++            "Memory profiling is not supported on Python 3.14. Please use Python 3.13."
++        )
+     from guppy import hpy  # noqa: PLC0415
+ 
+     start_time = int(time.time() * 1000000)
+diff --git a/homeassistant/components/profiler/manifest.json b/homeassistant/components/profiler/manifest.json
+index 814b00a16d4702..68eb7179a297cb 100644
+--- a/homeassistant/components/profiler/manifest.json
++++ b/homeassistant/components/profiler/manifest.json
+@@ -7,7 +7,7 @@
+   "quality_scale": "internal",
+   "requirements": [
+     "pyprof2calltree==1.4.5",
+-    "guppy3==3.1.5",
++    "guppy3==3.1.5;python_version<'3.14'",
+     "objgraph==3.5.0"
+   ],
+   "single_config_entry": true
+diff --git a/homeassistant/components/python_script/manifest.json b/homeassistant/components/python_script/manifest.json
+index c8cb1da40c90bb..d25515fb45475c 100644
+--- a/homeassistant/components/python_script/manifest.json
++++ b/homeassistant/components/python_script/manifest.json
+@@ -5,5 +5,8 @@
+   "documentation": "https://www.home-assistant.io/integrations/python_script",
+   "loggers": ["RestrictedPython"],
+   "quality_scale": "internal",
+-  "requirements": ["RestrictedPython==8.0"]
++  "requirements": [
++    "RestrictedPython==8.0;python_version<'3.14'",
++    "RestrictedPython==8.1a1.dev0;python_version>='3.14'"
++  ]
+ }
+diff --git a/homeassistant/components/recorder/executor.py b/homeassistant/components/recorder/executor.py
+index 6b8192d1e146bd..082be5787c8568 100644
+--- a/homeassistant/components/recorder/executor.py
++++ b/homeassistant/components/recorder/executor.py
+@@ -4,6 +4,7 @@
+ 
+ from collections.abc import Callable
+ from concurrent.futures.thread import _threads_queues, _worker
++import sys
+ import threading
+ from typing import Any
+ import weakref
+@@ -53,6 +54,18 @@ def weakref_cb(  # type: ignore[no-untyped-def]
+         ) -> None:
+             q.put(None)
+ 
++        if sys.version_info >= (3, 14):
++            additional_args = (
++                self._create_worker_context(),
++                self._work_queue,
++            )
++        else:
++            additional_args = (
++                self._work_queue,
++                self._initializer,
++                self._initargs,
++            )
++
+         num_threads = len(self._threads)
+         if num_threads < self._max_workers:
+             thread_name = f"{self._thread_name_prefix or self}_{num_threads}"
+@@ -63,9 +76,7 @@ def weakref_cb(  # type: ignore[no-untyped-def]
+                     self._shutdown_hook,
+                     self.recorder_and_worker_thread_ids,
+                     weakref.ref(self, weakref_cb),
+-                    self._work_queue,
+-                    self._initializer,
+-                    self._initargs,
++                    *(additional_args),
+                 ),
+             )
+             executor_thread.start()
+diff --git a/homeassistant/components/xmpp/manifest.json b/homeassistant/components/xmpp/manifest.json
+index d128e3e511127f..8c3a56da2bf0e7 100644
+--- a/homeassistant/components/xmpp/manifest.json
++++ b/homeassistant/components/xmpp/manifest.json
+@@ -6,5 +6,8 @@
+   "iot_class": "cloud_push",
+   "loggers": ["pyasn1", "slixmpp"],
+   "quality_scale": "legacy",
+-  "requirements": ["slixmpp==1.10.0", "emoji==2.8.0"]
++  "requirements": [
++    "slixmpp==1.10.0;python_version<'3.14'",
++    "emoji==2.8.0;python_version<'3.14'"
++  ]
+ }
+diff --git a/homeassistant/components/xmpp/notify.py b/homeassistant/components/xmpp/notify.py
+index ee57abd769d545..ca622ec670abba 100644
+--- a/homeassistant/components/xmpp/notify.py
++++ b/homeassistant/components/xmpp/notify.py
+@@ -9,16 +9,9 @@
+ import pathlib
+ import random
+ import string
++import sys
+ 
+ import requests
+-import slixmpp
+-from slixmpp.exceptions import IqError, IqTimeout, XMPPError
+-from slixmpp.plugins.xep_0363.http_upload import (
+-    FileTooBig,
+-    FileUploadError,
+-    UploadServiceNotFound,
+-)
+-from slixmpp.xmlstream.xmlstream import NotConnectedError
+ import voluptuous as vol
+ 
+ from homeassistant.components.notify import (
+@@ -35,9 +28,20 @@
+     CONF_SENDER,
+ )
+ from homeassistant.core import HomeAssistant
++from homeassistant.exceptions import HomeAssistantError
+ from homeassistant.helpers import config_validation as cv, template as template_helper
+ from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+ 
++if sys.version_info < (3, 14):
++    import slixmpp
++    from slixmpp.exceptions import IqError, IqTimeout, XMPPError
++    from slixmpp.plugins.xep_0363.http_upload import (
++        FileTooBig,
++        FileUploadError,
++        UploadServiceNotFound,
++    )
++    from slixmpp.xmlstream.xmlstream import NotConnectedError
++
+ _LOGGER = logging.getLogger(__name__)
+ 
+ ATTR_DATA = "data"
+@@ -74,6 +78,10 @@ async def async_get_service(
+     discovery_info: DiscoveryInfoType | None = None,
+ ) -> XmppNotificationService:
+     """Get the Jabber (XMPP) notification service."""
++    if sys.version_info >= (3, 14):
++        raise HomeAssistantError(
++            "Jabber (XMPP) is not supported on Python 3.14. Please use Python 3.13."
++        )
+     return XmppNotificationService(
+         config.get(CONF_SENDER),
+         config.get(CONF_RESOURCE),
+diff --git a/homeassistant/package_constraints.txt b/homeassistant/package_constraints.txt
+index 36e60447720a08..9af0efd4ab9617 100644
+--- a/homeassistant/package_constraints.txt
++++ b/homeassistant/package_constraints.txt
+@@ -132,8 +132,8 @@ backoff>=2.0
+ # ensure pydantic version does not float since it might have breaking changes
+ pydantic==2.12.2
+ 
+-# Required for Python 3.12.4 compatibility (#119223).
+-mashumaro>=3.13.1
++# Required for Python 3.14.0 compatibility (#119223).
++mashumaro>=3.17.0
+ 
+ # Breaks asyncio
+ # https://github.com/pubnub/python/issues/130
+diff --git a/homeassistant/util/frozen_dataclass_compat.py b/homeassistant/util/frozen_dataclass_compat.py
+index 518515d4f857c5..a727edf88d5801 100644
+--- a/homeassistant/util/frozen_dataclass_compat.py
++++ b/homeassistant/util/frozen_dataclass_compat.py
+@@ -10,6 +10,11 @@
+ import sys
+ from typing import TYPE_CHECKING, Any, cast, dataclass_transform
+ 
++if sys.version_info >= (3, 14):
++    from annotationlib import Format, get_annotations
++else:
++    from typing_extensions import Format, get_annotations
++
+ if TYPE_CHECKING:
+     from _typeshed import DataclassInstance
+ 
+@@ -19,7 +24,7 @@ def _class_fields(cls: type, kw_only: bool) -> list[tuple[str, Any, Any]]:
+ 
+     Extracted from dataclasses._process_class.
+     """
+-    cls_annotations = cls.__dict__.get("__annotations__", {})
++    cls_annotations = get_annotations(cls, format=Format.FORWARDREF)
+ 
+     cls_fields: list[dataclasses.Field[Any]] = []
+ 
+@@ -96,8 +101,16 @@ class will be a real dataclass, i.e. it's decorated with @dataclass.
+             for parent in cls.__mro__[::-1]:
+                 if parent is object:
+                     continue
+-                annotations |= parent.__annotations__
+-            cls.__annotations__ = annotations
++                annotations |= get_annotations(parent, format=Format.FORWARDREF)
++
++            if "__annotations__" in cls.__dict__ or sys.version_info < (3, 14):
++                cls.__annotations__ = annotations
++            else:
++
++                def wrapped_annotate(format: Format) -> dict:
++                    return annotations
++
++                cls.__annotate__ = wrapped_annotate
+             return
+ 
+         # First try without setting the kw_only flag, and if that fails, try setting it
+diff --git a/pyproject.toml b/pyproject.toml
+index 99c4f3a7a53118..d1d78d939552bc 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,6 +19,7 @@ classifiers = [
+   "Intended Audience :: Developers",
+   "Operating System :: OS Independent",
+   "Programming Language :: Python :: 3.13",
++  "Programming Language :: Python :: 3.14",
+   "Topic :: Home Automation",
+ ]
+ requires-python = ">=3.13.2"
+@@ -569,6 +570,11 @@ filterwarnings = [
+   # https://pypi.org/project/opuslib/ - v3.0.1 - 2018-01-16
+   # https://pypi.org/project/pyiss/ - v1.0.1 - 2016-12-19
+   "ignore:\"is.*\" with '.*' literal:SyntaxWarning:importlib._bootstrap",
++  # - SyntaxWarning - return in finally
++  # https://github.com/nextcord/nextcord/pull/1268 - v3.1.1 - 2025-08-16
++  # https://github.com/Python-roborock/python-roborock/ - >=2.50.4
++  # https://pypi.org/project/sleekxmppfs/ - v1.4.1 - 2022-08-18
++  "ignore:'return' in a 'finally' block:SyntaxWarning:importlib._bootstrap",
+ 
+   # -- New in Python 3.13
+   # https://github.com/youknowone/python-deadlib - Backports for aifc, telnetlib
+@@ -577,6 +583,28 @@ filterwarnings = [
+   "ignore:telnetlib was removed in Python 3.13.*'standard-telnetlib':DeprecationWarning:ndms2_client.connection",
+   "ignore:telnetlib was removed in Python 3.13.*'standard-telnetlib':DeprecationWarning:pyws66i",
+ 
++  # -- New in Python 3.14
++  # https://github.com/kumaraditya303/aioshutil - v1.5 - 2024-07-20
++  "ignore:'shutil.ExecError' is deprecated and slated for removal in Python 3.16:DeprecationWarning:aioshutil",
++  # https://github.com/litl/backoff/pull/220 - v2.2.1 - 2022-10-05 (archived)
++  "ignore:'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16:DeprecationWarning:(backoff._decorator|backoff._async)",
++  # https://github.com/albertogeniola/elmax-api - v0.0.6.3 - 2024-11-30
++  "ignore:'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16:DeprecationWarning:elmax_api.http",
++  # https://github.com/py-mine/mcstatus - v12.0.5 - 2025-08-13
++  "ignore:'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16:DeprecationWarning:mcstatus.utils",
++  # https://github.com/nextcord/nextcord/pull/1269 - v3.1.1 - 2025-08-16
++  "ignore:'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16:DeprecationWarning:nextcord.member",
++  # https://github.com/andrewsayre/pyheos/pull/124 - >1.0.5
++  "ignore:'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16:DeprecationWarning:pyheos.dispatch",
++  # https://github.com/SteveEasley/pykaleidescape/pull/7 - v2022.2.6 - 2022-03-07
++  "ignore:'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16:DeprecationWarning:kaleidescape.dispatcher",
++  # https://github.com/svinota/pyroute2
++  "ignore:Due to '_pack_', the '.*' Structure will use memory layout compatible with MSVC:DeprecationWarning:pyroute2.ethtool.ioctl",
++  # https://github.com/googleapis/python-genai
++  "ignore:'_UnionGenericAlias' is deprecated and slated for removal in Python 3.17:DeprecationWarning:google.genai.types",
++  # https://github.com/pyusb/pyusb
++  "ignore:Due to '_pack_', the '.*' Structure will use memory layout compatible with MSVC:DeprecationWarning:usb.backend.libusb0",
++
+   # -- Websockets 14.1
+   # https://websockets.readthedocs.io/en/stable/howto/upgrade.html
+   "ignore:websockets.legacy is deprecated:DeprecationWarning:websockets.legacy",
+diff --git a/requirements_all.txt b/requirements_all.txt
+index 399383d681af0d..9102598ccc8a51 100644
+--- a/requirements_all.txt
++++ b/requirements_all.txt
+@@ -109,7 +109,10 @@ PyXiaomiGateway==0.14.3
+ RachioPy==1.1.0
+ 
+ # homeassistant.components.python_script
+-RestrictedPython==8.0
++RestrictedPython==8.0;python_version<'3.14'
++
++# homeassistant.components.python_script
++RestrictedPython==8.1a1.dev0;python_version>='3.14'
+ 
+ # homeassistant.components.remember_the_milk
+ RtmAPI==0.7.2
+@@ -268,7 +271,7 @@ aiogithubapi==24.6.0
+ aioguardian==2022.07.0
+ 
+ # homeassistant.components.harmony
+-aioharmony==0.5.3
++aioharmony==0.5.3;python_version<'3.14'
+ 
+ # homeassistant.components.hassio
+ aiohasupervisor==0.3.3
+@@ -883,7 +886,7 @@ elmax-api==0.0.6.4rc0
+ elvia==0.1.0
+ 
+ # homeassistant.components.xmpp
+-emoji==2.8.0
++emoji==2.8.0;python_version<'3.14'
+ 
+ # homeassistant.components.emulated_roku
+ emulated-roku==0.3.0
+@@ -1127,7 +1130,7 @@ gspread==5.5.0
+ gstreamer-player==1.1.2
+ 
+ # homeassistant.components.profiler
+-guppy3==3.1.5
++guppy3==3.1.5;python_version<'3.14'
+ 
+ # homeassistant.components.iaqualink
+ h2==4.3.0
+@@ -1885,7 +1888,7 @@ pyatag==0.3.5.3
+ pyatmo==9.2.3
+ 
+ # homeassistant.components.apple_tv
+-pyatv==0.16.1
++pyatv==0.16.1;python_version<'3.14'
+ 
+ # homeassistant.components.aussie_broadband
+ pyaussiebb==0.1.5
+@@ -2846,7 +2849,7 @@ skyboxremote==0.0.6
+ slack_sdk==3.33.4
+ 
+ # homeassistant.components.xmpp
+-slixmpp==1.10.0
++slixmpp==1.10.0;python_version<'3.14'
+ 
+ # homeassistant.components.smart_meter_texas
+ smart-meter-texas==0.5.5
+diff --git a/requirements_test_all.txt b/requirements_test_all.txt
+index b4600989f1a6eb..9303f8bf6872d2 100644
+--- a/requirements_test_all.txt
++++ b/requirements_test_all.txt
+@@ -103,7 +103,10 @@ PyXiaomiGateway==0.14.3
+ RachioPy==1.1.0
+ 
+ # homeassistant.components.python_script
+-RestrictedPython==8.0
++RestrictedPython==8.0;python_version<'3.14'
++
++# homeassistant.components.python_script
++RestrictedPython==8.1a1.dev0;python_version>='3.14'
+ 
+ # homeassistant.components.remember_the_milk
+ RtmAPI==0.7.2
+@@ -253,7 +256,7 @@ aiogithubapi==24.6.0
+ aioguardian==2022.07.0
+ 
+ # homeassistant.components.harmony
+-aioharmony==0.5.3
++aioharmony==0.5.3;python_version<'3.14'
+ 
+ # homeassistant.components.hassio
+ aiohasupervisor==0.3.3
+@@ -988,7 +991,7 @@ gspread==5.5.0
+ gstreamer-player==1.1.2
+ 
+ # homeassistant.components.profiler
+-guppy3==3.1.5
++guppy3==3.1.5;python_version<'3.14'
+ 
+ # homeassistant.components.iaqualink
+ h2==4.3.0
+@@ -1593,7 +1596,7 @@ pyatag==0.3.5.3
+ pyatmo==9.2.3
+ 
+ # homeassistant.components.apple_tv
+-pyatv==0.16.1
++pyatv==0.16.1;python_version<'3.14'
+ 
+ # homeassistant.components.aussie_broadband
+ pyaussiebb==0.1.5
+diff --git a/script/gen_requirements_all.py b/script/gen_requirements_all.py
+index 749cbe99783bb3..4c4941851170c1 100755
+--- a/script/gen_requirements_all.py
++++ b/script/gen_requirements_all.py
+@@ -157,8 +157,8 @@
+ # ensure pydantic version does not float since it might have breaking changes
+ pydantic==2.12.2
+ 
+-# Required for Python 3.12.4 compatibility (#119223).
+-mashumaro>=3.13.1
++# Required for Python 3.14.0 compatibility (#119223).
++mashumaro>=3.17.0
+ 
+ # Breaks asyncio
+ # https://github.com/pubnub/python/issues/130
+diff --git a/tests/components/apple_tv/__init__.py b/tests/components/apple_tv/__init__.py
+index 514d77bde4da4f..e06e5deaa1524b 100644
+--- a/tests/components/apple_tv/__init__.py
++++ b/tests/components/apple_tv/__init__.py
+@@ -1,6 +1,9 @@
+ """Tests for Apple TV."""
+ 
++import sys
++
+ import pytest
+ 
+-# Make asserts in the common module display differences
+-pytest.register_assert_rewrite("tests.components.apple_tv.common")
++if sys.version_info < (3, 14):
++    # Make asserts in the common module display differences
++    pytest.register_assert_rewrite("tests.components.apple_tv.common")
+diff --git a/tests/components/apple_tv/conftest.py b/tests/components/apple_tv/conftest.py
+index 78982a8d51cfd9..22311f91b7796a 100644
+--- a/tests/components/apple_tv/conftest.py
++++ b/tests/components/apple_tv/conftest.py
+@@ -1,14 +1,20 @@
+ """Fixtures for component."""
+ 
+ from collections.abc import Generator
++import sys
+ from unittest.mock import AsyncMock, MagicMock, patch
+ 
+-from pyatv import conf
+-from pyatv.const import PairingRequirement, Protocol
+-from pyatv.support import http
+ import pytest
+ 
+-from .common import MockPairingHandler, airplay_service, create_conf, mrp_service
++if sys.version_info < (3, 14):
++    from pyatv import conf
++    from pyatv.const import PairingRequirement, Protocol
++    from pyatv.support import http
++
++    from .common import MockPairingHandler, airplay_service, create_conf, mrp_service
++
++if sys.version_info >= (3, 14):
++    collect_ignore_glob = ["test_*.py"]
+ 
+ 
+ @pytest.fixture(autouse=True, name="mock_scan")
+diff --git a/tests/components/harmony/conftest.py b/tests/components/harmony/conftest.py
+index 759770e9746573..701a6410e739c4 100644
+--- a/tests/components/harmony/conftest.py
++++ b/tests/components/harmony/conftest.py
+@@ -1,9 +1,11 @@
+ """Fixtures for harmony tests."""
+ 
++from __future__ import annotations
++
+ from collections.abc import Generator
++import sys
+ from unittest.mock import AsyncMock, MagicMock, PropertyMock, patch
+ 
+-from aioharmony.const import ClientCallbackType
+ import pytest
+ 
+ from homeassistant.components.harmony.const import ACTIVITY_POWER_OFF, DOMAIN
+@@ -18,6 +20,13 @@
+ 
+ from tests.common import MockConfigEntry
+ 
++if sys.version_info < (3, 14):
++    from aioharmony.const import ClientCallbackType
++
++if sys.version_info >= (3, 14):
++    collect_ignore_glob = ["test_*.py"]
++
++
+ ACTIVITIES_TO_IDS = {
+     ACTIVITY_POWER_OFF: -1,
+     "Watch TV": WATCH_TV_ACTIVITY_ID,
+diff --git a/tests/components/profiler/test_init.py b/tests/components/profiler/test_init.py
+index 941d639a419a34..de90f8498310aa 100644
+--- a/tests/components/profiler/test_init.py
++++ b/tests/components/profiler/test_init.py
+@@ -6,6 +6,7 @@
+ import os
+ from pathlib import Path
+ import socket
++import sys
+ from unittest.mock import patch
+ 
+ from freezegun.api import FrozenDateTimeFactory
+@@ -72,6 +73,9 @@ def _mock_path(filename: str) -> str:
+     await hass.async_block_till_done()
+ 
+ 
++@pytest.mark.skipif(
++    sys.version_info >= (3, 14), reason="not yet available on Python 3.14"
++)
+ async def test_memory_usage(hass: HomeAssistant, tmp_path: Path) -> None:
+     """Test we can setup and the service is registered."""
+     test_dir = tmp_path / "profiles"
+@@ -103,6 +107,24 @@ def _mock_path(filename: str) -> str:
+     await hass.async_block_till_done()
+ 
+ 
++@pytest.mark.skipif(sys.version_info < (3, 14), reason="still works on python 3.13")
++async def test_memory_usage_py313(hass: HomeAssistant, tmp_path: Path) -> None:
++    """Test raise an error on python3.13."""
++    entry = MockConfigEntry(domain=DOMAIN)
++    entry.add_to_hass(hass)
++
++    assert await hass.config_entries.async_setup(entry.entry_id)
++    await hass.async_block_till_done()
++    assert hass.services.has_service(DOMAIN, SERVICE_MEMORY)
++    with pytest.raises(
++        HomeAssistantError,
++        match="Memory profiling is not supported on Python 3.14. Please use Python 3.13.",
++    ):
++        await hass.services.async_call(
++            DOMAIN, SERVICE_MEMORY, {CONF_SECONDS: 0.000001}, blocking=True
++        )
++
++
+ async def test_object_growth_logging(
+     hass: HomeAssistant,
+     caplog: pytest.LogCaptureFixture,
