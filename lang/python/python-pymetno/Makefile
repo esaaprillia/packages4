@@ -28,9 +28,6 @@ define Package/python3-pymetno/description
 Python library to talk to the met.no api
 endef
 
-PYTHON3_PKG_WHEEL_NAME:=PyMetno
-PYTHON3_PKG_WHEEL_VERSION:=0.13.0
-
 $(eval $(call Py3Package,python3-pymetno))
 $(eval $(call BuildPackage,python3-pymetno))
 $(eval $(call BuildPackage,python3-pymetno-src))
