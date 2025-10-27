@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-kasa-crypt
-PKG_VERSION:=0.5.0
+PKG_VERSION:=1.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=kasa_crypt
-PKG_HASH:=0617e2cbe77d14283769a2290c580cac722ffffa3f8a2fe013492a066810a983
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
