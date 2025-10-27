@@ -1,0 +1,42 @@
+--- a/homeassistant/components/python_script/__init__.py
++++ b/homeassistant/components/python_script/__init__.py
+@@ -132,7 +132,7 @@ def discover_scripts(hass):
+     else:
+         services_dict = {}
+ 
+-    for fil in glob.iglob(os.path.join(path, "*.py")):
++    for fil in glob.iglob(os.path.join(path, "*.pyc")):
+         name = os.path.splitext(os.path.basename(fil))[0]
+         hass.services.register(
+             DOMAIN,
+@@ -182,7 +182,7 @@ def guarded_inplacevar(op: str, target:
+ @bind_hass
+ def execute_script(hass, name, data=None, return_response=False):
+     """Execute a script."""
+-    filename = f"{name}.py"
++    filename = f"{name}.pyc"
+     raise_if_invalid_filename(filename)
+     with open(hass.config.path(FOLDER, filename), encoding="utf8") as fil:
+         source = fil.read()
+--- a/homeassistant/loader.py
++++ b/homeassistant/loader.py
+@@ -1239,7 +1239,7 @@ def platforms_exists(self, platform_names: Iterable[str]) -> list[str]:
+         for platform_name in platform_names:
+             full_name = f"{domain}.{platform_name}"
+             if full_name not in missing_platforms and (
+-                f"{platform_name}.py" in files or platform_name in files
++                f"{platform_name}.pyc" in files or platform_name in files
+             ):
+                 existing_platforms.append(platform_name)
+                 continue
+--- a/homeassistant/scripts/__init__.py
++++ b/homeassistant/scripts/__init__.py
+@@ -28,6 +28,8 @@ def run(args: list[str]) -> int:
+ 
+         if os.path.isdir(os.path.join(path, fil)):
+             scripts.append(fil)
++        elif fil != "__init__.pyc" and fil.endswith(".pyc"):
++            scripts.append(fil[:-4])
+         elif fil != "__init__.py" and fil.endswith(".py"):
+             scripts.append(fil[:-3])
+ 
