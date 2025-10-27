@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-sense-energy
-PKG_VERSION:=0.13.5
+PKG_VERSION:=0.13.8
 PKG_RELEASE:=1
 
 PYPI_NAME:=sense_energy
-PKG_HASH:=a468ad415cfbcf9527245ac312e7096b18480b20b28c8895a853a6484380351c
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
