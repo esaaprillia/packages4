@@ -92,6 +92,7 @@ define Build/Configure/Default
 		CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 		CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)" \
 		LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
+		Python="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		Python_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
@@ -100,6 +101,7 @@ define Build/Configure/Default
 		PYTHON_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
 		PYTHON_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
 		PYTHON_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
+		Python3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		Python3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
