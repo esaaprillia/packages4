@@ -11,6 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
+CMAKE_BINARY_SUBDIR := build
+
 PKG_BUILD_DEPENDS:=python-cython/host numpy/host python-setuptools-scm/host python-cffi/host python-pandas/host
 
 include ../pypi.mk
@@ -18,6 +20,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 
 define Package/python3-pyarrow
   SUBMENU:=Python
