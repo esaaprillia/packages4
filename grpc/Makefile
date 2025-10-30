@@ -20,7 +20,7 @@ include $(INCLUDE_DIR)/cmake.mk
 define Package/grpc
 	SECTION:=libs
 	CATEGORY:=Libraries
-	TITLE:=C++ based gRPC (C++, Python, Ruby, Objective-C, PHP, C#)
+	TITLE:=C++ based gRPC
 	DEPENDS:=+libatomic +libcares +libopenssl +libopenssl-legacy +libstdcpp +abseil-cpp +protobuf +re2 +zlib
 	URL:=https://grpc.io/
 endef
