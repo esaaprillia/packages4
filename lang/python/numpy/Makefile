@@ -40,8 +40,18 @@ to be enabled in the OpenWrt core/toolchain.
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/f2py
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/f2py/src $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/* $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/random/lib
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/random/lib/* $(1)$(PYTHON3_PKG_DIR)/numpy/random/lib/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/_core/include
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy $(1)$(PYTHON3_PKG_DIR)/numpy/_core/include/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/numpy-config $(1)/usr/bin/
+	$(INSTALL_DIR) $(2)/bin
+	$(LN) ../../usr/bin/numpy-config $(2)/bin/numpy-config
 endef
 
 $(eval $(call HostBuild))
