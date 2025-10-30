@@ -36,6 +36,11 @@ endef
 CMAKE_OPTIONS += \
 	-DPython3_NumPy_INCLUDE_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3) -c 'import numpy;print(numpy.get_include())')"
 
+define Build/Compile
+	$(call Py3Build/Compile)
+	$(call Build/Compile/Default)
+endef
+
 $(eval $(call Py3Package,python3-pyarrow))
 $(eval $(call BuildPackage,python3-pyarrow))
 $(eval $(call BuildPackage,python3-pyarrow-src))
