@@ -17,10 +17,8 @@ PKG_BUILD_DEPENDS:=python-cython/host numpy/host python-setuptools-scm/host pyth
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/host-build.mk
-include ../python3-package.mk
-include ../python3-host-build.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include ../python3-package.mk
 
 define Package/python3-pyarrow
   SUBMENU:=Python
@@ -36,9 +34,8 @@ This library provides a Python API for functionality provided by the Arrow C++ l
 endef
 
 CMAKE_OPTIONS += \
-	-DPython3_NumPy_INCLUDE_DIRS="$(HOST_PYTHON3_PKG_DIR)/numpy/_core/include"
+	-DPython3_NumPy_INCLUDE_DIRS="$(PKG_PYTHON3_PKG_DIR)/numpy/_core/include"
 
-$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pyarrow))
 $(eval $(call BuildPackage,python3-pyarrow))
 $(eval $(call BuildPackage,python3-pyarrow-src))
