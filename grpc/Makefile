@@ -12,9 +12,13 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
+PKG_BUILD_DEPENDS:=grpc/host
+HOST_BUILD_DEPENDS:=abseil-cpp/host c-ares/host protobuf/host re2/host
+
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/grpc
@@ -43,6 +47,20 @@ CMAKE_OPTIONS += \
 	-DgRPC_USE_SYSTEMD=OFF \
 	-DgRPC_BUILD_TESTS=OFF
 
+CMAKE_HOST_OPTIONS += \
+	-DCMAKE_CXX_STANDARD=17 \
+	-DBUILD_SHARED_LIBS=OFF \
+	-DgRPC_INSTALL=ON \
+	-DgRPC_CARES_PROVIDER=package \
+	-DgRPC_PROTOBUF_PROVIDER=package \
+	-DgRPC_SSL_PROVIDER=package \
+	-DgRPC_ZLIB_PROVIDER=package \
+	-DgRPC_ABSL_PROVIDER=package \
+	-DgRPC_BENCHMARK_PROVIDER=package \
+	-DgRPC_RE2_PROVIDER=package \
+	-DgRPC_USE_SYSTEMD=OFF \
+	-DgRPC_BUILD_TESTS=OFF
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/gpr*.pc
@@ -56,4 +74,5 @@ define Package/grpc/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,grpc))
