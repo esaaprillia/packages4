@@ -33,6 +33,12 @@ define Package/grpc/description
 	gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere. gRPC enables client and server applications to communicate transparently, and simplifies the building of connected systems.
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(RM) $(STAGING_DIR)/usr/bin/protoc*
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
+endef
+
 CMAKE_OPTIONS += \
 	-DCMAKE_CXX_STANDARD=17 \
 	-DBUILD_SHARED_LIBS=True \
