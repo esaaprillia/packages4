@@ -34,6 +34,7 @@ This library provides a Python API for functionality provided by the Arrow C++ l
 endef
 
 CMAKE_OPTIONS += \
+	-DPython3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 	-DPython3_NumPy_INCLUDE_DIRS="$(PYTHON3_PKG_DIR)/numpy/_core/include"
 
 $(eval $(call Py3Package,python3-pyarrow))
