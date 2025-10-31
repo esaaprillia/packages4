@@ -10,7 +10,7 @@ PKG_SOURCE_VERSION:=24b5e7a8b27f42fa16b96fc70aade9106cf7102f
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=license.txt
 
 CMAKE_BINARY_SUBDIR := build
