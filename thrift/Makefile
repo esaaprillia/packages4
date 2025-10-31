@@ -23,7 +23,7 @@ define Package/thrift
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Apache Thrift
-	DEPENDS:=+glib2 +libevent2 +libopenssl +zlib
+	DEPENDS:=+libstdcpp +glib2 +libevent2 +libopenssl +zlib
 	URL:=https://github.com/apache/thrift
 endef
 
