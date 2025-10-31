@@ -32,8 +32,10 @@ define Package/thrift/description
 endef
 
 CMAKE_OPTIONS += \
+	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_TESTING=OFF \
+	-DBUILD_TUTORIALS=OFF \
 	-DWITH_AS3=OFF \
 	-DWITH_JAVA=OFF \
 	-DWITH_JAVASCRIPT=OFF \
