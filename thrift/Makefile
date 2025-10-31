@@ -13,10 +13,12 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=boost
+HOST_BUILD_DEPENDS:=boost/host glib2/host libevent2/host
 
 CMAKE_BINARY_SUBDIR := _build
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/thrift
@@ -35,13 +37,23 @@ CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_TESTING=OFF \
-	-DBUILD_TUTORIALS=OFF \
 	-DWITH_AS3=OFF \
 	-DWITH_JAVA=OFF \
 	-DWITH_JAVASCRIPT=OFF \
 	-DWITH_NODEJS=OFF \
 	-DWITH_PYTHON=OFF \
 	-DBoost_INCLUDE_DIRS="$(STAGING_DIR)/usr/include"
+
+CMAKE_HOST_OPTIONS += \
+	-Wno-dev \
+	-DBUILD_SHARED_LIBS=OFF \
+	-DBUILD_TESTING=OFF \
+	-DWITH_AS3=OFF \
+	-DWITH_JAVA=OFF \
+	-DWITH_JAVASCRIPT=OFF \
+	-DWITH_NODEJS=OFF \
+	-DWITH_PYTHON=OFF \
+	-DBoost_INCLUDE_DIRS="$(STAGING_DIR_HOSTPKG)/include"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -56,4 +68,5 @@ define Package/thrift/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,thrift))
