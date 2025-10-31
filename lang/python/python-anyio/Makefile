@@ -11,8 +11,8 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=anyio
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-idna/host python-sniffio/host +python-typing-extensions/host
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-idna/host python-sniffio/host +python-typing-extensions/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-idna/host python-sniffio/host python-typing-extensions/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-idna/host python-sniffio/host python-typing-extensions/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
