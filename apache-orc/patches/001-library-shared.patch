@@ -1,0 +1,22 @@
+From 300fa0bdf38ebdf60f82879858e431e8837b8bc6 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 31 Oct 2025 12:31:43 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ c++/src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/c++/src/CMakeLists.txt b/c++/src/CMakeLists.txt
+index ae93e67..3c90254 100644
+--- a/c++/src/CMakeLists.txt
++++ b/c++/src/CMakeLists.txt
+@@ -202,7 +202,7 @@ if(BUILD_ENABLE_AVX512)
+     BpackingAvx512.cc)
+ endif(BUILD_ENABLE_AVX512)
+ 
+-add_library (orc STATIC ${SOURCE_FILES})
++add_library (orc SHARED ${SOURCE_FILES})
+ 
+ target_link_libraries (orc
+   INTERFACE
