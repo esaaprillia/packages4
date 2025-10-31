@@ -38,7 +38,8 @@ CMAKE_OPTIONS += \
 	-DWITH_JAVA=OFF \
 	-DWITH_JAVASCRIPT=OFF \
 	-DWITH_NODEJS=OFF \
-	-DWITH_PYTHON=OFF
+	-DWITH_PYTHON=OFF \
+	-DBoost_INCLUDE_DIRS="$(STAGING_DIR)/usr/include"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
