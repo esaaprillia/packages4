@@ -44,8 +44,8 @@ CMAKE_HOST_OPTIONS += \
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
-	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/xsimd.pc
-	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/xsimd.pc
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/share/pkgconfig/xsimd.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/share/pkgconfig/xsimd.pc
 endef
 
 $(eval $(call HostBuild))
