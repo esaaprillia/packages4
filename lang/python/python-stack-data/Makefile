@@ -12,7 +12,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-executing/host python-asttokens/host python3-pure-eval/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-executing/host python-asttokens/host python-pure-eval/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
