@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=boost
 
-CMAKE_BINARY_SUBDIR := build
+CMAKE_BINARY_SUBDIR := _build
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
