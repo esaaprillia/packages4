@@ -1,0 +1,32 @@
+From caaad3a48cd0b075a5cb5f7838a86a95f28e5d30 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 1 Nov 2025 18:48:03 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ cpp/CMakeLists.txt | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
+index 14cf1b91411..28c8cc6a33e 100644
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
+@@ -536,18 +536,6 @@ string(REPLACE "-std=c++17" "" CMAKE_C_FLAGS ${CMAKE_C_FLAGS})
+ # Add C++-only flags, like -std=c++17
+ set(CMAKE_CXX_FLAGS "${CXX_ONLY_FLAGS} ${CMAKE_CXX_FLAGS}")
+ 
+-# ASAN / TSAN / UBSAN
+-if(ARROW_FUZZING)
+-  set(ARROW_USE_COVERAGE ON)
+-endif()
+-include(san-config)
+-
+-# Code coverage
+-if("${ARROW_GENERATE_COVERAGE}")
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage -DCOVERAGE_BUILD")
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -DCOVERAGE_BUILD")
+-endif()
+-
+ # CMAKE_CXX_FLAGS now fully assembled
+ message(STATUS "CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
+ message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
