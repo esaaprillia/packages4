@@ -28,7 +28,7 @@ define Package/python3-pyarrow
   CATEGORY:=Languages
   TITLE:=Python library for Apache Arrow
   URL:=https://arrow.apache.org/
-  DEPENDS:=+python3 +python3-numpy +python3-cffi +python3-fsspec +python3-pandas
+  DEPENDS:=+python3 +python3-numpy +python3-cffi +python3-fsspec +python3-pandas +apache-arrow
 endef
 
 define Package/python3-pyarrow/description
