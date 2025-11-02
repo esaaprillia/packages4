@@ -20,6 +20,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include ../python3-package.mk
 
+PYTHON3_PKG_SETUP_VARS += PYARROW_CMAKE_OPTIONS="-DARROW_SIMD_LEVEL=NONE -DARROW_RUNTIME_SIMD_LEVEL=MAX"
+
 define Package/python3-pyarrow
   SUBMENU:=Python
   SECTION:=lang
