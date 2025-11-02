@@ -9,8 +9,8 @@ Subject: [PATCH] Update setup.py
 
 diff --git a/python/setup.py b/python/setup.py
 index b6fea83eb03..c25262f8247 100755
---- a/python/setup.py
-+++ b/python/setup.py
+--- a/setup.py
++++ b/setup.py
 @@ -341,13 +341,11 @@ def append_cmake_component(flag, varname):
              print("-- Finished cmake for PyArrow")
  
