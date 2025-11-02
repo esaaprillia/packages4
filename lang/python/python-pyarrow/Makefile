@@ -20,8 +20,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include ../python3-package.mk
 
-PYTHON3_PKG_SETUP_VARS += \
-	PYARROW_CMAKE_OPTIONS="\
+PYTHON3_PKG_SETUP_VARS +=PYARROW_CMAKE_OPTIONS="\
 	-DCMAKE_SYSTEM_NAME=Linux \
 	-DCMAKE_SYSTEM_VERSION=1 \
 	-DCMAKE_SYSTEM_PROCESSOR=$(ARCH) \
