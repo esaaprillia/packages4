@@ -1,0 +1,29 @@
+From 5f6735913dda72bb5bdf291f6c29081cf5f352bf Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 3 Nov 2025 05:50:34 +0800
+Subject: [PATCH] Update setup.py
+
+---
+ python/setup.py | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/python/setup.py b/python/setup.py
+index b6fea83eb03..c25262f8247 100755
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -341,13 +341,11 @@ def append_cmake_component(flag, varname):
+             print("-- Finished cmake for PyArrow")
+ 
+             print("-- Running cmake --build for PyArrow")
+-            self.spawn(['cmake', '--build', '.', '--config', self.build_type] +
+-                       build_tool_args)
++
+             print("-- Finished cmake --build for PyArrow")
+ 
+             print("-- Running cmake --build --target install for PyArrow")
+-            self.spawn(['cmake', '--build', '.', '--config', self.build_type] +
+-                       ['--target', 'install'] + build_tool_args)
++
+             print("-- Finished cmake --build --target install for PyArrow")
+ 
+             self._found_names = []
