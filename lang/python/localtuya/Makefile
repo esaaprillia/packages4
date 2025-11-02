@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-cryptography/host
+PKG_BUILD_DEPENDS:=python-black/host python-cryptography/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
