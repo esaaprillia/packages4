@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-#CMAKE_BINARY_SUBDIR := build
+CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=python-cython/host numpy/host python-setuptools-scm/host python-cffi/host python-pandas/host
 
