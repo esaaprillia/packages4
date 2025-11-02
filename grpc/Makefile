@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DEPENDS:=grpc/host
 HOST_BUILD_DEPENDS:=abseil-cpp/host c-ares/host protobuf/host re2/host
 
-CMAKE_BINARY_SUBDIR := build
+CMAKE_BINARY_SUBDIR := _build
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
