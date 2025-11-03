@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-asusrouter
-PKG_VERSION:=1.13.1
+PKG_VERSION:=1.21.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=asusrouter
-PKG_HASH:=766f4d571923c48adf72e5b54ed195d72c0ac20b6c4f2305c3ee0b18bcf8bd7c
+PKG_HASH:=skip
 
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
