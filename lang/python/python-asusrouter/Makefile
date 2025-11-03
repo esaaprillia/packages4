@@ -21,7 +21,7 @@ define Package/python3-asusrouter
   SUBMENU:=Python
   TITLE:=API wrapper for communication with ASUSWRT-powered routers using HTTP protocol
   URL:=https://github.com/Vaskivskyi/asusrouter
-  DEPENDS:=+python3-light +python3-aiohttp python3-dateutil +python3-urllib3 +python3-xmltodict
+  DEPENDS:=+python3-light +python3-aiohttp +python3-urllib3 +python3-xmltodict
 endef
 
 define Package/python3-asusrouter/description
