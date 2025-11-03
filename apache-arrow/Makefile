@@ -16,6 +16,7 @@ PKG_BUILD_DEPENDS:=boost flatbuffers rapidjson xsimd grpc/host
 
 CMAKE_BINARY_SUBDIR := build-cpp
 CMAKE_SOURCE_SUBDIR := cpp
+PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -30,6 +31,19 @@ endef
 
 define Package/apache-arrow/description
 	Apache Arrow is a universal columnar format and multi-language toolbox for fast data interchange and in-memory analytics. It contains a set of technologies that enable data systems to efficiently store, process, and move data.
+endef
+
+define Package/python3-pyarrow
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Python library for Apache Arrow
+  URL:=https://arrow.apache.org/
+  DEPENDS:=+python3 +python3-numpy +python3-cffi +python3-fsspec +python3-pandas +apache-arrow
+endef
+
+define Package/python3-pyarrow/description
+This library provides a Python API for functionality provided by the Arrow C++ libraries, along with tools for Arrow integration and interoperability with pandas, NumPy, and other software in the Python ecosystem.
 endef
 
 define Build/Prepare
@@ -66,6 +80,22 @@ CMAKE_OPTIONS += \
 	-DPARQUET_REQUIRE_ENCRYPTION=ON \
 	-DARROW_GRPC_CPP_PLUGIN="$(STAGING_DIR)/usr/bin/grpc_cpp_plugin"
 
+PYTHON3_PKG_BUILD_PATH:=python
+PYTHON3_PKG_WHEEL_NAME:=pyarrow
+PYTHON3_PKG_WHEEL_VERSION:=22.0.0
+
+PYTHON3_PKG_SETUP_VARS += PYARROW_CMAKE_OPTIONS="-DARROW_SIMD_LEVEL=NONE -DARROW_RUNTIME_SIMD_LEVEL=MAX"
+
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install)
+endef
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/arrow*.pc
@@ -82,3 +112,6 @@ define Package/apache-arrow/install
 endef
 
 $(eval $(call BuildPackage,apache-arrow))
+$(eval $(call Py3Package,python3-pyarrow))
+$(eval $(call BuildPackage,python3-pyarrow))
+$(eval $(call BuildPackage,python3-pyarrow-src))
