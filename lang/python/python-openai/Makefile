@@ -1,15 +1,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-openai
-PKG_VERSION:=1.61.0
+PKG_VERSION:=2.6.1
 PKG_RELEASE:=1
 
-PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
+PYPI_NAME:=openai
+PKG_HASH:=skip
+
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PYPI_NAME:=openai
-PKG_HASH:=216f325a24ed8578e929b0f1b3fb2052165f3b04b0461818adaa51aa29c71f8a
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-fancy-pypi-readme/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -21,7 +23,7 @@ define Package/python3-openai
   CATEGORY:=Languages
   TITLE:=The official Python library for the openai API
   URL:=https://github.com/openai/openai-python
-  DEPENDS:=+python3 +python3-httpx +python3-pydantic +python3-typing-extensions +python3-anyio +python3-distro +python3-sniffio +python3-tqdm +python3-jiter
+  DEPENDS:=+python3 +python3-httpx +python3-pydantic +python3-typing-extensions +python3-anyio +python3-distro +python3-sniffio +python3-tqdm +python3-jiter +python3-aiohttp +python3-httpx-aiohttp +python3-websockets +python3-pandas +python3-pandas-stubs +python3-sounddevice +python3-numpy
 endef
 
 define Package/python3-openai/description
