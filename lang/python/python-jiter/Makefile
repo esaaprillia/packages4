@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jiter
-PKG_VERSION:=0.8.2
+PKG_VERSION:=0.11.1
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=jiter
-PKG_HASH:=cd73d3e740666d0e639f678adb176fad25c1bcbdae88d8d7b857e1783bb4212d
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-maturin/host
 
