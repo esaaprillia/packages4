@@ -34,7 +34,7 @@ define Package/python3-zigpy
 	+python3-async-timeout \
 	+python3-crccheck \
 	+python3-cryptography \
-	+python3-pyserial-asyncio \
+	+python3-pyserial-asyncio-fast \
 	+python3-typing-extensions \
 	+python3-voluptuous \
 	+python3-jsonschema \
