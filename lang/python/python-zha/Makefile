@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zha
-PKG_VERSION:=0.0.45
+PKG_VERSION:=0.0.77
 PKG_RELEASE:=1
 
 PYPI_NAME:=zha
-PKG_HASH:=51a753b1f406ad7fe084bfb78bb9057f572f525e72b4cb4dbd9a492e72efe75d
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
