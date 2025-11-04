@@ -13,7 +13,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-cython/host numpy/host python-setuptools-scm/host python-cffi/host python-pandas/host
 
-CMAKE_BINARY_SUBDIR:=build
+CMAKE_BINARY_SUBDIR:= _build
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
