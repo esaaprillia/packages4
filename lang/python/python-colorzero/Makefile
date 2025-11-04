@@ -21,7 +21,7 @@ define Package/python3-colorzero
   SUBMENU:=Python
   TITLE:=Yet another Python color library
   URL:=https://colorzero.readthedocs.io
-  DEPENDS:=+python3-light
+  DEPENDS:=+python3-light +python3-setuptools
 endef
 
 define Package/python3-colorzero/description
