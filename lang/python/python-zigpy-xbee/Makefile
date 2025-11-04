@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zigpy-xbee
-PKG_VERSION:=0.21.0
+PKG_VERSION:=0.21.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=zigpy_xbee
-PKG_HASH:=63f9f06e864f58fd4b2c6c0b0ef00b126e6711faf6ccba4ec9c610f0f51c8d3e
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0-or-later
