@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-black/host python-cryptography/host
+#PKG_BUILD_DEPENDS:=python-black/host python-cryptography/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -24,7 +24,7 @@ define Package/localtuya
   SUBMENU:=Python
   TITLE:=local handling for Tuya devices
   URL:=https://github.com/rospogrigio/localtuya
-  DEPENDS:=+python3 +python3-cryptography
+  DEPENDS:=+python3
 endef
 
 define Package/localtuya/description
