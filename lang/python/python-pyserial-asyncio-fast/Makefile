@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyserial-asyncio-fast
-PKG_VERSION:=0.14
+PKG_VERSION:=0.16
 PKG_RELEASE:=1
 
-PYPI_NAME:=pyserial-asyncio-fast
-PKG_HASH:=09ad7f2886969da3df064e93fd47ceab47ad91144ec80e103c5cf97bb0038908
+PYPI_NAME:=pyserial_asyncio_fast
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
