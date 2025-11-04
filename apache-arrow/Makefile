@@ -14,6 +14,7 @@ PKG_LICENSE_FILES:=LICENSE.txt
 
 PKG_BUILD_DEPENDS:=boost flatbuffers rapidjson xsimd grpc/host python-cython/host numpy/host python-setuptools-scm/host python-cffi/host python-pandas/host
 
+CMAKE_INSTALL:=1
 CMAKE_BINARY_SUBDIR := build-cpp
 CMAKE_SOURCE_SUBDIR := cpp
 PYTHON3_PKG_BUILD:=0
