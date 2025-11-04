@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bellows
-PKG_VERSION:=0.43.0
+PKG_VERSION:=0.47.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=bellows
-PKG_HASH:=95671fd16a3fa3bc2ef1b1e3f0f4b31a425faea48fc721122d86593f17486afe
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0-or-later
