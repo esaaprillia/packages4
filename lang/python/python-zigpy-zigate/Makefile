@@ -27,6 +27,7 @@ define Package/python3-zigpy-zigate
 	+python3-asyncio \
 	+python3-logging \
 	+python3-urllib \
+	+python3-pyserial \
 	+python3-gpiozero \
 	+python3-pyusb \
 	+python3-voluptuous \
