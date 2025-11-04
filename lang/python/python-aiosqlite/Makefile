@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiosqlite
-PKG_VERSION:=0.20.0
+PKG_VERSION:=0.21.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiosqlite
-PKG_HASH:=6d35c8c256637f4672f843c31021464090805bf925385ac39473fb16eaaca3d7
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
