@@ -13,8 +13,11 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-cython/host numpy/host python-setuptools-scm/host python-cffi/host python-pandas/host
 
+CMAKE_BINARY_SUBDIR:=build
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include ../python3-package.mk
 
 export PYARROW_CMAKE_OPTIONS=\
