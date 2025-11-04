@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zigpy
-PKG_VERSION:=0.75.1
+PKG_VERSION:=0.86.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=zigpy
-PKG_HASH:=b2851f4a4f432fac5db7bf0cc10c3fae09728e64a14e0c0089b808a7eb4d54d1
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0-or-later
