@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zigpy-deconz
-PKG_VERSION:=0.24.1
+PKG_VERSION:=0.25.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=zigpy_deconz
-PKG_HASH:=c72a33ab9ca175f1c874b5fdc52b20b692a068dcd73d46973a4a097c3e8d6062
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0-or-later
