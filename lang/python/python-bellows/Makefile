@@ -29,7 +29,6 @@ define Package/python3-bellows
 	+python3-urllib \
 	+python3-click \
 	+python3-click-log \
-	+python3-pure-pcapy3 \
 	+python3-voluptuous \
 	+python3-zigpy \
 	+python3-async-timeout
