@@ -23,7 +23,7 @@ define Package/python3-aiobotocore
   CATEGORY:=Languages
   TITLE:=Async client for aws services using botocore and aiohttp
   URL:=https://aiobotocore.aio-libs.org/
-  DEPENDS:=+python3-light +python3-aiohttp +python3-aioitertools +python3-botocore +python3-python-dateutil +python3-jmespath +python3-multidict +python3-wrapt +python3-awscli +python3-boto3 +python3-httpx
+  DEPENDS:=+python3-light +python3-aiohttp +python3-aioitertools +python3-botocore +python3-dateutil +python3-jmespath +python3-multidict +python3-wrapt +python3-awscli +python3-boto3 +python3-httpx
 endef
 
 define Package/python3-aiobotocore/description
