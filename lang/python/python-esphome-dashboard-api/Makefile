@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-esphome-dashboard-api
-PKG_VERSION:=1.2.3
+PKG_VERSION:=1.3.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=esphome-dashboard-api
-PKG_HASH:=7e291ab6389325d3a6734489f28b5ce7b7da481770c2da25a5ac483f6dd9e1b3
+PYPI_NAME:=esphome_dashboard_api
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
