@@ -30,6 +30,9 @@ define Package/python3-umodbus/description
 uModbus or (μModbus) is a pure Python implementation of the Modbus protocol as described in the MODBUS Application Protocol Specification V1.1b3.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=umodbus
+PYTHON3_PKG_WHEEL_VERSION:=1.0.4
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-umodbus))
 $(eval $(call BuildPackage,python3-umodbus))
