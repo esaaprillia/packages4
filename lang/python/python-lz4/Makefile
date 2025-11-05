@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-lz4
-PKG_VERSION:=4.4.4
+PKG_VERSION:=4.4.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=lz4
