@@ -23,7 +23,7 @@ define Package/python3-arrow
   SUBMENU:=Python
   TITLE:=Better dates & times for Python
   URL:=https://arrow.readthedocs.io/
-  DEPENDS:=+python3 +python3-dateutil +python3-types-python-dateutil
+  DEPENDS:=+python3 +python3-dateutil
 endef
 
 define Package/python3-arrow/description
