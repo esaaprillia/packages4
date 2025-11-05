@@ -30,7 +30,7 @@ define Package/python3-ruamel-yaml
   TITLE:=YAML 1.2 loader/dumper
   URL:=https://sourceforge.net/p/ruamel-yaml/code/ci/default/tree
   DEPENDS:= \
-      +python3-light
+      +python3-light +python3-ruamel-yaml-clib
 endef
 
 define Package/python3-ruamel-yaml/description
