@@ -21,7 +21,7 @@ define Package/python3-esphome-dashboard-api
   SUBMENU:=Python
   TITLE:=API to interact with ESPHome Dashboard
   URL:=https://github.com/esphome/dashboard-api
-  DEPENDS:=+python3 +python3-aiohttp
+  DEPENDS:=+python3 +python3-aiohttp +python3-orjson
 endef
 
 define Package/python3-esphome-dashboard-api/description
