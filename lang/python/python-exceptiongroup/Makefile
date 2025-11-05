@@ -23,7 +23,7 @@ define Package/python3-exceptiongroup
   CATEGORY:=Languages
   TITLE:=Backport of PEP 654 (exception groups)
   URL:=https://github.com/agronholm/exceptiongroup
-  DEPENDS:=+python3-light
+  DEPENDS:=+python3-light +python3-typing-extensions
 endef
 
 define Package/python3-exceptiongroup/description
