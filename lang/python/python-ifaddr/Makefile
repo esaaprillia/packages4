@@ -18,9 +18,13 @@ PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-ifaddr
   SECTION:=lang
@@ -38,6 +42,7 @@ ifaddr is a small Python library that allows you to find all the
 Ethernet and IP addresses of the computer.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-ifaddr))
 $(eval $(call BuildPackage,python3-ifaddr))
 $(eval $(call BuildPackage,python3-ifaddr-src))
