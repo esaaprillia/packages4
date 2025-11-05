@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bleak-esphome
-PKG_VERSION:=2.1.1
+PKG_VERSION:=3.4.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=bleak_esphome
-PKG_HASH:=6858c42406776d5344716bb27f0a6c4c104f8be65e3554ee163d4b189cf6c7e7
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
