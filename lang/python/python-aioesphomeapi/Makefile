@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aioesphomeapi
-PKG_VERSION:=28.0.1
+PKG_VERSION:=42.6.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aioesphomeapi
-PKG_HASH:=716a6b114a26be5a14896518656a3c880bf1f42da37d99bceea5d076ea311c0b
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
