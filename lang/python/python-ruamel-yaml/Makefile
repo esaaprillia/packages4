@@ -39,7 +39,7 @@ preservation of comments, seq/map flow style, and map key order
 endef
 
 PYTHON3_PKG_WHEEL_NAME:=ruamel_yaml
-PYTHON3_PKG_WHEEL_VERSION:=0.18.6
+PYTHON3_PKG_WHEEL_VERSION:=0.18.16
 
 $(eval $(call Py3Package,python3-ruamel-yaml))
 $(eval $(call BuildPackage,python3-ruamel-yaml))
