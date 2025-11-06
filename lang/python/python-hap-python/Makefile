@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hap-python
-PKG_VERSION:=4.9.2
+PKG_VERSION:=5.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=hap_python
-PKG_HASH:=5218a38f576f9b8f55aa3ffd93b9415e3429902bb340dcde74044b2f40f47c0d
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -27,9 +27,6 @@ endef
 define Package/python3-hap-python/description
 HomeKit Accessory Protocol implementation in python 3. With this project, you can integrate your own smart devices and add them to your iOS Home app. Since Siri is integrated with the Home app, you can start voice-control your accessories right away.
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=HAP_python
-PYTHON3_PKG_WHEEL_VERSION:=4.9.2
 
 $(eval $(call Py3Package,python3-hap-python))
 $(eval $(call BuildPackage,python3-hap-python))
