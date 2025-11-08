@@ -23,7 +23,7 @@ define Package/python3-fe25519
   CATEGORY:=Languages
   TITLE:=Pure-Python data structure for working with Ed25519 (and Ristretto) field elements and operations.
   URL:=https://github.com/nthparty/fe25519
-  DEPENDS:=+python3 +python3-fe25519
+  DEPENDS:=+python3
 endef
 
 define Package/python3-fe25519/description
