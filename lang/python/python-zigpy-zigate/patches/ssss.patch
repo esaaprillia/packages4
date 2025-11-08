@@ -1,0 +1,27 @@
+From ea2ff07a811d7d9b97fd43bd405d6ff9c9d3e5fa Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 9 Nov 2025 03:56:41 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 46749e9..5875b5f 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools>=61.0.0", "wheel", "setuptools-git-versioning<2"]
++requires = ["setuptools>=61.0.0", "wheel", "setuptools-git-versioning"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+@@ -62,4 +62,4 @@ ignore = [
+     "W503", "E203", "E501", "D202",
+     "D103", "D102", "D101",  # TODO: remove these once docstrings are added
+ ]
+-per-file-ignores = ["tests/*:F811,F401,F403"]
+\ No newline at end of file
++per-file-ignores = ["tests/*:F811,F401,F403"]
