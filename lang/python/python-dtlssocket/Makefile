@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-dtlssocket
-PKG_VERSION:=0.2.2
+PKG_VERSION:=0.2.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=dtlssocket
-PKG_HASH:=4e76d715726e0c46dc09e35da9b6717b063c2389b06c1723decc3ba38b7387f4
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=EPL-1.0
