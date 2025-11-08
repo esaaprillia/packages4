@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-universal-silabs-flasher
-PKG_VERSION:=0.0.28
+PKG_VERSION:=0.0.37
 PKG_RELEASE:=1
 
 PYPI_NAME:=universal_silabs_flasher
-PKG_HASH:=6343a450fdb15f84b43c4cddf340f4f820cd9995b833baa566dc57db119b1316
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
