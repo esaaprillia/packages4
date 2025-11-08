@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cbor-diag
-PKG_VERSION:=1.1.0
+PKG_VERSION:=1.1.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=cbor_diag
-PKG_HASH:=78a85ab1165c43d224dc6b93e1ee791aec2f392c55d219d11937f78974f4e6c3
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache 2.0
