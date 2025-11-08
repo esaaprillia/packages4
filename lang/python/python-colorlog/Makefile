@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-colorlog
-PKG_VERSION:=6.9.0
+PKG_VERSION:=6.10.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=colorlog
-PKG_HASH:=bfba54a1b93b94f54e1f4fe48395725a3d92fd2a4af702f6bd70946bdc0c6ac2
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
