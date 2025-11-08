@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-lakers-python
-PKG_VERSION:=0.4.1
+PKG_VERSION:=0.6.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=lakers_python
-PKG_HASH:=eb0d6e32b75ade0a6d6478c2f1d21af6da130a3aefee667433c5dde2ac2e21f8
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
