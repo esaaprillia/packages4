@@ -21,7 +21,7 @@ define Package/python3-pure-pcapy3
   SUBMENU:=Python
   TITLE:=Pure Python reimplementation of pcapy
   URL:=http://bitbucket.org/viraptor/pure-pcapy/overview
-  DEPENDS:=+python3-light
+  DEPENDS:=+python3-light +python3-setuptools
 endef
 
 define Package/python3-pure-pcapy3/description
