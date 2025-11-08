@@ -23,7 +23,7 @@ define Package/python3-nibe
   CATEGORY:=Languages
   TITLE:=Nibe heatpump communication library
   URL:=https://github.com/yozik04/nibe
-  DEPENDS:=+python3 +python3-construct +python3-async-modbus +python3-async-timeout +python3-tenacity +python3-exceptiongroup +python3-pandas +python3-python-slugify +python3-asyncclick
+  DEPENDS:=+python3 +python3-construct +python3-async-modbus +python3-async-timeout +python3-tenacity +python3-exceptiongroup +python3-pandas +python3-slugify +python3-asyncclick
 endef
 
 define Package/python3-nibe/description
