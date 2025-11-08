@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiocoap
-PKG_VERSION:=0.4.12
+PKG_VERSION:=0.4.17
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiocoap
-PKG_HASH:=808e87068aa57dbf31486cfdfa9098b0a6f5ca444c6b8966f3e50a403628981e
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause MIT
