@@ -26,7 +26,7 @@ define Package/python3-pyproject-metadata
   CATEGORY:=Languages
   TITLE:=PEP 621 metadata parsing
   URL:=https://github.com/FFY00/python-pyproject-metadata
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-packaging
 endef
 
 define Package/python3-pyproject-metadata/description
