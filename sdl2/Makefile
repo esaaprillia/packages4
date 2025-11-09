@@ -57,7 +57,7 @@ define Build/InstallDev
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/sdl2.pc
 	$(SED) 's,^\(prefix\|exec_prefix\)=.*,\1=$(STAGING_DIR)/usr,g' $(1)/usr/bin/sdl2-config
 	$(INSTALL_DIR) $(2)/bin
-	$(LN) ../../usr/bin/krb5-config $(2)/bin/sdl2-config
+	$(LN) ../../usr/bin/sdl2-config $(2)/bin/sdl2-config
 endef
 
 define Package/sdl2/install
