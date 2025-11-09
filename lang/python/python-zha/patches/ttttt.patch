@@ -1,0 +1,27 @@
+From 260b39659768efba4eaa86d9a1f0914c6062a7a7 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 9 Nov 2025 08:43:47 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 3bb05343..41c7b686 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools>=61.0.0", "wheel", "setuptools-git-versioning<3"]
++requires = ["setuptools>=61.0.0", "wheel", "setuptools-git-versioning"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+@@ -243,4 +243,4 @@ show_missing = true
+ exclude_also = [
+     "if TYPE_CHECKING:",
+     "raise NotImplementedError",
+-]
+\ No newline at end of file
++]
