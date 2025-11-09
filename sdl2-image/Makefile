@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=sdl2-image
-PKG_VERSION:=3.2.4
+PKG_VERSION:=2.8.8
 PKG_RELEASE:=1
 
 PKG_SOURCE:=SDL2_image-$(PKG_VERSION).tar.gz
