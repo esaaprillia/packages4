@@ -39,7 +39,9 @@ CMAKE_OPTIONS += \
 	-DOPENSSL_USE_STATIC_LIBS=OFF
 
 define Build/Install
-	mkdir -p "$(PKG_INSTALL_DIR)"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/share"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
+	mkdir -p "$(PKG_INSTALL_DIR)/etc"
 	#$(CP) $(PKG_BUILD_DIR)/html/build/html $(PKG_INSTALL_DIR)/usr/share/
 	$(CP) $(PKG_BUILD_DIR)/Socks5BalancerAsio $(PKG_INSTALL_DIR)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/example-config/FullConfig.json $(PKG_INSTALL_DIR)/etc/
