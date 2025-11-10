@@ -34,7 +34,9 @@ define Package/socks5balancerasio/description
 endef
 
 CMAKE_OPTIONS += \
-	-Wno-dev
+	-Wno-dev \
+	-DBUILD_DATETIME=OFF \
+	-DVERSION="$(PKG_VERSION)"
 
 define Package/socks5balancerasio/install
 	$(INSTALL_DIR) \
