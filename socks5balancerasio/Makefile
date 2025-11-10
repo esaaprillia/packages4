@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=socks5balancerasio
-PKG_VERSION:=1.3.6
+PKG_VERSION:=1.3.9
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -23,7 +23,7 @@ define Package/socks5balancerasio
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Socks5BalancerAsio
-	DEPENDS:=+boost-filesystem +libopenssl
+	DEPENDS:=+boost-filesystem +libopenssl +libopenssl-legacy
 	URL:=https://github.com/Socks5Balancer/Socks5BalancerAsio
 endef
 
