@@ -61,12 +61,12 @@ define Build/Install
 endef
 
 define Package/socks5balancerasio/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/bin
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/* \
-	  $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) $(PKG_INSTALL_DIR)/etc/FullConfig.json $(1)/etc/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/Socks5BalancerAsio $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/html $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,socks5balancerasio))
