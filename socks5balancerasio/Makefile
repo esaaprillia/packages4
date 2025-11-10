@@ -38,6 +38,17 @@ CMAKE_OPTIONS += \
 	-DUSE_DYNAMIC_BOOST=ON \
 	-DOPENSSL_USE_STATIC_LIBS=OFF
 
+define Build/Compile
+	( \
+		pushd $(PKG_BUILD_DIR)/html ; \
+		yarn install ; \
+		yarn version --new-version $(PKG_VERSION) --no-git-tag-version ; \
+		yarn run build ; \
+		popd ; \
+		$(call Build/Compile/Default) ; \
+	)
+endef
+
 define Build/Install
 	mkdir -p "$(PKG_INSTALL_DIR)/usr/share"
 	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
