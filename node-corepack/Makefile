@@ -69,10 +69,10 @@ define Package/node-corepack/install
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(CP) $(PKG_BUILD_DIR)/README.md \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/{bin,dist} \
+	$(CP) $(PKG_BUILD_DIR)/dist \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(LN) ../lib/node/$(PKG_NPM_NAME)/bin/corepack $(1)/usr/bin/corepack
+	$(LN) ../lib/node/$(PKG_NPM_NAME)/dist/corepack.js $(1)/usr/bin/corepack
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
@@ -100,10 +100,10 @@ define Host/Install
 		$(1)/lib/node_modules/$(PKG_NPM_NAME)/
 	$(CP) $(HOST_BUILD_DIR)/README.md \
 		$(1)/lib/node_modules/$(PKG_NPM_NAME)/
-	$(CP) $(HOST_BUILD_DIR)/{bin,dist} \
+	$(CP) $(HOST_BUILD_DIR)/dist \
 		$(1)/lib/node_modules/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/bin
-	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/corepack $(1)/bin/corepack
+	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/dist/corepack.js $(1)/bin/corepack
 endef
 
 $(eval $(call HostBuild))
