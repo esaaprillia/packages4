@@ -1,0 +1,21 @@
+From 42c1d61a099c4a7b4decfdfd81d4202ca1cbc9ac Mon Sep 17 00:00:00 2001
+From: LyokoJeremie <lucheng989898@gmail.com>
+Date: Wed, 27 Aug 2025 14:30:59 +0800
+Subject: [PATCH] boost::format
+
+---
+ src/ConfigLoader.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ConfigLoader.cpp b/src/ConfigLoader.cpp
+index 7493685..9b20a42 100644
+--- a/src/ConfigLoader.cpp
++++ b/src/ConfigLoader.cpp
+@@ -19,6 +19,7 @@
+ #include "ConfigLoader.h"
+ 
+ #include <sstream>
++#include <boost/format.hpp>
+ 
+ #include "./log/Log.h"
+ #include "./base64.h"
