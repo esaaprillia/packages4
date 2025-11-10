@@ -43,6 +43,7 @@ CMAKE_OPTIONS += \
 define Build/Compile
 	( \
 		pushd $(PKG_BUILD_DIR)/html ; \
+		corepack enable ; \
 		yarn install ; \
 		yarn version --new-version $(PKG_VERSION) --no-git-tag-version ; \
 		yarn run build ; \
