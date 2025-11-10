@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://github.com/tiagocoutinho/modbus-proxy-rs/archive/v$(PKG_
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=
-PKG_LICENSE:=
+PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=
 
 PKG_BUILD_DEPENDS:=rust/host
