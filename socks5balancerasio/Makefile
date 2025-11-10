@@ -14,8 +14,6 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/Socks5BalancerAsio-$(PKG_VERSION)
 
-CMAKE_BINARY_SUBDIR := build
-
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -40,18 +38,20 @@ CMAKE_OPTIONS += \
 	-DUSE_DYNAMIC_BOOST=ON \
 	-DOPENSSL_USE_STATIC_LIBS=OFF
 
+define Build/Install
+	mkdir -p "$(PKG_INSTALL_DIR)"
+	#$(CP) $(PKG_BUILD_DIR)/html/build/html $(PKG_INSTALL_DIR)/usr/share/
+	$(CP) $(PKG_BUILD_DIR)/Socks5BalancerAsio $(PKG_INSTALL_DIR)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/example-config/FullConfig.json $(PKG_INSTALL_DIR)/etc/
+endef
+
 define Package/socks5balancerasio/install
 	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
-	  $(1)/usr/lib
+	  $(1)/usr/bin
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/bin/* \
 	  $(1)/usr/bin/
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,socks5balancerasio))
