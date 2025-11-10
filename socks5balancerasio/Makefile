@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=node/host node-yarn/host
+PKG_BUILD_DEPENDS:=node/host node-yarn/host node-corepack/host
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/Socks5BalancerAsio-$(PKG_VERSION)
 
