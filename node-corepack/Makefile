@@ -17,7 +17,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.md
 
-HOST_BUILD_DEPENDS:=node/host
+HOST_BUILD_DEPENDS:=node/host node-yarn/host
 HOST_BUILD_PARALLEL:=1
 
 PKG_BUILD_DEPENDS:=node/host
