@@ -23,7 +23,7 @@ define Package/socks5balancerasio
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Socks5BalancerAsio
-	DEPENDS:=+boost-filesystem +boost-chrono +libopenssl +libopenssl-legacy
+	DEPENDS:=+boost-filesystem +boost-chrono +boost-log +boost-program_options +boost-thread +boost-url +libopenssl +libopenssl-legacy
 	URL:=https://github.com/Socks5Balancer/Socks5BalancerAsio
 endef
 
