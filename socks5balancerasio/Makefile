@@ -52,9 +52,9 @@ define Build/Compile
 endef
 
 define Build/Install
-	mkdir -p "$(PKG_INSTALL_DIR)/usr/share"
-	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
 	mkdir -p "$(PKG_INSTALL_DIR)/etc"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/share"
 	$(CP) $(PKG_BUILD_DIR)/html/build/html $(PKG_INSTALL_DIR)/usr/share/
 	$(CP) $(PKG_BUILD_DIR)/Socks5BalancerAsio $(PKG_INSTALL_DIR)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/example-config/FullConfig.json $(PKG_INSTALL_DIR)/etc/
