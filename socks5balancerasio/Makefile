@@ -1,12 +1,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=socks5balancerasio
-PKG_VERSION:=1.3.9
+PKG_VERSION:=1.6.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/Socks5Balancer/Socks5BalancerAsio/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+PKG_SOURCE_URL:=https://github.com/Socks5Balancer/Socks5BalancerAsio.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=c37b0423918dc16f8cacad11d0e8797c8b8221ea
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
