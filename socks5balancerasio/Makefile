@@ -36,7 +36,9 @@ endef
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_DATETIME=OFF \
-	-DVERSION="$(PKG_VERSION)"
+	-DVERSION="$(PKG_VERSION)" \
+	-DUSE_DYNAMIC_BOOST=ON \
+	-DOPENSSL_USE_STATIC_LIBS=OFF
 
 define Package/socks5balancerasio/install
 	$(INSTALL_DIR) \
