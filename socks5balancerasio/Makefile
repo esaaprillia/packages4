@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=node/host node-yarn/host node-corepack/host
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/Socks5BalancerAsio-$(PKG_VERSION)
+#PKG_BUILD_DIR:=$(BUILD_DIR)/Socks5BalancerAsio-$(PKG_VERSION)
 
 PKG_BUILD_PARALLEL:=1
 
@@ -72,3 +72,4 @@ define Package/socks5balancerasio/install
 endef
 
 $(eval $(call BuildPackage,socks5balancerasio))
+
