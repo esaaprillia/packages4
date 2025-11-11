@@ -46,6 +46,7 @@ define Build/Compile
 		pushd $(PKG_BUILD_DIR)/html ; \
 		corepack enable ; \
 		yarn install ; \
+		yarn run webpack ; \
 		yarn version --new-version $(PKG_VERSION) --no-git-tag-version ; \
 		yarn run build ; \
 		popd ; \
@@ -72,4 +73,3 @@ define Package/socks5balancerasio/install
 endef
 
 $(eval $(call BuildPackage,socks5balancerasio))
-
