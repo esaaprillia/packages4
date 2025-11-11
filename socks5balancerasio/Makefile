@@ -43,12 +43,12 @@ CMAKE_OPTIONS += \
 
 define Build/Compile
 	( \
-		pushd $(PKG_BUILD_DIR)/assets ; \
+		pushd $(PKG_BUILD_DIR)/html ; \
 		yarn install ; \
 		yarn version --new-version $(PKG_VERSION) --no-git-tag-version ; \
 		yarn run build ; \
 		popd ; \
-		$(call GoPackage/Build/Compile) ; \
+		$(call Build/Compile/Default) ; \
 	)
 endef
 
