@@ -108,4 +108,3 @@ endef
 
 $(eval $(call HostBuild))
 $(eval $(call BuildPackage,node-webpack))
-
