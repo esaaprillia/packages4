@@ -1,0 +1,20 @@
+From b984cc2abde8e0317ff4cae156aa8a283ad2c0c3 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 11 Nov 2025 19:38:11 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 1922b9ea..7e3cb881 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools","swig"]
++requires = ["setuptools"]
+ build-backend = "setuptools.build_meta"
+ 
+ 
