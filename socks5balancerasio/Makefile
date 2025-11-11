@@ -46,7 +46,6 @@ define Build/Compile
 		pushd $(PKG_BUILD_DIR)/html ; \
 		corepack enable ; \
 		yarn install ; \
-		yarn run webpack ; \
 		yarn run build ; \
 		popd ; \
 		$(call Build/Compile/Default) ; \
