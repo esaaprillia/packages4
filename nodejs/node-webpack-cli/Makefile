@@ -72,7 +72,7 @@ define Package/node-webpack-cli/install
 	$(CP) $(PKG_BUILD_DIR)/{bin,lib,node_modules} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(LN) ../lib/node/$(PKG_NPM_NAME)/bin/cli.js $(1)/usr/bin/cli
+	$(LN) ../lib/node/$(PKG_NPM_NAME)/bin/cli.js $(1)/usr/bin/webpack-cli
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
@@ -103,7 +103,7 @@ define Host/Install
 	$(CP) $(HOST_BUILD_DIR)/{bin,lib,node_modules} \
 		$(1)/lib/node_modules/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/bin
-	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/cli.js $(1)/bin/cli
+	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/cli.js $(1)/bin/webpack-cli
 endef
 
 $(eval $(call HostBuild))
