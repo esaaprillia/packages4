@@ -1,0 +1,20 @@
+From f4149dbe53586cfdf8484b8a14a709a5ee3ed6aa Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Tue, 11 Nov 2025 21:01:41 +0800
+Subject: [PATCH] Update package.json
+
+---
+ package.json | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/package.json b/package.json
+index 6d2e26b..d50bf94 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,5 @@
+ {
+   "name": "Socks5BalancerAsioHtml",
+-  "packageManager": "yarn@3.4.1",
+   "author": "Jeremie",
+   "license": "GPLv3",
+   "scripts": {
