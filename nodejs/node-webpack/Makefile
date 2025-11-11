@@ -17,7 +17,7 @@ PKG_MAINTAINER:=Hirokazu MORIKAWA <morikw2@gmail.com>, Patrik Laszlo <alabard@gm
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=node/host node-pug/host node-pug-loader/host
+HOST_BUILD_DEPENDS:=node/host node-pug/host node-pug-loader/host node-husky/host
 HOST_BUILD_PARALLEL:=1
 
 PKG_BUILD_DEPENDS:=node/host
