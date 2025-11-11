@@ -41,7 +41,7 @@ define Package/python3-pip/conffiles
 /etc/pip.conf
 endef
 
-define Package/python3-pip/install
+define Py3Package/python3-pip/install
 	$(INSTALL_DIR) $(1)/etc
 	$(INSTALL_DATA) ./files/pip.conf $(1)/etc/
 endef
