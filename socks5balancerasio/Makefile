@@ -13,7 +13,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=node/host node-yarn/host node-corepack/host node-fork-ts-checker-webpack-plugin/host node-webpack-cli/host node-cosmiconfig/host
+PKG_BUILD_DEPENDS:=node/host node-yarn/host
 
 #PKG_BUILD_DIR:=$(BUILD_DIR)/Socks5BalancerAsio-$(PKG_VERSION)
 
@@ -43,13 +43,12 @@ CMAKE_OPTIONS += \
 
 define Build/Compile
 	( \
-		pushd $(PKG_BUILD_DIR)/html ; \
-		corepack enable ; \
+		pushd $(PKG_BUILD_DIR)/assets ; \
 		yarn install ; \
-		yarn run webpack ; \
+		yarn version --new-version $(PKG_VERSION) --no-git-tag-version ; \
 		yarn run build ; \
 		popd ; \
-		$(call Build/Compile/Default) ; \
+		$(call GoPackage/Build/Compile) ; \
 	)
 endef
 
@@ -57,7 +56,8 @@ define Build/Install
 	mkdir -p "$(PKG_INSTALL_DIR)/etc"
 	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
 	mkdir -p "$(PKG_INSTALL_DIR)/usr/share"
-	$(CP) $(PKG_BUILD_DIR)/html/build/html $(PKG_INSTALL_DIR)/usr/share/
+	$(RM) $(PKG_BUILD_DIR)/html/{node_modules,.git,.idea,.github,.yarn,.editorconfig,.gitattributes,.gitignore,.yarnrc.yml,package.json,tsconfig.json,yarn.lock,i18n-table,i18n,chart.js,globalLib.d.ts,webpack.config.js}
+	$(CP) $(PKG_BUILD_DIR)/html $(PKG_INSTALL_DIR)/usr/share/
 	$(CP) $(PKG_BUILD_DIR)/Socks5BalancerAsio $(PKG_INSTALL_DIR)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/example-config/FullConfig.json $(PKG_INSTALL_DIR)/etc/
 endef
