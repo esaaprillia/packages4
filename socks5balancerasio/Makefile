@@ -1,21 +1,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=socks5balancerasio
-PKG_VERSION:=1.6.0
+PKG_VERSION:=1.3.9
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=https://github.com/Socks5Balancer/Socks5BalancerAsio.git
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=c37b0423918dc16f8cacad11d0e8797c8b8221ea
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/Socks5Balancer/Socks5BalancerAsio/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=node/host node-yarn/host node-fork-ts-checker-webpack-plugin/host node-webpack-cli/host node-cosmiconfig/host
-
-#PKG_BUILD_DIR:=$(BUILD_DIR)/Socks5BalancerAsio-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/Socks5BalancerAsio-$(PKG_VERSION)
 
 PKG_BUILD_PARALLEL:=1
 
@@ -41,23 +38,11 @@ CMAKE_OPTIONS += \
 	-DUSE_DYNAMIC_BOOST=ON \
 	-DOPENSSL_USE_STATIC_LIBS=OFF
 
-define Build/Compile
-	( \
-		pushd $(PKG_BUILD_DIR)/html ; \
-		yarn install ; \
-		yarn version --new-version $(PKG_VERSION) --no-git-tag-version ; \
-		yarn run build ; \
-		popd ; \
-		$(call Build/Compile/Default) ; \
-	)
-endef
+MAKE_FLAGS += VERSION="$(PKG_VERSION)"
 
 define Build/Install
 	mkdir -p "$(PKG_INSTALL_DIR)/etc"
 	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
-	mkdir -p "$(PKG_INSTALL_DIR)/usr/share"
-	$(RM) $(PKG_BUILD_DIR)/html/{node_modules,.git,.idea,.github,.yarn,.editorconfig,.gitattributes,.gitignore,.yarnrc.yml,package.json,tsconfig.json,yarn.lock,i18n-table,i18n,chart.js,globalLib.d.ts,webpack.config.js}
-	$(CP) $(PKG_BUILD_DIR)/html $(PKG_INSTALL_DIR)/usr/share/
 	$(CP) $(PKG_BUILD_DIR)/Socks5BalancerAsio $(PKG_INSTALL_DIR)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/example-config/FullConfig.json $(PKG_INSTALL_DIR)/etc/
 endef
@@ -67,8 +52,6 @@ define Package/socks5balancerasio/install
 	$(CP) $(PKG_INSTALL_DIR)/etc/FullConfig.json $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/Socks5BalancerAsio $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/share
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/html $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,socks5balancerasio))
