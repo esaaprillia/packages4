@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-engineio
-PKG_VERSION:=4.10.1
+PKG_VERSION:=4.12.3
 PKG_RELEASE:=1
 
-PYPI_NAME:=python-engineio
-PKG_HASH:=166cea8dd7429638c5c4e3a4895beae95196e860bc6f29ed0b9fe753d1ef2072
+PYPI_NAME:=python_engineio
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
