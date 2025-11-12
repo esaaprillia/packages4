@@ -21,7 +21,7 @@ define Package/python3-oauthlib
   CATEGORY:=Languages
   TITLE:=OAuth often seems complicated and difficult-to-implement.
   URL:=https://oauthlib.readthedocs.io/
-  DEPENDS:=+python3 +python3--pyjwt +python3--blinker +python3--cryptography
+  DEPENDS:=+python3 +python3-pyjwt +python3-blinker +python3-cryptography
 endef
 
 define Package/python3-oauthlib/description
