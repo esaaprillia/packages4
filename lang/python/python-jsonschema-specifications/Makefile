@@ -11,8 +11,7 @@ PKG_NAME:=python-jsonschema-specifications
 PKG_VERSION:=2025.9.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=jsonschema-specifications
-PYPI_SOURCE_NAME:=jsonschema_specifications
+PYPI_NAME:=jsonschema_specifications
 PKG_HASH:=skip
 
 PKG_LICENSE:=MIT
