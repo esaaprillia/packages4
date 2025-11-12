@@ -1,20 +1,21 @@
-From f4149dbe53586cfdf8484b8a14a709a5ee3ed6aa Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Tue, 11 Nov 2025 21:01:41 +0800
-Subject: [PATCH] Update package.json
+From 42c1d61a099c4a7b4decfdfd81d4202ca1cbc9ac Mon Sep 17 00:00:00 2001
+From: LyokoJeremie <lucheng989898@gmail.com>
+Date: Wed, 27 Aug 2025 14:30:59 +0800
+Subject: [PATCH] boost::format
 
 ---
- html/package.json | 1 -
- 1 file changed, 1 deletion(-)
+ src/ConfigLoader.cpp | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/html/package.json b/html/package.json
-index 6d2e26b..d50bf94 100644
---- a/html/package.json
-+++ b/html/package.json
-@@ -1,6 +1,5 @@
- {
-   "name": "Socks5BalancerAsioHtml",
--  "packageManager": "yarn@3.4.1",
-   "author": "Jeremie",
-   "license": "GPLv3",
-   "scripts": {
+diff --git a/src/ConfigLoader.cpp b/src/ConfigLoader.cpp
+index 7493685..9b20a42 100644
+--- a/src/ConfigLoader.cpp
++++ b/src/ConfigLoader.cpp
+@@ -19,6 +19,7 @@
+ #include "ConfigLoader.h"
+ 
+ #include <sstream>
++#include <boost/format.hpp>
+ 
+ #include "./log/Log.h"
+ #include "./base64.h"
