@@ -31,6 +31,9 @@ define Package/python3-rockstor-core/description
 An Open Source (Licensed: FSF Free/Libre & OSI approved) community endeavour to sustainably develop, maintain, and distribute an easy to use, flexible, Linux & BTRFS based DIY Network Attached Storage (NAS) software appliance.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=rockstor
+PYTHON3_PKG_WHEEL_VERSION:=5.1.0
+
 $(eval $(call Py3Package,python3-rockstor-core))
 $(eval $(call BuildPackage,python3-rockstor-core))
 $(eval $(call BuildPackage,python3-rockstor-core-src))
