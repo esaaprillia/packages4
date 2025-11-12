@@ -1,0 +1,50 @@
+From 92e63abefc302a045c5843c9bd136f33a17e3351 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 12 Nov 2025 13:12:34 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ pyproject.toml | 2 --
+ setup.cfg      | 2 --
+ setup.py       | 2 +-
+ 3 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 3949d8f..2b0767f 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -6,8 +6,6 @@ build-backend = 'mesonpy'
+ requires = [
+     'meson-python>=0.8.1',
+     'meson>=0.60.0',
+-    'ninja',
+-    'patchelf',
+     'setuptools',
+     'wheel',
+ ]
+diff --git a/setup.cfg b/setup.cfg
+index 1c5a0cb..0077d4b 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -6,8 +6,6 @@ python_requires = >=3.7
+ setup_requires =
+     meson-python>=0.8.1
+     meson>=0.60.3
+-    ninja
+-    patchelf
+     setuptools
+     wheel
+ zip_safe = False
+diff --git a/setup.py b/setup.py
+index d30dbfc..ef6e52b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,7 +40,7 @@
+     setup_requires = ['setuptools', 'wheel']
+ else:
+     use_autotools = False
+-    setup_requires = ['meson>=0.60.0', 'ninja', 'setuptools', 'wheel']
++    setup_requires = ['meson>=0.60.0', 'setuptools', 'wheel']
+ 
+ if os.path.exists('.version'):
+     version = open('.version').read().strip()
