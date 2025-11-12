@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-django-oauth-toolkit
+PKG_NAME:=django-oauth-toolkit
 PKG_VERSION:=3.1.0
 PKG_RELEASE:=1
 
