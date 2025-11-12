@@ -1,16 +1,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-absl-py
-PKG_VERSION:=2.1.0
+PKG_VERSION:=2.3.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=absl-py
-PKG_HASH:=7820790efbb316739cde8b4e19357243fc3608a152024288513dd968d7d959ff
+PYPI_NAME:=absl_py
+PKG_HASH:=skip
 
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
