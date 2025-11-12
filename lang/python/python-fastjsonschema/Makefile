@@ -4,7 +4,7 @@ PKG_NAME:=python-fastjsonschema
 PKG_VERSION:=2.21.2
 PKG_RELEASE:=1
 
-PYPI_NAME:=validate_pyproject
+PYPI_NAME:=fastjsonschema
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
