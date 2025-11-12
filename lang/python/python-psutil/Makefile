@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-psutil
-PKG_VERSION:=7.1.2
+PKG_VERSION:=7.1.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=psutil
