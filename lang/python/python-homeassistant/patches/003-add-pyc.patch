@@ -41,3 +41,28 @@
  
      if not args:
  
+From e8b44e8de34c1b5ad76d8180a258de0270a7825a Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 13 Nov 2025 20:46:38 +0800
+Subject: [PATCH] Update setup.py
+
+---
+ homeassistant/setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/homeassistant/setup.py b/homeassistant/setup.py
+index a631eb07ca2820..1a6f510c3f7ffe 100644
+--- a/homeassistant/setup.py
++++ b/homeassistant/setup.py
+@@ -666,9 +666,9 @@ class SetupPhases(StrEnum):
+     """Constants for setup time measurements."""
+ 
+     SETUP = "setup"
+-    """Set up of a component in __init__.py."""
++    """Set up of a component in __init__.pyc."""
+     CONFIG_ENTRY_SETUP = "config_entry_setup"
+-    """Set up of a config entry in __init__.py."""
++    """Set up of a config entry in __init__.pyc."""
+     PLATFORM_SETUP = "platform_setup"
+     """Set up of a platform integration.
+ 
