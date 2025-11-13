@@ -23,7 +23,7 @@ define Package/python3-paramiko
   TITLE:=SSH2 protocol library
   URL:=https://github.com/paramiko/paramiko/
   DEPENDS:=+python3-light +python3-logging +python3-bcrypt \
-	  +python3-cryptography +python3-openssl +python3-pynacl
+	  +python3-cryptography +python3-openssl +python3-invoke +python3-pynacl
 endef
 
 define Package/python3-paramiko/description
