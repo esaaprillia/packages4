@@ -66,3 +66,25 @@ index a631eb07ca2820..1a6f510c3f7ffe 100644
      PLATFORM_SETUP = "platform_setup"
      """Set up of a platform integration.
  
+From 69d16f540a217d9be1ca7ff778449ce351b43d20 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 13 Nov 2025 21:14:20 +0800
+Subject: [PATCH] Update block_async_io.py
+
+---
+ homeassistant/block_async_io.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/homeassistant/block_async_io.py b/homeassistant/block_async_io.py
+index eb81268434bf7..a7b5f06c2f9ff 100644
+--- a/homeassistant/block_async_io.py
++++ b/homeassistant/block_async_io.py
+@@ -46,7 +46,7 @@ def _check_sleep_call_allowed(mapped_args: dict[str, Any]) -> bool:
+     # frame[2] is protected_loop_func
+     # frame[3] is the offender
+     with suppress(ValueError):
+-        return get_current_frame(4).f_code.co_filename.endswith("pydevd.py")
++        return get_current_frame(4).f_code.co_filename.endswith("pydevd.pyc")
+     return False
+ 
+ 
