@@ -12,7 +12,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:docker:docker-py
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
