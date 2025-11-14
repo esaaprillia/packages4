@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-lakers-python
+PKG_NAME:=python-lakers
 PKG_VERSION:=0.6.0
 PKG_RELEASE:=1
 
@@ -17,7 +17,7 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-define Package/python3-lakers-python
+define Package/python3-lakers
   SECTION:=lang
   CATEGORY:=Languages
   SUBMENU:=Python
@@ -26,10 +26,10 @@ define Package/python3-lakers-python
   DEPENDS:=+python3-light $(RUST_ARCH_DEPENDS)
 endef
 
-define Package/python3-lakers-python/description
+define Package/python3-lakers/description
 Ephemeral Diffie-Hellman Over COSE (EDHOC) is a new IETF standard that provides a very lightweight authenticated key exchange, ideal for usage in constrained scenarios, such as in Internet of Things environments.
 endef
 
-$(eval $(call Py3Package,python3-lakers-python))
-$(eval $(call BuildPackage,python3-lakers-python))
-$(eval $(call BuildPackage,python3-lakers-python-src))
+$(eval $(call Py3Package,python3-lakers))
+$(eval $(call BuildPackage,python3-lakers))
+$(eval $(call BuildPackage,python3-lakers-src))
