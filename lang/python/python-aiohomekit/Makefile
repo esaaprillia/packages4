@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiohomekit
-PKG_VERSION:=3.2.7
+PKG_VERSION:=3.2.20
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiohomekit
-PKG_HASH:=d5c783b36eedead697c7ca9d7019551837e4ad611b5eb9cc24a04e473925498e
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
