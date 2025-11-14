@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aioshelly
-PKG_VERSION:=12.3.2
+PKG_VERSION:=13.17.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aioshelly
-PKG_HASH:=a2204532ef369a3dacb541199a594d52c8541a99327416247bc12e7f5c757eb3
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
