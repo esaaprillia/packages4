@@ -21,7 +21,7 @@ define Package/python3-aiocoap
   SUBMENU:=Python
   TITLE:=Python CoAP library
   URL:=https://codeberg.org/aiocoap/aiocoap
-  DEPENDS:=+python3 +python3-cbor2 +python3-cryptography +python3-filelock +python3-ge25519 +python3-lakers-python +python3-cbor-diag +python3-dtlssocket +python3-websockets +python3-pygments +python3-colorlog
+  DEPENDS:=+python3 +python3-cbor2 +python3-cryptography +python3-filelock +python3-ge25519 +python3-lakers +python3-cbor-diag +python3-dtlssocket +python3-websockets +python3-pygments +python3-colorlog
 endef
 
 define Package/python3-aiocoap/description
