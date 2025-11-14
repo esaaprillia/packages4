@@ -25,10 +25,12 @@ define Package/python3-aioshelly
 	+python3-asyncio \
 	+python3-logging \
 	+python3-aiohttp \
+	+python3-bleak-retry-connector \
 	+python3-bluetooth-data-tools \
 	+python3-habluetooth \
 	+python3-orjson \
-	+python3-yarl
+	+python3-yarl \
+	+python3-zeroconf
 endef
 
 define Package/python3-aioshelly/description
