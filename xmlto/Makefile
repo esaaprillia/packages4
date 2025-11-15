@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xmlto
-PKG_VERSION:=0.0.28
+PKG_VERSION:=0.0.29
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -15,6 +15,7 @@ PKG_LICENSE_FILES:=COPYING
 PKG_BUILD_DEPENDS:=libxslt/host
 HOST_BUILD_DEPENDS:=libxslt/host
 
+PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/host-build.mk
