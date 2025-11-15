@@ -1,6 +1,6 @@
-From 2f1e5a03b2411dba769cda2986a6a1fe14d7cf06 Mon Sep 17 00:00:00 2001
+From afc9a5584c9985e469f8bb4d1c16a26050eb8015 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 18 Oct 2025 09:18:24 +0800
+Date: Sat, 15 Nov 2025 17:55:30 +0800
 Subject: [PATCH] Update pyproject.toml
 
 ---
@@ -8,14 +8,14 @@ Subject: [PATCH] Update pyproject.toml
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index f122e34..a3499c9 100644
+index e83e8f56..ffb76591 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -105,7 +105,7 @@ module = "docs.*"
  ignore_errors = true
  
  [build-system]
--requires = ['setuptools>=65.4.1', 'wheel', 'Cython>=3,<3.1.0', "poetry-core>=1.0.0"]
+-requires = ['setuptools>=65.4.1', 'wheel', 'Cython>=3,<3.3.0', "poetry-core>=1.0.0"]
 +requires = ['setuptools>=65.4.1', 'wheel', 'Cython', "poetry-core"]
  build-backend = "poetry.core.masonry.api"
  
