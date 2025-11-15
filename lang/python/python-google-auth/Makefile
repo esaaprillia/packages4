@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-auth
-PKG_VERSION:=2.41.1
+PKG_VERSION:=2.43.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_auth
@@ -31,4 +31,3 @@ endef
 $(eval $(call Py3Package,python3-google-auth))
 $(eval $(call BuildPackage,python3-google-auth))
 $(eval $(call BuildPackage,python3-google-auth-src))
-
