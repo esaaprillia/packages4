@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-universal-silabs-flasher
-PKG_VERSION:=0.0.37
+PKG_VERSION:=0.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=universal_silabs_flasher
