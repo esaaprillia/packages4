@@ -21,7 +21,7 @@ define Package/python3-samsungctl
   SUBMENU:=Python
   TITLE:=Remote control Samsung televisions via TCP/IP connection
   URL:=https://github.com/Ape/samsungctl
-  DEPENDS:=+python3 +python3-websocket-client
+  DEPENDS:=+python3 +python3-websocket-client +python3-ncurses
 endef
 
 define Package/python3-samsungctl/description
