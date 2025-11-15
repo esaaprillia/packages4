@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-rockstor-core
+PKG_NAME:=python-rockstor
 PKG_VERSION:=5.1.0-0
 PKG_RELEASE:=1
 
@@ -18,7 +18,7 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-define Package/python3-rockstor-core
+define Package/python3-rockstor
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
@@ -27,13 +27,13 @@ define Package/python3-rockstor-core
   DEPENDS:=+python3 +python3-django +python3-django-oauth-toolkit +python3-django-restframework +python3-django-pipeline +python3-docutils +python3-engineio +python3-socketio +python3-dbus +python3-psycopg +python3-psycogreen +python3-gevent +python3-gunicorn +python3-packaging +python3-six +python3-huey +python3-psutil +python3-pyzmq +python3-distro +python3-urlobject +python3-keyring-pass +python3-zypper-changelog-lib +python3-supervisor
 endef
 
-define Package/python3-rockstor-core/description
+define Package/python3-rockstor/description
 An Open Source (Licensed: FSF Free/Libre & OSI approved) community endeavour to sustainably develop, maintain, and distribute an easy to use, flexible, Linux & BTRFS based DIY Network Attached Storage (NAS) software appliance.
 endef
 
 PYTHON3_PKG_WHEEL_NAME:=rockstor
 PYTHON3_PKG_WHEEL_VERSION:=5.1.0
 
-$(eval $(call Py3Package,python3-rockstor-core))
-$(eval $(call BuildPackage,python3-rockstor-core))
-$(eval $(call BuildPackage,python3-rockstor-core-src))
+$(eval $(call Py3Package,python3-rockstor))
+$(eval $(call BuildPackage,python3-rockstor))
+$(eval $(call BuildPackage,python3-rockstor-src))
