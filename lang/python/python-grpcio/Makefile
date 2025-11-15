@@ -36,6 +36,7 @@ define Package/python3-grpcio
 	+python3-asyncio \
 	+python3-logging \
 	+python3-multiprocessing \
+	+python3-typing-extensions \
 	+python3-protobuf \
 	+python3-readline \
 	+python3-unittest \
