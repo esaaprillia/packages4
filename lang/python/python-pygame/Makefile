@@ -23,7 +23,7 @@ define Package/python3-pygame
   CATEGORY:=Languages
   TITLE:=Python Game Development
   URL:=https://www.pygame.org/
-  DEPENDS:=+python3 +sdl2 +sdl2-image +sdl2-mixer +sdl2-ttf +sdl2-gfx +libfreetype +libpng +libjpeg-turbo +fontconfig +portmidi
+  DEPENDS:=+python3 +python3-numpy +sdl2 +sdl2-image +sdl2-mixer +sdl2-ttf +sdl2-gfx +libfreetype +libpng +libjpeg-turbo +fontconfig +portmidi
 endef
 
 define Package/python3-pygame/description
