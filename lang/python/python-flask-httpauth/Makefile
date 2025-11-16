@@ -38,6 +38,9 @@ define Package/python3-flask-httpauth/description
   use of HTTP authentication with Flask routes
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=flask_httpauth
+PYTHON3_PKG_WHEEL_VERSION:=4.8.0
+
 $(eval $(call Py3Package,python3-flask-httpauth))
 $(eval $(call BuildPackage,python3-flask-httpauth))
 $(eval $(call BuildPackage,python3-flask-httpauth-src))
