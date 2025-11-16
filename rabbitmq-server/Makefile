@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rabbitmq-server
-PKG_VERSION:=4.1.4
+PKG_VERSION:=4.2.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
@@ -23,7 +23,7 @@ define Package/rabbitmq-server
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open source RabbitMQ: core server and tier 1 (built-in) plugins
-	DEPENDS:=+libstdcpp +socat +python3-simplejson +erlang +erlang-asn1 +erlang-compiler +erlang-crypto +erlang-diameter +erlang-eldap +erlang-erl-interface +erlang-ftp +erlang-inets +erlang-mnesia +erlang-odbc +erlang-os-mon +erlang-parsetools +erlang-public-key +erlang-reltool +erlang-runtime-tools +erlang-sasl +erlang-snmp +erlang-ssh +erlang-ssl +erlang-syntax-tools +erlang-tftp +erlang-tools +erlang-xmerl
+	DEPENDS:=+libstdcpp +socat +erlang +erlang-asn1 +erlang-compiler +erlang-crypto +erlang-diameter +erlang-eldap +erlang-erl-interface +erlang-ftp +erlang-inets +erlang-mnesia +erlang-odbc +erlang-os-mon +erlang-parsetools +erlang-public-key +erlang-reltool +erlang-runtime-tools +erlang-sasl +erlang-snmp +erlang-ssh +erlang-ssl +erlang-syntax-tools +erlang-tftp +erlang-tools +erlang-xmerl
 	URL:=www.rabbitmq.com/
 endef
 
