@@ -4,7 +4,7 @@ PKG_NAME:=casaos
 PKG_VERSION:=0.4.15
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=CasaOS-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/IceWhaleTech/CasaOS/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
