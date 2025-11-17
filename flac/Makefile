@@ -22,7 +22,7 @@ define Package/flac
 	SECTION:=net
 	CATEGORY:=Network
 	TITLE:=Free Lossless Audio Codec
-	DEPENDS:=+libstdcpp +libogg
+	DEPENDS:=+libstdcpp +libogg $(ICONV_DEPENDS)
 	URL:=https://xiph.org/flac/
 endef
 
