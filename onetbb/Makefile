@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=onetbb
-PKG_VERSION:=2022.2.0
+PKG_VERSION:=2022.3.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=oneTBB-$(PKG_VERSION).tar.gz
