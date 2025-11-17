@@ -23,7 +23,7 @@ define Package/python3-luci-rpc
   CATEGORY:=Languages
   TITLE:=Module for interacting with OpenWrt Luci RPC interface
   URL:=https://github.com/fbradyirl/openwrt-luci-rpc
-  DEPENDS:=+python3 +python3-click +python3-requests +python3-packaging +luci-mod-rpc
+  DEPENDS:=+python3 +python3-click +python3-requests +python3-packaging
 endef
 
 define Package/python3-luci-rpc/description
