@@ -21,7 +21,7 @@ define Package/python3-ubus-rpc
   CATEGORY:=Languages
   TITLE:=OpenWrt ubus RPC API library
   URL:=https://github.com/Noltari/python-ubus-rpc
-  DEPENDS:=+python3 +python3-requests +python3-urllib3 +rpcd-mod-file +uhttpd-mod-ubus
+  DEPENDS:=+python3 +python3-requests +python3-urllib3
 endef
 
 define Package/python3-ubus-rpc/description
