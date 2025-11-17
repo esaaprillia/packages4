@@ -15,6 +15,7 @@ PKG_LICENSE_FILES:=COPYING.FDL COPYING.GPL COPYING.LGPL COPYING.Xiph
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/nls.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/flac
