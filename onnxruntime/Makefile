@@ -13,6 +13,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR := build
+CMAKE_SOURCE_SUBDIR:= cmake
 
 PKG_BUILD_DEPENDS:=nlohmannjson icu googletest/host protobuf/host python-pybind11/host numpy/host
 #PYTHON3_PKG_BUILD:=0
