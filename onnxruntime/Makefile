@@ -16,14 +16,14 @@ CMAKE_BINARY_SUBDIR := build
 CMAKE_SOURCE_SUBDIR:= cmake
 
 PKG_BUILD_DEPENDS:=nlohmannjson icu googletest/host protobuf/host python-pybind11/host numpy/host
-#PYTHON3_PKG_BUILD:=0
+PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
-#PYTHON3_PKG_SETUP_DIR:=
+PYTHON3_PKG_SETUP_DIR:= build
 
 define Package/onnxruntime
 	SECTION:=libs
