@@ -25,6 +25,12 @@ include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 PYTHON3_PKG_SETUP_DIR:= build
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(RM) $(STAGING_DIR)/usr/bin/protoc*
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
+endef
+
 define Package/onnxruntime
 	SECTION:=libs
 	CATEGORY:=Libraries
