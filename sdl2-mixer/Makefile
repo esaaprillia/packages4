@@ -26,7 +26,7 @@ define Package/sdl2-mixer
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An audio mixer that supports various file formats for Simple Directmedia Layer.
-	DEPENDS:=+sdl2 +libflac +libvorbis +mpg123 +libopusfile +libfluidsynth +libxmp +libwavpack
+	DEPENDS:=+sdl2 +flac +libvorbis +mpg123 +libopusfile +libfluidsynth +libxmp +libwavpack
 	URL:=https://github.com/libsdl-org/SDL_mixer
 endef
 
