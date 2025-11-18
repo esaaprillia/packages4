@@ -23,7 +23,7 @@ define Package/python3-pysilero-vad
   CATEGORY:=Languages
   TITLE:=Pre-packaged voice activity detector using silero-vad
   URL:=https://github.com/rhasspy/pysilero-vad
-  DEPENDS:=+python3 +python3-onnxruntime +python3-numpy
+  DEPENDS:=+python3 +python3-numpy
 endef
 
 define Package/python3-pysilero-vad/description
