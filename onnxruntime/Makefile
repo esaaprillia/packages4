@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=nlohmannjson icu python-pybind11/host numpy/host
+PKG_BUILD_DEPENDS:=nlohmannjson icu protobuf/host python-pybind11/host numpy/host
 #PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
