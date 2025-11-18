@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pybind11
-PKG_VERSION:=3.0.1
+PKG_VERSION:=2.13.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=pybind11
@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-scikit-build-core/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
