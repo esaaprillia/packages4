@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-asgiref
-PKG_VERSION:=3.9.1
+PKG_VERSION:=3.10.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=asgiref
