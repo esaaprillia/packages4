@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_BUILD_DEPENDS:=python-pybind11/host
+PKG_BUILD_DEPENDS:=python-pybind11/host abseil-cpp/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
