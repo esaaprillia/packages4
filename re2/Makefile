@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=re2
-PKG_VERSION:=2025-08-12
+PKG_VERSION:=2025-11-05
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -55,3 +55,4 @@ endef
 
 $(eval $(call BuildPackage,re2))
 $(eval $(call HostBuild))
+
