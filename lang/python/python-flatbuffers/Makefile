@@ -17,13 +17,15 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
+PYTHON3_PKG_SETUP_DIR:=python
+
 define Package/python3-flatbuffers
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=The FlatBuffers serialization format for Python
   URL:=https://google.github.io/flatbuffers/
-  DEPENDS:=+python3 +flatbuffers
+  DEPENDS:=+python3
 endef
 
 define Package/python3-flatbuffers/description
