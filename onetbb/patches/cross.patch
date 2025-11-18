@@ -1,0 +1,22 @@
+From 46b9885d66976abf47052529824dd74f2420601c Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 17 Sep 2025 01:28:13 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ python/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
+index 748921a5..01cc259d 100644
+--- a/python/CMakeLists.txt
++++ b/python/CMakeLists.txt
+@@ -37,7 +37,7 @@ add_custom_target(
+     ALL
+     DEPENDS tbb python_copy
+     COMMAND
+-    ${PYTHON_EXECUTABLE} ${PYTHON_BUILD_WORK_DIR}/setup.py
++    CC="aarch64-openwrt-linux-musl-gcc" CCSHARED="aarch64-openwrt-linux-musl-gcc -DPIC -fPIC" CXX="aarch64-openwrt-linux-musl-g++" LD="aarch64-openwrt-linux-musl-gcc" LDSHARED="aarch64-openwrt-linux-musl-gcc -shared" CFLAGS="-Os -pipe -mcpu=generic -fno-caller-saves -fno-plt -fhonour-copts -ffile-prefix-map=/home/runner/work/mosdns/mosdns/sdk/build_dir/target-aarch64_generic_musl/oneTBB-2022.2.0=oneTBB-2022.2.0 -Wformat -Werror=format-security -fstack-protector -D_FORTIFY_SOURCE=1 -Wl,-z,now -Wl,-z,relro" CPPFLAGS="-I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include/fortify -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/include/python3.13" LDFLAGS="-L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/lib -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/lib -fuse-ld=bfd -znow -zrelro -lpython3.13" _PYTHON_HOST_PLATFORM="linux-aarch64" _PYTHON_SYSCONFIGDATA_NAME="_sysconfigdata__linux_aarch64-linux-musl" PYTHONPATH="/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/lib/python3.13:/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl//usr/lib/python3.13/site-packages:/home/runner/work/mosdns/mosdns/sdk/build_dir/target-aarch64_generic_musl/oneTBB-2022.2.0/ipkg-install//usr/lib/python3.13/site-packages" PYTHONDONTWRITEBYTECODE=1 _python_sysroot="/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl" _python_prefix="/usr" _python_exec_prefix="/usr"  CARGO_BUILD_TARGET=aarch64-unknown-linux-musl CARGO_HOME=/home/runner/work/mosdns/mosdns/sdk/dl/cargo CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1 CARGO_PROFILE_RELEASE_DEBUG=false CARGO_PROFILE_RELEASE_DEBUG_ASSERTIONS=false CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_OPT_LEVEL=z CARGO_PROFILE_RELEASE_OVERFLOW_CHECKS=true CARGO_PROFILE_RELEASE_PANIC=unwind CARGO_PROFILE_RELEASE_RPATH=false CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=aarch64-openwrt-linux-musl-gcc RUSTFLAGS="-Ctarget-feature=-crt-static -lssp_nonshared -Clink-arg=-fuse-ld=bfd" TARGET_CC=aarch64-openwrt-linux-musl-gcc TARGET_CFLAGS="-Os -pipe -mcpu=generic -fno-caller-saves -fno-plt -fhonour-copts -ffile-prefix-map=/home/runner/work/mosdns/mosdns/sdk/build_dir/target-aarch64_generic_musl/oneTBB-2022.2.0=oneTBB-2022.2.0 -Wformat -Werror=format-security -fstack-protector -D_FORTIFY_SOURCE=1 -Wl,-z,now -Wl,-z,relro -mno-outline-atomics" PYO3_CROSS_LIB_DIR="/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/lib/python3.13" SETUPTOOLS_RUST_CARGO_PROFILE="release" ${PYTHON_EXECUTABLE} ${PYTHON_BUILD_WORK_DIR}/setup.py
+         build -b${PYTHON_BUILD_WORK_DIR}
+         build_ext ${TBB4PY_INCLUDE_STRING} -L$<TARGET_FILE_DIR:TBB::tbb>
+         install --prefix build -f
