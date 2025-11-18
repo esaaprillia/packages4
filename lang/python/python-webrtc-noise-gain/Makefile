@@ -21,7 +21,7 @@ include ../python3-host-build.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(SED) 's/machine = platform.machine().lower()/machine="aarch64"/'  $(PKG_BUILD_DIR)/setup.py
+	$(SED) 's/machine = platform.machine().lower()/machine="aarch64"/' $(PKG_BUILD_DIR)/setup.py
 endef
 
 define Package/python3-webrtc-noise-gain
