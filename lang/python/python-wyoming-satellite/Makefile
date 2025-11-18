@@ -24,7 +24,7 @@ define Package/python3-wyoming-satellite
   CATEGORY:=Languages
   TITLE:=Remote voice satellite using Wyoming protocol
   URL:=https://github.com/rhasspy/wyoming-satellite
-  DEPENDS:=+python3 +python3-wyoming +python3-zeroconf +python3-pyring-buffer
+  DEPENDS:=+python3 +python3-wyoming +python3-zeroconf +python3-pyring-buffer +python3-pysilero-vad +python3-webrtc-noise-gain +python3-gpiozero +python3-spidev
 endef
 
 define Package/python3-wyoming-satellite/description
