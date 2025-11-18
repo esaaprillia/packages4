@@ -30,7 +30,7 @@ define Package/python3-webrtc-noise-gain
   CATEGORY:=Languages
   TITLE:=Noise suppression and automatic gain with webrtc
   URL:=https://github.com/rhasspy/webrtc-noise-gain
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +libstdcpp
 endef
 
 define Package/python3-webrtc-noise-gain/description
