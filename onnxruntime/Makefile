@@ -18,6 +18,7 @@ PKG_BUILD_DEPENDS:=nlohmannjson icu protobuf/host python-pybind11/host numpy/hos
 #PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/nls.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
