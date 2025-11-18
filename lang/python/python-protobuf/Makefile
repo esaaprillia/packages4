@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-protobuf
-PKG_VERSION:=6.32.1
+PKG_VERSION:=6.33.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=protobuf
