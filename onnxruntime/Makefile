@@ -28,7 +28,7 @@ define Package/onnxruntime
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=ONNX Runtime is a cross-platform inference and training machine-learning accelerator.
-	DEPENDS:=+libstdcpp +abseil-cpp +protobuf +re2 $(ICONV_DEPENDS)
+	DEPENDS:=+libstdcpp +abseil-cpp +protobuf +re2 +zlib $(ICONV_DEPENDS)
 	URL:=https://onnxruntime.ai/
 endef
 
