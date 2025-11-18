@@ -54,7 +54,9 @@ CMAKE_OPTIONS += \
 	-DBUILD_ONNX_PYTHON=ON \
 	-Donnxruntime_BUILD_SHARED_LIB=ON \
 	-Donnxruntime_BUILD_UNIT_TESTS=OFF \
-	-Donnxruntime_ENABLE_PYTHON=ON
+	-Donnxruntime_ENABLE_PYTHON=ON \
+	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
+	-DPython_NumPy_INCLUDE_DIRS="$(HOST_PYTHON3_PKG_DIR)/numpy/_core/include"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
