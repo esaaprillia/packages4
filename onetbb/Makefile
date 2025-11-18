@@ -53,8 +53,7 @@ CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
 	-DTBB_STRICT=OFF \
 	-DTBB_TEST=OFF \
-	-DTBB_DISABLE_HWLOC_AUTOMATIC_SEARCH=OFF \
-	-DPYTHON_EXECUTABLE="$(PYTHON3_PKG_BUILD_VARS) $(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
+	-DTBB_DISABLE_HWLOC_AUTOMATIC_SEARCH=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -71,3 +70,4 @@ $(eval $(call BuildPackage,onetbb))
 $(eval $(call Py3Package,python3-onetbb))
 $(eval $(call BuildPackage,python3-onetbb))
 $(eval $(call BuildPackage,python3-onetbb-src))
+
