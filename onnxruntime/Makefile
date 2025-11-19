@@ -27,6 +27,8 @@ PYTHON3_PKG_SETUP_DIR:= build
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
+	$(RM) $(STAGING_DIR)/usr/bin/flatc*
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc* $(STAGING_DIR)/usr/bin/
 	$(RM) $(STAGING_DIR)/usr/bin/protoc*
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 endef
