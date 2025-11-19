@@ -12,12 +12,13 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=protobuf/host
+PKG_BUILD_DEPENDS:=numpy/host python-protobuf/host python-pybind11/host
 
-CMAKE_BINARY_SUBDIR := build
+#CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
@@ -37,11 +38,25 @@ define Package/onnx/description
 	Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
 endef
 
+define Package/python3-onnx
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Open Neural Network Exchange
+  URL:=https://onnx.ai/
+  DEPENDS:=+python3 +python3-numpy +python3-protobuf +python3-typing-extensions +python3-ml-dtypes +python3-pillow +onnx
+endef
+
+define Package/python3-onnx/description
+Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
+endef
+
 CMAKE_OPTIONS += \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
     -DBUILD_SHARED_LIBS=ON \
+    -DONNX_BUILD_PYTHON=ON \
     -Wno-dev
 
 define Build/InstallDev
@@ -54,3 +69,6 @@ define Package/onnx/install
 endef
 
 $(eval $(call BuildPackage,onnx))
+$(eval $(call Py3Package,python3-onnx))
+$(eval $(call BuildPackage,python3-onnx))
+$(eval $(call BuildPackage,python3-onnx-src))
