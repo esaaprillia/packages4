@@ -30,7 +30,7 @@ define Package/marisa-trie/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_TESTING=ON \
+	-DBUILD_TESTING=OFF \
 	-DBUILD_SHARED_LIBS=ON
 
 define Build/InstallDev
