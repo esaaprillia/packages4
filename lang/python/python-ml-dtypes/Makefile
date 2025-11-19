@@ -1,17 +1,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ml-dtypes
-PKG_VERSION:=0.5.1
+PKG_VERSION:=0.5.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=ml_dtypes
-PKG_HASH:=ac5b58559bb84a95848ed6984eb8013249f90b6bab62aa5acbad876e256002c9
+PKG_HASH:=skip
 
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE LICENSE.eigen
 
-PKG_BUILD_DEPENDS:=numpy/host python-absl-py/host eigen
-HOST_BUILD_DEPENDS:=numpy/host python-absl-py/host eigen/host
+PKG_BUILD_DEPENDS:=python-absl-py/host
+HOST_BUILD_DEPENDS:=python-absl-py/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
