@@ -7,7 +7,7 @@ PKG_RELEASE:=1
 PYPI_NAME:=fastapi
 PKG_HASH:=skip
 
-PKG_MAINTAINER:=
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
