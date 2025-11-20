@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=swig/host python-cython/host
+PKG_BUILD_DEPENDS:=python-cython/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
