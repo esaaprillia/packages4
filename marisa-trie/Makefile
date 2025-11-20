@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=COPYING.md
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=swig/host python-cython/host
-#PYTHON3_PKG_BUILD:=0
+PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
@@ -33,9 +33,8 @@ define Package/marisa-trie/description
 	Matching Algorithm with Recursively Implemented StorAge (MARISA) is a static and space-efficient trie data structure.
 endef
 
-PYTHON3_PKG_SETUP_DIR:=bindings/python3
-PYTHON3_PKG_SETUP_GLOBAL_ARGS += \
-	build_ext \
+PYTHON3_PKG_BUILD_PATH:=bindings/python3
+PYTHON3_PKG_BUILD_ARGS += build_ext \
 	--include-dirs="$(PKG_BUILD_DIR)/include" \
 	--library-dirs="$(PKG_BUILD_DIR)"
 
