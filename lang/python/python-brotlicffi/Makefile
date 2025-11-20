@@ -17,6 +17,9 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
+PYTHON3_PKG_SETUP_VARS:= \
+	USE_SHARED_BROTLI=1
+
 define Package/python3-brotlicffi
   SUBMENU:=Python
   SECTION:=lang
