@@ -50,6 +50,8 @@ Matching Algorithm with Recursively Implemented StorAge (MARISA) is a static and
 endef
 
 PYTHON3_PKG_BUILD_PATH:=bindings/python3
+PYTHON3_PKG_WHEEL_NAME:=marisa
+PYTHON3_PKG_WHEEL_VERSION:=0.0.0
 
 CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
