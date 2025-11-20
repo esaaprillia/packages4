@@ -12,8 +12,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-2-Clause OR LGPL-2.1-or-later
 PKG_LICENSE_FILES:=COPYING.md
 
-CMAKE_BINARY_SUBDIR := build
-
 PKG_BUILD_DEPENDS:=swig/host python-cython/host
 PYTHON3_PKG_BUILD:=0
 
@@ -47,15 +45,13 @@ Matching Algorithm with Recursively Implemented StorAge (MARISA) is a static and
 endef
 
 PYTHON3_PKG_BUILD_PATH:=bindings/python3
-PYTHON3_PKG_BUILD_ARGS += build_ext \
-	--include-dirs="$(PKG_BUILD_DIR)/include" \
-	--library-dirs="$(PKG_BUILD_DIR)"
 
 CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DBUILD_SHARED_LIBS=ON
 
 define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR)/bindings
 	$(call Build/Compile/Default)
 	$(call Py3Build/Compile)
 endef
