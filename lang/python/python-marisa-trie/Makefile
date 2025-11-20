@@ -25,7 +25,7 @@ define Package/python3-marisa-trie
   CATEGORY:=Languages
   TITLE:=Static memory-efficient and fast Trie-like structures for Python.
   URL:=https://github.com/pytries/marisa-trie
-  DEPENDS:=+python3 +marisa-trie
+  DEPENDS:=+python3
 endef
 
 define Package/python3-marisa-trie/description
