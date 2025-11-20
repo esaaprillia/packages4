@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-2-Clause OR LGPL-2.1-or-later
 PKG_LICENSE_FILES:=COPYING.md
 
-PKG_BUILD_DEPENDS:=swig/host python-cython/host
+PKG_BUILD_DEPENDS:=swig/host
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
