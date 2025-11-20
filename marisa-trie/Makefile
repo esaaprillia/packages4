@@ -33,11 +33,6 @@ define Package/marisa-trie/description
 	Matching Algorithm with Recursively Implemented StorAge (MARISA) is a static and space-efficient trie data structure.
 endef
 
-PYTHON3_PKG_BUILD_PATH:=bindings/python3
-PYTHON3_PKG_BUILD_ARGS += build_ext \
-	--include-dirs="$(PKG_BUILD_DIR)/include" \
-	--library-dirs="$(PKG_BUILD_DIR)"
-
 define Package/python3-marisa-trie
   SUBMENU:=Python
   SECTION:=lang
@@ -50,6 +45,11 @@ endef
 define Package/python3-marisa-trie/description
 Static memory-efficient Trie-like structures for Python (3.8+) based on marisa-trie C++ library.
 endef
+
+PYTHON3_PKG_BUILD_PATH:=bindings/python3
+PYTHON3_PKG_BUILD_ARGS += build_ext \
+	--include-dirs="$(PKG_BUILD_DIR)/include" \
+	--library-dirs="$(PKG_BUILD_DIR)"
 
 CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
