@@ -150,28 +150,6 @@ define Build/Configure/Default
 			-DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=TRUE \
 			-DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=FALSE \
 			-DCMAKE_FIND_PACKAGE_NO_SYSTEM_PACKAGE_REGISTRY=TRUE \
-			-DPython="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-			-DPython_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-			-DPYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-			-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-			-DPython_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
-			-DPython_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
-			-DPYTHON_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
-			-DPYTHON_LIBRARY_DIRS="$(PYTHON3_LIB_DIR)" \
-			-DPYTHON_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
-			-DPYTHON_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
-			-DPYTHON_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
-			-DPython3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-			-DPython3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-			-DPYTHON3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-			-DPYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-			-DPython3_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
-			-DPython3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
-			-DPYTHON3_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
-			-DPYTHON3_LIBRARY_DIRS="$(PYTHON3_LIB_DIR)" \
-			-DPYTHON3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
-			-DPYTHON3_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
-			-DPYTHON3_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
 			$(CMAKE_OPTIONS) \
 		$(CMAKE_SOURCE_DIR) \
 	)
