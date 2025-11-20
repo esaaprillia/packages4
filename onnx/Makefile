@@ -57,11 +57,21 @@ CMAKE_OPTIONS += \
     -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
     -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
-    -DPython3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-    -DPython3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-    -DPython3_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
-    -DPython3_LIBRARY_DIRS="$(PYTHON3_LIB_DIR)" \
     -Wno-dev
+
+PYTHON3_PKG_BUILD_PATH:=
+PYTHON3_PKG_WHEEL_NAME:=onnx
+PYTHON3_PKG_WHEEL_VERSION:=1.19.1
+
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install)
+endef
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
