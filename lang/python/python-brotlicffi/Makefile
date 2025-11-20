@@ -26,7 +26,7 @@ define Package/python3-brotlicffi
   CATEGORY:=Languages
   TITLE:=Python CFFI bindings to the Brotli library
   URL:=https://github.com/python-hyper/brotlicffi
-  DEPENDS:=+python3-light +python3-cffi +brotli
+  DEPENDS:=+python3-light +python3-cffi +brotli +libstdcpp
 endef
 
 define Package/python3-brotlicffi/description
