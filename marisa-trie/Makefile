@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=COPYING.md
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=swig/host python-cython/host
-PYTHON3_PKG_BUILD:=0
+#PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
