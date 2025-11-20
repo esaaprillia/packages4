@@ -14,6 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=numpy/host python-protobuf/host python-pybind11/host
 
+PYTHON3_PKG_BUILD:=0
 #CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
