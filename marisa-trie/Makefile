@@ -36,8 +36,8 @@ endef
 PYTHON3_PKG_SETUP_DIR:=bindings/python3
 PYTHON3_PKG_SETUP_GLOBAL_ARGS += \
 	build_ext \
-	--include-dirs="$(STAGING_DIR)/usr/include" \
-	--library-dirs="$(STAGING_DIR)/usr/lib"
+	--include-dirs="$(PKG_BUILD_DIR)/include" \
+	--library-dirs="$(PKG_BUILD_DIR)"
 
 define Package/python3-marisa-trie
   SUBMENU:=Python
