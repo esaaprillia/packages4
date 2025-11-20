@@ -4,9 +4,14 @@ PKG_NAME:=marisa-trie
 PKG_VERSION:=0.3.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/s-yata/marisa-trie/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/s-yata/marisa-trie/archive/v$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/s-yata/marisa-trie.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=4ef33cc5a2b6b4f5e147e4564a5236e163d67982
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-2-Clause OR LGPL-2.1-or-later
