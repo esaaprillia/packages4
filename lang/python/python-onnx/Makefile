@@ -15,10 +15,20 @@ PKG_BUILD_DEPENDS:=numpy/host python-protobuf/host python-pybind11/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/host-build.mk
 include ../meson/cmake.mk
 include ../python3-package.mk
-include ../python3-host-build.mk
+
+define Package/onnx
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Open standard for machine learning interoperability
+	DEPENDS:=+libstdcpp +protobuf +abseil-cpp
+	URL:=https://onnx.ai/
+endef
+
+define Package/onnx/description
+	Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
+endef
 
 define Package/python3-onnx
   SUBMENU:=Python
@@ -33,7 +43,21 @@ define Package/python3-onnx/description
 Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
 endef
 
-$(eval $(call HostBuild))
+CMAKE_OPTIONS += \
+    -DBUILD_SHARED_LIBS=ON \
+    -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
+    -Wno-dev
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+endef
+
+define Package/onnx/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+endef
+
+$(eval $(call BuildPackage,onnx))
 $(eval $(call Py3Package,python3-onnx))
 $(eval $(call BuildPackage,python3-onnx))
 $(eval $(call BuildPackage,python3-onnx-src))
