@@ -1,14 +1,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-swig
-PKG_VERSION:=4.3.0
+PKG_VERSION:=4.4.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=swig
-PKG_HASH:=b9faa1925657ebc5236f6d7b93203c461eb109927dc67044e82639baf99535bd
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=Apache-2.0 GPL-3.0 License
+PKG_LICENSE:=Apache-2.0 GPL-3.0
 PKG_LICENSE_FILES:=LICENSE LICENSE-GPL LICENSE-SWIG LICENSE-UNIVERSITIES
 
 HOST_BUILD_DEPENDS:=python-scikit-build-core/host python-setuptools-scm/host swig/host
