@@ -44,7 +44,6 @@ define Build/InstallDev
 endef
 
 define Host/Install
-	$(call Py3Host/Install)
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
 	$(LN) $(HOST_PYTHON3_PKG_DIR)/pybind11/include/pybind11 $(STAGING_DIR_HOSTPKG)/include/pybind11
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib/cmake
