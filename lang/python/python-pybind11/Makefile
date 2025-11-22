@@ -34,8 +34,8 @@ define Package/python3-pybind11/description
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)
+	$(INSTALL_DIR) $(PYTHON3_PKG_DIR)
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(PYTHON3_PKG_DIR)
 	$(INSTALL_DIR) $(STAGING_DIR)/usr/include
 	$(LN) $(PYTHON3_PKG_DIR)/pybind11/include/pybind11 $(STAGING_DIR)/usr/include/pybind11
 	$(INSTALL_DIR) $(STAGING_DIR)/usr/lib/cmake
