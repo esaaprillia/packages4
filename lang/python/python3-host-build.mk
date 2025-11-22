@@ -76,7 +76,7 @@ define Py3Host/Install
 
 	$(call locked, \
 		mv "$(PYTHON3_HOST_STAGING_DIR).files" "$(PYTHON3_HOST_STAGING_FILES_LIST)" && \
-		$(CP) "$(PYTHON3_HOST_STAGING_DIR)"/* "$(1)/", \
+		mv "$(PYTHON3_HOST_STAGING_DIR)"/* "$(1)/", \
 		host-staging-dir \
 	)
 
