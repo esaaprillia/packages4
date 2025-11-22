@@ -33,7 +33,7 @@ define Package/python3-pybind11/description
   pybind11 is a lightweight header-only library that exposes C++ types in Python and vice versa, mainly to create Python bindings of existing C++ code.
 endef
 
-define Build/Install
+define Build/InstallDev
 	$(call Py3Build/Install)
 	$(INSTALL_DIR) $(STAGING_DIR)/usr/include
 	$(LN) $(PYTHON3_PKG_DIR)/pybind11/include/pybind11 $(STAGING_DIR)/usr/include/pybind11
@@ -57,3 +57,4 @@ $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pybind11))
 $(eval $(call BuildPackage,python3-pybind11))
 $(eval $(call BuildPackage,python3-pybind11-src))
+
