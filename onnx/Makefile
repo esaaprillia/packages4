@@ -21,12 +21,6 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(RM) $(STAGING_DIR)/usr/bin/protoc*
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
-endef
-
 define Package/onnx
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -53,17 +47,17 @@ Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI develo
 endef
 
 CMAKE_OPTIONS += \
-    -DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
     -DBUILD_SHARED_LIBS=ON \
     -DONNX_BUILD_PYTHON=ON \
     -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
+    -DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
     -DPython3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+    -DPython3_INCLUDE_DIRS="$(STAGING_DIR_HOSTPKG)/include/python$(PYTHON3_VERSION)" \
     -Wno-dev
 
 PYTHON3_PKG_BUILD_PATH:=
 PYTHON3_PKG_WHEEL_NAME:=onnx
 PYTHON3_PKG_WHEEL_VERSION:=1.19.1
-#PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DPython3_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3) -DONNX_BUILD_PYTHON=ON -DONNX_NAMESPACE=onnx -DCMAKE_BUILD_TYPE=Release -DONNX_ML=1"
 
 define Build/Compile
 	$(call Build/Compile/Default)
