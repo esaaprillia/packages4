@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-home-assistant-frontend
-PKG_VERSION:=20251105.0
+PKG_VERSION:=20251105.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=home_assistant_frontend
