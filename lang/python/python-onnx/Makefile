@@ -15,7 +15,6 @@ PKG_BUILD_DEPENDS:=numpy/host python-protobuf/host python-pybind11/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include ../meson/cmake.mk
 include ../python3-package.mk
 
 define Package/onnx
@@ -43,10 +42,7 @@ define Package/python3-onnx/description
 Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
 endef
 
-CMAKE_OPTIONS += \
-    -DBUILD_SHARED_LIBS=ON \
-    -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
-    -Wno-dev
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DBUILD_SHARED_LIBS=ON -DONNX_USE_PROTOBUF_SHARED_LIBS=ON"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
