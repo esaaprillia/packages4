@@ -53,7 +53,7 @@ CMAKE_OPTIONS += \
     -DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
     -DPython3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
     -DPython3_INCLUDE_DIRS="$(STAGING_DIR_HOSTPKG)/include/python$(PYTHON3_VERSION)" \
-    -Dpybind11_DIR="$(HOST_PYTHON3_PKG_DIR)/pybind11/share/cmake/pybind11" \
+    -Dpybind11_DIR="$(STAGING_DIR_HOSTPKG)/lib/python$(PYTHON3_VERSION)/site-packages/pybind11" \
     -Wno-dev
 
 PYTHON3_PKG_BUILD_PATH:=
