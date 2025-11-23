@@ -39,7 +39,7 @@ define Package/python3-onnx
   CATEGORY:=Languages
   TITLE:=Open Neural Network Exchange
   URL:=https://onnx.ai/
-  DEPENDS:=+python3 +python3-numpy +python3-protobuf +python3-typing-extensions +python3-ml-dtypes +python3-pillow +onnx
+  DEPENDS:=+python3 +onnx
 endef
 
 define Package/python3-onnx/description
@@ -47,6 +47,7 @@ Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI develo
 endef
 
 CMAKE_OPTIONS += \
+	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
     -DBUILD_SHARED_LIBS=ON \
     -DONNX_BUILD_PYTHON=ON \
     -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
