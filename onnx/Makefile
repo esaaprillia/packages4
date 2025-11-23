@@ -15,10 +15,10 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DEPENDS:=numpy/host python-protobuf/host python-pybind11/host
 
 PYTHON3_PKG_BUILD:=0
-#CMAKE_BINARY_SUBDIR := build
+CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(INCLUDE_DIR)/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/onnx
