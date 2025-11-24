@@ -46,10 +46,11 @@ define Package/python3-onnx/description
 Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
 endef
 
+export CMAKE_ARGS="-DBUILD_SHARED_LIBS=ON -DPYBIND11_FINDPYTHON=ON -DPython_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
+
 CMAKE_OPTIONS += \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
     -DBUILD_SHARED_LIBS=ON \
-    -DONNX_BUILD_PYTHON=ON \
     -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
     -DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
     -DPython3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
