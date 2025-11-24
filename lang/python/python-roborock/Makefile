@@ -25,7 +25,7 @@ define Package/python3-roborock
   CATEGORY:=Languages
   TITLE:=A package to control Roborock vacuums.
   URL:=https://python-roborock.readthedocs.io/
-  DEPENDS:=+python3 +python3-click +python3-aiohttp +python3-cryptodome +python3-pycryptodomex +python3-paho-mqtt +python3-construct +python3-vacuum-map-parser-roborock +python3-pyrate-limiter +python3-aiomqtt +python3-click-shell
+  DEPENDS:=+python3 +python3-click +python3-aiohttp +python3-cryptodome +python3-cryptodomex +python3-paho-mqtt +python3-construct +python3-vacuum-map-parser-roborock +python3-pyrate-limiter +python3-aiomqtt +python3-click-shell
 endef
 
 define Package/python3-roborock/description
