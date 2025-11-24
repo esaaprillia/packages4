@@ -17,6 +17,12 @@ CMAKE_BINARY_SUBDIR := build
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(RM) $(STAGING_DIR)/usr/bin/protoc*
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
+endef
+
 define Package/sentencepiece
 	SECTION:=libs
 	CATEGORY:=Libraries
