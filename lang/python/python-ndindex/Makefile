@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ndindex
-PKG_VERSION:=1.9.2
+PKG_VERSION:=1.10.1
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=ndindex
-PKG_HASH:=b8658a06e52d6c47445c2ec11d292e1d52c3af259214c8b52e3a1aab733daa72
+PKG_HASH:=skip
 
 HOST_BUILD_DEPENDS:=python-cython/host python-versioneer/host
 PKG_BUILD_DEPENDS:=python-cython/host python-versioneer/host
