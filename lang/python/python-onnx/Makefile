@@ -42,7 +42,7 @@ define Package/python3-onnx/description
 Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
 endef
 
-PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS=" -DBUILD_SHARED_LIBS=ON -DProtobuf_PROTOC_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/protoc -DProtobuf_LIBRARY=$(STAGING_DIR)/usr/lib/libprotobuf.so -DProtobuf_INCLUDE_DIR=$(STAGING_DIR)/usr/include -DCMAKE_CXX_STANDARD=17 -DNPY_TARGET_VERSION=NPY_1_19_API_VERSION -DPYBIND11_FINDPYTHON=ON -DPython_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3) -DPython3_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS=" -DBUILD_SHARED_LIBS=ON -DProtobuf_PROTOC_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/protoc -DProtobuf_LIBRARY=$(STAGING_DIR)/usr/lib/libprotobuf.so -DProtobuf_INCLUDE_DIR:PATH=$(STAGING_DIR)/usr/include -DCMAKE_CXX_STANDARD=17 -DNPY_TARGET_VERSION=NPY_1_19_API_VERSION -DPYBIND11_FINDPYTHON=ON -DPython_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3) -DPython3_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
