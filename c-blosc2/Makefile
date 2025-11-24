@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=c-blosc2
-PKG_VERSION:=2.17.1
+PKG_VERSION:=2.22.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -34,12 +34,10 @@ define Package/c-blosc2/description
 endef
 
 CMAKE_HOST_OPTIONS += \
-	-Wno-dev \
 	-DBUILD_SHARED=OFF \
 	-DBUILD_STATIC=ON
 
 CMAKE_OPTIONS += \
-	-Wno-dev \
 	-DBUILD_STATIC=OFF \
 	-DPREFER_EXTERNAL_LZ4=ON \
 	-DPREFER_EXTERNAL_ZLIB=ON \
