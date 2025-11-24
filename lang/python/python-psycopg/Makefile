@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-psycopg
-PKG_VERSION:=3.2.12
+PKG_VERSION:=3.2.13
 PKG_RELEASE:=1
 
 PYPI_NAME:=psycopg
