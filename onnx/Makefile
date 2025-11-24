@@ -4,9 +4,14 @@ PKG_NAME:=onnx
 PKG_VERSION:=1.21.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/onnx/onnx/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/onnx/onnx/archive/v$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/onnx/onnx.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=e878c8b73ce1424fb883cf09811ca14ade54ed30
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -46,16 +51,12 @@ define Package/python3-onnx/description
 Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
 endef
 
-export CMAKE_ARGS="-DBUILD_SHARED_LIBS=ON -DPYBIND11_FINDPYTHON=ON -DPython_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
+#export CMAKE_ARGS="-DBUILD_SHARED_LIBS=ON -DPYBIND11_FINDPYTHON=ON -DPython_EXECUTABLE=$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 CMAKE_OPTIONS += \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
     -DBUILD_SHARED_LIBS=ON \
     -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
-    -DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-    -DPython3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-    -DPython3_INCLUDE_DIRS="$(STAGING_DIR_HOSTPKG)/include/python$(PYTHON3_VERSION)" \
-    -Dpybind11_DIR="$(STAGING_DIR_HOSTPKG)/lib/python$(PYTHON3_VERSION)/site-packages/pybind11" \
     -Wno-dev
 
 PYTHON3_PKG_BUILD_PATH:=
