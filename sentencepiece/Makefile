@@ -5,7 +5,7 @@ PKG_VERSION:=0.2.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/google/sentencepiece/releases/download/v$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/google/sentencepiece/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
