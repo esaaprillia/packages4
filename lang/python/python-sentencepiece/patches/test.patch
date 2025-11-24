@@ -1,0 +1,31 @@
+From 096ad73f0c263359e6276b0d86cd7f8c582da7c6 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 24 Nov 2025 21:10:04 +0800
+Subject: [PATCH] Update setup.py
+
+---
+ python/setup.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/python/setup.py b/python/setup.py
+index da68e71b..d859ed0e 100755
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -70,13 +70,13 @@ def get_cflags_and_libs(root):
+   libs = []
+   if os.path.exists(os.path.join(root, 'lib/pkgconfig/sentencepiece.pc')):
+     libs = [
+-        os.path.join(root, 'lib/libsentencepiece.a'),
+-        os.path.join(root, 'lib/libsentencepiece_train.a'),
++        os.path.join(root, 'lib/libsentencepiece.so'),
++        os.path.join(root, 'lib/libsentencepiece_train.so'),
+     ]
+   elif os.path.exists(os.path.join(root, 'lib64/pkgconfig/sentencepiece.pc')):
+     libs = [
+-        os.path.join(root, 'lib64/libsentencepiece.a'),
+-        os.path.join(root, 'lib64/libsentencepiece_train.a'),
++        os.path.join(root, 'lib64/libsentencepiece.so'),
++        os.path.join(root, 'lib64/libsentencepiece_train.so'),
+     ]
+   return cflags, libs
+ 
