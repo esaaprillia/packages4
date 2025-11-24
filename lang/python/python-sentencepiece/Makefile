@@ -11,13 +11,13 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PYTHON3_PKG_SETUP_DIR:=python
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
+
+PYTHON3_PKG_SETUP_DIR:=python
 
 define Package/python3-sentencepiece
   SUBMENU:=Python
