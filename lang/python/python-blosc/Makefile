@@ -5,7 +5,7 @@ PKG_VERSION:=1.11.3
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=BSD
 PKG_LICENSE_FILES:=LICENSE.txt
 
 PYPI_NAME:=blosc
