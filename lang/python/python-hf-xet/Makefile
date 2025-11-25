@@ -19,6 +19,8 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
+export OPENSSL_NO_VENDOR=1
+
 define Package/python3-hf-xet
   SUBMENU:=Python
   SECTION:=lang
