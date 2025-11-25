@@ -37,6 +37,9 @@ define Package/python3-hf-xet/description
 hf-xet enables huggingface_hub to utilize xet storage for uploading and downloading to HF Hub.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=hf_xet
+PYTHON3_PKG_WHEEL_VERSION:=1.2.0
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-hf-xet))
 $(eval $(call BuildPackage,python3-hf-xet))
