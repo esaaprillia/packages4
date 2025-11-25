@@ -15,6 +15,6 @@ index 5116671..fb302e2 100644
  ]
  
  [build-system]
--requires = ["poetry_core>=1,<3", "setuptools>=59,<76"]
+-requires = ["poetry_core>=1,<3", "setuptools>=59,<81"]
 +requires = ["poetry_core>=1,<3", "setuptools"]
  build-backend = "poetry.core.masonry.api"
