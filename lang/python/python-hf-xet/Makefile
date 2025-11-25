@@ -4,7 +4,8 @@ PKG_NAME:=python-hf-xet
 PKG_VERSION:=1.2.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=hf_xet
+PYPI_NAME:=xet-core
+PKG_SOURCE_URL:=https://github.com/huggingface/xet-core/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
