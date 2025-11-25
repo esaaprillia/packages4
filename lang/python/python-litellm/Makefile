@@ -25,7 +25,7 @@ define Package/python3-litellm
   CATEGORY:=Languages
   TITLE:=Library to easily interface with LLM API providers
   URL:=https://litellm.ai/
-  DEPENDS:=+python3 +python3-fastuuid +python3-httpx +python3-openai +python3-dotenv +python3-tiktoken +python3-importlib-metadata +python3-tokenizers +python3-click +python3-jinja2 +python3-aiohttp +python3-pydantic +python3-jsonschema +python3-numpydoc
+  DEPENDS:=+python3 +python3-fastuuid +python3-httpx +python3-openai +python3-dotenv +python3-tiktoken +python3-importlib-metadata +python3-tokenizers +python3-click +python3-jinja2 +python3-aiohttp +python3-pydantic +python3-jsonschema
 endef
 
 define Package/python3-litellm/description
