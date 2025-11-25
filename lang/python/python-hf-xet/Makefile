@@ -25,7 +25,7 @@ define Package/python3-hf-xet
   CATEGORY:=Languages
   TITLE:=Fast transfer of large files with the Hugging Face Hub.
   URL:=https://github.com/huggingface/xet-core
-  DEPENDS:=+python3 $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+python3 +libopenssl +libopenssl-legacy $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-hf-xet/description
