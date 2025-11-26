@@ -21,7 +21,7 @@ define Package/python3-django-cors-headers
   CATEGORY:=Languages
   TITLE:=Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS).
   URL:=https://github.com/adamchainz/django-cors-headers
-  DEPENDS:=+python3-django +python3-urllib +python3-light
+  DEPENDS:=+python3-asgiref +python3-django +python3-urllib +python3-light
 endef
 
 define Package/python3-django-cors-headers/description
