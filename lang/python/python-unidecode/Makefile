@@ -35,6 +35,9 @@ define Package/python-unidecode/description
   Unidecode, lossy ASCII transliterations of Unicode text
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=unidecode
+PYTHON3_PKG_WHEEL_VERSION:=1.4.0
+
 $(eval $(call Py3Package,python3-unidecode))
 $(eval $(call BuildPackage,python3-unidecode))
 $(eval $(call BuildPackage,python3-unidecode-src))
