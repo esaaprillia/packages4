@@ -4,8 +4,7 @@ PKG_NAME:=python-hf-xet
 PKG_VERSION:=1.2.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=xet-core
-PKG_SOURCE_URL:=https://github.com/huggingface/xet-core/archive/v$(PKG_VERSION)
+PYPI_NAME:=hf_xet
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -20,10 +19,6 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
-PYTHON3_PKG_SETUP_DIR:=hf_xet
-
-export OPENSSL_NO_VENDOR=1
-
 define Package/python3-hf-xet
   SUBMENU:=Python
   SECTION:=lang
@@ -36,9 +31,6 @@ endef
 define Package/python3-hf-xet/description
 hf-xet enables huggingface_hub to utilize xet storage for uploading and downloading to HF Hub.
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=hf_xet
-PYTHON3_PKG_WHEEL_VERSION:=1.2.0
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-hf-xet))
