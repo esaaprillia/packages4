@@ -8,7 +8,7 @@ PYPI_NAME:=matplotlib
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=LICENSE
+PKG_LICENSE:=PSF-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-pybind11/host meson-python/host
