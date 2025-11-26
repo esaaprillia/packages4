@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python3-django-cors-headers
-PKG_VERSION:=4.6.0
+PKG_NAME:=django-cors-headers
+PKG_VERSION:=4.9.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=django_cors_headers
-PKG_HASH:=14d76b4b4c8d39375baeddd89e4f08899051eeaf177cb02a29bd6eae8cf63aa8
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Peter Stadler <peter.stadler@student.uibk.ac.at>
 PKG_LICENSE:=MIT
