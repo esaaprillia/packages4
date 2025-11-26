@@ -29,7 +29,7 @@ define Package/python3-django
   CATEGORY:=Languages
   TITLE:=The web framework for perfectionists with deadlines.
   URL:=https://www.djangoproject.com/
-  DEPENDS:= +python3 +python3-pytz +python3-sqlparse +python3-asgiref
+  DEPENDS:= +python3 +python3-tzdata +python3-sqlparse +python3-asgiref
   CONFLICTS:=python3-django1
   PROVIDES:=django
 endef
