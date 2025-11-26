@@ -33,7 +33,7 @@ define Package/python3-flask-session
   DEPENDS:= \
     +python3-cachelib \
     +python3-flask \
-    +python3-light
+    +python3-light +python3-msgspec
 endef
 
 define Package/python3-flask-session/description
