@@ -28,7 +28,7 @@ define Package/python3-django-restframework
   CATEGORY:=Languages
   TITLE:=Web APIs for Django, made easy.
   URL:=https://www.django-rest-framework.org
-  DEPENDS:=+python3 +django
+  DEPENDS:=+python3 +python3-django
 endef
 
 define Package/python3-django-restframework/description
