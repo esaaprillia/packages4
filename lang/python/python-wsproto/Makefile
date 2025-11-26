@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-wsproto
-PKG_VERSION:=1.3.0
+PKG_VERSION:=1.3.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=wsproto
