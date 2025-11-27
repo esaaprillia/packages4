@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zstd
-PKG_VERSION:=1.5.5.1
+PKG_VERSION:=1.5.7.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=zstd
-PKG_HASH:=1ef980abf0e1e072b028d2d76ef95b476632651c96225cf30b619c6eef625672
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=BSD-2-Clause
