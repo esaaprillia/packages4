@@ -26,7 +26,7 @@ define Package/python3-lz4
   SUBMENU:=Python
   TITLE:=LZ4 Bindings for Python
   URL:=https://github.com/python-lz4/python-lz4
-  DEPENDS:=+python3 +lz4
+  DEPENDS:=+python3 +liblz4
 endef
 
 define Package/python3-lz4/description
