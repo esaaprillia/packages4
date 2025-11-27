@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aioamazondevices
-PKG_VERSION:=9.0.0
+PKG_VERSION:=10.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aioamazondevices
