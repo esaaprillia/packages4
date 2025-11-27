@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tuya-device-sharing-sdk
-PKG_VERSION:=0.2.5
+PKG_VERSION:=0.2.6
 PKG_RELEASE:=1
 
 #PYPI_NAME:=tuya-device-sharing-sdk
@@ -9,7 +9,7 @@ PKG_RELEASE:=1
 
 PYPI_NAME:=tuya_device_sharing_sdk
 PKG_SOURCE:=$(PYPI_NAME)-$(PKG_VERSION)-py3-none-any.whl
-PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/bc/63/7332106e217e2ccbde1ec48b741642b605ad666e97ad5b56cd3ea69b883c/
+PKG_SOURCE_URL:=https://files.pythonhosted.org/packages/29/a5/714cb72bcf16835735d315be8047042d25d8a3de3346001dea32b1d2129a/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
