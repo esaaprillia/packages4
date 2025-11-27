@@ -41,7 +41,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/Python-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/Python-$(PKG_VERSION)
 
 PKG_BUILD_DEPENDS:=bluez python3/host python-build/host python-installer/host python-setuptools/host python-wheel/host
-HOST_BUILD_DEPENDS:=bzip2/host libffi/host readline/host util-linux/host
+HOST_BUILD_DEPENDS:=bzip2/host libffi/host readline/host
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
@@ -308,6 +308,11 @@ HOST_CONFIGURE_ARGS += \
 	--with-ssl-default-suites=openssl \
 	--with-system-expat \
 	--without-cxx-main
+
+# ncurses and uuid have seemingly unsolvable issues with pkgconfig
+HOST_CFLAGS += \
+	-I$(STAGING_DIR_HOSTPKG)/include/ncursesw \
+	-I$(STAGING_DIR_HOST)/include/uuid
 
 define Host/Configure
 	$(SED) 's/^ENABLE_USER_SITE = None$$$$/ENABLE_USER_SITE = False/' $(HOST_BUILD_DIR)/Lib/site.py
