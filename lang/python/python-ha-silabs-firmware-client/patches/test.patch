@@ -1,1 +1,27 @@
-mmmm
+From 8a9599963dcc813840cc8b9b3f67b3bac03ebc2e Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 27 Nov 2025 15:17:10 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 2532b75..7fa88f6 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools>=61.0.0", "wheel", "setuptools-git-versioning<3"]
++requires = ["setuptools>=61.0.0", "wheel", "setuptools-git-versioning"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+@@ -95,4 +95,4 @@ exclude_lines = [
+     "if typing.TYPE_CHECKING:",
+     "raise NotImplementedError",
+     "raise NotImplementedError()",
+-]
+\ No newline at end of file
++]
