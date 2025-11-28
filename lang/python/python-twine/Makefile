@@ -12,7 +12,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-rfc3986/host python-requests/host python-id/host python-keyring/host python-rich/host python-requests-toolbelt/host python-urllib3/host python-readme-renderer/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
