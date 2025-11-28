@@ -11,11 +11,13 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=requests-toolbelt
 PKG_HASH:=7681a0a3d047012b5bdc0ee37d7f8f07ebe76ab08caeccfc3921ce23c88d5bc6
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-requests-toolbelt
   SUBMENU:=Python
@@ -30,6 +32,7 @@ define Package/python3-requests-toolbelt/description
 This is just a collection of utilities for python-requests, but don't really belong in requests proper. The minimum tested requests version is 2.1.0. In reality, the toolbelt should work with 2.0.1 as well, but some idiosyncracies prevent effective or sane testing on that version.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-requests-toolbelt))
 $(eval $(call BuildPackage,python3-requests-toolbelt))
 $(eval $(call BuildPackage,python3-requests-toolbelt-src))
