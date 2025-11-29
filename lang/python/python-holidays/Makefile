@@ -21,7 +21,7 @@ define Package/python3-holidays
   SUBMENU:=Python
   TITLE:=Generate and work with holidays in Python
   URL:=https://github.com/vacanza/holidays/
-  DEPENDS:=+python3-dateutil
+  DEPENDS:=+python3 +python3-dateutil
 endef
 
 define Package/python3-holidays/description
