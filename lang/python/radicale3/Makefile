@@ -14,7 +14,7 @@ PKG_CPE_ID:=cpe:/a:radicale:radicale
 PYPI_NAME:=radicale
 PKG_HASH:=skip
 
-include ../../lang/python/pypi.mk
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
