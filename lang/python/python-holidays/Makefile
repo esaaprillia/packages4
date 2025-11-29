@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-holidays
-PKG_VERSION:=0.65
+PKG_VERSION:=0.85
 PKG_RELEASE:=1
 
 PYPI_NAME:=holidays
-PKG_HASH:=a20a4f0299b1ecd6238c8a62f622c637742ee3212b3abeb616a85686b99ea621
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
