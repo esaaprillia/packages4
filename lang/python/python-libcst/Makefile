@@ -25,7 +25,7 @@ define Package/python3-libcst
   CATEGORY:=Languages
   TITLE:=A concrete syntax tree with AST-like properties for Python 3.0 through 3.14 programs.
   URL:=https://libcst.readthedocs.io/
-  DEPENDS:=+python3 +libatomic +python3-pyyaml +python3-pyyaml-ft +python3-typing-extensions $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+python3 +libatomic +python3-yaml +python3-pyyaml-ft +python3-typing-extensions $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-libcst/description
