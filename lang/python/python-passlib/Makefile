@@ -23,7 +23,7 @@ define Package/python3-passlib
   CATEGORY:=Languages
   TITLE:=Comprehensive password hashing framework
   URL:=https://passlib.readthedocs.io/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-argon2-cffi +python3-bcrypt +python3-cryptography
 endef
 
 define Package/python3-passlib/description
