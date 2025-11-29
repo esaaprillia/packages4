@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PYTHON3_PKG_BUILD:=0
+#PYTHON3_PKG_BUILD:=0
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -29,6 +29,15 @@ endef
 
 define Package/localtuya/description
 A Home Assistant custom Integration for local handling of Tuya-based devices.
+endef
+
+define Build/Prepare
+endef
+
+define Build/Configure
+endef
+
+define Build/Compile
 endef
 
 define Build/Install
