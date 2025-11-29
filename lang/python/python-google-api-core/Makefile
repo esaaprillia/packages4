@@ -25,7 +25,7 @@ define Package/python3-google-api-core
   CATEGORY:=Languages
   TITLE:=Google API client core library
   URL:=https://github.com/googleapis/python-api-core
-  DEPENDS:=+python3 +python3-googleapis-common-protos +python3-protobuf +python3-proto-plus +python3-google-auth +python3-requests +python3-grpcio +python3-grpcio-status
+  DEPENDS:=+python3 +python3-googleapis-common-protos +python3-protobuf +python3-proto-plus +python3-google-auth +python3-requests +python3-grpcio +python3-grpcio-status +python3-grpcio-gcp
 endef
 
 define Package/python3-google-api-core/description
@@ -36,3 +36,4 @@ $(eval $(call Py3Package,python3-google-api-core))
 $(eval $(call BuildPackage,python3-google-api-core))
 $(eval $(call BuildPackage,python3-google-api-core-src))
 $(eval $(call HostBuild))
+
