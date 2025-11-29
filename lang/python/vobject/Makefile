@@ -4,12 +4,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=vobject
-PKG_VERSION:=0.9.8
+PKG_VERSION:=0.9.9
 PKG_RELEASE:=1
 PKG_LICENSE:=Apache-2.0
 
 PYPI_NAME:=$(PKG_NAME)
-PKG_HASH:=db00a7f4db49397155dd8a6871e8a2a0175a6eba5a654c30e910f82b29514b58
+PKG_HASH:=skip
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -22,7 +22,7 @@ define Package/python3-vobject
   CATEGORY:=Languages
   TITLE:=VObject
   URL:=http://eventable.github.io/vobject/
-  DEPENDS:=+python3 +python3-dateutil
+  DEPENDS:=+python3 +python3-dateutil +python3-pytz +python3-six
 endef
 
 define Package/python3-vobject/description
