@@ -31,12 +31,6 @@ define Package/localtuya/description
 A Home Assistant custom Integration for local handling of Tuya-based devices.
 endef
 
-define Build/Prepare
-endef
-
-define Build/Configure
-endef
-
 define Build/Compile
 endef
 
