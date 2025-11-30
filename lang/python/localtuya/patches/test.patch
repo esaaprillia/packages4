@@ -113,3 +113,6 @@ index ed410fb0f..039fdd2e8 100644
 -notes = "XXX"
 +[tool.setuptools.packages.find]
 +include = ["custom_components*"]
++
++[tool.setuptools.package-data]
++localtuya = ["custom_components/localtuya/*"]
