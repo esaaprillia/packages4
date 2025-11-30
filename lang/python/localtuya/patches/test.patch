@@ -106,7 +106,7 @@ index ed410fb0f..039fdd2e8 100644
  
 -[tool.pylint.FORMAT]
 -expected-line-ending-format = "LF"
-- 
+-
 -[tool.pylint.MISCELLANEOUS]
 -notes = "XXX"
 +[tool.setuptools.packages.find]
