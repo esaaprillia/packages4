@@ -1,0 +1,20 @@
+From a34021cdcb570bb28667052c9a14c09e18452f5f Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 30 Nov 2025 09:59:42 +0800
+Subject: [PATCH] Update manifest.json
+
+---
+ custom_components/localtuya/manifest.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/custom_components/localtuya/manifest.json b/custom_components/localtuya/manifest.json
+index 95f34fbae..12d2a8582 100644
+--- a/custom_components/localtuya/manifest.json
++++ b/custom_components/localtuya/manifest.json
+@@ -10,5 +10,5 @@
+   "iot_class": "local_push",
+   "issue_tracker": "https://github.com/rospogrigio/localtuya/issues",
+   "requirements": [],
+-  "version": "5.2.3"
++  "version": "5.2.4"
+ }
