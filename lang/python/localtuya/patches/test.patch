@@ -1,0 +1,115 @@
+From 7583479c3270a674f51dce78f45ec6cd55615b25 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sun, 30 Nov 2025 08:37:41 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 96 ++++++++++----------------------------------------
+ 1 file changed, 19 insertions(+), 77 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index ed410fb0f..039fdd2e8 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,82 +1,24 @@
+-[tool.black]
+-target-version = ["py311"]
+-include = 'custom_components/localtuya/.*\.py'
++[build-system]
++requires = ["setuptools"]
++build-backend = "setuptools.build_meta"
+ 
+-# pylint config stolen from Home Assistant
+-# Use a conservative default here; 2 should speed up most setups and not hurt
+-# any too bad. Override on command line as appropriate.
+-# Disabled for now: https://github.com/PyCQA/pylint/issues/3584
+-#jobs = 2
+-load-plugins = [
+-    "pylint_strict_informational",
+-]
+-persistent = false
+-extension-pkg-whitelist = [
+-    "ciso8601",
+-    "cv2",
+-]
+-
+-[tool.pylint.BASIC]
+-good-names = [
+-    "_",
+-    "ev",
+-    "ex",
+-    "fp",
+-    "i",
+-    "id",
+-    "j",
+-    "k",
+-    "Run",
+-    "T",
+-    "hs",
+-]
+-
+-[tool.pylint."MESSAGES CONTROL"]
+-# Reasons disabled:
+-# format - handled by black
+-# locally-disabled - it spams too much
+-# duplicate-code - unavoidable
+-# cyclic-import - doesn't test if both import on load
+-# abstract-class-little-used - prevents from setting right foundation
+-# unused-argument - generic callbacks and setup methods create a lot of warnings
+-# too-many-* - are not enforced for the sake of readability
+-# too-few-* - same as too-many-*
+-# abstract-method - with intro of async there are always methods missing
+-# inconsistent-return-statements - doesn't handle raise
+-# too-many-ancestors - it's too strict.
+-# wrong-import-order - isort guards this
+-disable = [
+-    "format",
+-    "abstract-class-little-used",
+-    "abstract-method",
+-    "cyclic-import",
+-    "duplicate-code",
+-    "inconsistent-return-statements",
+-    "locally-disabled",
+-    "not-context-manager",
+-    "too-few-public-methods",
+-    "too-many-ancestors",
+-    "too-many-arguments",
+-    "too-many-branches",
+-    "too-many-instance-attributes",
+-    "too-many-lines",
+-    "too-many-locals",
+-    "too-many-public-methods",
+-    "too-many-return-statements",
+-    "too-many-statements",
+-    "too-many-boolean-expressions",
+-    "unused-argument",
+-    "wrong-import-order",
+-]
+-enable = [
+-    "use-symbolic-message-instead",
++[project]
++name         = "LocalTuya integration"
++version      = "5.2.4"
++license      = "GPL-3.0"
++license-files = ["LICENSE*"]
++description  = "local handling for Tuya devices"
++readme       = "README.md"
++authors      = [
++    {name = "rospogrigio", email = ""}
+ ]
++requires-python = ">=3.13.0"
+ 
+-[tool.pylint.REPORTS]
+-score = false
++[project.urls]
++"Homepage" = "https://github.com/rospogrigio/localtuya"
+ 
+-[tool.pylint.FORMAT]
+-expected-line-ending-format = "LF"
++[tool.setuptools]
++include-package-data = true
+ 
+-[tool.pylint.MISCELLANEOUS]
+-notes = "XXX"
++[tool.setuptools.packages.find]
++include = ["custom_components*"]
