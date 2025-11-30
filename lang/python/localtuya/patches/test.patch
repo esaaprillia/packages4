@@ -95,7 +95,7 @@ index ed410fb0f..039fdd2e8 100644
 +description  = "local handling for Tuya devices"
 +readme       = "README.md"
 +authors      = [
-+    {name = "rospogrigio", email = ""}
++    {name = "rospogrigio", email = "example@gmail.com"}
  ]
 +requires-python = ">=3.13.0"
  
