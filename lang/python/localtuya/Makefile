@@ -29,6 +29,11 @@ define Package/localtuya/description
 A Home Assistant custom Integration for local handling of Tuya-based devices.
 endef
 
+define Py3Package/localtuya/install
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)
+endef
+
 $(eval $(call Py3Package,localtuya))
 $(eval $(call BuildPackage,localtuya))
 $(eval $(call BuildPackage,localtuya-src))
