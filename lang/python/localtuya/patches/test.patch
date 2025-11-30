@@ -113,8 +113,4 @@ index ed410fb0f..039fdd2e8 100644
 +include = ["custom_components*"]
 +
 +[tool.setuptools.package-data]
-+custom_components = [
-+    "localtuya/*.json",
-+    "localtuya/translations/*.json",
-+    "localtuya/*.yaml"
-+]
++custom_components = ["localtuya/*.json", "localtuya/translations/*.json", "localtuya/*.yaml"]
