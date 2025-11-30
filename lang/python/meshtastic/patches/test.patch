@@ -37,4 +37,4 @@ index 0000000..39125fc
 +include = ["custom_components*"]
 +
 +[tool.setuptools.package-data]
-+custom_components = ["meshtastic/ha_frontend/*.js", "meshtastic/meshtastic_web/static/*", "meshtastic/translations/*.json", "meshtastic/*.json", "meshtastic/*.yaml"]
++custom_components = ["meshtastic/ha_frontend/*.js", "meshtastic/meshtastic_web/static/*", "meshtastic/meshtastic_web/static/assets/*", "meshtastic/meshtastic_web/static/devices/*", "meshtastic/meshtastic_web/static/images/*", "meshtastic/translations/*.json", "meshtastic/*.json", "meshtastic/*.yaml"]
