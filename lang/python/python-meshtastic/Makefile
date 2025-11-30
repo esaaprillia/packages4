@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=meshtastic
+PKG_NAME:=python-meshtastic
 PKG_VERSION:=2.7.4
 PKG_RELEASE:=1
 
