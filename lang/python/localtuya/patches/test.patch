@@ -88,7 +88,7 @@ index ed410fb0f..039fdd2e8 100644
 -enable = [
 -    "use-symbolic-message-instead",
 +[project]
-+name         = "LocalTuya integration"
++name         = "localtuya"
 +version      = "5.2.4"
 +license      = "GPL-3.0"
 +license-files = ["LICENSE*"]
