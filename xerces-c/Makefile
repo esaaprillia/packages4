@@ -20,7 +20,7 @@ define Package/xerces-c
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Apache Xerces-C validating XML parser
-	DEPENDS:=+libstdcpp +libcurl +icu
+	DEPENDS:=+libstdcpp +libcurl +icu +libnsl
 	URL:=https://xerces.apache.org/
 endef
 
