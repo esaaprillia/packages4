@@ -21,7 +21,7 @@ define Package/muparser
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=muparser - fast math parser library
-	DEPENDS:=+libstdcpp
+	DEPENDS:=+libstdcpp +libgomp
 	URL:=http://beltoforion.de/en/muparser
 endef
 
