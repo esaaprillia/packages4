@@ -30,7 +30,9 @@ define Package/libgeotiff/description
 endef
 
 CONFIGURE_ARGS += \
-	--prefix=/usr
+	--prefix=/usr \
+	--with-jpeg=yes \
+	--with-zlib=yes
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
