@@ -4,7 +4,7 @@ PKG_NAME:=libnsl
 PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://github.com/thkukuk/libnsl/releases/download/v$(PKG_VERSION)
 PKG_HASH:=skip
 
