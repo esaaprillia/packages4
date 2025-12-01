@@ -5,7 +5,7 @@ PKG_VERSION:=3.3.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/apache/xerces-c/archive/v$(PKG_VERSION)
+PKG_SOURCE_URL:=https://archive.apache.org/dist/xerces/c/3/sources/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
