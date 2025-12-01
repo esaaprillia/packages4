@@ -5,7 +5,7 @@ PKG_VERSION:=4825d9b29eea4dac24607245db7ec7d4c41c1964
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://chromium.googlesource.com/libyuv/libyuv/+archive/v$(PKG_VERSION)
+PKG_SOURCE_URL:=https://chromium.googlesource.com/libyuv/libyuv/+archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
