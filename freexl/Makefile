@@ -20,7 +20,7 @@ define Package/freexl
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=SpatiaLite is an open source library intended to extend the SQLite
-	DEPENDS:=+libstdcpp +minizip
+	DEPENDS:=+libstdcpp +minizip +libexpat
 	URL:=https://www.gaia-gis.it/fossil/freexl/index
 endef
 
