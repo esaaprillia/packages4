@@ -44,11 +44,7 @@ define Build/Compile/Cargo
 	cargo install -v \
 		--profile $(CARGO_PKG_PROFILE) \
 		$(if $(strip $(RUST_PKG_FEATURES)),--features "$(strip $(RUST_PKG_FEATURES))") \
-		--root $(PKG_INSTALL_DIR)/$(CONFIGURE_PREFIX) \
-		--prefix $(CONFIGURE_PREFIX) \
-		--destdir $(PKG_INSTALL_DIR) \
-		--library-type cdylib \
-		--library-type staticlib \
+		--root $(PKG_INSTALL_DIR)$(CONFIGURE_PREFIX) \
 		--path "$(PKG_BUILD_DIR)/$(if $(strip $(1)),$(strip $(1)),$(strip $(MAKE_PATH)))" \
 		$(if $(filter --jobserver%,$(PKG_JOBS)),,-j1) \
 		$(CARGO_PKG_ARGS) \
