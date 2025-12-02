@@ -16,7 +16,7 @@ PKG_BUILD_DEPENDS:=cargo-c/host
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/rust/rust-package.mk
+include $(TOPDIR)/feeds/python/lang/rust/rust-package-mod.mk
 
 define Package/rav1e
   SECTION:=sound
