@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
+PKG_FIXUP:=autoreconf
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -39,7 +40,6 @@ CONFIGURE_ARGS += \
 	--enable-build-mode=production \
 	--enable-hl \
 	--enable-cxx \
-	--disable-fortran \
 	--disable-java \
 	--with-pic \
 	--with-zlib \
