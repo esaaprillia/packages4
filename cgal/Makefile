@@ -13,7 +13,6 @@ PKG_LICENSE:=GPL-3.0-or-later LGPL-3.0-or-later
 PKG_LICENSE_FILES:=LICENSE.md
 
 PKG_BUILD_DEPENDS:=boost eigen gmp mpfr
-HOST_BUILD_DEPENDS:=boost/host eigen/host gmp/host mpfr/host
 
 CMAKE_BINARY_SUBDIR := build
 
