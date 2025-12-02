@@ -31,6 +31,10 @@ define Package/hdf5/description
 endef
 
 export FC=aarch64-openwrt-linux-musl-gfortran
+export PAC_FC_ALL_REAL_KINDS="{4}"
+export PAC_FC_ALL_REAL_KINDS_SIZEOF="{4}"
+export PAC_FC_ALL_INTEGER_KINDS="{1,2,4,8,16}"
+export PAC_FC_ALL_INTEGER_KINDS_SIZEOF="{1,2,4,8,16}"
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
