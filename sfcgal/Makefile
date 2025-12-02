@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LGPL-2.0-or-later
 PKG_LICENSE_FILES:=LICENSE
 
+PKG_BUILD_DEPENDS:=cgal
 PKG_BUILD_DIR:=$(BUILD_DIR)/SFCGAL-v$(PKG_VERSION)
 
 CMAKE_BINARY_SUBDIR := build
