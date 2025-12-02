@@ -31,31 +31,6 @@ define Package/hdf5/description
 endef
 
 export FC=aarch64-openwrt-linux-musl-gfortran
-export ac_cv_sizeof_long_double=8
-export hdf5_cv_ldouble_to_long_special=no
-export hdf5_cv_long_to_ldouble_special=no
-export hdf5_cv_ldouble_to_llong_accurate=yes
-export hdf5_cv_llong_to_ldouble_correct=yes
-export hdf5_cv_disable_some_ldouble_conv=no
-export hdf5_cv_system_scope_threads=yes
-export hdf5_cv_printf_ll="l"
-export PAC_FC_MAX_REAL_PRECISION=15
-export PAC_C_MAX_REAL_PRECISION=17
-export PAC_FC_ALL_INTEGER_KINDS="{1,2,4,8,16}"
-export PAC_FC_ALL_REAL_KINDS="{4,8}"
-export H5CONFIG_F_NUM_RKIND="INTEGER, PARAMETER :: num_rkinds = 2"
-export H5CONFIG_F_NUM_IKIND="INTEGER, PARAMETER :: num_ikinds = 5"
-export H5CONFIG_F_RKIND="INTEGER, DIMENSION(1:num_rkinds) :: rkind = (/4,8/)"
-export H5CONFIG_F_IKIND="INTEGER, DIMENSION(1:num_ikinds) :: ikind = (/1,2,4,8,16/)"
-export PAC_FORTRAN_NATIVE_INTEGER_SIZEOF="4"
-export PAC_FORTRAN_NATIVE_INTEGER_KIND=" 4"
-export PAC_FORTRAN_NATIVE_REAL_SIZEOF="4"
-export PAC_FORTRAN_NATIVE_REAL_KIND=" 4"
-export PAC_FORTRAN_NATIVE_DOUBLE_SIZEOF="8"
-export PAC_FORTRAN_NATIVE_DOUBLE_KIND=" 8"
-export PAC_FORTRAN_NUM_INTEGER_KINDS="5"
-export PAC_FC_ALL_REAL_KINDS_SIZEOF="{4,8}"
-export PAC_FC_ALL_INTEGER_KINDS_SIZEOF="{1,2,4,8,16}"
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
