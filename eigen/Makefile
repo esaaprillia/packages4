@@ -32,11 +32,17 @@ define Package/eigen/description
 	Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
 endef
 
+CMAKE_OPTIONS += \
+	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
+
+CMAKE_HOST_OPTIONS += \
+	-DCMAKE_Fortran_COMPILER=gfortran
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/share/pkgconfig/eigen3.pc
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/share/pkgconfig/eigen3.pc
 endef
 
-$(eval $(call BuildPackage,eigen))
 $(eval $(call HostBuild))
+$(eval $(call BuildPackage,eigen))
