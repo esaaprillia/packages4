@@ -16,7 +16,7 @@ index d84143b00f0..e822a5c8d34 100644
          BYPRODUCTS ${HDF5_F90_BINARY_DIR}/H5f90i_gen.h ${HDF5_F90_BINARY_DIR}/H5fortran_types.F90
          COMMAND    ${CMAKE_COMMAND}
 -        ARGS       -E env ${CROSSCOMPILING_PATH}
-+        
++
          COMMAND    $<TARGET_FILE:H5match_types>
          WORKING_DIRECTORY ${HDF5_F90_BINARY_DIR}
          COMMENT "Generating the H5fortran_types.F90 and H5f90i_gen.h files"
@@ -25,7 +25,7 @@ index d84143b00f0..e822a5c8d34 100644
          BYPRODUCTS ${HDF5_F90_BINARY_DIR}/H5_gen.F90
          COMMAND    ${CMAKE_COMMAND}
 -        ARGS       -E env ${CROSSCOMPILING_PATH}
-+        
++
          COMMAND    $<TARGET_FILE:H5_buildiface>
          WORKING_DIRECTORY ${HDF5_F90_BINARY_DIR}
          COMMENT "Generating the H5_gen.F90 file"
@@ -36,7 +36,7 @@ index d84143b00f0..e822a5c8d34 100644
          BYPRODUCTS ${HDF5_FORTRAN_TESTS_BINARY_DIR}/tf_gen.F90
          COMMAND    ${CMAKE_COMMAND}
 -        ARGS       -E env ${CROSSCOMPILING_PATH}
-+        
++
          COMMAND    $<TARGET_FILE:H5_test_buildiface>
          WORKING_DIRECTORY ${HDF5_FORTRAN_TESTS_BINARY_DIR}
          COMMENT "Generating the tf_gen.F90 static file"
