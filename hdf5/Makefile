@@ -13,7 +13,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
 PKG_USE_NINJA:=0
-#CMAKE_BINARY_SUBDIR := build
+CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -44,9 +44,9 @@ CMAKE_OPTIONS += \
     -DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
 define Build/Compile
-	touch $(PKG_BUILD_DIR)/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
-	$(HOSTCC) $(PKG_BUILD_DIR)/fortran/src/H5match_types.c \
-		-o $(PKG_BUILD_DIR)/bin/H5match_types
+	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
+	$(HOSTCC) $(PKG_BUILD_DIR)/build/fortran/src/H5match_types.c \
+		-o $(PKG_BUILD_DIR)/build/bin/H5match_types
 	$(call Build/Compile/Default)
 endef
 
