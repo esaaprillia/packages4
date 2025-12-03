@@ -36,9 +36,9 @@ define Package/hdf5/description
 endef
 
 define Build/Compile
-	#touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5_buildiface.dir/H5_buildiface.F90.o
+	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5_buildiface.dir/H5_buildiface.F90.o
 	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
-	#$(HOSTCC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/src -I$(PKG_BUILD_DIR)/fortran/src $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/fortran/src/H5_buildiface.F90 -o $(PKG_BUILD_DIR)/build/bin/H5_buildiface
+	$(HOSTCC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/src -I$(PKG_BUILD_DIR)/build/fortran $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/fortran/src/H5_buildiface.F90 -o $(PKG_BUILD_DIR)/build/bin/H5_buildiface
 	$(HOSTCC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/src -I$(PKG_BUILD_DIR)/build/src -I$(PKG_BUILD_DIR)/build/fortran $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/fortran/src/H5match_types.c -o $(PKG_BUILD_DIR)/build/bin/H5match_types
 	$(call Build/Compile/Default)
 endef
