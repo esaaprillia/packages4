@@ -34,6 +34,10 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-DHDF5_BUILD_FORTRAN=ON \
+	-DCMAKE_Fortran_COMPILER=gfortran
+
 CMAKE_OPTIONS += \
     -DBUILD_SHARED_LIBS=ON \
     -DHDF5_BUILD_CPP_LIB=ON \
@@ -50,6 +54,11 @@ define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
+endef
+
+define Host/Install
+	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
+	$(CP) $(HOST_BUILD_DIR)/bin/H5match_types $(STAGING_DIR_HOSTPKG)/bin/
 endef
 
 define Package/hdf5/install
