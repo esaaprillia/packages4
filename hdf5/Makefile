@@ -53,7 +53,6 @@ CMAKE_OPTIONS += \
     -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
     -DHDF5_ENABLE_SZIP_SUPPORT=ON \
     -DHDF5_ENABLE_SZIP_ENCODING=ON \
-    -DHDF5_F90_BINARY_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
     -DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
 define Build/InstallDev
