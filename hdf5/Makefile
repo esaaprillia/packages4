@@ -34,13 +34,6 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) 's,H5_buildiface PRIVATE,$(STAGING_DIR_HOSTPKG)/bin/H5_buildiface,g' $(PKG_BUILD_DIR)/fortran/src/CMakeLists.txt
-	$(SED) 's,H5match_types PRIVATE,$(STAGING_DIR_HOSTPKG)/bin/H5match_types,g' $(PKG_BUILD_DIR)/fortran/src/CMakeLists.txt
-	$(SED) 's,DEPENDS H5match_types,DEPENDS $(STAGING_DIR_HOSTPKG)/bin/H5match_types,g' $(PKG_BUILD_DIR)/fortran/src/CMakeLists.txt
-endef
-
 CMAKE_HOST_OPTIONS += \
 	-DHDF5_BUILD_FORTRAN=ON \
 	-DCMAKE_Fortran_COMPILER=gfortran
