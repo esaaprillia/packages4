@@ -12,10 +12,11 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
+PKG_USE_NINJA:=0
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=hdf5/host
+#PKG_BUILD_DEPENDS:=hdf5/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -32,6 +33,14 @@ endef
 define Package/hdf5/description
 	This repository contains a high-performance library's source code and a file format specification that implements the HDF5® data model.
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
+endef
+
+define Build/Compile
+	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5_buildiface.dir/H5_buildiface.F90.o
+	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
+	$(HOSTCC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/src -I$(PKG_BUILD_DIR)/fortran/src $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/build/fortran/src/H5_buildiface.F90 -o $(PKG_BUILD_DIR)/build/bin/H5_buildiface
+	$(HOSTCC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/src -I$(PKG_BUILD_DIR)/fortran/src $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/build/fortran/src/H5match_types.c -o $(PKG_BUILD_DIR)/build/bin/H5match_types
+	$(call Build/Compile/Default)
 endef
 
 CMAKE_HOST_OPTIONS += \
