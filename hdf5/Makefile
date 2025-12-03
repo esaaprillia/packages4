@@ -58,7 +58,7 @@ endef
 
 define Host/Install
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
-	$(CP) $(HOST_BUILD_DIR)/bin/H5match_types $(STAGING_DIR_HOSTPKG)/bin/
+	$(CP) $(HOST_BUILD_DIR)/build/bin/H5match_types $(STAGING_DIR_HOSTPKG)/bin/
 endef
 
 define Package/hdf5/install
