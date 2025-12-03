@@ -15,8 +15,10 @@ PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
+PKG_BUILD_DEPENDS:=hdf5/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/hdf5
@@ -34,7 +36,6 @@ endef
 
 CMAKE_OPTIONS += \
     -DBUILD_SHARED_LIBS=ON \
-    -DBUILD_TESTING=OFF \
     -DHDF5_BUILD_CPP_LIB=ON \
     -DHDF5_BUILD_HL_LIB=ON \
     -DHDF5_BUILD_FORTRAN=ON \
@@ -42,6 +43,7 @@ CMAKE_OPTIONS += \
     -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
     -DHDF5_ENABLE_SZIP_SUPPORT=ON \
     -DHDF5_ENABLE_SZIP_ENCODING=ON \
+    -DCROSSCOMPILING_PATH="$(STAGING_DIR_HOSTPKG)/bin" \
     -DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
 define Build/InstallDev
@@ -57,4 +59,5 @@ define Package/hdf5/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,hdf5))
