@@ -1,49 +1,22 @@
-From 134a09d087a680970e6cfa115e7b847e7a0db85a Mon Sep 17 00:00:00 2001
-From: Predators <31931530+predators46@users.noreply.github.com>
-Date: Wed, 3 Dec 2025 10:37:59 +0800
-Subject: [PATCH] Update CMakeTests.cmake
+From 99f0a45def5d3e546080f4f7625f6e0f563ff387 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 3 Dec 2025 11:49:53 +0800
+Subject: [PATCH] Update CMakeLists.txt
 
 ---
- fortran/test/CMakeTests.cmake | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ fortran/test/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/fortran/test/CMakeTests.cmake b/fortran/test/CMakeTests.cmake
-index fe837cb7181..270be86bba5 100644
---- a/fortran/test/CMakeTests.cmake
-+++ b/fortran/test/CMakeTests.cmake
-@@ -58,7 +58,7 @@ set (testhdf5_fortran_CLEANFILES
- # Remove any output file left over from previous test run
- add_test (
-     NAME FORTRAN_testhdf5-clear-objects
--    COMMAND ${CMAKE_COMMAND} -E remove ${testhdf5_fortran_CLEANFILES}
-+    COMMAND ${CMAKE_COMMAND} ENV remove ${testhdf5_fortran_CLEANFILES}
- )
- set_tests_properties (FORTRAN_testhdf5-clear-objects PROPERTIES
-     FIXTURES_SETUP clear_testhdf5_fortran
-@@ -66,7 +66,7 @@ set_tests_properties (FORTRAN_testhdf5-clear-objects PROPERTIES
- )
- add_test (
-     NAME FORTRAN_testhdf5-clean-objects
--    COMMAND ${CMAKE_COMMAND} -E remove ${testhdf5_fortran_CLEANFILES}
-+    COMMAND ${CMAKE_COMMAND} ENV remove ${testhdf5_fortran_CLEANFILES}
- )
- set_tests_properties (FORTRAN_testhdf5-clean-objects PROPERTIES
-     FIXTURES_CLEANUP clear_testhdf5_fortran
-@@ -180,7 +180,7 @@ endif ()
- #-- Adding test for fflush1
- add_test (
-     NAME FORTRAN_flush1-clear-objects
--    COMMAND ${CMAKE_COMMAND} -E remove flush.h5
-+    COMMAND ${CMAKE_COMMAND} ENV remove flush.h5
- )
- add_test (
-     NAME FORTRAN_fflush1
-@@ -208,7 +208,7 @@ if ("FORTRAN_fflush2" MATCHES "${HDF5_DISABLE_TESTS_REGEX}")
- endif ()
- add_test (
-     NAME FORTRAN_flush1-clean-objects
--    COMMAND ${CMAKE_COMMAND} -E remove flush.h5
-+    COMMAND ${CMAKE_COMMAND} ENV remove flush.h5
- )
- set_tests_properties (FORTRAN_flush1-clean-objects PROPERTIES
-     DEPENDS FORTRAN_fflush2
+diff --git a/fortran/test/CMakeLists.txt b/fortran/test/CMakeLists.txt
+index 5c34919047f..e59a4b8f380 100644
+--- a/fortran/test/CMakeLists.txt
++++ b/fortran/test/CMakeLists.txt
+@@ -108,7 +108,7 @@ if (NOT EXISTS "${HDF5_GENERATED_SOURCE_DIR}/tf_gen.F90")
+     add_custom_command (TARGET H5_test_buildiface POST_BUILD
+         BYPRODUCTS ${HDF5_FORTRAN_TESTS_BINARY_DIR}/tf_gen.F90
+         COMMAND    ${CMAKE_COMMAND}
+-        ARGS       -E env ${CROSSCOMPILING_PATH}
++        ARGS       -E ${CROSSCOMPILING_PATH}
+         COMMAND    $<TARGET_FILE:H5_test_buildiface>
+         WORKING_DIRECTORY ${HDF5_FORTRAN_TESTS_BINARY_DIR}
+         COMMENT "Generating the tf_gen.F90 static file"
