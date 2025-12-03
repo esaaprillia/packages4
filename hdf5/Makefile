@@ -12,8 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
-PKG_USE_NINJA:=0
 CMAKE_BINARY_SUBDIR := build
+
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -42,12 +42,6 @@ CMAKE_OPTIONS += \
     -DHDF5_ENABLE_SZIP_SUPPORT=ON \
     -DHDF5_ENABLE_SZIP_ENCODING=ON \
     -DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
-
-define Build/Compile
-	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
-	$(HOSTCC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/fortran/src $(HOST_LDFLAGS) -znow -zrelro $(PKG_BUILD_DIR)/fortran/src/H5match_types.c -o $(PKG_BUILD_DIR)/bin/H5match_types
-	$(call Build/Compile/Default)
-endef
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
