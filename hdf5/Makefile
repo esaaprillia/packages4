@@ -45,8 +45,8 @@ CMAKE_OPTIONS += \
 
 define Build/Compile
 	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
-	$(HOSTCC) $(PKG_BUILD_DIR)/build/fortran/src/H5match_types.c \
-		-o $(PKG_BUILD_DIR)/build/bin/H5match_types
+	$(HOSTCC) $(PKG_BUILD_DIR)/fortran/src/H5match_types.c \
+		-o $(PKG_BUILD_DIR)/bin/H5match_types
 	$(call Build/Compile/Default)
 endef
 
