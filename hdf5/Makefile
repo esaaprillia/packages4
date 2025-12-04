@@ -39,11 +39,12 @@ endef
 
 define Build/Configure
 	$(call Build/Configure/Default)
-	mkdir -p $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/
+	mkdir -p $(PKG_BUILD_DIR)/build/fortran/shared
+	mkdir -p $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir
 	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5_buildiface.dir/H5_buildiface.F90.o
 	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
 	$(INSTALL_BIN) files/native/{H5_buildiface,H5match_types} $(PKG_BUILD_DIR)/build/bin/
-	#$(INSTALL_DATA) files/H5match_types/build.make $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/
+	$(INSTALL_DATA) files/H5match_types/* $(PKG_BUILD_DIR)/build/fortran/shared/
 endef
 
 CMAKE_HOST_OPTIONS += \
