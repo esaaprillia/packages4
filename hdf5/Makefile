@@ -22,7 +22,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-FC=gfortran
+#FC=gfortran
 
 define Package/hdf5
 	SECTION:=libs
