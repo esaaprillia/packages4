@@ -39,8 +39,8 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(SED) 's,H5_buildiface PRIVATE,$(STAGING_DIR_HOSTPKG)/bin/H5_buildiface,g' $(PKG_BUILD_DIR)/fortran/src/CMakeLists.txt
-	$(SED) 's,H5match_types PRIVATE,$(STAGING_DIR_HOSTPKG)/bin/H5match_types,g' $(PKG_BUILD_DIR)/fortran/src/CMakeLists.txt
+	$(SED) 's,TARGET H5_buildiface,$(STAGING_DIR_HOSTPKG)/bin/H5_buildiface,g' $(PKG_BUILD_DIR)/fortran/src/CMakeLists.txt
+	$(SED) 's,TARGET H5match_types,$(STAGING_DIR_HOSTPKG)/bin/H5match_types,g' $(PKG_BUILD_DIR)/fortran/src/CMakeLists.txt
 	$(SED) 's,DEPENDS H5match_types,DEPENDS $(STAGING_DIR_HOSTPKG)/bin/H5match_types,g' $(PKG_BUILD_DIR)/fortran/src/CMakeLists.txt
 endef
 
