@@ -12,17 +12,17 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
-#PKG_USE_NINJA:=0
+PKG_USE_NINJA:=0
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=hdf5/host
+#PKG_BUILD_DEPENDS:=hdf5/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-#FC=gfortran
+FC=gfortran
 
 define Package/hdf5
 	SECTION:=libs
@@ -37,13 +37,13 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
-define Build/Compile
-	$(SED) 's,bin/H5_buildiface,$(STAGING_DIR_HOSTPKG)/bin/H5_buildiface,g' $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5genSH.dir/build.make
-	$(SED) 's,bin/H5_buildiface,$(STAGING_DIR_HOSTPKG)/bin/H5_buildiface,g' $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5gen.dir/build.make
-	$(SED) 's,bin/H5match_types,$(STAGING_DIR_HOSTPKG)/bin/H5match_types,g' $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5gen_i.dir/build.make
-	$(SED) 's,bin/H5match_types,$(STAGING_DIR_HOSTPKG)/bin/H5match_types,g' $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5gen_iSH.dir/build.make
-	#$(SED) 's,DEPENDS H5match_types,DEPENDS $(STAGING_DIR_HOSTPKG)/bin/H5match_types,g' $(PKG_BUILD_DIR)/fortran/src/CMakeLists.txt
-	$(call Build/Compile/Default)
+define Build/Configure
+	$(call Build/Configure/Default)
+	#mkdir-p $(PKG_BUILD_DIR)/build/bin
+	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5_buildiface.dir/H5_buildiface.F90.o
+	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
+	$(FC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/src -I$(PKG_BUILD_DIR)/build/fortran $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/fortran/src/H5_buildiface.F90 -o $(PKG_BUILD_DIR)/build/bin/H5_buildiface
+	$(HOSTCC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/src -I$(PKG_BUILD_DIR)/build/src -I$(PKG_BUILD_DIR)/build/fortran $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/fortran/src/H5match_types.c -o $(PKG_BUILD_DIR)/build/bin/H5match_types
 endef
 
 CMAKE_HOST_OPTIONS += \
