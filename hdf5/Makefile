@@ -40,8 +40,8 @@ endef
 define Build/Configure
 	$(call Build/Configure/Default)
 	#mkdir-p $(PKG_BUILD_DIR)/build/bin
-	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5_buildiface.dir/H5_buildiface.F90.o
-	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
+	#touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5_buildiface.dir/H5_buildiface.F90.o
+	#touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
 	$(FC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/src -I$(PKG_BUILD_DIR)/build/fortran $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/fortran/src/H5_buildiface.F90 -o $(PKG_BUILD_DIR)/build/bin/H5_buildiface
 	$(HOSTCC) $(HOST_CFLAGS) -I$(PKG_BUILD_DIR)/src -I$(PKG_BUILD_DIR)/build/src -I$(PKG_BUILD_DIR)/build/fortran $(HOST_LDFLAGS) $(PKG_BUILD_DIR)/fortran/src/H5match_types.c -o $(PKG_BUILD_DIR)/build/bin/H5match_types
 endef
