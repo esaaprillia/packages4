@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aioesphomeapi
-PKG_VERSION:=42.8.0
+PKG_VERSION:=43.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aioesphomeapi
