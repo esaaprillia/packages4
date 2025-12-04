@@ -1,0 +1,37 @@
+From 46c5792cb584763412b3c98e0f3c79a1a25219bf Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 4 Dec 2025 18:51:27 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ fortran/src/CMakeLists.txt | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/fortran/src/CMakeLists.txt b/fortran/src/CMakeLists.txt
+index d84143b00f0..3ba17c6365c 100644
+--- a/fortran/src/CMakeLists.txt
++++ b/fortran/src/CMakeLists.txt
+@@ -111,7 +111,7 @@ endif ()
+ # H5fort_type_defines.h   used to generate H5f90i_gen.h + H5fortran_types.F90
+ #-----------------------------------------------------------------------------
+ 
+-add_executable (H5_buildiface ${HDF5_F90_SRC_SOURCE_DIR}/H5_buildiface.F90)
++#add_executable (H5_buildiface ${HDF5_F90_SRC_SOURCE_DIR}/H5_buildiface.F90)
+ target_include_directories (H5_buildiface PRIVATE "${HDF5_SRC_BINARY_DIR};${HDF5_F90_BINARY_DIR}")
+ #if (BUILD_SHARED_LIBS)
+ #  target_compile_definitions(H5_buildiface PRIVATE "$<$<STREQUAL:x${CMAKE_Fortran_SIMULATE_ID},xMSVC>:/MT>")
+@@ -137,10 +137,10 @@ if (BUILD_STATIC_LIBS)
+ endif ()
+ 
+ #-----------------------------------------------------------------------------
+-add_executable (H5match_types
+-    ${HDF5_F90_BINARY_DIR}/H5fort_type_defines.h
+-    ${HDF5_F90_SRC_SOURCE_DIR}/H5match_types.c
+-)
++#add_executable (H5match_types
++#    ${HDF5_F90_BINARY_DIR}/H5fort_type_defines.h
++#    ${HDF5_F90_SRC_SOURCE_DIR}/H5match_types.c
++#)
+ target_include_directories (H5match_types PRIVATE "${HDF5_SRC_BINARY_DIR};${HDF5_SRC_INCLUDE_DIRS};${HDF5_F90_BINARY_DIR};$<$<BOOL:${HDF5_ENABLE_PARALLEL}>:${MPI_C_INCLUDE_DIRS}>")
+ # check if a pre-generated H5fortran_types.F90 file is present
+ if (NOT EXISTS "${HDF5_GENERATED_SOURCE_DIR}/H5fortran_types.F90")
