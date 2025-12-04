@@ -40,11 +40,15 @@ endef
 define Build/Configure
 	$(call Build/Configure/Default)
 	mkdir -p $(PKG_BUILD_DIR)/build/fortran/shared
+	mkdir -p $(PKG_BUILD_DIR)/build/hl/fortran/shared
 	mkdir -p $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir
+	mkdir -p $(PKG_BUILD_DIR)/build/hl/fortran/src/CMakeFiles/H5HL_buildiface.dir
 	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5_buildiface.dir/H5_buildiface.F90.o
 	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
-	$(INSTALL_BIN) files/native/{H5_buildiface,H5match_types} $(PKG_BUILD_DIR)/build/bin/
-	$(INSTALL_DATA) files/H5match_types/* $(PKG_BUILD_DIR)/build/fortran/shared/
+	touch $(PKG_BUILD_DIR)/build/hl/fortran/src/CMakeFiles/H5HL_buildiface.dir/H5HL_buildiface.F90.o
+	$(INSTALL_BIN) files/native/{H5_buildiface,H5match_types,H5HL_buildiface} $(PKG_BUILD_DIR)/build/bin/
+	$(INSTALL_DATA) files/H5match_types/{H5_gen.F90,H5f90i_gen.h,H5fortran_types.F90} $(PKG_BUILD_DIR)/build/fortran/shared/
+	$(INSTALL_DATA) files/H5match_types/{H5LTff_gen.F90,H5TBff_gen.F90} $(PKG_BUILD_DIR)/build/hl/fortran/shared/
 endef
 
 CMAKE_HOST_OPTIONS += \
