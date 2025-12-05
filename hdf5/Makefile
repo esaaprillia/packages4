@@ -37,18 +37,15 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
-define Build/Configure
-	$(call Build/Configure/Default)
-	$(INSTALL_BIN) files/native/{H5_buildiface1,H5match_types1,H5HL_buildiface1} $(PKG_BUILD_DIR)/build/bin/
-endef
-
 CMAKE_HOST_OPTIONS += \
 	-DHDF5_BUILD_FORTRAN=ON \
 	-DBUILD_TESTING=OFF \
 	-DCMAKE_Fortran_COMPILER=gfortran
 
 CMAKE_OPTIONS += \
-    -DBUILD_SHARED_LIBS=ON \
+	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_C_COMPILER="$(CMAKE_HOST_C_COMPILER)" \
+	-DCMAKE_CXX_COMPILER="$(CMAKE_HOST_CXX_COMPILER)" \
     -DBUILD_STATIC_LIBS=OFF \
     -DBUILD_TESTING=OFF \
     -DHDF5_BUILD_CPP_LIB=ON \
