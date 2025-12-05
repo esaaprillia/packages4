@@ -1,17 +1,17 @@
-From 850e32b8207a87f83a5da2e01fb134c88d645699 Mon Sep 17 00:00:00 2001
+From a7ec4ff1d725b8c9a1dbee87284afdc9495f3f10 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Fri, 5 Dec 2025 21:01:54 +0800
+Date: Fri, 5 Dec 2025 22:03:56 +0800
 Subject: [PATCH] Add files via upload
 
 ---
- configure | 32 --------------------------------
- 1 file changed, 32 deletions(-)
+ configure | 45 ---------------------------------------------
+ 1 file changed, 45 deletions(-)
 
 diff --git a/configure b/configure
-index 5d6661c..120bb22 100644
+index 5d6661c..45b66a3 100644
 --- a/configure
 +++ b/configure
-@@ -7567,13 +7567,6 @@ main (void)
+@@ -7567,27 +7567,6 @@ main (void)
  }
  
  _ACEOF
@@ -22,18 +22,24 @@ index 5d6661c..120bb22 100644
 -as_fn_error $? "cannot run test program while cross compiling
 -See \`config.log' for more details" "$LINENO" 5; }
 -else $as_nop
-   if ac_fn_c_try_run "$LINENO"
- then :
- 
-@@ -7587,7 +7580,6 @@ else $as_nop
- fi
- rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-   conftest.$ac_objext conftest.beam
+-  if ac_fn_c_try_run "$LINENO"
+-then :
+-
+-            MY_LDBL_DIG=$(./conftest$EXEEXT 2>&1 | sed -n '1p')
+-            MY_FLT128_DIG=$(./conftest$EXEEXT 2>&1 | sed -n '2p')
+-
+-else $as_nop
+-
+-            as_fn_error $? "C program fails to build or run!" "$LINENO" 5
+-
+-fi
+-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+-  conftest.$ac_objext conftest.beam
 -fi
  
  
  
-@@ -9173,13 +9165,6 @@ ac_link='$FC -o conftest$ac_exeext $FCFLAGS $LDFLAGS $ac_fcflags_srcext conftest
+@@ -9173,13 +9152,6 @@ ac_link='$FC -o conftest$ac_exeext $FCFLAGS $LDFLAGS $ac_fcflags_srcext conftest
  ac_compiler_gnu=$ac_cv_fc_compiler_gnu
  
  TEST_SRC="`sed -n '/PROGRAM FC_AVAIL_KINDS/,/END PROGRAM FC_AVAIL_KINDS/p' $srcdir/m4/aclocal_fc.f90`"
@@ -47,7 +53,7 @@ index 5d6661c..120bb22 100644
    cat > conftest.$ac_ext <<_ACEOF
  $TEST_SRC
  _ACEOF
-@@ -9242,7 +9227,6 @@ printf "%s\n" "Error" >&6; }
+@@ -9242,7 +9214,6 @@ printf "%s\n" "Error" >&6; }
  fi
  rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
    conftest.$ac_objext conftest.beam conftest.$ac_ext
@@ -55,7 +61,7 @@ index 5d6661c..120bb22 100644
  
  
  ac_ext=${ac_fc_srcext-f}
-@@ -9328,13 +9312,6 @@ ac_link='$FC -o conftest$ac_exeext $FCFLAGS $LDFLAGS $ac_fcflags_srcext conftest
+@@ -9328,13 +9299,6 @@ ac_link='$FC -o conftest$ac_exeext $FCFLAGS $LDFLAGS $ac_fcflags_srcext conftest
  ac_compiler_gnu=$ac_cv_fc_compiler_gnu
  
  TEST_SRC="`sed -n '/PROGRAM FC08_AVAIL_KINDS/,/END PROGRAM FC08_AVAIL_KINDS/p' $srcdir/m4/aclocal_fc.f90`"
@@ -69,7 +75,7 @@ index 5d6661c..120bb22 100644
    cat > conftest.$ac_ext <<_ACEOF
  $TEST_SRC
  _ACEOF
-@@ -9409,7 +9386,6 @@ printf "%s\n" "Error" >&6; }
+@@ -9409,7 +9373,6 @@ printf "%s\n" "Error" >&6; }
  fi
  rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
    conftest.$ac_objext conftest.beam conftest.$ac_ext
@@ -77,7 +83,7 @@ index 5d6661c..120bb22 100644
  
  ac_ext=${ac_fc_srcext-f}
  ac_compile='$FC -c $FCFLAGS $ac_fcflags_srcext conftest.$ac_ext >&5'
-@@ -9425,13 +9401,6 @@ ac_link='$FC -o conftest$ac_exeext $FCFLAGS $LDFLAGS $ac_fcflags_srcext conftest
+@@ -9425,13 +9388,6 @@ ac_link='$FC -o conftest$ac_exeext $FCFLAGS $LDFLAGS $ac_fcflags_srcext conftest
  ac_compiler_gnu=$ac_cv_fc_compiler_gnu
  
  TEST_SRC="`sed -n '/PROGRAM FC_AVAIL_KINDS/,/END PROGRAM FC_AVAIL_KINDS/p' $srcdir/m4/aclocal_fc.f90`"
@@ -91,7 +97,7 @@ index 5d6661c..120bb22 100644
    cat > conftest.$ac_ext <<_ACEOF
  $TEST_SRC
  _ACEOF
-@@ -9494,7 +9463,6 @@ printf "%s\n" "Error" >&6; }
+@@ -9494,7 +9450,6 @@ printf "%s\n" "Error" >&6; }
  fi
  rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
    conftest.$ac_objext conftest.beam conftest.$ac_ext
