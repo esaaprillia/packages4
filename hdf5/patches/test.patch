@@ -1,14 +1,25 @@
-From 28fc8cb8a8817ce80ad534f77c5d36dfe45e6346 Mon Sep 17 00:00:00 2001
+From 9ee9c6ea8137ea2a9718b0a31d0b965806868cf1 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 18 Sep 2025 12:12:11 +0800
-Subject: [PATCH] Add files via upload
+Date: Sat, 6 Dec 2025 06:40:38 +0800
+Subject: [PATCH] Update H5match_types.c
 
 ---
- configure | 243 ------------------------------------------------------
- 1 file changed, 243 deletions(-)
+ fortran/src/H5match_types.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/configure b/configure
-index 5d6661c..910d664 100644
+diff --git a/fortran/src/H5match_types.c b/fortran/src/H5match_types.c
+index 40d21e97cc0..3ed1ce9335a 100644
+--- a/fortran/src/H5match_types.c
++++ b/fortran/src/H5match_types.c
+@@ -27,6 +27,8 @@
+  ******
+  */
+ 
++#include <stdint.h>
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <assert.h>
 --- a/configure
 +++ b/configure
 @@ -7567,27 +7567,6 @@ main (void)
