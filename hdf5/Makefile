@@ -37,6 +37,11 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
+define Build/Configure
+	$(call Build/Configure/Default)
+	$(INSTALL_BIN) files/native/{H5_buildiface1,H5match_types1,H5HL_buildiface1} $(PKG_BUILD_DIR)/build/bin/
+endef
+
 CMAKE_HOST_OPTIONS += \
 	-DHDF5_BUILD_FORTRAN=ON \
 	-DBUILD_TESTING=OFF \
