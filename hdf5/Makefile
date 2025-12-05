@@ -31,7 +31,7 @@ define Package/hdf5/description
 endef
 
 CONFIGURE_VARS += \
-	FC=aarch64-openwrt-linux-musl-gfortran
+	ac_cv_fc_compiler_gnu=aarch64-openwrt-linux-musl-gfortran
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
