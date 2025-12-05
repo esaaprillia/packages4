@@ -31,6 +31,14 @@ define Package/hdf5/description
 endef
 
 CONFIGURE_VARS += \
+	ac_cv_sizeof_long_double=8 \
+	hdf5_cv_ldouble_to_long_special=no \
+	hdf5_cv_long_to_ldouble_special=no \
+	hdf5_cv_ldouble_to_llong_accurate=yes \
+	hdf5_cv_llong_to_ldouble_correct=yes \
+	hdf5_cv_disable_some_ldouble_conv=no \
+	hdf5_cv_system_scope_threads=yes \
+	hdf5_cv_printf_ll="l" \
 	FC=aarch64-openwrt-linux-musl-gfortran
 
 CONFIGURE_ARGS += \
