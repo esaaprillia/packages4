@@ -1,23 +1,46 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=hdf5
-PKG_VERSION:=2.0.0
+PKG_VERSION:=1.14.6
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/HDFGroup/hdf5/releases/download/$(PKG_VERSION)/
+PKG_SOURCE_URL:=https://github.com/HDFGroup/hdf5/releases/download/hdf5_$(PKG_VERSION)/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
-CMAKE_BINARY_SUBDIR := build
+export ac_cv_sizeof_long_double=8
+export hdf5_cv_ldouble_to_long_special=no
+export hdf5_cv_long_to_ldouble_special=no
+export hdf5_cv_ldouble_to_llong_accurate=yes
+export hdf5_cv_llong_to_ldouble_correct=yes
+export hdf5_cv_disable_some_ldouble_conv=no
+export hdf5_cv_system_scope_threads=yes
+export hdf5_cv_printf_ll="l"
+export PAC_FC_MAX_REAL_PRECISION=15
+export PAC_C_MAX_REAL_PRECISION=17
+export PAC_FC_ALL_INTEGER_KINDS="{1,2,4,8,16}"
+export PAC_FC_ALL_REAL_KINDS="{4,8}"
+export H5CONFIG_F_NUM_RKIND="INTEGER, PARAMETER :: num_rkinds = 2"
+export H5CONFIG_F_NUM_IKIND="INTEGER, PARAMETER :: num_ikinds = 5"
+export H5CONFIG_F_RKIND="INTEGER, DIMENSION(1:num_rkinds) :: rkind = (/4,8/)"
+export H5CONFIG_F_IKIND="INTEGER, DIMENSION(1:num_ikinds) :: ikind = (/1,2,4,8,16/)"
+export PAC_FORTRAN_NATIVE_INTEGER_SIZEOF="4"
+export PAC_FORTRAN_NATIVE_INTEGER_KIND=" 4"
+export PAC_FORTRAN_NATIVE_REAL_SIZEOF="4"
+export PAC_FORTRAN_NATIVE_REAL_KIND=" 4"
+export PAC_FORTRAN_NATIVE_DOUBLE_SIZEOF="8"
+export PAC_FORTRAN_NATIVE_DOUBLE_KIND=" 8"
+export PAC_FORTRAN_NUM_INTEGER_KINDS="5"
+export PAC_FC_ALL_REAL_KINDS_SIZEOF="{4,8}"
+export PAC_FC_ALL_INTEGER_KINDS_SIZEOF="{1,2,4,8,16}"
 
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
 
 define Package/hdf5
 	SECTION:=libs
@@ -32,30 +55,58 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
-CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
-    -DBUILD_STATIC_LIBS=OFF \
-    -DBUILD_TESTING=OFF \
-    -DHDF5_BUILD_CPP_LIB=ON \
-    -DHDF5_BUILD_HL_LIB=ON \
-    -DHDF5_BUILD_FORTRAN=OFF \
-    -DHDF5_BUILD_JAVA=OFF \
-    -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
-    -DHDF5_ENABLE_SZIP_SUPPORT=ON \
-    -DHDF5_ENABLE_SZIP_ENCODING=ON \
-    -DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
+CONFIGURE_VARS += \
+	FC=aarch64-openwrt-linux-musl-gfortran
+
+CONFIGURE_ARGS += \
+	--prefix=/usr \
+	--docdir=/usr/share/doc/hdf5/ \
+	--with-examplesdir=/usr/share/doc/hdf5/examples/ \
+	--with-default-plugindir=/usr/lib/hdf5/lib/plugin/ \
+	--disable-static \
+	--disable-sharedlib-rpath \
+	--enable-build-mode=production \
+	--enable-hl \
+	--enable-cxx \
+	--enable-fortran \
+	--enable-tests=no \
+	--disable-java \
+	--with-pic \
+	--with-zlib \
+	--with-szlib
+
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		DESTDIR="$(PKG_INSTALL_DIR)" \
+		all install
+endef
 
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
-	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
-	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
+	$(INSTALL_DIR) \
+	  $(1)/usr/include \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/include/* \
+	  $(1)/usr/include/
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/* \
+	  $(1)/usr/lib/
 endef
 
 define Package/hdf5/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) \
+	  $(1)/usr/bin \
+	  $(1)/usr/lib
+
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/bin/* \
+	  $(1)/usr/bin/
+	
+	$(CP) \
+	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
+	  $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,hdf5))
