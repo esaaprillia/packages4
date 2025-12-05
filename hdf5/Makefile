@@ -30,6 +30,11 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	sed -e '/-Werror/d' -i $(PKG_BUILD_DIR)/configure
+endef
+
 CONFIGURE_VARS += \
 	FC=aarch64-openwrt-linux-musl-gfortran
 
