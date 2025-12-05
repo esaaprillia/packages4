@@ -12,17 +12,12 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE LICENSE_LBNL_HDF5
 
-PKG_USE_NINJA:=0
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
-#PKG_BUILD_DEPENDS:=hdf5/host
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
-
-#FC=gfortran
 
 define Package/hdf5
 	SECTION:=libs
@@ -37,20 +32,13 @@ define Package/hdf5/description
 	The model has been adopted across many industries, and this implementation has become a de facto data management standard in science, engineering, and research communities worldwide.
 endef
 
-CMAKE_HOST_OPTIONS += \
-	-DHDF5_BUILD_FORTRAN=ON \
-	-DBUILD_TESTING=OFF \
-	-DCMAKE_Fortran_COMPILER=gfortran
-
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
-	-DCMAKE_C_COMPILER="$(CMAKE_HOST_C_COMPILER)" \
-	-DCMAKE_CXX_COMPILER="$(CMAKE_HOST_CXX_COMPILER)" \
     -DBUILD_STATIC_LIBS=OFF \
     -DBUILD_TESTING=OFF \
     -DHDF5_BUILD_CPP_LIB=ON \
     -DHDF5_BUILD_HL_LIB=ON \
-    -DHDF5_BUILD_FORTRAN=ON \
+    -DHDF5_BUILD_FORTRAN=OFF \
     -DHDF5_BUILD_JAVA=OFF \
     -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
     -DHDF5_ENABLE_SZIP_SUPPORT=ON \
@@ -63,11 +51,6 @@ define Build/InstallDev
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/hdf5*.pc
 endef
 
-define Host/Install
-	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
-	$(CP) $(HOST_BUILD_DIR)/build/bin/{H5match_types,H5_buildiface} $(STAGING_DIR_HOSTPKG)/bin/
-endef
-
 define Package/hdf5/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
@@ -75,5 +58,4 @@ define Package/hdf5/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
-$(eval $(call HostBuild))
 $(eval $(call BuildPackage,hdf5))
