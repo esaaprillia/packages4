@@ -19,6 +19,8 @@ PKG_LICENSE_FILES:=LICENSE.txt
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 PKG_CPE_ID:=cpe:/a:pypa:pip
 
+PKG_BUILD_DEPENDS:=python-flit-core/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
