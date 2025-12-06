@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-incremental
-PKG_VERSION:=24.7.2
+PKG_VERSION:=24.11.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=incremental
-PKG_HASH:=fb4f1d47ee60efe87d4f6f0ebb5f70b9760db2b2574c59c8e8912be4ebd464c9
+PKG_HASH:=skip
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
