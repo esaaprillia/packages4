@@ -11,8 +11,7 @@ PKG_NAME:=python-rpds-py
 PKG_VERSION:=0.30.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=rpds-py
-PYPI_SOURCE_NAME:=rpds_py
+PYPI_NAME:=rpds_py
 PKG_HASH:=skip
 
 PKG_LICENSE:=MIT
