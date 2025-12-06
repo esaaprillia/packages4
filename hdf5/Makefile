@@ -47,11 +47,6 @@ define Build/Configure
 	$(INSTALL_DATA) files/native/{H5LTff_gen.F90,H5TBff_gen.F90} $(PKG_BUILD_DIR)/build/hl/fortran/shared/
 endef
 
-CMAKE_HOST_OPTIONS += \
-	-DHDF5_BUILD_FORTRAN=ON \
-	-DBUILD_TESTING=OFF \
-	-DCMAKE_Fortran_COMPILER=gfortran
-
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_STATIC_LIBS=OFF \
