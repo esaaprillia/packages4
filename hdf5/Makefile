@@ -43,8 +43,8 @@ define Build/Configure
 	touch $(PKG_BUILD_DIR)/build/fortran/src/CMakeFiles/H5match_types.dir/H5match_types.c.o
 	touch $(PKG_BUILD_DIR)/build/hl/fortran/src/CMakeFiles/H5HL_buildiface.dir/H5HL_buildiface.F90.o
 	$(INSTALL_BIN) files/native/{H5_buildiface,H5match_types,H5HL_buildiface} $(PKG_BUILD_DIR)/build/bin/
-	$(INSTALL_DATA) files/H5match_types/{H5_gen.F90,H5f90i_gen.h,H5fortran_types.F90} $(PKG_BUILD_DIR)/build/fortran/shared/
-	$(INSTALL_DATA) files/H5match_types/{H5LTff_gen.F90,H5TBff_gen.F90} $(PKG_BUILD_DIR)/build/hl/fortran/shared/
+	$(INSTALL_DATA) files/native/{H5_gen.F90,H5f90i_gen.h,H5fortran_types.F90} $(PKG_BUILD_DIR)/build/fortran/shared/
+	$(INSTALL_DATA) files/native/{H5LTff_gen.F90,H5TBff_gen.F90} $(PKG_BUILD_DIR)/build/hl/fortran/shared/
 endef
 
 CMAKE_HOST_OPTIONS += \
