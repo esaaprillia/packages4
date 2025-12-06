@@ -1,10 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ruamel-yaml-clib
-PKG_VERSION:=0.2.14
+PKG_VERSION:=0.2.15
 PKG_RELEASE:=1
 
-PYPI_NAME:=ruamel.yaml.clib
+PYPI_NAME:=ruamel_yaml_clib
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
