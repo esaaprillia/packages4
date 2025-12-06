@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-fsspec
-PKG_VERSION:=2025.10.0
+PKG_VERSION:=2025.12.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=fsspec
