@@ -19,8 +19,8 @@ PKG_CPE_ID:=cpe:/a:python:urllib3
 PYPI_NAME:=urllib3
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
