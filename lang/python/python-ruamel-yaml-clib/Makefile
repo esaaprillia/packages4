@@ -4,7 +4,8 @@ PKG_NAME:=python-ruamel-yaml-clib
 PKG_VERSION:=0.2.15
 PKG_RELEASE:=1
 
-PYPI_NAME:=ruamel_yaml_clib
+PYPI_SOURCE_NAME:=ruamel_yaml_clib
+PYPI_NAME:=ruamel.yaml.clib
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
