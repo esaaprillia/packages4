@@ -6,7 +6,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-selinux
-PKG_VERSION:=3.7
+PKG_VERSION:=3.9
 PKG_RELEASE:=1
 
 SRC_NAME:=libselinux
