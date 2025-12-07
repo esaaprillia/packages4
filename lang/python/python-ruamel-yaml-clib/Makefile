@@ -31,6 +31,9 @@ define Package/python3-ruamel-yaml-clib/description
 This package was split of from ruamel.yaml, so that ruamel.yaml can be build as a universal wheel.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=ruamel_yaml_clib
+PYTHON3_PKG_WHEEL_VERSION:=0.2.15
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-ruamel-yaml-clib))
 $(eval $(call BuildPackage,python3-ruamel-yaml-clib))
