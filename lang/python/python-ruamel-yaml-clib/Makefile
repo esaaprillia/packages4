@@ -5,6 +5,7 @@ PKG_VERSION:=0.2.15
 PKG_RELEASE:=1
 
 PYPI_NAME:=ruamel.yaml.clib
+PYPI_SOURCE_EXT:=tar.xz
 PKG_SOURCE_URL:=https://yaml.dev/ruamel-dl-tagged-releases/
 PKG_HASH:=skip
 
