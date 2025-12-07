@@ -28,7 +28,7 @@ endef
 
 define Package/radicale3
 $(call Package/radicale3/Default)
-  USERID:=radicale3=225:radicale3=225
+  #USERID:=radicale3=225:radicale3=225
   DEPENDS:=+python3 +python3-defusedxml +python3-passlib +python3-vobject +python3-pika +python3-requests +python3-bcrypt +python3-argon2-cffi +python3-ldap3 +python3-pam
   CONFLICTS:=radicale radicale2
 endef
