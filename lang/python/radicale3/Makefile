@@ -4,7 +4,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=radicale3
-PKG_VERSION:=3.5.8
+PKG_VERSION:=3.5.9
 PKG_RELEASE:=1
 
 PKG_LICENSE:=GPL-3.0-or-later
@@ -29,7 +29,7 @@ endef
 define Package/radicale3
 $(call Package/radicale3/Default)
   USERID:=radicale3=225:radicale3=225
-  DEPENDS:=+python3 +python3-dateutil +python3-defusedxml +python3-passlib +python3-vobject +python3-pika +python3-requests +python3-pytest +python3-waitress +python3-bcrypt +python3-argon2-cffi +python3-ldap3 +python3-setuptools
+  DEPENDS:=+python3 +python3-defusedxml +python3-passlib +python3-vobject +python3-pika +python3-requests +python3-bcrypt +python3-argon2-cffi +python3-ldap3 +python3-pam
   CONFLICTS:=radicale radicale2
 endef
 
