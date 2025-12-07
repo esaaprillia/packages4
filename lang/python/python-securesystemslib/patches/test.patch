@@ -1,0 +1,20 @@
+From b61f5e4147ec3b845e6fa13ddd28d4d8a453490b Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 7 Dec 2025 15:47:17 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 0b109288..52b0fcf2 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["hatchling==1.27.0"]
++requires = ["hatchling"]
+ build-backend = "hatchling.build"
+ 
+ [project]
