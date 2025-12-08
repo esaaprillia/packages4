@@ -1,0 +1,22 @@
+From 8c25d2bae0dd8e3866f713703b6b1eb24386e6e1 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Tue, 9 Dec 2025 01:04:08 +0800
+Subject: [PATCH] Update reloc.c
+
+---
+ src/ucm/util/reloc.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/ucm/util/reloc.c b/src/ucm/util/reloc.c
+index bcf246fdce7..52b882ad364 100644
+--- a/src/ucm/util/reloc.c
++++ b/src/ucm/util/reloc.c
+@@ -8,6 +8,8 @@
+ #  include "config.h"
+ #endif
+ 
++#include <dlfcn.h>
++
+ #include "reloc.h"
+ 
+ #include <ucm/util/khash_safe.h>
