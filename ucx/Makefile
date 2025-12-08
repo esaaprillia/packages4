@@ -33,16 +33,6 @@ endef
 
 #TARGET_CFLAGS+= -D_GNU_SOURCE
 
-CONFIGURE_ARGS += \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--with-verbs \
-	--with-rc \
-	--with-ud \
-	--with-dc \
-	--with-mlx5-dv \
-	--enable-mt
-
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
