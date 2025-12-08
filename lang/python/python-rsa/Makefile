@@ -24,7 +24,7 @@ define Package/python3-rsa
   CATEGORY:=Languages
   TITLE:=Pure-Python RSA implementation
   URL:=https://stuvel.eu/rsa
-  DEPENDS:=+python3-light +python3-multiprocessing +python3-pydoc +python3-pyasn1
+  DEPENDS:=+python3-light +python3-multiprocessing +python3-pyasn1
 endef
 
 define Package/python3-rsa/description
