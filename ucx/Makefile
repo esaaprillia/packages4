@@ -29,6 +29,8 @@ define Package/ucx/description
 	Unified Communication X (UCX) is an award winning, optimized production proven-communication framework for modern, high-bandwidth and low-latency networks.
 endef
 
+TARGET_CFLAGS+= -D_GNU_SOURCE
+
 CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--sysconfdir=/etc \
