@@ -22,7 +22,7 @@ define Package/zbar
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Port of ZBAR BAR CODE READER
-	DEPENDS:=+iconv +libintl-full +libjpeg-turbo +imagemagick
+	DEPENDS:=+iconv +libintl-full +libjpeg-turbo +libdbus +imagemagick
 	URL:=https://github.com/mchehab/zbar
 endef
 
