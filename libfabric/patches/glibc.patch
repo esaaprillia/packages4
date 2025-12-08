@@ -1,0 +1,24 @@
+From 8b2b2a0dd3b19c8ea5cb60dbbdf2302d6f714538 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 9 Dec 2025 00:09:48 +0800
+Subject: [PATCH] Update hook_monitor.c
+
+---
+ prov/hook/monitor/src/hook_monitor.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/prov/hook/monitor/src/hook_monitor.c b/prov/hook/monitor/src/hook_monitor.c
+index 44a4119e935..3232d72e66a 100644
+--- a/prov/hook/monitor/src/hook_monitor.c
++++ b/prov/hook/monitor/src/hook_monitor.c
+@@ -50,7 +50,9 @@
+ #include <sys/mount.h>
+ #endif
+ 
+-#include <fstab.h>
++/* Fix compatibility for glibc */ 
++#define __STRING(x) #x
++
+ #include <libgen.h>
+ 
+ struct monitor_environment mon_env = {
