@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-nest-sdm
-PKG_VERSION:=9.1.0
+PKG_VERSION:=9.1.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_nest_sdm
