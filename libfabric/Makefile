@@ -12,6 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-2-Clause OR GPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
 
+PKG_INSTALL:=1
+
 include $(INCLUDE_DIR)/package.mk
 
 define Package/libfabric
