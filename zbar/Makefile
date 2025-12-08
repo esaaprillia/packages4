@@ -39,8 +39,7 @@ CONFIGURE_ARGS += \
 	--without-x \
 	--without-xshm \
 	--without-xv \
-	--without-dbus \
-	--without-npapi \
+	--with-dbusconfdir=/usr/share \
 	--without-gtk \
 	--without-gir \
 	--without-python \
