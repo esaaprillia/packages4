@@ -65,3 +65,5 @@ define Package/zbar/install
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/dbus-1 $(1)/usr/share/
 endef
+
+$(eval $(call BuildPackage,zbar))
