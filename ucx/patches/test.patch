@@ -1,0 +1,155 @@
+From 11c4fe6e1926ecf85d56a5c8e984210830e5a4dc Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 9 Dec 2025 19:27:11 +0800
+Subject: [PATCH] Update reloc.c
+
+---
+ src/ucm/util/reloc.c | 135 -------------------------------------------
+ 1 file changed, 135 deletions(-)
+
+diff --git a/src/ucm/util/reloc.c b/src/ucm/util/reloc.c
+index bcf246fdce7..28c01036baa 100644
+--- a/src/ucm/util/reloc.c
++++ b/src/ucm/util/reloc.c
+@@ -517,141 +517,6 @@ static ucs_status_t ucm_reloc_apply_patch(ucm_reloc_patch_t *patch,
+     return ctx.status;
+ }
+ 
+-/* read serinfo from 'module_path', result buffer must be destroyed
+- * by free() call */
+-static Dl_serinfo *ucm_dlopen_load_serinfo(const char *module_path)
+-{
+-    Dl_serinfo *serinfo = NULL;
+-    Dl_serinfo serinfo_size;
+-    void *module;
+-    int res;
+-
+-    module = ucm_reloc_orig_dlopen(module_path, RTLD_LAZY);
+-    if (module == NULL) { /* requested module can't be loaded */
+-        ucm_debug("failed to open %s: %s", module_path, dlerror());
+-        return NULL;
+-    }
+-
+-    /* try to get search info from requested module */
+-    res = dlinfo(module, RTLD_DI_SERINFOSIZE, &serinfo_size);
+-    if (res) {
+-        ucm_debug("dlinfo(RTLD_DI_SERINFOSIZE) failed");
+-        goto close_module;
+-    }
+-
+-    serinfo = malloc(serinfo_size.dls_size);
+-    if (serinfo == NULL) {
+-        ucm_error("failed to allocate %zu bytes for Dl_serinfo",
+-                  serinfo_size.dls_size);
+-        goto close_module;
+-    }
+-
+-    *serinfo = serinfo_size;
+-    res      = dlinfo(module, RTLD_DI_SERINFO, serinfo);
+-    if (res) {
+-        ucm_debug("dlinfo(RTLD_DI_SERINFO) failed");
+-        free(serinfo);
+-        serinfo = NULL;
+-    }
+-
+-close_module:
+-    ucm_reloc_orig_dlclose(module);
+-    return serinfo;
+-}
+-
+-void *ucm_dlopen(const char *filename, int flag)
+-{
+-    void *handle;
+-    ucm_reloc_patch_t *patch;
+-    Dl_serinfo *serinfo;
+-    Dl_info dl_info;
+-    int res;
+-    int i;
+-    char file_path[PATH_MAX];
+-    struct stat file_stat;
+-
+-    ucm_debug("open module: %s, flag: %x", filename, flag);
+-
+-    ucm_reloc_get_orig_dl_funcs();
+-
+-    if (!ucm_global_opts.dlopen_process_rpath) {
+-        goto fallback_load_lib;
+-    }
+-
+-    if (filename == NULL) {
+-        /* return handle to main program */
+-        goto fallback_load_lib;
+-    }
+-
+-    /* failed to open module directly, try to use RPATH from from caller
+-     * to locate requested module */
+-    if (filename[0] == '/') { /* absolute path - fallback to legacy mode */
+-        goto fallback_load_lib;
+-    }
+-
+-    /* try to get module info */
+-    res = dladdr(__builtin_return_address(0), &dl_info);
+-    if (!res) {
+-        ucm_debug("dladdr failed");
+-        goto fallback_load_lib;
+-    }
+-
+-    serinfo = ucm_dlopen_load_serinfo(dl_info.dli_fname);
+-    if (serinfo == NULL) {
+-        /* failed to load serinfo, try just dlopen */
+-        goto fallback_load_lib;
+-    }
+-
+-    for (i = 0; i < serinfo->dls_cnt; i++) {
+-        ucm_concat_path(file_path, sizeof(file_path),
+-                        serinfo->dls_serpath[i].dls_name, filename);
+-        ucm_debug("check for %s", file_path);
+-
+-        res = stat(file_path, &file_stat);
+-        if (res) {
+-            continue;
+-        }
+-
+-        free(serinfo);
+-        /* ok, file exists, let's try to load it */
+-        handle = ucm_reloc_orig_dlopen(file_path, flag);
+-        if (handle == NULL) {
+-            return NULL;
+-        }
+-
+-        goto out_apply_patches;
+-    }
+-
+-    free(serinfo);
+-    /* ok, we can't lookup module in dirs listed in caller module,
+-     * let's fallback to legacy mode */
+-fallback_load_lib:
+-    handle = ucm_reloc_orig_dlopen(filename, flag);
+-    if (handle == NULL) {
+-        return NULL;
+-    }
+-
+-out_apply_patches:
+-    /*
+-     * Every time a new shared object is loaded, we must update its relocations
+-     * with our list of patches (including dlopen itself). We have to go over
+-     * the entire list of shared objects, since there more objects could be
+-     * loaded due to dependencies.
+-     */
+-
+-    ucm_trace("dlopen(%s) = %p", filename, handle);
+-
+-    pthread_mutex_lock(&ucm_reloc_patch_list_lock);
+-    ucs_list_for_each(patch, &ucm_reloc_patch_list, list) {
+-        ucm_trace("in dlopen(%s), re-applying '%s' to %p", filename,
+-                  patch->symbol, patch->value);
+-        ucm_reloc_apply_patch(patch, 0);
+-    }
+-    pthread_mutex_unlock(&ucm_reloc_patch_list_lock);
+-
+-    return handle;
+-}
+-
+ static int ucm_dlclose(void *handle)
+ {
+     struct link_map *lm_entry;
