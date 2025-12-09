@@ -20,7 +20,7 @@ define Package/pmix
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=OpenPMIx Project Repository
-	DEPENDS:=+libstdcpp +libhwloc +libevent2-core +libevent2-pthreads +zlib
+	DEPENDS:=+libstdcpp +libatomic +libhwloc +libevent2-core +libevent2-pthreads +zlib
 	URL:=https://github.com/openpmix/openpmix
 endef
 
