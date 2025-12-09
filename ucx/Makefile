@@ -31,8 +31,12 @@ endef
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
-	--sysconfdir=/etc/ucx \
-	--without-ucm
+	--sysconfdir=/etc/ucx
+
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		CFLAGS= -D_GNU_SOURCE
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
