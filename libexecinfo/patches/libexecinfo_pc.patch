@@ -21,6 +21,6 @@ index 0000000..dc61a97
 +
 +Name: libexecinfo
 +Description: libexecinfo library
-+Version: version
++Version: 1.1
 +CFlags: -I${includedir}
 +Libs: -L${libdir} -lexecinfo
