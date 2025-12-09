@@ -1,0 +1,22 @@
+From a1cebe8a0fd71331f6a454d0acfe8435f2de0794 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Tue, 9 Dec 2025 19:56:29 +0800
+Subject: [PATCH] Update global_opts.c
+
+---
+ src/ucs/config/global_opts.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ucs/config/global_opts.c b/src/ucs/config/global_opts.c
+index 5c8d584ae13..386e032705d 100644
+--- a/src/ucs/config/global_opts.c
++++ b/src/ucs/config/global_opts.c
+@@ -18,7 +18,7 @@
+ #include <ucs/sys/string.h>
+ #include <ucs/vfs/base/vfs_obj.h>
+ #include <ucs/vfs/sock/vfs_sock.h>
+-#include <sys/signal.h>
++#include <signal.h>
+ 
+ 
+ ucs_global_opts_t ucs_global_opts = {
