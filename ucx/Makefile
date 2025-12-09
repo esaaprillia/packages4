@@ -21,7 +21,7 @@ define Package/ucx
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Unified Communication X
-	DEPENDS:=+libstdcpp +binutils +zlib +libzstd
+	DEPENDS:=+libstdcpp +binutils +zlib +libzstd +libexecinfo
 	URL:=http://www.openucx.org/
 endef
 
