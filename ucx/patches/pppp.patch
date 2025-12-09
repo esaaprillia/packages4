@@ -1,21 +1,22 @@
-From 0274ab1f7393537a37aa37dbe95ae83ce975ee23 Mon Sep 17 00:00:00 2001
+From cc116c9a65b156e7c31add5690bb1c7da34bc80a Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Wed, 10 Dec 2025 06:20:49 +0800
-Subject: [PATCH] Update ucp_types.h
+Date: Wed, 10 Dec 2025 06:28:09 +0800
+Subject: [PATCH] Update float8.h
 
 ---
- src/ucp/core/ucp_types.h | 1 -
- 1 file changed, 1 deletion(-)
+ src/ucs/type/float8.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/src/ucp/core/ucp_types.h b/src/ucp/core/ucp_types.h
-index 67b2ee87fd3..8476facd39c 100644
---- a/src/ucp/core/ucp_types.h
-+++ b/src/ucp/core/ucp_types.h
-@@ -8,7 +8,6 @@
- #define UCP_TYPES_H_
+diff --git a/src/ucs/type/float8.h b/src/ucs/type/float8.h
+index 84cd819689d..fca889f76e8 100644
+--- a/src/ucs/type/float8.h
++++ b/src/ucs/type/float8.h
+@@ -7,8 +7,6 @@
+ #ifndef UCS_TYPE_FLOAT_H
+ #define UCS_TYPE_FLOAT_H
  
- #include <ucp/api/ucp.h>
--#include <ucs/type/float8.h>
- #include <uct/api/uct.h>
- #include <ucs/datastruct/static_bitmap.h>
+-#include <ieee754.h>
+-
  #include <ucs/sys/preprocessor.h>
+ #include <ucs/debug/assert.h>
+ #include <ucs/arch/bitops.h>
