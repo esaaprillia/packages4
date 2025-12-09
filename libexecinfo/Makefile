@@ -28,22 +28,29 @@ endef
 
 TARGET_CFLAGS += $(FPIC)
 
+define Build/Install
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/include"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/lib"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/lib/pkgconfig"
+	$(CP) $(PKG_BUILD_DIR)/*.h $(PKG_INSTALL_DIR)/usr/include/
+	$(CP) $(PKG_BUILD_DIR)/{*.so*,*.a} $(PKG_INSTALL_DIR)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/libexecinfo.pc $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_BUILD_DIR)/*.h $(1)/usr/include/
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/*.h $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/libexecinfo.a $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/libexecinfo.so.1 $(1)/usr/lib/
-	$(LN) $(STAGING_DIR)/usr/lib/libexecinfo.so.1 $(STAGING_DIR)/usr/lib/libexecinfo.so
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/{*.so*,*.a} $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_BUILD_DIR)/libexecinfo.pc $(1)/usr/lib/pkgconfig/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libexecinfo.pc $(1)/usr/lib/pkgconfig/
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libexecinfo.pc
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libexecinfo.pc
 endef
 
 define Package/libexecinfo/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/libexecinfo.so.1 $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,libexecinfo))
