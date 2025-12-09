@@ -17,6 +17,11 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's/machine = platform.machine().lower()/machine="aarch"/' $(PKG_BUILD_DIR)/setup.py
+endef
+
 define Package/python3-pysilero-vad
   SUBMENU:=Python
   SECTION:=lang
