@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-asusrouter
-PKG_VERSION:=1.21.0
+PKG_VERSION:=1.21.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=asusrouter
