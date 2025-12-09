@@ -20,7 +20,7 @@ define Package/prrte
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=PMIx Reference RunTime Environment (PRRTE)
-	DEPENDS:=+libstdcpp +libhwloc +libevent2-core +libevent2-pthreads +openpmix
+	DEPENDS:=+libstdcpp +libhwloc +libevent2-core +libevent2-pthreads +pmix
 	URL:=https://github.com/openpmix/prrte
 endef
 
