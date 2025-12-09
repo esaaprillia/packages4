@@ -1,14 +1,25 @@
-From 6d074a9d13b7113a6fd560072259786afa40fec9 Mon Sep 17 00:00:00 2001
+From 70c2a384359192be4bb53cbcb35631c1c74b61d6 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Tue, 9 Dec 2025 23:18:34 +0800
-Subject: [PATCH] Update numa.c
+Date: Tue, 9 Dec 2025 23:34:11 +0800
+Subject: [PATCH] Update mm_iface.c
 
 ---
- src/ucs/memory/numa.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ src/uct/sm/mm/base/mm_iface.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/ucs/memory/numa.c b/src/ucs/memory/numa.c
-index 57d29f17db9..d9f077aab3f 100644
+diff --git a/src/uct/sm/mm/base/mm_iface.c b/src/uct/sm/mm/base/mm_iface.c
+index 0a73a96a5a3..2d2af04bd4b 100644
+--- a/src/uct/sm/mm/base/mm_iface.c
++++ b/src/uct/sm/mm/base/mm_iface.c
+@@ -18,7 +18,7 @@
+ #include <ucs/arch/bitops.h>
+ #include <ucs/async/async.h>
+ #include <ucs/sys/string.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ 
+ 
+ /* Maximal number of events to clear from the signaling pipe in single call */
 --- a/src/ucs/memory/numa.c
 +++ b/src/ucs/memory/numa.c
 @@ -114,7 +114,7 @@ unsigned ucs_numa_num_configured_cpus()
