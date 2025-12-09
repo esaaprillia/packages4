@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pysilero-vad
-PKG_VERSION:=2.1.1
+PKG_VERSION:=3.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pysilero_vad
@@ -21,9 +21,9 @@ define Package/python3-pysilero-vad
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Pre-packaged voice activity detector using silero-vad
+  TITLE:=A pre-packaged voice activity detector using silero-vad.
   URL:=https://github.com/rhasspy/pysilero-vad
-  DEPENDS:=+python3 +python3-numpy
+  DEPENDS:=+python3 +ggml
 endef
 
 define Package/python3-pysilero-vad/description
