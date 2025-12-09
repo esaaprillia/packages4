@@ -28,6 +28,8 @@ define Package/libexecinfo/description
 	A quick-n-dirty BSD licensed clone of the GNU libc backtrace facility.
 endef
 
+TARGET_CFLAGS += $(FPIC)
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
