@@ -28,6 +28,10 @@ define Package/prrte/description
 	PMIx Reference RunTime Environment (PRRTE)
 endef
 
+CONFIGURE_ARGS += \
+	--prefix=/usr \
+	--sysconfdir=/etc/prrte
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
