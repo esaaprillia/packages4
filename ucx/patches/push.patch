@@ -1,14 +1,25 @@
-From 70c2a384359192be4bb53cbcb35631c1c74b61d6 Mon Sep 17 00:00:00 2001
+From 5aea8e63e74b60b36def7e05e83859f801daf1b5 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Tue, 9 Dec 2025 23:34:11 +0800
-Subject: [PATCH] Update mm_iface.c
+Date: Tue, 9 Dec 2025 23:46:04 +0800
+Subject: [PATCH] Update tcp_iface.c
 
 ---
- src/uct/sm/mm/base/mm_iface.c | 2 +-
+ src/uct/tcp/tcp_iface.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/uct/sm/mm/base/mm_iface.c b/src/uct/sm/mm/base/mm_iface.c
-index 0a73a96a5a3..2d2af04bd4b 100644
+diff --git a/src/uct/tcp/tcp_iface.c b/src/uct/tcp/tcp_iface.c
+index cc2cf010c32..eb339ac822f 100644
+--- a/src/uct/tcp/tcp_iface.c
++++ b/src/uct/tcp/tcp_iface.c
+@@ -16,7 +16,7 @@
+ #include <ucs/sys/sys.h>
+ #include <ucs/config/types.h>
+ #include <sys/socket.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <netinet/tcp.h>
+ #include <dirent.h>
+ #include <float.h>
 --- a/src/uct/sm/mm/base/mm_iface.c
 +++ b/src/uct/sm/mm/base/mm_iface.c
 @@ -18,7 +18,7 @@
