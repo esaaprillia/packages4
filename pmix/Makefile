@@ -28,6 +28,10 @@ define Package/pmix/description
 	PMIx Reference Library (OpenPMIx)
 endef
 
+CONFIGURE_ARGS += \
+	--prefix=/usr \
+	--sysconfdir=/etc/pmix
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
@@ -41,7 +45,7 @@ endef
 
 define Package/pmix/install
 	$(INSTALL_DIR) $(1)/etc
-	$(CP) $(PKG_INSTALL_DIR)/etc/openpmix $(1)/etc/
+	$(CP) $(PKG_INSTALL_DIR)/etc/pmix $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
