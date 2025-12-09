@@ -21,7 +21,7 @@ define Package/ggml
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Tensor library for machine learning
-	DEPENDS:=+libstdcpp +openblas
+	DEPENDS:=+libstdcpp +openblas +libgomp
 	URL:=https://github.com/ggml-org/ggml
 endef
 
@@ -30,7 +30,9 @@ define Package/ggml/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DGGML_BLAS=ON \
+	-DGGML_BLAS_VENDOR=OpenBLAS
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -39,8 +41,8 @@ define Build/InstallDev
 endef
 
 define Package/ggml/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	#$(INSTALL_DIR) $(1)/usr/bin
+	#$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
