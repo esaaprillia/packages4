@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ecdsa
-PKG_VERSION:=0.19.0
+PKG_VERSION:=0.19.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=ecdsa
-PKG_HASH:=60eaad1199659900dd0af521ed462b793bbdf867432b3948e87416ae4caf6bf8
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
