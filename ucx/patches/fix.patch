@@ -1,40 +1,29 @@
-From a614e1902904c2f735f25c10e5bc0296ea79d42e Mon Sep 17 00:00:00 2001
+From dd3a1dc1fe5104359913956eea15a7b2330f84db Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 10 Dec 2025 12:23:07 +0800
+Date: Wed, 10 Dec 2025 12:53:20 +0800
 Subject: [PATCH] Update ucp_types.h
 
 ---
- src/ucp/core/ucp_types.h | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ src/ucp/core/ucp_types.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/src/ucp/core/ucp_types.h b/src/ucp/core/ucp_types.h
-index 67b2ee87fd3..f7a314eade9 100644
+index 67b2ee87fd3..075bcbc1675 100644
 --- a/src/ucp/core/ucp_types.h
 +++ b/src/ucp/core/ucp_types.h
-@@ -8,7 +8,6 @@
- #define UCP_TYPES_H_
- 
- #include <ucp/api/ucp.h>
--#include <ucs/type/float8.h>
- #include <uct/api/uct.h>
- #include <ucs/datastruct/static_bitmap.h>
- #include <ucs/sys/preprocessor.h>
-@@ -124,15 +123,15 @@ extern const ucp_tl_bitmap_t ucp_tl_bitmap_min;
+@@ -123,15 +123,12 @@ extern const ucp_tl_bitmap_t ucp_tl_bitmap_min;
+ #define UCS_FP8_MIN_OVH UCS_BIT(0)
  #define UCS_FP8_MAX_OVH UCS_BIT(12)
  
- /* Pack bandwidth as bytes/second, range: 512 MB/s to 4 TB/s */
--UCS_FP8_DECLARE_TYPE(BANDWIDTH, UCS_FP8_MIN_BW, UCS_FP8_MAX_BW)
-+UCS_FP8_DECLARE_TYPE(BANDWIDTH, UCS_FP8_MIN_BW, UCS_FP8_MAX_BW);
+-/* Pack bandwidth as bytes/second, range: 512 MB/s to 4 TB/s */
+ UCS_FP8_DECLARE_TYPE(BANDWIDTH, UCS_FP8_MIN_BW, UCS_FP8_MAX_BW)
  
  
- /* Pack latency as nanoseconds, range: 16 nsec to 131 usec */
--UCS_FP8_DECLARE_TYPE(LATENCY, UCS_FP8_MIN_LAT, UCS_FP8_MAX_LAT)
-+UCS_FP8_DECLARE_TYPE(LATENCY, UCS_FP8_MIN_LAT, UCS_FP8_MAX_LAT);
+-/* Pack latency as nanoseconds, range: 16 nsec to 131 usec */
+ UCS_FP8_DECLARE_TYPE(LATENCY, UCS_FP8_MIN_LAT, UCS_FP8_MAX_LAT)
  
  
- /* Pack overhead as nanoseconds, range: 1 nsec to 4 usec */
--UCS_FP8_DECLARE_TYPE(OVERHEAD, UCS_FP8_MIN_OVH, UCS_FP8_MAX_OVH)
-+UCS_FP8_DECLARE_TYPE(OVERHEAD, UCS_FP8_MIN_OVH, UCS_FP8_MAX_OVH);
+-/* Pack overhead as nanoseconds, range: 1 nsec to 4 usec */
+ UCS_FP8_DECLARE_TYPE(OVERHEAD, UCS_FP8_MIN_OVH, UCS_FP8_MAX_OVH)
  
  
- /**
