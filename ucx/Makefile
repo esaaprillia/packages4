@@ -40,6 +40,18 @@ CONFIGURE_ARGS += \
 	--without-go \
 	--without-java
 
+EXTRA_CFLAGS += \
+	-Wno-error \
+	-Wno-error=implicit-int \
+	-Wno-error=implicit-function-declaration \
+	-Wno-error=nested-externs \
+	-Wno-deprecated-declarations \
+	-Wno-unused-variable \
+	-Wno-unused-function \
+	-Wno-maybe-uninitialized \
+	-Wno-return-type \
+	-Wno-enum-compare
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
