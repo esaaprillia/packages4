@@ -37,6 +37,9 @@ CONFIGURE_ARGS += \
 
 EXTRA_CFLAGS += \
 	-Wno-error \
+	-Wno-implicit-int \
+	-Wno-implicit-function-declaration \
+	-Wno-nested-externs \
 	-Wno-error=implicit-int \
 	-Wno-error=implicit-function-declaration \
 	-Wno-error=nested-externs \
