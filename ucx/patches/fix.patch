@@ -1,14 +1,14 @@
-From a784948b48fa85a606e390a13cdc3018bf723133 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 10 Dec 2025 11:33:00 +0800
+From e78897a6b7f88d5dc649425eb402f892f323175a Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 10 Dec 2025 11:38:59 +0800
 Subject: [PATCH] Update ucp_types.h
 
 ---
- src/ucp/core/ucp_types.h | 59 ----------------------------------------
- 1 file changed, 59 deletions(-)
+ src/ucp/core/ucp_types.h | 83 ----------------------------------------
+ 1 file changed, 83 deletions(-)
 
 diff --git a/src/ucp/core/ucp_types.h b/src/ucp/core/ucp_types.h
-index 67b2ee87fd3..5f7e37b0436 100644
+index 67b2ee87fd3..b137c9d2b9c 100644
 --- a/src/ucp/core/ucp_types.h
 +++ b/src/ucp/core/ucp_types.h
 @@ -8,7 +8,6 @@
@@ -19,10 +19,34 @@ index 67b2ee87fd3..5f7e37b0436 100644
  #include <uct/api/uct.h>
  #include <ucs/datastruct/static_bitmap.h>
  #include <ucs/sys/preprocessor.h>
-@@ -104,64 +103,6 @@ extern const ucp_tl_bitmap_t ucp_tl_bitmap_min;
- #define UCT_TL_BITMAP_ARG(_bitmap) (_bitmap)->bits[0], (_bitmap)->bits[1]
+@@ -80,88 +79,6 @@ typedef struct ucp_proto              ucp_proto_t;
+ typedef struct ucp_mem_desc           ucp_mem_desc_t;
  
  
+-/**
+- * UCP TL bitmap
+- *
+- * Bitmap type for representing which TL resources are in use.
+- */
+-typedef ucs_static_bitmap_s(UCP_MAX_RESOURCES) ucp_tl_bitmap_t;
+-
+-
+-/**
+- * Max possible value of TL bitmap (all bits are 1)
+- */
+-extern const ucp_tl_bitmap_t ucp_tl_bitmap_max;
+-
+-
+-/**
+- * Min possible value of TL bitmap (all bits are 0)
+- */
+-extern const ucp_tl_bitmap_t ucp_tl_bitmap_min;
+-
+-
+-#define UCT_TL_BITMAP_FMT          "0x%lx 0x%lx"
+-#define UCT_TL_BITMAP_ARG(_bitmap) (_bitmap)->bits[0], (_bitmap)->bits[1]
+-
+-
 -/**
 - * Perform bitwise AND on a TL bitmap and a negation of a bitmap and return the result
 - *
