@@ -17,11 +17,6 @@ PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
-define Build/Configure
-	$(call Build/Configure/Default)
-	$(INSTALL_DATA) files/ieee754.h $(STAGING_DIR)/usr/include/
-endef
-
 define Package/ucx
 	SECTION:=libs
 	CATEGORY:=Libraries
