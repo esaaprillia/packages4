@@ -5,7 +5,7 @@ PKG_VERSION:=0.1.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
-PKG_SOURCE_URL:=http://git.adelielinux.org/adelie/musl-locales/-/archive/$(PKG_VERSION)
+PKG_SOURCE_URL:=https://git.adelielinux.org/adelie/musl-locales/-/archive/0.1.0/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -49,3 +49,4 @@ define Package/musl-locales/install
 endef
 
 $(eval $(call BuildPackage,musl-locales))
+
