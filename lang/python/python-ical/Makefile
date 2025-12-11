@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ical
-PKG_VERSION:=8.2.0
+PKG_VERSION:=12.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=ical
-PKG_HASH:=fb65ab62a0dc38fb8fb1a1fce3912ea505873c352b51d5206e3e1253b8416cb8
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
