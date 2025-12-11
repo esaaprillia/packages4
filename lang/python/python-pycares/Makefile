@@ -18,6 +18,9 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
+PYTHON3_PKG_SETUP_VARS:= \
+	PYCARES_USE_SYSTEM_LIB=1
+
 define Package/python3-pycares
   SECTION:=lang
   CATEGORY:=Languages
