@@ -13,7 +13,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=boost
 PKG_VERSION:=1.86.0
 PKG_SOURCE_VERSION:=1_86_0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)_$(PKG_SOURCE_VERSION).tar.bz2
 PKG_SOURCE_URL:=@SF/$(PKG_NAME)/$(PKG_NAME)/$(PKG_VERSION) https://boostorg.jfrog.io/artifactory/main/release/$(PKG_VERSION)/source/
@@ -512,3 +512,4 @@ $(foreach lib,$(BOOST_LIBS),$(eval $(call BuildPackage,boost-$(lib))))
 $(eval $(call BuildPackage,boost-test))
 $(eval $(call BuildPackage,boost-libs))
 $(eval $(call BuildPackage,boost))
+
