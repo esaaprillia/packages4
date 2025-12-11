@@ -49,4 +49,3 @@ define Package/musl-locales/install
 endef
 
 $(eval $(call BuildPackage,musl-locales))
-
