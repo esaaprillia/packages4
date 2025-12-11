@@ -24,7 +24,7 @@ define Package/musl-locales
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Locales support for musl
-	DEPENDS:=+libintl-full
+	DEPENDS:=$(ICONV_DEPENDS) $(INTL_DEPENDS)
 	URL:=https://git.adelielinux.org/adelie/musl-locales/-/wikis/home
 endef
 
