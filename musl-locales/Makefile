@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=musl-locales
 PKG_VERSION:=0.1.0
-PKG_RELEASE:=2
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://git.adelielinux.org/adelie/musl-locales/-/archive/$(PKG_VERSION)
@@ -33,9 +33,6 @@ define Package/musl-locales/description
 	The locale(1) command displays information about the currently set locale, or displays a list of locales available on the system.
 	The translation files provide localisation to musl, including libc-provided error messages, date and time strings, and so forth.
 endef
-
-CMAKE_OPTIONS += \
-	-DLOCALE_PROFILE=OFF
 
 define Package/musl-locales/install
 	$(INSTALL_DIR) \
