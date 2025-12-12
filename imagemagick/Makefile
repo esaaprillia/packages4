@@ -7,7 +7,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=imagemagick
 PKG_VERSION:=7.1.1.38
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 PKG_MAINTAINER:=Aleksey Vasilenko <aleksey.vasilenko@gmail.com>
 
 _PKGVER:=$(basename $(PKG_VERSION))
