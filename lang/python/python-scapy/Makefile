@@ -21,7 +21,7 @@ define Package/python3-scapy
   CATEGORY:=Languages
   TITLE:=Scapy: interactive packet manipulation tool
   URL:=https://scapy.net/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +tcpdump
 endef
 
 define Package/python3-scapy/description
