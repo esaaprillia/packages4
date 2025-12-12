@@ -1,1 +1,22 @@
-mmmmm
+From 9eec5f5b0355bb3853d0e4f2af6486c9a5887e38 Mon Sep 17 00:00:00 2001
+From: bkuhls <bkuhls@users.noreply.github.com>
+Date: Mon, 8 Dec 2025 19:21:52 +0100
+Subject: [PATCH] Fix build with python 3.14 (#607)
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 6843260..fa41025 100644
+--- a/setup.py
++++ b/setup.py
+@@ -25,7 +25,7 @@ def __init__(self):
+     def visit_Assign(self, node):
+         if not self.version:
+             if node.targets[0].id == "__version__":
+-                self.version = node.value.s
++                self.version = node.value.value
+ 
+ 
+ def read_version():
