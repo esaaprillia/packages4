@@ -24,34 +24,7 @@ define Package/python3-music-assistant
   TITLE:=Music Assistant
   URL:=https://github.com/music-assistant/server
   DEPENDS:= \
-	+python3-light \
-	+python3-aiodns \
-	+python3-aiohttp-asyncmdnsresolver \
-	+python3-brotli \
-	+python3-aiohttp \
-	+python3-aiohttp-fast-zlib \
-	+python3-aiofiles \
-	+python3-aiorun \
-	+python3-aiosqlite \
-	+python3-certifi \
-	+python3-colorlog \
-	+python3-cryptography \
-	+python3-chardet \
-	+python3-ifaddr \
-	+python3-mashumaro \
-	+python3-music-assistant-frontend \
-	+python3-music-assistant-models \
-	+python3-mutagen \
-	+python3-orjson \
-	+python3-pillow \
-	+python3-podcastparser \
-	+python3-propcache \
-	+python3-slugify \
-	+python3-unidecode \
-	+python3-xmltodict \
-	+python3-shortuuid \
-	+python3-zeroconf \
-	+python3-uv
+	+python3-light
 endef
 
 define Package/python3-music-assistant/description
