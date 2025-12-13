@@ -25,7 +25,7 @@ define Package/python3-google-air-quality-api
   CATEGORY:=Languages
   TITLE:=Python module to talk to Google Air Quality API.
   URL:=https://github.com/Thomas55555/python-google-air-quality-api
-  DEPENDS:=+python3 +python3-aiohttp +python3-mashumaro
+  DEPENDS:=+python3
 endef
 
 define Package/python3-google-air-quality-api/description
