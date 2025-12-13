@@ -5,7 +5,7 @@ PKG_VERSION:=1.2.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=brotlicffi
-PKG_HASH:=b77827a689905143f87915310b93b273ab17888fd43ef350d4832c4a71083c13
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
