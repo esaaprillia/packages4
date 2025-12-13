@@ -58,6 +58,16 @@ define Package/python3-music-assistant/description
 Music Assistant is a free, opensource Media library manager that connects to your streaming services and a wide range of connected speakers.
 endef
 
+define Py3Package/python3-music-assistant/filespec
++|$(PYTHON3_PKG_DIR)
+-|$(PYTHON3_PKG_DIR)/music_assistant/providers/airplay/bin/cliraop-linux-aarch64
+-|$(PYTHON3_PKG_DIR)/music_assistant/providers/airplay/bin/cliraop-linux-x86_64
+-|$(PYTHON3_PKG_DIR)/music_assistant/providers/airplay/bin/cliraop-macos-arm64
+-|$(PYTHON3_PKG_DIR)/music_assistant/providers/spotify/bin/librespot-linux-aarch64
+-|$(PYTHON3_PKG_DIR)/music_assistant/providers/spotify/bin/librespot-linux-x86_64
+-|$(PYTHON3_PKG_DIR)/music_assistant/providers/spotify/bin/librespot-macos-arm64
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-music-assistant))
 $(eval $(call BuildPackage,python3-music-assistant))
