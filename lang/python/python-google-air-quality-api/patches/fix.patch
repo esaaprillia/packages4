@@ -1,0 +1,22 @@
+From 8a675ab2a517bd57c2f69012a011ce7a0ff4d01d Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 13 Dec 2025 18:22:06 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index c53f85b..cae17c5 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -14,7 +14,7 @@ dependencies = [
+     "aiohttp>=3.9.3,<4.0.0",
+     "mashumaro>=3.12,<4.0.0",
+ ]
+-packages     = [{ include = "google_air_quality_api", from = "src" }]
++packages     = [{ include = "google_air_quality_api", path = "src" }]
+ 
+ [project.urls]
+ Homepage = "https://github.com/Thomas55555/python-google-air-quality-api"
