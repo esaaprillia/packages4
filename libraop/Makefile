@@ -29,12 +29,10 @@ define Package/libraop/description
 	Modified version of cliraop/raop-play for Music Assistant.
 endef
 
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		HOST="$(GNU_TARGET_NAME)" \
-		PLATFORM="$(ARCH)" \
-		STATIC=1
-endef
+MAKE_FLAGS += \
+	HOST=linux \
+	PLATFORM="$(ARCH)" \
+	STATIC=1
 
 define Package/libraop/install
 	$(INSTALL_DIR) $(1)/usr/bin
