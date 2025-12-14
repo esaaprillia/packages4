@@ -30,7 +30,10 @@ define Package/libraop/description
 endef
 
 define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR)
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		HOST="$(GNU_TARGET_NAME)" \
+		PLATFORM="$(ARCH)" \
+		STATIC=1
 endef
 
 define Package/libraop/install
