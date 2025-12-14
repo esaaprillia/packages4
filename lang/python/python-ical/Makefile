@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ical
-PKG_VERSION:=12.1.1
+PKG_VERSION:=12.1.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=ical
@@ -35,3 +35,4 @@ endef
 $(eval $(call Py3Package,python3-ical))
 $(eval $(call BuildPackage,python3-ical))
 $(eval $(call BuildPackage,python3-ical-src))
+
