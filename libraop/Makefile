@@ -22,7 +22,7 @@ define Package/libraop
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=RAOP player and library (AirPlay)
-	DEPENDS:=+libstdcpp
+	DEPENDS:=+libstdcpp +libatomic
 	URL:=https://github.com/music-assistant/libraop
 endef
 
