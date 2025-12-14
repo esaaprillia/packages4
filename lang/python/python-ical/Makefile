@@ -35,4 +35,3 @@ endef
 $(eval $(call Py3Package,python3-ical))
 $(eval $(call BuildPackage,python3-ical))
 $(eval $(call BuildPackage,python3-ical-src))
-
