@@ -38,7 +38,7 @@ MAKE_FLAGS += \
 
 define Package/libraop/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/bin/cliraop-linux-aarch64 $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,libraop))
