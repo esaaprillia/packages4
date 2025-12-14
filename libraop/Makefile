@@ -14,6 +14,7 @@ PKG_LICENSE:=
 PKG_LICENSE_FILES:=
 
 PKG_BUILD_PARALLEL:=1
+PKG_BUILD_DEPENDS:=openssl
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -30,9 +31,8 @@ define Package/libraop/description
 endef
 
 MAKE_FLAGS += \
-	HOST=linux \
-	PLATFORM="$(ARCH)" \
-	STATIC=1
+	HOST="" \
+	PLATFORM="$(ARCH)"
 
 define Package/libraop/install
 	$(INSTALL_DIR) $(1)/usr/bin
