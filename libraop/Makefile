@@ -30,10 +30,7 @@ define Package/libraop/description
 endef
 
 define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		HOST=linux \
-		PLATFORM=aarch64 \
-		STATIC=1
+	$(MAKE) -C $(PKG_BUILD_DIR)
 endef
 
 define Package/libraop/install
