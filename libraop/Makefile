@@ -33,7 +33,7 @@ endef
 TARGET_CFLAGS += $(FPIC)
 
 MAKE_FLAGS += \
-	HOST="" \
+	HOST="linux" \
 	PLATFORM="$(ARCH)" \
 	STATIC=1
 
