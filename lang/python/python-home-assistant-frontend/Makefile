@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://github.com/home-assistant/frontend/releases/download/$(P
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.md
 
 include ../pypi.mk
