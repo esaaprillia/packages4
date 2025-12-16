@@ -1,6 +1,19 @@
+From 58c48236f604c1960d6f2475dc18a914adab9b2e Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 16 Dec 2025 13:13:10 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ pyproject.toml | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+ create mode 100644 pyproject.toml
+
+diff --git a/pyproject.toml b/pyproject.toml
+new file mode 100644
+index 0000000..818791b
 --- /dev/null
 +++ b/pyproject.toml
-@@ -0,0 +1,24 @@
+@@ -0,0 +1,21 @@
 +[build-system]
 +requires = ["setuptools"]
 +build-backend = "setuptools.build_meta"
