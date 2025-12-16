@@ -26,7 +26,7 @@ define Package/python3-pycares
   SUBMENU:=Python
   TITLE:=Python interface for c-ares
   URL:=https://github.com/saghul/pycares
-  DEPENDS:=+python3-light +python3-cffi +libcares
+  DEPENDS:=+python3-light +python3-cffi +python3-idna +libcares
 endef
 
 define Package/python3-pycares/description
