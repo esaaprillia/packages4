@@ -1,0 +1,24 @@
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,24 @@
++[build-system]
++requires = ["setuptools"]
++build-backend = "setuptools.build_meta"
++
++[project]
++name         = "tuya-device-sharing-sdk"
++version      = "0.2.6"
++license      = "MIT"
++license-files = ["LICENSE*"]
++description  = "A Python sdk for Tuya Open API, which provides IoT capabilities, maintained by Tuya official"
++readme       = "README.md"
++authors      = [
++    {name = "Tuya Inc.", email = "developer@tuya.com"}
++]
++requires-python = ">=3.13.0"
++
++[project.urls]
++"Homepage" = "https://github.com/tuya/tuya-device-sharing-sdk"
++
++[tool.setuptools.packages.find]
++include = ["tuya_sharing*"]
