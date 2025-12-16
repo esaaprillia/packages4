@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-voip-utils
-PKG_VERSION:=0.3.0
+PKG_VERSION:=0.3.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=voip_utils
-PKG_HASH:=510f9d6c83db0ad2013deb30787962497f3cfa23d8b34c5c644781cf0717eefb
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
