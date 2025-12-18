@@ -21,7 +21,19 @@ define Package/python3-gql
   SUBMENU:=Python
   TITLE:=GraphQL client for Python
   URL:=https://github.com/graphql-python/gql
-  DEPENDS:=+python3 +python3-graphql-core +python3-yarl +python3-backoff +python3-anyio
+  DEPENDS:= \
+	+python3-light \
+	+python3-graphql-core \
+	+python3-yarl \
+	+python3-backoff \
+	+python3-anyio \
+	+python3-aiohttp \
+	+python3-requests \
+	+python3-requests-toolbelt \
+	+python3-httpx \
+	+python3-websockets \
+	+python3-botocore \
+	+python3-aiofiles
 endef
 
 define Package/python3-gql/description
