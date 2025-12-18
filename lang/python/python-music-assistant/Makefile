@@ -41,7 +41,7 @@ define Package/python3-music-assistant
 	+python3-cryptography \
 	+python3-chardet \
 	+python3-ifaddr \
-	+python3-get-mac \
+	+python3-getmac \
 	+python3-mashumaro \
 	+python3-music-assistant-frontend \
 	+python3-music-assistant-models \
