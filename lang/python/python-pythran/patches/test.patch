@@ -1,0 +1,21 @@
+From f85179a953ebe656101777f229774b53000403d8 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 18 Dec 2025 19:47:32 +0800
+Subject: [PATCH] Update requirements.txt
+
+---
+ requirements.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index c7a25c52a..95890ad7a 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,5 +1,5 @@
+ ply>=3.4
+ setuptools
+-gast~=0.6.0
++gast
+ numpy
+-beniget~=0.4.0
++beniget
