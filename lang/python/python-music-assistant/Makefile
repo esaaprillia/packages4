@@ -49,7 +49,7 @@ define Package/python3-music-assistant
 	+python3-pillow \
 	+python3-podcastparser \
 	+python3-propcache \
-	+python3-python-slugify \
+	+python3-slugify \
 	+python3-unidecode \
 	+python3-xmltodict \
 	+python3-shortuuid \
