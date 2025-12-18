@@ -53,8 +53,9 @@ define Build/InstallDev
 	$(SED) 's,^\(includedir\)=.*,\1=$(PYTHON3_PKG_DIR)/numpy/_core/include,g' $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib/npy-pkg-config/npymath.ini
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 	$(LN) ../..$(PYTHON3_PKG_DIR)/numpy/_core/lib/pkgconfig/numpy.pc $(1)/usr/lib/pkgconfig/numpy.pc
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(LN) ../..$(PYTHON3_PKG_DIR)/numpy/_core/lib/npy-pkg-config $(1)/usr/lib/npy-pkg-config
+	$(INSTALL_DIR) $(1)/usr/lib/npy-pkg-config
+	$(LN) ../..$(PYTHON3_PKG_DIR)/numpy/_core/lib/npy-pkg-config/mlib.ini $(1)/usr/lib/npy-pkg-config/mlib.ini
+	$(LN) ../..$(PYTHON3_PKG_DIR)/numpy/_core/lib/npy-pkg-config/npymath.ini $(1)/usr/lib/npy-pkg-config/npymath.ini
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/numpy-config $(1)/usr/bin/
 	$(INSTALL_DIR) $(2)/bin
