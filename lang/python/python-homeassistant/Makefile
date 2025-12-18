@@ -33,6 +33,8 @@ define Package/python3-homeassistant/conffiles
 endef
 
 define Py3Package/python3-homeassistant/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/hass $(1)/usr/bin/hass
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/hass.init $(1)/etc/init.d/hass
 endef
