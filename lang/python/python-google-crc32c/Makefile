@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-crc32c
-PKG_VERSION:=1.7.1
+PKG_VERSION:=1.8.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_crc32c
