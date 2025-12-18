@@ -32,6 +32,11 @@ define Package/python3-homeassistant/conffiles
 /etc/homeassistant/
 endef
 
+define Py3Package/python3-homeassistant/install
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/hass.init $(1)/etc/init.d/hass
+endef
+
 $(eval $(call Py3Package,python3-homeassistant))
 $(eval $(call BuildPackage,python3-homeassistant))
 $(eval $(call BuildPackage,python3-homeassistant-src))
