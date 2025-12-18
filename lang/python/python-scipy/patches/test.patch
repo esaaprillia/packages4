@@ -1,0 +1,22 @@
+From bf48712c5caffd77d95dc1ddfa15273a7610ded1 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 18 Dec 2025 19:52:14 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 6ece9df5a090..9670d9878a6f 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -24,7 +24,7 @@ requires = [
+     # We need at least Cython 3.1.0 for free-threaded CPython;
+     # for other CPython versions, the regular pre-emptive
+     # Cython version bounds policy applies
+-    "Cython>=3.0.8,<3.2.0",
++    "Cython",
+     # The upper bound on pybind11 is pre-emptive only
+     "pybind11>=2.13.2,<3.1.0",
+     # The upper bound on pythran is pre-emptive only; 0.18.0
