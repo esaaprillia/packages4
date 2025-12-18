@@ -44,6 +44,10 @@ define Package/python3-pip/conffiles
 endef
 
 define Py3Package/python3-pip/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/pip $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/pip3 $(1)/usr/bin/
+
 	$(INSTALL_DIR) $(1)/etc
 	$(INSTALL_DATA) ./files/pip.conf $(1)/etc/
 endef
