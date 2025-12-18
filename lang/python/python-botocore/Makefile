@@ -21,7 +21,8 @@ define Package/python3-botocore
   CATEGORY:=Languages
   TITLE:=Low-level, data-driven core of boto 3
   URL:=https://github.com/boto/botocore
-  DEPENDS:=+python3 \
+  DEPENDS:= \
+	+python3-light \
 	+python3-dateutil \
 	+python3-jmespath \
 	+python3-urllib3
