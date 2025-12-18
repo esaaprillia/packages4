@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+HOST_BUILD_DEPENDS:=python-beniget/host python-gast/host python-ply/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -33,7 +33,7 @@ define Package/python3-pythran/description
   It takes a Python module annotated with a few interface descriptions and turns it into a native Python module with the same interface, but (hopefully) faster.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pythran))
 $(eval $(call BuildPackage,python3-pythran))
 $(eval $(call BuildPackage,python3-pythran-src))
-$(eval $(call HostBuild))
