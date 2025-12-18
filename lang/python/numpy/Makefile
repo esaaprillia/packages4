@@ -40,12 +40,17 @@ to be enabled in the OpenWrt core/toolchain.
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/f2py
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/f2py/src $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/src
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/f2py/src/{fortranobject.c,fortranobject.h} $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/src/
 	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/* $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib/
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/{libnpymath.a,npy-pkg-config,pkgconfig} $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib/
+	$(SED) 's,^\(includedir\)=.*,\1=$(PYTHON3_PKG_DIR)/numpy/_core/include,g' $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib/pkgconfig/numpy.pc
+	$(SED) 's,^\(libdir\)=.*,\1=$(PYTHON3_PKG_DIR)/numpy/_core/lib,g' $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib/npy-pkg-config/npymath.ini
+	$(SED) 's,^\(includedir\)=.*,\1=$(PYTHON3_PKG_DIR)/numpy/_core/include,g' $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib/npy-pkg-config/npymath.ini
+	$(LN) $(PYTHON3_PKG_DIR)/numpy/_core/lib/pkgconfig/numpy.pc $(1)/usr/lib/pkgconfig/numpy.pc
+	$(LN) $(PYTHON3_PKG_DIR)/numpy/_core/lib/npy-pkg-config $(1)/usr/lib/npy-pkg-config
 	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/random/lib
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/random/lib/* $(1)$(PYTHON3_PKG_DIR)/numpy/random/lib/
+	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/random/lib/libnpyrandom.a $(1)$(PYTHON3_PKG_DIR)/numpy/random/lib/
 	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/_core/include
 	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy $(1)$(PYTHON3_PKG_DIR)/numpy/_core/include/
 	$(INSTALL_DIR) $(1)/usr/bin
