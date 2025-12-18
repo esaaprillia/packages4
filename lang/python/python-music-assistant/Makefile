@@ -5,6 +5,7 @@ PKG_VERSION:=2.7.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=music_assistant
+PKG_SOURCE_URL:=https://github.com/music-assistant/server/releases/download/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
