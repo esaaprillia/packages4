@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=numpy/host python-pybind11/host python-beniget/host python-ply/host python-gast/host python-pythran/host
-HOST_BUILD_DEPENDS:=numpy/host python-pybind11/host python-beniget/host python-ply/host python-gast/host python-pythran/host
+PKG_BUILD_DEPENDS:=numpy/host python-pybind11/host python-pythran/host
+HOST_BUILD_DEPENDS:=numpy/host python-pybind11/host python-pythran/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
