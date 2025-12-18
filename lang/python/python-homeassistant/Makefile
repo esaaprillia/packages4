@@ -28,6 +28,10 @@ define Package/python3-homeassistant/description
 Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.
 endef
 
+define Package/python3-homeassistant/conffiles
+/etc/homeassistant/
+endef
+
 $(eval $(call Py3Package,python3-homeassistant))
 $(eval $(call BuildPackage,python3-homeassistant))
 $(eval $(call BuildPackage,python3-homeassistant-src))
