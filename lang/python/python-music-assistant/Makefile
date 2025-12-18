@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-music-assistant
-PKG_VERSION:=2.6.0
+PKG_VERSION:=2.7.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=music_assistant
@@ -26,6 +26,7 @@ define Package/python3-music-assistant
   DEPENDS:= \
 	+python3-light \
 	+python3-aiodns \
+	+python3-pycares \
 	+python3-aiohttp-asyncmdnsresolver \
 	+python3-brotli \
 	+python3-aiohttp \
@@ -33,11 +34,13 @@ define Package/python3-music-assistant
 	+python3-aiofiles \
 	+python3-aiorun \
 	+python3-aiosqlite \
+	+python3-awesomeversion \
 	+python3-certifi \
 	+python3-colorlog \
 	+python3-cryptography \
 	+python3-chardet \
 	+python3-ifaddr \
+	+python3-get-mac \
 	+python3-mashumaro \
 	+python3-music-assistant-frontend \
 	+python3-music-assistant-models \
@@ -46,12 +49,16 @@ define Package/python3-music-assistant
 	+python3-pillow \
 	+python3-podcastparser \
 	+python3-propcache \
-	+python3-slugify \
+	+python3-python-slugify \
 	+python3-unidecode \
 	+python3-xmltodict \
 	+python3-shortuuid \
 	+python3-zeroconf \
-	+python3-uv
+	+python3-uv \
+	+python3-librosa \
+	+python3-gql \
+	+python3-aiovban \
+	+python3-aiortc
 endef
 
 define Package/python3-music-assistant/description
