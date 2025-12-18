@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-beniget
-PKG_VERSION:=0.4.2.post1
+PKG_VERSION:=0.5.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=beniget
-PKG_HASH:=a0258537e65e7e14ec33a86802f865a667f949bb6c73646d55e42f7c45a052ae
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
