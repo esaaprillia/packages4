@@ -21,7 +21,7 @@ define Package/soxr
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The SoX resampler library
-	DEPENDS:=+libstdcpp
+	DEPENDS:=+libstdcpp +libgomp
 	URL:=https://github.com/chirlu/soxr
 endef
 
