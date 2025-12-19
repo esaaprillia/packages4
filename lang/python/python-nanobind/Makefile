@@ -40,6 +40,13 @@ PYTHON3_PKG_SETUP_VARS:= \
 PYTHON3_HOST_BUILD_VARS:= \
 	CMAKE_ARGS="-DNB_USE_SUBMODULE_DEPS=OFF"
 
+define Build/InstallDev
+	$(INSTALL_DIR) $(1)/usr/include
+	$(LN) ../..$(PYTHON3_PKG_DIR)/nanobind/include/nanobind $(1)/usr/include/nanobind
+	$(INSTALL_DIR) $(1)/usr/lib/cmake
+	$(LN) ../..$(PYTHON3_PKG_DIR)/nanobind/cmake $(1)/usr/lib/cmake/nanobind
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-nanobind))
 $(eval $(call BuildPackage,python3-nanobind))
