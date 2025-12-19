@@ -27,7 +27,6 @@ define Package/python3-soxr
   URL:=https://python-soxr.readthedocs.io/
   DEPENDS:= \
 	+python3-light \
-	+python3-numpy \
 	+soxr
 endef
 
