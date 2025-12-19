@@ -39,31 +39,6 @@ For some modules to be available, the INSTALL_GFORTRAN symbol needs
 to be enabled in the OpenWrt core/toolchain.
 endef
 
-define Build/InstallDev
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/src
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/f2py/src/{fortranobject.c,fortranobject.h} $(1)$(PYTHON3_PKG_DIR)/numpy/f2py/src/
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/{libnpymath.a,npy-pkg-config,pkgconfig} $(1)$(PYTHON3_PKG_DIR)/numpy/_core/lib/
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/random/lib
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/random/lib/libnpyrandom.a $(1)$(PYTHON3_PKG_DIR)/numpy/random/lib/
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/numpy/_core/include
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy $(1)$(PYTHON3_PKG_DIR)/numpy/_core/include/
-	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/pkgconfig/numpy.pc $(1)/usr/lib/pkgconfig/numpy.pc
-	$(INSTALL_DIR) $(1)/usr/lib/npy-pkg-config
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/npy-pkg-config/mlib.ini $(1)/usr/lib/npy-pkg-config/mlib.ini
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib/npy-pkg-config/npymath.ini $(1)/usr/lib/npy-pkg-config/npymath.ini
-	$(SED) 's,^\(libdir\)=.*,\1=$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/lib,g' $(1)/usr/lib/npy-pkg-config/npymath.ini
-	$(SED) 's,^\(includedir\)=.*,\1=$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include,g' $(1)/usr/lib/pkgconfig/numpy.pc
-	$(SED) 's,^\(includedir\)=.*,\1=$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include,g' $(1)/usr/lib/npy-pkg-config/npymath.ini
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/f2py $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/numpy-config $(1)/usr/bin/
-	$(INSTALL_DIR) $(2)/bin
-	$(LN) ../../usr/bin/f2py $(2)/bin/f2py
-	$(LN) ../../usr/bin/numpy-config $(2)/bin/numpy-config
-endef
-
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-numpy))
 $(eval $(call BuildPackage,python3-numpy))
