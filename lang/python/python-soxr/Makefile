@@ -34,7 +34,7 @@ define Package/python3-soxr/description
 High quality, one-dimensional sample-rate conversion library for Python.
 endef
 
-PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DUSE_SYSTEM_LIBSOXR=ON"
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DUSE_SYSTEM_LIBSOXR=ON -DSOXR_INCLUDE_DIR=$(STAGING_DIR)/usr/include -DSOXR_LIBRARY=$(STAGING_DIR)/usr/lib"
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-soxr))
