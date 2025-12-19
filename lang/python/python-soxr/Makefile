@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LGPL-2.1
 PKG_LICENSE_FILES:=COPYING.LGPL LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python-scikit-build-core/host python-nanobind/host python-setuptools-scm/host python-typing-extensions/host
+PKG_BUILD_DEPENDS:=python-scikit-build-core/host python-nanobind/host python-setuptools-scm/host python-nanobind
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
