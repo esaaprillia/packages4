@@ -35,8 +35,8 @@ CMAKE_OPTIONS += \
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
-	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/soxr*.pc
-	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/soxr*.pc
+	$(SED) 's,/usr/include,$(STAGING_DIR)/usr/include,g' $(1)/usr/lib/pkgconfig/soxr*.pc
+	$(SED) 's,/usr/lib,$(STAGING_DIR)/usr/lib,g' $(1)/usr/lib/pkgconfig/soxr*.pc
 endef
 
 define Package/soxr/install
