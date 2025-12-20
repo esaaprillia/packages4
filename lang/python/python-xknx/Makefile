@@ -21,7 +21,7 @@ define Package/python3-xknx
   CATEGORY:=Languages
   TITLE:=XKNX - A KNX library written in Python
   URL:=https://xknx.io/
-  DEPENDS:=+python3 +python3-cryptography +python3-ifaddr
+  DEPENDS:=+python3 +python3-async-timeout +python3-typing-extensions +python3-cryptography +python3-ifaddr
 endef
 
 define Package/python3-xknx/description
