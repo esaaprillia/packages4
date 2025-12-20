@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-knx-frontend
-PKG_VERSION:=2025.10.31.195356
+PKG_VERSION:=2025.12.19.150946
 PKG_RELEASE:=1
 
 PYPI_NAME:=knx_frontend
