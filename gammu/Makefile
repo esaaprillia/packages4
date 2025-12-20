@@ -66,4 +66,3 @@ define Package/gammu/conffiles
 endef
 
 $(eval $(call BuildPackage,gammu))
-
