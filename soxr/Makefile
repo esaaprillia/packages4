@@ -30,8 +30,12 @@ define Package/soxr/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=True \
-	-DBUILD_TESTS=OFF
+	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_EXAMPLES=OFF \
+	-DWITH_AVFFT=ON \
+	-DWITH_LSR_BINDINGS=ON \
+	-DWITH_OPENMP=ON \
+	-DWITH_PFFFT=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
