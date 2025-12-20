@@ -35,17 +35,10 @@ nanobind is a small binding library that exposes C++ types in Python and vice ve
 endef
 
 PYTHON3_PKG_SETUP_VARS:= \
-	CMAKE_ARGS="-DNB_USE_SUBMODULE_DEPS=OFF"
+	CMAKE_ARGS="-DNB_USE_SUBMODULE_DEPS=OFF -DNB_INSTALL_INC_DIR=$(STAGING_DIR)/usr/include -DNB_INSTALL_CMAKE_DIR=$(STAGING_DIR)/usr/lib"
 
 PYTHON3_HOST_BUILD_VARS:= \
-	CMAKE_ARGS="-DNB_USE_SUBMODULE_DEPS=OFF"
-
-define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
-	$(LN) ../..$(PYTHON3_PKG_DIR)/nanobind/include/nanobind $(1)/usr/include/nanobind
-	$(INSTALL_DIR) $(1)/usr/lib/cmake
-	$(LN) ../..$(PYTHON3_PKG_DIR)/nanobind/cmake $(1)/usr/lib/cmake/nanobind
-endef
+	CMAKE_ARGS="-DNB_USE_SUBMODULE_DEPS=OFF -DNB_INSTALL_INC_DIR=$(STAGING_DIR_HOSTPKG)/include -DNB_INSTALL_CMAKE_DIR=$(STAGING_DIR_HOSTPKG)/lib"
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-nanobind))
