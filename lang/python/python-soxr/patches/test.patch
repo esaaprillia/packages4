@@ -1,14 +1,25 @@
-From f83c767d86c0cf43ac74a824475bd9612034b27a Mon Sep 17 00:00:00 2001
+From 4659786a373e100574c750058c11c901f12c1253 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 20 Dec 2025 02:49:33 +0800
-Subject: [PATCH] Update pyproject.toml
+Date: Sat, 20 Dec 2025 18:33:28 +0800
+Subject: [PATCH] Update CMakeLists.txt
 
 ---
- pyproject.toml | 2 +-
+ CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/pyproject.toml b/pyproject.toml
-index d5c786a..54e640f 100644
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 83775e7..1c8f6ed 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,7 +65,7 @@ nanobind_add_module(soxr_ext STABLE_ABI FREE_THREADED NB_STATIC
+     ${CSOXR_VER_C}
+ )
+ 
+-if (NOT CMAKE_CROSSCOMPILING)
++if (CMAKE_CROSSCOMPILING)
+     # nanobind's stub generation requires importing the module, so skip it when cross-compiling
+     nanobind_add_stub(soxr_ext_stub
+         MODULE soxr_ext
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -63,7 +63,7 @@ minimum-version = "build-system.requires"
