@@ -40,8 +40,7 @@ endef
 CMAKE_OPTIONS += \
 	-DDWITH_GettextLibs=OFF \
 	-DWITH_Iconv=OFF \
-	-DWITH_Libintl=OFF \
-	-DWITH_LibDBI:BOOL=OFF
+	-DWITH_Libintl=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
