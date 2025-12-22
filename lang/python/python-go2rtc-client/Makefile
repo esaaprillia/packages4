@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-go2rtc-client
-PKG_VERSION:=0.3.0
+PKG_VERSION:=0.4.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=go2rtc_client
