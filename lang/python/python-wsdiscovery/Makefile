@@ -35,6 +35,9 @@ define Package/python3-wsdiscovery/description
 This is WS-Discovery implementation for Python 3.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=wsdiscovery
+PYTHON3_PKG_WHEEL_VERSION:=2.1.2
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-wsdiscovery))
 $(eval $(call BuildPackage,python3-wsdiscovery))
