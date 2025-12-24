@@ -1,0 +1,31 @@
+From 9ab3c475f804ef357b9bc0acc3e10352fd98cdfa Mon Sep 17 00:00:00 2001
+From: Predators <31931530+predators46@users.noreply.github.com>
+Date: Wed, 24 Dec 2025 10:16:07 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index d7078593..b5b4f359 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -35,7 +35,7 @@ Documentation = "https://python-zstandard.readthedocs.io/en/latest/"
+ 
+ [build-system]
+ requires = [
+-    "cffi~=1.17; platform_python_implementation != 'PyPy' and python_version < '3.14'",
++    "cffi",
+     "cffi>=2.0.0b; platform_python_implementation != 'PyPy' and python_version >= '3.14'",
+     "packaging",
+     "setuptools>=77.0.0",
+@@ -44,7 +44,7 @@ build-backend = "setuptools.build_meta"
+ 
+ [dependency-groups]
+ dev = [
+-    "cffi~=1.17; platform_python_implementation != 'PyPy' and python_version < '3.14'",
++    "cffi",
+     "cffi>=2.0.0b; platform_python_implementation != 'PyPy' and python_version >= '3.14'",
+     "hypothesis==6.111.0",
+     "mypy>=1.17.1",
