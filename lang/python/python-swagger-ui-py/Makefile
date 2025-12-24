@@ -5,6 +5,7 @@ PKG_VERSION:=25.7.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=swagger-ui-py
+PKG_SOURCE_URL:=https://github.com/PWZER/swagger-ui-py/releases/download/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
