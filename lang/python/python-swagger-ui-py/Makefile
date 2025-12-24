@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-swagger-ui-py
-PKG_VERSION:=23.9.23
+PKG_VERSION:=25.7.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=swagger-ui-py
