@@ -1,0 +1,49 @@
+From 82dd54c437ea08830cab83341e7c34a28ed5ca00 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Sun, 23 Mar 2025 18:42:43 -0400
+Subject: [PATCH 4/5] Update dependenices on glslang
+
+---
+ glslc/CMakeLists.txt      | 3 ++-
+ libshaderc/CMakeLists.txt | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/glslc/CMakeLists.txt b/glslc/CMakeLists.txt
+index 1277d87..7a747a9 100644
+--- a/glslc/CMakeLists.txt
++++ b/glslc/CMakeLists.txt
+@@ -13,6 +13,7 @@
+ # limitations under the License.
+ 
+ find_package(Threads)
++find_package(glslang REQUIRED)
+ 
+ add_library(glslc STATIC
+   src/file_compiler.cc
+@@ -43,7 +44,7 @@ if (SHADERC_ENABLE_WGSL_OUTPUT)
+ endif(SHADERC_ENABLE_WGSL_OUTPUT)
+ 
+ target_link_libraries(glslc PRIVATE
+-  glslang SPIRV    # Glslang libraries
++  glslang::glslang SPIRV    # Glslang libraries
+   $<$<BOOL:${SHADERC_ENABLE_WGSL_OUTPUT}>:libtint>      # Tint libraries, optional
+   shaderc_util shaderc                                  # internal Shaderc libraries
+   ${CMAKE_THREAD_LIBS_INIT})
+diff --git a/libshaderc/CMakeLists.txt b/libshaderc/CMakeLists.txt
+index df9a88d..500019c 100644
+--- a/libshaderc/CMakeLists.txt
++++ b/libshaderc/CMakeLists.txt
+@@ -62,8 +62,9 @@ if(SHADERC_ENABLE_INSTALL)
+ endif(SHADERC_ENABLE_INSTALL)
+ 
+ find_package(Threads)
++find_package(glslang REQUIRED)
+ set(SHADERC_LIBS
+-  glslang ${CMAKE_THREAD_LIBS_INIT}
++  glslang::glslang ${CMAKE_THREAD_LIBS_INIT}
+   shaderc_util
+   SPIRV # from glslang
+   SPIRV-Tools
+-- 
+2.43.0
+
