@@ -4,7 +4,7 @@ PKG_NAME:=zimg
 PKG_VERSION:=3.0.6
 PKG_RELEASE:=1
 
-PKG_SOURCE:=zimg-release-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=release-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/sekrit-twc/zimg/archive/
 PKG_HASH:=skip
 
