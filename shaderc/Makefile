@@ -32,8 +32,6 @@ endef
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DSHADERC_SKIP_TESTS=ON \
-	-DSHADERC_ENABLE_TESTS=OFF \
-	-DSHADERC_ENABLE_EXAMPLES=OFF \
 	-Dglslang_SOURCE_DIR="$(STAGING_DIR)/usr/include/glslang"
 
 define Build/InstallDev
