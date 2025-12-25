@@ -35,7 +35,7 @@ endef
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DSPIRV_WERROR=OFF \
-	-DSPIRV-Headers_SOURCE_DIR=/usr \
+	-DSPIRV-Headers_SOURCE_DIR="$(STAGING_DIR)/usr" \
 	-DSPIRV_TOOLS_BUILD_STATIC=OFF
 
 define Build/InstallDev
