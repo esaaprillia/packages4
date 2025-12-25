@@ -1,14 +1,25 @@
-From e6eddb8bf469d9f36f8899515695a40e6bbd7b7f Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 25 Dec 2025 21:44:36 +0800
-Subject: [PATCH] Add files via upload
+From 06dcffe9a525250ca8de2f29cac5f4d6d41716ef Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 25 Dec 2025 22:45:54 +0800
+Subject: [PATCH] Update CMakeLists.txt
 
 ---
- glslc/src/build-version.inc | 3 +++
- 1 file changed, 3 insertions(+)
- create mode 100644 glslc/src/build-version.inc
+ glslc/test/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/glslc/src/build-version.inc b/glslc/src/build-version.inc
+diff --git a/glslc/test/CMakeLists.txt b/glslc/test/CMakeLists.txt
+index c5ec68963..30c0de89a 100644
+--- a/glslc/test/CMakeLists.txt
++++ b/glslc/test/CMakeLists.txt
+@@ -27,7 +27,7 @@ if(${SHADERC_ENABLE_TESTS})
+     add_test(NAME glslc_tests
+       COMMAND ${Python_EXECUTABLE}
+       ${CMAKE_CURRENT_SOURCE_DIR}/glslc_test_framework.py
+-      $<TARGET_FILE:glslc_exe> $<TARGET_FILE:spirv-dis>
++      $<TARGET_FILE:glslc_exe> spirv-dis
+       --test-dir ${CMAKE_CURRENT_SOURCE_DIR})
+   endif()
+ 
 new file mode 100644
 index 000000000..fa45a679c
 --- /dev/null
