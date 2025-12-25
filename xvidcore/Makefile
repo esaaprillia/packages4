@@ -4,7 +4,7 @@ PKG_NAME:=xvidcore
 PKG_VERSION:=1.3.7
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=https://downloads.xvid.com/downloads/
 PKG_HASH:=skip
 
@@ -28,6 +28,9 @@ endef
 define Package/xvidcore/description
 	The free video codec that's strong in compression and quality.
 endef
+
+MAKE_PATH:=build/generic
+CONFIGURE_PATH:=build/generic
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
