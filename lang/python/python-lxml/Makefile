@@ -20,10 +20,13 @@ PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 PKG_CPE_ID:=cpe:/a:lxml:lxml
 
 PKG_BUILD_DEPENDS:=python-cython/host
+HOST_BUILD_DEPENDS:=python-cython/host libxslt/host libxml2/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-lxml
   SECTION:=lang
@@ -43,6 +46,7 @@ define Package/python3-lxml/description
   XPath, RelaxNG, XML Schema, XSLT, C14N and much more.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-lxml))
 $(eval $(call BuildPackage,python3-lxml))
 $(eval $(call BuildPackage,python3-lxml-src))
