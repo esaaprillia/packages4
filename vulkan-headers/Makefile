@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/SPIRV-Headers-vulkan-sdk-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/Vulkan-Headers-$(PKG_VERSION)
 
 CMAKE_BINARY_SUBDIR:=build
 PKG_BUILD_PARALLEL:=1
@@ -41,4 +41,3 @@ define Build/InstallDev
 endef
 
 $(eval $(call BuildPackage,vulkan-headers))
-
