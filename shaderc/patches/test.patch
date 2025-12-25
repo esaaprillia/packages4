@@ -11,17 +11,6 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 06f5395c3..645a3755e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -17,6 +17,10 @@ cmake_minimum_required(VERSION 3.22.1)
- project(shaderc)
- enable_testing()
- 
-+set(CMAKE_CURRENT_BINARY_DIR ".")
-+set(spirv-tools_SOURCE_DIR "YourFolderTo-SPIRV-Tools")
-+set(glslang_SOURCE_DIR "YourFolderTo-glslang")
-+
- if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
-   message(STATUS "No build type selected, default to Debug")
-   set(CMAKE_BUILD_TYPE "Debug")
 @@ -130,7 +134,7 @@ endif(MSVC)
  
  # Configure subdirectories.
