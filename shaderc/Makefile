@@ -35,8 +35,8 @@ CMAKE_OPTIONS += \
 	-DSHADERC_SKIP_TESTS=ON \
 	-DSHADERC_ENABLE_TESTS=OFF \
 	-DSHADERC_ENABLE_EXAMPLES=OFF \
-	-Dspirv-tools_SOURCE_DIR="$(STAGING_DIR)/usr" \
-	-Dglslang_SOURCE_DIR="$(STAGING_DIR)/usr"
+	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+	-Dglslang_SOURCE_DIR="$(STAGING_DIR)/usr/include/glslang"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
