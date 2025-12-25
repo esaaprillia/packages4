@@ -14,7 +14,6 @@ PKG_LICENSE_FILES:=LICENSE.txt
 
 CMAKE_BINARY_SUBDIR := build
 
-#PKG_BUILD_DEPENDS:=spirv-headers
 PKG_BUILD_DIR:=$(BUILD_DIR)/glslang-vulkan-sdk-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
