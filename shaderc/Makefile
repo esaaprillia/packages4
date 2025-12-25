@@ -12,7 +12,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=spirv-tools/host
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
@@ -33,7 +32,10 @@ endef
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DSHADERC_SKIP_TESTS=ON \
-	-Dglslang_SOURCE_DIR="$(STAGING_DIR)/usr/include/glslang"
+	-DSHADERC_ENABLE_TESTS=OFF \
+	-DSHADERC_ENABLE_EXAMPLES=OFF \
+	-Dspirv-tools_SOURCE_DIR="$(STAGING_DIR)/usr" \
+	-Dglslang_SOURCE_DIR="$(STAGING_DIR)/usr"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
