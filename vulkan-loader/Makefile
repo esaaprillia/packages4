@@ -25,7 +25,7 @@ define Package/vulkan-loader
 	URL:=https://github.com/KhronosGroup/Vulkan-Loader
 endef
 
-define Package/zimg/description
+define Package/vulkan-loader/description
 	This project provides the Khronos official Vulkan Loader for all platforms except
 endef
 
@@ -42,7 +42,7 @@ define Build/InstallDev
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/vulkan.pc
 endef
 
-define Package/zimg/install
+define Package/vulkan-loader/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
