@@ -15,9 +15,12 @@ PKG_LICENSE_FILES:=LICENSE
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=spirv-headers
+HOST_BUILD_DEPENDS:=spirv-headers/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/SPIRV-Tools-vulkan-sdk-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/SPIRV-Tools-vulkan-sdk-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/spirv-tools
@@ -31,6 +34,10 @@ endef
 define Package/spirv-tools/description
 	The project includes an assembler, binary module parser, disassembler, validator, and optimizer for SPIR-V.
 endef
+
+CMAKE_HOST_OPTIONS += \
+	-DSPIRV_WERROR=OFF \
+	-DSPIRV-Headers_SOURCE_DIR="$(STAGING_DIR_HOSTPKG)"
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
@@ -52,4 +59,5 @@ define Package/spirv-tools/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,spirv-tools))
