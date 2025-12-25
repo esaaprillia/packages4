@@ -12,7 +12,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python3/host
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
@@ -34,9 +33,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DSHADERC_SKIP_TESTS=ON \
 	-DSHADERC_ENABLE_TESTS=OFF \
-	-DSHADERC_ENABLE_EXAMPLES=OFF \
-	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-	-Dglslang_SOURCE_DIR="$(STAGING_DIR)/usr/include/glslang"
+	-DSHADERC_ENABLE_EXAMPLES=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
