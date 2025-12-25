@@ -30,7 +30,11 @@ define Package/zimg/description
 endef
 
 CMAKE_OPTIONS += \
-	-DVULKAN_HEADERS_INSTALL_DIR=/usr
+	-DVULKAN_HEADERS_INSTALL_DIR=/usr \
+	-DBUILD_WSI_XCB_SUPPORT=OFF \
+	-DBUILD_WSI_XLIB_SUPPORT=OFF \
+	-DBUILD_WSI_XLIB_XRANDR_SUPPORT=OFF \
+	-DBUILD_WSI_WAYLAND_SUPPORT=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
