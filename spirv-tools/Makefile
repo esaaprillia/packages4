@@ -42,6 +42,7 @@ define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/SPIRV*.pc
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/SPIRV*.pc
+	$(RM) $(DL_DIR)/vulkan-sdk-$(PKG_VERSION).tar.gz
 endef
 
 define Package/spirv-tools/install
