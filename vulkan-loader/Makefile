@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE.txt
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/Vulkan-Loader-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=vulkan-headers
+#PKG_BUILD_DEPENDS:=vulkan-headers
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
