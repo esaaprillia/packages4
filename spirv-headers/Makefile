@@ -4,7 +4,7 @@ PKG_NAME:=spirv-headers
 PKG_VERSION:=1.4.335.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=vulkan-sdk-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=vulkan-sdk-$(PKG_VERSION).zip
 PKG_SOURCE_URL:=https://github.com/KhronosGroup/SPIRV-Headers/archive
 PKG_HASH:=skip
 
