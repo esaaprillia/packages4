@@ -1,0 +1,22 @@
+From 2e8951996a201fdbfeb6683d063cf5adf999907c Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 25 Dec 2025 21:04:24 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 06f5395c3..927a92eae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -130,7 +130,7 @@ endif(MSVC)
+ 
+ # Configure subdirectories.
+ # We depend on these for later projects, so they should come first.
+-add_subdirectory(third_party)
++#add_subdirectory(third_party)
+ 
+ add_subdirectory(libshaderc_util)
+ add_subdirectory(libshaderc)
