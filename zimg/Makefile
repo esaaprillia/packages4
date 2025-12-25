@@ -5,7 +5,7 @@ PKG_VERSION:=3.0.6
 PKG_RELEASE:=1
 
 PKG_SOURCE:=zimg-release-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/sekrit-twc/zimg/archive/$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/sekrit-twc/zimg/archive/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
