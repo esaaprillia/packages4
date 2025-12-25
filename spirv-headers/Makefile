@@ -15,8 +15,10 @@ PKG_LICENSE_FILES:=LICENSE
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/SPIRV-Headers-vulkan-sdk-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/SPIRV-Headers-vulkan-sdk-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/spirv-headers
@@ -37,4 +39,5 @@ define Build/InstallDev
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/share/pkgconfig/SPIRV-Headers.pc
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,spirv-headers))
