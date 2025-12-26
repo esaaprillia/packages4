@@ -10,3 +10,14 @@ Fix linking against glslang 1.3.296.0
      cxx.find_library('glslang-default-resource-limits', required: false)
    ]
  
+--- a/src/glsl/meson.build
++++ b/src/glsl/meson.build
+@@ -31,7 +31,7 @@ elif not glslang_req.disabled()
+     static   = arg[0]
+     required = arg[1]
+ 
+-    spirv = cxx.find_library('SPIRV', required: required, static: static)
++    spirv = cxx.find_library('SPIRV', required: false, static: false)
+ 
+     if not spirv.found()
+       continue
