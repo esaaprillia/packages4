@@ -20,7 +20,7 @@ define Package/libtheora
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An open video codec developed by the Xiph.org
-	DEPENDS:=+libogg
+	DEPENDS:=+libogg +libvorbis
 	URL:=https://www.xiph.org/
 endef
 
