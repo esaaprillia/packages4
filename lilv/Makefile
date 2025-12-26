@@ -31,12 +31,24 @@ define Package/lilv
 	+serd \
 	+sord \
 	+sratom \
-	+zix \
-	+python3
+	+zix
 endef
 
 define Package/lilv/description
 	Lilv is a C library to make the use of LV2 plugins as simple as possible for applications.
+endef
+
+define Package/python3-lilv
+  SECTION:=lang
+  CATEGORY:=Languages
+  SUBMENU:=Python
+  TITLE:=A C library interface to the LV2 plug-in standard - Python interface
+  URL:=https://lv2plug.in/
+  DEPENDS:=+python3-light +lilv
+endef
+
+define Package/python3-lilv/description
+	A C library interface to the LV2 plug-in standard - Python interface
 endef
 
 MESON_VARS += $(PYTHON3_VARS)
@@ -57,8 +69,9 @@ define Package/lilv/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	#$(INSTALL_DIR) $(1)/usr/share
-	#$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,lilv))
+$(eval $(call Py3Package,python3-lilv))
+$(eval $(call BuildPackage,python3-lilv))
+$(eval $(call BuildPackage,python3-lilv-src))
