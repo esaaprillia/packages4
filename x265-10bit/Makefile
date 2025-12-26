@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_DEPENDS:=nasm/host x265-12bit
+PKG_BUILD_DEPENDS:=nasm/host numactl x265-12bit
 
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_DIR:=$(BUILD_DIR)/x265_$(PKG_VERSION)
@@ -27,7 +27,7 @@ define Package/x265-10bit
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open Source H265/HEVC video encoder
-	DEPENDS:=+numactl +libstdcpp
+	DEPENDS:=
 	URL:=https://bitbucket.org/multicoreware/x265_git
 endef
 
