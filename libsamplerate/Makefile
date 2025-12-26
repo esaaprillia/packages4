@@ -45,9 +45,14 @@ CONFIGURE_ARGS += \
 	--disable-fftw
 
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
-	$(SED) 's,/usr/lib,$(STAGING_DIR)/usr/lib,g' $(1)/usr/lib/pkgconfig/samplerate.pc
-	$(SED) 's,/usr/include,$(STAGING_DIR)/include,g' $(1)/usr/lib/pkgconfig/samplerate.pc
+	$(INSTALL_DIR) $(1)/usr/include 
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/samplerate.pc $(1)/usr/lib/pkgconfig/
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/samplerate.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/samplerate.pc
 endef
 
 define Package/libsamplerate/install
