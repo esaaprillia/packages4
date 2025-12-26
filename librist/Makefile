@@ -4,8 +4,8 @@ PKG_NAME:=librist
 PKG_VERSION:=0.2.11
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-v.$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://code.videolan.org/rist/librist/-/archive/v.$(PKG_VERSION)
+PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://code.videolan.org/rist/librist/-/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -13,7 +13,7 @@ PKG_LICENSE:=BSD 2-Clause
 PKG_LICENSE_FILES:=COPYING
 
 PKG_INSTALL:=1
-PKG_BUILD_DIR:=$(PKG_NAME)-v.$(PKG_VERSION)
+PKG_BUILD_DIR:=librist-v$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/meson.mk
