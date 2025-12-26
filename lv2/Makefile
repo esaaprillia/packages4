@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=ISC
 PKG_LICENSE_FILES:=COPYING
 
+PYTHON3_PKG_BUILD:=0
 PKG_BUILD_DEPENDS:=python-lxml/host python-markdown/host python-pygments/host python-rdflib/host
 
 include $(INCLUDE_DIR)/package.mk
