@@ -20,7 +20,7 @@ define Package/libva
 	CATEGORY:=Libraries
 	TITLE:=Video Acceleration (VA) API for Linux
 	DEPENDS:=+libdrm
-	URL:=https://freedesktop.org/wiki/Software/vaapi
+	URL:=https://github.com/intel/libva/
 endef
 
 define Package/libva/description
