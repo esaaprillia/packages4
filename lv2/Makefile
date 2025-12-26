@@ -1,0 +1,48 @@
+include $(TOPDIR)/rules.mk
+
+PKG_NAME:=lv2
+PKG_VERSION:=1.18.10
+PKG_RELEASE:=1
+
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+PKG_SOURCE_URL:=https://lv2plug.in/spec/
+PKG_HASH:=skip
+
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=ISC
+PKG_LICENSE_FILES:=COPYING
+
+include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/meson.mk
+
+define Package/lv2
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=The LV2 audio plugin specification
+	DEPENDS:=+libstdcpp +libcairo +glib2 +libsamplerate +libsndfile
+	URL:=https://lv2plug.in/
+endef
+
+define Package/lv2/description
+	LV2 is a plugin standard for audio systems.
+endef
+
+define Build/InstallDev
+	$(INSTALL_DIR) $(1)/usr/include 
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/lv2.pc $(1)/usr/lib/pkgconfig/
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/lv2.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/lv2.pc
+endef
+
+define Package/lv2/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+endef
+
+$(eval $(call BuildPackage,lv2))
