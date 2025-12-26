@@ -13,7 +13,7 @@ PKG_LICENSE:=BSD-3-Clause AND BSD-2-Clause AND MIT AND Apache-2.0 AND GPL-3.0-or
 PKG_LICENSE_FILES:=LICENSE.txt
 
 CMAKE_BINARY_SUBDIR := build-static
-
+PKG_BUILD_DEPENDS:=spirv-tools
 PKG_BUILD_DIR:=$(BUILD_DIR)/glslang-vulkan-sdk-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/glslang-static
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Khronos reference front-end for GLSL, ESSL, and sample SPIR-V generator
-	DEPENDS:=+libstdcpp +spirv-tools
+	DEPENDS:=
 	URL:=https://github.com/KhronosGroup/glslang
 endef
 
