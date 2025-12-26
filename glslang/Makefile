@@ -13,7 +13,7 @@ PKG_LICENSE:=BSD-3-Clause AND BSD-2-Clause AND MIT AND Apache-2.0 AND GPL-3.0-or
 PKG_LICENSE_FILES:=LICENSE.txt
 
 CMAKE_BINARY_SUBDIR := build
-
+PKG_BUILD_DEPENDS:=glslang-static
 PKG_BUILD_DIR:=$(BUILD_DIR)/glslang-vulkan-sdk-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
