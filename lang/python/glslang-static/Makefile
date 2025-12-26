@@ -38,7 +38,9 @@ CMAKE_OPTIONS += \
 	-DGLSLANG_TESTS=OFF
 
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.a $(1)/usr/lib/
+	$(RM) $(DL_DIR)/vulkan-sdk-$(PKG_VERSION).tar.gz
 endef
 
 $(eval $(call BuildPackage,glslang-static))
