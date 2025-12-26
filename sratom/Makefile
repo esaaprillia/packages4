@@ -19,7 +19,7 @@ define Package/sratom
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Library for serialising LV2 atoms
-	DEPENDS:=+libstdcpp +lv2 +serd +serd
+	DEPENDS:=+libstdcpp +lv2 +serd +sord
 	URL:=https://drobilla.net/software/sratom
 endef
 
