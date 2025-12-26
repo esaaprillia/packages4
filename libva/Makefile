@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://github.com/intel/libva/archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
 
 include $(INCLUDE_DIR)/package.mk
@@ -19,7 +19,7 @@ define Package/libva
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Video Acceleration (VA) API for Linux
-	DEPENDS:=+libx11 +libxcb +libxfixes +libxext +libdrm +libwayland +libmesa
+	DEPENDS:=+libdrm
 	URL:=https://freedesktop.org/wiki/Software/vaapi
 endef
 
