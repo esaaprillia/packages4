@@ -29,6 +29,8 @@ define Package/libopenmpt/description
 	libopenmpt is a cross-platform C++ and C library to decode tracked music files (modules) [wikipedia] into a raw PCM audio stream.
 endef
 
+TARGET_LDFLAGS += -Wl,-rpath-link="$(STAGING_DIR)/usr/lib"
+
 CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--disable-static
