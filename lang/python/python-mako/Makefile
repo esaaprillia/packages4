@@ -6,11 +6,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-mako
-PKG_VERSION:=1.3.8
+PKG_VERSION:=1.3.10
 PKG_RELEASE:=1
 
 PYPI_NAME:=mako
-PKG_HASH:=577b97e414580d3e088d47c2dbbe9594aa7a5146ed2875d4dfa9075af2dd3cc8
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 PKG_LICENSE:=MIT
@@ -53,7 +53,7 @@ models available, while also maintaining close ties to Python calling
 and scoping semantics.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-mako))
 $(eval $(call BuildPackage,python3-mako))
 $(eval $(call BuildPackage,python3-mako-src))
-$(eval $(call HostBuild))
