@@ -26,7 +26,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/portaudio
   SECTION:=sound
   CATEGORY:=Sound
-  DEPENDS:=+alsa-lib +libpthread +librt
+  DEPENDS:=+libstdcpp +alsa-lib +libpthread +librt
   TITLE:=Portable cross-platform audio I/O
   URL:=http://www.portaudio.com/
 endef
