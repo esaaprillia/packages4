@@ -13,11 +13,11 @@ PKG_LICENSE:=LGPL-2.1
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=meson/host python-glad/host python-jinja2/host
+PKG_BUILD_DEPENDS:=meson/host python-glad/host python-mako/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/libplacebo-v$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/meson.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 
 define Package/libplacebo
 	SECTION:=libs
