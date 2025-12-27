@@ -40,7 +40,8 @@ MESON_ARGS += \
 	-Dlcms=enabled \
 	-Dshaderc=enabled \
 	-Dtests=false \
-	-Dvulkan=enabled
+	-Dvulkan=enabled \
+	-Dvulkan-registry="$(STAGING_DIR)/usr/share/vulkan/registry/vk.xml"
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
