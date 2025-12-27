@@ -19,7 +19,7 @@ define Package/libbluray
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Library to access Blu-Ray disks
-	DEPENDS:=+libudfread
+	DEPENDS:=+libudfread +libfreetype2 +libxml2
 	URL:=https://www.videolan.org/developers/libbluray.html
 endef
 
