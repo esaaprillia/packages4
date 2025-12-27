@@ -33,6 +33,8 @@ define Package/libplacebo/description
 	libplacebo is, in a nutshell, the core rendering algorithms and ideas of mpv rewritten as an independent library. As of today, libplacebo contains a large assortment of video processing shaders, focusing on both quality and performance.
 endef
 
+MESON_VARS += $(PYTHON3_VARS)
+
 MESON_ARGS += \
 	-Dbackend_max_links=4 \
 	-Ddemos=false \
