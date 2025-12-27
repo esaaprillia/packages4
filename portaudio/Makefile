@@ -9,20 +9,20 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=portaudio
 PKG_VERSION:=19.7.0
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/PortAudio/portaudio/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
-PKG_MAINTAINER:=
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
-CMAKE_INSTALL:=1
+PKG_INSTALL:=1
+PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
 
 define Package/portaudio
   SECTION:=sound
@@ -40,8 +40,17 @@ define Package/portaudio/description
  different platforms. Many applications use PortAudio for Audio I/O.
 endef
 
+CONFIGURE_ARGS += \
+	--prefix=/usr \
+	--enable-cxx
+
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
+	$(INSTALL_DIR) $(1)/usr/include 
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/portaudio*.pc $(1)/usr/lib/pkgconfig/
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/portaudio*.pc
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/portaudio*.pc
 endef
@@ -49,6 +58,7 @@ endef
 define Package/portaudio/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libportaudio.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libportaudiocpp.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,portaudio))
