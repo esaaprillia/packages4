@@ -29,7 +29,7 @@ define Package/harfbuzz
   SUBMENU:=Video
   TITLE:=hafbuzz
   URL:=http://www.harfbuzz.org/
-  DEPENDS:=+glib2 +icu +libcairo +libfreetype
+  DEPENDS:=+glib2 +icu +libcairo +libfreetype +graphite
 endef
 
 define Package/harfbuzz/description
