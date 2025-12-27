@@ -1,23 +1,22 @@
-Fix linking against glslang 1.3.296.0
+From 1cedfdbf836da60a3c78a05a74dd95b66827166b Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 27 Dec 2025 08:17:03 +0800
+Subject: [PATCH] Update meson.build
 
+---
+ src/glsl/meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/glsl/meson.build b/src/glsl/meson.build
+index 8fb5e69..d07ec7b 100644
 --- a/src/glsl/meson.build
 +++ b/src/glsl/meson.build
-@@ -17,6 +17,7 @@ if glslang_req.auto() and shaderc.found()
+@@ -17,6 +17,8 @@ if glslang_req.auto() and shaderc.found()
  elif not glslang_req.disabled()
  
    glslang_deps = [
 +    cxx.find_library('glslang', required: false),
++    cxx.find_library('SPIRV', required: false),
      cxx.find_library('glslang-default-resource-limits', required: false)
    ]
  
---- a/src/glsl/meson.build
-+++ b/src/glsl/meson.build
-@@ -31,7 +31,7 @@ elif not glslang_req.disabled()
-     static   = arg[0]
-     required = arg[1]
- 
--    spirv = cxx.find_library('SPIRV', required: required, static: static)
-+    spirv = cxx.find_library('SPIRV', required: false, static: false)
- 
-     if not spirv.found()
-       continue
