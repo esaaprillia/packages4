@@ -23,7 +23,7 @@ define Package/graphite
 	URL:=https://graphite.sil.org/
 endef
 
-define Package/zimg/description
+define Package/graphite/description
 	Graphite is a system that can be used to create “smart fonts” capable of displaying writing systems with various complex behaviors.
 endef
 
@@ -38,7 +38,7 @@ define Build/InstallDev
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/graphite2.pc
 endef
 
-define Package/zimg/install
+define Package/graphite/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
