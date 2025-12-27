@@ -12,12 +12,14 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LGPL-2.1
 PKG_LICENSE_FILES:=LICENSE
 
+PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_DEPENDS:=meson/host python-glad2/host python-mako/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/libplacebo-v$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/libplacebo
 	SECTION:=libs
