@@ -83,3 +83,15 @@ index 8fb5e69..4d0b6aa 100644
      glslang = declare_dependency(dependencies: glslang_deps)
    endif
  
+Fix linking against glslang 1.3.296.0
+
+--- a/src/glsl/meson.build
++++ b/src/glsl/meson.build
+@@ -17,6 +17,7 @@ if glslang_req.auto() and shaderc.found()
+ elif not glslang_req.disabled()
+ 
+   glslang_deps = [
++    cxx.find_library('glslang', required: false),
+     cxx.find_library('glslang-default-resource-limits', required: false)
+   ]
+ 
