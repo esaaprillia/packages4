@@ -4,7 +4,7 @@ PKG_NAME:=libudfread
 PKG_VERSION:=1.2.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://code.videolan.org/videolan/libudfread/-/archive/$(PKG_VERSION)/
 PKG_HASH:=skip
 
