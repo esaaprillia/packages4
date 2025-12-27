@@ -23,7 +23,7 @@ define Package/glslang
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Khronos reference front-end for GLSL, ESSL, and sample SPIR-V generator
-	DEPENDS:=+libstdcpp +spirv-tools
+	DEPENDS:=+spirv-tools
 	URL:=https://github.com/KhronosGroup/glslang
 endef
 
