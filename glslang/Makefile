@@ -13,7 +13,6 @@ PKG_LICENSE:=BSD-3-Clause AND BSD-2-Clause AND MIT AND Apache-2.0 AND GPL-3.0-or
 PKG_LICENSE_FILES:=LICENSE.txt
 
 CMAKE_BINARY_SUBDIR := build
-PKG_BUILD_DEPENDS:=glslang-static
 PKG_BUILD_DIR:=$(BUILD_DIR)/glslang-vulkan-sdk-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
@@ -38,10 +37,7 @@ CMAKE_OPTIONS += \
 	-DGLSLANG_TESTS=OFF
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include 
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
 define Package/glslang/install
