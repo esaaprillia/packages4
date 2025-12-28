@@ -32,13 +32,8 @@ define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR)/src \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		CC="$(TARGET_CC)" \
-		CFLAGS="$(TARGET_CFLAGS)" \
-		CXXFLAGS="$(TARGET_CXXFLAGS)" \
-		CPPFLAGS="$(TARGET_CPPFLAGS)" \
 		LDFLAGS="$(TARGET_LDFLAGS)" \
-		INSTALL_PLUGINS_DIR=/usr/lib/ladspa \
-		INSTALL_INCLUDE_DIR=/usr/include \
-		INSTALL_BINARY_DIR=/usr/bin install
+		LIBRARIES="-L$(STAGING_DIR)/usr/lib -ldl -lm -lsndfile"
 endef
 
 define Build/InstallDev
