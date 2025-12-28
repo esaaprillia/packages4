@@ -33,19 +33,19 @@ define Build/Compile
 		CC="$(TARGET_CC)" \
 		CPP="$(TARGET_CXX)" \
 		LD="$(TARGET_LD)" \
-		LDFLAGS="$(TARGET_LDFLAGS)" install
+		LDFLAGS="$(TARGET_LDFLAGS)"
 endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
+	$(CP) $(PKG_BUILD_DIR)/ladspa.h $(1)/usr/include/
 endef
 
-define Package/ladspa/install
+define Package/libbluray/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/ladspa $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/plugins/* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,ladspa))
