@@ -33,7 +33,7 @@ define Build/Compile
 		CC="$(TARGET_CC)" \
 		CPP="$(TARGET_CXX)" \
 		LD="$(TARGET_LD)" \
-		LDFLAGS="$(TARGET_LDFLAGS)"
+		LDFLAGS="$(TARGET_LDFLAGS)" install
 endef
 
 define Build/InstallDev
