@@ -30,10 +30,12 @@ endef
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR)/src \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
 		CC="$(TARGET_CC)" \
 		LDFLAGS="$(TARGET_LDFLAGS)" \
-		LIBRARIES="-L$(STAGING_DIR)/usr/lib -ldl -lm -lsndfile"
+		LIBRARIES="-L$(STAGING_DIR)/usr/lib -ldl -lm -lsndfile" \
+		INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/lib/ladspa" \
+		INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/include" \
+		INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/bin" install
 endef
 
 define Build/InstallDev
