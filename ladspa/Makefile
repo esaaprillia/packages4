@@ -34,7 +34,7 @@ define Build/Compile
 		LDFLAGS="$(TARGET_LDFLAGS)" \
 		LIBRARIES="-L$(STAGING_DIR)/usr/lib -ldl -lm -lsndfile" \
 		INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/lib/ladspa" \
-		INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/include" \
+		INSTALL_INCLUDE_DIR="$(PKG_INSTALL_DIR)/usr/include" \
 		INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/bin" install
 endef
 
