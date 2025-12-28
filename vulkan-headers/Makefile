@@ -37,17 +37,7 @@ CMAKE_OPTIONS += \
 	-DVULKAN_HEADERS_ENABLE_INSTALL=ON
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/share
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/{vk_video,vulkan} \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/share/{cmake,vulkan} \
-	  $(1)/usr/share/
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
 $(eval $(call BuildPackage,vulkan-headers))
