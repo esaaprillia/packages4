@@ -32,7 +32,6 @@ define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR)/src \
 		CC="$(TARGET_CC)" \
 		LDFLAGS="$(TARGET_LDFLAGS)" \
-		LIBRARIES="-L$(STAGING_DIR)/usr/lib -ldl -lm -lsndfile" \
 		INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/lib/ladspa" \
 		INSTALL_INCLUDE_DIR="$(PKG_INSTALL_DIR)/usr/include" \
 		INSTALL_BINARY_DIR="$(PKG_INSTALL_DIR)/usr/bin" install
