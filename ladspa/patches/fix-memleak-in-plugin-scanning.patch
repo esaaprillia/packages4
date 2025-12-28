@@ -1,7 +1,8 @@
---- ./search.c.orig	2008-11-07 00:38:18.000000000 +0100
-+++ ./search.c	2008-11-07 00:50:51.000000000 +0100
+diff -ruN a/src/search.c b/src/search.c
+--- a/src/search.c	2021-09-10 10:44:43.000000000 +0200
++++ b/src/search.c	2025-08-25 10:25:18.017636567 +0200
 @@ -83,6 +83,8 @@
- 	dlclose(pcFilename);
+ 	dlclose(pvPluginHandle);
  	free(pcFilename);
        }
 +    } else {
