@@ -4,8 +4,8 @@ PKG_NAME:=spirv-tools
 PKG_VERSION:=1.4.335.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=vulkan-sdk-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/KhronosGroup/SPIRV-Tools/archive/
+PKG_SOURCE:=SPIRV-Tools-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://codeload.github.com/KhronosGroup/SPIRV-Tools/tar.gz/vulkan-sdk-$(PKG_VERSION)?
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
