@@ -41,7 +41,7 @@ define Build/InstallDev
 	$(CP) $(PKG_BUILD_DIR)/ladspa.h $(1)/usr/include/
 endef
 
-define Package/libbluray/install
+define Package/ladspa/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_BUILD_DIR)/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
