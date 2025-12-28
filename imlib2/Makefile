@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Imlib2
 PKG_LICENSE_FILES:=COPYING COPYING-PLAIN
 
+PKG_INSTALL:=1
 include $(INCLUDE_DIR)/package.mk
 
 define Package/imlib2
