@@ -38,6 +38,7 @@ MESON_ARGS += \
 	-Ddemos=false \
 	-Dglslang=enabled \
 	-Dlcms=enabled \
+	-Dopengl=enabled \
 	-Dshaderc=enabled \
 	-Dtests=false \
 	-Dvulkan=enabled \
