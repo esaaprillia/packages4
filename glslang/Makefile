@@ -4,8 +4,8 @@ PKG_NAME:=glslang
 PKG_VERSION:=1.4.335.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=vulkan-sdk-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/KhronosGroup/glslang/archive/
+PKG_SOURCE:=glslang-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://codeload.github.com/KhronosGroup/glslang/tar.gz/vulkan-sdk-$(PKG_VERSION)?
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
