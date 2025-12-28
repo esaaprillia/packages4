@@ -12,7 +12,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LGPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
 
-PKG_INSTALL:=1
 PKG_BUILD_DIR:=$(BUILD_DIR)/ladspa_sdk_$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
