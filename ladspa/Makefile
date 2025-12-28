@@ -35,7 +35,7 @@ define Build/Compile
 		LIBRARIES="-L$(STAGING_DIR)/usr/lib -ldl -lm -lsndfile" \
 		INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/lib/ladspa" \
 		INSTALL_INCLUDE_DIR="$(PKG_INSTALL_DIR)/usr/include" \
-		INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/bin" install
+		INSTALL_BINARY_DIR="$(PKG_INSTALL_DIR)/usr/bin" install
 endef
 
 define Build/InstallDev
