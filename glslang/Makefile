@@ -37,9 +37,9 @@ CMAKE_OPTIONS += \
 	-DALLOW_EXTERNAL_SPIRV_TOOLS=YES \
 	-DGLSLANG_TESTS=OFF
 
-#define Build/InstallDev
-#	$(call Build/InstallDev/cmake,$(1))
-#endef
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+endef
 
 define Package/glslang/install
 	$(INSTALL_DIR) $(1)/usr/bin
