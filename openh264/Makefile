@@ -27,9 +27,6 @@ define Package/openh264/description
 	OpenH264 is a codec library which supports H.264 encoding and decoding.
 endef
 
-MESON_ARGS += \
-	-Dtests=false
-
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
