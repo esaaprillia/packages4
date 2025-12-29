@@ -50,7 +50,6 @@ define Package/ffmpeg
 	+libwebp \
 	+libxml2 \
 	+lilv \
-	+nasm \
 	+libopenssl \
 	+libopus \
 	+pulseaudio-daemon \
