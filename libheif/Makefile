@@ -21,7 +21,7 @@ define Package/libheif
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=libheif is an HEIF and AVIF file format decoder and encoder.
-	DEPENDS:=+libstdcpp +libaom +libde265 +libwebp +x265 +libtiff +libpng +libjpeg-turbo
+	DEPENDS:=+libstdcpp +libaom +libde265 +libwebp +x265 +libtiff +libpng +libjpeg-turbo +openh264
 	URL:=https://github.com/strukturag/libheif/
 endef
 
