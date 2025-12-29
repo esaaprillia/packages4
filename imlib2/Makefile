@@ -19,7 +19,7 @@ define Package/imlib2
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Image manipulation library
-	DEPENDS:=+libfreetype +libtiff +bzip2 +giflib +libheif +libid3tag +libjpeg-turbo +libpng +libwebp +zlib
+	DEPENDS:=+libfreetype +libtiff +bzip2 +giflib +libheif +libid3tag +libjpeg-turbo +libpng +libwebp +liblzma +zlib
 	URL:=https://sourceforge.net/projects/enlightenment/
 endef
 
