@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause AND BSD-2-Clause AND MIT AND Apache-2.0 AND GPL-3.0-or-later
 PKG_LICENSE_FILES:=LICENSE.txt
 
-CMAKE_BINARY_SUBDIR := build-static
+CMAKE_BINARY_SUBDIR :=build
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/glslang-vulkan-sdk-$(PKG_VERSION)
 
