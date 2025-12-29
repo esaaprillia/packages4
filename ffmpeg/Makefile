@@ -72,6 +72,8 @@ define Package/ffmpeg/description
 endef
 
 CONFIGURE_ARGS = \
+	--enable-cross-compile \
+	--cross-prefix="$(TARGET_CROSS)" \
 	--prefix=/usr \
 	--disable-librtmp \
 	--disable-lzma \
