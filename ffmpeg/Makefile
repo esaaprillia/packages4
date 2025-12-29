@@ -71,7 +71,7 @@ define Package/ffmpeg/description
 	FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.
 endef
 
-CONFIGURE_ARGS += \
+CONFIGURE_ARGS = \
 	--prefix=/usr \
 	--disable-librtmp \
 	--disable-lzma \
