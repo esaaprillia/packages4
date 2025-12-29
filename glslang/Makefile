@@ -38,7 +38,6 @@ CMAKE_OPTIONS += \
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
-	$(SED) 's,/usr,$(STAGING_DIR)/usr,g' $(1)/usr/lib/cmake/glslang/*.cmake
 endef
 
 define Package/glslang/install
