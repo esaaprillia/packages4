@@ -10,3 +10,25 @@ Fix linking against glslang 1.3.296.0
      cxx.find_library('glslang-default-resource-limits', required: false)
    ]
  
+From f0e2c0b7c8c27f6b5e2daaba1e94c3d0b163de7a Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 29 Dec 2025 10:43:30 +0800
+Subject: [PATCH] Update meson.build
+
+---
+ src/glsl/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/glsl/meson.build b/src/glsl/meson.build
+index 8fb5e69..a2ae5fe 100644
+--- a/src/glsl/meson.build
++++ b/src/glsl/meson.build
+@@ -23,7 +23,7 @@ elif not glslang_req.disabled()
+   # meson doesn't respect generator expressions in INTERFACE_LINK_LIBRARIES
+   # https://github.com/mesonbuild/meson/issues/8232
+   # TODO: Use the following once it's fixed
+-  # glslang = dependency('glslang', method: 'cmake', modules: ['glslang::SPIRV'])
++  glslang = dependency('glslang', method: 'cmake', modules: ['glslang::SPIRV'])
+ 
+   prefer_static = get_option('prefer_static')
+   found_lib = false
