@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PYTHON3_PKG_BUILD:=0
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=meson/host python-glad2/host python-mako/host
+PKG_BUILD_DEPENDS:=meson/host python-glad2/host python-mako/host glslang-static
 PKG_BUILD_DIR:=$(BUILD_DIR)/libplacebo-v$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
@@ -32,8 +32,6 @@ endef
 define Package/libplacebo/description
 	libplacebo is, in a nutshell, the core rendering algorithms and ideas of mpv rewritten as an independent library. As of today, libplacebo contains a large assortment of video processing shaders, focusing on both quality and performance.
 endef
-
-TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 
 MESON_ARGS += \
 	-Dbackend_max_links=4 \
