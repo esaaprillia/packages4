@@ -33,7 +33,6 @@ define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		CC="$(TARGET_CC)" \
 		LD="$(TARGET_LD)" \
-		CFLAGS="$(TARGET_CFLAGS)" \
 		LDFLAGS="$(TARGET_LDFLAGS)" \
 		XLDFLAGS="$(TARGET_LDFLAGS)" \
 		OPT="$(TARGET_CFLAGS)" \
