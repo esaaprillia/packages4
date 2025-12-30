@@ -80,6 +80,7 @@ CONFIGURE_ARGS = \
 	--cross-prefix="$(TARGET_CROSS)" \
 	--cc="$(TARGET_CC)" \
 	--cxx="$(TARGET_CXX)" \
+	--ld="$(TARGET_CC)" \
 	--extra-cflags="$(TARGET_CFLAGS)" \
 	--extra-cxxflags="$(TARGET_CXXFLAGS)" \
 	--extra-ldflags="$(TARGET_LDFLAGS)" \
