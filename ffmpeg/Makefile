@@ -75,12 +75,18 @@ endef
 
 TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
 
+# Strip off FPU notation
+REAL_CPU_TYPE:=$(call qstrip,$(firstword $(subst +, ,$(CONFIG_CPU_TYPE))))
+# Fixup cpu types recogized by ffmpeg configure
+REAL_CPU_TYPE:=$(subst octeonplus,octeon+,$(REAL_CPU_TYPE))
+
 CONFIGURE_ARGS = \
 	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
 	--arch="$(ARCH)" \
+	$(if $(REAL_CPU_TYPE),--cpu=$(REAL_CPU_TYPE),) \
 	--target-os=linux \
-	--pkg-config="$(STAGING_DIR_HOST)/bin/pkg-config" \
+	--pkg-config="pkg-config" \
 	--prefix=/usr \
 	--disable-librtmp \
 	--disable-lzma \
