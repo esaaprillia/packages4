@@ -80,7 +80,7 @@ CONFIGURE_ARGS = \
 	--cross-prefix="$(TARGET_CROSS)" \
 	--arch="$(ARCH)" \
 	--target-os=linux \
-	--pkg-config="pkg-config" \
+	--pkg-config="$(STAGING_DIR_HOST)/bin/pkg-config" \
 	--prefix=/usr \
 	--disable-librtmp \
 	--disable-lzma \
