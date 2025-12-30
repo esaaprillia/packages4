@@ -75,7 +75,8 @@ endef
 
 TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
 
-CONFIGURE_ARGS = \
+CONFIGURE_ARGS += \
+	$(filter-out --target=%,$(CONFIGURE_ARGS)) \
 	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
 	--arch="$(ARCH)" \
