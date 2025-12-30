@@ -74,6 +74,8 @@ endef
 CONFIGURE_ARGS = \
 	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
+	--arch="$(ARCH)" \
+	--target-os=linux \
 	--prefix=/usr \
 	--disable-librtmp \
 	--disable-lzma \
