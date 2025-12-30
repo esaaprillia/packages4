@@ -73,6 +73,8 @@ define Package/ffmpeg/description
 	FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.
 endef
 
+TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
+
 CONFIGURE_ARGS = \
 	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
