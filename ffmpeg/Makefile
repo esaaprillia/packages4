@@ -83,6 +83,7 @@ CONFIGURE_ARGS = \
 	--extra-cflags="$(TARGET_CFLAGS)" \
 	--extra-cxxflags="$(TARGET_CXXFLAGS)" \
 	--extra-ldflags="$(TARGET_LDFLAGS)" \
+	--disable-runtime-cpudetect \
 	--arch="$(ARCH)" \
 	--target-os=linux \
 	--pkg-config="pkg-config" \
