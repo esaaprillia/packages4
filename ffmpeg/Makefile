@@ -78,6 +78,11 @@ TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
 CONFIGURE_ARGS = \
 	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
+	--cc="$(TARGET_CC)" \
+	--cxx="$(TARGET_CXX)" \
+	--extra-cflags="$(TARGET_CFLAGS)" \
+	--extra-cxxflags="$(TARGET_CXXFLAGS)" \
+	--extra-ldflags="$(TARGET_LDFLAGS)" \
 	--arch="$(ARCH)" \
 	--target-os=linux \
 	--pkg-config="pkg-config" \
