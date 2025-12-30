@@ -75,8 +75,7 @@ endef
 
 TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
 
-CONFIGURE_ARGS += \
-	$(filter-out --target=%,$(CONFIGURE_ARGS)) \
+CONFIGURE_ARGS = \
 	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
 	--arch="$(ARCH)" \
@@ -131,7 +130,7 @@ CONFIGURE_ARGS += \
 	--enable-pthreads \
 	--enable-shared \
 	--enable-vaapi \
-	--enable-vdpau \
+	--disable-vdpau \
 	--enable-version3 \
 	--enable-vulkan \
 	--enable-libsvtav1 \
