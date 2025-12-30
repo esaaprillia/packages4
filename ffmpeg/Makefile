@@ -129,7 +129,6 @@ CONFIGURE_ARGS = \
 	--enable-vdpau \
 	--enable-version3 \
 	--enable-vulkan \
-	--optflags="-O3" \
 	--enable-libsvtav1 \
 	--enable-libvpl
 
