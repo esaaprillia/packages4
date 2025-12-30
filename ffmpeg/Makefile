@@ -76,6 +76,7 @@ CONFIGURE_ARGS = \
 	--cross-prefix="$(TARGET_CROSS)" \
 	--arch="$(ARCH)" \
 	--target-os=linux \
+	--pkg-config="pkg-config" \
 	--prefix=/usr \
 	--disable-librtmp \
 	--disable-lzma \
