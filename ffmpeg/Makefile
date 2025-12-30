@@ -64,7 +64,9 @@ define Package/ffmpeg
 	+xvidcore \
 	+libzmq-nc \
 	+zimg \
-	+zlib
+	+zlib \
+	+svt-av1 \
+	+libvpl
 endef
 
 define Package/ffmpeg/description
