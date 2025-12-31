@@ -1,0 +1,20 @@
+From 2abfdb6f9385c19cf4e035d16ed29ae649a0d9fc Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 31 Dec 2025 12:04:38 +0800
+Subject: [PATCH] Update vulkan.pc.in
+
+---
+ loader/vulkan.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/loader/vulkan.pc.in b/loader/vulkan.pc.in
+index 6a285f267..00f00da18 100644
+--- a/loader/vulkan.pc.in
++++ b/loader/vulkan.pc.in
+@@ -1,5 +1,5 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-exec_prefix=${prefix}
++exec_prefix=@CMAKE_INSTALL_PREFIX@
+ libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR_PC@
+ includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR_PC@
+ 
