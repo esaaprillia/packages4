@@ -1,0 +1,9 @@
+--- a/Source/Lib/pkg-config.pc.in
++++ b/Source/Lib/pkg-config.pc.in
+@@ -1,5 +1,5 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-exec_prefix=${prefix}
++exec_prefix=@CMAKE_INSTALL_PREFIX@
+ includedir=@SVT_AV1_INCLUDEDIR@
+ libdir=@SVT_AV1_LIBDIR@
+ 
