@@ -12,8 +12,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0 GPL-3.0 LGPL-2.1 LGPL-3.0
 PKG_LICENSE_FILES:=COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 
-PKG_INSTALL:=1
-
 include $(INCLUDE_DIR)/package.mk
 
 define Package/ffmpeg
@@ -141,7 +139,13 @@ CONFIGURE_ARGS = \
 	--enable-version3 \
 	--enable-vulkan \
 	--enable-libsvtav1 \
-	--disable-libvpl
+	--enable-libvpl
+
+define Build/Compile
+	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
+		DESTDIR="$(PKG_INSTALL_DIR)" \
+		all install
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
