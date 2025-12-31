@@ -1,24 +1,13 @@
-From 80bfda2ac5491e9a3af5172261b7ea51e46c27f0 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 31 Dec 2025 11:32:02 +0800
-Subject: [PATCH] Update vpl.pc.in
-
----
- libvpl/pkgconfig/vpl.pc.in | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/libvpl/pkgconfig/vpl.pc.in b/libvpl/pkgconfig/vpl.pc.in
-index aa9b1583..0952653e 100644
 --- a/libvpl/pkgconfig/vpl.pc.in
 +++ b/libvpl/pkgconfig/vpl.pc.in
 @@ -1,6 +1,7 @@
 -prefix=@pc_rel_prefix@
 -libdir=@pc_rel_libdir@
 -includedir=@pc_rel_incdir@
-+prefix=/usr
-+exec_prefix=/usr
-+libdir=${exec_prefix}/lib
-+includedir=${prefix}/include
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=@CMAKE_INSTALL_PREFIX@
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
  
  Name: Intel(R) Video Processing Library
  Description: Accelerated video decode, encode, and frame processing capabilities on Intel(R) GPUs
