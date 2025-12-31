@@ -23,7 +23,7 @@ define Package/python3-ha-av
   SUBMENU:=Python
   TITLE:=Pythonic bindings for FFmpeg's libraries
   URL:=https://github.com/PyAV-Org/PyAV
-  DEPENDS:=+libffmpeg +python3-logging +python3-urllib +python3-xml
+  DEPENDS:=+ffmpeg +python3-logging +python3-urllib +python3-xml
 endef
 
 define Package/python3-ha-av/description
