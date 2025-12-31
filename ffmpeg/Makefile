@@ -141,7 +141,7 @@ CONFIGURE_ARGS = \
 	--enable-version3 \
 	--enable-vulkan \
 	--enable-libsvtav1 \
-	--enable-libvpl
+	--disable-libvpl
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
