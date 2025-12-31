@@ -6,8 +6,8 @@
 -includedir=@pc_rel_incdir@
 +prefix=@CMAKE_INSTALL_PREFIX@
 +exec_prefix=@CMAKE_INSTALL_PREFIX@
-+libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
-+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++libdir=${exec_prefix}/lib
++includedir=${prefix}/include
  
  Name: Intel(R) Video Processing Library
  Description: Accelerated video decode, encode, and frame processing capabilities on Intel(R) GPUs
