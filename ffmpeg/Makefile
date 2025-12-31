@@ -49,6 +49,7 @@ define Package/ffmpeg
 	+libxml2 \
 	+lilv \
 	+libopenssl \
+	+libopenssl-legacy \
 	+libopus \
 	+pulseaudio-daemon \
 	+shaderc \
@@ -135,9 +136,7 @@ CONFIGURE_ARGS = \
 	--enable-libvpl
 
 define Build/Compile
-	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all install
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)
 endef
 
 define Build/InstallDev
