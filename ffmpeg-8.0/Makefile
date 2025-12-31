@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/ffmpeg
+define Package/ffmpeg-8.0
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A complete, cross-platform solution to record, convert and stream audio and video.
@@ -68,7 +68,7 @@ define Package/ffmpeg
 	+libvpl
 endef
 
-define Package/ffmpeg/description
+define Package/ffmpeg-8.0/description
 	FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.
 endef
 
@@ -155,11 +155,11 @@ define Build/InstallDev
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libsw*.pc
 endef
 
-define Package/ffmpeg/install
+define Package/ffmpeg-8.0/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,ffmpeg))
+$(eval $(call BuildPackage,ffmpeg-8.0))
