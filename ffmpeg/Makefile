@@ -84,7 +84,6 @@ CONFIGURE_ARGS = \
 	--disable-librtmp \
 	--disable-lzma \
 	--disable-static \
-	--disable-stripping \
 	--enable-avfilter \
 	--enable-gpl \
 	--enable-ladspa \
