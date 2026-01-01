@@ -13,7 +13,7 @@ PKG_LICENSE:=GPL-2.0 GPL-3.0 LGPL-2.1 LGPL-3.0
 PKG_LICENSE_FILES:=COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=libvpl imlib2 ladspa vulkan-loader
+PKG_BUILD_DEPENDS:=imlib2 ladspa vulkan-loader
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -106,7 +106,7 @@ define Package/ffmpeg-libavutil
 	CATEGORY:=Libraries
 	TITLE:=(libavutil library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libopenssl +libopenssl-legacy +libdrm +libva
+	DEPENDS:=+libopenssl +libopenssl-legacy +libdrm +libva +libvpl
 endef
 
 define Package/ffmpeg-libavutil/description
