@@ -139,7 +139,7 @@ CONFIGURE_ARGS = \
 	--enable-libvpl
 
 define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR)
+	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)
 endef
 
 define Build/InstallDev
