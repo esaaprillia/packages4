@@ -13,6 +13,7 @@ PKG_LICENSE:=GPL-2.0 GPL-3.0 LGPL-2.1 LGPL-3.0
 PKG_LICENSE_FILES:=COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 
 PKG_BUILD_PARALLEL:=1
+PKG_BUILD_DEPENDS:=libvpl imlib2 ladspa vulkan-loader
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -57,7 +58,7 @@ define Package/ffmpeg-libavcodec
 	CATEGORY:=Libraries
 	TITLE:=(libavcodec library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+ffmpeg-libavutil +ffmpeg-libswresample +libaom +dav1d +libjxl +lame-lib +libopus +shaderc +libtheora +libva +libvorbis +libvpx +libwebp +libx264 +x265 +xvidcore +zlib
+	DEPENDS:=+ffmpeg-libavutil +ffmpeg-libswresample +libaom +dav1d +libjxl +lame-lib +libopus +shaderc +libtheora +libva +libvorbis +libvpx +libwebp +libx264 +x265 +svt-av1 +xvidcore +zlib
 endef
 
 define Package/ffmpeg-libavcodec/description
@@ -146,6 +147,8 @@ CONFIGURE_ARGS = \
 	--target-os=linux \
 	--pkg-config="pkg-config" \
 	--prefix=/usr \
+	--disable-doc \
+	--disable-debug \
 	--disable-librtmp \
 	--disable-lzma \
 	--disable-static \
