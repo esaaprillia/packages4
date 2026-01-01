@@ -17,11 +17,11 @@ PKG_BUILD_PARALLEL:=1
 include $(INCLUDE_DIR)/package.mk
 
 define Package/ffmpeg
-  SECTION:=multimedia
-  CATEGORY:=Multimedia
-  TITLE:=(program ffmpeg)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavdevice +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale
+	SECTION:=multimedia
+	CATEGORY:=Multimedia
+	TITLE:=(program ffmpeg)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavdevice +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale
 endef
 
 define Package/ffmpeg/description
@@ -29,11 +29,11 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffprobe
-  SECTION:=multimedia
-  CATEGORY:=Multimedia
-  TITLE:=(cli media identifier)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavdevice +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale
+	SECTION:=multimedia
+	CATEGORY:=Multimedia
+	TITLE:=(cli media identifier)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavdevice +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale
 endef
 
 define Package/ffprobe/description
@@ -41,11 +41,11 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffplay
-  SECTION:=multimedia
-  CATEGORY:=Multimedia
-  TITLE:=(example media player)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavdevice +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale +sdl2 +libplacebo
+	SECTION:=multimedia
+	CATEGORY:=Multimedia
+	TITLE:=(example media player)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavdevice +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale +sdl2 +libplacebo
 endef
 
 define Package/ffplay/description
@@ -53,11 +53,11 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffmpeg-libavcodec
-  SECTION:=libs
-  CATEGORY:=Libraries
-  TITLE:=(libavcodec library)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+ffmpeg-libavutil +ffmpeg-libswresample +libaom +dav1d +libjxl +lame-lib +libopus +shaderc +libtheora +libva +libvorbis +libvpx +libwebp +libx264 +x265 +xvidcore +zlib
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavcodec library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+ffmpeg-libavutil +ffmpeg-libswresample +libaom +dav1d +libjxl +lame-lib +libopus +shaderc +libtheora +libva +libvorbis +libvpx +libwebp +libx264 +x265 +xvidcore +zlib
 endef
 
 define Package/ffmpeg-libavcodec/description
@@ -65,11 +65,11 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffmpeg-libavdevice
-  SECTION:=libs
-  CATEGORY:=Libraries
-  TITLE:=(libavdevice library)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +alsa-lib +libdrm +pulseaudio-daemon +libv4l
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavdevice library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +alsa-lib +libdrm +pulseaudio-daemon +libv4l
 endef
 
 define Package/ffmpeg-libavdevice/description
@@ -77,11 +77,11 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffmpeg-libavfilter
-  SECTION:=libs
-  CATEGORY:=Libraries
-  TITLE:=(libavfilter library)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale +libass +fontconfig +libfreetype +fribidi +harfbuzz +lilv +libplacebo +shaderc +libva +libzmq-nc +vidstab +zimg
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavfilter library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale +libass +fontconfig +libfreetype +fribidi +harfbuzz +lilv +libplacebo +shaderc +libva +libzmq-nc +vidstab +zimg
 endef
 
 define Package/ffmpeg-libavfilter/description
@@ -89,11 +89,11 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffmpeg-libavformat
-  SECTION:=libs
-  CATEGORY:=Libraries
-  TITLE:=(libavformat library)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavutil +libbluray +libbz2 +libopenssl +libopenssl-legacy +libopenmpt +librist +srt +libssh +libxml2 +libzmq-nc +zlib
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavformat library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavutil +libbluray +libbz2 +libopenssl +libopenssl-legacy +libopenmpt +librist +srt +libssh +libxml2 +libzmq-nc +zlib
 endef
 
 define Package/ffmpeg-libavformat/description
@@ -101,11 +101,11 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffmpeg-libavutil
-  SECTION:=libs
-  CATEGORY:=Libraries
-  TITLE:=(libavutil library)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+libopenssl +libopenssl-legacy +libdrm +libva
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavutil library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libopenssl +libopenssl-legacy +libdrm +libva
 endef
 
 define Package/ffmpeg-libavutil/description
@@ -113,11 +113,11 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffmpeg-libswresample
-  SECTION:=libs
-  CATEGORY:=Libraries
-  TITLE:=(libswresample library)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+ffmpeg-libavutil +soxr
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libswresample library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+ffmpeg-libavutil +soxr
 endef
 
 define Package/ffmpeg-libswresample/description
@@ -125,11 +125,11 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffmpeg-libswscale
-  SECTION:=libs
-  CATEGORY:=Libraries
-  TITLE:=(libswscale library)
-  URL:=https://ffmpeg.org/
-  DEPENDS:=+ffmpeg-libavutil
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libswscale library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+ffmpeg-libavutil
 endef
 
 define Package/ffmpeg-libswscale/description
