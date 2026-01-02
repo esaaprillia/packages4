@@ -22,7 +22,7 @@ define Package/ffmpeg
 	CATEGORY:=Multimedia
 	TITLE:=(program ffmpeg)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavdevice +libavfilter +libavformat +libavutil +libswresample +libswscale
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavdevice +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale
 endef
 
 define Package/ffmpeg/description
@@ -34,7 +34,7 @@ define Package/ffprobe
 	CATEGORY:=Multimedia
 	TITLE:=(cli media identifier)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavdevice +libavfilter +libavformat +libavutil +libswresample +libswscale
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavdevice +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale
 endef
 
 define Package/ffprobe/description
@@ -46,62 +46,62 @@ define Package/ffplay
 	CATEGORY:=Multimedia
 	TITLE:=(example media player)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavdevice +libavfilter +libavformat +libavutil +libswresample +libswscale +sdl2 +libplacebo
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavdevice +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale +sdl2 +libplacebo
 endef
 
 define Package/ffplay/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (example media player)
 endef
 
-define Package/libavcodec
+define Package/ffmpeg-libavcodec
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavcodec library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavutil +libswresample +libaom +dav1d +libjxl +lame-lib +libopus +shaderc +libtheora +libva +libvorbis +libvpx +libwebp +libx264 +x265 +svt-av1 +xvidcore +zlib
+	DEPENDS:=+ffmpeg-libavutil +ffmpeg-libswresample +libaom +dav1d +libjxl +lame-lib +libopus +shaderc +libtheora +libva +libvorbis +libvpx +libwebp +libx264 +x265 +svt-av1 +xvidcore +zlib
 endef
 
-define Package/libavcodec/description
+define Package/ffmpeg-libavcodec/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavcodec library)
 endef
 
-define Package/libavdevice
+define Package/ffmpeg-libavdevice
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavdevice library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavfilter +libavformat +libavutil +alsa-lib +libdrm +pulseaudio-daemon +libv4l
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavfilter +ffmpeg-libavformat +ffmpeg-libavutil +alsa-lib +libdrm +pulseaudio-daemon +libv4l
 endef
 
-define Package/libavdevice/description
+define Package/ffmpeg-libavdevice/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavdevice library)
 endef
 
-define Package/libavfilter
+define Package/ffmpeg-libavfilter
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavfilter library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavformat +libavutil +libswresample +libswscale +libass +fontconfig +libfreetype +fribidi +harfbuzz +lilv +libplacebo +shaderc +libva +libzmq-nc +vidstab +zimg
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavformat +ffmpeg-libavutil +ffmpeg-libswresample +ffmpeg-libswscale +libass +fontconfig +libfreetype +fribidi +harfbuzz +lilv +libplacebo +shaderc +libva +libzmq-nc +vidstab +zimg
 endef
 
-define Package/libavfilter/description
+define Package/ffmpeg-libavfilter/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavfilter library)
 endef
 
-define Package/libavformat
+define Package/ffmpeg-libavformat
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavformat library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavutil +libbluray +libbz2 +libopenssl +libopenssl-legacy +libopenmpt +librist +srt +libssh +libxml2 +libzmq-nc +zlib
+	DEPENDS:=+ffmpeg-libavcodec +ffmpeg-libavutil +libbluray +libbz2 +libopenssl +libopenssl-legacy +libopenmpt +librist +srt +libssh +libxml2 +libzmq-nc +zlib
 endef
 
-define Package/libavformat/description
+define Package/ffmpeg-libavformat/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavformat library)
 endef
 
-define Package/libavutil
+define Package/ffmpeg-libavutil
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavutil library)
@@ -109,31 +109,31 @@ define Package/libavutil
 	DEPENDS:=+libopenssl +libopenssl-legacy +libdrm +libva +libvpl
 endef
 
-define Package/libavutil/description
+define Package/ffmpeg-libavutil/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavutil library)
 endef
 
-define Package/libswresample
+define Package/ffmpeg-libswresample
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libswresample library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavutil +soxr
+	DEPENDS:=+ffmpeg-libavutil +soxr
 endef
 
-define Package/libswresample/description
+define Package/ffmpeg-libswresample/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libswresample library)
 endef
 
-define Package/libswscale
+define Package/ffmpeg-libswscale
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libswscale library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavutil
+	DEPENDS:=+ffmpeg-libavutil
 endef
 
-define Package/libswscale/description
+define Package/ffmpeg-libswscale/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libswscale library)
 endef
 
@@ -237,37 +237,37 @@ define Package/ffplay/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ffplay $(1)/usr/bin/
 endef
 
-define Package/libavcodec/install
+define Package/ffmpeg-libavcodec/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavcodec.so.* $(1)/usr/lib/
 endef
 
-define Package/libavdevice/install
+define Package/ffmpeg-libavdevice/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavdevice.so.* $(1)/usr/lib/
 endef
 
-define Package/libavfilter/install
+define Package/ffmpeg-libavfilter/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavfilter.so.* $(1)/usr/lib/
 endef
 
-define Package/libavformat/install
+define Package/ffmpeg-libavformat/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavformat.so.* $(1)/usr/lib/
 endef
 
-define Package/libavutil/install
+define Package/ffmpeg-libavutil/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavutil.so.* $(1)/usr/lib/
 endef
 
-define Package/libswresample/install
+define Package/ffmpeg-libswresample/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libswresample.so.* $(1)/usr/lib/
 endef
 
-define Package/libswscale/install
+define Package/ffmpeg-libswscale/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libswscale.so.* $(1)/usr/lib/
 endef
@@ -275,10 +275,10 @@ endef
 $(eval $(call BuildPackage,ffmpeg))
 $(eval $(call BuildPackage,ffprobe))
 $(eval $(call BuildPackage,ffplay))
-$(eval $(call BuildPackage,libavcodec))
-$(eval $(call BuildPackage,libavdevice))
-$(eval $(call BuildPackage,libavfilter))
-$(eval $(call BuildPackage,libavformat))
-$(eval $(call BuildPackage,libavutil))
-$(eval $(call BuildPackage,libswresample))
-$(eval $(call BuildPackage,libswscale))
+$(eval $(call BuildPackage,ffmpeg-libavcodec))
+$(eval $(call BuildPackage,ffmpeg-libavdevice))
+$(eval $(call BuildPackage,ffmpeg-libavfilter))
+$(eval $(call BuildPackage,ffmpeg-libavformat))
+$(eval $(call BuildPackage,ffmpeg-libavutil))
+$(eval $(call BuildPackage,ffmpeg-libswresample))
+$(eval $(call BuildPackage,ffmpeg-libswscale))
