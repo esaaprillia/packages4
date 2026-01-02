@@ -17,21 +17,7 @@ PKG_BUILD_DEPENDS:=ladspa
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/ffmpeg/Default
-	TITLE:=FFmpeg
-	URL:=https://ffmpeg.org/
-endef
-
-define Package/ffmpeg/Default/description
-FFmpeg is a a software package that can record, convert and stream digital audio and video in numerous formats.
-
-FFmpeg licensing / patent issues are complex.
-It is the responsibility of the user to understand any requirements in this regard with its usage.
-See: https://ffmpeg.org/legal.html for further information.
-endef
-
 define Package/ffmpeg
-$(call Package/ffmpeg/Default)
 	SECTION:=multimedia
 	CATEGORY:=Multimedia
 	TITLE:=(program ffmpeg)
@@ -44,7 +30,6 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffprobe
-$(call Package/ffmpeg/Default)
 	SECTION:=multimedia
 	CATEGORY:=Multimedia
 	TITLE:=(cli media identifier)
@@ -57,7 +42,6 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/ffplay
-$(call Package/ffmpeg/Default)
 	SECTION:=multimedia
 	CATEGORY:=Multimedia
 	TITLE:=(example media player)
@@ -70,7 +54,6 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/libavcodec
-$(call Package/ffmpeg/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavcodec library)
@@ -83,7 +66,6 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/libavdevice
-$(call Package/ffmpeg/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavdevice library)
@@ -96,7 +78,6 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/libavfilter
-$(call Package/ffmpeg/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavfilter library)
@@ -109,7 +90,6 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/libavformat
-$(call Package/ffmpeg/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavformat library)
@@ -122,7 +102,6 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/libavutil
-$(call Package/ffmpeg/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libavutil library)
@@ -135,7 +114,6 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/libswresample
-$(call Package/ffmpeg/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libswresample library)
@@ -148,7 +126,6 @@ Complete and free Internet live audio and video broadcasting solution for Linux/
 endef
 
 define Package/libswscale
-$(call Package/ffmpeg/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=(libswscale library)
