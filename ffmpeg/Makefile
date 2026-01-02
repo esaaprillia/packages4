@@ -12,64 +12,152 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0 GPL-3.0 LGPL-2.1 LGPL-3.0
 PKG_LICENSE_FILES:=COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 
+PKG_BUILD_PARALLEL:=1
+PKG_BUILD_DEPENDS:=ladspa
+
 include $(INCLUDE_DIR)/package.mk
 
+define Package/ffmpeg/Default
+	TITLE:=FFmpeg
+	URL:=https://ffmpeg.org/
+endef
+
+define Package/ffmpeg/Default/description
+FFmpeg is a a software package that can record, convert and stream digital audio and video in numerous formats.
+
+FFmpeg licensing / patent issues are complex.
+It is the responsibility of the user to understand any requirements in this regard with its usage.
+See: https://ffmpeg.org/legal.html for further information.
+endef
+
 define Package/ffmpeg
+$(call Package/ffmpeg/Default)
 	SECTION:=multimedia
 	CATEGORY:=Multimedia
-	TITLE:=A complete, cross-platform solution to record, convert and stream audio and video.
+	TITLE:=(program ffmpeg)
 	URL:=https://ffmpeg.org/
-	DEPENDS:= \
-	+alsa-lib \
-	+libaom \
-	+bzip2 \
-	+coreutils \
-	+dav1d \
-	+fontconfig \
-	+libfreetype \
-	+fribidi \
-	+harfbuzz \
-	+imlib2 \
-	+ladspa \
-	+lame \
-	+libass \
-	+libbluray \
-	+libdrm \
-	+libjxl \
-	+libopenmpt \
-	+libplacebo \
-	+librist \
-	+srt \
-	+libssh \
-	+libtheora \
-	+libva \
-	+libvorbis \
-	+libvpx \
-	+libwebp \
-	+libxml2 \
-	+lilv \
-	+libopenssl \
-	+libopenssl-legacy \
-	+libopus \
-	+pulseaudio-daemon \
-	+shaderc \
-	+sdl2 \
-	+soxr \
-	+v4l-utils \
-	+vidstab \
-	+vulkan-loader \
-	+libx264 \
-	+x265 \
-	+xvidcore \
-	+libzmq-nc \
-	+zimg \
-	+zlib \
-	+svt-av1 \
-	+libvpl
+	DEPENDS:=+libavcodec +libavdevice +libavfilter +libavformat +libavutil +libswresample +libswscale
 endef
 
 define Package/ffmpeg/description
-	FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (program ffmpeg)
+endef
+
+define Package/ffprobe
+$(call Package/ffmpeg/Default)
+	SECTION:=multimedia
+	CATEGORY:=Multimedia
+	TITLE:=(cli media identifier)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libavcodec +libavdevice +libavfilter +libavformat +libavutil +libswresample +libswscale
+endef
+
+define Package/ffprobe/description
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (cli media identifier)
+endef
+
+define Package/ffplay
+$(call Package/ffmpeg/Default)
+	SECTION:=multimedia
+	CATEGORY:=Multimedia
+	TITLE:=(example media player)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libavcodec +libavdevice +libavfilter +libavformat +libavutil +libswresample +libswscale +sdl2 +libplacebo
+endef
+
+define Package/ffplay/description
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (example media player)
+endef
+
+define Package/libavcodec
+$(call Package/ffmpeg/Default)
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavcodec library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libavutil +libswresample +libaom +dav1d +libjxl +lame-lib +libopus +shaderc +libtheora +libva +libvorbis +libvpx +libwebp +libx264 +x265 +svt-av1 +xvidcore +zlib
+endef
+
+define Package/libavcodec/description
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavcodec library)
+endef
+
+define Package/libavdevice
+$(call Package/ffmpeg/Default)
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavdevice library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libavcodec +libavfilter +libavformat +libavutil +alsa-lib +libdrm +pulseaudio-daemon +libv4l
+endef
+
+define Package/libavdevice/description
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavdevice library)
+endef
+
+define Package/libavfilter
+$(call Package/ffmpeg/Default)
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavfilter library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libavcodec +libavformat +libavutil +libswresample +libswscale +libass +fontconfig +libfreetype +fribidi +harfbuzz +lilv +libplacebo +shaderc +libva +libzmq-nc +vidstab +zimg
+endef
+
+define Package/libavfilter/description
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavfilter library)
+endef
+
+define Package/libavformat
+$(call Package/ffmpeg/Default)
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavformat library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libavcodec +libavutil +libbluray +libbz2 +libopenssl +libopenssl-legacy +libopenmpt +librist +srt +libssh +libxml2 +libzmq-nc +zlib
+endef
+
+define Package/libavformat/description
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavformat library)
+endef
+
+define Package/libavutil
+$(call Package/ffmpeg/Default)
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libavutil library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libopenssl +libopenssl-legacy +libdrm +libva +libvpl
+endef
+
+define Package/libavutil/description
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libavutil library)
+endef
+
+define Package/libswresample
+$(call Package/ffmpeg/Default)
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libswresample library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libavutil +soxr
+endef
+
+define Package/libswresample/description
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libswresample library)
+endef
+
+define Package/libswscale
+$(call Package/ffmpeg/Default)
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=(libswscale library)
+	URL:=https://ffmpeg.org/
+	DEPENDS:=+libavutil
+endef
+
+define Package/libswscale/description
+Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libswscale library)
 endef
 
 TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
@@ -82,6 +170,8 @@ CONFIGURE_ARGS = \
 	--target-os=linux \
 	--pkg-config="pkg-config" \
 	--prefix=/usr \
+	--disable-doc \
+	--disable-debug \
 	--disable-librtmp \
 	--disable-lzma \
 	--disable-static \
@@ -141,13 +231,6 @@ define Build/Compile
 		all install
 endef
 
-define Package/ffmpeg/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-endef
-
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
@@ -162,5 +245,63 @@ define Build/InstallDev
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libsw*.pc
 endef
 
-$(eval $(call BuildPackage,ffmpeg))
+define Package/ffmpeg/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ffmpeg $(1)/usr/bin/
+endef
 
+define Package/ffprobe/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ffprobe $(1)/usr/bin/
+endef
+
+define Package/ffplay/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ffplay $(1)/usr/bin/
+endef
+
+define Package/libavcodec/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavcodec.so.* $(1)/usr/lib/
+endef
+
+define Package/libavdevice/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavdevice.so.* $(1)/usr/lib/
+endef
+
+define Package/libavfilter/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavfilter.so.* $(1)/usr/lib/
+endef
+
+define Package/libavformat/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavformat.so.* $(1)/usr/lib/
+endef
+
+define Package/libavutil/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libavutil.so.* $(1)/usr/lib/
+endef
+
+define Package/libswresample/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libswresample.so.* $(1)/usr/lib/
+endef
+
+define Package/libswscale/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libswscale.so.* $(1)/usr/lib/
+endef
+
+$(eval $(call BuildPackage,ffmpeg))
+$(eval $(call BuildPackage,ffprobe))
+$(eval $(call BuildPackage,ffplay))
+$(eval $(call BuildPackage,libavcodec))
+$(eval $(call BuildPackage,libavdevice))
+$(eval $(call BuildPackage,libavfilter))
+$(eval $(call BuildPackage,libavformat))
+$(eval $(call BuildPackage,libavutil))
+$(eval $(call BuildPackage,libswresample))
+$(eval $(call BuildPackage,libswscale))
