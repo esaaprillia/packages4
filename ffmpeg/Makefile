@@ -154,7 +154,49 @@ CONFIGURE_ARGS = \
 	--enable-lto=auto \
 	--disable-doc \
 	--disable-debug \
-	--disable-lzma
+	--disable-lzma \
+	--enable-avfilter \
+	--enable-gpl \
+	--enable-ladspa \
+	--enable-libaom \
+	--enable-libass \
+	--enable-libbluray \
+	--enable-libdav1d \
+	--enable-libdrm \
+	--enable-libfontconfig \
+	--enable-libfreetype \
+	--enable-libfribidi \
+	--enable-libharfbuzz \
+	--enable-libjxl \
+	--enable-libmp3lame \
+	--enable-libopenmpt \
+	--enable-libopus \
+	--enable-libplacebo \
+	--enable-libpulse \
+	--enable-librist \
+	--enable-libshaderc \
+	--enable-libsoxr \
+	--enable-libsrt \
+	--enable-libssh \
+	--enable-libtheora \
+	--enable-libv4l2 \
+	--enable-libvidstab \
+	--enable-libvorbis \
+	--enable-libvpx \
+	--enable-libwebp \
+	--enable-libx264 \
+	--enable-libx265 \
+	--enable-libxml2 \
+	--enable-libxvid \
+	--enable-libzimg \
+	--enable-libzmq \
+	--enable-lv2 \
+	--enable-openssl \
+	--enable-vaapi \
+	--enable-version3 \
+	--enable-vulkan \
+	--enable-libsvtav1 \
+	--enable-libvpl
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
