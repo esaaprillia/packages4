@@ -13,7 +13,7 @@ PKG_LICENSE:=GPL-2.0 GPL-3.0 LGPL-2.1 LGPL-3.0
 PKG_LICENSE_FILES:=COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=zlib bzip2 alsa-lib gnutls opus libv4l shine lame +libx264 fdk-aac
+PKG_BUILD_DEPENDS:=zlib bzip2 alsa-lib gnutls opus libv4l shine lame libx264 fdk-aac
 
 include $(INCLUDE_DIR)/package.mk
 
