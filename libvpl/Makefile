@@ -26,7 +26,7 @@ define Package/libvpl
 endef
 
 define Package/libvpl/description
-	Intel® Video Processing Library (Intel® VPL) provides access to hardware accelerated video decode, encode, and processing capabilities on Intel® GPUs to support AI visual inference, media delivery, cloud gaming, and virtual desktop infrastructure use cases.
+	Intel Video Processing Library (Intel VPL) provides access to hardware accelerated video decode, encode, and processing capabilities on Intel® GPUs to support AI visual inference, media delivery, cloud gaming, and virtual desktop infrastructure use cases.
 endef
 
 CMAKE_OPTIONS += \
