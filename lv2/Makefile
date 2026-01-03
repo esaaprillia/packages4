@@ -12,12 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=ISC
 PKG_LICENSE_FILES:=COPYING
 
-PYTHON3_PKG_BUILD:=0
-PKG_BUILD_DEPENDS:=meson/host python-lxml/host python-markdown/host python-pygments/host python-rdflib/host
-
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
+include $(INCLUDE_DIR)/meson.mk
 
 define Package/lv2
 	SECTION:=libs
@@ -29,19 +25,12 @@ define Package/lv2
 	+libcairo \
 	+glib2 \
 	+libsamplerate \
-	+libsndfile \
-	+python3-light \
-	+python3-lxml \
-	+python3-markdown \
-	+python3-pygments \
-	+python3-rdflib
+	+libsndfile
 endef
 
 define Package/lv2/description
 	LV2 is a plugin standard for audio systems.
 endef
-
-MESON_VARS += $(PYTHON3_VARS)
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
