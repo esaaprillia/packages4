@@ -23,13 +23,13 @@ define Package/ffmpeg
 	TITLE:=(program ffmpeg)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavcodec \
-	+libavdevice \
-	+libavfilter \
-	+libavformat \
-	+libavutil \
-	+libswresample \
-	+libswscale
+		+libavcodec \
+		+libavdevice \
+		+libavfilter \
+		+libavformat \
+		+libavutil \
+		+libswresample \
+		+libswscale
 endef
 
 define Package/ffmpeg/description
@@ -42,13 +42,13 @@ define Package/ffprobe
 	TITLE:=(cli media identifier)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavcodec \
-	+libavdevice \
-	+libavfilter \
-	+libavformat \
-	+libavutil \
-	+libswresample \
-	+libswscale
+		+libavcodec \
+		+libavdevice \
+		+libavfilter \
+		+libavformat \
+		+libavutil \
+		+libswresample \
+		+libswscale
 endef
 
 define Package/ffprobe/description
@@ -61,13 +61,13 @@ define Package/ffplay
 	TITLE:=(example media player)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavcodec \
-	+libavdevice \
-	+libavfilter \
-	+libavformat \
-	+libavutil \
-	+libswresample \
-	+libswscale
+		+libavcodec \
+		+libavdevice \
+		+libavfilter \
+		+libavformat \
+		+libavutil \
+		+libswresample \
+		+libswscale
 endef
 
 define Package/ffplay/description
@@ -80,8 +80,13 @@ define Package/libavcodec
 	TITLE:=(libavcodec library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavutil \
-	+libswresample
+		+libavutil \
+		+libswresample \
+		+lame-lib \
+		+libopus \
+		+shine \
+		+libx264 \
+		+zlib
 endef
 
 define Package/libavcodec/description
@@ -94,10 +99,10 @@ define Package/libavdevice
 	TITLE:=(libavdevice library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavcodec \
-	+libavfilter \
-	+libavformat \
-	+libavutil
+		+libavcodec \
+		+libavfilter \
+		+libavformat \
+		+libavutil
 endef
 
 define Package/libavdevice/description
@@ -110,11 +115,11 @@ define Package/libavfilter
 	TITLE:=(libavfilter library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavcodec \
-	+libavformat \
-	+libavutil \
-	+libswresample \
-	+libswscale
+		+libavcodec \
+		+libavformat \
+		+libavutil \
+		+libswresample \
+		+libswscale
 endef
 
 define Package/libavfilter/description
@@ -127,8 +132,8 @@ define Package/libavformat
 	TITLE:=(libavformat library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavcodec \
-	+libavutil
+		+libavcodec \
+		+libavutil
 endef
 
 define Package/libavformat/description
@@ -153,7 +158,7 @@ define Package/libswresample
 	TITLE:=(libswresample library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavutil
+		+libavutil
 endef
 
 define Package/libswresample/description
@@ -166,7 +171,7 @@ define Package/libswscale
 	TITLE:=(libswscale library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavutil
+		+libavutil
 endef
 
 define Package/libswscale/description
