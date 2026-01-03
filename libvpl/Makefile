@@ -20,7 +20,7 @@ include $(INCLUDE_DIR)/cmake.mk
 define Package/libvpl
 	SECTION:=libs
 	CATEGORY:=Libraries
-	TITLE:=Intel® Video Processing Library (Intel® VPL)
+	TITLE:=Intel Video Processing Library (Intel VPL)
 	DEPENDS:=+libstdcpp
 	URL:=https://github.com/intel/libvpl
 endef
