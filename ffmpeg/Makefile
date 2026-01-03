@@ -85,6 +85,7 @@ define Package/libavcodec
 	+lame-lib \
 	+libopus \
 	+shine \
+	+x265 \
 	+zlib
 endef
 
@@ -132,7 +133,9 @@ define Package/libavformat
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
 	+libavcodec \
-	+libavutil
+	+libavutil \
+	+libbz2 \
+	+libgnutls
 endef
 
 define Package/libavformat/description
@@ -203,7 +206,8 @@ CONFIGURE_ARGS = \
 	--enable-libopus \
 	--enable-libv4l2 \
 	--enable-libshine \
-	--enable-libmp3lame
+	--enable-libmp3lame \
+	--enable-libx265
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
