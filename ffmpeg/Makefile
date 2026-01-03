@@ -203,9 +203,7 @@ CONFIGURE_ARGS = \
 	--enable-libopus \
 	--enable-libv4l2 \
 	--enable-libshine \
-	--enable-libmp3lame \
-	--enable-libx264 \
-	--enable-libfdk-aac
+	--enable-libmp3lame
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
