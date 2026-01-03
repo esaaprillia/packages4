@@ -85,7 +85,7 @@ define Package/libavcodec
 	+lame-lib \
 	+libopus \
 	+shine \
-	+x265 \
+	+libx264 \
 	+zlib
 endef
 
@@ -102,7 +102,9 @@ define Package/libavdevice
 	+libavcodec \
 	+libavfilter \
 	+libavformat \
-	+libavutil
+	+libavutil \
+	+alsa-lib \
+	+libv4l
 endef
 
 define Package/libavdevice/description
@@ -207,7 +209,7 @@ CONFIGURE_ARGS = \
 	--enable-libv4l2 \
 	--enable-libshine \
 	--enable-libmp3lame \
-	--enable-libx265
+	--enable-libx264
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
