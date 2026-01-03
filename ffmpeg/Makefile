@@ -228,7 +228,7 @@ endef
 
 $(eval $(call BuildPackage,ffmpeg))
 $(eval $(call BuildPackage,ffprobe))
-$(eval $(call BuildPackage,ffplay))
+#$(eval $(call BuildPackage,ffplay))
 $(eval $(call BuildPackage,libavcodec))
 $(eval $(call BuildPackage,libavdevice))
 $(eval $(call BuildPackage,libavfilter))
