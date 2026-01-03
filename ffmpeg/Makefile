@@ -13,7 +13,51 @@ PKG_LICENSE:=GPL-2.0 GPL-3.0 LGPL-2.1 LGPL-3.0
 PKG_LICENSE_FILES:=COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 
 PKG_BUILD_PARALLEL:=1
-#PKG_BUILD_DEPENDS:=ladspa
+PKG_BUILD_DEPENDS:= \
+	alsa-lib \
+	libaom \
+	bzip2 \
+	coreutils \
+	dav1d \
+	fontconfig \
+	freetype \
+	fribidi \
+	harfbuzz \
+	ladspa \
+	lame \
+	libass \
+	libbluray \
+	libdrm \
+	libjxl \
+	libopenmpt \
+	libplacebo \
+	librist \
+	srt \
+	libssh \
+	libtheora \
+	libva \
+	libvorbis \
+	libvpx \
+	libwebp \
+	libxml2 \
+	lilv \
+	openssl \
+	opus \
+	pulseaudio \
+	shaderc \
+	sdl2 \
+	soxr \
+	v4l-utils \
+	vidstab \
+	vulkan-loader \
+	libx264 \
+	x265 \
+	xvidcore \
+	zmq \
+	zimg \
+	zlib \
+	svt-av1 \
+	libvpl
 
 include $(INCLUDE_DIR)/package.mk
 
