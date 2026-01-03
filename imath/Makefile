@@ -15,18 +15,14 @@ PKG_LICENSE_FILES:=LICENSE.md
 PKG_BUILD_DIR:=$(BUILD_DIR)/Imath-$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=numpy/host
-PYTHON3_PKG_BUILD:=0
-
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/imath
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Imath is a C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics
-	DEPENDS:=+libstdcpp +boost-python3 +python3-numpy
+	DEPENDS:=+libstdcpp
 	URL:=https://imath.readthedocs.io/
 endef
 
@@ -35,22 +31,18 @@ define Package/imath/description
 endef
 
 CMAKE_OPTIONS += \
-	-DPYTHON=ON \
+	-DPYTHON=OFF \
 	-DBUILD_SHARED_LIBS=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/Imath.pc
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/Imath.pc
-	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/PyImath.pc
-	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/PyImath.pc
 endef
 
 define Package/imath/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)
 endef
 
 $(eval $(call BuildPackage,imath))
