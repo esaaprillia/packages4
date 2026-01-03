@@ -47,7 +47,7 @@ PKG_BUILD_DEPENDS:= \
 	shaderc \
 	sdl2 \
 	soxr \
-	v4l-utils \
+	libv4l \
 	vidstab \
 	vulkan-loader \
 	libx264 \
