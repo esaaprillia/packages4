@@ -31,7 +31,8 @@ define Package/svt-av1/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DNATIVE=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
