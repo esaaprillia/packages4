@@ -195,6 +195,7 @@ CONFIGURE_ARGS = \
 	--enable-lto=auto \
 	--enable-gpl \
 	--enable-version3 \
+	--enable-nonfree \
 	--disable-doc \
 	--disable-debug \
 	--disable-lzma \
