@@ -81,12 +81,7 @@ define Package/libavcodec
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
 	+libavutil \
-	+libswresample \
-	+lame-lib \
-	+libopus \
-	+shine \
-	+libx264 \
-	+zlib
+	+libswresample
 endef
 
 define Package/libavcodec/description
