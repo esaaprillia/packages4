@@ -150,7 +150,7 @@ define Package/libavutil
 	CATEGORY:=Libraries
 	TITLE:=(libavutil library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=
+	DEPENDS:=+libopenssl +libdrm +libva +libvpl
 endef
 
 define Package/libavutil/description
