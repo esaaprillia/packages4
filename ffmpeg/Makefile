@@ -13,51 +13,6 @@ PKG_LICENSE:=GPL-2.0 GPL-3.0 LGPL-2.1 LGPL-3.0
 PKG_LICENSE_FILES:=COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:= \
-	alsa-lib \
-	libaom \
-	bzip2 \
-	coreutils \
-	dav1d \
-	fontconfig \
-	freetype \
-	fribidi \
-	harfbuzz \
-	ladspa \
-	lame \
-	libass \
-	libbluray \
-	libdrm \
-	libjxl \
-	libopenmpt \
-	libplacebo \
-	librist \
-	srt \
-	libssh \
-	libtheora \
-	libva \
-	libvorbis \
-	libvpx \
-	libwebp \
-	libxml2 \
-	lilv \
-	openssl \
-	opus \
-	pulseaudio \
-	shaderc \
-	sdl2 \
-	soxr \
-	v4l-utils \
-	vidstab \
-	vulkan-loader \
-	libx264 \
-	x265 \
-	xvidcore \
-	zmq \
-	zimg \
-	zlib \
-	svt-av1 \
-	libvpl
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -66,7 +21,14 @@ define Package/ffmpeg
 	CATEGORY:=Multimedia
 	TITLE:=(program ffmpeg)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavdevice +libavfilter +libavformat +libavutil +libswresample +libswscale
+	DEPENDS:= \
+	+libavcodec \
+	+libavdevice \
+	+libavfilter \
+	+libavformat \
+	+libavutil \
+	+libswresample \
+	+libswscale
 endef
 
 define Package/ffmpeg/description
@@ -78,7 +40,14 @@ define Package/ffprobe
 	CATEGORY:=Multimedia
 	TITLE:=(cli media identifier)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavdevice +libavfilter +libavformat +libavutil +libswresample +libswscale
+	DEPENDS:= \
+	+libavcodec \
+	+libavdevice \
+	+libavfilter \
+	+libavformat \
+	+libavutil \
+	+libswresample \
+	+libswscale
 endef
 
 define Package/ffprobe/description
@@ -90,7 +59,14 @@ define Package/ffplay
 	CATEGORY:=Multimedia
 	TITLE:=(example media player)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavdevice +libavfilter +libavformat +libavutil +libswresample +libswscale
+	DEPENDS:= \
+	+libavcodec \
+	+libavdevice \
+	+libavfilter \
+	+libavformat \
+	+libavutil \
+	+libswresample \
+	+libswscale
 endef
 
 define Package/ffplay/description
@@ -102,7 +78,15 @@ define Package/libavcodec
 	CATEGORY:=Libraries
 	TITLE:=(libavcodec library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavutil +libswresample
+	DEPENDS:= \
+	+libavutil \
+	+libswresample \
+	+lame-lib \
+	+libopus \
+	+shine \
+	+fdk-aac \
+	+libx264 \
+	+zlib
 endef
 
 define Package/libavcodec/description
@@ -114,7 +98,13 @@ define Package/libavdevice
 	CATEGORY:=Libraries
 	TITLE:=(libavdevice library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavfilter +libavformat +libavutil
+	DEPENDS:= \
+	+libavcodec \
+	+libavfilter \
+	+libavformat \
+	+libavutil \
+	+alsa-lib \
+	+libv4l
 endef
 
 define Package/libavdevice/description
@@ -126,7 +116,13 @@ define Package/libavfilter
 	CATEGORY:=Libraries
 	TITLE:=(libavfilter library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavformat +libavutil +libswresample +libswscale
+	DEPENDS:= \
+	+libavcodec \
+	+libavformat \
+	+libavutil \
+	+libswresample \
+	+libswscale \
+	+libfreetype
 endef
 
 define Package/libavfilter/description
@@ -138,7 +134,11 @@ define Package/libavformat
 	CATEGORY:=Libraries
 	TITLE:=(libavformat library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavcodec +libavutil
+	DEPENDS:= \
+	+libavcodec \
+	+libavutil \
+	+libbz2 \
+	+libgnutls
 endef
 
 define Package/libavformat/description
@@ -150,7 +150,7 @@ define Package/libavutil
 	CATEGORY:=Libraries
 	TITLE:=(libavutil library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libopenssl +libdrm +libva +libvpl
+	DEPENDS:=
 endef
 
 define Package/libavutil/description
@@ -162,7 +162,8 @@ define Package/libswresample
 	CATEGORY:=Libraries
 	TITLE:=(libswresample library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavutil
+	DEPENDS:= \
+	+libavutil
 endef
 
 define Package/libswresample/description
@@ -174,19 +175,19 @@ define Package/libswscale
 	CATEGORY:=Libraries
 	TITLE:=(libswscale library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libavutil
+	DEPENDS:= \
+	+libavutil
 endef
 
 define Package/libswscale/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libswscale library)
 endef
 
-TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
+#TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
 
 CONFIGURE_ARGS = \
 	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
-	--disable-runtime-cpudetect \
 	--arch="$(ARCH)" \
 	--target-os=linux \
 	--pkg-config="pkg-config" \
@@ -196,51 +197,21 @@ CONFIGURE_ARGS = \
 	--enable-pic \
 	--enable-pthreads \
 	--enable-lto=auto \
+	--enable-gpl \
+	--enable-version3 \
+	--enable-nonfree \
 	--disable-doc \
 	--disable-debug \
 	--disable-lzma \
-	--enable-avfilter \
-	--enable-gpl \
-	--enable-ladspa \
-	--enable-libaom \
-	--enable-libass \
-	--enable-libbluray \
-	--enable-libdav1d \
-	--enable-libdrm \
-	--enable-libfontconfig \
+	--enable-alsa \
 	--enable-libfreetype \
-	--enable-libfribidi \
-	--enable-libharfbuzz \
-	--enable-libjxl \
-	--enable-libmp3lame \
-	--enable-libopenmpt \
+	--enable-gnutls \
 	--enable-libopus \
-	--enable-libplacebo \
-	--enable-libpulse \
-	--enable-librist \
-	--enable-libshaderc \
-	--enable-libsoxr \
-	--enable-libsrt \
-	--enable-libssh \
-	--enable-libtheora \
 	--enable-libv4l2 \
-	--enable-libvidstab \
-	--enable-libvorbis \
-	--enable-libvpx \
-	--enable-libwebp \
+	--enable-libshine \
+	--enable-libmp3lame \
 	--enable-libx264 \
-	--enable-libx265 \
-	--enable-libxml2 \
-	--enable-libxvid \
-	--enable-libzimg \
-	--enable-libzmq \
-	--enable-lv2 \
-	--enable-openssl \
-	--enable-vaapi \
-	--enable-version3 \
-	--enable-vulkan \
-	--enable-libsvtav1 \
-	--enable-libvpl
+	--enable-libfdk-aac
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
