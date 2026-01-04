@@ -86,6 +86,8 @@ define Package/libavcodec
 	+shine \
 	+fdk-aac \
 	+libx264 \
+	+libwebp \
+	+openjpeg \
 	+zlib
 endef
 
@@ -138,7 +140,8 @@ define Package/libavformat
 	+libavcodec \
 	+libavutil \
 	+libbz2 \
-	+libgnutls
+	+libgnutls \
+	+libxml2
 endef
 
 define Package/libavformat/description
@@ -188,6 +191,7 @@ endef
 CONFIGURE_ARGS = \
 	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
+	--disable-runtime-cpudetect \
 	--arch="$(ARCH)" \
 	--target-os=linux \
 	--pkg-config="pkg-config" \
@@ -211,7 +215,10 @@ CONFIGURE_ARGS = \
 	--enable-libshine \
 	--enable-libmp3lame \
 	--enable-libx264 \
-	--enable-libfdk-aac
+	--enable-libfdk-aac \
+	--enable-libwebp \
+	--enable-libopenjpeg \
+	--enable-libxml2
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
