@@ -17,13 +17,16 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
+PYTHON3_PKG_SETUP_VARS:= \
+	USE_SYSTEM_BROTLI=1
+
 define Package/python3-brotli
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Python bindings for the Brotli compression library
   URL:=https://github.com/google/brotli
-  DEPENDS:=+python3-light +brotli
+  DEPENDS:=+python3-light +brotli +libstdcpp
 endef
 
 define Package/python3-brotli/description
