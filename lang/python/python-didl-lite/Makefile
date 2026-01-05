@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-didl-lite
-PKG_VERSION:=1.4.1
+PKG_VERSION:=1.5.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_didl_lite
-PKG_HASH:=68f085b965bde12c0cbc4a068c1fb4c22c58c8f119b1851630896fced7201dc4
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
