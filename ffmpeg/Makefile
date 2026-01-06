@@ -84,10 +84,7 @@ define Package/libavcodec
 	+lame-lib \
 	+libopus \
 	+shine \
-	+fdk-aac \
 	+libx264 \
-	+libwebp \
-	+openjpeg \
 	+zlib
 endef
 
@@ -123,8 +120,7 @@ define Package/libavfilter
 	+libavformat \
 	+libavutil \
 	+libswresample \
-	+libswscale \
-	+libfreetype
+	+libswscale
 endef
 
 define Package/libavfilter/description
@@ -140,8 +136,7 @@ define Package/libavformat
 	+libavcodec \
 	+libavutil \
 	+libbz2 \
-	+libgnutls \
-	+libxml2
+	+libgnutls
 endef
 
 define Package/libavformat/description
@@ -203,22 +198,16 @@ CONFIGURE_ARGS = \
 	--enable-lto=auto \
 	--enable-gpl \
 	--enable-version3 \
-	--enable-nonfree \
 	--disable-doc \
 	--disable-debug \
 	--disable-lzma \
 	--enable-alsa \
-	--enable-libfreetype \
 	--enable-gnutls \
 	--enable-libopus \
 	--enable-libv4l2 \
 	--enable-libshine \
 	--enable-libmp3lame \
-	--enable-libx264 \
-	--enable-libfdk-aac \
-	--enable-libwebp \
-	--enable-libopenjpeg \
-	--enable-libxml2
+	--enable-libx264
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
