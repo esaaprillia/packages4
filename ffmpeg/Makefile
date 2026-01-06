@@ -84,6 +84,7 @@ define Package/libavcodec
 	+lame-lib \
 	+libopus \
 	+shine \
+	+fdk-aac \
 	+libx264 \
 	+zlib
 endef
@@ -186,18 +187,16 @@ endef
 CONFIGURE_ARGS = \
 	--enable-cross-compile \
 	--cross-prefix="$(TARGET_CROSS)" \
-	--disable-runtime-cpudetect \
 	--arch="$(ARCH)" \
 	--target-os=linux \
 	--pkg-config="pkg-config" \
 	--prefix=/usr \
 	--enable-shared \
 	--enable-static \
-	--enable-pic \
 	--enable-pthreads \
-	--enable-lto=auto \
 	--enable-gpl \
 	--enable-version3 \
+	--enable-nonfree \
 	--disable-doc \
 	--disable-debug \
 	--disable-lzma \
@@ -207,7 +206,8 @@ CONFIGURE_ARGS = \
 	--enable-libv4l2 \
 	--enable-libshine \
 	--enable-libmp3lame \
-	--enable-libx264
+	--enable-libx264 \
+	--enable-libfdk-aac
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
