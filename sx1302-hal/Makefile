@@ -32,7 +32,7 @@ endef
 MAKE_FLAGS += \
 	ARCH="$(ARCH)" \
 	CROSS_COMPILE="$(TARGET_CROSS)" \
-	CFLAGS+="-Iinc -I../libtools/inc"
+	CFLAGS="-Iinc -I../libtools/inc"
 
 define Package/sx1302-hal/install
 	#$(INSTALL_DIR) $(1)/usr/bin
