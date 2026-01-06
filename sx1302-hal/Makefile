@@ -32,8 +32,7 @@ endef
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		ARCH="$(ARCH)" \
-		CROSS_COMPILE="$(TARGET_CROSS)" \
-		DESTDIR="$(PKG_INSTALL_DIR)" install
+		CROSS_COMPILE="$(TARGET_CROSS)"
 endef
 
 define Package/sx1302-hal/install
