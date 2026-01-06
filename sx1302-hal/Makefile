@@ -29,11 +29,9 @@ define Package/sx1302-hal/description
 	RabbitMQ is a feature rich, multi-protocol messaging and streaming broker.
 endef
 
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		ARCH="$(ARCH)" \
-		CROSS_COMPILE="$(TARGET_CROSS)"
-endef
+MAKE_FLAGS += \
+	CROSS_COMPILE="$(TARGET_CROSS)" \
+	ARCH="$(ARCH)"
 
 define Package/sx1302-hal/install
 	#$(INSTALL_DIR) $(1)/usr/bin
