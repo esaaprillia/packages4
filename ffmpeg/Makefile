@@ -86,6 +86,7 @@ define Package/libavcodec
 	+shine \
 	+fdk-aac \
 	+libx264 \
+	+libx265 \
 	+zlib
 endef
 
@@ -207,6 +208,7 @@ CONFIGURE_ARGS = \
 	--enable-libshine \
 	--enable-libmp3lame \
 	--enable-libx264 \
+	--enable-libx265 \
 	--enable-libfdk-aac
 
 define Build/Compile
