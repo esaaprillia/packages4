@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/xvidcore
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
 PKG_INSTALL:=1
 PKG_FIXUP:=autoreconf
