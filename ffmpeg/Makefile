@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ffmpeg
 PKG_VERSION:=8.0.1
-PKG_RELEASE:=2
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://ffmpeg.org/releases/
@@ -87,6 +87,8 @@ define Package/libavcodec
 	+fdk-aac \
 	+libx264 \
 	+libx265 \
+	+twolame \
+	+xvidcore \
 	+zlib
 endef
 
@@ -209,7 +211,9 @@ CONFIGURE_ARGS = \
 	--enable-libmp3lame \
 	--enable-libx264 \
 	--enable-libx265 \
-	--enable-libfdk-aac
+	--enable-libfdk-aac \
+	--enable-libtwolame \
+	--enable-libxvid
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
