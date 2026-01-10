@@ -26,7 +26,7 @@ define Package/python3-evdev
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=python3-evdev
+  TITLE:=Python bindings for the Linux input subsystem
   URL:=https://github.com/gvalkov/python-evdev
   DEPENDS:= \
       +python3-light \
@@ -34,7 +34,7 @@ define Package/python3-evdev
 endef
 
 define Package/python3-evdev/description
-	Bindings to the Linux input handling subsystem
+	This package provides bindings to the generic input event interface in Linux.
 endef
 
 LINUX_EVDEV_HEADERS="$(LINUX_DIR)/include/uapi/linux/input.h:$(LINUX_DIR)/include/uapi/linux/uinput.h:$(LINUX_DIR)/include/uapi/linux/input-event-codes.h"
