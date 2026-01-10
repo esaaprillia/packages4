@@ -10,7 +10,7 @@ include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=python-evdev
 PKG_VERSION:=1.9.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_LICENSE:=BSD-3-Clause
 PKG_MAINTAINER:=Paulo Costa <me@paulo.costa.nom.br>, Alexandru Ardelean <ardeleanalex@gmail.com>
@@ -37,7 +37,7 @@ define Package/python3-evdev/description
 	Bindings to the Linux input handling subsystem
 endef
 
-LINUX_EVDEV_HEADERS="$(LINUX_DIR)/include/uapi/linux/input.h:$(LINUX_DIR)/include/uapi/linux/input-event-codes.h"
+LINUX_EVDEV_HEADERS="$(LINUX_DIR)/include/uapi/linux/input.h:$(LINUX_DIR)/include/uapi/linux/uinput.h:$(LINUX_DIR)/include/uapi/linux/input-event-codes.h"
 
 PYTHON3_PKG_BUILD_CONFIG_SETTINGS:= \
 	--build-option=build \
