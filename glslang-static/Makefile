@@ -43,7 +43,6 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libMachineIndependent.a $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libOSDependent.a $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libSPIRV.a $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libSPVRemapper.a $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libglslang-default-resource-limits.a $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libglslang.a $(1)/usr/lib/
 endef
