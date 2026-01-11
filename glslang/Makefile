@@ -42,7 +42,6 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/glslang $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libSPIRV.so.* $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libSPVRemapper.so.* $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libglslang-default-resource-limits.so.* $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libglslang.so.* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/cmake
@@ -54,7 +53,6 @@ define Package/glslang/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libSPIRV.so.* $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libSPVRemapper.so.* $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libglslang-default-resource-limits.so.* $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libglslang.so.* $(1)/usr/lib/
 endef
