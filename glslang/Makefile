@@ -38,6 +38,8 @@ CMAKE_OPTIONS += \
 	-DGLSLANG_TESTS=OFF
 
 define Build/InstallDev
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/glslang $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
