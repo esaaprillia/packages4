@@ -22,7 +22,7 @@ include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(SED) "s,static:,dirs: '${STAGING_DIR}/usr/lib'\, &," $(PKG_BUILD_DIR)/src/glsl/meson.build
-#endef
+endef
 
 define Package/libplacebo
 	SECTION:=libs
