@@ -6,7 +6,7 @@ Fix linking against glslang 1.3.296.0
  elif not glslang_req.disabled()
  
    glslang_deps = [
-+    cxx.find_library('glslang', required: false),
++    cxx.find_library('glslang', required: false, dirs: vulkan_lib_dirs),
      cxx.find_library('glslang-default-resource-limits', required: false)
    ]
  
