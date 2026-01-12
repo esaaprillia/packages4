@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hass-nabucasa
-PKG_VERSION:=1.7.0
+PKG_VERSION:=1.9.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -21,7 +21,25 @@ define Package/python3-hass-nabucasa
   CATEGORY:=Languages
   TITLE:=Home Assistant cloud integration by Nabu Casa, Inc.
   URL:=https://github.com/NabuCasa/hass-nabucasa
-  DEPENDS:=+python3-light +python3-acme +python3-aiohttp +python3-async-timeout +python3-atomicwrites-homeassistant +python3-attrs +python3-ciso8601 +python3-cryptography +python3-grpcio +python3-josepy +python3-litellm +python3-pycognito +python3-pyjwt +python3-snitun +python3-voluptuous +python3-webrtc-models +python3-yarl +python3-sentence-stream
+  DEPENDS:= \
+	+python3-acme \
+	+python3-aiohttp \
+	+python3-async-timeout \
+	+python3-atomicwrites-homeassistant \
+	+python3-attrs \
+	+python3-ciso8601 \
+	+python3-cryptography \
+	+python3-grpcio \
+	+python3-icmplib \
+	+python3-josepy \
+	+python3-litellm \
+	+python3-pycognito \
+	+python3-pyjwt \
+	+python3-snitun \
+	+python3-voluptuous \
+	+python3-webrtc-models \
+	+python3-yarl \
+	+python3-sentence-stream
 endef
 
 define Package/python3-hass-nabucasa/description
