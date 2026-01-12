@@ -31,6 +31,9 @@ define Package/glslang-static/description
 	Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.
 endef
 
+TARGET_CFLAGS += $(FPIC)
+TARGET_CXXFLAGS += $(FPIC)
+
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=OFF \
 	-DBUILD_EXTERNAL=OFF \
