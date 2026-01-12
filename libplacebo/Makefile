@@ -37,7 +37,6 @@ define Package/libplacebo/description
 endef
 
 MESON_ARGS += \
-	-Dbackend_max_links=4 \
 	-Ddemos=false \
 	-Dglslang=enabled \
 	-Dlcms=enabled \
