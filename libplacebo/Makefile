@@ -19,9 +19,9 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/libplacebo-v$(PKG_VERSION)
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 
-#define Build/Prepare
-#	$(call Build/Prepare/Default)
-#	$(SED) 's,dirs: vulkan_lib_dirs,dirs: $(STAGING_DIR)/usr/lib,g' $(PKG_BUILD_DIR)/src/glsl/meson.build
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) "s,static:,dirs: '${STAGING_DIR}/usr/lib'\, &," $(PKG_BUILD_DIR)/src/glsl/meson.build
 #endef
 
 define Package/libplacebo
@@ -44,7 +44,6 @@ MESON_ARGS += \
 	-Dshaderc=enabled \
 	-Dtests=false \
 	-Dvulkan=enabled \
-	-Dvulkan-sdk="$(STAGING_DIR)/usr" \
 	-Dvulkan-registry="$(STAGING_DIR)/usr/share/vulkan/registry/vk.xml"
 
 define Build/InstallDev
