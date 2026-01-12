@@ -31,14 +31,13 @@ define Package/glslang-static/description
 	Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.
 endef
 
-TARGET_CFLAGS += $(FPIC)
-TARGET_CXXFLAGS += $(FPIC)
-
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=OFF \
 	-DBUILD_EXTERNAL=OFF \
 	-DALLOW_EXTERNAL_SPIRV_TOOLS=YES \
-	-DGLSLANG_TESTS=OFF
+	-DGLSLANG_TESTS=OFF \
+	-DCMAKE_C_FLAGS=-fPIC \
+	-DCMAKE_CXX_FLAGS=-fPIC \
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/lib
