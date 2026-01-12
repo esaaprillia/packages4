@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-acme
-PKG_VERSION:=5.2.1
+PKG_VERSION:=5.2.2
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.txt
 
 PYPI_NAME:=acme
@@ -23,7 +23,12 @@ define Package/python3-acme
   CATEGORY:=Languages
   TITLE:=ACME protocol implementation in Python
   URL:=https://github.com/certbot/certbot
-  DEPENDS:=+python3 +python3-cryptography +python3-josepy +python3-pyopenssl +python3-pyrfc3339 +python3-requests
+  DEPENDS:= \
+	+python3-cryptography \
+	+python3-josepy \
+	+python3-pyopenssl \
+	+python3-pyrfc3339 \
+	+python3-requests
 endef
 
 define Package/python3-acme/description
