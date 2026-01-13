@@ -21,7 +21,9 @@ define Package/python3-aiodns
   CATEGORY:=Languages
   TITLE:=Simple DNS resolver for asyncio
   URL:=https://pypi.python.org/pypi/aiodns
-  DEPENDS:=+python3-light +python3-pycares
+  DEPENDS:= \
+	+python3 \
+	+python3-pycares
 endef
 
 define Package/python3-aiodns/description
