@@ -1,14 +1,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pymicro-vad
-PKG_VERSION:=2.0.0
+PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PYPI_NAME:=pymicro-vad
+PYPI_NAME:=pymicro_vad
 PKG_SOURCE_URL:=https://github.com/rhasspy/pymicro-vad/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
