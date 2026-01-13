@@ -21,7 +21,11 @@ define Package/python3-aiohasupervisor
   SUBMENU:=Python
   TITLE:=Asynchronous python client for Home Assistant Supervisor.
   URL:=https://github.com/home-assistant-libs/python-supervisor-client
-  DEPENDS:=+python3 +python3-aiohttp +python3-mashumaro +python3-orjson
+  DEPENDS:= \
+	+python3 \
+	+python3-aiohttp \
+	+python3-mashumaro \
+	+python3-orjson
 endef
 
 define Package/python3-aiohasupervisor/description
