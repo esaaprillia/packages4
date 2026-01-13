@@ -26,6 +26,7 @@ define Package/python3-litellm
   TITLE:=Library to easily interface with LLM API providers
   URL:=https://litellm.ai/
   DEPENDS:= \
+	+python3 \
 	+python3-fastuuid \
 	+python3-httpx \
 	+python3-openai \
