@@ -22,6 +22,7 @@ define Package/python3-hass-nabucasa
   TITLE:=Home Assistant cloud integration by Nabu Casa, Inc.
   URL:=https://github.com/NabuCasa/hass-nabucasa
   DEPENDS:= \
+	+python3 \
 	+python3-acme \
 	+python3-aiohttp \
 	+python3-async-timeout \
