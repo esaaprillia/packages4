@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-openai
-PKG_VERSION:=2.9.0
+PKG_VERSION:=2.15.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=openai
@@ -23,7 +23,23 @@ define Package/python3-openai
   CATEGORY:=Languages
   TITLE:=The official Python library for the openai API
   URL:=https://github.com/openai/openai-python
-  DEPENDS:=+python3 +python3-httpx +python3-pydantic +python3-typing-extensions +python3-anyio +python3-distro +python3-sniffio +python3-tqdm +python3-jiter +python3-aiohttp +python3-httpx-aiohttp +python3-websockets +python3-pandas +python3-pandas-stubs +python3-sounddevice +python3-numpy
+  DEPENDS:= \
+	+python3 \
+	+python3-httpx \
+	+python3-pydantic \
+	+python3-typing-extensions \
+	+python3-anyio \
+	+python3-distro \
+	+python3-sniffio \
+	+python3-tqdm \
+	+python3-jiter \
+	+python3-aiohttp \
+	+python3-httpx-aiohttp \
+	+python3-websockets \
+	+python3-numpy \
+	+python3-pandas \
+	+python3-pandas-stubs \
+	+python3-sounddevice
 endef
 
 define Package/python3-openai/description
