@@ -8,7 +8,7 @@ PYPI_NAME:=socksio
 PKG_HASH:=f88beb3da5b5c38b9890469de67d0cb0f9d494b78b106ca1845f96c10b91c4ac
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:= LICENSE
 
 PKG_BUILD_DEPENDS:=python-flit-core/host
