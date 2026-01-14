@@ -38,7 +38,8 @@ define Package/python3-litellm
 	+python3-jinja2 \
 	+python3-aiohttp \
 	+python3-pydantic \
-	+python3-jsonschema
+	+python3-jsonschema \
+	+python3-grpcio
 endef
 
 define Package/python3-litellm/description
