@@ -26,7 +26,14 @@ define Package/python3-httpcore
   CATEGORY:=Languages
   TITLE:=A minimal low-level HTTP client.
   URL:=https://www.encode.io/httpcore/
-  DEPENDS:=+python3-light +python3-certifi +python3-h11 +python3-h2 +python3-socksio +python3-trio +python3-anyio
+  DEPENDS:= \
+	+python3-light \
+	+python3-certifi \
+	+python3-h11 \
+	+python3-h2 \
+	+python3-socksio \
+	+python3-trio \
+	+python3-anyio
 endef
 
 define Package/python3-httpcore/description
