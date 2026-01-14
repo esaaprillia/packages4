@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=zlib-ng
-PKG_VERSION:=2.2.5
+PKG_VERSION:=2.3.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -32,7 +32,6 @@ define Package/zlib-ng/description
 endef
 
 CMAKE_OPTIONS += \
-	-Wno-dev \
 	-DWITH_GTEST=OFF
 
 define Build/InstallDev
@@ -42,12 +41,8 @@ define Build/InstallDev
 endef
 
 define Package/zlib-ng/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/lib
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,zlib-ng))
