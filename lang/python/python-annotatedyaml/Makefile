@@ -36,4 +36,3 @@ $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-annotatedyaml))
 $(eval $(call BuildPackage,python3-annotatedyaml))
 $(eval $(call BuildPackage,python3-annotatedyaml-src))
-
