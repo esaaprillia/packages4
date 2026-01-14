@@ -1,10 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-flatbuffers
-PKG_VERSION:=25.9.23
+PKG_VERSION:=25.12.19
 PKG_RELEASE:=1
 
 PYPI_NAME:=flatbuffers
+PKG_SOURCE_URL:=https://github.com/google/flatbuffers/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
