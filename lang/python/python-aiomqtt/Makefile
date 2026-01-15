@@ -25,7 +25,9 @@ define Package/python3-aiomqtt
   CATEGORY:=Languages
   TITLE:=The idiomatic asyncio MQTT client
   URL:=https://aiomqtt.bo3hm.com/
-  DEPENDS:=+python3 +python3-paho-mqtt +python3-typing-extensions
+  DEPENDS:= \
+	+python3 \
+	+python3-paho-mqtt
 endef
 
 define Package/python3-aiomqtt/description
