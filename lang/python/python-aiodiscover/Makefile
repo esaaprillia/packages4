@@ -25,7 +25,6 @@ define Package/python3-aiodiscover
   URL:=https://github.com/bdraco/aiodiscover
   DEPENDS:= \
 	+python3 \
-	+python3-async-timeout \
 	+python3-netifaces \
 	+python3-aiodns \
 	+python3-ifaddr \
