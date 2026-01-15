@@ -9,7 +9,6 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=pymicro_vad
-PKG_SOURCE_URL:=https://github.com/rhasspy/pymicro-vad/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 include ../pypi.mk
