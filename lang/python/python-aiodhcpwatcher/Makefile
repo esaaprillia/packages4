@@ -24,8 +24,8 @@ define Package/python3-aiodhcpwatcher
   TITLE:=Watch for DHCP packets with asyncio
   URL:=https://aiodhcpwatcher.readthedocs.io/
   DEPENDS:= \
-    +python3 \
-    +python3-scapy
+	+python3 \
+	+python3-scapy
 endef
 
 define Package/python3-aiodhcpwatcher/description
