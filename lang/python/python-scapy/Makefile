@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-scapy
-PKG_VERSION:=2.6.1
+PKG_VERSION:=2.7.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=scapy
-PKG_HASH:=7600d7e2383c853e5c3a6e05d37e17643beebf2b3e10d7914dffcc3bc3c6e6c5
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0
