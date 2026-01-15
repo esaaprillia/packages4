@@ -29,7 +29,6 @@ define Package/python3-pycares
   DEPENDS:= \
 	+python3-light \
 	+python3-cffi \
-	+python3-idna \
 	+libcares
 endef
 
