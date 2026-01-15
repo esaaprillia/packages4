@@ -28,7 +28,8 @@ define Package/python3-netifaces
   SUBMENU:=Python
   TITLE:=Portable network interface information
   URL:=https://github.com/al45tair/netifaces
-  DEPENDS:=+python3-light
+  DEPENDS:= \
+	+python3-light
 endef
 
 define Package/python3-netifaces/description
