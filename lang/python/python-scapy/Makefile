@@ -22,8 +22,8 @@ define Package/python3-scapy
   TITLE:=Scapy: interactive packet manipulation tool
   URL:=https://scapy.net/
   DEPENDS:= \
-    +python3 \
-    +tcpdump
+	+python3 \
+	+tcpdump
 endef
 
 define Package/python3-scapy/description
