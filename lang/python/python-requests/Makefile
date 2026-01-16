@@ -20,7 +20,7 @@ PYPI_NAME:=requests
 PKG_HASH:=skip
 
 HOST_BUILD_DEPENDS:= \
-  python-chardet/host \
+  python3/host \
   python-idna/host \
   python-urllib3/host \
   python-certifi/host \
@@ -40,7 +40,6 @@ define Package/python3-requests
   URL:=https://requests.readthedocs.io
   DEPENDS:= \
 	  +python3-light  \
-	  +python3-chardet  \
 	  +python3-idna  \
 	  +python3-urllib3  \
 	  +python3-certifi  \
