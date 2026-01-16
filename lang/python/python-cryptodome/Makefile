@@ -33,7 +33,7 @@ define Package/python3-cryptodome
   SUBMENU:=Python
   TITLE:=Self-contained cryptographic library
   URL:=https://www.pycryptodome.org/
-  DEPENDS:=+libgmp +python3-light +python3-cffi
+  DEPENDS:=+libgmp +python3-light
   PROVIDES:=python3-crypto
 endef
 
