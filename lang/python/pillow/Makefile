@@ -31,7 +31,7 @@ define Package/python3-pillow
   TITLE:=The friendly PIL fork
   URL:=https://python-pillow.org/
   DEPENDS:=+libfreetype +libjpeg +libtiff +zlib \
-	   +libwebp +python3
+	   +libwebp +lcms2 +openjpeg +python3
 endef
 
 define Package/python3-pillow/description
@@ -45,8 +45,8 @@ PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
 	--build-option=--enable-webp \
 	--build-option=--enable-tiff \
 	--build-option=--enable-freetype \
-	--build-option=--disable-lcms \
-	--build-option=--disable-jpeg2000 \
+	--build-option=--enable-lcms \
+	--build-option=--enable-jpeg2000 \
 	--build-option=--disable-imagequant \
 	--build-option=--disable-platform-guessing
 
