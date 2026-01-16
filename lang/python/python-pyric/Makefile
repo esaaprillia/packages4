@@ -23,7 +23,7 @@ define Package/python3-pyric
   CATEGORY:=Languages
   TITLE:=Python Wireless Library
   URL:=http://wraith-wireless.github.io/PyRIC
-  DEPENDS:=+python3 +python3-twisted
+  DEPENDS:=+python3
 endef
 
 define Package/python3-pyric/description
