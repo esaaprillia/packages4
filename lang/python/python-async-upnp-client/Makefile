@@ -25,7 +25,7 @@ define Package/python3-async-upnp-client
 	+python3 \
 	+python3-aiohttp \
 	+python3-defusedxml \
-	+python3-python-didl-lite \
+	+python3-didl-lite \
 	+python3-voluptuous
 endef
 
