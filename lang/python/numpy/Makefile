@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=numpy
-PKG_VERSION:=2.3.5
+PKG_VERSION:=2.4.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=$(PKG_NAME)
@@ -28,7 +28,11 @@ define Package/python3-numpy
   CATEGORY:=Languages
   TITLE:=The fundamental package for scientific computing with Python
   URL:=https://www.numpy.org/
-  DEPENDS:=@!SOFT_FLOAT +INSTALL_GFORTRAN:libgfortran +python3 +libstdcpp +openblas
+  DEPENDS:= \
+	+python3 \
+	+libgfortran \
+	+libstdcpp \
+	+openblas
 endef
 
 define Package/python3-numpy/description
