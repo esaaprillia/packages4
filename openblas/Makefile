@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openblas
-PKG_VERSION:=0.3.30
+PKG_VERSION:=0.3.31
 PKG_RELEASE:=1
 
 PKG_SOURCE:=OpenBLAS-$(PKG_VERSION).tar.gz
@@ -18,7 +18,6 @@ HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/OpenBLAS-$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
-PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -51,12 +50,8 @@ define Build/InstallDev
 endef
 
 define Package/openblas/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/lib
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call HostBuild))
