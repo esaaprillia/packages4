@@ -22,15 +22,13 @@ define Package/python3-pubnub
   TITLE:=Real-time push service in the cloud
   URL:=http://pubnub.com/
   DEPENDS:= \
-	+python3-aiohttp \
-	+python3-asyncio \
-	+python3-cbor2 \
+	+python3 \
 	+python3-cryptodomex \
-	+python3-logging \
-	+python3-requests \
-	+python3-urllib \
 	+python3-httpx \
-	+python3-h2
+	+python3-h2 \
+	+python3-requests \
+	+python3-aiohttp \
+	+python3-cbor2
 endef
 
 define Package/python3-pubnub/description
