@@ -21,7 +21,7 @@ define Package/python3-tenacity
   CATEGORY:=Languages
   TITLE:=Retrying library for Python
   URL:=http://tenacity.readthedocs.io/
-  DEPENDS:=+python3 +python3-six
+  DEPENDS:=+python3
 endef
 
 define Package/python3-tenacity/description
