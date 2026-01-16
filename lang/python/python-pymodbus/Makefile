@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pymodbus
-PKG_VERSION:=3.11.3
+PKG_VERSION:=3.11.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=pymodbus
@@ -21,7 +21,7 @@ define Package/python3-pymodbus
   SUBMENU:=Python
   TITLE:=A fully featured modbus protocol stack in python
   URL:=https://github.com/pymodbus-dev/pymodbus/
-  DEPENDS:=+python3 +python3-pyserial +python3-aiohttp
+  DEPENDS:=+python3
 endef
 
 define Package/python3-pymodbus/description
