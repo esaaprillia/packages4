@@ -23,7 +23,7 @@ define Package/python3-aiofiles
   SUBMENU:=Python
   TITLE:=File support for asyncio
   URL:=https://github.com/Tinche/aiofiles
-  DEPENDS:=+python3-asyncio
+  DEPENDS:=+python3
 endef
 
 define Package/python3-aiofiles/description
