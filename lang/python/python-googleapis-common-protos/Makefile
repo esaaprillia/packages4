@@ -21,7 +21,7 @@ define Package/python3-googleapis-common-protos
   SUBMENU:=Python
   TITLE:=Common protobufs used in Google APIs
   URL:=https://github.com/googleapis/python-api-common-protos
-  DEPENDS:=+python3-grpcio +python3-protobuf
+  DEPENDS:=+python3 +python3-protobuf
 endef
 
 define Package/python3-googleapis-common-protos/description
