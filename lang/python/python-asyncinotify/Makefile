@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-asyncinotify
-PKG_VERSION:=4.2.1
+PKG_VERSION:=4.3.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=asyncinotify
@@ -36,4 +36,3 @@ endef
 $(eval $(call Py3Package,python3-asyncinotify))
 $(eval $(call BuildPackage,python3-asyncinotify))
 $(eval $(call BuildPackage,python3-asyncinotify-src))
-
