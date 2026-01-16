@@ -21,7 +21,11 @@ define Package/python3-aiohttp-asyncmdnsresolver
   SUBMENU:=Python
   TITLE:=An async resolver for aiohttp that supports MDNS
   URL:=https://aiohttp-asyncmdnsresolver.aio-libs.org/
-  DEPENDS:=+python3-light +python3-aiodns +python3-aiohttp +python3-zeroconf
+  DEPENDS:= \
+	+python3 \
+	+python3-aiodns \
+	+python3-aiohttp \
+	+python3-zeroconf
 endef
 
 define Package/python3-aiohttp-asyncmdnsresolver/description
