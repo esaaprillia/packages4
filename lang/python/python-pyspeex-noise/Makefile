@@ -9,8 +9,8 @@ PKG_SOURCE_URL:=https://github.com/rhasspy/pyspeex-noise/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=License
-PKG_LICENSE_FILES:=LICENSE
+PKG_LICENSE:=MIT
+PKG_LICENSE_FILES:=LICENSE.md
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
