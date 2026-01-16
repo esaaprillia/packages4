@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache 2.0 and MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python-coverage/host python-pygments/host python-iniconfig/host python-pytest/host
+PKG_BUILD_DEPENDS:=python-coverage/host python-pytest/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -25,7 +25,11 @@ define Package/python3-pygatt
   CATEGORY:=Languages
   TITLE:=Python Bluetooth LE (Low Energy) and GATT Library
   URL:=https://github.com/peplin/pygatt
-  DEPENDS:=+python3 +python3-pyserial +python3-enum-compat +python3-pexpect
+  DEPENDS:= \
+	+python3 \
+	+python3-pyserial \
+	+python3-enum-compat \
+	+python3-pexpect
 endef
 
 define Package/python3-pygatt/description
