@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=meson
-PKG_VERSION:=1.8.3
+PKG_VERSION:=1.9.2
 PKG_RELEASE:=1
 
 #PYPI_NAME:=meson
@@ -9,7 +9,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/numpy/meson.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=e72c717199fa18d34020c7c97f9de3f388c5e055
+PKG_SOURCE_VERSION:=5d5a3d478da115c812be77afa651db2492d52171
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
