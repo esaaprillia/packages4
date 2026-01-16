@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bleak
-PKG_VERSION:=2.0.0
+PKG_VERSION:=2.1.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=bleak
@@ -30,7 +30,7 @@ define Package/python3-bleak
   TITLE:=Bluetooth Low Energy platform Agnostic Klient
   URL:=https://github.com/hbldh/bleak
   DEPENDS:=+python3-light +python3-asyncio \
-	+python3-dbus-fast +python3-ctypes +python3-typing-extensions +python3-logging
+	+python3-dbus-fast +python3-ctypes +python3-logging
 endef
 
 define Package/python3-bleak/description
