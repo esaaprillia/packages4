@@ -29,11 +29,7 @@ define Package/python3-httpcore
   DEPENDS:= \
 	+python3-light \
 	+python3-certifi \
-	+python3-h11 \
-	+python3-h2 \
-	+python3-socksio \
-	+python3-trio \
-	+python3-anyio
+	+python3-h11
 endef
 
 define Package/python3-httpcore/description
