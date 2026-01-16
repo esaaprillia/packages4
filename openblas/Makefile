@@ -27,7 +27,7 @@ define Package/openblas
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=fast BSD-licensed BLAS based on gotoBLAS2, with LAPACK
-	DEPENDS:=+INSTALL_GFORTRAN:libgfortran
+	DEPENDS:=+libgfortran
 	URL:=https://www.openblas.net/
 endef
 
