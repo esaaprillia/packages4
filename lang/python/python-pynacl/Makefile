@@ -25,7 +25,7 @@ define Package/python3-pynacl
   SUBMENU:=Python
   TITLE:=Python binding to the libsodium library
   URL:=https://github.com/pyca/pynacl/
-  DEPENDS:=+libsodium +python3-light +python3-cffi +python3-six
+  DEPENDS:=+libsodium +python3-light +python3-cffi
 endef
 
 define Package/python3-pynacl/description
