@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-uv
-PKG_VERSION:=0.9.17
+PKG_VERSION:=0.9.26
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -26,7 +26,7 @@ define Package/python3-uv
   CATEGORY:=Languages
   TITLE:=An extremely fast Python package and project manager, written in Rust.
   URL:=https://docs.astral.sh/uv
-  DEPENDS:=+python3 +libbz2 $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+python3 $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-uv/description
