@@ -8,7 +8,7 @@ PYPI_NAME:=iso4217
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=PD
+PKG_LICENSE:=Public Domain
 PKG_LICENSE_FILES:=
 
 include ../pypi.mk
