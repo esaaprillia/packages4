@@ -21,7 +21,10 @@ define Package/python3-pytest-rerunfailures
   SUBMENU:=Python
   TITLE:=pytest plugin to re-run tests to eliminate flaky failures
   URL:=https://github.com/pytest-dev/pytest-rerunfailures
-  DEPENDS:=+python3 +python3-packaging +python3-pytest
+  DEPENDS:= \
+	+python3 \
+	+python3-packaging \
+	+python3-pytest
 endef
 
 define Package/python3-pytest-rerunfailures/description
@@ -31,4 +34,3 @@ endef
 $(eval $(call Py3Package,python3-pytest-rerunfailures))
 $(eval $(call BuildPackage,python3-pytest-rerunfailures))
 $(eval $(call BuildPackage,python3-pytest-rerunfailures-src))
-
