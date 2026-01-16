@@ -21,7 +21,7 @@ define Package/python3-standard-aifc
   CATEGORY:=Languages
   TITLE:=Standard library aifc redistribution. "dead battery".
   URL:=https://github.com/youknowone/python-deadlib
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-standard-chunk +python3-audioop-lts
 endef
 
 define Package/python3-standard-aifc/description
