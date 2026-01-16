@@ -23,7 +23,12 @@ define Package/python3-bluetooth-auto-recovery
   CATEGORY:=Languages
   TITLE:=Recover bluetooth adapters that are in an stuck state
   URL:=https://github.com/bluetooth-devices/bluetooth-auto-recovery
-  DEPENDS:=+python3-light +python3-pyric +python3-btsocket +python3-usb-devices +python3-bluetooth-adapters
+  DEPENDS:= \
+	+python3 \
+	+python3-pyric \
+	+python3-btsocket \
+	+python3-usb-devices \
+	+python3-bluetooth-adapters
 endef
 
 define Package/python3-bluetooth-auto-recovery/description
