@@ -24,6 +24,8 @@ define Package/python3-grpcio
   TITLE:=HTTP/2-based RPC framework
   URL:=https://grpc.io/
   DEPENDS:= \
+	+python3 \
+	+python3-typing-extensions \
 	+@OPENSSL_WITH_NPN \
 	+libatomic \
 	+libcares \
@@ -32,18 +34,7 @@ define Package/python3-grpcio
 	+libstdcpp \
 	+abseil-cpp \
 	+re2 \
-	+zlib \
-	+python3-asyncio \
-	+python3-logging \
-	+python3-multiprocessing \
-	+python3-typing-extensions \
-	+python3-protobuf \
-	+python3-readline \
-	+python3-unittest \
-	+python3-urllib \
-	+python3-six \
-	+python3-xml \
-	+python3-yaml
+	+zlib
 endef
 
 define Package/python3-grpcio/description
