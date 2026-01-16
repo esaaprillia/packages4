@@ -25,7 +25,11 @@ define Package/python3-annotatedyaml
   CATEGORY:=Languages
   TITLE:=Annotated YAML that supports secrets for Python
   URL:=https://github.com/home-assistant-libs/annotatedyaml
-  DEPENDS:=+python3 +python3-propcache +python3-yaml +python3-voluptuous
+  DEPENDS:= \
+	+python3 \
+	+python3-propcache \
+	+python3-yaml \
+	+python3-voluptuous
 endef
 
 define Package/python3-annotatedyaml/description
