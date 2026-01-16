@@ -19,7 +19,13 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host
+HOST_BUILD_DEPENDS:= \
+	python3/host \
+	python-setuptools-scm/host \
+	python-iniconfig/host \
+	python-packaging/host \
+	python-pluggy/host \
+	python-pygments/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
