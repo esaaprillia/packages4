@@ -11,10 +11,11 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-coherent-licensed/host
 HOST_BUILD_DEPENDS:= \
 	python3/host \
 	python-setuptools-scm/host \
+	python-coherent-licensed/host \
 	python-zipp/host
 
 include ../pypi.mk
