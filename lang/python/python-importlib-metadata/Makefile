@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-importlib-metadata
-PKG_VERSION:=8.7.0
+PKG_VERSION:=8.7.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=importlib_metadata
@@ -15,8 +15,7 @@ PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 HOST_BUILD_DEPENDS:= \
 	python3/host \
 	python-setuptools-scm/host \
-	python-zipp/host \
-	python-typing-extensions/host
+	python-zipp/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -30,7 +29,7 @@ define Package/python3-importlib-metadata
   CATEGORY:=Languages
   TITLE:=Read metadata from Python packages
   URL:=https://importlib-metadata.readthedocs.io/
-  DEPENDS:=+python3 +python3-zipp +python3-typing-extensions
+  DEPENDS:=+python3 +python3-zipp
 endef
 
 define Package/python3-importlib-metadata/description
