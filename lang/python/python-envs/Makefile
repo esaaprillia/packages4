@@ -23,7 +23,11 @@ define Package/python3-envs
   CATEGORY:=Languages
   TITLE:=Easy access of environment variables from Python.
   URL:=https://pypi.org/project/envs
-  DEPENDS:=+python3 +python3-terminaltables +python3-jinja2 +python3-click
+  DEPENDS:= \
+	+python3 \
+	+python3-click \
+	+python3-jinja2 \
+	+python3-terminaltables
 endef
 
 define Package/python3-envs/description
