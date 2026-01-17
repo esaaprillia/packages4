@@ -23,7 +23,13 @@ define Package/python3-go2rtc-client
   CATEGORY:=Languages
   TITLE:=Python client for go2rtc
   URL:=https://github.com/home-assistant-libs/python-go2rtc-client
-  DEPENDS:=+python3 +python3-aiohttp +python3-awesomeversion +python3-mashumaro +python3-orjson +python3-webrtc-models
+  DEPENDS:= \
+	+python3 \
+	+python3-aiohttp \
+	+python3-awesomeversion \
+	+python3-mashumaro \
+	+python3-orjson \
+	+python3-webrtc-models
 endef
 
 define Package/python3-go2rtc-client/description
