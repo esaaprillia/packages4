@@ -21,7 +21,13 @@ define Package/python3-hap-python
   SUBMENU:=Python
   TITLE:=HomeKit Accessory Protocol implementation in python
   URL:=https://github.com/ikalchev/HAP-python
-  DEPENDS:=+python3 +python3-cryptography +python3-chacha20poly1305-reuseable +python3-orjson +python3-zeroconf +python3-h11 +python3-base36 +python3-pyqrcode
+  DEPENDS:= \
+	+python3 \
+	+python3-cryptography \
+	+python3-chacha20poly1305-reuseable \
+	+python3-orjson \
+	+python3-zeroconf \
+	+python3-h11
 endef
 
 define Package/python3-hap-python/description
