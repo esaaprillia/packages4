@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tokenizers
-PKG_VERSION:=0.22.1
+PKG_VERSION:=0.22.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=tokenizers
