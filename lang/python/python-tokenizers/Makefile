@@ -25,7 +25,11 @@ define Package/python3-tokenizers
   CATEGORY:=Languages
   TITLE:=Fast State-of-the-Art Tokenizers optimized for Research and Production
   URL:=https://huggingface.co/docs/tokenizers
-  DEPENDS:=+python3 +python3-huggingface-hub $(RUST_ARCH_DEPENDS)
+  DEPENDS:= \
+	+python3 \
+	+python3-huggingface-hub \
+	+libstdcpp \
+	$(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-tokenizers/description
