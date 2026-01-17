@@ -23,7 +23,18 @@ define Package/python3-huggingface-hub
   CATEGORY:=Languages
   TITLE:=Client library to download and publish models, datasets and other repos on the huggingface.co hub
   URL:=https://huggingface.co/docs/huggingface_hub
-  DEPENDS:=+python3 +python3-filelock +python3-fsspec +python3-hf-xet +python3-httpx +python3-packaging +python3-yaml +python3-shellingham +python3-tqdm +python3-typer-slim +python3-typing-extensions
+  DEPENDS:= \
+	+python3 \
+	+python3-filelock \
+	+python3-fsspec \
+	+python3-hf-xet \
+	+python3-httpx \
+	+python3-packaging \
+	+python3-yaml \
+	+python3-shellingham \
+	+python3-tqdm \
+	+python3-typer-slim \
+	+python3-typing-extensions
 endef
 
 define Package/python3-huggingface-hub/description
