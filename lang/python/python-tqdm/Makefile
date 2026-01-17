@@ -23,7 +23,7 @@ define Package/python3-tqdm
   CATEGORY:=Languages
   TITLE:=Fast Extensible Progress Meter
   URL:=https://tqdm.github.io/
-  DEPENDS:=+python3 +python3-requests
+  DEPENDS:=+python3
 endef
 
 define Package/python3-tqdm/description
