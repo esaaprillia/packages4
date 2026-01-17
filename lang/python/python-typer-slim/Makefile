@@ -25,7 +25,7 @@ define Package/python3-typer-slim
   CATEGORY:=Languages
   TITLE:=Typer, build great CLIs. Easy to code. Based on Python type hints.
   URL:=https://typer.tiangolo.com/
-  DEPENDS:=+python3 +python3-click +python3-typing-extensions +python3-shellingham +python3-rich
+  DEPENDS:=+python3 +python3-click +python3-typing-extensions
 endef
 
 define Package/python3-typer-slim/description
