@@ -23,7 +23,13 @@ define Package/python3-pycognito
   CATEGORY:=Languages
   TITLE:=Python class to integrate Boto3's Cognito client so it is easy to login users. With SRP support.
   URL:=https://github.com/NabuCasa/pycognito
-  DEPENDS:=+python3 +python3-requests +python3-pyjwt +python3-envs +python3-boto3
+  DEPENDS:= \
+	+python3 \
+	+python3-boto3 \
+	+python3-envs \
+	+python3-pyjwt \
+	+python3-cryptography \
+	+python3-requests
 endef
 
 define Package/python3-pycognito/description
