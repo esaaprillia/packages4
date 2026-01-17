@@ -21,7 +21,7 @@ define Package/python3-icmplib
   SUBMENU:=Python
   TITLE:=implementation of the ICMP protocol
   URL:=https://github.com/ValentinBELYN/icmplib
-  DEPENDS:=+python3-asyncio
+  DEPENDS:=+python3
 endef
 
 define Package/python3-icmplib/description
