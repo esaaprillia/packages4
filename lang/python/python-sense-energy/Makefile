@@ -21,7 +21,16 @@ define Package/python3-sense-energy
   SUBMENU:=Python
   TITLE:=API for the Sense Energy Monitor
   URL:=https://github.com/scottbonline/sense
-  DEPENDS:=+python3 +python3-async-timeout +python3-ciso8601 +python3-orjson +python3-requests +python3-websocket-client +python3-websockets +python3-aiohttp +python3-kasa-crypt
+  DEPENDS:= \
+	+python3 \
+	+python3-async-timeout \
+	+python3-ciso8601 \
+	+python3-orjson \
+	+python3-requests \
+	+python3-websocket-client \
+	+python3-websockets \
+	+python3-aiohttp \
+	+python3-kasa-crypt
 endef
 
 define Package/python3-sense-energy/description
