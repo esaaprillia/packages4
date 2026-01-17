@@ -23,7 +23,12 @@ define Package/python3-blobfile
   CATEGORY:=Languages
   TITLE:=Read GCS, ABS and local paths with the same interface, clone of tensorflow.io.gfile
   URL:=https://github.com/christopher-hesse/blobfile
-  DEPENDS:=+python3 +python3-cryptodomex +python3-urllib3 +python3-lxml +python3-filelock
+  DEPENDS:= \
+	+python3 \
+	+python3-cryptodomex \
+	+python3-urllib3 \
+	+python3-lxml \
+	+python3-filelock
 endef
 
 define Package/python3-blobfile/description
