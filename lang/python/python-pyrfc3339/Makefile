@@ -23,7 +23,7 @@ define Package/python3-pyrfc3339
   CATEGORY:=Languages
   TITLE:=Generate and parse RFC 3339 timestamps
   URL:=https://pyrfc3339.readthedocs.io/
-  DEPENDS:=+python3 +python3-pytz
+  DEPENDS:=+python3
 endef
 
 define Package/python3-pyrfc3339/description
