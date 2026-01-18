@@ -25,7 +25,8 @@ define Package/python3-aiohttp-fast-zlib
   URL:=https://github.com/bdraco/aiohttp-fast-zlib
   DEPENDS:= \
 	+python3 \
-	+python3-aiohttp
+	+python3-aiohttp \
+	+python3-isal
 endef
 
 define Package/python3-aiohttp-fast-zlib/description
