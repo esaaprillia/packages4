@@ -23,7 +23,16 @@ define Package/python3-zeep
   CATEGORY:=Languages
   TITLE:=A Python SOAP client
   URL:=http://docs.python-zeep.org/
-  DEPENDS:=+python3-light +python3-attrs +python3-isodate +python3-lxml +python3-platformdirs +python3-requests +python3-requests-toolbelt +python3-requests-file +python3-pytz +python3-httpx +python3-packaging
+  DEPENDS:= \
+	+python3 \
+	+python3-attrs \
+	+python3-isodate \
+	+python3-lxml \
+	+python3-platformdirs \
+	+python3-requests \
+	+python3-requests-toolbelt \
+	+python3-requests-file \
+	+python3-pytz
 endef
 
 define Package/python3-zeep/description
