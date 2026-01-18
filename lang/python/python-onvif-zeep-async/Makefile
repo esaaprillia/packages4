@@ -28,7 +28,6 @@ define Package/python3-onvif-zeep-async
 	+python3-aiohttp \
 	+python3-httpx \
 	+python3-zeep \
-	+python3-httpx \
 	+python3-packaging \
 	+python3-ciso8601 \
 	+python3-yarl
