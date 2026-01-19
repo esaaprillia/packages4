@@ -23,7 +23,10 @@ define Package/python3-pyhik
   CATEGORY:=Languages
   TITLE:=Python wrapper for Hikvision camera event stream
   URL:=https://github.com/mezz64/pyhik
-  DEPENDS:=+python3-light
+  DEPENDS:= \
+	+python3 \
+	+python3-requests \
+	+python3-xmltodict
 endef
 
 define Package/python3-pyhik/description
