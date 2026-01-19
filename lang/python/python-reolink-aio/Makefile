@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-reolink-aio
-PKG_VERSION:=0.16.4
+PKG_VERSION:=0.18.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=reolink_aio
@@ -23,7 +23,13 @@ define Package/python3-reolink-aio
   CATEGORY:=Languages
   TITLE:=Reolink NVR/camera API PyPI package
   URL:=https://github.com/starkillerOG/reolink_aio
-  DEPENDS:=+python3 +python3-aiohttp +python3-aiortsp +python3-orjson +python3-cryptodomex +python3-typing-extensions
+  DEPENDS:= \
+	+python3 \
+	+python3-aiohttp \
+	+python3-aiortsp \
+	+python3-orjson \
+	+python3-cryptodomex \
+	+python3-typing-extensions
 endef
 
 define Package/python3-reolink-aio/description
