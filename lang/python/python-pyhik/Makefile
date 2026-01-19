@@ -1,10 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyhik
-PKG_VERSION:=0.3.2
+PKG_VERSION:=0.4.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=pyHik
+PYPI_NAME:=pyhik
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -29,9 +29,6 @@ endef
 define Package/python3-pyhik/description
 This is a python module aiming to expose common API events from a Hikvision IP camera or nvr. Most rebadged models work as well with full functionality.
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=pyhik
-PYTHON3_PKG_WHEEL_VERSION:=0.3.2
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pyhik))
