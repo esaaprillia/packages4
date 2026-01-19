@@ -25,7 +25,14 @@ define Package/python3-kasa
   CATEGORY:=Languages
   TITLE:=Python API for TP-Link Kasa and Tapo devices
   URL:=https://github.com/python-kasa/python-kasa
-  DEPENDS:=+python3 +python3-asyncclick +python3-cryptography +python3-aiohttp +python3-mashumaro +python3-orjson +python3-kasa-crypt
+  DEPENDS:= \
+	+python3 \
+	+python3-asyncclick \
+	+python3-cryptography \
+	+python3-aiohttp \
+	+python3-mashumaro \
+	+python3-orjson \
+	+python3-kasa-crypt
 endef
 
 define Package/python3-kasa/description
