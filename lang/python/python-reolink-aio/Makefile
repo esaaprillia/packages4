@@ -27,7 +27,6 @@ define Package/python3-reolink-aio
 	+python3 \
 	+python3-aiohttp \
 	+python3-aiortsp \
-	+python3-orjson \
 	+python3-cryptodomex \
 	+python3-typing-extensions
 endef
