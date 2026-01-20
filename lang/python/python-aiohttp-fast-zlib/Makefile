@@ -26,7 +26,8 @@ define Package/python3-aiohttp-fast-zlib
   DEPENDS:= \
 	+python3 \
 	+python3-aiohttp \
-	+python3-isal
+	+python3-isal \
+	+python3-zlib-ng
 endef
 
 define Package/python3-aiohttp-fast-zlib/description
