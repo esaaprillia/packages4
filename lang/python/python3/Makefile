@@ -96,7 +96,7 @@ endef
 define Package/python3-light
 $(call Package/python3/Default)
   TITLE+= light installation
-  DEPENDS:=+python3-base +libbz2 +zlib
+  DEPENDS:=+python3-base +libbz2 +libzstd +zlib
 endef
 
 define Package/python3-light/config
