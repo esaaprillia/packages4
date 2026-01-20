@@ -41,15 +41,13 @@ endif
 # $(2) additional arguments to cargo (optional)
 define Build/Compile/Cargo
 	+$(CARGO_PKG_VARS) \
-	cargo auditable cinstall -v \
-		--profile $(CARGO_PKG_PROFILE) \
+	cargo cinstall -v \
+		--release \
 		$(if $(strip $(RUST_PKG_FEATURES)),--features "$(strip $(RUST_PKG_FEATURES))") \
-		--root $(PKG_INSTALL_DIR) \
 		--prefix $(CONFIGURE_PREFIX) \
 		--destdir $(PKG_INSTALL_DIR) \
 		--library-type cdylib \
 		--library-type staticlib \
-		--path "$(PKG_BUILD_DIR)/$(if $(strip $(1)),$(strip $(1)),$(strip $(MAKE_PATH)))" \
 		$(if $(filter --jobserver%,$(PKG_JOBS)),,-j1) \
 		$(CARGO_PKG_ARGS) \
 		$(2)
