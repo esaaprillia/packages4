@@ -23,7 +23,7 @@ define Package/python3-zigpy-deconz
   SUBMENU:=Python
   TITLE:=A library which communicates with Deconz radios
   URL:=https://github.com/zigpy/zigpy-deconz
-  DEPENDS:=+python3-asyncio +python3-logging +python3-voluptuous +python3-zigpy +python3-async-timeout
+  DEPENDS:=+python3-asyncio +python3-logging +python3-voluptuous +python3-zigpy
 endef
 
 define Package/python3-zigpy-deconz/description
