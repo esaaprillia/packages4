@@ -21,7 +21,7 @@ define Package/python3-coloredlogs
   CATEGORY:=Languages
   TITLE:=Colored terminal output for Python's logging module
   URL:=https://coloredlogs.readthedocs.io/
-  DEPENDS:=+python3 +python3-logging +python3-humanfriendly
+  DEPENDS:=+python3 +python3-humanfriendly
 endef
 
 define Package/python3-coloredlogs/description
