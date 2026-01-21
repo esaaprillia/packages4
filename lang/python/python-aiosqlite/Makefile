@@ -24,10 +24,7 @@ define Package/python3-aiosqlite
   TITLE:=asyncio bridge to the standard sqlite3 module
   URL:=https://github.com/omnilib/aiosqlite
   DEPENDS:= \
-	+python3-asyncio \
-	+python3-logging \
-	+python3-sqlite3 \
-	+python3-typing-extensions
+	+python3
 endef
 
 define Package/python3-aiosqlite/description
