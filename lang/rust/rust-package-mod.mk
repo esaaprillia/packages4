@@ -42,7 +42,7 @@ endif
 define Build/Compile/Cargo
 	+$(CARGO_PKG_VARS) \
 	cargo cinstall -v \
-		--release \
+		--profile $(CARGO_PKG_PROFILE) \
 		--target $(RUSTC_TARGET_ARCH) \
 		$(if $(strip $(RUST_PKG_FEATURES)),--features "$(strip $(RUST_PKG_FEATURES))") \
 		--prefix $(CONFIGURE_PREFIX) \
