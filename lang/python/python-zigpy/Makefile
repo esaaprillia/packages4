@@ -24,20 +24,16 @@ define Package/python3-zigpy
   TITLE:=Library implementing a Zigbee stack
   URL:=https://github.com/zigpy/zigpy
   DEPENDS:= \
-	+python3-asyncio \
-	+python3-logging \
-	+python3-sqlite3 \
-	+python3-urllib \
+	+python3 \
 	+python3-attrs \
 	+python3-aiohttp \
 	+python3-aiosqlite \
-	+python3-async-timeout \
 	+python3-crccheck \
 	+python3-cryptography \
-	+python3-pyserial-asyncio-fast \
-	+python3-typing-extensions \
 	+python3-voluptuous \
 	+python3-jsonschema \
+	+python3-pyserial-asyncio-fast \
+	+python3-typing-extensions \
 	+python3-frozendict
 endef
 
