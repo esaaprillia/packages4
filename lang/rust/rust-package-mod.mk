@@ -49,6 +49,7 @@ define Build/Compile/Cargo
 		--library-type cdylib \
 		--library-type staticlib \
 		--manifest-path "$(PKG_BUILD_DIR)/$(if $(strip $(1)),$(strip $(1)),$(strip $(MAKE_PATH)))/Cargo.toml" \
+		--target $(RUSTC_TARGET_ARCH) \
 		$(if $(filter --jobserver%,$(PKG_JOBS)),,-j1) \
 		$(CARGO_PKG_ARGS) \
 		$(2)
