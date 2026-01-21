@@ -24,13 +24,11 @@ define Package/python3-zigpy-znp
   TITLE:=A library for zigpy which communicates with TI ZNP radios
   URL:=https://github.com/zigpy/zigpy-znp
   DEPENDS:= \
-	+python3-asyncio \
-	+python3-logging \
-	+python3-async-timeout \
-	+python3-coloredlogs \
-	+python3-jsonschema \
+	+python3 \
+	+python3-zigpy \
 	+python3-voluptuous \
-	+python3-zigpy
+	+python3-coloredlogs \
+	+python3-jsonschema
 endef
 
 define Package/python3-zigpy-znp/description
