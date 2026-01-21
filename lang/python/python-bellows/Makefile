@@ -24,14 +24,11 @@ define Package/python3-bellows
   TITLE:=Library implementing EZSP
   URL:=https://github.com/zigpy/bellows
   DEPENDS:= \
-	+python3-asyncio \
-	+python3-logging \
-	+python3-urllib \
+	+python3 \
 	+python3-click \
 	+python3-click-log \
 	+python3-voluptuous \
-	+python3-zigpy \
-	+python3-async-timeout
+	+python3-zigpy
 endef
 
 define Package/python3-bellows/description
