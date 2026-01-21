@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zha
-PKG_VERSION:=0.0.81
+PKG_VERSION:=0.0.84
 PKG_RELEASE:=1
 
 PYPI_NAME:=zha
@@ -24,6 +24,7 @@ define Package/python3-zha
   TITLE:=Library implementing ZHA for Home Assistant
   URL:=https://github.com/zigpy/zha
   DEPENDS:= \
+	+python3 \
 	+python3-zigpy \
 	+python3-bellows \
 	+python3-zigpy-znp \
