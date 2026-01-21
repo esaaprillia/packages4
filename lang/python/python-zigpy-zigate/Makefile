@@ -24,15 +24,11 @@ define Package/python3-zigpy-zigate
   TITLE:=A library which communicates with ZiGate radios
   URL:=https://github.com/zigpy/zigpy-zigate
   DEPENDS:= \
-	+python3-asyncio \
-	+python3-logging \
-	+python3-urllib \
-	+python3-pyserial \
-	+python3-gpiozero \
-	+python3-pyusb \
+	+python3 \
 	+python3-voluptuous \
 	+python3-zigpy \
-	+python3-async-timeout
+	+python3-pyusb \
+	+python3-gpiozero
 endef
 
 define Package/python3-zigpy-zigate/description
