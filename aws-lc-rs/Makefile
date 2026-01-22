@@ -35,5 +35,9 @@ CARGO_PKG_VARS= \
 	CC=$(TARGET_CC_NOCACHE) \
 	MAKEFLAGS="$(PKG_JOBS)"
 
+define Build/Compile
+	$(call Build/Compile/Cargo,links-testing)
+endef
+
 $(eval $(call RustBinPackage,aws-lc-rs))
 $(eval $(call BuildPackage,aws-lc-rs))
