@@ -32,7 +32,7 @@ endef
 
 CARGO_PKG_VARS= \
 	$(CARGO_PKG_CONFIG_VARS) \
-	CC=$(TARGET_CC) \
+	CC=$(TARGET_CC_NOCACHE) \
 	MAKEFLAGS="$(PKG_JOBS)"
 
 $(eval $(call RustBinPackage,aws-lc-rs))
