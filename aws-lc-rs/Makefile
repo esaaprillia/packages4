@@ -4,9 +4,14 @@ PKG_NAME:=aws-lc-rs
 PKG_VERSION:=1.15.3
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/aws/aws-lc-rs/archive/v$(PKG_VERSION)/
-PKG_HASH:=skip
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/aws/aws-lc-rs/archive/v$(PKG_VERSION)/
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/aws/aws-lc-rs.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=efaf569ec6c3a3a1d427a5101e363a3ee8f52891
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=
 PKG_LICENSE:=Apache-2.0 OR ISC
