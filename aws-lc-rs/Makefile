@@ -30,9 +30,8 @@ define Package/aws-lc-rs/description
   aws-lc-rs is a cryptographic library using AWS-LC for its cryptographic operations. The library strives to be API-compatible with the popular Rust library named ring.
 endef
 
-define Build/Compile
-	$(call Build/Compile/Cargo,links-testing)
-endef
+CARGO_PKG_VARS += \
+	CC="$(TARGET_CC)"
 
 $(eval $(call RustBinPackage,aws-lc-rs))
 $(eval $(call BuildPackage,aws-lc-rs))
