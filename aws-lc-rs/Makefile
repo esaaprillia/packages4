@@ -41,6 +41,7 @@ CARGO_PKG_VARS= \
 	MAKEFLAGS="$(PKG_JOBS)"
 
 define Build/Compile
+	$(call Build/Compile/Cargo,aws-lc-rs-testing)
 	$(call Build/Compile/Cargo,links-testing)
 endef
 
