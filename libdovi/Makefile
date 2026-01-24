@@ -21,8 +21,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/rust/rust-package-mod.mk
 
 define Package/libdovi
-  SECTION:=sound
-  CATEGORY:=Sound
+  SECTION:=libs
+  CATEGORY:=Libraries
   TITLE:=Library to read and write Dolby Vision metadata
   DEPENDS:=$(RUST_ARCH_DEPENDS) +libstdcpp
   URL:=https://github.com/quietvoid/dovi_tool
