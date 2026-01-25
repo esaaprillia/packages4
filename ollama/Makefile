@@ -35,8 +35,7 @@ define Package/ollama/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
-	-DGGML_CPU_ALL_VARIANTS=OFF
+	-DBUILD_SHARED_LIBS=ON
 
 define Package/ollama/install
 	$(INSTALL_DIR) $(1)/usr/bin
