@@ -45,17 +45,14 @@ CMAKE_OPTIONS += \
 	-DOLLAMA_INSTALL_DIR=/usr/lib/ollama
 
 define Build/Compile
-	$(call Build/Compile/Cmake) \
+	$(call Build/Compile/Cmake)
 	$(call GoPackage/Build/Compile)
 endef
 
-define Build/Install/Default
-	true
+define Build/Install
 endef
 
 define Package/ollama/install
-	$(call Build/Install/Cmake)
-	$(call GoPackage/Package/Install/Bin)
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ollama $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib/ollama
