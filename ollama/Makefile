@@ -35,13 +35,14 @@ define Package/ollama/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DOLLAMA_INSTALL_DIR=/usr/lib/ollama
 
 define Package/ollama/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/ollama
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/ollama/*.so* $(1)/usr/lib/ollama/
 endef
 
 $(eval $(call BuildPackage,ollama))
