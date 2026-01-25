@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:= shaderc vulkan-loader
+#PKG_BUILD_DEPENDS:= shaderc vulkan-loader
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -32,7 +32,8 @@ define Package/ollama/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DGGML_CPU_ALL_VARIANTS=OFF
 
 define Package/ollama/install
 	$(INSTALL_DIR) $(1)/usr/bin
