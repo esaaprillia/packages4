@@ -18,7 +18,7 @@ PKG_BUILD_DEPENDS:=cargo-c/host
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/rust/rust-package-mod.mk
+include $(TOPDIR)/feeds/python/lang/rust/rust-package-mod2.mk
 
 define Package/libdovi
   SECTION:=libs
