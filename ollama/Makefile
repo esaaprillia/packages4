@@ -16,7 +16,13 @@ CMAKE_BINARY_SUBDIR := build
 
 #PKG_BUILD_DEPENDS:= shaderc vulkan-loader
 
-#PKG_BUILD_DEPENDS:=golang/host
+PKG_BUILD_DEPENDS:=golang/host
+
+GO_PKG:=github.com/ollama/ollama
+GO_PKG_BUILD_PKG:=$(GO_PKG)
+GO_PKG_LDFLAGS_X:= \
+	$(GO_PKG)/server.mode=release \
+	$(GO_PKG)/version.Version=$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
