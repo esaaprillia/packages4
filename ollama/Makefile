@@ -44,6 +44,16 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DOLLAMA_INSTALL_DIR=/usr/lib/ollama
 
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call GoPackage/Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call GoPackage/Package/Install/Bin)
+endef
+
 define Package/ollama/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ollama $(1)/usr/bin/
