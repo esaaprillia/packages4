@@ -45,7 +45,7 @@ CMAKE_OPTIONS += \
 	-DOLLAMA_INSTALL_DIR=/usr/lib/ollama
 
 define Build/Compile
-	$(call Build/Compile/Cmake)
+	$(call Build/Compile/Cmake) \
 	$(call GoPackage/Build/Compile)
 endef
 
