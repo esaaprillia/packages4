@@ -45,13 +45,13 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DOLLAMA_INSTALL_DIR=/usr/lib/ollama
 
-define Build/Compile
+define Build/Configure
 	$(call Build/Compile/Cmake)
 	$(call GoPackage/Build/Compile)
 endef
 
-define Build/Install
-endef
+#define Build/Install
+#endef
 
 define Package/ollama/install
 	$(INSTALL_DIR) $(1)/usr/bin
