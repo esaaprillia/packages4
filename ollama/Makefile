@@ -26,7 +26,7 @@ define Package/ollama
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Get up and running with large language models.
-	DEPENDS:=+libstdcpp
+	DEPENDS:=+libstdcpp $(GO_ARCH_DEPENDS)
 	URL:=https://github.com/ollama/ollama
 endef
 
