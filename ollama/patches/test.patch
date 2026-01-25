@@ -1,0 +1,29 @@
+From 37e1ab48a26c11cbd4bf3ca90a019e82a0db4222 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sun, 25 Jan 2026 21:05:09 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f6bfc52d160..80df0788cc6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -87,7 +87,7 @@ if(NOT CPU_VARIANTS)
+     set(CPU_VARIANTS "ggml-cpu")
+ endif()
+ 
+-install(TARGETS ggml-base ${CPU_VARIANTS}
++install(TARGETS ggml-base
+     RUNTIME_DEPENDENCIES
+         PRE_EXCLUDE_REGEXES ".*"
+     RUNTIME DESTINATION ${OLLAMA_INSTALL_DIR} COMPONENT CPU
+@@ -216,4 +216,4 @@ if(MLX_ENGINE)
+                 COMPONENT MLX)
+         endif()
+     endif()
+-endif()
+\ No newline at end of file
++endif()
