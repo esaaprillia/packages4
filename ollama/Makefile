@@ -50,15 +50,15 @@ define Build/Compile
 endef
 
 define Build/Install
-	$(call Build/Install/Cmake)
-	$(call GoPackage/Package/Install/Bin)
+	true
 endef
 
 define Package/ollama/install
+	$(call Build/Install/Cmake)
+	$(call GoPackage/Package/Install/Bin)
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ollama $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib/ollama
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/*.so* $(1)/usr/lib/ollama/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/ollama/*.so* $(1)/usr/lib/ollama/
 endef
 
