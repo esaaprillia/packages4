@@ -26,7 +26,7 @@ GO_PKG_LDFLAGS_X:= \
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
-include $(TOPDIR)/feeds/packages/lang/golang/golang-values.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/ollama
 	SECTION:=libs
