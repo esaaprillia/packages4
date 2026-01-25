@@ -40,7 +40,7 @@ CMAKE_OPTIONS += \
 
 define Package/ollama/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ollama $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib/ollama
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/ollama/*.so* $(1)/usr/lib/ollama/
 endef
