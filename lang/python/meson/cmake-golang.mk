@@ -1,9 +1,3 @@
-ifeq ($(origin GO_INCLUDE_DIR),undefined)
-  GO_INCLUDE_DIR:=$(dir $(lastword $(MAKEFILE_LIST)))
-endif
-
-include $(GO_INCLUDE_DIR)/golang-values.mk
-
 cmake_bool = $(patsubst %,-D%:BOOL=$(if $($(1)),ON,OFF),$(2))
 
 PKG_USE_NINJA ?= 1
@@ -63,15 +57,15 @@ CMAKE_HOST_INSTALL_PREFIX = $(HOST_BUILD_PREFIX)
 ifeq ($(HOST_USE_NINJA),1)
   CMAKE_HOST_OPTIONS += -DCMAKE_GENERATOR="Ninja"
 
-  define Host/Compile/Default
+  define Host/Compile/Cmake
 	+$(NINJA) -C $(HOST_CMAKE_BINARY_DIR) $(1)
   endef
 
-  define Host/Install/Default
+  define Host/Install/Cmake
 	+$(NINJA) -C $(HOST_CMAKE_BINARY_DIR) install
   endef
 
-  define Host/Uninstall/Default
+  define Host/Uninstall/Cmake
 	+$(NINJA) -C $(HOST_CMAKE_BINARY_DIR) uninstall
   endef
 else
@@ -81,18 +75,18 @@ endif
 ifeq ($(PKG_USE_NINJA),1)
   CMAKE_OPTIONS += -DCMAKE_GENERATOR="Ninja"
 
-  define Build/Compile/Default
+  define Build/Compile/Cmake
 	+$(NINJA) -C $(CMAKE_BINARY_DIR) $(1)
   endef
 
-  define Build/Install/Default
+  define Build/Install/Cmake
 	+DESTDIR="$(PKG_INSTALL_DIR)" $(NINJA) -C $(CMAKE_BINARY_DIR) install
   endef
 else
   CMAKE_OPTIONS += -DCMAKE_GENERATOR="Unix Makefiles"
 endif
 
-define Build/Configure/Default
+define Build/Configure/Cmake
 	mkdir -p $(CMAKE_BINARY_DIR)
 	(cd $(CMAKE_BINARY_DIR); \
 		CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
@@ -145,7 +139,7 @@ endef
 
 Build/InstallDev = $(if $(CMAKE_INSTALL),$(Build/InstallDev/cmake))
 
-define Host/Configure/Default
+define Host/Configure/Cmake
 	mkdir -p "$(HOST_CMAKE_BINARY_DIR)"
 	(cd $(HOST_CMAKE_BINARY_DIR); \
 		CFLAGS="$(HOST_CFLAGS)" \
