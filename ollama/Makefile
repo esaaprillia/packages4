@@ -49,7 +49,7 @@ define Build/Compile
 	$(call GoPackage/Build/Compile)
 endef
 
-define Build/Install
+define Build/Install/Default
 	true
 endef
 
