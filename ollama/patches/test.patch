@@ -1,25 +1,38 @@
-From 7541c08b42145a4742c1ba2978816cc34c6d7193 Mon Sep 17 00:00:00 2001
+From 6a364515444d4e82f34ae96960c6d99a98f18c74 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Sun, 25 Jan 2026 21:29:31 +0800
-Subject: [PATCH] Update CMakeLists.txt
+Date: Sun, 25 Jan 2026 21:42:15 +0800
+Subject: [PATCH] Comment out ggml-base installation targets
 
+Comment out installation targets for ggml-base in CMakeLists.txt.
 ---
- CMakeLists.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ CMakeLists.txt | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f6bfc52d160..c2bca15ce1e 100644
+index f6bfc52d160..cd05c51028e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -88,7 +88,7 @@ if(NOT CPU_VARIANTS)
+@@ -87,13 +87,13 @@ if(NOT CPU_VARIANTS)
+     set(CPU_VARIANTS "ggml-cpu")
  endif()
  
- install(TARGETS ggml-base ${CPU_VARIANTS}
+-install(TARGETS ggml-base ${CPU_VARIANTS}
 -    RUNTIME_DEPENDENCIES
-+    #RUNTIME_DEPENDENCIES
-         PRE_EXCLUDE_REGEXES ".*"
-     RUNTIME DESTINATION ${OLLAMA_INSTALL_DIR} COMPONENT CPU
-     LIBRARY DESTINATION ${OLLAMA_INSTALL_DIR} COMPONENT CPU
+-        PRE_EXCLUDE_REGEXES ".*"
+-    RUNTIME DESTINATION ${OLLAMA_INSTALL_DIR} COMPONENT CPU
+-    LIBRARY DESTINATION ${OLLAMA_INSTALL_DIR} COMPONENT CPU
+-    FRAMEWORK DESTINATION ${OLLAMA_INSTALL_DIR} COMPONENT CPU
+-)
++#install(TARGETS ggml-base ${CPU_VARIANTS}
++#    RUNTIME_DEPENDENCIES
++#        PRE_EXCLUDE_REGEXES ".*"
++#    RUNTIME DESTINATION ${OLLAMA_INSTALL_DIR} COMPONENT CPU
++#    LIBRARY DESTINATION ${OLLAMA_INSTALL_DIR} COMPONENT CPU
++#    FRAMEWORK DESTINATION ${OLLAMA_INSTALL_DIR} COMPONENT CPU
++#)
+ 
+ check_language(CUDA)
+ if(CMAKE_CUDA_COMPILER)
 @@ -216,4 +216,4 @@ if(MLX_ENGINE)
                  COMPONENT MLX)
          endif()
