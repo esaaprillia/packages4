@@ -54,6 +54,7 @@ endef
 #endef
 
 define Package/ollama/install
+	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ollama $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib/ollama
