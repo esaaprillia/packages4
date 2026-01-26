@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-asyncssh
-PKG_VERSION:=2.21.1
+PKG_VERSION:=2.22.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=asyncssh
