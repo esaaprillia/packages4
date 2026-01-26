@@ -46,6 +46,7 @@ GO_PKG_LDFLAGS_X:= \
 
 define Build/Compile
 	$(call Build/Compile/Cmake)
+	$(call GoPackage/Build/Configure)
 	$(call GoPackage/Build/Compile)
 endef
 
