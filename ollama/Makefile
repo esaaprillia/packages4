@@ -19,12 +19,6 @@ PKG_BUILD_PARALLEL:=1
 
 PKG_BUILD_DEPENDS:=golang/host
 
-#GO_PKG:=github.com/ollama/ollama
-#GO_PKG_BUILD_PKG:=$(GO_PKG)
-GO_PKG_LDFLAGS_X:= \
-	$(GO_PKG)/server.mode=release \
-	$(GO_PKG)/version.Version=$(PKG_VERSION)
-
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/golang/golang-package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake-golang.mk
@@ -44,6 +38,11 @@ endef
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DOLLAMA_INSTALL_DIR=/usr/lib/ollama
+
+GO_PKG:=github.com/ollama/ollama
+GO_PKG_LDFLAGS_X:= \
+	$(GO_PKG)/server.mode=release \
+	$(GO_PKG)/version.Version=$(PKG_VERSION)
 
 define Build/Compile
 	$(call Build/Compile/Cmake)
