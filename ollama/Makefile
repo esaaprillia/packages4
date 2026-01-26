@@ -36,8 +36,7 @@ define Package/ollama/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
-	-DOLLAMA_INSTALL_DIR=$(CONFIGURE_PREFIX)/lib/ollama
+	-DBUILD_SHARED_LIBS=ON
 
 GO_PKG:=github.com/ollama/ollama
 GO_PKG_LDFLAGS_X:= \
