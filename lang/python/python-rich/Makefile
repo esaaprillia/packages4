@@ -26,7 +26,10 @@ define Package/python3-rich
   SUBMENU:=Python
   TITLE:=Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
   URL:=https://rich.readthedocs.io/en/latest/
-  DEPENDS:=+python3-light +python3-pygments +python3-markdown-it-py
+  DEPENDS:= \
+	+python3 \
+	+python3-pygments \
+	+python3-markdown-it-py
 endef
 
 define Package/python3-rich/description
