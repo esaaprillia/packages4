@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bleak-esphome
-PKG_VERSION:=3.4.0
+PKG_VERSION:=3.5.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=bleak_esphome
@@ -23,7 +23,14 @@ define Package/python3-bleak-esphome
   SUBMENU:=Python
   TITLE:=Bleak backend of ESPHome
   URL:=https://github.com/Bluetooth-Devices/bleak-esphome
-  DEPENDS:=+python3 +python3-aioesphomeapi +python3-bleak +python3-bluetooth-data-tools +python3-habluetooth +python3-lru-dict +python3-bleak-retry-connector
+  DEPENDS:= \
+	+python3 \
+	+python3-aioesphomeapi \
+	+python3-bleak \
+	+python3-bluetooth-data-tools \
+	+python3-habluetooth \
+	+python3-lru-dict \
+	+python3-bleak-retry-connector
 endef
 
 define Package/python3-bleak-esphome/description
