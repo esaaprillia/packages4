@@ -8,7 +8,7 @@ PYPI_NAME:=mdurl
 PKG_HASH:=bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-flit-core/host
