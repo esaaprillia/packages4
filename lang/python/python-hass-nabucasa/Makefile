@@ -33,7 +33,6 @@ define Package/python3-hass-nabucasa
 	+python3-grpcio \
 	+python3-icmplib \
 	+python3-josepy \
-	+python3-litellm \
 	+python3-pycognito \
 	+python3-pyjwt \
 	+python3-snitun \
