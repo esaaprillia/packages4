@@ -23,7 +23,7 @@ define Package/python3-shapely
   SUBMENU:=Python
   TITLE:=Manipulation and analysis of geometric objects
   URL:=https://shapely.readthedocs.io/
-  DEPENDS:=+python3 +python3-numpy
+  DEPENDS:=+python3 +python3-numpy +geos
 endef
 
 define Package/python3-shapely/description
