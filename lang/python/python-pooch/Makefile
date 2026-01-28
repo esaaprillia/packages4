@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-setuptools-scm/host
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -26,7 +26,11 @@ define Package/python3-pooch
   CATEGORY:=Languages
   TITLE:=A friend to fetch your data files
   URL:=https://platformdirs.readthedocs.io/
-  DEPENDS:=+python3 +python3-packaging +python3-platformdirs +python3-requests
+  DEPENDS:= \
+	+python3 \
+	+python3-platformdirs \
+	+python3-packaging \
+	+python3-requests
 endef
 
 define Package/python3-pooch/description
