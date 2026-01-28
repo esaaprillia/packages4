@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-scipy
-PKG_VERSION:=1.16.3
+PKG_VERSION:=1.17.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=scipy
@@ -27,7 +27,7 @@ define Package/python3-scipy
   CATEGORY:=Languages
   TITLE:=Fundamental algorithms for scientific computing in Python
   URL:=https://scipy.org
-  DEPENDS:=+INSTALL_GFORTRAN:libgfortran +python3 +python3-numpy +openblas +python3-pooch
+  DEPENDS:=+libgfortran +python3 +python3-numpy +openblas
 endef
 
 define Package/python3-scipy/description
