@@ -30,9 +30,7 @@ define Package/python3-pandas
   DEPENDS:= \
 	+python3 \
 	+python3-numpy \
-	+python3-dateutil \
-	+python3-pytz \
-	+python3-tzdata
+	+python3-dateutil
 endef
 
 define Package/python3-pandas/description
