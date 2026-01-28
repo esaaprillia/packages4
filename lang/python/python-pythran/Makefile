@@ -25,7 +25,13 @@ define Package/python3-pythran
   CATEGORY:=Languages
   TITLE:=Ahead of Time compiler for numeric kernels
   URL:=https://pythran.readthedocs.io/
-  DEPENDS:=+python3 +python3-beniget +python3-gast +python3-numpy +python3-ply +python3-setuptools
+  DEPENDS:= \
+	+python3 \
+	+python3-ply \
+	+python3-setuptools \
+	+python3-gast \
+	+python3-numpy \
+	+python3-beniget
 endef
 
 define Package/python3-pythran/description
