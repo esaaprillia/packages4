@@ -24,7 +24,7 @@ define Package/python3-pymeteoclimatic
   DEPENDS:= \
 	+python3 \
 	+python3-lxml \
-	+python3-python3-beautifulsoup4
+	+python3-beautifulsoup4
 endef
 
 define Package/python3-pymeteoclimatic/description
