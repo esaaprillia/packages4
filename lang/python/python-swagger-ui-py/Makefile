@@ -24,7 +24,11 @@ define Package/python3-swagger-ui-py
   CATEGORY:=Languages
   TITLE:=Swagger UI for Python web framework, such Tornado, Flask and Sanic.
   URL:=https://github.com/PWZER/swagger-ui-py
-  DEPENDS:=+python3 +python3-jinja2 +python3-packaging +python3-yaml
+  DEPENDS:= \
+	+python3 \
+	+python3-jinja2 \
+	+python3-packaging \
+	+python3-yaml
 endef
 
 define Package/python3-swagger-ui-py/description
