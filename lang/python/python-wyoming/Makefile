@@ -23,7 +23,12 @@ define Package/python3-wyoming
   CATEGORY:=Languages
   TITLE:=Peer-to-peer protocol for voice assistants
   URL:=http://github.com/OHF-voice/wyoming
-  DEPENDS:=+python3 +python3-zeroconf +python3-flask +python3-swagger-ui-py
+  DEPENDS:= \
+	+python3 \
+	+python3-zeroconf \
+	+python3-flask \
+	+python3-asgiref \
+	+python3-swagger-ui-py
 endef
 
 define Package/python3-wyoming/description
