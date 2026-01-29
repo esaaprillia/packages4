@@ -27,7 +27,12 @@ define Package/python3-scikit-learn
   CATEGORY:=Languages
   TITLE:=A set of python modules for machine learning and data mining
   URL:=https://scikit-learn.org/
-  DEPENDS:=+python3-numpy +python3-scipy +python3-joblib +python3-threadpoolctl
+  DEPENDS:= \
+	+python3 \
+	+python3-numpy \
+	+python3-scipy \
+	+python3-joblib \
+	+python3-threadpoolctl
 endef
 
 define Package/python3-scikit-learn/description
