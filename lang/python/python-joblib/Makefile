@@ -26,7 +26,6 @@ define Package/python3-joblib
   DEPENDS:= \
 	+python3 \
 	+python3-numpy \
-	+python3-loky \
 	+python3-lz4 \
 	+python3-psutil \
 	+python3-distributed
