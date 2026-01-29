@@ -23,7 +23,13 @@ define Package/python3-joblib
   CATEGORY:=Languages
   TITLE:=Lightweight pipelining with Python functions
   URL:=https://joblib.readthedocs.io/
-  DEPENDS:=+python3-numpy +python3-loky +python3-lz4 +python3-psutil
+  DEPENDS:= \
+	+python3 \
+	+python3-numpy \
+	+python3-loky \
+	+python3-lz4 \
+	+python3-psutil \
+	+python3-distributed
 endef
 
 define Package/python3-joblib/description
