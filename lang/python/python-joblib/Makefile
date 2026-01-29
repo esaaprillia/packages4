@@ -27,8 +27,7 @@ define Package/python3-joblib
 	+python3 \
 	+python3-numpy \
 	+python3-lz4 \
-	+python3-psutil \
-	+python3-distributed
+	+python3-psutil
 endef
 
 define Package/python3-joblib/description
