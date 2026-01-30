@@ -23,7 +23,7 @@ define Package/libplacebo
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Reusable library for GPU-accelerated video/image rendering
-	DEPENDS:=+libstdcpp +lcms2 +shaderc +vulkan-loader +libxxhash +libunwind
+	DEPENDS:=+libstdcpp +glslang +lcms2 +shaderc +vulkan-loader +libxxhash +libunwind
 	URL:=https://libplacebo.org/
 endef
 
@@ -31,15 +31,24 @@ define Package/libplacebo/description
 	libplacebo is, in a nutshell, the core rendering algorithms and ideas of mpv rewritten as an independent library. As of today, libplacebo contains a large assortment of video processing shaders, focusing on both quality and performance.
 endef
 
+define Build/Configure
+	$(SED) "s,static:,dirs: '${STAGING_DIR}/usr/lib'\, &," $(PKG_BUILD_DIR)/src/glsl/meson.build
+	$(call Build/Configure/Meson)
+endef
+
 MESON_ARGS += \
 	-Ddemos=false \
-	-Dglslang=disabled \
+	-Dglslang=enabled \
 	-Dlcms=enabled \
 	-Dopengl=enabled \
 	-Dshaderc=enabled \
 	-Dtests=false \
 	-Dvulkan=enabled \
 	-Dvulkan-registry="$(STAGING_DIR)/usr/share/vulkan/registry/vk.xml"
+
+define Build/Compile
+	$(call Build/Compile/Meson)
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
