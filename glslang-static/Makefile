@@ -35,18 +35,10 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=OFF \
 	-DBUILD_EXTERNAL=OFF \
 	-DALLOW_EXTERNAL_SPIRV_TOOLS=YES \
-	-DGLSLANG_TESTS=OFF \
-	-DCMAKE_C_FLAGS=-fPIC \
-	-DCMAKE_CXX_FLAGS=-fPIC \
+	-DGLSLANG_TESTS=OFF
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libGenericCodeGen.a $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libMachineIndependent.a $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libOSDependent.a $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libSPIRV.a $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libglslang-default-resource-limits.a $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libglslang.a $(1)/usr/lib/
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
 $(eval $(call BuildPackage,glslang-static))
