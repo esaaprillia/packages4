@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-guppy3
-PKG_VERSION:=3.1.5
+PKG_VERSION:=3.1.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=guppy3
-PKG_HASH:=97fbe606a23f837ad109d122bf30fba355785add2dcb68e9a6be335846dd4c48
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
@@ -23,7 +23,7 @@ define Package/python3-guppy3
   SUBMENU:=Python
   TITLE:=Guppy-PE ported to Python 3
   URL:=https://github.com/zhuyifei1999/guppy3/
-  DEPENDS:=+python3-readline
+  DEPENDS:=+python3
 endef
 
 define Package/python3-guppy3/description
