@@ -43,7 +43,6 @@ define Package/irssi/description
 endef
 
 MESON_VARS += \
-	perl="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)" \
 	perl_cflags="-D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE" \
 	perl_ldflags="-Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE -lperl"
 
