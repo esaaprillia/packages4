@@ -27,13 +27,11 @@ include $(INCLUDE_DIR)/nls.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
 
-export PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
-
 define Package/irssi
   SUBMENU:=Instant Messaging
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+glib2 +libncurses +libpthread +libopenssl +perl
+  DEPENDS:=+glib2 +libncurses +libpthread +libopenssl +libotr +utf8proc +perl
   TITLE:=Console IRC client
   MAINTAINER:=Peter Wagner <tripolar@gmx.at>
   URL:=https://irssi.org/
@@ -43,15 +41,16 @@ define Package/irssi/description
 	Irssi is a terminal based IRC client for UNIX systems.
 endef
 
-#TARGET_LDFLAGS += -Wl,--gc-sections
+PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
+
+TARGET_LDFLAGS += -Wl,--gc-sections
 
 MESON_ARGS += \
-	-Dwithout-textui=no \
-	-Dwith-bot=no \
-	-Dwith-otr=no \
 	-Dwith-perl=yes \
 	-Dwith-perl-lib=$(PERL_SITELIB) \
-	-Dwith-proxy=no \
+	-Dwith-proxy=yes \
+	-Dwith-otr=yes \
+	-Denable-true-color=yes
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include/irssi
@@ -60,7 +59,12 @@ endef
 
 define Package/irssi/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/$(PKG_NAME) $(1)/usr/bin/$(PKG_NAME)
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/irssi $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/irssi $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/perl5 $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/irssi $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,irssi))
