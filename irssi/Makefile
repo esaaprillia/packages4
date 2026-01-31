@@ -20,10 +20,11 @@ PKG_LICENSE_FILES:=COPYING
 PKG_CPE_ID:=cpe:/a:irssi:irssi
 
 PKG_INSTALL:=1
+PKG_BUILD_DEPENDS:=meson/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
-include $(INCLUDE_DIR)/meson.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
 
 export PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
