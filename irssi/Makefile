@@ -26,6 +26,8 @@ include $(INCLUDE_DIR)/nls.mk
 include $(INCLUDE_DIR)/meson.mk
 include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
 
+export PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
+
 define Package/irssi
   SUBMENU:=Instant Messaging
   SECTION:=net
