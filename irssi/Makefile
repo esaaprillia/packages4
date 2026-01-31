@@ -40,12 +40,12 @@ define Package/irssi/description
 	Irssi is a terminal based IRC client for UNIX systems.
 endef
 
-#MESON_VARS += \
-#	perl="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)"
+MESON_VARS += \
+	perl="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)"
 
 PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
-TARGET_CFLAGS="-D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE" \
-TARGET_LDFLAGS="-Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE"
+CFLAGS="-D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE" \
+LDFLAGS="-Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE"
 #TARGET_LDFLAGS += -Wl,--gc-sections
 
 MESON_ARGS += \
@@ -53,7 +53,7 @@ MESON_ARGS += \
 	-Dwith-bot=no \
 	-Dwith-otr=no \
 	-Dwith-perl=yes \
-	-Dwith-perl-lib=$(PERL_SITELIB) \
+	-Dwith-perl-lib=$(STAGING_DIR)$(PERL_SITELIB)/CORE \
 	-Dwith-proxy=no \
 
 define Build/InstallDev
