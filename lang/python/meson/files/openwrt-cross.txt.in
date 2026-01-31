@@ -10,12 +10,15 @@ nm = '@NM@'
 pkg-config = '@PKGCONFIG@'
 cmake = '@CMAKE@'
 python = '@PYTHON@'
+perl = '@PERL@'
 
 [built-in options]
 c_args = [@CFLAGS@]
 c_link_args = [@LDFLAGS@]
 cpp_args = [@CXXFLAGS@]
 cpp_link_args = [@LDFLAGS@]
+perl_cflags = [@PERL_CFLAGS@]
+perl_ldflags = [@PERL_LDFLAGS@]
 prefix = '/usr'
 
 [host_machine]
