@@ -21,6 +21,8 @@
 #
 # MESON_HOST_ARGS+=-Dfoo -Dbar=baz
 # MESON_HOST_VARS+=FOO=bar
+include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
+PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
 
 MESON_DIR:=$(STAGING_DIR_HOSTPKG)/lib/meson
 
@@ -85,6 +87,9 @@ define Meson/CreateCrossFile
 		-e "s|@PKGCONFIG@|$(PKG_CONFIG)|" \
 		-e "s|@CMAKE@|$(STAGING_DIR_HOST)/bin/cmake|" \
 		-e "s|@PYTHON@|$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON)|" \
+		-e "s|@PERL@|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)|" \
+		-e "s|@PERL_CFLAGS@|$(foreach FLAG,-D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE,'$(FLAG)',)|" \
+		-e "s|@PERL_LDFLAGS@|$(foreach FLAG,-Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE,'$(FLAG)',)|" \
 		-e "s|@CFLAGS@|$(foreach FLAG,$(TARGET_CFLAGS) $(EXTRA_CFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS),'$(FLAG)',)|" \
 		-e "s|@CXXFLAGS@|$(foreach FLAG,$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS) $(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS),'$(FLAG)',)|" \
 		-e "s|@LDFLAGS@|$(foreach FLAG,$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS),'$(FLAG)',)|" \
