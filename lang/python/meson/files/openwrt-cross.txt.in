@@ -27,6 +27,7 @@ endian = '@ENDIAN@'
 
 [properties]
 longdouble_format = 'IEEE_DOUBLE_LE'
-perl_cflags = [@PERL_CFLAGS@]
-perl_ldflags = [@PERL_LDFLAGS@]
+perl_ccopts = [@PERL_CFLAGS@]
+perl_ldopts = [@PERL_LDFLAGS@]
+
 needs_exe_wrapper = true
