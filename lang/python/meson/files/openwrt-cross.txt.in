@@ -17,8 +17,6 @@ c_args = [@CFLAGS@]
 c_link_args = [@LDFLAGS@]
 cpp_args = [@CXXFLAGS@]
 cpp_link_args = [@LDFLAGS@]
-perl_cflags = [@PERL_CFLAGS@]
-perl_ldflags = [@PERL_LDFLAGS@]
 prefix = '/usr'
 
 [host_machine]
@@ -29,4 +27,6 @@ endian = '@ENDIAN@'
 
 [properties]
 longdouble_format = 'IEEE_DOUBLE_LE'
+perl_cflags = [@PERL_CFLAGS@]
+perl_ldflags = [@PERL_LDFLAGS@]
 needs_exe_wrapper = true
