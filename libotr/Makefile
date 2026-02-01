@@ -13,7 +13,7 @@ PKG_LICENSE:=LGPL-2.1-only
 PKG_LICENSE_FILES:=COPYING COPYING.LIB
 
 PKG_BUILD_PARALLEL:=1
-PKG_FIXUP:=autoreconf
+#PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -30,14 +30,11 @@ This is the portable OTR Messaging Library, as well as the toolkit to help you f
 endef
 
 CONFIGURE_ARGS += \
-	--prefix=/usr
+	--prefix=/usr \
+	--disable-gcc-hardening
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
-		LDFLAGS="$(TARGET_LDFLAGS)" \
-		CFLAGS="$(TARGET_CFLAGS)" \
-		CPPFLAGS="$(TARGET_CPPFLAGS)" \
-		CC="$(TARGET_CC)" \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		all install
 endef
