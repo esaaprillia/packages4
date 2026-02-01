@@ -34,6 +34,10 @@ CONFIGURE_ARGS += \
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
+		LDFLAGS="$(TARGET_LDFLAGS)" \
+		CFLAGS="$(TARGET_CFLAGS)" \
+		CPPFLAGS="$(TARGET_CPPFLAGS)" \
+		CC="$(TARGET_CC)" \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		all install
 endef
