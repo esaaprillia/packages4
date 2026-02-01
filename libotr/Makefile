@@ -29,9 +29,10 @@ define Package/libotr/description
 This is the portable OTR Messaging Library, as well as the toolkit to help you forge messages.
 endef
 
+TARGET_CFLAGS+= -D_FORTIFY_SOURCE=0
+
 CONFIGURE_ARGS += \
-	--prefix=/usr \
-	--disable-gcc-hardening
+	--prefix=/usr
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
