@@ -43,7 +43,7 @@ endef
 
 PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
 
-TARGET_LDFLAGS += -Wl,--gc-sections -Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE
+TARGET_LDFLAGS += -Wl,--gc-sections -Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE -lperl
 
 MESON_ARGS += \
 	-Dwith-perl=yes \
