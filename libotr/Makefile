@@ -13,7 +13,7 @@ PKG_LICENSE:=LGPL-2.1-only
 PKG_LICENSE_FILES:=COPYING COPYING.LIB
 
 PKG_BUILD_PARALLEL:=1
-#PKG_FIXUP:=autoreconf
+PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -28,8 +28,6 @@ endef
 define Package/libotr/description
 This is the portable OTR Messaging Library, as well as the toolkit to help you forge messages.
 endef
-
-TARGET_CFLAGS+= -D_FORTIFY_SOURCE=0
 
 CONFIGURE_ARGS += \
 	--prefix=/usr
