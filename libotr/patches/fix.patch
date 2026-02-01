@@ -1,0 +1,33 @@
+From a3a65797852bdcf926b9fcd45e5c1add01a2b9cc Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 1 Feb 2026 12:43:54 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ toolkit/Makefile.am | 2 +-
+ toolkit/Makefile.in | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/toolkit/Makefile.am b/toolkit/Makefile.am
+index 4c069fb..007cfe2 100644
+--- a/toolkit/Makefile.am
++++ b/toolkit/Makefile.am
+@@ -1,4 +1,4 @@
+-AM_CPPFLAGS = -I$(includedir) -I../src @LIBGCRYPT_CFLAGS@
++AM_CPPFLAGS = -I../src @LIBGCRYPT_CFLAGS@
+ 
+ noinst_HEADERS = aes.h ctrmode.h parse.h sesskeys.h readotr.h sha1hmac.h
+ 
+diff --git a/toolkit/Makefile.in b/toolkit/Makefile.in
+index deca500..adfade8 100644
+--- a/toolkit/Makefile.in
++++ b/toolkit/Makefile.in
+@@ -343,7 +343,7 @@ target_alias = @target_alias@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-AM_CPPFLAGS = -I$(includedir) -I../src @LIBGCRYPT_CFLAGS@
++AM_CPPFLAGS = -I../src @LIBGCRYPT_CFLAGS@
+ noinst_HEADERS = aes.h ctrmode.h parse.h sesskeys.h readotr.h sha1hmac.h
+ COMMON_S = parse.c sha1hmac.c
+ COMMON_LD = ../src/libotr.la @LIBS@ @LIBGCRYPT_LIBS@
