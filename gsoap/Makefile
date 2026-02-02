@@ -15,6 +15,8 @@ PKG_LICENSE_FILES:=LICENSE.txt license.pdf
 PKG_BUILD_DIR:=$(BUILD_DIR)/gsoap-2.8
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/gsoap-2.8
 
+HOST_PATCH_DIR := ./patches-host
+
 PKG_BUILD_DEPENDS:=gsoap/host
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
