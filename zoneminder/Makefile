@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=COPYING
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake-perl.mk
 include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
 
 define Package/zoneminder
