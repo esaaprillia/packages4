@@ -19,12 +19,12 @@ PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/libotr
+define Package/gsoap
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Development toolkit for Web Services and XML data bindings for C & C++
 	DEPENDS:=+libopenssl +zlib
-	URL:=https://otr.cypherpunks.ca/
+	URL:=https://sourceforge.net/projects/gsoap2
 endef
 
 define Package/gsoap/description
