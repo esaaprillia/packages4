@@ -30,8 +30,11 @@ define Package/zoneminder
 	TITLE:=ZoneMinder is a free, open source Closed-circuit television software application developed for Linux which supports IP, USB and Analog cameras.
 	URL:=http://www.zoneminder.com/
 	DEPENDS:= \
+	+arp-scan \
+	+arp-scan-database \
 	+ffmpeg \
 	+glib2 \
+	+gsoap \
 	+perl \
 	+perl-archive-zip \
 	+perl-crypt-eksblowfish \
@@ -55,7 +58,10 @@ define Package/zoneminder
 	+perl-json-maybexs \
 	+libcurl \
 	+libjpeg-turbo \
+	+libjwt \
 	+libmariadb \
+	+libmosquitto-ssl \
+	+libmosquittopp \
 	+libopenssl \
 	+libpcre2 \
 	+libunwind \
