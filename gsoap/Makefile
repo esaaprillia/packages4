@@ -13,11 +13,14 @@ PKG_LICENSE:=GPL-2.0-or-later gSOAP-1.3b
 PKG_LICENSE_FILES:=LICENSE.txt license.pdf
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/gsoap-2.8
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/gsoap-2.8
 
+PKG_BUILD_DEPENDS:=gsoap/host
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
@@ -72,4 +75,5 @@ define Package/gsoap/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/gsoap $(1)/usr/share/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,gsoap))
