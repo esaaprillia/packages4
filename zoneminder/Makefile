@@ -51,7 +51,15 @@ define Package/zoneminder
 	+perl-time-hires \
 	+perl-sys-cpu \
 	+perl-json-maybexs \
-	+libmariadb
+	+libcurl \
+	+libjpeg-turbo \
+	+libmariadb \
+	+libopenssl \
+	+libpcre2 \
+	+libunwind \
+	+libv4l \
+	+libx264 \
+	+zlib
 endef
 
 define Package/zoneminder/description
