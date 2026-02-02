@@ -31,6 +31,7 @@ define Package/zoneminder
 	URL:=http://www.zoneminder.com/
 	DEPENDS:= \
 	+ffmpeg \
+	+glib2 \
 	+perl \
 	+perl-archive-zip \
 	+perl-crypt-eksblowfish \
