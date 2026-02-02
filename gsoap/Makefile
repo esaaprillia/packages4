@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gsoap
-PKG_VERSION:=2.8.140
+PKG_VERSION:=2.8.139
 PKG_RELEASE:=1
 
 PKG_SOURCE:=gsoap_$(PKG_VERSION).zip
@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later gSOAP-1.3b
 PKG_LICENSE_FILES:=LICENSE.txt license.pdf
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/gsoap-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/gsoap-2.8
 
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
