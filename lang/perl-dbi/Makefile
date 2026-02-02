@@ -11,8 +11,8 @@ PKG_NAME:=perl-dbi
 PKG_VERSION:=1.647
 PKG_RELEASE:=1
 
-PKG_SOURCE:=DBI-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://www.cpan.org/authors/id/T/TI/TIMB/
+PKG_SOURCE:=DBI-$(PKG_VERSION).tgz
+PKG_SOURCE_URL:=https://www.cpan.org/authors/id/H/HM/HMBRAND/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
