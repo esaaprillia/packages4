@@ -22,13 +22,13 @@ include $(INCLUDE_DIR)/package.mk
 define Package/libotr
 	SECTION:=libs
 	CATEGORY:=Libraries
-	TITLE:=OTR library and toolkit
+	TITLE:=Development toolkit for Web Services and XML data bindings for C & C++
 	DEPENDS:=+libopenssl +zlib
 	URL:=https://otr.cypherpunks.ca/
 endef
 
 define Package/gsoap/description
-This is the portable OTR Messaging Library, as well as the toolkit to help you forge messages.
+The gSOAP toolkit is an extensive suite of portable C and C++ software to develop XML Web services with powerful type-safe XML data bindings.
 endef
 
 CONFIGURE_ARGS += \
