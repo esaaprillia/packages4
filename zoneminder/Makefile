@@ -4,9 +4,14 @@ PKG_NAME:=zoneminder
 PKG_VERSION:=1.38.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/ZoneMinder/zoneminder/archive/$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/ZoneMinder/zoneminder/archive/$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/ZoneMinder/zoneminder.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=39c2cc997beb038aed2e7f17abf372ee3b32e090
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0
