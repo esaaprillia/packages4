@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-http-date
-PKG_VERSION:=6.05
-PKG_RELEASE:=2
+PKG_VERSION:=6.06
+PKG_RELEASE:=1
 
 PKG_SOURCE:=HTTP-Date-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/O/OA/OALDERS
-PKG_HASH:=365d6294dfbd37ebc51def8b65b81eb79b3934ecbc95a2ec2d4d827efe6a922b
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/HTTP-Date-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
@@ -29,7 +29,7 @@ define Package/perl-http-date
   CATEGORY:=Languages
   TITLE:=Date conversion routines
   URL:=http://search.cpan.org/dist/HTTP-Date/
-  DEPENDS:=perl +perlbase-essential +perlbase-time
+  DEPENDS:=perl +perlbase-essential +perlbase-time +perl-timedate
 endef
 
 define Build/Configure
