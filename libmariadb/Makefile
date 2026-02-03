@@ -99,6 +99,20 @@ CMAKE_OPTIONS += \
 	-DWITH_MYSQLCOMPAT=ON \
 	-DWITH_SSL=OPENSSL
 
+# We won't need unit tests
+CMAKE_HOST_OPTIONS += -DWITH_UNIT_TESTS=0
+
+CMAKE_HOST_OPTIONS += \
+	-DDEFAULT_CHARSET=utf8 \
+	-DDEFAULT_COLLATION=utf8_general_ci \
+	-DINSTALL_INCLUDEDIR=include/mysql \
+	-DINSTALL_LIBDIR=lib \
+	-DINSTALL_PLUGINDIR=lib/mariadb/plugin \
+	-DMARIADB_UNIX_ADDR=$(MARIADB_SOCKET) \
+	-DWITH_EXTERNAL_ZLIB=YES \
+	-DWITH_MYSQLCOMPAT=ON \
+	-DWITH_SSL=OPENSSL
+
 # Help MariaDB find the correct libiconv.
 # nls.mk sets it up so that with CONFIG_BUILD_NLS libiconv-full would be used,
 # otherwise libiconv-stub (independent of the selected libc). MariaDB needs a
@@ -138,6 +152,12 @@ define Build/InstallDev
 		CLIENT_VERSION=`sed -n 's|^#define[[:blank:]]*VERSION[[:blank:]]*"\([0-9.]*\)"|\1|p' mariadb_config.c`; \
 		$(SED) "s/VERSION/$$$${CLIENT_VERSION}/" $(1)/usr/bin/mysql_config
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libmariadb.pc $(1)/usr/lib/pkgconfig
+endef
+
+define Host/Install
+	$(call Host/Install/Default)
+	$(LN) $(STAGING_DIR_HOSTPKG)/bin/mariadb_config $(STAGING_DIR_HOSTPKG)/bin/mysql_config
+	$(LN) $(STAGING_DIR_HOSTPKG)/include/mysql/mariadb_version.h $(STAGING_DIR_HOSTPKG)/include/mysql/mysql_version.h
 endef
 
 define Package/$(PKG_NAME)/install
