@@ -14,13 +14,17 @@ PKG_RELEASE:=1
 PKG_SOURCE:=LWP-MediaTypes-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/O/OA/OALDERS
 PKG_HASH:=8f1bca12dab16a1c2a7c03a49c5e58cce41a6fec9519f0aadfba8dad997919d9
+
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/LWP-MediaTypes-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/LWP-MediaTypes-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_LICENSE_FILES:=LICENSE
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
 define Package/perl-lwp-mediatypes
@@ -30,6 +34,18 @@ define Package/perl-lwp-mediatypes
   TITLE:=Guess media type for a file or a URL
   URL:=https://search.cpan.org/dist/LWP-MediaTypes/
   DEPENDS:=perl +perlbase-essential
+endef
+
+define Host/Configure
+	$(call perlmod/host/Configure,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -44,5 +60,5 @@ define Package/perl-lwp-mediatypes/install
         $(call perlmod/Install,$(1),LWP auto/LWP)
 endef
 
-
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,perl-lwp-mediatypes))
