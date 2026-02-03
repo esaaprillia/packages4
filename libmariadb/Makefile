@@ -111,9 +111,7 @@ CMAKE_HOST_OPTIONS += \
 	-DMARIADB_UNIX_ADDR=$(MARIADB_SOCKET) \
 	-DWITH_EXTERNAL_ZLIB=YES \
 	-DWITH_MYSQLCOMPAT=ON \
-	-DWITH_SSL=OPENSSL
-
-CMAKE_HOST_OPTIONS += \
+	-DWITH_SSL=OPENSSL \
 	-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
 	-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
 	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH \
@@ -163,6 +161,8 @@ endef
 
 define Host/Install
 	$(call Host/Install/Default)
+	$(RM) $(STAGING_DIR_HOSTPKG)/lib/libmariadb.so*
+	$(RM) $(STAGING_DIR_HOSTPKG)/lib/libmysqlclient.so*
 	$(LN) $(STAGING_DIR_HOSTPKG)/bin/mariadb_config $(STAGING_DIR_HOSTPKG)/bin/mysql_config
 	$(LN) $(STAGING_DIR_HOSTPKG)/include/mysql/mariadb_version.h $(STAGING_DIR_HOSTPKG)/include/mysql/mysql_version.h
 endef
