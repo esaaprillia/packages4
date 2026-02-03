@@ -19,7 +19,7 @@ HOST_BUILD_DEPENDS:=perl-dbi/host libmariadb/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../perl/perlmod.mk
+include $(TOPDIR)/feeds/packages/lang/perl/perlmod.mk
 
 define Package/perl-dbd-mysql
   SUBMENU:=Perl
