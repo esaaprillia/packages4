@@ -103,7 +103,6 @@ CMAKE_OPTIONS += \
 CMAKE_HOST_OPTIONS += -DWITH_UNIT_TESTS=0
 
 CMAKE_HOST_OPTIONS += \
-    -DBUILD_SHARED_LIBS=OFF \
 	-DDEFAULT_CHARSET=utf8 \
 	-DDEFAULT_COLLATION=utf8_general_ci \
 	-DINSTALL_INCLUDEDIR=include/mysql \
@@ -162,8 +161,6 @@ endef
 
 define Host/Install
 	$(call Host/Install/Default)
-	$(RM) $(STAGING_DIR_HOSTPKG)/lib/libmariadb.so*
-	$(RM) $(STAGING_DIR_HOSTPKG)/lib/libmysqlclient.so*
 	$(LN) $(STAGING_DIR_HOSTPKG)/bin/mariadb_config $(STAGING_DIR_HOSTPKG)/bin/mysql_config
 	$(LN) $(STAGING_DIR_HOSTPKG)/include/mysql/mariadb_version.h $(STAGING_DIR_HOSTPKG)/include/mysql/mysql_version.h
 endef
