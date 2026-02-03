@@ -93,13 +93,14 @@ CMAKE_OPTIONS += \
 	-DGSOAP_ROOT="$(STAGING_DIR)/usr" \
 	-DGSOAP_TOOL_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
 	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)" \
-	-DZM_PERL_MM_PARMS=$(PERL_SITELIB)
+	-DZM_PERL_MM_PARMS=$(PERL_SITELIB) \
+	-DZM_PERL_SEARCH_PATH=$(PERL_SITELIB)
 
 define Package/zoneminder/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/flatc $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/
+	$(CP) $(PKG_INSTALL_DIR)/* $(1)/
+	#$(INSTALL_DIR) $(1)/usr/lib
+	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,zoneminder))
