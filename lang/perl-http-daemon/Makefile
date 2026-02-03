@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-http-daemon
-PKG_VERSION:=6.06
+PKG_VERSION:=6.16
 PKG_RELEASE:=1
 
 PKG_SOURCE:=HTTP-Daemon-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/O/OA/OALDERS
-PKG_HASH:=fc03a161b54553f766457a4267e7066767f54ad01cacfe9a91d7caa2a0319bad
+PKG_HASH:=skip
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/HTTP-Daemon-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/HTTP-Daemon-$(PKG_VERSION)
