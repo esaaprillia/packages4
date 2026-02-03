@@ -24,8 +24,8 @@ PKG_FIXUP:=autoreconf
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
+define Build/Configure
+	$(call Build/Configure/Default)
 	$(SED) 's|SOAP=$(top_builddir)/gsoap/src/soapcpp2|SOAP=$(STAGING_DIR_HOSTPKG)/bin/soapcpp2|g' $(PKG_BUILD_DIR)/gsoap/wsdl/Makefile.in
 	$(SED) 's|SOAP=$(top_builddir)/gsoap/src/soapcpp2|SOAP=$(STAGING_DIR_HOSTPKG)/bin/soapcpp2|g' $(PKG_BUILD_DIR)/gsoap/wsdl/Makefile.am
 endef
