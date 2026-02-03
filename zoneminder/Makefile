@@ -60,7 +60,6 @@ define Package/zoneminder
 	+libjpeg-turbo \
 	+libjwt \
 	+libmariadb \
-	+libmosquitto-ssl \
 	+libmosquittopp \
 	+libopenssl \
 	+libpcre2 \
@@ -84,6 +83,7 @@ CMAKE_OPTIONS += \
 	-DZM_TMPDIR=/var/tmp/zoneminder \
 	-DZM_WEBDIR=/www/zoneminder \
 	-DZM_CGIDIR=/www/cgi-bin \
+	-DGSOAP_ROOT="$(STAGING_DIR)/usr" \
 	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)" \
 	-DZM_PERL_MM_PARMS=$(PERL_SITELIB)
 
