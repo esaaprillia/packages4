@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSES
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/DBD-mysql-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=perl-dbi/host
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/DBD-mysql-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl-dbi/host libmariadb/host
+HOST_BUILD_DEPENDS:=perl-dbi/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
