@@ -35,8 +35,6 @@ endef
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
-	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libjwt.pc
-	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libjwt.pc
 endef
 
 define Package/libjwt/install
