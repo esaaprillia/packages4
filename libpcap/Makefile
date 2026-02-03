@@ -29,6 +29,7 @@ PKG_CONFIG_DEPENDS := \
 	CONFIG_PCAP_HAS_NETFILTER
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/libpcap
@@ -105,5 +106,6 @@ define Package/rpcapd/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/rpcapd $(1)/usr/sbin/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,libpcap))
 $(eval $(call BuildPackage,rpcapd))
