@@ -26,8 +26,7 @@ include $(INCLUDE_DIR)/host-build.mk
 
 define Build/Configure
 	$(call Build/Configure/Default)
-	$(SED) 's|SOAP=$(top_builddir)/gsoap/src/soapcpp2|SOAP=$(STAGING_DIR_HOSTPKG)/bin/soapcpp2|g' $(PKG_BUILD_DIR)/gsoap/wsdl/Makefile.in
-	$(SED) 's|SOAP=$(top_builddir)/gsoap/src/soapcpp2|SOAP=$(STAGING_DIR_HOSTPKG)/bin/soapcpp2|g' $(PKG_BUILD_DIR)/gsoap/wsdl/Makefile.am
+	$(SED) 's|^\(SOAP = \).*|\1$(STAGING_DIR_HOSTPKG)/bin/soapcpp2|' $(PKG_BUILD_DIR)/gsoap/wsdl/Makefile
 endef
 
 define Package/gsoap
