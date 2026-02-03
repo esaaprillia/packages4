@@ -19,8 +19,11 @@ PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Encode-Locale-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Encode-Locale-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
 define Package/perl-encode-locale
@@ -30,6 +33,18 @@ define Package/perl-encode-locale
   TITLE:=Determine the locale encoding
   URL:=http://search.cpan.org/dist/Encode-Locale/
   DEPENDS:=perl +perlbase-base +perlbase-encode +perlbase-essential
+endef
+
+define Host/Configure
+	$(call perlmod/host/Configure,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -44,5 +59,5 @@ define Package/perl-encode-locale/install
         $(call perlmod/Install,$(1),Encode auto/Encode)
 endef
 
-
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,perl-encode-locale))
