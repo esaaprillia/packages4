@@ -19,8 +19,11 @@ PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/WWW-RobotRules-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/WWW-RobotRules-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
 define Package/perl-www-robotrules
@@ -30,6 +33,18 @@ define Package/perl-www-robotrules
   TITLE:=database of robots.txt-derived permissions
   URL:=http://search.cpan.org/dist/WWW-RobotRules/
   DEPENDS:=perl +perl-uri +perlbase-anydbm-file +perlbase-essential +perlbase-fcntl
+endef
+
+define Host/Configure
+	$(call perlmod/host/Configure,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -44,5 +59,5 @@ define Package/perl-www-robotrules/install
         $(call perlmod/Install,$(1),WWW auto/WWW)
 endef
 
-
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,perl-www-robotrules))
