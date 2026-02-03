@@ -24,6 +24,13 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake-perl.mk
 include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's|perl Makefile.PL|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION) Makefile.PL|g' $(PKG_BUILD_DIR)/onvif/proxy/CMakeLists.txt
+	$(SED) 's|perl Makefile.PL|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION) Makefile.PL|g' $(PKG_BUILD_DIR)/onvif/modules/CMakeLists.txt
+	$(SED) 's|perl Makefile.PL|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION) Makefile.PL|g' $(PKG_BUILD_DIR)/scripts/ZoneMinder/CMakeLists.txt
+endef
+
 define Package/zoneminder
 	SECTION:=libs
 	CATEGORY:=Libraries
