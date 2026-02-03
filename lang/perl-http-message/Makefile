@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-http-message
-PKG_VERSION:=6.22
+PKG_VERSION:=7.01
 PKG_RELEASE:=1
 
 PKG_SOURCE:=HTTP-Message-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/O/OA/OALDERS
-PKG_HASH:=970efd151b81c95831d2a5f9e117f8032b63a1768cd2cd3f092ad634c85175c3
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/HTTP-Message-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
