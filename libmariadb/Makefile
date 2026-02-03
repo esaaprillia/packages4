@@ -113,6 +113,13 @@ CMAKE_HOST_OPTIONS += \
 	-DWITH_MYSQLCOMPAT=ON \
 	-DWITH_SSL=OPENSSL
 
+CMAKE_HOST_OPTIONS += \
+	-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
+	-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
+	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH \
+	-DCMAKE_INSTALL_RPATH="$(STAGING_DIR_HOSTPKG)/lib" \
+	-DCMAKE_SKIP_RPATH=FALSE
+
 # Help MariaDB find the correct libiconv.
 # nls.mk sets it up so that with CONFIG_BUILD_NLS libiconv-full would be used,
 # otherwise libiconv-stub (independent of the selected libc). MariaDB needs a
