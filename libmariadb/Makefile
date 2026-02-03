@@ -111,12 +111,7 @@ CMAKE_HOST_OPTIONS += \
 	-DMARIADB_UNIX_ADDR=$(MARIADB_SOCKET) \
 	-DWITH_EXTERNAL_ZLIB=YES \
 	-DWITH_MYSQLCOMPAT=ON \
-	-DWITH_SSL=OPENSSL \
-	-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
-	-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
-	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH \
-	-DCMAKE_INSTALL_RPATH="$(STAGING_DIR_HOSTPKG)/lib" \
-	-DCMAKE_SKIP_RPATH=FALSE
+	-DWITH_SSL=OPENSSL
 
 # Help MariaDB find the correct libiconv.
 # nls.mk sets it up so that with CONFIG_BUILD_NLS libiconv-full would be used,
@@ -161,8 +156,14 @@ endef
 
 define Host/Install
 	$(call Host/Install/Default)
-	$(LN) $(STAGING_DIR_HOSTPKG)/bin/mariadb_config $(STAGING_DIR_HOSTPKG)/bin/mysql_config
-	$(LN) $(STAGING_DIR_HOSTPKG)/include/mysql/mariadb_version.h $(STAGING_DIR_HOSTPKG)/include/mysql/mysql_version.h
+	cd $(STAGING_DIR_HOSTPKG)/include/mysql; $(LN) mariadb_version.h mysql_version.h
+	$(INSTALL_BIN) files/mysql_config $(STAGING_DIR_HOSTPKG)/bin
+	$(SED) 's/PORT/$(MARIADB_PORT)/' $(STAGING_DIR_HOSTPKG)/bin/mysql_config
+	$(SED) 's|PLUGIN_DIR|$(MARIADB_PLUGIN_DIR)|' $(STAGING_DIR_HOSTPKG)/bin/mysql_config
+	$(SED) 's|SOCKET|$(MARIADB_SOCKET)|' $(STAGING_DIR_HOSTPKG)/bin/mysql_config
+	cd "$(HOST_BUILD_DIR)/mariadb_config"; \
+		CLIENT_VERSION=`sed -n 's|^#define[[:blank:]]*VERSION[[:blank:]]*"\([0-9.]*\)"|\1|p' mariadb_config.c`; \
+		$(SED) "s/VERSION/$$$${CLIENT_VERSION}/" $(STAGING_DIR_HOSTPKG)/bin/mysql_config
 endef
 
 define Package/$(PKG_NAME)/install
