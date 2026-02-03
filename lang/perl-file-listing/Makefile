@@ -19,8 +19,11 @@ PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/File-Listing-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/File-Listing-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
 define Package/perl-file-listing
@@ -30,6 +33,18 @@ define Package/perl-file-listing
   TITLE:=Parse directory listing
   URL:=http://search.cpan.org/dist/File-Listing/
   DEPENDS:=perl +perl-http-date +perlbase-essential
+endef
+
+define Host/Configure
+	$(call perlmod/host/Configure,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -44,5 +59,5 @@ define Package/perl-file-listing/install
         $(call perlmod/Install,$(1),File auto/File)
 endef
 
-
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,perl-file-listing))
