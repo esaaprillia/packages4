@@ -33,7 +33,7 @@ define Package/gsoap
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Development toolkit for Web Services and XML data bindings for C & C++
-	DEPENDS:=+libopenssl +zlib
+	DEPENDS:=+libstdcpp +libopenssl +zlib
 	URL:=https://sourceforge.net/projects/gsoap2
 endef
 
