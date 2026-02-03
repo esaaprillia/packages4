@@ -13,10 +13,12 @@ PKG_LICENSE:=GPL-1.0-or-later OR Artistic-1.0-Perl
 PKG_LICENSE_FILES:=
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/IO-Socket-SSL-$(PKG_VERSION)
-
 PKG_BUILD_DEPENDS:=perl-mozilla-ca/host perl-net-ssleay/host
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/IO-Socket-SSL-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl-mozilla-ca/host perl-net-ssleay/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
 define Package/perl-io-socket-ssl
@@ -26,6 +28,18 @@ define Package/perl-io-socket-ssl
 	TITLE:=Nearly transparent SSL encapsulation for IO::Socket::INET
 	DEPENDS:=perl +ca-certificates +perl-uri +perl-net-ssleay +perl-mozilla-ca +perlbase-essential
 	URL:=https://metacpan.org/dist/IO-Socket-SSL
+endef
+
+define Host/Configure
+	$(call perlmod/host/Configure,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -40,4 +54,5 @@ define Package/perl-io-socket-ssl/install
 	$(call perlmod/Install,$(1),IO/Socket)
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,perl-io-socket-ssl))
