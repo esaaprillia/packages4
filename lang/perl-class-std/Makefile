@@ -31,7 +31,7 @@ define Package/perl-class-std
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Support for creating standard "inside-out" classes
+  TITLE:=Support for creating standard inside-out classes
   URL:=https://metacpan.org/dist/Class-Std
   DEPENDS:=perl +perlbase-base
 endef
