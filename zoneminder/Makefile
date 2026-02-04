@@ -22,7 +22,7 @@ PKG_BUILD_DEPENDS:=perl-sys-mmap/host perl-dbi/host perl-dbd-mysql/host perl-dat
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake-perl.mk
-include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
+include $(TOPDIR)/feeds/python/lang/perl/perlmod.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
