@@ -97,6 +97,7 @@ define Build/Compile
 endef
 
 CMAKE_OPTIONS += \
+	-DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DZM_CONFIG_DIR=/etc/zoneminder \
 	-DZM_RUNDIR=/var/run/zoneminder \
 	-DZM_SOCKDIR=/var/run/zoneminder \
@@ -106,9 +107,11 @@ CMAKE_OPTIONS += \
 	-DZM_CGIDIR=/www/cgi-bin \
 	-DGSOAP_ROOT="$(STAGING_DIR)/usr" \
 	-DGSOAP_TOOL_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)" \
-	-DZM_PERL_MM_PARMS=$(PERL_SITELIB) \
-	-DZM_PERL_SEARCH_PATH=$(PERL_SITELIB)
+	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)" \
+	-Dperl="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)" \
+	-DZM_PERL_MM_PARMS="INSTALLDIRS=$(PERL_SITELIB)" \
+	-DZM_PERL_SEARCH_PATH="$(PERL_SITELIB)" \
+	-DEXTRA_PERL_LIB="$(PERL_SITELIB)"
 
 define Package/zoneminder/install
 	$(INSTALL_DIR) $(1)/
