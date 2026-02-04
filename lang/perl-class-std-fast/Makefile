@@ -33,7 +33,7 @@ define Package/perl-class-std-fast
   CATEGORY:=Languages
   TITLE:=This module provides a faster but less secure version of Class::Std
   URL:=https://metacpan.org/dist/Class-Std-Fast
-  DEPENDS:=perl +perlbase-base
+  DEPENDS:=perl +perlbase-base +perl-class-std
 endef
 
 define Host/Configure
