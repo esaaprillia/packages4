@@ -98,10 +98,16 @@ CMAKE_OPTIONS += \
 	-Dperl="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)"
 
 define Package/zoneminder/install
-	$(INSTALL_DIR) $(1)/
-	$(CP) $(PKG_INSTALL_DIR)/* $(1)/
-	#$(INSTALL_DIR) $(1)/usr/lib
-	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
+	$(INSTALL_DIR) $(1)/www
+	$(CP) $(PKG_INSTALL_DIR)/www/* $(1)/www/
+	$(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/zm*.pl
+	$(call perlmod/Install,$(1),ONVIF WSDiscovery WSDiscovery10 WSDiscovery11 WSNotification WSSecurity ZoneMinder ZoneMinder.pm)
 endef
 
 $(eval $(call BuildPackage,zoneminder))
