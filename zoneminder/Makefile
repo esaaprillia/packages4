@@ -26,9 +26,9 @@ include $(TOPDIR)/feeds/python/lang/perl/perlmod.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(SED) 's|perl Makefile.PL|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION) Makefile.PL|g' $(PKG_BUILD_DIR)/onvif/proxy/CMakeLists.txt
-	$(SED) 's|perl Makefile.PL|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION) Makefile.PL|g' $(PKG_BUILD_DIR)/onvif/modules/CMakeLists.txt
-	$(SED) 's|perl Makefile.PL|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION) Makefile.PL|g' $(PKG_BUILD_DIR)/scripts/ZoneMinder/CMakeLists.txt
+	$(SED) 's|perl Makefile.PL|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3) Makefile.PL|g' $(PKG_BUILD_DIR)/onvif/proxy/CMakeLists.txt
+	$(SED) 's|perl Makefile.PL|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3) Makefile.PL|g' $(PKG_BUILD_DIR)/onvif/modules/CMakeLists.txt
+	$(SED) 's|perl Makefile.PL|$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3) Makefile.PL|g' $(PKG_BUILD_DIR)/scripts/ZoneMinder/CMakeLists.txt
 endef
 
 define Package/zoneminder
