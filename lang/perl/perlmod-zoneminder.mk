@@ -119,11 +119,11 @@ define perlmod/Configure
 		INSTALLSCRIPT=/usr/bin \
 		INSTALLSITESCRIPT=/usr/bin \
 		INSTALLVENDORSCRIPT=" " \
-		INSTALLMAN1DIR=/usr/man/man1 \
-		INSTALLSITEMAN1DIR=/usr/man/man1 \
+		INSTALLMAN1DIR=/usr/share/man/man1 \
+		INSTALLSITEMAN1DIR=/usr/share/man/man1 \
 		INSTALLVENDORMAN1DIR=" " \
-		INSTALLMAN3DIR=/usr/man/man3 \
-		INSTALLSITEMAN3DIR=/usr/man/man3 \
+		INSTALLMAN3DIR=/usr/share/man/man3 \
+		INSTALLSITEMAN3DIR=/usr/share/man/man3 \
 		INSTALLVENDORMAN3DIR=" " \
 		LINKTYPE=dynamic \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock
