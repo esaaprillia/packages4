@@ -71,9 +71,9 @@ endef
 
 define Build/Configure
 	$(call Build/Configure/Default)
-	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/build/onvif/proxy)
-	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/build/onvif/modules)
-	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/build/scripts/ZoneMinder)
+	$(call perlmod/Configure,DESTDIR="$(PKG_BUILD_DIR)/build/onvif/proxy/output",,$(PKG_BUILD_DIR)/build/onvif/proxy)
+	$(call perlmod/Configure,DESTDIR="$(PKG_BUILD_DIR)/build/onvif/modules/output",,$(PKG_BUILD_DIR)/build/onvif/modules)
+	$(call perlmod/Configure,DESTDIR="$(PKG_BUILD_DIR)/build/scripts/ZoneMinder/output",,$(PKG_BUILD_DIR)/build/scripts/ZoneMinder)
 endef
 
 define Build/Compile
