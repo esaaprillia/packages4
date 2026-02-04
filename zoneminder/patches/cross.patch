@@ -1,50 +1,6 @@
-From 6554be5e2b1c7a763c78236614eea5dc4a5d7c65 Mon Sep 17 00:00:00 2001
+From b665d6cae09f0fe45efd01e98768148a84b4d18b Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 4 Feb 2026 18:17:01 +0800
-Subject: [PATCH] Update CMakeLists.txt
-
----
- onvif/proxy/CMakeLists.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/onvif/proxy/CMakeLists.txt b/onvif/proxy/CMakeLists.txt
-index 779b4d47e51..7c9ff40bb49 100644
---- a/onvif/proxy/CMakeLists.txt
-+++ b/onvif/proxy/CMakeLists.txt
-@@ -9,7 +9,7 @@ endif()
- # MAKEMAKER_NOECHO_COMMAND previously defined in /scripts/zoneminder/CMakeLists.txt
- 
- # Add build target for the perl modules
--add_custom_target(zmonvifproxy ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
-+add_custom_target(zmonvifproxy ALL /home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/usr/bin/perl5.42.0 Makefile.PL AR=ar CC=aarch64-openwrt-linux-gcc CCFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -Os -pipe -mcpu=generic -fno-caller-saves -fno-plt -fhonour-copts -ffile-prefix-map=/home/runner/work/mosdns/mosdns/sdk/build_dir/target-aarch64_generic_musl/zoneminder-1.38.0=zoneminder-1.38.0 -Wformat -Werror=format-security -fstack-protector -D_FORTIFY_SOURCE=1 -Wl,-z,now -Wl,-z,relro -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include/fortify -D_REENTRANT -D_GNU_SOURCE -D_LARGEFILE64_SOURCE" CCCDLFLAGS=-fPIC CCDLFLAGS=-Wl,-E DLEXT=so DLSRC=dl_dlopen.xs EXE_EXT=" " FULL_AR=aarch64-openwrt-linux-ar LD=aarch64-openwrt-linux-gcc LDDLFLAGS="-shared -rdynamic -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/lib -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/lib -fuse-ld=bfd -znow -zrelro" LDFLAGS="  " LIBC=" " LIB_EXT=.a OBJ_EXT=.o OSNAME=linux OSVERS=2.4.30 RANLIB=: SITELIBEXP=" " SITEARCHEXP=" " SO=so VENDORARCHEXP=" " VENDORLIBEXP=" " SITEPREFIX=/usr INSTALLPRIVLIB=/usr/lib/perl5/5.42 INSTALLSITELIB=/usr/lib/perl5/5.42 INSTALLVENDORLIB=" " INSTALLARCHLIB=/usr/lib/perl5/5.42 INSTALLSITEARCH=/usr/lib/perl5/5.42 INSTALLVENDORARCH=" " INSTALLBIN=/usr/bin INSTALLSITEBIN=/usr/bin INSTALLVENDORBIN=" " INSTALLSCRIPT=/usr/bin INSTALLSITESCRIPT=/usr/bin INSTALLVENDORSCRIPT=" " INSTALLMAN1DIR=/usr/man/man1 INSTALLSITEMAN1DIR=/usr/man/man1 INSTALLVENDORMAN1DIR=" " INSTALLMAN3DIR=/usr/man/man3 INSTALLSITEMAN3DIR=/usr/man/man3 INSTALLVENDORMAN3DIR=" " LINKTYPE=dynamic PERL_INC=/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/lib/perl5/5.42/CORE/ FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
- 
- # Add install target for the perl modules
- install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
-From ed272663d01d9ab1f5c0956ab07867f9a52f32e9 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 4 Feb 2026 18:28:54 +0800
-Subject: [PATCH] Update CMakeLists.txt
-
----
- onvif/modules/CMakeLists.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/onvif/modules/CMakeLists.txt b/onvif/modules/CMakeLists.txt
-index 502970af903..4e25987be7b 100644
---- a/onvif/modules/CMakeLists.txt
-+++ b/onvif/modules/CMakeLists.txt
-@@ -9,7 +9,7 @@ endif()
- # MAKEMAKER_NOECHO_COMMAND previously defined in /scripts/zoneminder/CMakeLists.txt
- 
- # Add build target for the perl modules
--add_custom_target(zmonvifmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
-+add_custom_target(zmonvifmodules ALL /home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/usr/bin/perl5.42.0 Makefile.PL AR=ar CC=aarch64-openwrt-linux-gcc CCFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -Os -pipe -mcpu=generic -fno-caller-saves -fno-plt -fhonour-copts -ffile-prefix-map=/home/runner/work/mosdns/mosdns/sdk/build_dir/target-aarch64_generic_musl/zoneminder-1.38.0=zoneminder-1.38.0 -Wformat -Werror=format-security -fstack-protector -D_FORTIFY_SOURCE=1 -Wl,-z,now -Wl,-z,relro -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include/fortify -D_REENTRANT -D_GNU_SOURCE -D_LARGEFILE64_SOURCE" CCCDLFLAGS=-fPIC CCDLFLAGS=-Wl,-E DLEXT=so DLSRC=dl_dlopen.xs EXE_EXT=" " FULL_AR=aarch64-openwrt-linux-ar LD=aarch64-openwrt-linux-gcc LDDLFLAGS="-shared -rdynamic -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/lib -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/lib -fuse-ld=bfd -znow -zrelro" LDFLAGS="  " LIBC=" " LIB_EXT=.a OBJ_EXT=.o OSNAME=linux OSVERS=2.4.30 RANLIB=: SITELIBEXP=" " SITEARCHEXP=" " SO=so VENDORARCHEXP=" " VENDORLIBEXP=" " SITEPREFIX=/usr INSTALLPRIVLIB=/usr/lib/perl5/5.42 INSTALLSITELIB=/usr/lib/perl5/5.42 INSTALLVENDORLIB=" " INSTALLARCHLIB=/usr/lib/perl5/5.42 INSTALLSITEARCH=/usr/lib/perl5/5.42 INSTALLVENDORARCH=" " INSTALLBIN=/usr/bin INSTALLSITEBIN=/usr/bin INSTALLVENDORBIN=" " INSTALLSCRIPT=/usr/bin INSTALLSITESCRIPT=/usr/bin INSTALLVENDORSCRIPT=" " INSTALLMAN1DIR=/usr/man/man1 INSTALLSITEMAN1DIR=/usr/man/man1 INSTALLVENDORMAN1DIR=" " INSTALLMAN3DIR=/usr/man/man3 INSTALLSITEMAN3DIR=/usr/man/man3 INSTALLVENDORMAN3DIR=" " LINKTYPE=dynamic PERL_INC=/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/lib/perl5/5.42/CORE/ FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
- 
- # Add install target for the perl modules
- install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
-From b2454e9b21d1c6c039079799a2f3b27e0def6c49 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 4 Feb 2026 18:34:14 +0800
+Date: Wed, 4 Feb 2026 20:17:21 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
@@ -52,7 +8,7 @@ Subject: [PATCH] Update CMakeLists.txt
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/ZoneMinder/CMakeLists.txt b/scripts/ZoneMinder/CMakeLists.txt
-index 2a8708d2f75..9e94d528b79 100644
+index 2a8708d2f75..784772722d0 100644
 --- a/scripts/ZoneMinder/CMakeLists.txt
 +++ b/scripts/ZoneMinder/CMakeLists.txt
 @@ -25,7 +25,7 @@ else()
@@ -60,7 +16,51 @@ index 2a8708d2f75..9e94d528b79 100644
  
  # Add build target for the perl modules
 -add_custom_target(zmperlmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
-+add_custom_target(zmperlmodules ALL /home/runner/work/mosdns/mosdns/sdk/staging_dir/hostpkg/usr/bin/perl5.42.0 Makefile.PL AR=ar CC=aarch64-openwrt-linux-gcc CCFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -Os -pipe -mcpu=generic -fno-caller-saves -fno-plt -fhonour-copts -ffile-prefix-map=/home/runner/work/mosdns/mosdns/sdk/build_dir/target-aarch64_generic_musl/zoneminder-1.38.0=zoneminder-1.38.0 -Wformat -Werror=format-security -fstack-protector -D_FORTIFY_SOURCE=1 -Wl,-z,now -Wl,-z,relro -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include/fortify -D_REENTRANT -D_GNU_SOURCE -D_LARGEFILE64_SOURCE" CCCDLFLAGS=-fPIC CCDLFLAGS=-Wl,-E DLEXT=so DLSRC=dl_dlopen.xs EXE_EXT=" " FULL_AR=aarch64-openwrt-linux-ar LD=aarch64-openwrt-linux-gcc LDDLFLAGS="-shared -rdynamic -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/lib -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/lib -fuse-ld=bfd -znow -zrelro" LDFLAGS="  " LIBC=" " LIB_EXT=.a OBJ_EXT=.o OSNAME=linux OSVERS=2.4.30 RANLIB=: SITELIBEXP=" " SITEARCHEXP=" " SO=so VENDORARCHEXP=" " VENDORLIBEXP=" " SITEPREFIX=/usr INSTALLPRIVLIB=/usr/lib/perl5/5.42 INSTALLSITELIB=/usr/lib/perl5/5.42 INSTALLVENDORLIB=" " INSTALLARCHLIB=/usr/lib/perl5/5.42 INSTALLSITEARCH=/usr/lib/perl5/5.42 INSTALLVENDORARCH=" " INSTALLBIN=/usr/bin INSTALLSITEBIN=/usr/bin INSTALLVENDORBIN=" " INSTALLSCRIPT=/usr/bin INSTALLSITESCRIPT=/usr/bin INSTALLVENDORSCRIPT=" " INSTALLMAN1DIR=/usr/man/man1 INSTALLSITEMAN1DIR=/usr/man/man1 INSTALLVENDORMAN1DIR=" " INSTALLMAN3DIR=/usr/man/man3 INSTALLSITEMAN3DIR=/usr/man/man3 INSTALLVENDORMAN3DIR=" " LINKTYPE=dynamic PERL_INC=/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/lib/perl5/5.42/CORE/ FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
++#add_custom_target(zmperlmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
+ 
+ # Add install target for the perl modules
+ install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
+From 1006833b9edb24bba7e46d5f91f0e33e5de75e22 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 4 Feb 2026 20:19:38 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ onvif/modules/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/onvif/modules/CMakeLists.txt b/onvif/modules/CMakeLists.txt
+index 502970af903..51707a390c3 100644
+--- a/onvif/modules/CMakeLists.txt
++++ b/onvif/modules/CMakeLists.txt
+@@ -9,7 +9,7 @@ endif()
+ # MAKEMAKER_NOECHO_COMMAND previously defined in /scripts/zoneminder/CMakeLists.txt
+ 
+ # Add build target for the perl modules
+-add_custom_target(zmonvifmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
++#add_custom_target(zmonvifmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
+ 
+ # Add install target for the perl modules
+ install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
+From b85a31ea53e01ff001bd5822c99d8d78d1f15752 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 4 Feb 2026 20:23:09 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ onvif/proxy/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/onvif/proxy/CMakeLists.txt b/onvif/proxy/CMakeLists.txt
+index 779b4d47e51..1bf2ef225a1 100644
+--- a/onvif/proxy/CMakeLists.txt
++++ b/onvif/proxy/CMakeLists.txt
+@@ -9,7 +9,7 @@ endif()
+ # MAKEMAKER_NOECHO_COMMAND previously defined in /scripts/zoneminder/CMakeLists.txt
+ 
+ # Add build target for the perl modules
+-add_custom_target(zmonvifproxy ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
++#add_custom_target(zmonvifproxy ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
  
  # Add install target for the perl modules
  install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
