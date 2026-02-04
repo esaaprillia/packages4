@@ -126,7 +126,6 @@ define perlmod/Configure
 		INSTALLSITEMAN3DIR=/usr/man/man3 \
 		INSTALLVENDORMAN3DIR=" " \
 		LINKTYPE=dynamic \
-		DESTDIR=$(PKG_BUILD_DIR)/build/output \
 	) 9> $(TMP_DIR)/.perlmod-perl.flock
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(if $(3),$(3),$(PKG_BUILD_DIR))/Makefile
 endef
