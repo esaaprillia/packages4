@@ -83,16 +83,16 @@ endef
 PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
 
 define Build/Configure
-	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/onvif/proxy)
-	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/onvif/modules)
-	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/scripts/ZoneMinder)
 	$(call Build/Configure/Default)
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/build/onvif/proxy)
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/build/onvif/modules)
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/build/scripts/ZoneMinder)
 endef
 
 define Build/Compile
-	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/onvif/proxy)
-	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/onvif/modules)
-	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/scripts/ZoneMinder)
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/build/onvif/proxy)
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/build/onvif/modules)
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/build/scripts/ZoneMinder)
 	$(call Build/Compile/Default)
 endef
 
