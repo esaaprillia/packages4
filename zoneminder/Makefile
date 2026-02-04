@@ -18,7 +18,7 @@ PKG_BUILD_DEPENDS:=perl-sys-mmap/host perl-dbi/host perl-dbd-mysql/host perl-dat
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake-perl.mk
-include $(TOPDIR)/feeds/python/lang/perl/perlmod.mk
+include $(TOPDIR)/feeds/python/lang/perl/perlmod-zoneminder.mk
 
 define Package/zoneminder
 	SECTION:=libs
@@ -67,6 +67,20 @@ endef
 
 define Package/zoneminder/description
 	ZoneMinder is an integrated set of applications which provide a complete surveillance solution allowing capture, analysis, recording and monitoring of any CCTV or security cameras attached to a Linux based machine.
+endef
+
+define Build/Configure
+	$(call Build/Configure/Default)
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/build/onvif/proxy)
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/build/onvif/modules)
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/build/scripts/ZoneMinder)
+endef
+
+define Build/Compile
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/build/onvif/proxy)
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/build/onvif/modules)
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/build/scripts/ZoneMinder)
+	$(call Build/Compile/Default)
 endef
 
 CMAKE_OPTIONS += \
