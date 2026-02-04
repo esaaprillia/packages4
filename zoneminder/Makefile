@@ -82,6 +82,20 @@ endef
 
 PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
 
+define Build/Configure
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/onvif/proxy)
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/onvif/modules)
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/scripts/ZoneMinder)
+	$(call Build/Configure/Default)
+endef
+
+define Build/Compile
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/onvif/proxy)
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/onvif/modules)
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/scripts/ZoneMinder)
+	$(call Build/Compile/Default)
+endef
+
 CMAKE_OPTIONS += \
 	-DZM_CONFIG_DIR=/etc/zoneminder \
 	-DZM_RUNDIR=/var/run/zoneminder \
