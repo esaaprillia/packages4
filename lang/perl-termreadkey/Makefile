@@ -16,7 +16,7 @@ PKG_SOURCE_URL:=https://www.cpan.org/authors/id/J/JS/JSTOWE/
 PKG_HASH:=skip
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/TermReadKey-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host perl-termreadkey/host
+PKG_BUILD_DEPENDS:=perl/host
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/TermReadKey-$(PKG_VERSION)
 HOST_BUILD_DEPENDS:=perl/host
 
