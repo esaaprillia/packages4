@@ -48,7 +48,7 @@ define Host/Install
         $(call perlmod/host/Install,$(1),)
 endef
 
-MOD_CFLAGS_PERL += -fPIC
+MOD_CFLAGS_PERL += $(FPIC)
 
 define Build/Configure
 	$(call perlmod/Configure,,)
