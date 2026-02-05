@@ -11,7 +11,7 @@ PKG_NAME:=perl-template-toolkit
 PKG_VERSION:=3.102
 PKG_RELEASE:=1
 
-PKG_SOURCE:=URI-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=Template-Toolkit-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://www.cpan.org/authors/id/T/TO/TODDR/
 PKG_HASH:=skip
 
