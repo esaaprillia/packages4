@@ -27,8 +27,8 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/perl/$(PKG_NAME)-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/$(PKG_NAME)-$(PKG_VERSION)
 PKG_INSTALL:=1
 PKG_BUILD_DEPENDS:=perl/host
-#PKG_BUILD_PARALLEL:=1
-#HOST_BUILD_PARALLEL:=1
+PKG_BUILD_PARALLEL:=1
+HOST_BUILD_PARALLEL:=1
 
 # Variables used during configuration/build
 HOST_PERL_PREFIX:=$(STAGING_DIR_HOSTPKG)/usr
@@ -76,13 +76,18 @@ endef
 
 # Static host perl
 define Host/Configure
-	( cd $(HOST_BUILD_DIR); ./Configure -des -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
+	( cd $(HOST_BUILD_DIR); ./Configure -der -Uusedl -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
 endef
 
 define Host/Install
 	( cd $(HOST_BUILD_DIR); ./miniperl installperl )
 	$(INSTALL_DIR) $(HOST_PERL_PREFIX)/bin/
 	$(CP) $(HOST_BUILD_DIR)/generate_uudmap $(HOST_PERL_PREFIX)/bin/
+	
+	# Link any possibly installed static extension in
+	$(MAKE) -C $(HOST_BUILD_DIR)/relink clean || true
+	( cd $(HOST_BUILD_DIR)/relink && $(HOST_PERL_PREFIX)/bin/perl Makefile.PL )
+	$(call perlmod/host/relink,$(HOST_BUILD_DIR)/relink)
 endef
 
 # Target perl
