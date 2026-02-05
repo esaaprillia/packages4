@@ -42,7 +42,7 @@ define Host/Configure
 endef
 
 define Host/Compile
-	$(call perlmod/host/Compile,,)
+	$(call perlmod/host/Compile,CC=$(HOSTCC) LD=$(HOSTCC),,)
 endef
 
 define Host/Install
