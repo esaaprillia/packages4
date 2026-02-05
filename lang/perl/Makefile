@@ -38,8 +38,8 @@ ifneq ($(CONFIG_USE_MUSL),)
 endif
 
 # Filter -g3, it will break Compress-Raw-Zlib
-TARGET_CFLAGS_PERL:=$(patsubst -g3,-g,$(TARGET_CFLAGS) $(HOST_CFLAGS))
-TARGET_CPPFLAGS_PERL:=$(patsubst -g3,-g,$(TARGET_CPPFLAGS) HOST_CPPFLAGS)
+TARGET_CFLAGS_PERL:=$(patsubst -g3,-g,$(TARGET_CFLAGS))
+TARGET_CPPFLAGS_PERL:=$(patsubst -g3,-g,$(TARGET_CPPFLAGS))
 
 # A list of disabled tests
 # ExtUtils tests are disabled for now as we don't support building
@@ -76,13 +76,18 @@ endef
 
 # Static host perl
 define Host/Configure
-	( cd $(HOST_BUILD_DIR); ./Configure -der -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
+	( cd $(HOST_BUILD_DIR); ./Configure -der -Uusedl -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
 endef
 
 define Host/Install
 	( cd $(HOST_BUILD_DIR); ./miniperl installperl )
 	$(INSTALL_DIR) $(HOST_PERL_PREFIX)/bin/
 	$(CP) $(HOST_BUILD_DIR)/generate_uudmap $(HOST_PERL_PREFIX)/bin/
+	
+	# Link any possibly installed static extension in
+	$(MAKE) -C $(HOST_BUILD_DIR)/relink clean || true
+	( cd $(HOST_BUILD_DIR)/relink && $(HOST_PERL_PREFIX)/bin/perl Makefile.PL )
+	$(call perlmod/host/relink,$(HOST_BUILD_DIR)/relink)
 endef
 
 # Target perl
@@ -91,7 +96,7 @@ define Build/Configure
 	                                -Dowrt:gccversion=$(CONFIG_GCC_VERSION) \
 	                                -Dowrt:target_cross='$(TARGET_CROSS)' \
 	                                -Dowrt:cflags='$(TARGET_CFLAGS_PERL) $(TARGET_CPPFLAGS_PERL)' \
-	                                -Dowrt:ldflags='$(TARGET_LDFLAGS) $(HOST_LDFLAGS)' \
+	                                -Dowrt:ldflags='$(TARGET_LDFLAGS)' \
 	                                -Dowrt:libc=$(subst uClibc,uclibc,$(CONFIG_LIBC)) \
 	                                -Dowrt:ipv6=$(if $($(CONFIG_IPV6)),define,undef) \
 	                                -Dowrt:threads=$(if $(CONFIG_PERL_THREADS),yes,no) \
