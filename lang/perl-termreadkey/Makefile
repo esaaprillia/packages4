@@ -38,7 +38,7 @@ define Package/perl-termreadkey
 endef
 
 define Host/Configure
-    $(call perlmod/host/Configure,LD=HOSTCC,,)
+    $(call perlmod/host/Configure,LD=$(HOSTCC),,)
 endef
 
 define Host/Compile
