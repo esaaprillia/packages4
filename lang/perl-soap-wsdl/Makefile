@@ -33,7 +33,7 @@ define Package/perl-soap-wsdl
   CATEGORY:=Languages
   TITLE:=SOAP with WSDL support
   URL:=https://metacpan.org/dist/SOAP-WSDL
-  DEPENDS:=perl +perlbase-base +perl-class-load +perl-class-std-fast +perl-libwww +perl-template-toolkit +perl-term-readkey +perl-xml-parser
+  DEPENDS:=perl +perlbase-base +perl-class-load +perl-class-std-fast +perl-libwww +perl-template-toolkit +perl-termreadkey +perl-xml-parser
 endef
 
 define Host/Configure
