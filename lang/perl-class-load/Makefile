@@ -31,7 +31,7 @@ define Package/perl-class-load
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=A working (require "Class::Name") and more
+  TITLE:=A working require Class::Name and more
   URL:=https://search.cpan.org/dist/Class-Load
   DEPENDS:=perl +perlbase-base +perl-data-optlist +perl-module-implementation +perl-module-runtime +perl-namespace-clean +perl-package-stash +perl-test-fatal +perl-try-tiny
 endef
