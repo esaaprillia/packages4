@@ -34,7 +34,7 @@ define Package/perl-libwww
   CATEGORY:=Languages
   TITLE:=Perl libwww-perl
   URL:=https://metacpan.org/dist/libwww-perl
-  DEPENDS:=perl +perl-http-date +perl-http-cookies +perl-net-http +perl-html-parser +perl-file-listing +perl-www-robotrules +perl-http-negotiate +perl-uri +perl-http-message +perl-lwp-mediatypes +perl-encode-locale +perl-try-tiny
+  DEPENDS:=perl +perl-http-date +perl-http-cookiejar +perl-http-daemon +perl-http-cookies +perl-net-http +perl-html-parser +perl-file-listing +perl-www-robotrules +perl-http-negotiate +perl-uri +perl-http-message +perl-lwp-mediatypes +perl-encode-locale +perl-try-tiny
 endef
 
 define Host/Configure
