@@ -36,10 +36,10 @@ define Package/perl-template-toolkit
   DEPENDS:=perl +perlbase-essential +perl-appconfig
 endef
 
-TARGET_CFLAGS += $(FPIC)
+LDFLAGS += $(FPIC)
 
 define Host/Configure
-        $(call perlmod/host/Configure,,,)
+        $(call perlmod/host/Configure,LDFLAGS=$(FPIC),,)
 endef
 
 define Host/Compile
