@@ -94,7 +94,7 @@ define perlmod/Configure
 		FULL_AR=$(GNU_TARGET_NAME)-ar \
 		LD=$(GNU_TARGET_NAME)-gcc \
 		LDDLFLAGS="-shared -rdynamic $(TARGET_LDFLAGS)"  \
-		LDFLAGS="$(EXTRA_LIBDIRS:%=-L%) $(EXTRA_LIBS:%=-l%) -fPIC" \
+		LDFLAGS="$(EXTRA_LIBDIRS:%=-L%) $(EXTRA_LIBS:%=-l%) " \
 		LIBC=" " \
 		LIB_EXT=.a \
 		OBJ_EXT=.o \
