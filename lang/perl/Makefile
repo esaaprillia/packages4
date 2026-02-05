@@ -76,7 +76,7 @@ endef
 
 # Static host perl
 define Host/Configure
-	( cd $(HOST_BUILD_DIR); ./Configure -der -Uusedl -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
+	( cd $(HOST_BUILD_DIR); ./Configure -der -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
 endef
 
 define Host/Install
@@ -85,9 +85,9 @@ define Host/Install
 	$(CP) $(HOST_BUILD_DIR)/generate_uudmap $(HOST_PERL_PREFIX)/bin/
 	
 	# Link any possibly installed static extension in
-	$(MAKE) -C $(HOST_BUILD_DIR)/relink clean || true
-	( cd $(HOST_BUILD_DIR)/relink && $(HOST_PERL_PREFIX)/bin/perl Makefile.PL )
-	$(call perlmod/host/relink,$(HOST_BUILD_DIR)/relink)
+	#$(MAKE) -C $(HOST_BUILD_DIR)/relink clean || true
+	#( cd $(HOST_BUILD_DIR)/relink && $(HOST_PERL_PREFIX)/bin/perl Makefile.PL )
+	#$(call perlmod/host/relink,$(HOST_BUILD_DIR)/relink)
 endef
 
 # Target perl
