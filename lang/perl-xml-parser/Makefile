@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-xml-parser
-PKG_VERSION:=2.46
+PKG_VERSION:=2.47
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=http://www.cpan.org/authors/id/T/TO/TODDR/
 PKG_SOURCE:=XML-Parser-$(PKG_VERSION).tar.gz
-PKG_HASH:=d331332491c51cccfb4cb94ffc44f9cd73378e618498d4a37df9e043661c515d
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
@@ -38,7 +38,7 @@ define Package/perl-xml-parser
   CATEGORY:=Languages
   TITLE:=Perl XML Parser
   URL:=http://search.cpan.org/dist/XML-Parser/
-  DEPENDS:=perl +libexpat +perlbase-dynaloader +perlbase-essential
+  DEPENDS:=perl +libexpat +perlbase-dynaloader +perlbase-essential +perl-libwww
 endef
 
 define FixupExpat
