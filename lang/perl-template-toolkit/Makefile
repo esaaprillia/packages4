@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2015 OpenWrt.org
+# Copyright (C) 2015 - 2016 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -11,7 +11,7 @@ PKG_NAME:=perl-template-toolkit
 PKG_VERSION:=3.102
 PKG_RELEASE:=1
 
-PKG_SOURCE:=Template-Toolkit-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=URI-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://www.cpan.org/authors/id/T/TO/TODDR/
 PKG_HASH:=skip
 
@@ -32,36 +32,36 @@ define Package/perl-template-toolkit
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Perl template processing system
-  URL:=https://search.cpan.org/dist/Template-Toolkit/
-  DEPENDS:=perl +perlbase-base +perl-appconfig
+  URL:=https://metacpan.org/dist/Template-Toolkit
+  DEPENDS:=perl +perlbase-essential +perl-appconfig
 endef
 
 define Host/Configure
-	$(call perlmod/host/Configure,,)
+        $(call perlmod/host/Configure,,,)
 endef
 
 define Host/Compile
-	$(call perlmod/host/Compile,,)
+        $(call perlmod/host/Compile,,)
 endef
 
 define Host/Install
-	$(call perlmod/host/Install,$(1),)
+        $(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-template-toolkit/install
-        $(call perlmod/Install,$(1),Template.pm Template auto)
-        $(INSTALL_DIR) $(1)/usr/bin
-        $(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-        $(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/*
+	$(call perlmod/Install,$(1),Template.pm Template auto)
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/*
 endef
 
-$(eval $(call HostBuild))
 $(eval $(call BuildPackage,perl-template-toolkit))
+$(eval $(call HostBuild))
