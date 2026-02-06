@@ -60,6 +60,7 @@ define Package/perl-date-manip/install
 	$(call perlmod/Install,$(1),Date)
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/{dm_date,dm_zdump} $(1)/usr/bin/
+	$(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/*
 endef
 
 $(eval $(call BuildPackage,perl-date-manip))
