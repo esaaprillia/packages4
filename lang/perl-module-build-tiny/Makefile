@@ -16,9 +16,9 @@ PKG_SOURCE_URL:=https://www.cpan.org/authors/id/L/LE/LEONT/
 PKG_HASH:=skip
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Module-Build-Tiny-$(PKG_VERSION)
-PKG_BUILD_DEPENDS:=perl/host perl-module-build/host perl-extutils-config/host
+PKG_BUILD_DEPENDS:=perl/host perl-module-build/host perl-extutils-config/host perl-extutils-helpers/host perl-extutils-installpaths/host
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Module-Build-Tiny-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-module-build/host perl-extutils-config/host
+HOST_BUILD_DEPENDS:=perl/host perl-module-build/host perl-extutils-config/host perl-extutils-helpers/host perl-extutils-installpaths/host
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
