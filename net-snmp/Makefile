@@ -191,8 +191,8 @@ TARGET_CFLAGS += $(FPIC)
 TARGET_CPPFLAGS += -I$(STAGING_DIR)/usr/include/libnl-tiny
 PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
 
-define Build/Configure
-	$(call Build/Configure/Default)
+define Build/Compile
+	$(call Build/Compile/Default)
 	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/perl)
 endef
 
