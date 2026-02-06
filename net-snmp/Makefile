@@ -22,7 +22,7 @@ PKG_FIXUP:=autoreconf
 PKG_BUILD_DEPENDS:=perl
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
+include $(TOPDIR)/feeds/python/lang/perl/perlmod.mk
 
 define Package/net-snmp/Default
   SECTION:=net
@@ -191,6 +191,11 @@ TARGET_CFLAGS += $(FPIC)
 TARGET_CPPFLAGS += -I$(STAGING_DIR)/usr/include/libnl-tiny
 PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
 
+define Build/Configure
+	$(call Build/Configure/Default)
+	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/perl)
+endef
+
 CONFIGURE_ARGS += \
 	--enable-mfd-rewrites \
 	--enable-shared \
@@ -223,7 +228,7 @@ CONFIGURE_ARGS += \
 CONFIGURE_VARS += \
 	ac_cv_header_netlink_netlink_h=yes \
 	netsnmp_cv_func_nl_connect_LIBS=-lnl-tiny \
-	PERLPROG="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)" \
+	PERLPROG="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)" \
 	CFLAGS="-D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE" \
 	LDFLAGS="-Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE" \
 
