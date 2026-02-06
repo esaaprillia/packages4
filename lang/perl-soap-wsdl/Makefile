@@ -57,7 +57,7 @@ define Build/Compile
 endef
 
 define Package/perl-soap-wsdl/install
-	$(call perlmod/Install,$(1),Template.pm Template auto)
+	$(call perlmod/Install,$(1),SOAP)
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/*
