@@ -60,6 +60,7 @@ define Package/perl-convert-binhex/install
 	$(call perlmod/Install,$(1),Convert)
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/{binhex.pl,debinhex.pl} $(1)/usr/bin/
+	$(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/*
 endef
 
 $(eval $(call BuildPackage,perl-convert-binhex))
