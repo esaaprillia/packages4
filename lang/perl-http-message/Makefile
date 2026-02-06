@@ -33,7 +33,7 @@ define Package/perl-http-message
   CATEGORY:=Languages
   TITLE:=HTTP style messages
   URL:=https://search.cpan.org/dist/HTTP-Message/
-  DEPENDS:=perl +perl-encode-locale +perl-http-date +perl-io-html +perl-lwp-mediatypes +perl-uri +perlbase-base +perlbase-compress +perlbase-encode +perlbase-essential +perlbase-io +perlbase-mime
+  DEPENDS:=perl +perl-encode-locale +perl-clone +perl-http-date +perl-io-html +perl-lwp-mediatypes +perl-uri +perlbase-base +perlbase-compress +perlbase-encode +perlbase-essential +perlbase-io +perlbase-mime
 endef
 
 define Host/Configure
