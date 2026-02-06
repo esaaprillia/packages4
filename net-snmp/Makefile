@@ -22,7 +22,7 @@ PKG_FIXUP:=autoreconf
 PKG_BUILD_DEPENDS:=perl
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/perl/perlmod-vars.mk
+include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
 
 define Package/net-snmp/Default
   SECTION:=net
