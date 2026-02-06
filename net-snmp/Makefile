@@ -22,7 +22,7 @@ PKG_FIXUP:=autoreconf
 PKG_BUILD_DEPENDS:=perl
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
+include $(TOPDIR)/feeds/python/lang/perl/perlmod-vars.mk
 
 define Package/net-snmp/Default
   SECTION:=net
@@ -218,14 +218,12 @@ CONFIGURE_ARGS += \
 	--with-nl \
 	 $(call autoconf_bool,CONFIG_IPV6,ipv6) \
 	--disable-embedded-perl \
-	--with-perl-modules="$(PERL_SITELIB)" \
+	--with-perl-modules="$(PERL_VARS)" \
 
 CONFIGURE_VARS += \
 	ac_cv_header_netlink_netlink_h=yes \
 	netsnmp_cv_func_nl_connect_LIBS=-lnl-tiny \
 	PERLPROG="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)" \
-	CFLAGS="-D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE" \
-	LDFLAGS="-Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE -lperl" \
 
 ifeq ($(CONFIG_IPV6),y)
 SNMP_TRANSPORTS_INCLUDED+= UDPIPv6
