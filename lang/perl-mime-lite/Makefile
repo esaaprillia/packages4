@@ -33,7 +33,7 @@ define Package/perl-mime-lite
   CATEGORY:=Languages
   TITLE:=low-calorie MIME generator
   URL:=https://metacpan.org/release/MIME-Lite
-  DEPENDS:=perl +perlbase-base +perl-mime-types +perl-email-date-format +perl-mailtools +perl-test-pod-coverage
+  DEPENDS:=perl +perlbase-base +perl-mime-types +perl-email-date-format +perl-mailtools
 endef
 
 define Build/Configure
