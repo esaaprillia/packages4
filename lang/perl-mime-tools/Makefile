@@ -33,7 +33,7 @@ define Package/perl-mime-tools
   CATEGORY:=Languages
   TITLE:=Perl modules for parsing (and creating!) MIME entities
   URL:=https://metacpan.org/release/MIME-tools/
-  DEPENDS:=perl +perlbase-base +perl-mailtools +perl-convert-binhex
+  DEPENDS:=perl +perlbase-base +perl-io-stringy +perl-mailtools +perl-convert-binhex
 endef
 
 define Build/Configure
