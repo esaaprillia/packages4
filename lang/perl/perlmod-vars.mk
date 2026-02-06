@@ -37,6 +37,51 @@ PERLMOD_TESTSDIR:=/usr/share/perl/perlmod-tests
 
 FLOCK:=$(STAGING_DIR_HOST)/bin/flock
 
+PERL_VARS = \
+		AR=ar \
+		CC=$(GNU_TARGET_NAME)-gcc \
+		CCFLAGS="$(MOD_CFLAGS_PERL)" \
+		CCCDLFLAGS=-fPIC \
+		CCDLFLAGS=-Wl,-E \
+		DLEXT=so \
+		DLSRC=dl_dlopen.xs \
+		EXE_EXT=" " \
+		FULL_AR=$(GNU_TARGET_NAME)-ar \
+		LD=$(GNU_TARGET_NAME)-gcc \
+		LDDLFLAGS="-shared -rdynamic $(TARGET_LDFLAGS)"  \
+		LDFLAGS="$(EXTRA_LIBDIRS:%=-L%) $(EXTRA_LIBS:%=-l%) " \
+		LIBC=" " \
+		LIB_EXT=.a \
+		OBJ_EXT=.o \
+		OSNAME=linux \
+		OSVERS=2.4.30 \
+		RANLIB=: \
+		SITELIBEXP=" " \
+		SITEARCHEXP=" " \
+		SO=so  \
+		VENDORARCHEXP=" " \
+		VENDORLIBEXP=" " \
+		SITEPREFIX=/usr \
+		INSTALLPRIVLIB=$(PERL_SITELIB) \
+		INSTALLSITELIB=$(PERL_SITELIB) \
+		INSTALLVENDORLIB=" " \
+		INSTALLARCHLIB=$(PERL_SITELIB) \
+		INSTALLSITEARCH=$(PERL_SITELIB) \
+		INSTALLVENDORARCH=" " \
+		INSTALLBIN=/usr/bin \
+		INSTALLSITEBIN=/usr/bin \
+		INSTALLVENDORBIN=" " \
+		INSTALLSCRIPT=/usr/bin \
+		INSTALLSITESCRIPT=/usr/bin \
+		INSTALLVENDORSCRIPT=" " \
+		INSTALLMAN1DIR=/usr/share/man/man1 \
+		INSTALLSITEMAN1DIR=/usr/share/man/man1 \
+		INSTALLVENDORMAN1DIR=" " \
+		INSTALLMAN3DIR=/usr/share/man/man3 \
+		INSTALLSITEMAN3DIR=/usr/share/man/man3 \
+		INSTALLVENDORMAN3DIR=" " \
+		LINKTYPE=dynamic
+
 define perlmod/host/relink
 	rm -f $(1)/Makefile.aperl
 	($(FLOCK) -w 900 9 || { echo perlmod/host/relink: failed to acquire lock; exit 1; }; \
