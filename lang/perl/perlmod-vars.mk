@@ -45,7 +45,6 @@ PERL_VARS= \
 		DLEXT=so \
 		DLSRC=dl_dlopen.xs \
 		EXE_EXT=" " \
-		LDFLAGS="$(EXTRA_LIBDIRS:%=-L%) $(EXTRA_LIBS:%=-l%) " \
 		LIBC=" " \
 		LIB_EXT=.a \
 		OBJ_EXT=.o \
