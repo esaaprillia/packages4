@@ -1,44 +1,40 @@
-From cc8f0236887688a76b05e3004b2acc07cbb8df7b Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 7 Feb 2026 11:41:56 +0800
+From 2e298e98c1a8c83e67c9a39ff875eb1238b808b2 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 7 Feb 2026 18:04:12 +0800
 Subject: [PATCH] Update Makefile.in
 
 ---
- Makefile.in | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Makefile.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 474d49c4ad..ea1cac7de2 100644
+index 474d49c4ad..a3aa50a64f 100644
 --- a/Makefile.in
 +++ b/Makefile.in
+@@ -174,7 +174,7 @@ OTHERCLEANTODOS=perlclean @PYTHONCLEANTARGS@ cleanfeatures perlcleanfeatures pyt
+ #
+ # override LD_RUN_PATH to avoid dependencies on the build directory
+ perlmodules: perlmakefiles subdirs
+-	@(cd perl ; $(MAKE) LD_RUN_PATH="$(libdir):`$(PERL) -e 'use Config; print qq($$Config{archlibexp}/CORE);'`") ; \
++	@(cd perl ; $(MAKE) LD_RUN_PATH="$(libdir)") ; \
+         if test $$? != 0 ; then \
+            exit 1 ; \
+         fi
 @@ -188,7 +188,7 @@ perl/Makefile: perl/Makefile.PL subdirs
  	    carp=-MCarp::Always;					\
  	fi &&								\
  	export PERL5LIB="$$dir/perl" &&					\
 -	$(PERL) $$carp Makefile.PL -NET-SNMP-IN-SOURCE=true		\
-+	$(PERL) $$carp Makefile.PL AR=ar CC=aarch64-openwrt-linux-gcc CCFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -Os -pipe -mcpu=generic -fno-caller-saves -fno-plt -fhonour-copts -ffile-prefix-map=/home/runner/work/mosdns/mosdns/sdk/build_dir/target-aarch64_generic_musl/net-snmp-5.9.4=net-snmp-5.9.4 -Wformat -Werror=format-security -fstack-protector -D_FORTIFY_SOURCE=1 -Wl,-z,now -Wl,-z,relro -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include/fortify -D_REENTRANT -D_GNU_SOURCE -D_LARGEFILE64_SOURCE" CCCDLFLAGS=-fPIC CCDLFLAGS=-Wl,-E DLEXT=so DLSRC=dl_dlopen.xs EXE_EXT=" " FULL_AR=aarch64-openwrt-linux-ar LD=aarch64-openwrt-linux-gcc LDDLFLAGS="-shared -rdynamic -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/lib -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/lib -fuse-ld=bfd -znow -zrelro" LDFLAGS="  " LIBC=" " LIB_EXT=.a OBJ_EXT=.o OSNAME=linux OSVERS=2.4.30 RANLIB=: SITELIBEXP=" " SITEARCHEXP=" " SO=so VENDORARCHEXP=" " VENDORLIBEXP=" " SITEPREFIX=/usr INSTALLPRIVLIB=/usr/lib/perl5/5.42 INSTALLSITELIB=/usr/lib/perl5/5.42 INSTALLVENDORLIB=" " INSTALLARCHLIB=/usr/lib/perl5/5.42 INSTALLSITEARCH=/usr/lib/perl5/5.42 INSTALLVENDORARCH=" " INSTALLBIN=/usr/bin INSTALLSITEBIN=/usr/bin INSTALLVENDORBIN=" " INSTALLSCRIPT=/usr/bin INSTALLSITESCRIPT=/usr/bin INSTALLVENDORSCRIPT=" " INSTALLMAN1DIR=/usr/share/man/man1 INSTALLSITEMAN1DIR=/usr/share/man/man1 INSTALLVENDORMAN1DIR=" " INSTALLMAN3DIR=/usr/share/man/man3 INSTALLSITEMAN3DIR=/usr/share/man/man3 INSTALLVENDORMAN3DIR=" " LINKTYPE=dynamic PERL_INC=/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/lib/perl5/5.42/CORE -NET-SNMP-IN-SOURCE=true		\
++	$(PERL) $$carp Makefile.PL AR=ar CC=aarch64-openwrt-linux-gcc CCFLAGS="-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -Os -pipe -mcpu=generic -fno-caller-saves -fno-plt -fhonour-copts -ffile-prefix-map=/home/runner/work/mosdns/mosdns/sdk/build_dir/target-aarch64_generic_musl/net-snmp-5.9.4=net-snmp-5.9.4 -Wformat -Werror=format-security -fstack-protector -D_FORTIFY_SOURCE=1 -Wl,-z,now -Wl,-z,relro -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/include/fortify -D_REENTRANT -D_GNU_SOURCE -D_LARGEFILE64_SOURCE" CCCDLFLAGS=-fPIC CCDLFLAGS=-Wl,-E DLEXT=so DLSRC=dl_dlopen.xs EXE_EXT=" " FULL_AR=aarch64-openwrt-linux-ar LD=aarch64-openwrt-linux-gcc LDDLFLAGS="-shared -rdynamic -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/usr/lib -L/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-13.3.0_musl/lib -fuse-ld=bfd -znow -zrelro" LDFLAGS="  " LIBC=" " LIB_EXT=.a OBJ_EXT=.o OSNAME=linux OSVERS=2.4.30 RANLIB=: SITELIBEXP=" " SITEARCHEXP=" " SO=so VENDORARCHEXP=" " VENDORLIBEXP=" " SITEPREFIX=/usr INSTALLPRIVLIB=/usr/lib/perl5/5.42 INSTALLSITELIB=/usr/lib/perl5/5.42 INSTALLVENDORLIB=" " INSTALLARCHLIB=/usr/lib/perl5/5.42 INSTALLSITEARCH=/usr/lib/perl5/5.42 INSTALLVENDORARCH=" " INSTALLBIN=/usr/bin INSTALLSITEBIN=/usr/bin INSTALLVENDORBIN=" " INSTALLSCRIPT=/usr/bin INSTALLSITESCRIPT=/usr/bin INSTALLVENDORSCRIPT=" " INSTALLMAN1DIR=/usr/share/man/man1 INSTALLSITEMAN1DIR=/usr/share/man/man1 INSTALLVENDORMAN1DIR=" " INSTALLMAN3DIR=/usr/share/man/man3 INSTALLSITEMAN3DIR=/usr/share/man/man3 INSTALLVENDORMAN3DIR=" " LINKTYPE=dynamic PERL_INC="/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/lib/perl5/5.42/CORE" -NET-SNMP-IN-SOURCE=true		\
  	    -NET-SNMP-CONFIG="sh $$dir/net-snmp-config" $(PERLARGS)
  
  perlinstall:
-From fa2b0264618c0d34d195953d0c88fc7762229f0a Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Sat, 7 Feb 2026 11:33:21 +0800
-Subject: [PATCH] Update MakefileSubs.pm
-
----
- perl/MakefileSubs.pm | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/perl/MakefileSubs.pm b/perl/MakefileSubs.pm
-index 633d47695b..80f87e9056 100644
---- a/perl/MakefileSubs.pm
-+++ b/perl/MakefileSubs.pm
-@@ -110,7 +110,7 @@ sub AddCommonParams {
- 	chomp($ldflags);
- 	append($Params->{'LDDLFLAGS'}, $ldflags);
- 	append($Params->{'CCFLAGS'},
--	       "-I" . File::Spec->catdir($basedir, "include"));
-+	       "-I" . File::Spec->catdir($basedir, "-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/lib/perl5/5.42/CORE"));
- 	my $cflags = `$opts->{'nsconfig'} --cflags` or
- 	    die "net-snmp-config failed\n";
- 	chomp($cflags);
+@@ -217,7 +217,7 @@ perlrealclean:
+ 	fi
+ 
+ .h.ft:
+-	$(FEATURECHECK) --feature-global $(top_builddir)/include/net-snmp/feature-details.h `dirname $<` $< $@ $(CC) -I $(top_builddir)/include -I $(top_srcdir)/include -E $(CPPFLAGS) $(CFLAGS) -c
++	$(FEATURECHECK) --feature-global $(top_builddir)/include/net-snmp/feature-details.h `dirname $<` $< $@ $(CC) $(CPPFLAGS) $(CFLAGS) -c
+ 
+ perlfeatures: $(PERLMODULEFTS)
+ 
