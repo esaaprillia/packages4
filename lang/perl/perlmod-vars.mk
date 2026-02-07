@@ -40,12 +40,15 @@ FLOCK:=$(STAGING_DIR_HOST)/bin/flock
 PERL_VARS= \
 		AR=ar \
 		CC=$(GNU_TARGET_NAME)-gcc \
+		CCFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
 		CCCDLFLAGS=-fPIC \
 		CCDLFLAGS=-Wl,-E \
 		DLEXT=so \
 		DLSRC=dl_dlopen.xs \
 		EXE_EXT=" " \
+		LD=$(GNU_TARGET_NAME)-gcc \
 		LDDLFLAGS="-shared -rdynamic $(TARGET_LDFLAGS)"  \
+		LDFLAGS="$(EXTRA_LIBDIRS:%=-L%) $(EXTRA_LIBS:%=-l%) " \
 		LIBC=" " \
 		LIB_EXT=.a \
 		OBJ_EXT=.o \
