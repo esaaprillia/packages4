@@ -22,7 +22,7 @@ PKG_FIXUP:=autoreconf
 PKG_BUILD_DEPENDS:=perl
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/perl/perlmod.mk
+include $(TOPDIR)/feeds/python/lang/perl/perlmod-vars.mk
 
 define Package/net-snmp/Default
   SECTION:=net
@@ -218,7 +218,7 @@ CONFIGURE_ARGS += \
 	--with-nl \
 	 $(call autoconf_bool,CONFIG_IPV6,ipv6) \
 	--disable-embedded-perl \
-	--with-perl-modules="" \
+	--with-perl-modules=$(PERL_VARS)
 
 CONFIGURE_VARS += \
 	ac_cv_header_netlink_netlink_h=yes \
