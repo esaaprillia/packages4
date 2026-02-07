@@ -45,7 +45,6 @@ PERL_VARS= \
 		DLEXT=so \
 		DLSRC=dl_dlopen.xs \
 		EXE_EXT=" " \
-		FULL_AR=$(GNU_TARGET_NAME)-ar \
 		LDDLFLAGS="-shared -rdynamic $(TARGET_LDFLAGS)"  \
 		LIBC=" " \
 		LIB_EXT=.a \
