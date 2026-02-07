@@ -191,12 +191,6 @@ TARGET_CFLAGS += $(FPIC)
 TARGET_CPPFLAGS += -I$(STAGING_DIR)/usr/include/libnl-tiny
 PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
 
-define Build/Compile
-	$(call Build/Compile/Default)
-	$(call perlmod/Configure,,,$(PKG_BUILD_DIR)/perl)
-	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/perl)
-endef
-
 CONFIGURE_ARGS += \
 	--enable-mfd-rewrites \
 	--enable-shared \
@@ -231,8 +225,8 @@ CONFIGURE_VARS += \
 	netsnmp_cv_func_nl_connect_LIBS=-lnl-tiny \
 	PERLPROG="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)" \
 	CFLAGS="-D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE" \
-	LDFLAGS="-Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE -lperl" \
-	INC="-Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE -lperl" \
+	CPPFLAGS="-D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE" \
+	LDFLAGS="-Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE" \
 
 ifeq ($(CONFIG_IPV6),y)
 SNMP_TRANSPORTS_INCLUDED+= UDPIPv6
