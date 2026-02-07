@@ -34,7 +34,7 @@ define Package/perl-term-readline-gnu
   CATEGORY:=Languages
   TITLE:=GNU Readline XS library wrapper
   URL:=https://metacpan.org/dist/Term-ReadLine-Gnu
-  DEPENDS:=perl +perlbase-base
+  DEPENDS:=perl +perlbase-base +libreadline
 endef
 
 define Host/Configure
