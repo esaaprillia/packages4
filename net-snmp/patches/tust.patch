@@ -1,0 +1,22 @@
+From fa2b0264618c0d34d195953d0c88fc7762229f0a Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 7 Feb 2026 11:33:21 +0800
+Subject: [PATCH] Update MakefileSubs.pm
+
+---
+ perl/MakefileSubs.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/perl/MakefileSubs.pm b/perl/MakefileSubs.pm
+index 633d47695b..80f87e9056 100644
+--- a/perl/MakefileSubs.pm
++++ b/perl/MakefileSubs.pm
+@@ -110,7 +110,7 @@ sub AddCommonParams {
+ 	chomp($ldflags);
+ 	append($Params->{'LDDLFLAGS'}, $ldflags);
+ 	append($Params->{'CCFLAGS'},
+-	       "-I" . File::Spec->catdir($basedir, "include"));
++	       "-I" . File::Spec->catdir($basedir, "-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I/home/runner/work/mosdns/mosdns/sdk/staging_dir/target-aarch64_generic_musl/usr/lib/perl5/5.42/CORE"));
+ 	my $cflags = `$opts->{'nsconfig'} --cflags` or
+ 	    die "net-snmp-config failed\n";
+ 	chomp($cflags);
