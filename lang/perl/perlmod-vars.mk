@@ -37,10 +37,10 @@ PERLMOD_TESTSDIR:=/usr/share/perl/perlmod-tests
 
 FLOCK:=$(STAGING_DIR_HOST)/bin/flock
 
-PERL_VARS = \
+PERL_VARS= \
 		AR=ar \
 		CC=$(GNU_TARGET_NAME)-gcc \
-		CCFLAGS="$(MOD_CFLAGS_PERL)" \
+		CCFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
 		CCCDLFLAGS=-fPIC \
 		CCDLFLAGS=-Wl,-E \
 		DLEXT=so \
