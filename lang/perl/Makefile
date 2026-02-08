@@ -107,7 +107,7 @@ define Build/Configure
 	                                files/libc.config \
 	                                files/misc.config \
 	                                > $(PKG_BUILD_DIR)/config.sh
-	(cd $(PKG_BUILD_DIR) && ./Configure)
+	(cd $(PKG_BUILD_DIR) && ./Configure -des)
 	install -m 0644 $(PKG_BUILD_DIR)/config.h $(PKG_BUILD_DIR)/xconfig.h
 endef
 
