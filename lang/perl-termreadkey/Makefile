@@ -16,6 +16,7 @@ PKG_SOURCE_URL:=https://www.cpan.org/authors/id/J/JS/JSTOWE/
 PKG_HASH:=skip
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/TermReadKey-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=perl/host perl-app-cpanminus/host
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/TermReadKey-$(PKG_VERSION)
 HOST_BUILD_DEPENDS:=perl/host
 
@@ -37,7 +38,7 @@ define Package/perl-termreadkey
 endef
 
 define Host/Configure
-	$(call perlmod/host/Configure,CC= LD=,,)
+	$(call perlmod/host/Configure,,)
 endef
 
 define Host/Compile
@@ -48,8 +49,14 @@ define Host/Install
 	$(call perlmod/host/Install,$(1),)
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(STAGING_DIR_HOSTPKG)/bin/cpanm install Term::ReadKey
+endef
+
 define Build/Configure
         $(call perlmod/Configure,,)
+        $(SED) "s#-I\$(INST_ARCHLIB)#-I$(STAGING_DIR_HOSTPKG)/usr/lib/perl5/$(PERL_VERSION3)" $(PKG_BUILD_DIR)/Makefile
 endef
 
 define Build/Compile
