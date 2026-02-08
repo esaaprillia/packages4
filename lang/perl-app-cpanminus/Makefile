@@ -12,8 +12,11 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/App-cpanminus-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/App-cpanminus-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
 define Package/perl-app-cpanminus
@@ -23,6 +26,18 @@ define Package/perl-app-cpanminus
   TITLE:=Perl App cpanminus
   URL:=https://metacpan.org/dist/App-cpanminus
   DEPENDS:=perl +perlbase-base +perlbase-essential
+endef
+
+define Host/Configure
+	$(call perlmod/host/Configure,,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -40,4 +55,5 @@ define Package/perl-app-cpanminus/install
 	$(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/cpanm
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,perl-app-cpanminus))
