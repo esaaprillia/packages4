@@ -51,7 +51,7 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(STAGING_DIR_HOSTPKG)/usr/bin/cpanm install Term::ReadKey
+	$(STAGING_DIR_HOSTPKG)/usr/bin/cpanm --notest install Term::ReadKey
 endef
 
 define Build/Configure
