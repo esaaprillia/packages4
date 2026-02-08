@@ -49,11 +49,6 @@ define Host/Install
         $(call perlmod/host/Install,$(1),)
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) 's|lreadline|L$(STAGING_DIR)/usr/lib -lreadline|g' $(PKG_BUILD_DIR)/Makefile.PL
-endef
-
 define Build/Configure
 	$(call perlmod/Configure,--prefix="$(STAGING_DIR)/usr" EXTRALIBS="-L$(STAGING_DIR)/usr/lib" LDLOADLIBS="-L$(STAGING_DIR)/usr/lib",,)
 endef
