@@ -89,6 +89,10 @@ endef
 
 export LD_LIBRARY_PATH=$(STAGING_DIR_HOSTPKG)/lib:$(STAGING_DIR_HOSTPKG)/usr/lib:$(STAGING_DIR_HOST)
 
+TARGET_CPPFLAGS += \
+	-L$(STAGING_DIR_ROOT)/lib -Wl,-rpath-link=$(STAGING_DIR_ROOT)/lib \
+	-L$(STAGING_DIR_ROOT)/usr/lib -Wl,-rpath-link=$(STAGING_DIR_ROOT)/usr/lib
+
 # Target perl
 define Build/Configure
 	$(PERL_CMD) files/perlconfig.pl -Dowrt:target_cc='$(TARGET_CC)' \
