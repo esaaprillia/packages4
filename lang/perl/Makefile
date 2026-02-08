@@ -107,13 +107,13 @@ define Build/Configure
 	                                files/libc.config \
 	                                files/misc.config \
 	                                > $(PKG_BUILD_DIR)/config.sh
-	(cd $(PKG_BUILD_DIR) && ./Configure -des)
+	(cd $(PKG_BUILD_DIR) && ./Configure -S)
 	install -m 0644 $(PKG_BUILD_DIR)/config.h $(PKG_BUILD_DIR)/xconfig.h
 endef
 
 define Build/Compile
 	# make depend is required to avoid race conditions: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=996953
-	+$(MAKE) -C $(PKG_BUILD_DIR) depend
+	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) depend
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)
 endef
 
