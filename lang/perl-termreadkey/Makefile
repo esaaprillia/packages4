@@ -55,16 +55,16 @@ define Build/Prepare
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
-        $(SED) "s#-I\$(INST_ARCHLIB)#-I$(STAGING_DIR_HOSTPKG)/usr/lib/perl5/$(PERL_VERSION3)" $(PKG_BUILD_DIR)/Makefile
+	$(call perlmod/Configure,,)
+	$(SED) "s#-I\$(INST_ARCHLIB)#-I$(STAGING_DIR_HOSTPKG)/usr/lib/perl5/$(PERL_VERSION3)" $(PKG_BUILD_DIR)/Makefile
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-termreadkey/install
-        $(call perlmod/Install,$(1),Term auto)
+	$(call perlmod/Install,$(1),Term auto)
 endef
 
 $(eval $(call HostBuild))
