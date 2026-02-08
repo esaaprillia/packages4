@@ -51,7 +51,7 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(SED) 's|lreadline|L$(STAGING_DIR)/usr/lib -lreadline|g' $(PKG_BUILD_DIR)/Makefile
+	$(SED) 's|lreadline|L$(STAGING_DIR)/usr/lib -lreadline|g' $(PKG_BUILD_DIR)/Makefile.PL
 endef
 
 define Build/Configure
