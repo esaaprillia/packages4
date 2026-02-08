@@ -76,18 +76,13 @@ endef
 
 # Static host perl
 define Host/Configure
-	( cd $(HOST_BUILD_DIR); ./Configure -der -Uusedl -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
+	( cd $(HOST_BUILD_DIR); ./Configure -des -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
 endef
 
 define Host/Install
 	( cd $(HOST_BUILD_DIR); ./miniperl installperl )
 	$(INSTALL_DIR) $(HOST_PERL_PREFIX)/bin/
 	$(CP) $(HOST_BUILD_DIR)/generate_uudmap $(HOST_PERL_PREFIX)/bin/
-	
-	# Link any possibly installed static extension in
-	$(MAKE) -C $(HOST_BUILD_DIR)/relink clean || true
-	( cd $(HOST_BUILD_DIR)/relink && $(HOST_PERL_PREFIX)/bin/perl Makefile.PL )
-	$(call perlmod/host/relink,$(HOST_BUILD_DIR)/relink)
 endef
 
 # Target perl
@@ -112,7 +107,7 @@ define Build/Configure
 	                                files/libc.config \
 	                                files/misc.config \
 	                                > $(PKG_BUILD_DIR)/config.sh
-	(cd $(PKG_BUILD_DIR) && ./Configure -S)
+	(cd $(PKG_BUILD_DIR) && ./Configure)
 	install -m 0644 $(PKG_BUILD_DIR)/config.h $(PKG_BUILD_DIR)/xconfig.h
 endef
 
