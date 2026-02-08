@@ -76,22 +76,19 @@ endef
 
 # Static host perl
 define Host/Configure
-	( cd $(HOST_BUILD_DIR); ./Configure -des -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
-	$(SED) 's#-L/usr/local/#-L$(STAGING_DIR_HOSTPKG)/lib -L$(STAGING_DIR_HOST)/lib -L$(STAGING_DIR_HOSTPKG)/usr/#g' $(HOST_BUILD_DIR)/config.sh
-	$(SED) 's#-I/usr/local/#-I$(STAGING_DIR_HOSTPKG)/include -I$(STAGING_DIR_HOST)/include -I$(STAGING_DIR_HOSTPKG)/usr/#g' $(HOST_BUILD_DIR)/config.sh
+	( cd $(HOST_BUILD_DIR); ./Configure -der -Uusedl -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
 endef
 
 define Host/Install
 	( cd $(HOST_BUILD_DIR); ./miniperl installperl )
 	$(INSTALL_DIR) $(HOST_PERL_PREFIX)/bin/
 	$(CP) $(HOST_BUILD_DIR)/generate_uudmap $(HOST_PERL_PREFIX)/bin/
+	
+	# Link any possibly installed static extension in
+	$(MAKE) -C $(HOST_BUILD_DIR)/relink clean || true
+	( cd $(HOST_BUILD_DIR)/relink && $(HOST_PERL_PREFIX)/bin/perl Makefile.PL )
+	$(call perlmod/host/relink,$(HOST_BUILD_DIR)/relink)
 endef
-
-export LD_LIBRARY_PATH=$(STAGING_DIR_HOSTPKG)/lib:$(STAGING_DIR_HOSTPKG)/usr/lib:$(STAGING_DIR_HOST)
-
-TARGET_CPPFLAGS += \
-	-L$(STAGING_DIR_ROOT)/lib -Wl,-rpath-link=$(STAGING_DIR_ROOT)/lib \
-	-L$(STAGING_DIR_ROOT)/usr/lib -Wl,-rpath-link=$(STAGING_DIR_ROOT)/usr/lib
 
 # Target perl
 define Build/Configure
@@ -121,7 +118,7 @@ endef
 
 define Build/Compile
 	# make depend is required to avoid race conditions: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=996953
-	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) depend
+	+$(MAKE) -C $(PKG_BUILD_DIR) depend
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)
 endef
 
