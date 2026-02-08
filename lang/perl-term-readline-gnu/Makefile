@@ -50,7 +50,7 @@ define Host/Install
 endef
 
 define Build/Configure
-	$(call perlmod/Configure,LIBS="-L$(STAGING_DIR)/usr/lib" INC="-I$(STAGING_DIR)/usr/include" LDDLFLAGS="-shared -rdynamic $(TARGET_LDFLAGS)",,)
+	$(call perlmod/Configure,--prefix="$(STAGING_DIR)/usr" LIBS="-L$(STAGING_DIR)/usr/lib" INC="-I$(STAGING_DIR)/usr/include" LDDLFLAGS="-shared -rdynamic $(TARGET_LDFLAGS)",,)
 endef
 
 define Build/Compile
