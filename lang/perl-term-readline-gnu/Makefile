@@ -34,27 +34,32 @@ define Package/perl-term-readline-gnu
   CATEGORY:=Languages
   TITLE:=GNU Readline XS library wrapper
   URL:=https://metacpan.org/dist/Term-ReadLine-Gnu
-  DEPENDS:=perl +perlbase-base +libreadline
+  DEPENDS:=perl +perlbase-base
 endef
 
 define Host/Configure
-        $(call perlmod/host/Configure,,,)
+	$(call perlmod/host/Configure,,,)
 endef
 
 define Host/Compile
-        $(call perlmod/host/Compile,,)
+	$(call perlmod/host/Compile,,)
 endef
 
 define Host/Install
-        $(call perlmod/host/Install,$(1),)
+	$(call perlmod/host/Install,$(1),)
+endef
+
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's|$$Config{libpth}|"$(STAGING_DIR)/usr/lib"|' $(PKG_BUILD_DIR)/Makefile.PL
 endef
 
 define Build/Configure
-	$(call perlmod/Configure,--prefix="$(STAGING_DIR)/usr" EXTRALIBS="-L$(STAGING_DIR)/usr/lib" LDLOADLIBS="-L$(STAGING_DIR)/usr/lib",,)
+	$(call perlmod/Configure,--prefix="$(STAGING_DIR)/usr",,)
 endef
 
 define Build/Compile
-	$(call perlmod/Compile,,,$(PKG_BUILD_DIR))
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-term-readline-gnu/install
