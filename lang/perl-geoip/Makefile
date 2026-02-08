@@ -33,7 +33,7 @@ define Package/perl-geoip
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=DEPRECATED GeoIP Legacy Perl API
-  URL:=https://metacpan.org/dist/Term-ReadLine-Gnu
+  URL:=https://github.com/maxmind/geoip-api-perl
   DEPENDS:=perl +perlbase-base +geoip
 endef
 
