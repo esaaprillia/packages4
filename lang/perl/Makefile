@@ -87,6 +87,8 @@ define Host/Install
 	$(CP) $(HOST_BUILD_DIR)/generate_uudmap $(HOST_PERL_PREFIX)/bin/
 endef
 
+export LD_LIBRARY_PATH=$(STAGING_DIR_HOSTPKG)/lib:$(STAGING_DIR_HOSTPKG)/usr/lib:$(STAGING_DIR_HOST)
+
 # Target perl
 define Build/Configure
 	$(PERL_CMD) files/perlconfig.pl -Dowrt:target_cc='$(TARGET_CC)' \
