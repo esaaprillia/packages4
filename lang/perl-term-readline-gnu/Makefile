@@ -54,7 +54,7 @@ define Build/Configure
 endef
 
 define Build/Compile
-	$(call perlmod/Compile,,)
+	$(call perlmod/Compile,,,$(PKG_BUILD_DIR))
 endef
 
 define Package/perl-term-readline-gnu/install
