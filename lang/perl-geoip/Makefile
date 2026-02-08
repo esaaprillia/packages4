@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-geoip
-PKG_VERSION:=1.45
+PKG_VERSION:=1.51
 PKG_RELEASE:=1
 
 PKG_SOURCE:=geoip-api-perl-$(PKG_VERSION).tar.gz
