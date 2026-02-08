@@ -77,6 +77,8 @@ endef
 # Static host perl
 define Host/Configure
 	( cd $(HOST_BUILD_DIR); ./Configure -des -Duserelocatableinc -Dprefix=$(HOST_PERL_PREFIX) $(if $(CONFIG_PERL_THREADS),-Dusethreads,))
+	$(SED) 's#-L/usr/local/#-L$(STAGING_DIR_HOSTPKG)/lib -L$(STAGING_DIR_HOST)/lib -L$(STAGING_DIR_HOSTPKG)/usr/#g' $(HOST_BUILD_DIR)/config.sh
+	$(SED) 's#-I/usr/local/#-I$(STAGING_DIR_HOSTPKG)/include -I$(STAGING_DIR_HOST)/include -I$(STAGING_DIR_HOSTPKG)/usr/#g' $(HOST_BUILD_DIR)/config.sh
 endef
 
 define Host/Install
