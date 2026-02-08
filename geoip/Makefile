@@ -22,13 +22,13 @@ include $(INCLUDE_DIR)/package.mk
 define Package/geoip
 	SECTION:=libs
 	CATEGORY:=Libraries
-	TITLE:=Non-DNS IP-to-country resolver C library & utils
+	TITLE:=DEPRECATED GeoIP Legacy C API
 	DEPENDS:=+zlib
-	URL:=https://www.maxmind.com/app/c
+	URL:=https://github.com/maxmind/geoip-api-c
 endef
 
 define Package/geoip/description
-This is the portable OTR Messaging Library, as well as the toolkit to help you forge messages.
+The GeoIP Legacy C library enables the user to find geographical and network information of an IP address.
 endef
 
 CONFIGURE_ARGS += \
