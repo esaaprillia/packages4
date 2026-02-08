@@ -50,11 +50,11 @@ define Host/Install
 endef
 
 define Build/Configure
-	$(call perlmod/Configure,--includedir="$(STAGING_DIR)/usr/include" --libdir="$(STAGING_DIR)/usr/lib" CC=$(GNU_TARGET_NAME)-gcc LD=$(GNU_TARGET_NAME)-gcc,,)
+	$(call perlmod/Configure,LIBS="-L$(STAGING_DIR)/usr/lib" INC="-I$(STAGING_DIR)/usr/include" LDDLFLAGS="-shared -rdynamic $(TARGET_LDFLAGS)",,)
 endef
 
 define Build/Compile
-	$(call perlmod/Compile,CC=$(GNU_TARGET_NAME)-gcc LD=$(GNU_TARGET_NAME)-gcc,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-term-readline-gnu/install
