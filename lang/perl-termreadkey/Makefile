@@ -54,9 +54,9 @@ define Build/Prepare
 	$(STAGING_DIR_HOSTPKG)/usr/bin/cpanm install Term::ReadKey
 endef
 
-define Build/Configure
-	$(call perlmod/Configure,,)
-	$(SED) "s#-I\$(INST_ARCHLIB)#-I$(STAGING_DIR_HOSTPKG)/usr/lib/perl5/$(PERL_VERSION3)" $(PKG_BUILD_DIR)/Makefile
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's|I$(INST_ARCHLIB)|I$(STAGING_DIR_HOSTPKG)/usr/lib/perl5/$(PERL_VERSION3)|g' $(PKG_BUILD_DIR)/Makefile
 endef
 
 define Build/Compile
