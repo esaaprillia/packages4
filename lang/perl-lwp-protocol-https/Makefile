@@ -20,7 +20,7 @@ PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_LICENSE_FILES:=LICENSE
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/LWP-Protocol-https-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host
+HOST_BUILD_DEPENDS:=perl/host perl-io-socket-ssl/host perl-net-ssleay/host perl-uri/host perl-libwww/host perl-net-http/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/LWP-Protocol-https-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=perl/host
 
