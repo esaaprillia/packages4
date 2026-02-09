@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-uri
-PKG_VERSION:=1.76
+PKG_VERSION:=5.34
 PKG_RELEASE:=1
 
 PKG_SOURCE:=URI-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/O/OA/OALDERS
-PKG_HASH:=b2c98e1d50d6f572483ee538a6f4ccc8d9185f91f0073fd8af7390898254413e
+PKG_HASH:=skip
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/URI-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/URI-$(PKG_VERSION)
@@ -37,15 +37,15 @@ define Package/perl-uri
 endef
 
 define Host/Configure
-        $(call perlmod/host/Configure,,,)
+	$(call perlmod/host/Configure,,)
 endef
 
 define Host/Compile
-        $(call perlmod/host/Compile,,)
+	$(call perlmod/host/Compile,,)
 endef
 
 define Host/Install
-        $(call perlmod/host/Install,$(1),)
+	$(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
