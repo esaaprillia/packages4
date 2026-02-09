@@ -34,24 +34,36 @@ define Package/zoneminder
 	+perl \
 	+perl-archive-zip \
 	+perl-crypt-eksblowfish \
+	+perl-class-std-fast
+	+perl-data-dump \
 	+perl-data-entropy \
 	+perl-data-uuid \
 	+perl-date-manip \
+	+perl-datetime \
 	+perl-dbd-mysql \
-	+perl-dbi \
 	+perl-device-serialport \
+	+perl-file-slurp \
+	+perl-image-info \
+	+perl-io-interface \
+	+perl-io-socket-multicast \
+	+perl-json-maybexs \
 	+perl-libwww \
 	+perl-lwp-protocol-https \
-	+perl-mailtools \
+	+perl-mailtools
 	+perl-mime-lite \
 	+perl-mime-tools \
+	+perl-net-sftp-foreign \
 	+perl-number-bytes-human \
 	+perl-php-serialization \
+	+perl-soap-lite
+	+perl-soap-wsdl \
+	+perl-sys-cpu \
 	+perl-sys-meminfo \
 	+perl-sys-mmap \
-	+perl-time-hires \
-	+perl-sys-cpu \
-	+perl-json-maybexs \
+	+perl-time-hires
+	+perl-uri-encode \
+	+perl-xml-libxml \
+	+perl-xml-parser \
 	+libcurl \
 	+libjpeg-turbo \
 	+libjwt \
