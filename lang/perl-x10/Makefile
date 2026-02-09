@@ -32,7 +32,7 @@ define Package/perl-x10
   CATEGORY:=Languages
   TITLE:=Manage X10 devices in Perl
   URL:=https://metacpan.org/dist/X10
-  DEPENDS:=perl +perlbase-essential +perl-astro-suntime +perl-device-serialport +perl-time-modules
+  DEPENDS:=perl +perlbase-essential +perl-astro-suntime +perl-device-serialport +perl-time-parsedate
 endef
 
 define Host/Configure
