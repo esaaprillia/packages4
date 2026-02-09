@@ -34,7 +34,7 @@ define Package/perl-lwp-protocol-https
   CATEGORY:=Languages
   TITLE:=Perl LWP-Protocol-https
   URL:=https://metacpan.org/dist/LWP-Protocol-https
-  DEPENDS:=perl +perl-io-socket-ssl +perl-libwww +perl-net-http
+  DEPENDS:=perl +ca-certificates +perl-io-socket-ssl +perl-libwww +perl-net-http
 endef
 
 define Host/Configure
