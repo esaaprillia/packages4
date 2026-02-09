@@ -33,7 +33,7 @@ define Package/perl-uri
   CATEGORY:=Languages
   TITLE:=Manipulates and accesses URI strings
   URL:=https://search.cpan.org/dist/URI/
-  DEPENDS:=perl +perlbase-essential +perlbase-integer +perlbase-mime +perlbase-scalar +perlbase-utf8 +perl-test-needs
+  DEPENDS:=perl +perlbase-essential +perlbase-integer +perlbase-mime +perlbase-scalar +perlbase-utf8 +perl-mime-base32
 endef
 
 define Host/Configure
