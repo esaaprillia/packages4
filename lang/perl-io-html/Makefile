@@ -8,17 +8,19 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-io-html
-PKG_VERSION:=1.001
-PKG_RELEASE:=2
+PKG_VERSION:=1.004
+PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=http://www.cpan.org/authors/id/C/CJ/CJM
 PKG_SOURCE:=IO-HTML-$(PKG_VERSION).tar.gz
-PKG_HASH:=ea78d2d743794adc028bc9589538eb867174b4e165d7d8b5f63486e6b828e7e0
+PKG_HASH:=skip
 
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/IO-HTML-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/IO-HTML-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
 include ../perl/perlmod.mk
@@ -32,17 +34,29 @@ define Package/perl-io-html
   DEPENDS:=perl +perlbase-encode +perlbase-essential
 endef
 
+define Host/Configure
+	$(call perlmod/host/Configure,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
+endef
+
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
-define Package/perl-io-html/install
-        $(call perlmod/Install,$(1),IO auto/IO)
+define Package/perl-clone/install
+	$(call perlmod/Install,$(1),IO auto/IO)
 endef
 
-
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,perl-io-html))
