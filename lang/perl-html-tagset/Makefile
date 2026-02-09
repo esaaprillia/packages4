@@ -8,19 +8,22 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-html-tagset
-PKG_VERSION:=3.20
-PKG_RELEASE:=4
+PKG_VERSION:=3.24
+PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=http://www.cpan.org/authors/id/P/PE/PETDANCE/
 PKG_SOURCE:=HTML-Tagset-$(PKG_VERSION).tar.gz
-PKG_HASH:=adb17dac9e36cd011f5243881c9739417fd102fce760f8de4e9be4c7131108e2
+PKG_HASH:=skip
 
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/HTML-Tagset-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/HTML-Tagset-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=perl/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
 
 define Package/perl-html-tagset
@@ -30,6 +33,18 @@ define Package/perl-html-tagset
   TITLE:=Data tables pertaining to HTML
   URL:=http://search.cpan.org/dist/HTML-Tagset/
   DEPENDS:=perl +perlbase-essential
+endef
+
+define Host/Configure
+	$(call perlmod/host/Configure,,)
+endef
+
+define Host/Compile
+	$(call perlmod/host/Compile,,)
+endef
+
+define Host/Install
+	$(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
@@ -44,5 +59,5 @@ define Package/perl-html-tagset/install
 	$(call perlmod/Install,$(1),HTML)
 endef
 
-
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,perl-html-tagset))
