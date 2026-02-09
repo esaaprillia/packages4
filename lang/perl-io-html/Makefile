@@ -54,7 +54,7 @@ define Build/Compile
 	$(call perlmod/Compile,,)
 endef
 
-define Package/perl-clone/install
+define Package/perl-io-html/install
 	$(call perlmod/Install,$(1),IO auto/IO)
 endef
 
