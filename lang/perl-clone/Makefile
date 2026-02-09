@@ -33,7 +33,7 @@ define Package/perl-clone
   CATEGORY:=Languages
   TITLE:=Recursively copy Perl datatypes
   URL:=https://metacpan.org/release/Clone/
-  DEPENDS:=perl +perlbase-base
+  DEPENDS:=perl +perlbase-base +perl-b-cow
 endef
 
 define Host/Configure
