@@ -20,7 +20,7 @@ PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_LICENSE_FILES:=LICENSE
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/libwww-perl-$(PKG_VERSION)
-HOST_BUILD_DEPENDS:=perl/host perl-encode-locale/host perl-file-listing/host perl-timedate/host perl-html-parser/host perl-html-tagset/host perl-http-message/host perl-clone/host perl-io-html/host perl-http-cookiejar/host perl-http-cookies/host perl-http-daemon/host perl-http-date/host perl-http-negotiate/host perl-lwp-mediatypes/host perl-net-http/host perl-try-tiny/host perl-uri/host perl-www-robotrules/host
+HOST_BUILD_DEPENDS:=perl/host perl-encode-locale/host perl-file-listing/host perl-timedate/host perl-html-parser/host perl-html-tagset/host perl-http-message/host perl-clone/host perl-io-html/host perl-http-cookiejar/host perl-http-cookies/host perl-http-daemon/host perl-http-date/host perl-http-negotiate/host perl-lwp-mediatypes/host perl-net-http/host perl-try-tiny/host perl-uri/host perl-www-robotrules/host perl-mime-base32/host perl-b-cow/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/libwww-perl-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=perl/host
 
