@@ -49,15 +49,15 @@ define Host/Install
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-lwp-mediatypes/install
-        $(call perlmod/Install,$(1),LWP auto/LWP)
+	$(call perlmod/Install,$(1),LWP auto/LWP)
 endef
 
 $(eval $(call HostBuild))
