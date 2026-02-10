@@ -5,12 +5,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-ack
-PKG_VERSION:=3.7.0
+PKG_VERSION:=3.9.0
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=http://www.cpan.org/authors/id/P/PE/PETDANCE/
 PKG_SOURCE:=ack-v$(PKG_VERSION).tar.gz
-PKG_HASH:=ea7caa14f757de083310ed2cba298661ddcca5dee06ec8f18043ea625a79df20
+PKG_HASH:=skip
 
 PKG_LICENSE:=Artistic-2.0
 PKG_LICENSE_FILE:=LICENSE.md
