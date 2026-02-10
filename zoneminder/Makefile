@@ -96,22 +96,9 @@ define Build/Compile
 endef
 
 CMAKE_OPTIONS += \
-	-DZM_CONFIG_DIR=/etc/zoneminder \
-	-DZM_CONFIG_SUBDIR=/etc/zoneminder/conf.d \
-	-DZM_RUNDIR=/var/run/zoneminder \
-	-DZM_SOCKDIR=/var/run/zoneminder \
-	-DZM_LOGDIR=/var/log/zoneminder \
-	-DZM_TMPDIR=/var/tmp/zoneminder \
-	-DZM_CONTENTDIR=/var/lib/zoneminder \
-	-DZM_CACHEDIR=/var/lib/zoneminder/cache \
 	-DZM_WEBDIR=/www/zoneminder \
 	-DZM_CGIDIR=/www/cgi-bin \
 	-DZM_DB_HOST=127.0.0.1 \
-	-DZM_WEB_USER=root \
-	-DZM_WEB_GROUP=root \
-	-DZM_DETECT_SYSTEMD=OFF \
-	-DZM_SYSTEMD=OFF \
-	-DWITH_SYSTEMD=OFF \
 	-DGSOAP_TOOL_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
 	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)" \
 	-Dperl="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)"
