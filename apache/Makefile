@@ -172,6 +172,8 @@ define Package/apache/install/mod
 					$(1)/usr/lib/apache2
 endef
 
+EXTRA_CFLAGS+=-DBIG_SECURITY_HOLE
+
 CONFIGURE_ARGS+= \
 	--$(if $(CONFIG_PACKAGE_apache-mod-http2),en,dis)able-http2 \
 	--$(if $(CONFIG_PACKAGE_apache-mod-lua),en,dis)able-lua \
