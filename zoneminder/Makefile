@@ -96,6 +96,8 @@ define Build/Compile
 endef
 
 CMAKE_OPTIONS += \
+	-DZM_CONFIG_DIR=/etc/zoneminder \
+	-DZM_CONFIG_SUBDIR=/etc/zoneminder/conf.d \
 	-DZM_WEBDIR=/www/zoneminder \
 	-DZM_CGIDIR=/www/cgi-bin \
 	-DZM_DB_HOST=127.0.0.1 \
