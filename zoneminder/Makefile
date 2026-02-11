@@ -96,9 +96,9 @@ define Build/Compile
 endef
 
 CMAKE_OPTIONS += \
-	-DZM_CONFIG_DIR=/etc/zoneminder \
-	-DZM_CONFIG_SUBDIR=/etc/zoneminder/conf.d \
-	-DZM_WEBDIR=/www/zoneminder \
+	-DZM_CONFIG_DIR=/etc/zm \
+	-DZM_CONFIG_SUBDIR=/etc/zm/conf.d \
+	-DZM_WEBDIR=/www/zm \
 	-DZM_CGIDIR=/www/cgi-bin \
 	-DZM_DB_HOST=127.0.0.1 \
 	-DGSOAP_TOOL_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
