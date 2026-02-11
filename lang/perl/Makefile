@@ -131,7 +131,7 @@ endif
 
 define Package/perl/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/perl$(PKG_VERSION) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin
 	ln -nsf perl$(PKG_VERSION) $(1)/usr/bin/perl
 	
 	$(INSTALL_DIR) $(1)/usr/lib/perl5/$(PERL_VERSION)/CORE
