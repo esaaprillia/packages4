@@ -1,0 +1,88 @@
+From deab44f5e4c9620619dc1a554bf643c87ba64ee8 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 12 Feb 2026 20:50:53 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3fdea6da3a..9d23a46cc1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -832,7 +832,7 @@ message(STATUS "Enabled JWT backend: ${ZM_JWT_BACKEND}")
+ 
+ # Run ZM configuration generator
+ message(STATUS "Running ZoneMinder configuration generator")
+-execute_process(COMMAND perl ${CMAKE_CURRENT_BINARY_DIR}/zmconfgen.pl RESULT_VARIABLE ZMCONFGEN_RESULT)
++execute_process(COMMAND ${PERL_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/zmconfgen.pl RESULT_VARIABLE ZMCONFGEN_RESULT)
+ if(ZMCONFGEN_RESULT EQUAL 0)
+   message(STATUS "ZoneMinder configuration generator completed successfully")
+ else()
+From 2d2cd1eb91f5b4542c06e0841d70b132d5d2dc47 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 12 Feb 2026 20:53:27 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ onvif/proxy/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/onvif/proxy/CMakeLists.txt b/onvif/proxy/CMakeLists.txt
+index 779b4d47e51..e71354e2022 100644
+--- a/onvif/proxy/CMakeLists.txt
++++ b/onvif/proxy/CMakeLists.txt
+@@ -9,7 +9,7 @@ endif()
+ # MAKEMAKER_NOECHO_COMMAND previously defined in /scripts/zoneminder/CMakeLists.txt
+ 
+ # Add build target for the perl modules
+-add_custom_target(zmonvifproxy ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
++add_custom_target(zmonvifproxy ALL ${PERL_EXECUTABLE} Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
+ 
+ # Add install target for the perl modules
+ install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
+From 71b4720756d0723749a95666c87dcf9d309bd77e Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 12 Feb 2026 20:55:19 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ onvif/modules/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/onvif/modules/CMakeLists.txt b/onvif/modules/CMakeLists.txt
+index 502970af903..614f75e8324 100644
+--- a/onvif/modules/CMakeLists.txt
++++ b/onvif/modules/CMakeLists.txt
+@@ -9,7 +9,7 @@ endif()
+ # MAKEMAKER_NOECHO_COMMAND previously defined in /scripts/zoneminder/CMakeLists.txt
+ 
+ # Add build target for the perl modules
+-add_custom_target(zmonvifmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
++add_custom_target(zmonvifmodules ALL ${PERL_EXECUTABLE} Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
+ 
+ # Add install target for the perl modules
+ install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
+From 7792ed633c6067fa2798dea4e069712963f00344 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 12 Feb 2026 20:57:50 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ scripts/ZoneMinder/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/ZoneMinder/CMakeLists.txt b/scripts/ZoneMinder/CMakeLists.txt
+index 2a8708d2f75..c9012ed1bc1 100644
+--- a/scripts/ZoneMinder/CMakeLists.txt
++++ b/scripts/ZoneMinder/CMakeLists.txt
+@@ -25,7 +25,7 @@ else()
+ endif()
+ 
+ # Add build target for the perl modules
+-add_custom_target(zmperlmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
++add_custom_target(zmperlmodules ALL ${PERL_EXECUTABLE} Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
+ 
+ # Add install target for the perl modules
+ install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
