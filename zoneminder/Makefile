@@ -18,7 +18,7 @@ PKG_BUILD_DEPENDS:=perl-sys-mmap/host perl-dbi/host perl-dbd-mysql/host perl-dat
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake-perl.mk
-include $(TOPDIR)/feeds/python/lang/perl/perlmod-zoneminder.mk
+include $(TOPDIR)/feeds/python/lang/perl/perlver.mk
 
 define Package/zoneminder
 	SECTION:=libs
@@ -81,19 +81,7 @@ define Package/zoneminder/description
 	ZoneMinder is an integrated set of applications which provide a complete surveillance solution allowing capture, analysis, recording and monitoring of any CCTV or security cameras attached to a Linux based machine.
 endef
 
-define Build/Configure
-	$(call Build/Configure/Default)
-	$(call perlmod/Configure,DESTDIR="$(PKG_BUILD_DIR)/build/onvif/proxy/output",,$(PKG_BUILD_DIR)/build/onvif/proxy)
-	$(call perlmod/Configure,DESTDIR="$(PKG_BUILD_DIR)/build/onvif/modules/output",,$(PKG_BUILD_DIR)/build/onvif/modules)
-	$(call perlmod/Configure,DESTDIR="$(PKG_BUILD_DIR)/build/scripts/ZoneMinder/output",,$(PKG_BUILD_DIR)/build/scripts/ZoneMinder)
-endef
-
-define Build/Compile
-	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/build/onvif/proxy)
-	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/build/onvif/modules)
-	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/build/scripts/ZoneMinder)
-	$(call Build/Compile/Default)
-endef
+PERL_SITELIB:=/usr/lib/perl$(PERL_MAJOR)/$(PERL_VERSION2)
 
 CMAKE_OPTIONS += \
 	-DZM_CONFIG_DIR=/etc/zm \
@@ -101,21 +89,24 @@ CMAKE_OPTIONS += \
 	-DZM_WEBDIR=/www/zm \
 	-DZM_CGIDIR=/www/cgi-bin \
 	-DZM_DB_HOST=127.0.0.1 \
+	-DEXTRA_PERL_LIB=$(PERL_SITELIB) \
 	-DGSOAP_TOOL_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)" \
-	-Dperl="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)"
+	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)" \
+	-Dperl="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION)"
 
 define Package/zoneminder/install
 	$(INSTALL_DIR) $(1)/etc
 	$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/perl5 $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
 	$(INSTALL_DIR) $(1)/www
 	$(CP) $(PKG_INSTALL_DIR)/www/* $(1)/www/
-	$(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/zm*.pl
-	$(call perlmod/Install,$(1),ONVIF WSDiscovery WSDiscovery10 WSDiscovery11 WSNotification WSSecurity ZoneMinder ZoneMinder.pm)
+	$(SED) "1"'!'"b;s,^#"'!'".*perl.*,#"'!'"/usr/bin/perl," -i --follow-symlinks $(1)/usr/bin/*
 endef
 
 $(eval $(call BuildPackage,zoneminder))
+
