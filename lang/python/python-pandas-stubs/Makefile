@@ -22,7 +22,7 @@ define Package/python3-pandas-stubs
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Type annotations for pandas
-  URL:=https://crates.io/crates/jiter
+  URL:=https://pandas.pydata.org/
   DEPENDS:=+python3 +python3-numpy
 endef
 
