@@ -1129,8 +1129,11 @@ $(call perlmod/Install,$(1),Pod,Pod/Usage.pm Pod/Simple.pod Pod/Simple/Subclassi
 $(call perlmod/Install/NoStrip,$(1),Pod/Usage.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/Pod-Checker/t cpan/Pod-Escapes/t cpan/Pod-Perldoc/t cpan/Pod-Simple/t cpan/Pod-Usage/scripts cpan/Pod-Usage/t cpan/podlators/t ext/Pod-Functions/Functions.pm ext/Pod-Functions/t ext/Pod-Html/t lib/Pod/t)
 	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/pod2html $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/pod2man $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/pod2text $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/pod2usage $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/podchecker $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,perlbase-pod))
