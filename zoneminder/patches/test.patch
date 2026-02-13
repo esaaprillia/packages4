@@ -64,9 +64,9 @@ index 502970af903..1ae69eae1b5 100644
  
  # Add install target for the perl modules
  install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
-From 3f71f7dfa9377173633494f4cd3f4866626155a4 Mon Sep 17 00:00:00 2001
+From 409d9efbece8ad50bca9bae3cac8a5ba7f3a5704 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Fri, 13 Feb 2026 12:13:47 +0800
+Date: Fri, 13 Feb 2026 14:21:30 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
