@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-term-table
-PKG_VERSION:=0.022
+PKG_VERSION:=0.028
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Term-Table-$(PKG_VERSION).tar.gz
@@ -61,4 +61,5 @@ define Package/perl-term-table/install
 endef
 
 $(eval $(call BuildPackage,perl-term-table))
+
 $(eval $(call HostBuild))
