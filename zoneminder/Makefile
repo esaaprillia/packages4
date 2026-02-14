@@ -120,7 +120,7 @@ define Package/zoneminder/install
 	$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
+	$(INSTALL_DIR) $(1)/usr/lib/perl5/5.42
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/perl5/5.42/{ON*,WS*,Zo*} $(1)/usr/lib/perl5/5.42/
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/build/zmlinkcontent.sh $(1)/usr/sbin/
