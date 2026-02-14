@@ -33,7 +33,7 @@ define Package/perl-test-deep
   CATEGORY:=Languages
   TITLE:=Perl Test Deep
   URL:=https://metacpan.org/dist/Test-Deep
-  DEPENDS:=perl +perlbase-essential +perl-test-simple +perl-test-nowarnings
+  DEPENDS:=perl +perlbase-essential +perlbase-test +perl-test-nowarnings
 endef
 
 define Host/Configure
