@@ -21,7 +21,6 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
 PKG_INSTALL:=1
-PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -40,9 +39,6 @@ define Package/portaudio/description
  intended to promote the exchange of audio software between developers on
  different platforms. Many applications use PortAudio for Audio I/O.
 endef
-
-CONFIGURE_PATH:=.
-CONFIGURE_PATH:=bindings/cpp
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
