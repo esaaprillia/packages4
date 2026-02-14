@@ -32,6 +32,7 @@ define Package/zoneminder
 	+glib2 \
 	+gsoap \
 	+perl \
+	+perl-cgi \
 	+perl-archive-zip \
 	+perl-crypt-eksblowfish \
 	+perl-class-std-fast \
