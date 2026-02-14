@@ -71,7 +71,6 @@ define Package/zoneminder
 	+php8 \
 	+php8-cgi \
 	+php8-cli \
-	+php8-pecl-apcu \
 	+apache-mod-php8 \
 	+php8-mod-mysqli \
 	+php8-mod-pdo-mysql \
