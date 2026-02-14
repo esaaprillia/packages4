@@ -32,7 +32,7 @@ define Package/perl-params-validationcompiler
   CATEGORY:=Languages
   TITLE:=Perl Params-ValidationCompiler
   URL:=https://metacpan.org/dist/Params-ValidationCompiler
-  DEPENDS:=perl +perlbase-essential +perl-test2-plugin-nowarnings +perl-test-without-module +perl-test-simple +perl-specio +perl-role-tiny +perl-mro-compat +perl-exception-class +perl-term-table +perl-eval-closure
+  DEPENDS:=perl +perlbase-essential +perl-test2-plugin-nowarnings +perl-test-without-module +perlbase-test +perl-specio +perl-role-tiny +perl-mro-compat +perl-exception-class +perl-term-table +perl-eval-closure
 endef
 
 define Host/Configure
