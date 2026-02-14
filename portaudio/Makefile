@@ -41,7 +41,7 @@ define Package/portaudio/description
  different platforms. Many applications use PortAudio for Audio I/O.
 endef
 
-CONFIGURE_PATH:=bindings/cpp
+CONFIGURE_PATH:=.
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
