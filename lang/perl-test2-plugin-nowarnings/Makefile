@@ -32,7 +32,7 @@ define Package/perl-test2-plugin-nowarnings
   CATEGORY:=Languages
   TITLE:=Perl Test2-Plugin-NoWarnings
   URL:=https://metacpan.org/dist/Test2-Plugin-NoWarnings
-  DEPENDS:=perl +perlbase-essential +perl-test-simple +perl-ipc-run3 +perl-module-pluggable
+  DEPENDS:=perl +perlbase-essential +perlbase-test +perl-ipc-run3 +perl-module-pluggable
 endef
 
 define Host/Configure
