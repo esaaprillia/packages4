@@ -42,7 +42,7 @@ define Package/portaudio/description
 endef
 
 CONFIGURE_PATH:=.
-MAKE_PATH:=.
+CONFIGURE_PATH:=bindings/cpp
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
