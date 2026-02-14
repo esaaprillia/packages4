@@ -61,7 +61,7 @@ define Package/zoneminder
 	+perl-sys-cpu \
 	+perl-sys-meminfo \
 	+perl-sys-mmap \
-	+perl-time-hires \
+	+perlbase-time \
 	+perl-uri-encode \
 	+perl-xml-libxml \
 	+perl-xml-parser \
