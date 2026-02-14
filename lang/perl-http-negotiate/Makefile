@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-http-negotiate
 PKG_VERSION:=6.01
-PKG_RELEASE:=1
+PKG_RELEASE:=3
 
 PKG_SOURCE:=HTTP-Negotiate-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/G/GA/GAAS/
