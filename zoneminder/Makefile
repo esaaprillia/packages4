@@ -27,6 +27,7 @@ define Package/zoneminder
 	DEPENDS:= \
 	+arp-scan \
 	+arp-scan-database \
+	+bash \
 	+ffmpeg \
 	+glib2 \
 	+gsoap \
@@ -63,6 +64,28 @@ define Package/zoneminder
 	+perl-uri-encode \
 	+perl-xml-libxml \
 	+perl-xml-parser \
+	+apache \
+	+apache-mod-deflate \
+	+mariadb-server \
+	+mariadb-client \
+	+php8 \
+	+php8-cgi \
+	+php8-cli \
+	+php8-pecl-apcu \
+	+apache-mod-php8 \
+	+php8-mod-mysqli \
+	+php8-mod-pdo-mysql \
+	+php8-mod-gd \
+	+php8-mod-intl \
+	+icu-full-data \
+	+php8-mod-session \
+	+php8-pecl-apcu \
+	+php8-mod-ftp \
+	+php8-mod-gettext \
+	+php8-mod-sysvsem \
+	+php8-mod-zip \
+	+php8-mod-ctype \
+	+php8-mod-curl \
 	+libcurl \
 	+libjpeg-turbo \
 	+libjwt \
@@ -73,6 +96,7 @@ define Package/zoneminder
 	+libunwind \
 	+libv4l \
 	+libx264 \
+	+libx265 \
 	+zlib
 endef
 
@@ -98,7 +122,9 @@ define Package/zoneminder/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/perl5 $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/perl5/5.42/{ON*,WS*,Zo*} $(1)/usr/lib/perl5/5.42/
+	$(INSTALL_DIR) $(1)/usr/sbin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/build/zmlinkcontent.sh $(1)/usr/sbin/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
 	$(INSTALL_DIR) $(1)/www
