@@ -8,7 +8,7 @@ endif
 include $(PERL_INCLUDE_DIR)/perlver.mk
 
 ifneq ($(PKG_NAME),perl)
-  PKG_VERSION:=$(PKG_VERSION)
+  PKG_VERSION:=$(PKG_VERSION).$(PERL_VERSION2)
 endif
 
 PERL_VERSION:=$(PERL_VERSION2)
@@ -119,11 +119,11 @@ define perlmod/Configure
 		INSTALLSCRIPT=/usr/bin \
 		INSTALLSITESCRIPT=/usr/bin \
 		INSTALLVENDORSCRIPT=" " \
-		INSTALLMAN1DIR=/usr/share/man/man1 \
-		INSTALLSITEMAN1DIR=/usr/share/man/man1 \
+		INSTALLMAN1DIR=/usr/man/man1 \
+		INSTALLSITEMAN1DIR=/usr/man/man1 \
 		INSTALLVENDORMAN1DIR=" " \
-		INSTALLMAN3DIR=/usr/share/man/man3 \
-		INSTALLSITEMAN3DIR=/usr/share/man/man3 \
+		INSTALLMAN3DIR=/usr/man/man3 \
+		INSTALLSITEMAN3DIR=/usr/man/man3 \
 		INSTALLVENDORMAN3DIR=" " \
 		LINKTYPE=dynamic \
 		DESTDIR=$(PKG_INSTALL_DIR) \
