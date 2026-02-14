@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-html-parser
-PKG_VERSION:=3.75
+PKG_VERSION:=3.83
 PKG_RELEASE:=1
 
 PKG_SOURCE:=HTML-Parser-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://www.cpan.org/authors/id/C/CA/CAPOEIRAB
-PKG_HASH:=ac6b5e25a8df7af54885201e91c45fb9ab6744c08cedc1a38fcc7d95d21193a9
+PKG_HASH:=skip
 
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
