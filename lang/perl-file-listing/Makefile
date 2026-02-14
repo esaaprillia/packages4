@@ -11,7 +11,7 @@ PKG_NAME:=perl-file-listing
 PKG_VERSION:=6.16
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=http://www.cpan.org/authors/id/G/GA/GAAS
+PKG_SOURCE_URL:=https://www.cpan.org/authors/id/P/PL/PLICEASE/
 PKG_SOURCE:=File-Listing-$(PKG_VERSION).tar.gz
 PKG_HASH:=skip
 
