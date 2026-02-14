@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-net-http
-PKG_VERSION:=6.19
+PKG_VERSION:=6.24
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Net-HTTP-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/O/OA/OALDERS
-PKG_HASH:=52b76ec13959522cae64d965f15da3d99dcb445eddd85d2ce4e4f4df385b2fc4
+PKG_HASH:=skip
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Net-HTTP-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/Net-HTTP-$(PKG_VERSION)
