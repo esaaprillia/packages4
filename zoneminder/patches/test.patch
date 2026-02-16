@@ -1,25 +1,3 @@
-From deab44f5e4c9620619dc1a554bf643c87ba64ee8 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Thu, 12 Feb 2026 20:50:53 +0800
-Subject: [PATCH] Update CMakeLists.txt
-
----
- CMakeLists.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3fdea6da3a..9d23a46cc1 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -832,7 +832,7 @@ message(STATUS "Enabled JWT backend: ${ZM_JWT_BACKEND}")
- 
- # Run ZM configuration generator
- message(STATUS "Running ZoneMinder configuration generator")
--execute_process(COMMAND perl ${CMAKE_CURRENT_BINARY_DIR}/zmconfgen.pl RESULT_VARIABLE ZMCONFGEN_RESULT)
-+execute_process(COMMAND ${PERL_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/zmconfgen.pl RESULT_VARIABLE ZMCONFGEN_RESULT)
- if(ZMCONFGEN_RESULT EQUAL 0)
-   message(STATUS "ZoneMinder configuration generator completed successfully")
- else()
 From b665d6cae09f0fe45efd01e98768148a84b4d18b Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Wed, 4 Feb 2026 20:17:21 +0800
