@@ -35,6 +35,7 @@ define Package/python3-hass-nabucasa
 	+python3-josepy \
 	+python3-pycognito \
 	+python3-pyjwt \
+	+python3-requests \
 	+python3-snitun \
 	+python3-voluptuous \
 	+python3-webrtc-models \
