@@ -120,22 +120,26 @@ define Build/Compile
 endef
 
 CMAKE_OPTIONS += \
-	-DZM_CONFIG_DIR=/etc/zm \
-	-DZM_CONFIG_SUBDIR=/etc/zm/conf.d \
-	-DZM_WEBDIR=/www/zm \
+	-DZM_CONFIG_DIR=/etc/zoneminder \
+	-DZM_CONFIG_SUBDIR=/etc/zoneminder/conf.d \
+	-DZM_RUNDIR=/run/zoneminder \
+	-DZM_SOCKDIR=/run/zoneminder \
+	-DZM_LOGDIR=/var/log/zoneminder \
+	-DZM_TMPDIR=/var/tmp/zoneminder \
+	-DZM_CONTENTDIR=/var/lib/zoneminder \
+	-DZM_CACHEDIR=/var/lib/zoneminder/cache \
+	-DZM_WEBDIR=/www/zoneminder \
 	-DZM_CGIDIR=/www/cgi-bin \
 	-DZM_DB_HOST=127.0.0.1 \
+	-DGSOAP_ROOT="$(STAGING_DIR)/usr" \
 	-DGSOAP_TOOL_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)" \
-	-Dperl="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)"
+	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)"
 
 define Package/zoneminder/install
 	$(INSTALL_DIR) $(1)/etc
 	$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/build/zmlinkcontent.sh $(1)/usr/sbin/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
 	$(INSTALL_DIR) $(1)/www
