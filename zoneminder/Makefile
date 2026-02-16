@@ -68,8 +68,8 @@ define Package/zoneminder
 	+perl-x10 \
 	+apache \
 	+apache-mod-deflate \
-	+mariadb-server \
-	+mariadb-client \
+	+mariadb-server-extra \
+	+mariadb-client-extra \
 	+php8 \
 	+php8-cgi \
 	+php8-cli \
