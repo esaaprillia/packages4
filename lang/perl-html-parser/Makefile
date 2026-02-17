@@ -33,7 +33,7 @@ define Package/perl-html-parser
   CATEGORY:=Languages
   TITLE:=A collection of modules that parse HTML text documents
   URL:=http://search.cpan.org/dist/HTML-Parser/
-  DEPENDS:=perl +perl-html-tagset +perlbase-essential +perlbase-xsloader
+  DEPENDS:=perl +perl-html-tagset +perl-http-message +perl-uri +perlbase-essential +perlbase-xsloader
 endef
 
 define Build/Configure
