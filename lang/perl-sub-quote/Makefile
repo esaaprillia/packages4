@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-sub-quote
-PKG_VERSION:=2.006008
+PKG_VERSION:=2.006009
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Sub-Quote-$(PKG_VERSION).tar.gz
