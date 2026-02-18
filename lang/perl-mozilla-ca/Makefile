@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-mozilla-ca
-PKG_VERSION:=20240730
+PKG_VERSION:=20250602
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Mozilla-CA-$(PKG_VERSION).tar.gz
