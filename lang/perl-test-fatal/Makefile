@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-test-fatal
-PKG_VERSION:=0.017
+PKG_VERSION:=0.018
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Test-Fatal-$(PKG_VERSION).tar.gz
