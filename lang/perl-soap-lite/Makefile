@@ -33,7 +33,7 @@ define Package/perl-soap-lite
   CATEGORY:=Languages
   TITLE:=Client and server side SOAP implementation
   URL:=https://metacpan.org/dist/SOAP-Lite
-  DEPENDS:=perl +perlbase-base +perl-class-inspector +perl-fcgi +perl-io-sessiondata +perl-io-socket-ssl +perl-libwww +perl-mime-lite +perl-mime-tools +perl-uri +perl-xml-simple +perl-xml-parser
+  DEPENDS:=perl +perlbase-base +perl-class-inspector +perl-fcgi +perl-io-sessiondata +perl-io-socket-ssl +perl-libwww +perl-mime-lite +perl-mime-tools +perl-uri +perl-lwp-protocol-https +perl-xml-simple +perl-xml-parser
 endef
 
 define Host/Configure
