@@ -57,7 +57,7 @@ define Build/Compile
 endef
 
 define Package/perl-io-socket-multicast/install
-	$(call perlmod/Install,$(1),IO)
+	$(call perlmod/Install,$(1),IO auto/IO)
 endef
 
 $(eval $(call BuildPackage,perl-io-socket-multicast))
