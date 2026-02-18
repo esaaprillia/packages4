@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-mime-lite
-PKG_VERSION:=3.033
+PKG_VERSION:=3.038
 PKG_RELEASE:=1
 
 PKG_SOURCE:=MIME-Lite-$(PKG_VERSION).tar.gz
