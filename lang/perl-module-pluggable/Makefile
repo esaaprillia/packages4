@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-module-pluggable
-PKG_VERSION:=5.2
+PKG_VERSION:=6.3
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Module-Pluggable-$(PKG_VERSION).tar.gz
@@ -61,4 +61,5 @@ define Package/perl-module-pluggable/install
 endef
 
 $(eval $(call BuildPackage,perl-module-pluggable))
+
 $(eval $(call HostBuild))
