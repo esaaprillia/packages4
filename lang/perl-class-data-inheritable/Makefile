@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-class-data-inheritable
-PKG_VERSION:=0.09
+PKG_VERSION:=0.10
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Class-Data-Inheritable-$(PKG_VERSION).tar.gz
