@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-module-runtime
-PKG_VERSION:=0.016
+PKG_VERSION:=0.018
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Module-Runtime-$(PKG_VERSION).tar.gz
