@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-crypt-urandom
-PKG_VERSION:=0.54
+PKG_VERSION:=0.55
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Crypt-URandom-$(PKG_VERSION).tar.gz
