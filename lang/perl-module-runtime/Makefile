@@ -12,7 +12,7 @@ PKG_VERSION:=0.018
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Module-Runtime-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/
+PKG_SOURCE_URL:=https://www.cpan.org/authors/id/H/HA/HAARG/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
