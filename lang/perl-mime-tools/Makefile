@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-mime-tools
-PKG_VERSION:=5.515
+PKG_VERSION:=5.517
 PKG_RELEASE:=1
 
 PKG_SOURCE:=MIME-tools-$(PKG_VERSION).tar.gz
