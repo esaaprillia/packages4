@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-io-socket-ssl
-PKG_VERSION:=2.096
+PKG_VERSION:=2.098
 PKG_RELEASE:=1
 
 PKG_SOURCE:=IO-Socket-SSL-$(PKG_VERSION).tar.gz
