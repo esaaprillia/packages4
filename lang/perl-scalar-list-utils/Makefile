@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-scalar-list-utils
-PKG_VERSION:=1.68
+PKG_VERSION:=1.70
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Scalar-List-Utils-$(PKG_VERSION).tar.gz
