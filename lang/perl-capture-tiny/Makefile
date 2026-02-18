@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-capture-tiny
-PKG_VERSION:=0.48
+PKG_VERSION:=0.50
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Capture-Tiny-$(PKG_VERSION).tar.gz
