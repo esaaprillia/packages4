@@ -34,7 +34,7 @@ define Package/perl-datetime-locale
   CATEGORY:=Languages
   TITLE:=Perl DateTime-Locale
   URL:=https://metacpan.org/dist/DateTime-Locale
-  DEPENDS:=perl +perlbase-base +perl-file-sharedir-install +perl-specio +perl-params-validationcompiler +perl-namespace-autoclean +perl-file-sharedir +perl-dist-checkconflicts
+  DEPENDS:=perl +perlbase-base +perl-specio +perl-params-validationcompiler +perl-namespace-autoclean +perl-file-sharedir +perl-dist-checkconflicts
 endef
 
 define Host/Configure
