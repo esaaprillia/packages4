@@ -33,7 +33,7 @@ define Package/perl-http-date
   CATEGORY:=Languages
   TITLE:=Date conversion routines
   URL:=http://search.cpan.org/dist/HTTP-Date/
-  DEPENDS:=perl +perl-timedate +perlbase-essential +perlbase-time +perl-timedate
+  DEPENDS:=perl +perlbase-essential +perlbase-time +perl-timedate
 endef
 
 define Host/Configure
