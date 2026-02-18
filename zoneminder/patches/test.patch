@@ -15,8 +15,8 @@ index 2a8708d2f75..784772722d0 100644
  endif()
  
  # Add build target for the perl modules
--add_custom_target(zmperlmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
-+#add_custom_target(zmperlmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
+-add_custom_target(zmperlmodules "${PERL_EXECUTABLE}" perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
++#add_custom_target(zmperlmodules "${PERL_EXECUTABLE}" perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
  
  # Add install target for the perl modules
  install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
@@ -37,8 +37,8 @@ index 502970af903..51707a390c3 100644
  # MAKEMAKER_NOECHO_COMMAND previously defined in /scripts/zoneminder/CMakeLists.txt
  
  # Add build target for the perl modules
--add_custom_target(zmonvifmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
-+#add_custom_target(zmonvifmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
+-add_custom_target(zmonvifmodules ALL "${PERL_EXECUTABLE}" Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
++#add_custom_target(zmonvifmodules ALL "${PERL_EXECUTABLE}" Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
  
  # Add install target for the perl modules
  install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
@@ -59,8 +59,8 @@ index 779b4d47e51..1bf2ef225a1 100644
  # MAKEMAKER_NOECHO_COMMAND previously defined in /scripts/zoneminder/CMakeLists.txt
  
  # Add build target for the perl modules
--add_custom_target(zmonvifproxy ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
-+#add_custom_target(zmonvifproxy ALL perl Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
+-add_custom_target(zmonvifproxy ALL "${PERL_EXECUTABLE}" Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
++#add_custom_target(zmonvifproxy ALL "${PERL_EXECUTABLE}" Makefile.PL ${ZM_PERL_MM_PARMS_FULL} FIRST_MAKEFILE=MakefilePerl DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/output ${MAKEMAKER_NOECHO_COMMAND} COMMAND make -f MakefilePerl pure_install COMMENT "Building ZoneMinder perl ONVIF proxy module")
  
  # Add install target for the perl modules
  install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
