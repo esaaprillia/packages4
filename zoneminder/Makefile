@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=zoneminder
-PKG_VERSION:=1.38.0
+PKG_VERSION:=1.38.1
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/ZoneMinder/zoneminder.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=39c2cc997beb038aed2e7f17abf372ee3b32e090
+PKG_SOURCE_VERSION:=6913b0615a3f6627d669ff1034a74a10cad4ebbe
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -74,19 +74,45 @@ define Package/zoneminder
 	+php8-cgi \
 	+php8-cli \
 	+apache-mod-php8 \
-	+php8-mod-mysqli \
-	+php8-mod-pdo-mysql \
-	+php8-mod-gd \
-	+php8-mod-intl \
-	+icu-full-data \
-	+php8-mod-session \
-	+php8-pecl-apcu \
-	+php8-mod-ftp \
-	+php8-mod-gettext \
-	+php8-mod-sysvsem \
-	+php8-mod-zip \
+	+php8-mod-bcmath \
+	+php8-mod-calendar \
 	+php8-mod-ctype \
 	+php8-mod-curl \
+	+php8-mod-dom \
+	+php8-mod-exif \
+	+php8-mod-fileinfo \
+	+php8-mod-filter \
+	+php8-mod-ftp \
+	+php8-mod-gettext \
+	+php8-mod-gd \
+	+php8-mod-gmp \
+	+php8-mod-iconv \
+	+php8-mod-imap \
+	+php8-mod-intl \
+	+php8-mod-mbstring \
+	+php8-mod-mysqli \
+	+php8-mod-mysqlnd \
+	+php8-mod-opcache \
+	+php8-mod-openssl \
+	+php8-mod-pcntl \
+	+php8-mod-pdo \
+	+php8-mod-pdo-mysql \
+	+php8-mod-phar \
+	+php8-mod-session \
+	+php8-mod-shmop \
+	+php8-mod-simplexml \
+	+php8-mod-soap \
+	+php8-mod-sockets \
+	+php8-mod-sodium \
+	+php8-mod-sysvmsg \
+	+php8-mod-sysvsem \
+	+php8-mod-sysvshm \
+	+php8-mod-tokenizer \
+	+php8-mod-xml \
+	+php8-mod-xmlreader \
+	+php8-mod-xmlwriter \
+	+php8-mod-zip \
+	+php8-pecl-apcu \
 	+libcurl \
 	+libjpeg-turbo \
 	+libjwt \
@@ -128,9 +154,20 @@ CMAKE_OPTIONS += \
 	-DZM_TMPDIR=/var/tmp/zoneminder \
 	-DZM_CONTENTDIR=/var/lib/zoneminder \
 	-DZM_CACHEDIR=/var/lib/zoneminder/cache \
+	-DZM_DIR_EVENTS=/var/lib/zoneminder/events \
+	-DZM_DIR_IMAGES=/var/lib/zoneminder/images \
 	-DZM_WEBDIR=/www/zoneminder \
 	-DZM_CGIDIR=/www/cgi-bin \
 	-DZM_DB_HOST=127.0.0.1 \
+	-DZM_WEB_USER=root \
+	-DZM_WEB_GROUP=root \
+	-DZM_PATH_API=/zoneminder/api \
+	-DZM_PATH_ARP_SCAN="/usr/bin/arp-scan" \
+	-DZM_PATH_RM="/bin/rm" \
+	-DZM_PATH_UNAME="/bin/uname" \
+	-DZM_PATH_IP="/sbin/ip" \
+	-DZM_PATH_IFCONFIG="/sbin/ifconfig" \
+	-DZM_PATH_FFMPEG="/usr/bin/ffmpeg" \
 	-DGSOAP_ROOT="$(STAGING_DIR)/usr" \
 	-DGSOAP_TOOL_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
 	-DPERL_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)"
