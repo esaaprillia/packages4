@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-path-tiny
-PKG_VERSION:=0.146
+PKG_VERSION:=0.150
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Path-Tiny-$(PKG_VERSION).tar.gz
