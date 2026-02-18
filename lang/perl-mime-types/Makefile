@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-mime-types
-PKG_VERSION:=2.28
+PKG_VERSION:=2.30
 PKG_RELEASE:=1
 
 PKG_SOURCE:=MIME-Types-$(PKG_VERSION).tar.gz
