@@ -33,7 +33,7 @@ define Package/perl-params-validate
   CATEGORY:=Languages
   TITLE:=Validate sub params against a spec
   URL:=https://search.cpan.org/dist/Params-Validate
-  DEPENDS:=perl +perlbase-essential +perl-module-implementation
+  DEPENDS:=perl +perlbase-essential +perlbase-module
 endef
 
 define Host/Configure
