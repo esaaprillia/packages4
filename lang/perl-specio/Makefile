@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-specio
-PKG_VERSION:=0.48
+PKG_VERSION:=0.53
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Specio-$(PKG_VERSION).tar.gz
