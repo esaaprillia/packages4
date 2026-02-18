@@ -34,7 +34,7 @@ define Package/perl-datetime
   CATEGORY:=Languages
   TITLE:=Perl DateTime
   URL:=https://metacpan.org/dist/DateTime
-  DEPENDS:=perl +perlbase-base +perl-specio +perl-dist-checkconflicts +perl-datetime-locale +perl-namespace-autoclean +perl-try-tiny +perl-datetime-timezone +perl-params-validationcompiler
+  DEPENDS:=perl +perlbase-base +perl-specio +perl-dist-checkconflicts +perl-datetime-locale +perl-namespace-autoclean +perl-try-tiny +perl-datetime-timezone +perl-params-validate +perl-params-validationcompiler
 endef
 
 define Host/Configure
