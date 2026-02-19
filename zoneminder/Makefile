@@ -113,6 +113,7 @@ define Package/zoneminder
 	+php8-mod-xmlwriter \
 	+php8-mod-zip \
 	+php8-pecl-apcu \
+	+icu-full-data \
 	+libcurl \
 	+libjpeg-turbo \
 	+libjwt \
