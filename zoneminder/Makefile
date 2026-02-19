@@ -149,8 +149,8 @@ endef
 CMAKE_OPTIONS += \
 	-DZM_CONFIG_DIR=/etc/zoneminder \
 	-DZM_CONFIG_SUBDIR=/etc/zoneminder/conf.d \
-	-DZM_RUNDIR=/run/zoneminder \
-	-DZM_SOCKDIR=/run/zoneminder \
+	-DZM_RUNDIR=/var/run/zoneminder \
+	-DZM_SOCKDIR=/var/run/zoneminder \
 	-DZM_LOGDIR=/var/log/zoneminder \
 	-DZM_TMPDIR=/var/tmp/zoneminder \
 	-DZM_CONTENTDIR=/var/lib/zoneminder \
