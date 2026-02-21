@@ -32,6 +32,7 @@ define Package/zoneminder
 	+ffmpeg \
 	+glib2 \
 	+gsoap \
+	+procps-ng-ps \
 	+perl \
 	+perl-cgi \
 	+perl-archive-zip \
