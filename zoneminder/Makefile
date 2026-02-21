@@ -32,7 +32,24 @@ define Package/zoneminder
 	+ffmpeg \
 	+glib2 \
 	+gsoap \
+	+procps-ng-free \
+	+procps-ng-kill \
+	+procps-ng-pgrep \
+	+procps-ng-pkill \
+	+procps-ng-pmap \
 	+procps-ng-ps \
+	+procps-ng-pwdx \
+	+procps-ng-skill \
+	+procps-ng-slabtop \
+	+procps-ng-snice \
+	+procps-ng-sysctl \
+	+procps-ng-tload \
+	+procps-ng-top \
+	+procps-ng-uptime \
+	+procps-ng-vmstat \
+	+procps-ng-w \
+	+procps-ng-watch \
+	+procps-ng \
 	+perl \
 	+perl-cgi \
 	+perl-archive-zip \
