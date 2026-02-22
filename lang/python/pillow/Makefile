@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pillow
-PKG_VERSION:=12.1.0
+PKG_VERSION:=12.1.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=pillow
