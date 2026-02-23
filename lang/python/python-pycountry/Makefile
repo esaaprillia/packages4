@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pycountry
-PKG_VERSION:=24.6.1
+PKG_VERSION:=26.2.16
 PKG_RELEASE:=1
 
 PYPI_NAME:=pycountry
-PKG_HASH:=b61b3faccea67f87d10c1f2b0fc0be714409e8fcdcc1315613174f6466c10221
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LGPL-2.1
