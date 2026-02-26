@@ -5,7 +5,6 @@ PKG_VERSION:=20260226.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=home_assistant_frontend
-PKG_SOURCE_URL:=https://github.com/home-assistant/frontend/releases/download/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
