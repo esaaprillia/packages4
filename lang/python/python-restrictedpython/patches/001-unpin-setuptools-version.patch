@@ -1,0 +1,22 @@
+From 643476dfa6079794bd6159e9fa90880d21224904 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 28 Feb 2026 19:25:04 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 7b94ef6..b162798 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,7 +4,7 @@
+ 
+ [build-system]
+ requires = [
+-    "setuptools >= 78.1.1,< 81",
++    "setuptools",
+     "wheel",
+ ]
+ build-backend = "setuptools.build_meta"
