@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-multidict
-PKG_VERSION:=6.7.0
+PKG_VERSION:=6.7.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=multidict
