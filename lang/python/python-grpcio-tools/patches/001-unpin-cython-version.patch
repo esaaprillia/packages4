@@ -1,16 +1,5 @@
-From cb3ebc936d7db98e282b2daaca3d0e4b87d44050 Mon Sep 17 00:00:00 2001
-From: Predators <31931530+predators46@users.noreply.github.com>
-Date: Mon, 2 Mar 2026 07:11:51 +0800
-Subject: [PATCH] Update pyproject.toml
-
----
- tools/distrib/python/grpcio_tools/pyproject.toml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/tools/distrib/python/grpcio_tools/pyproject.toml b/tools/distrib/python/grpcio_tools/pyproject.toml
-index bb2519268d598..2a8d03c5932b1 100644
---- a/tools/distrib/python/grpcio_tools/pyproject.toml
-+++ b/tools/distrib/python/grpcio_tools/pyproject.toml
+--- a/pyproject.toml
++++ b/pyproject.toml
 @@ -16,7 +16,7 @@
  requires = [
      "setuptools>=77.0.1",
