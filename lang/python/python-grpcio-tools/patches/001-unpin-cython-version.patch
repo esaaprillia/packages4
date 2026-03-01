@@ -1,22 +1,22 @@
-From 307bbd5ad2c4df2f548465c639eca82f630007ec Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 28 Feb 2026 11:13:11 +0800
+From cb3ebc936d7db98e282b2daaca3d0e4b87d44050 Mon Sep 17 00:00:00 2001
+From: Predators <31931530+predators46@users.noreply.github.com>
+Date: Mon, 2 Mar 2026 07:11:51 +0800
 Subject: [PATCH] Update pyproject.toml
 
 ---
- pyproject.toml | 2 +-
+ tools/distrib/python/grpcio_tools/pyproject.toml | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/pyproject.toml b/pyproject.toml
-index a0c7f8e..d1a36b1 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
+diff --git a/tools/distrib/python/grpcio_tools/pyproject.toml b/tools/distrib/python/grpcio_tools/pyproject.toml
+index bb2519268d598..2a8d03c5932b1 100644
+--- a/tools/distrib/python/grpcio_tools/pyproject.toml
++++ b/tools/distrib/python/grpcio_tools/pyproject.toml
 @@ -16,7 +16,7 @@
  requires = [
      "setuptools>=77.0.1",
      "wheel",
--    "Cython==3.1.1"
-+    "Cython"
+-    "Cython==3.1.1",
++    "Cython",
  ]
  build-backend = "setuptools.build_meta"
  
