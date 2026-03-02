@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiogithubapi
-PKG_VERSION:=25.5.0
+PKG_VERSION:=26.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiogithubapi
@@ -25,7 +25,7 @@ define Package/python3-aiogithubapi
   CATEGORY:=Languages
   TITLE:=Asynchronous Python client for the GitHub API
   URL:=https://github.com/ludeeus/aiogithubapi
-  DEPENDS:=+python3 +python3-aiohttp +python3-async-timeout +python3-backoff
+  DEPENDS:=+python3 +python3-aiohttp +python3-backoff
 endef
 
 define Package/python3-aiogithubapi/description
