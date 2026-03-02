@@ -23,7 +23,12 @@ define Package/python3-dateparser
   CATEGORY:=Languages
   TITLE:=Date parsing library designed to parse dates from HTML pages
   URL:=https://dateparser.readthedocs.org/
-  DEPENDS:=+python3 +python3-dateutil +python3-pytz +python3-regex +python3-tzlocal +python3-convertdate +python3-hijridate +python3-fasttext +python3-numpy +python3-langdetect
+  DEPENDS:= \
+	+python3-light \
+	+python3-dateutil \
+	+python3-pytz \
+	+python3-regex \
+	+python3-tzlocal
 endef
 
 define Package/python3-dateparser/description
