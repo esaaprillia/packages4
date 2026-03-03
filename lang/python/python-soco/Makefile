@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-soco
-PKG_VERSION:=0.30.12
+PKG_VERSION:=0.30.14
 PKG_RELEASE:=1
 
 PYPI_NAME:=soco
