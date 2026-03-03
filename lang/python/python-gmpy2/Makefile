@@ -18,6 +18,8 @@ PKG_LICENSE:=LGPL-3.0-or-later
 PKG_LICENSE_FILES:=COPYING.LESSER
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
