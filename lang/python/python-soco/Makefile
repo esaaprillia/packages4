@@ -25,7 +25,13 @@ define Package/python3-soco
   CATEGORY:=Languages
   TITLE:=SoCo (Sonos Controller) is a simple library to control Sonos speakers.
   URL:=https://github.com/SoCo/SoCo
-  DEPENDS:=+python3 +python3-requests +python3-xmltodict +python3-ifaddr +python3-appdirs +python3-lxml
+  DEPENDS:= \
+	+python3-light \
+	+python3-requests \
+	+python3-xmltodict \
+	+python3-ifaddr \
+	+python3-appdirs \
+	+python3-lxml
 endef
 
 define Package/python3-soco/description
