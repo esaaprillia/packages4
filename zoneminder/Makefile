@@ -181,6 +181,7 @@ CMAKE_OPTIONS += \
 	-DZM_WEB_USER=root \
 	-DZM_WEB_GROUP=root \
 	-DZM_PATH_API=/zoneminder/api \
+	-DZM_PATH_ARP="/sbin/ip neigh" \
 	-DZM_PATH_ARP_SCAN="/usr/bin/arp-scan" \
 	-DZM_PATH_RM="/bin/rm" \
 	-DZM_PATH_UNAME="/bin/uname" \
