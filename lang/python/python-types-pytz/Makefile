@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-types-pytz
-PKG_VERSION:=2025.2.0.20251108
+PKG_VERSION:=2026.1.1.20260304
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
