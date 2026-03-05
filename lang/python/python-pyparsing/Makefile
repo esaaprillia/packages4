@@ -9,7 +9,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyparsing
-PKG_VERSION:=3.3.1
+PKG_VERSION:=3.3.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyparsing
