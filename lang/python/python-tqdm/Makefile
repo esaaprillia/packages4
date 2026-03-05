@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tqdm
-PKG_VERSION:=4.67.1
+PKG_VERSION:=4.67.3
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=MPL-2.0 MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=tqdm
-PKG_HASH:=f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
 
