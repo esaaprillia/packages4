@@ -31,9 +31,8 @@ define Package/python3-huggingface-hub
 	+python3-httpx \
 	+python3-packaging \
 	+python3-yaml \
-	+python3-shellingham \
 	+python3-tqdm \
-	+python3-typer-slim \
+	+python3-typer \
 	+python3-typing-extensions
 endef
 
