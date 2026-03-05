@@ -1,10 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyturbojpeg
-PKG_VERSION:=1.8.2
+PKG_VERSION:=2.2.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=PyTurboJPEG
+PYPI_NAME:=pyturbojpeg
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -29,9 +29,6 @@ endef
 define Package/python3-pyturbojpeg/description
   PyTurboJPEG is a highly optimized Python wrapper of libjpeg-turbo (TurboJPEG API) which supports x86 and ARM architecture.
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=pyturbojpeg
-PYTHON3_PKG_WHEEL_VERSION:=1.8.2
 
 $(eval $(call Py3Package,python3-pyturbojpeg))
 $(eval $(call BuildPackage,python3-pyturbojpeg))
