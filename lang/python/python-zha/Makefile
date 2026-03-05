@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zha
-PKG_VERSION:=0.0.87
+PKG_VERSION:=1.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=zha
