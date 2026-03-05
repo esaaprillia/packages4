@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-setuptools-git-versioning
-PKG_VERSION:=2.1.0
+PKG_VERSION:=3.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=setuptools_git_versioning
@@ -41,4 +41,3 @@ $(eval $(call Py3Package,python3-setuptools-git-versioning))
 $(eval $(call BuildPackage,python3-setuptools-git-versioning))
 $(eval $(call BuildPackage,python3-setuptools-git-versioning-src))
 $(eval $(call HostBuild))
-
