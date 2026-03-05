@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jmespath
-PKG_VERSION:=1.0.1
-PKG_RELEASE:=2
+PKG_VERSION:=1.1.0
+PKG_RELEASE:=1
 
 PYPI_NAME:=jmespath
-PKG_HASH:=90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Daniel Danzberger <daniel@dd-wrt.com>
 PKG_LICENSE:=MIT
