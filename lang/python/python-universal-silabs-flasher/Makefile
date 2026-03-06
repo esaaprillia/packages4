@@ -24,14 +24,14 @@ define Package/python3-universal-silabs-flasher
   TITLE:=Tool to flash firmware onto any Silicon Labs radio running EmberZNet, CPC multi-PAN, or just a bare Gecko Bootloader
   URL:=https://github.com/NabuCasa/universal-silabs-flasher
   DEPENDS:= \
+	+python3-light \
 	+python3-aiohttp \
-	+python3-click \
+	+python3-tqdm \
 	+python3-zigpy \
 	+python3-crc \
 	+python3-bellows \
 	+python3-gpiod \
 	+python3-coloredlogs \
-	+python3-async-timeout \
 	+python3-typing-extensions \
 	+python3-pyserial-asyncio-fast
 endef
