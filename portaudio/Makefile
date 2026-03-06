@@ -12,7 +12,7 @@ PKG_VERSION:=190700_20210406
 PKG_RELEASE:=1
 
 PKG_SOURCE:=pa_stable_v$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=https://distro.ibiblio.org/tinycorelinux/14.x/aarch64/tcz/src/portaudio/
+PKG_SOURCE_URL:=https://files.portaudio.com/archives/
 PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
