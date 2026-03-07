@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-plexapi
-PKG_VERSION:=4.17.2
+PKG_VERSION:=4.18.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=plexapi
