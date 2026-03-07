@@ -23,7 +23,7 @@ define Package/python3-plexapi
   CATEGORY:=Languages
   TITLE:=Python bindings for the Plex API.
   URL:=https://python-plexapi.readthedocs.io/
-  DEPENDS:=+python3 +python3-requests +python3-websocket-client +python3-pyjwt
+  DEPENDS:=+python3 +python3-requests
 endef
 
 define Package/python3-plexapi/description
