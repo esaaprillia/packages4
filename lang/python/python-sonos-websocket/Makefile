@@ -9,7 +9,7 @@ PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
-PKG_LICENSE_FILES:=
+PKG_LICENSE_FILES:=MIT
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
