@@ -23,7 +23,7 @@ define Package/python3-redis
   CATEGORY:=Languages
   TITLE:=Redis Python client
   URL:=https://github.com/redis/redis-py
-  DEPENDS:=+python3 +python3-hiredis +python3-cryptography +python3-pyopenssl +python3-requests +python3-pyjwt +python3-pybreaker
+  DEPENDS:=+python3
 endef
 
 define Package/python3-redis/description
