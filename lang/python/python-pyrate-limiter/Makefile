@@ -25,7 +25,7 @@ define Package/python3-pyrate-limiter
   CATEGORY:=Languages
   TITLE:=Python Rate-Limiter using Leaky-Bucket Algorithm
   URL:=https://pyratelimiter.readthedocs.io/
-  DEPENDS:=+python3 +python3-filelock +python3-redis +python3-psycopg
+  DEPENDS:=+python3
 endef
 
 define Package/python3-pyrate-limiter/description
