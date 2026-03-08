@@ -29,8 +29,8 @@ define Package/python3-roborock
 	+python3-light \
 	+python3-click \
 	+python3-aiohttp \
-	+python3-pycryptodome \
-	+python3-pycryptodomex \
+	+python3-cryptodome \
+	+python3-cryptodomex \
 	+python3-paho-mqtt \
 	+python3-construct \
 	+python3-vacuum-map-parser-roborock \
