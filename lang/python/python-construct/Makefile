@@ -21,7 +21,7 @@ define Package/python3-construct
   SUBMENU:=Python
   TITLE:=A powerful declarative symmetric parser/builder for binary data
   URL:=https://github.com/construct/construct
-  DEPENDS:=+python3 +python3-numpy +python3-arrow +python3-ruamel-yaml +python3-cloudpickle +python3-lz4 +python3-cryptography
+  DEPENDS:=+python3
 endef
 
 define Package/python3-construct/description
