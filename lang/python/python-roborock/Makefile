@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-roborock
-PKG_VERSION:=3.19.0
+PKG_VERSION:=4.18.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_roborock
