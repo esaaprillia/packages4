@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-uiprotect
-PKG_VERSION:=7.29.0
+PKG_VERSION:=10.2.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=uiprotect
