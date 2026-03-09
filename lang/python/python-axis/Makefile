@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-axis
-PKG_VERSION:=65
+PKG_VERSION:=66
 PKG_RELEASE:=1
 
 PYPI_NAME:=axis
