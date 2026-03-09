@@ -10,25 +10,24 @@ include $(INCLUDE_DIR)/uclibc++.mk
 
 PKG_NAME:=mysql
 PKG_VERSION:=5.1.73
-PKG_RELEASE:=2
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=\
-	http://mysql.he.net/Downloads/MySQL-5.1/ \
-	http://www.linorg.usp.br/mysql/Downloads/MySQL-5.1/ \
-	http://www.mirrorservice.org/sites/ftp.mysql.com/Downloads/MySQL-5.1/ \
-	http://mirror.switch.ch/ftp/mirror/mysql/Downloads/MySQL-5.1/
+PKG_SOURCE_URL:=https://cdn.mysql.com/archives/mysql-5.1/
+PKG_HASH:=skip
 
-PKG_MD5SUM:=887f869bcc757957067b9198f707f32f
 PKG_MAINTAINER:=Jo-Philipp Wich <jo@mein.io>
 PKG_LICENSE:=GPL-2.0
 
+HOST_PATCH_DIR := ./patches-host
+
+PKG_BUILD_DEPENDS:=mysql/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
-
-PKG_FIXUP:=libtool
+PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 
 define Package/libmysqlclient/Default
   SECTION:=libs
@@ -41,7 +40,7 @@ endef
 define Package/mysql-server
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+libmysqlclient +libpthread +libncursesw +libreadline
+  DEPENDS:=+libmysqlclient +libpthread +libncurses +libreadline
   TITLE:=MySQL Server
   URL:=http://dev.mysql.com/
   SUBMENU:=database
@@ -91,54 +90,6 @@ CONFIGURE_VARS += \
 	mysql_cv_gcc_atomic_builtins_pthread_t=yes \
 	ac_cv_c_stack_direction=-1
 
-define Build/Compile
-	+$(MAKE) $(PKG_JOBS) -C "$(PKG_BUILD_DIR)" \
-		SUBDIRS="include" \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all
-	$(MAKE) -C "$(PKG_BUILD_DIR)" \
-		SUBDIRS="include" \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		install
-	g++ -I $(PKG_BUILD_DIR)/include \
-		-o $(PKG_BUILD_DIR)/sql/gen_lex_hash \
-		$(PKG_BUILD_DIR)/sql/gen_lex_hash.cc
-	+$(MAKE) $(PKG_JOBS) -C "$(PKG_BUILD_DIR)/libmysql" \
-		CC="g++" \
-		CFLAGS="$(HOST_CFLAGS)" \
-		CPPFLAGS="$(HOST_CFLAGS)" \
-		LDFLAGS="$(HOST_LDFLAGS)" \
-		conf_to_src
-	+$(MAKE) $(PKG_JOBS) -C "$(PKG_BUILD_DIR)" \
-		SUBDIRS="libmysql" \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all
-	$(MAKE) -C "$(PKG_BUILD_DIR)" \
-		SUBDIRS="libmysql" \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		install
-	+$(MAKE) $(PKG_JOBS) -C "$(PKG_BUILD_DIR)" \
-		SUBDIRS="libmysql_r" \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all
-	$(MAKE) -C "$(PKG_BUILD_DIR)" \
-		SUBDIRS="libmysql_r" \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		install
-	$(MAKE) -C "$(PKG_BUILD_DIR)" \
-		SUBDIRS="scripts" \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		bin_SCRIPTS="mysql_config" \
-		install
-	+$(MAKE) $(PKG_JOBS) -C "$(PKG_BUILD_DIR)" \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		all
-	$(MAKE) -C "$(PKG_BUILD_DIR)" \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		install
-endef
-
-
 define Build/InstallDev
 	$(INSTALL_DIR) $(2)/bin $(1)/usr/bin $(1)/usr/include $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/mysql_config $(1)/usr/bin/
@@ -150,10 +101,16 @@ define Build/InstallDev
 	rm -f $(1)/usr/lib/mysql/libmysqlclient.la
 endef
 
+define Host/Install
+	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
+	$(INSTALL_BIN) $(HOST_BUILD_DIR)/sql/gen_lex_hash $(STAGING_DIR_HOSTPKG)/bin
+endef
+
 define Package/libmysqlclient/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/mysql/libmysqlclient.so.* $(1)/usr/lib/
 endef
+
 define Package/libmysqlclient-r/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/mysql/libmysqlclient_r.so.* $(1)/usr/lib/
@@ -183,6 +140,7 @@ define Package/mysql-server/conffiles
 /etc/my.cnf
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,mysql-server))
 $(eval $(call BuildPackage,libmysqlclient))
 $(eval $(call BuildPackage,libmysqlclient-r))
