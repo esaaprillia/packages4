@@ -25,7 +25,24 @@ define Package/python3-uiprotect
   CATEGORY:=Languages
   TITLE:=Python API for Unifi Protect (Unofficial)
   URL:=https://uiprotect.readthedocs.io/
-  DEPENDS:=+python3 +python3-rich +python3-async-timeout +python3-aiofiles +python3-aiohttp +python3-aioshutil +python3-dateparser +python3-orjson +python3-packaging +python3-pillow +python3-platformdirs +python3-pydantic +python3-pyjwt +python3-yarl +python3-typer +python3-convertertools +python3-propcache +python3-pydantic-extra-types
+  DEPENDS:= \
+	+python3-light \
+	+python3-rich \
+	+python3-aiofiles \
+	+python3-aiohttp \
+	+python3-av \
+	+python3-dateparser \
+	+python3-orjson \
+	+python3-packaging \
+	+python3-pillow \
+	+python3-platformdirs \
+	+python3-pydantic \
+	+python3-pyjwt \
+	+python3-yarl \
+	+python3-typer \
+	+python3-convertertools \
+	+python3-propcache \
+	+python3-pydantic-extra-types
 endef
 
 define Package/python3-uiprotect/description
