@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-music-assistant-client
-PKG_VERSION:=1.3.2
+PKG_VERSION:=1.3.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=music_assistant_client
