@@ -165,7 +165,7 @@ endef
 
 $(eval $(call BuildPackage,libaprutil))
 $(eval $(call Package/libaprutil/Driver,crypto_openssl,OpenSSL,+libopenssl))
-$(eval $(call Package/libaprutil/Driver,dbd_mysql,MySQL,+libmysqlclient-r))
+$(eval $(call Package/libaprutil/Driver,dbd_mysql,MySQL,+libmysqlclient +libmysqlclient-r))
 $(eval $(call Package/libaprutil/Driver,dbd_odbc,ODBC,+unixodbc))
 $(eval $(call Package/libaprutil/Driver,dbd_pgsql,PostgreSQL,+libpq))
 $(eval $(call Package/libaprutil/Driver,dbd_sqlite3,SQLite3,+libsqlite3))
