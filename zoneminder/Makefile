@@ -135,7 +135,7 @@ define Package/zoneminder
 	+libcurl \
 	+libjpeg-turbo \
 	+libjwt \
-	+libmariadb \
+	+libmysqlclient \
 	+libmosquittopp \
 	+libopenssl \
 	+libpcre2 \
