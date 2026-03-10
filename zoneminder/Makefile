@@ -86,7 +86,7 @@ define Package/zoneminder
 	+perl-x10 \
 	+apache \
 	+apache-mod-deflate \
-	+libmysqlclient \
+	+mysql-server \
 	+libmysqlclient-r \
 	+php8 \
 	+php8-cgi \
