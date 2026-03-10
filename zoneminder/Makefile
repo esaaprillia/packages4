@@ -86,8 +86,8 @@ define Package/zoneminder
 	+perl-x10 \
 	+apache \
 	+apache-mod-deflate \
-	+mariadb-server-extra \
-	+mariadb-client-extra \
+	+libmysqlclient \
+	+libmysqlclient-r \
 	+php8 \
 	+php8-cgi \
 	+php8-cli \
@@ -135,7 +135,6 @@ define Package/zoneminder
 	+libcurl \
 	+libjpeg-turbo \
 	+libjwt \
-	+libmysqlclient \
 	+libmosquittopp \
 	+libopenssl \
 	+libpcre2 \
