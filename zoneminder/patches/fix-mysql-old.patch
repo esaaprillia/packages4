@@ -1,0 +1,26 @@
+From b2794217e10a41c5a4eecd8c5a0cd8cce258d1b8 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 10 Mar 2026 22:04:42 +0800
+Subject: [PATCH] Update zm_db.cpp
+
+---
+ src/zm_db.cpp | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/zm_db.cpp b/src/zm_db.cpp
+index a0acd75..87b78ec 100644
+--- a/src/zm_db.cpp
++++ b/src/zm_db.cpp
+@@ -43,12 +43,6 @@ bool zmDbConnect() {
+     return false;
+   }
+ 
+-  if ( !staticConfig.DB_SSL_CA_CERT.empty() ) {
+-    mysql_options(&dbconn, MYSQL_OPT_SSL_KEY,    staticConfig.DB_SSL_CLIENT_KEY.c_str());
+-    mysql_options(&dbconn, MYSQL_OPT_SSL_CERT,   staticConfig.DB_SSL_CLIENT_CERT.c_str());
+-    mysql_options(&dbconn, MYSQL_OPT_SSL_CA,     staticConfig.DB_SSL_CA_CERT.c_str());
+-  }
+-
+   std::string::size_type colonIndex = staticConfig.DB_HOST.find(":");
+   if ( colonIndex == std::string::npos ) {
+     if ( !mysql_real_connect(
