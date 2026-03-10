@@ -76,7 +76,7 @@ CONFIGURE_ARGS += \
 	--with-low-memory \
 	--without-embedded-server \
 	--without-query-cache \
-	--with-ssl \
+	--with-ssl="$(STAGING_DIR)/usr" \
 	--without-docs \
 	--without-man \
 	--without-readline \
