@@ -40,7 +40,7 @@ endef
 define Package/mysql-server
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+libmysqlclient +libpthread +libncurses +libreadline +libopenssl
+  DEPENDS:=+libmysqlclient +libpthread +libncurses +libreadline
   TITLE:=MySQL Server
   URL:=http://dev.mysql.com/
   SUBMENU:=database
@@ -76,7 +76,7 @@ CONFIGURE_ARGS += \
 	--with-low-memory \
 	--without-embedded-server \
 	--without-query-cache \
-	--with-ssl="$(STAGING_DIR)/usr" \
+	--with-ssl \
 	--without-docs \
 	--without-man \
 	--without-readline \
