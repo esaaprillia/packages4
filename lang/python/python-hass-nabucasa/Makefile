@@ -25,7 +25,6 @@ define Package/python3-hass-nabucasa
 	+python3 \
 	+python3-acme \
 	+python3-aiohttp \
-	+python3-async-timeout \
 	+python3-atomicwrites-homeassistant \
 	+python3-attrs \
 	+python3-ciso8601 \
