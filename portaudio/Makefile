@@ -8,13 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=portaudio
-PKG_VERSION:=190700_20210406
-PKG_RELEASE:=1
+PKG_VERSION:=19.7.0
+PKG_RELEASE:=3
 
-PKG_SOURCE:=pa_stable_v$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=https://files.portaudio.com/archives/
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/PortAudio/portaudio/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
