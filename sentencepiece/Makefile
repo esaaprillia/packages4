@@ -29,7 +29,7 @@ define Package/sentencepiece
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Unsupervised text tokenizer for Neural Network-based text generation.
-	DEPENDS:=+libstdcpp +abseil-cpp +protobuf +gperftools-runtime
+	DEPENDS:=+libstdcpp +abseil-cpp +protobuf +gperftools
 	URL:=https://github.com/google/sentencepiece
 endef
 
