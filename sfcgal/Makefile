@@ -24,7 +24,7 @@ define Package/sfcgal
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A wrapper around CGAL that intents to implement 2D and 3D operations on OGC standards models
-	DEPENDS:=+libstdcpp +libmpfr +libgmp +boost-serialization +boost-system +boost-thread
+	DEPENDS:=+libstdcpp +libmpfr +libgmp +boost-serialization +boost-thread
 	URL:=https://gitlab.com/sfcgal/SFCGAL
 endef
 
