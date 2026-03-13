@@ -1,12 +1,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=re2
-PKG_VERSION:=2025-11-05
+#PKG_VERSION:=2025-11-05
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/google/re2/releases/download/$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/google/re2/releases/download/$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/google/re2
+PKG_SOURCE_DATE:=2025-11-05
+PKG_SOURCE_VERSION:=927f5d53caf8111721e734cf24724686bb745f55
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
@@ -45,14 +51,9 @@ define Build/InstallDev
 endef
 
 define Package/re2/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,re2))
 $(eval $(call HostBuild))
-
+$(eval $(call BuildPackage,re2))
