@@ -88,7 +88,6 @@ define Package/zoneminder
 	+apache-mod-deflate \
 	+mariadb-server-extra \
 	+mariadb-client-extra \
-	+php8 \
 	+php8-cgi \
 	+php8-cli \
 	+apache-mod-php8 \
@@ -105,7 +104,6 @@ define Package/zoneminder
 	+php8-mod-gd \
 	+php8-mod-gmp \
 	+php8-mod-iconv \
-	+php8-mod-imap \
 	+php8-mod-intl \
 	+php8-mod-mbstring \
 	+php8-mod-mysqli \
