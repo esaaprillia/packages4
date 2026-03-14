@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=numpy
-PKG_VERSION:=2.4.2
+PKG_VERSION:=2.4.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=$(PKG_NAME)
