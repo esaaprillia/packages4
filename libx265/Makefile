@@ -33,9 +33,6 @@ define Package/libx265/description
 Open Source H265/HEVC video encoder
 endef
 
-CMAKE_OPTIONS += \
-	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
-
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/x265.pc
