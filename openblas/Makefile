@@ -36,11 +36,11 @@ define Package/openblas/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_SHARED_LIBS=ON -DBUILD_TESTING=OFF \
 	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
 CMAKE_HOST_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_SHARED_LIBS=ON -DBUILD_TESTING=OFF \
 	-DCMAKE_Fortran_COMPILER=gfortran
 
 define Build/InstallDev
