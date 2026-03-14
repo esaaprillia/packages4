@@ -11,7 +11,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://www.linuxtv.org/downloads/v4l-utils
-PKG_HASH:=c1cf549c2ec3cf39eb5ec7bf15731349e61b26a21b5e963922db422333bae197
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Ted Hess <thess@kitschensync.net>
 
