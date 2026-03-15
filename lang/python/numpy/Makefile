@@ -22,9 +22,6 @@ include ../meson/meson.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
-TARGET_CFLAGS += \
-	-Wno-error=incompatible-pointer-types
-
 define Package/python3-numpy
   SUBMENU:=Python
   SECTION:=lang
