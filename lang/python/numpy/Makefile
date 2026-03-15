@@ -32,7 +32,7 @@ define Package/python3-numpy
 	+python3 \
 	+libgfortran \
 	+libstdcpp \
-	+openblas
+	+lapack
 endef
 
 define Package/python3-numpy/description
