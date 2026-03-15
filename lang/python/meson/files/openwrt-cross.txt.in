@@ -26,7 +26,7 @@ cpu = '@CPU@'
 endian = '@ENDIAN@'
 
 [properties]
-longdouble_format = 'IEEE_DOUBLE_LE'
+longdouble_format = 'IEEE_QUAD_LE'
 perl_ccopts = [@PERL_CFLAGS@]
 perl_ldopts = [@PERL_LDFLAGS@]
 
