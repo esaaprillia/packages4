@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-markupsafe
 PKG_VERSION:=3.0.3
-PKG_RELEASE:=1
+PKG_RELEASE:=3
 
 PYPI_NAME:=markupsafe
 PKG_HASH:=skip
