@@ -33,7 +33,6 @@ define Package/python3-homeassistant
 	+python3-aiodiscover \
 	+python3-aiodns \
 	+python3-aiogithubapi \
-	+python3-aiohasupervisor \
 	+python3-aiohttp-asyncmdnsresolver \
 	+python3-aiohttp-fast-zlib \
 	+python3-aiohttp \
