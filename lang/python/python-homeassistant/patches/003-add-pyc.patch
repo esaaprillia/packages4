@@ -31,15 +31,15 @@
                  continue
 --- a/homeassistant/scripts/__init__.py
 +++ b/homeassistant/scripts/__init__.py
-@@ -29,7 +29,7 @@ def run(args: list[str]) -> int:
+@@ -28,6 +28,8 @@ def run(args: list[str]) -> int:
  
          if os.path.isdir(os.path.join(path, fil)):
              scripts.append(fil)
--        elif fil != "__init__.py" and fil.endswith(".py"):
 +        elif fil != "__init__.pyc" and fil.endswith(".pyc"):
++            scripts.append(fil[:-4])
+         elif fil != "__init__.py" and fil.endswith(".py"):
              scripts.append(fil[:-3])
  
-     if not args:
  
 From e8b44e8de34c1b5ad76d8180a258de0270a7825a Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
