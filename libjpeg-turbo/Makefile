@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libjpeg-turbo
 PKG_VERSION:=3.1.1
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/$(PKG_VERSION)
@@ -65,11 +65,14 @@ endef
 
 CMAKE_HOST_OPTIONS += \
 	-DENABLE_SHARED=OFF \
-	-DENABLE_STATIC=ON
+	-DENABLE_STATIC=ON \
+	-DWITH_TURBOJPEG=ON \
+	-DWITH_JPEG8=1
 
 CMAKE_OPTIONS += \
 	-DWITH_SIMD=O$(if $(findstring mips,$(CONFIG_ARCH)),FF,N) \
-	-DWITH_TURBOJPEG=ON
+	-DWITH_TURBOJPEG=ON \
+	-DWITH_JPEG8=1
 
 ifneq ($(findstring arm,$(CONFIG_ARCH)),)
 ifeq ($(findstring neon,$(CONFIG_CPU_TYPE)),)
