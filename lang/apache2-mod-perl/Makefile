@@ -34,7 +34,7 @@ define Package/apache2-mod-perl
 endef
 
 define Build/Configure
-	$(call perlmod/Configure,,)
+	$(call perlmod/Configure,MP_APXS="$(STAGING_DIR)/usr/bin/apxs",,)
 endef
 
 define Build/Compile
