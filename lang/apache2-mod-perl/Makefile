@@ -29,7 +29,7 @@ define Package/apache2-mod-perl
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Recursively copy Perl datatypes
-  URL:=https://metacpan.org/release/Clone/
+  URL:=https://perl.apache.org/
   DEPENDS:=perl +perlbase-base +apache
 endef
 
