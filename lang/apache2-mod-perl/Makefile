@@ -28,7 +28,7 @@ define Package/apache2-mod-perl
   SUBMENU:=Perl
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Recursively copy Perl datatypes
+  TITLE:=Perl Module for Apache2
   URL:=https://perl.apache.org/
   DEPENDS:=perl +perlbase-base +apache
 endef
