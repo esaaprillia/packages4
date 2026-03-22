@@ -38,7 +38,7 @@ ifneq ($(CONFIG_USE_MUSL),)
 endif
 
 define Build/Configure
-	$(call perlmod/Configure,MP_APXS="$(STAGING_DIR)/usr/bin/apxs",,)
+	$(call perlmod/Configure,MP_APXS="$(STAGING_DIR)/usr/bin/apxs" MP_APR_CONFIG="$(STAGING_DIR)/usr/bin/apr-1-config",,)
 endef
 
 define Build/Compile
