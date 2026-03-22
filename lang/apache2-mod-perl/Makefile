@@ -33,7 +33,9 @@ define Package/apache2-mod-perl
   DEPENDS:=perl +perlbase-base +apache
 endef
 
-TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
+TARGET_CFLAGS = -Doff64_t=off_t
+CCCDLFLAGS = -Doff64_t=off_t -fPIC
+MOD_CFLAGS_PERL = -Doff64_t=off_t
 
 define Build/Configure
 	$(call perlmod/Configure,MP_APXS="$(STAGING_DIR)/usr/bin/apxs" MP_APR_CONFIG="$(STAGING_DIR)/usr/bin/apr-1-config",,)
