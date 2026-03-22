@@ -1,0 +1,22 @@
+From 9ca3e86841442530728137ac9411214b7027ef02 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 22 Mar 2026 18:08:42 +0800
+Subject: [PATCH] Update Build.pm
+
+---
+ lib/Apache2/Build.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Apache2/Build.pm b/lib/Apache2/Build.pm
+index 19692a83..b5c63089 100644
+--- a/lib/Apache2/Build.pm
++++ b/lib/Apache2/Build.pm
+@@ -2261,7 +2261,7 @@ sub strip_lfs {
+     return $cflags unless $self->has_large_files_conflict();
+ 
+     my $lf = $Config{ccflags_uselargefiles}
+-        || '-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64';
++        || '-D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64';
+     $cflags =~ s/$lf//;
+     $cflags;
+ }
