@@ -41,9 +41,99 @@ define Build/Configure
 	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^CC = .*!CC=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^CC = .*!CC=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^CC = .*!CC=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 	sed -i -e 's!^LD = .*!LD=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^LD = .*!LD=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^LD = .*!LD=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^FULL_AR = .*!FULL_AR=$(GNU_TARGET_NAME)-ar!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^FULL_AR = .*!FULL_AR=$(GNU_TARGET_NAME)-ar!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^FULL_AR = .*!FULL_AR=$(GNU_TARGET_NAME)-ar!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^LDDLFLAGS = .*!LDDLFLAGS=-shared -rdynamic $(TARGET_LDFLAGS)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^LDDLFLAGS = .*!LDDLFLAGS=-shared -rdynamic $(TARGET_LDFLAGS)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^LDDLFLAGS = .*!LDDLFLAGS=-shared -rdynamic $(TARGET_LDFLAGS)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^LDFLAGS = .*!LDFLAGS=$(EXTRA_LIBDIRS:%=-L%) $(EXTRA_LIBS:%=-l%)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^LDFLAGS = .*!LDFLAGS=$(EXTRA_LIBDIRS:%=-L%) $(EXTRA_LIBS:%=-l%)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^LDFLAGS = .*!LDFLAGS=$(EXTRA_LIBDIRS:%=-L%) $(EXTRA_LIBS:%=-l%)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^LIBC = .*!LIBC=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^LIBC = .*!LIBC=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^LIBC = .*!LIBC=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^SITELIBEXP = .*!SITELIBEXP=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^SITELIBEXP = .*!SITELIBEXP=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^SITELIBEXP = .*!SITELIBEXP=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^SITEARCHEXP = .*!SITEARCHEXP=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^SITEARCHEXP = .*!SITEARCHEXP=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^SITEARCHEXP = .*!SITEARCHEXP=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^VENDORARCHEXP = .*!VENDORARCHEXP=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^VENDORARCHEXP = .*!VENDORARCHEXP=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^VENDORARCHEXP = .*!VENDORARCHEXP=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^VENDORLIBEXP = .*!VENDORLIBEXP=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^VENDORLIBEXP = .*!VENDORLIBEXP=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^VENDORLIBEXP = .*!VENDORLIBEXP=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^SITEPREFIX = .*!SITEPREFIX=/usr!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^SITEPREFIX = .*!SITEPREFIX=/usr!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^SITEPREFIX = .*!SITEPREFIX=/usr!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLPRIVLIB = .*!INSTALLPRIVLIB=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLPRIVLIB = .*!INSTALLPRIVLIB=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLPRIVLIB = .*!INSTALLPRIVLIB=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLSITELIB = .*!INSTALLSITELIB=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLSITELIB = .*!INSTALLSITELIB=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLSITELIB = .*!INSTALLSITELIB=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORLIB = .*!INSTALLVENDORLIB=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLVENDORLIB = .*!INSTALLVENDORLIB=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORLIB = .*!INSTALLVENDORLIB=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLARCHLIB = .*!INSTALLARCHLIB=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLARCHLIB = .*!INSTALLARCHLIB=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLARCHLIB = .*!INSTALLARCHLIB=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLSITEARCH = .*!INSTALLSITEARCH=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLSITEARCH = .*!INSTALLSITEARCH=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLSITEARCH = .*!INSTALLSITEARCH=$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORARCH = .*!INSTALLVENDORARCH=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLVENDORARCH = .*!INSTALLVENDORARCH=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORARCH = .*!INSTALLVENDORARCH=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLBIN = .*!INSTALLBIN=/usr/bin!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLBIN = .*!INSTALLBIN=/usr/bin!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLBIN = .*!INSTALLBIN=/usr/bin!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLSITEBIN = .*!INSTALLSITEBIN=/usr/bin!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLSITEBIN = .*!INSTALLSITEBIN=/usr/bin!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLSITEBIN = .*!INSTALLSITEBIN=/usr/bin!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORBIN = .*!INSTALLVENDORBIN=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLVENDORBIN = .*!INSTALLVENDORBIN=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORBIN = .*!INSTALLVENDORBIN=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLSCRIPT = .*!INSTALLSCRIPT=/usr/bin!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLSCRIPT = .*!INSTALLSCRIPT=/usr/bin!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLSCRIPT = .*!INSTALLSCRIPT=/usr/bin!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLSITESCRIPT = .*!INSTALLSITESCRIPT=/usr/bin!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLSITESCRIPT = .*!INSTALLSITESCRIPT=/usr/bin!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLSITESCRIPT = .*!INSTALLSITESCRIPT=/usr/bin!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORSCRIPT = .*!INSTALLVENDORSCRIPT=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLVENDORSCRIPT = .*!INSTALLVENDORSCRIPT=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORSCRIPT = .*!INSTALLVENDORSCRIPT=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLMAN1DIR = .*!INSTALLMAN1DIR=/usr/man/man1!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLMAN1DIR = .*!INSTALLMAN1DIR=/usr/man/man1!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLMAN1DIR = .*!INSTALLMAN1DIR=/usr/man/man1!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLSITEMAN1DIR = .*!INSTALLSITEMAN1DIR=/usr/man/man1!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLSITEMAN1DIR = .*!INSTALLSITEMAN1DIR=/usr/man/man1!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLSITEMAN1DIR = .*!INSTALLSITEMAN1DIR=/usr/man/man1!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORMAN1DIR = .*!INSTALLVENDORMAN1DIR=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLVENDORMAN1DIR = .*!INSTALLVENDORMAN1DIR=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORMAN1DIR = .*!INSTALLVENDORMAN1DIR=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLMAN3DIR = .*!INSTALLMAN3DIR=/usr/man/man3!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLMAN3DIR = .*!INSTALLMAN3DIR=/usr/man/man3!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLMAN3DIR = .*!INSTALLMAN3DIR=/usr/man/man3!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLSITEMAN3DIR = .*!INSTALLSITEMAN3DIR=/usr/man/man3!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLSITEMAN3DIR = .*!INSTALLSITEMAN3DIR=/usr/man/man3!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLSITEMAN3DIR = .*!INSTALLSITEMAN3DIR=/usr/man/man3!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORMAN3DIR = .*!INSTALLVENDORMAN3DIR=!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^INSTALLVENDORMAN3DIR = .*!INSTALLVENDORMAN3DIR=!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^INSTALLVENDORMAN3DIR = .*!INSTALLVENDORMAN3DIR=!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 endef
 
 define Build/Compile
