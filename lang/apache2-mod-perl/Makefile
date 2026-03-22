@@ -35,14 +35,15 @@ endef
 
 define Build/Configure
 	$(call perlmod/Configure,MP_APXS="$(STAGING_DIR)/usr/bin/apxs" MP_APR_CONFIG="$(STAGING_DIR)/usr/bin/apr-1-config",,)
-	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/Makefile
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/*/*/*/Makefile
-	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/Makefile
 	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^LD = .*!LD=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^LD = .*!LD=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^LD = .*!LD=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 endef
 
 define Build/Compile
