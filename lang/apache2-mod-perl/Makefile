@@ -33,6 +33,8 @@ define Package/apache2-mod-perl
   DEPENDS:=perl +perlbase-base +apache
 endef
 
+TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
+
 define Build/Configure
 	$(call perlmod/Configure,MP_APXS="$(STAGING_DIR)/usr/bin/apxs",,)
 endef
