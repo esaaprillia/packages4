@@ -33,14 +33,22 @@ define Package/apache2-mod-perl
   DEPENDS:=perl +perlbase-base +apache
 endef
 
+MOD_CFLAGS_PERL += $(FPIC)
+
 define Build/Configure
 	$(call perlmod/Configure,MP_APXS="$(STAGING_DIR)/usr/bin/apxs" MP_APR_CONFIG="$(STAGING_DIR)/usr/bin/apr-1-config",,)
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/*/*/*/Makefile
-	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/Makefile
-	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/*/Makefile
-	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL) $(FPIC)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL) $(FPIC)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL) $(FPIC)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^CCCDLFLAGS = .*!CCCDLFLAGS=-fPIC!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^CCCDLFLAGS = .*!CCCDLFLAGS=-fPIC!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^CCCDLFLAGS = .*!CCCDLFLAGS=-fPIC!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^CCDLFLAGS = .*!CCDLFLAGS=-Wl,-E!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^CCDLFLAGS = .*!CCDLFLAGS=-Wl,-E!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^CCDLFLAGS = .*!CCDLFLAGS=-Wl,-E!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 	sed -i -e 's!^CC = .*!CC=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^CC = .*!CC=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^CC = .*!CC=$(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/*/Makefile
