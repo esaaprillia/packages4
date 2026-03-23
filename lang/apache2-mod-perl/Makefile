@@ -139,6 +139,16 @@ define Build/Configure
 	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^MODPERL_AP_INCLUDEDIR = .*!MODPERL_AP_INCLUDEDIR=$(PKG_INSTALL_DIR)/usr/include/apache2!' $(PKG_BUILD_DIR)/Makefile
+	sed -i -e 's!^MODPERL_AP_INCLUDEDIR = .*!MODPERL_AP_INCLUDEDIR=$(PKG_INSTALL_DIR)/usr/include/apache2!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^MODPERL_AP_INCLUDEDIR = .*!MODPERL_AP_INCLUDEDIR=$(PKG_INSTALL_DIR)/usr/include/apache2!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^MODPERL_AP_INCLUDEDIR = .*!MODPERL_AP_INCLUDEDIR=$(PKG_INSTALL_DIR)/usr/include/apache2!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	mkdir -p $(PKG_INSTALL_DIR)/usr/bin
+	mkdir -p $(PKG_INSTALL_DIR)/usr/lib/apache2
+	mkdir -p $(PKG_INSTALL_DIR)/usr/include/apache2
 endef
 
 define Build/Compile
