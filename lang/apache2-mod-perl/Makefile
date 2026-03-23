@@ -40,9 +40,9 @@ define Build/Configure
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^PERL_INC = .*!PERL_INC = $(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/CORE/!' $(PKG_BUILD_DIR)/*/*/*/Makefile
-	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL) $(FPIC)!' $(PKG_BUILD_DIR)/*/Makefile
-	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL) $(FPIC)!' $(PKG_BUILD_DIR)/*/*/Makefile
-	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL) $(FPIC)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^CCFLAGS = .*!CCFLAGS=$(MOD_CFLAGS_PERL)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 	sed -i -e 's!^CCCDLFLAGS = .*!CCCDLFLAGS=-fPIC!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^CCCDLFLAGS = .*!CCCDLFLAGS=-fPIC!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^CCCDLFLAGS = .*!CCCDLFLAGS=-fPIC!' $(PKG_BUILD_DIR)/*/*/*/Makefile
@@ -139,9 +139,6 @@ define Build/Configure
 	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/*/*/Makefile
-	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/Makefile
-	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/Makefile
-	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 endef
 
 define Build/Compile
