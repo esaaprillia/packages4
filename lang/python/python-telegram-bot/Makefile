@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-telegram-bot
-PKG_VERSION:=22.5
+PKG_VERSION:=22.7
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_telegram_bot
