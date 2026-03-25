@@ -14,7 +14,7 @@ index 240b47f..5b77fc2 100644
 @@ -1,7 +1,7 @@
  [build-system]
  requires = [
--    "setuptools>=68.0,<80.10",
+-    "setuptools>=68.0,<82.1",
 -    "wheel>=0.40,<0.47",
 +    "setuptools",
 +    "wheel",
