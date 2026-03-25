@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cachetools
-PKG_VERSION:=7.0.2
+PKG_VERSION:=7.0.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=cachetools
