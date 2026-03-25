@@ -25,7 +25,7 @@ define Package/python3-telegram-bot
   CATEGORY:=Languages
   TITLE:=We have made you a wrapper you can't refuse
   URL:=https://python-telegram-bot.org/
-  DEPENDS:=+python3 +python3-httpx +python3-httpcore +python3-cachetools +python3-apscheduler +python3-cryptography +python3-cffi +python3-aiolimiter +python3-tornado
+  DEPENDS:=+python3 +python3-httpx +python3-httpcore
 endef
 
 define Package/python3-telegram-bot/description
