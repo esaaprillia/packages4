@@ -20,7 +20,7 @@ define Package/python3-hassil
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=The Home Assistant Intent Language parser
-  URL:=https://github.com/rhasspy/pyspeex-noise
+  URL:=https://github.com/OHF-Voice/hassil
   DEPENDS:=+python3-light +python3-yaml +python3-unicode-rbnf
 endef
 
