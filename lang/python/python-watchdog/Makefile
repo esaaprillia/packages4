@@ -25,7 +25,6 @@ define Package/python3-watchdog
 	+python3-codecs \
 	+python3-ctypes \
 	+python3-logging \
-	+python3-pydoc \
 	+python3-yaml
 endef
 
