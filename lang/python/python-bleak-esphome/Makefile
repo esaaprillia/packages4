@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bleak-esphome
-PKG_VERSION:=3.6.0
+PKG_VERSION:=3.7.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=bleak_esphome
