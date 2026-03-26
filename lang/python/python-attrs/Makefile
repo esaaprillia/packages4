@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-attrs
-PKG_VERSION:=25.4.0
+PKG_VERSION:=26.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=attrs
