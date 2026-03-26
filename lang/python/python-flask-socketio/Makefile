@@ -30,8 +30,12 @@ define Package/python3-flask-socketio
   URL:=https://github.com/miguelgrinberg/Flask-SocketIO/
   DEPENDS:= \
 	+python3-light \
+	+python3-blinker \
+	+python3-click \
 	+python3-flask \
-	+python3-socketio
+	+python3-jinja2 \
+	+python3-socketio \
+	+python3-werkzeug
 endef
 
 define Package/python3-flask-socketio/description
