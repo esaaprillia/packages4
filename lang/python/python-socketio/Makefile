@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-socketio
-PKG_VERSION:=5.15.0
+PKG_VERSION:=5.16.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_socketio
