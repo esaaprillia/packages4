@@ -15,7 +15,8 @@ PKG_LICENSE:=0BSD
 PYPI_NAME:=chardet
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host python-hatch-vcs/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host python-hatch-vcs/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
