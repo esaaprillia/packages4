@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-litellm
-PKG_VERSION:=1.82.0
+PKG_VERSION:=1.82.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=litellm
