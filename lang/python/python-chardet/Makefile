@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=python-chardet
 PKG_VERSION:=7.3.0
 PKG_RELEASE:=1
-PKG_LICENSE:=LGPL-2.1
+PKG_LICENSE:=0BSD
 
 PYPI_NAME:=chardet
 PKG_HASH:=skip
