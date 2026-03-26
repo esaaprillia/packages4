@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-engineio
-PKG_VERSION:=4.12.3
+PKG_VERSION:=4.13.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_engineio
