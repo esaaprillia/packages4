@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-setuptools-scm
-PKG_VERSION:=9.2.2
+PKG_VERSION:=10.0.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=setuptools-scm
@@ -25,9 +25,8 @@ HOST_BUILD_DEPENDS:= \
 	python-build/host \
 	python-installer/host \
 	python-wheel/host \
-	python-packaging/host \
 	python-setuptools/host \
-	python-typing-extensions/host
+	python-vcs-versioning/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -44,9 +43,9 @@ define Package/python3-setuptools-scm
   DEPENDS:= \
       +python3-light \
       +python3-logging \
+      +python3-vcs-versioning \
       +python3-packaging \
-      +python3-setuptools \
-      +python3-typing-extensions
+      +python3-setuptools
   BUILDONLY:=1
 endef
 
