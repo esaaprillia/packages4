@@ -17,7 +17,6 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:sqlalchemy:mako
 
-PKG_HOST_ONLY:=1
 HOST_BUILD_DEPENDS:= \
 	python3/host \
 	python-build/host \
@@ -38,7 +37,6 @@ define Package/python3-mako
   TITLE:=Super-fast templating language
   URL:=https://www.makotemplates.org/
   DEPENDS:=+python3-light +python3-urllib +python3-markupsafe
-  BUILDONLY:=1
 endef
 
 define Package/python3-mako/description
