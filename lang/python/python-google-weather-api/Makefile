@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-weather-api
-PKG_VERSION:=0.0.4
+PKG_VERSION:=0.0.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_google_weather_api
