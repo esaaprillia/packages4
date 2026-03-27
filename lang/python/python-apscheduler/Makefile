@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-apscheduler
-PKG_VERSION:=3.11.1
+PKG_VERSION:=3.11.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=apscheduler
