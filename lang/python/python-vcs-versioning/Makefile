@@ -11,6 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.txt
 
+PKG_BUILD_DEPENDS:=python-packaging/host
 HOST_BUILD_DEPENDS:=python-packaging/host
 
 include ../pypi.mk
