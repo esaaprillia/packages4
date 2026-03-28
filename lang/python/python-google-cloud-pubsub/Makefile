@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-cloud-pubsub
-PKG_VERSION:=2.33.0
+PKG_VERSION:=2.36.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_cloud_pubsub
