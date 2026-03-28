@@ -23,7 +23,15 @@ define Package/python3-google-nest-sdm
   CATEGORY:=Languages
   TITLE:=Library for the Google Nest SDM API
   URL:=https://github.com/allenporter/python-google-nest-sdm
-  DEPENDS:=+python3 +python3-aiohttp +python3-google-auth +python3-google-auth-oauthlib +python3-google-cloud-pubsub +python3-requests-oauthlib +python3-yaml +python3-mashumaro
+  DEPENDS:= \
+	+python3-light \
+	+python3-aiohttp \
+	+python3-google-auth \
+	+python3-google-auth-oauthlib \
+	+python3-google-cloud-pubsub \
+	+python3-requests-oauthlib \
+	+python3-yaml \
+	+python3-mashumaro
 endef
 
 define Package/python3-google-nest-sdm/description
