@@ -25,7 +25,7 @@ define Package/python3-readme-renderer
   CATEGORY:=Languages
   TITLE:=readme_renderer is a library for rendering readme descriptions for Warehouse
   URL:=https://github.com/pypa/readme_renderer
-  DEPENDS:=+python3 +python3-nh3 +python3-docutils +python3-pygments python3-cmarkgfm
+  DEPENDS:=+python3 +python3-nh3 +python3-docutils +python3-pygments
 endef
 
 define Package/python3-readme-renderer/description
