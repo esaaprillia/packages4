@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-auth
-PKG_VERSION:=2.43.0
+PKG_VERSION:=2.49.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_auth
@@ -21,7 +21,7 @@ define Package/python3-google-auth
   SUBMENU:=Python
   TITLE:=Google Authentication Library
   URL:=https://github.com/googleapis/google-auth-library-python
-  DEPENDS:=+python3 +python3-cachetools +python3-pyasn1-modules +python3-rsa +python3-cryptography +python3-requests +python3-aiohttp +python3-pyjwt +python3-pyu2f +python3-pyopenssl +python3-urllib3 +python3-packaging
+  DEPENDS:=+python3 +python3-pyasn1-modules +python3-cryptography
 endef
 
 define Package/python3-google-auth/description
