@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-secretstorage/host python-jeepney/host python-jaraco-classes/host python-jaraco-functools/host python-jaraco-context/host
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-secretstorage/host python-jeepney/host python-jaraco-classes/host python-jaraco-functools/host python-jaraco-context/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-coherent-licensed/host python-secretstorage/host python-jeepney/host python-jaraco-classes/host python-jaraco-functools/host python-jaraco-context/host
+HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-coherent-licensed/host python-secretstorage/host python-jeepney/host python-jaraco-classes/host python-jaraco-functools/host python-jaraco-context/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
