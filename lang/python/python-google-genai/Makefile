@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-genai
-PKG_VERSION:=1.52.0
+PKG_VERSION:=1.68.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_genai
