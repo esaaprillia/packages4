@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://github.com/Blosc/c-blosc/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=BSD
 PKG_LICENSE_FILES:=LICENSE.txt
 
 CMAKE_BINARY_SUBDIR := build
@@ -52,12 +52,8 @@ define Build/InstallDev
 endef
 
 define Package/c-blosc/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/lib
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call HostBuild))
