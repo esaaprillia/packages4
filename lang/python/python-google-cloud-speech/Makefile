@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-cloud-speech
-PKG_VERSION:=2.34.0
+PKG_VERSION:=2.38.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_cloud_speech
