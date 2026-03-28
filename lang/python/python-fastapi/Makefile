@@ -23,7 +23,13 @@ define Package/python3-fastapi
   SUBMENU:=Python
   TITLE:=FastAPI framework, high performance, easy to learn, fast to code, ready for production
   URL:=https://github.com/fastapi/fastapi
-  DEPENDS:=+python3 +python3-starlette +python3-pydantic +python3-typing-extensions +python3-annotated-doc
+  DEPENDS:= \
+	+python3-light \
+	+python3-starlette \
+	+python3-pydantic \
+	+python3-typing-extensions \
+	+python3-typing-inspection \
+	+python3-annotated-doc
 endef
 
 define Package/python3-fastapi/description
