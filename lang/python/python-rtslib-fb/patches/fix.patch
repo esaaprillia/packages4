@@ -1,0 +1,8 @@
+diff --git a/rtslib_fb b/rtslib_fb
+new file mode 120000
+index 00000000..9428349b
+--- /dev/null
++++ b/rtslib_fb
+@@ -0,0 +1 @@
++rtslib
+\ No newline at end of file
