@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-scikit-build
-PKG_VERSION:=0.18.1
+PKG_VERSION:=0.19.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -9,7 +9,7 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=scikit_build
-PKG_HASH:=a4152ac5a084d499c28a7797be0628d8366c336e2fb0e1a063eb32e55efcb8e7
+PKG_HASH:=skip
 
 HOST_BUILD_DEPENDS:=python-distro/host python-hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
 
