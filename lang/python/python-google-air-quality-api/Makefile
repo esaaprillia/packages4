@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-air-quality-api
-PKG_VERSION:=2.0.2
+PKG_VERSION:=3.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_air_quality_api
