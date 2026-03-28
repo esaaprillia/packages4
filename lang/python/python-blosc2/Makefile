@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-blosc2
-PKG_VERSION:=3.11.1
+PKG_VERSION:=4.1.2
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -26,7 +26,14 @@ define Package/python3-blosc2
   CATEGORY:=Languages
   TITLE:=Python wrapper for the C-Blosc2 library
   URL:=https://github.com/Blosc/python-blosc2
-  DEPENDS:=+python3 +python3-numpy +python3-ndindex +python3-msgpack +python3-platformdirs +python3-numexpr +python3-py-cpuinfo +python3-requests +c-blosc2
+  DEPENDS:= \
+	+python3-light \
+	+python3-numpy \
+	+python3-ndindex \
+	+python3-msgpack \
+	+python3-numexpr \
+	+python3-requests \
+	+c-blosc2
 endef
 
 define Package/python3-blosc2/description
