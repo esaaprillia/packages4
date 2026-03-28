@@ -29,7 +29,6 @@ define Package/python3-google-genai
 	+python3-light \
 	+python3-anyio \
 	+python3-google-auth \
-	+python3-requests \
 	+python3-httpx \
 	+python3-pydantic \
 	+python3-requests \
