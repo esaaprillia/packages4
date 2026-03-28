@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-opentelemetry-sdk
-PKG_VERSION:=1.39.0
+PKG_VERSION:=1.40.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=opentelemetry_sdk
