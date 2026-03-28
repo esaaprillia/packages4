@@ -23,7 +23,7 @@ define Package/python3-google-resumable-media
   CATEGORY:=Languages
   TITLE:=Utilities for Google Media Downloads and Resumable Uploads
   URL:=https://github.com/googleapis/google-resumable-media-python
-  DEPENDS:=+python3 +python3-google-crc32c +python3-requests +python3-aiohttp +python3-google-auth
+  DEPENDS:=+python3 +python3-google-crc32c
 endef
 
 define Package/python3-google-resumable-media/description
