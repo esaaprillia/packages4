@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-api-core
-PKG_VERSION:=2.28.1
+PKG_VERSION:=2.30.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_api_core
@@ -23,7 +23,13 @@ define Package/python3-google-api-core
   CATEGORY:=Languages
   TITLE:=Google API client core library
   URL:=https://googleapis.dev/python/google-api-core
-  DEPENDS:=+python3 +python3-googleapis-common-protos +python3-protobuf +python3-proto-plus +python3-google-auth +python3-requests +python3-importlib-metadata +python3-grpcio +python3-grpcio-status +python3-grpcio-gcp
+  DEPENDS:= \
+	+python3-light \
+	+python3-googleapis-common-protos \
+	+python3-protobuf \
+	+python3-proto-plus \
+	+python3-google-auth \ 
+	+python3-requests
 endef
 
 define Package/python3-google-api-core/description
