@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jaraco-context
-PKG_VERSION:=6.0.1
+PKG_VERSION:=6.1.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=jaraco_context
