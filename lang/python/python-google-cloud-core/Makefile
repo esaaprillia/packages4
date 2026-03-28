@@ -23,7 +23,7 @@ define Package/python3-google-cloud-core
   CATEGORY:=Languages
   TITLE:=Google Cloud API client core library
   URL:=https://github.com/googleapis/python-cloud-core
-  DEPENDS:=+python3 +python3-google-api-core +python3-google-auth +python3-importlib-metadata +python3-grpcio +python3-grpcio-status
+  DEPENDS:=+python3 +python3-google-api-core +python3-google-auth
 endef
 
 define Package/python3-google-cloud-core/description
