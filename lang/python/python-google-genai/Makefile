@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-genai
-PKG_VERSION:=1.68.0
+PKG_VERSION:=1.69.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_genai
@@ -25,7 +25,19 @@ define Package/python3-google-genai
   CATEGORY:=Languages
   TITLE:=GenAI Python SDK
   URL:=https://googleapis.github.io/python-genai/
-  DEPENDS:=+python3 +python3-anyio +python3-google-auth +python3-httpx +python3-pydantic +python3-requests +python3-tenacity +python3-websockets +python3-typing-extensions +python3-aiohttp +python3-sentencepiece +python3-protobuf
+  DEPENDS:= \
+	+python3-light \
+	+python3-anyio \
+	+python3-google-auth \
+	+python3-requests \
+	+python3-httpx \
+	+python3-pydantic \
+	+python3-requests \
+	+python3-tenacity \
+	+python3-websockets \
+	+python3-typing-extensions \
+	+python3-distro \
+	+python3-sniffio
 endef
 
 define Package/python3-google-genai/description
