@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-googleapis-common-protos
-PKG_VERSION:=1.72.0
+PKG_VERSION:=1.73.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=googleapis_common_protos
