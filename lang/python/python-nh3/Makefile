@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-nh3
-PKG_VERSION:=0.3.2
+PKG_VERSION:=0.3.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=nh3
