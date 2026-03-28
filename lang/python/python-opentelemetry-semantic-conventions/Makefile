@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-opentelemetry-semantic-conventions
-PKG_VERSION:=0.60b0
+PKG_VERSION:=0.61b0
 PKG_RELEASE:=1
 
 PYPI_NAME:=opentelemetry_semantic_conventions
