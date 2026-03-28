@@ -2,9 +2,10 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-rtslib-fb
 PKG_VERSION:=2.2.4
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
-PYPI_NAME:=rtslib_fb
+PYPI_NAME:=rtslib-fb
+PKG_SOURCE_URL:=https://github.com/open-iscsi/rtslib-fb/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
