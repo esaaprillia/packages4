@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-api-python-client
-PKG_VERSION:=2.187.0
+PKG_VERSION:=2.193.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_api_python_client
