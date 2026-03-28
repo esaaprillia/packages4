@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyudev
-PKG_VERSION:=0.24.3
+PKG_VERSION:=0.24.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyudev
-PKG_HASH:=2e945427a21674893bb97632401db62139d91cea1ee96137cc7b07ad22198fc7
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LGPL-2.1
