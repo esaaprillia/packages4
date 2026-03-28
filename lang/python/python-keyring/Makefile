@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-keyring
-PKG_VERSION:=25.6.0
+PKG_VERSION:=25.7.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=keyring
