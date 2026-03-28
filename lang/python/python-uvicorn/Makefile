@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-uvicorn
-PKG_VERSION:=0.38.0
+PKG_VERSION:=0.42.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=uvicorn
