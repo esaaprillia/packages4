@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hatch
-PKG_VERSION:=1.16.1
+PKG_VERSION:=1.16.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=hatch
