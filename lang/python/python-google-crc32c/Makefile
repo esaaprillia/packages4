@@ -17,6 +17,9 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
+PYTHON3_PKG_SETUP_VARS += \
+	CRC32C_INSTALL_PREFIX="$(STAGING_DIR)/usr"
+
 define Package/python3-google-crc32c
   SUBMENU:=Python
   SECTION:=lang
