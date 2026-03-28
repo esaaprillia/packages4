@@ -23,7 +23,7 @@ define Package/python3-google-cloud-storage
   CATEGORY:=Languages
   TITLE:=Google Cloud Storage API client library
   URL:=https://github.com/googleapis/python-storage
-  DEPENDS:=+python3 +python3-google-auth +python3-google-api-core +python3-google-cloud-core +python3-google-resumable-media +python3-requests +python3-google-crc32c +python3-protobuf +python3-opentelemetry-api
+  DEPENDS:=+python3 +python3-google-auth +python3-google-api-core +python3-google-cloud-core +python3-google-resumable-media +python3-requests +python3-google-crc32c
 endef
 
 define Package/python3-google-cloud-storage/description
