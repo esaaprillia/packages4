@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pychromecast
-PKG_VERSION:=14.0.9
+PKG_VERSION:=14.0.10
 PKG_RELEASE:=1
 
 PYPI_NAME:=pychromecast
