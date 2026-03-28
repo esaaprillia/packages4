@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-proto-plus
-PKG_VERSION:=1.26.1
+PKG_VERSION:=1.27.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=proto_plus
