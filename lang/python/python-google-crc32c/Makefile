@@ -26,7 +26,7 @@ define Package/python3-google-crc32c
   CATEGORY:=Languages
   TITLE:=A python wrapper of the C library 'Google CRC32C'
   URL:=https://github.com/googleapis/python-crc32c
-  DEPENDS:=+python3 +libstdcpp
+  DEPENDS:=+python3 +libstdcpp +crc32c
 endef
 
 define Package/python3-google-crc32c/description
