@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-graphql-core
-PKG_VERSION:=3.2.7
+PKG_VERSION:=3.2.8
 PKG_RELEASE:=1
 
 PYPI_NAME:=graphql_core
