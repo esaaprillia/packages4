@@ -26,7 +26,7 @@ define Package/python3-id
   CATEGORY:=Languages
   TITLE:=A tool for generating OIDC identities
   URL:=https://pypi.org/project/id/
-  DEPENDS:=+python3 +python3-requests
+  DEPENDS:=+python3 +python3-urllib3
 endef
 
 define Package/python3-id/description
