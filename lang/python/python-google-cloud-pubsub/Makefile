@@ -23,7 +23,17 @@ define Package/python3-google-cloud-pubsub
   CATEGORY:=Languages
   TITLE:=Google Cloud Pub/Sub API client library
   URL:=https://github.com/googleapis/python-pubsub
-  DEPENDS:=+python3 +python3-grpcio +python3-google-auth +python3-google-api-core +python3-proto-plus +python3-protobuf +python3-grpc-google-iam-v1 +python3-grpcio-status +python3-opentelemetry-sdk +python3-libcst
+  DEPENDS:= \
+	+python3-light \
+	+python3-google-api-core \
+	+python3-google-auth \
+	+python3-grpcio \
+	+python3-proto-plus \
+	+python3-protobuf \
+	+python3-grpc-google-iam-v1 \
+	+python3-grpcio-status \
+	+python3-opentelemetry-api \
+	+python3-opentelemetry-sdk
 endef
 
 define Package/python3-google-cloud-pubsub/description
