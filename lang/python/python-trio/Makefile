@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-trio
-PKG_VERSION:=0.32.0
+PKG_VERSION:=0.33.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=trio
