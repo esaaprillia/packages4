@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zwave-js-server
-PKG_VERSION:=0.67.1
+PKG_VERSION:=0.68.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=zwave_js_server_python
