@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-google-auth-httplib2
-PKG_VERSION:=0.2.1
+PKG_VERSION:=0.3.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=google_auth_httplib2
