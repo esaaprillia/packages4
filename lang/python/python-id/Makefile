@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-id
-PKG_VERSION:=1.5.0
+PKG_VERSION:=1.6.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=id
