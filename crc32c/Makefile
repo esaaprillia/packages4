@@ -23,7 +23,7 @@ define Package/crc32c
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=CRC32C implementation with support for CPU-specific acceleration instructions
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=https://github.com/google/crc32c
 endef
 
