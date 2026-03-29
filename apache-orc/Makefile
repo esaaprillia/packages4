@@ -33,12 +33,6 @@ define Package/apache-orc/description
 	ORC is a self-describing type-aware columnar file format designed for Hadoop workloads.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(RM) $(STAGING_DIR)/usr/bin/protoc*
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
-endef
-
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=True \
 	-DCMAKE_CXX_STANDARD=17 \
@@ -54,7 +48,8 @@ CMAKE_OPTIONS += \
 	-DSTOP_BUILD_ON_WARNING=OFF \
 	-DBUILD_CPP_TESTS=OFF \
 	-DHAS_PRE_1970_EXITCODE=0 \
-	-DHAS_POST_2038_EXITCODE=0
+	-DHAS_POST_2038_EXITCODE=0 \
+	-DPROTOBUF_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
