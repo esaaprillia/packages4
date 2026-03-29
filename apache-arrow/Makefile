@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=apache-arrow
-PKG_VERSION:=22.0.0
+PKG_VERSION:=23.0.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -30,12 +30,6 @@ endef
 
 define Package/apache-arrow/description
 	Apache Arrow is a universal columnar format and multi-language toolbox for fast data interchange and in-memory analytics. It contains a set of technologies that enable data systems to efficiently store, process, and move data.
-endef
-
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(RM) $(STAGING_DIR)/usr/bin/grpc_*
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/grpc_* $(STAGING_DIR)/usr/bin/
 endef
 
 CMAKE_OPTIONS += \
