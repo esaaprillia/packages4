@@ -21,6 +21,12 @@ CMAKE_BINARY_SUBDIR := build
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(RM) $(STAGING_DIR)/usr/bin/protoc*
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
+endef
+
 define Package/apache-orc
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -48,8 +54,7 @@ CMAKE_OPTIONS += \
 	-DSTOP_BUILD_ON_WARNING=OFF \
 	-DBUILD_CPP_TESTS=OFF \
 	-DHAS_PRE_1970_EXITCODE=0 \
-	-DHAS_POST_2038_EXITCODE=0 \
-	-DPROTOBUF_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+	-DHAS_POST_2038_EXITCODE=0
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
