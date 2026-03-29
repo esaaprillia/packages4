@@ -21,12 +21,6 @@ CMAKE_BINARY_SUBDIR := build
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(RM) $(STAGING_DIR)/usr/bin/protoc*
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
-endef
-
 define Package/apache-orc
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -47,6 +41,11 @@ CMAKE_OPTIONS += \
 	-DLZ4_HOME="$(STAGING_DIR)/usr" \
 	-DZSTD_HOME="$(STAGING_DIR)/usr" \
 	-DPROTOBUF_HOME="$(STAGING_DIR)/usr" \
+	-DORC_PREFER_STATIC_PROTOBUF=OFF \
+	-DORC_PREFER_STATIC_SNAPPY=OFF \
+	-DORC_PREFER_STATIC_LZ4=OFF \
+	-DORC_PREFER_STATIC_ZSTD=OFF \
+	-DORC_PREFER_STATIC_ZLIB=OFF \
 	-DBUILD_LIBHDFSPP=OFF \
 	-DBUILD_JAVA=OFF \
 	-DINSTALL_VENDORED_LIBS=OFF \
@@ -54,7 +53,8 @@ CMAKE_OPTIONS += \
 	-DSTOP_BUILD_ON_WARNING=OFF \
 	-DBUILD_CPP_TESTS=OFF \
 	-DHAS_PRE_1970_EXITCODE=0 \
-	-DHAS_POST_2038_EXITCODE=0
+	-DHAS_POST_2038_EXITCODE=0 \
+	-DPROTOBUF_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
