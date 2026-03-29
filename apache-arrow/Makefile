@@ -64,7 +64,7 @@ CMAKE_OPTIONS += \
 	-DARROW_WITH_ZLIB=ON \
 	-DARROW_WITH_ZSTD=ON \
 	-DPARQUET_REQUIRE_ENCRYPTION=ON \
-	-DARROW_GRPC_CPP_PLUGIN="$(STAGING_DIR)/usr/bin/grpc_cpp_plugin"
+	-DARROW_GRPC_CPP_PLUGIN="$(STAGING_DIR_HOSTPKG)/bin/grpc_cpp_plugin"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
