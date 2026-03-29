@@ -33,6 +33,8 @@ define Package/apache-orc/description
 	ORC is a self-describing type-aware columnar file format designed for Hadoop workloads.
 endef
 
+TARGET_LDFLAGS += "-Wl,--copy-dt-needed-entries"
+
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=True \
 	-DCMAKE_CXX_STANDARD=17 \
