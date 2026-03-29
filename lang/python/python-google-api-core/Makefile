@@ -23,13 +23,7 @@ define Package/python3-google-api-core
   CATEGORY:=Languages
   TITLE:=Google API client core library
   URL:=https://googleapis.dev/python/google-api-core
-  DEPENDS:= \
-	+python3-light \
-	+python3-googleapis-common-protos \
-	+python3-protobuf \
-	+python3-proto-plus \
-	+python3-google-auth \ 
-	+python3-requests
+  DEPENDS:=+python3-light +python3-googleapis-common-protos +python3-protobuf +python3-proto-plus +python3-google-auth +python3-requests
 endef
 
 define Package/python3-google-api-core/description
