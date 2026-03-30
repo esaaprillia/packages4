@@ -60,6 +60,7 @@ CMAKE_OPTIONS += \
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
+	$(RM) $(STAGING_DIR)/usr/lib/cmake/orc/FindSnappy.cmake
 endef
 
 define Package/apache-orc/install
