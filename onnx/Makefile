@@ -25,7 +25,7 @@ define Package/onnx
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open standard for machine learning interoperability
-	DEPENDS:=+libstdcpp +protobuf +abseil-cpp
+	DEPENDS:=+libstdcpp +protobuf +abseil-cpp +python3
 	URL:=https://onnx.ai/
 endef
 
