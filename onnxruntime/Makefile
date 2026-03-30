@@ -65,7 +65,7 @@ CMAKE_OPTIONS += \
 	-Donnxruntime_ENABLE_PYTHON=ON \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
 	-DPython_NumPy_INCLUDE_DIRS="$(HOST_PYTHON3_PKG_DIR)/numpy/_core/include" \
-	-DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
+	-DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-Dpybind11_DIR="$(HOST_PYTHON3_PKG_DIR)/pybind11/share/cmake/pybind11"
 
 define Build/InstallDev
