@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=numpy/host python-protobuf/host python-pybind11/host python-ml-dtypes/host
+PKG_BUILD_DEPENDS:=numpy/host python-protobuf/host python-pybind11/host python-ml-dtypes/host python-nanobind/host
 
 PYTHON3_PKG_BUILD:=0
 CMAKE_BINARY_SUBDIR := build
