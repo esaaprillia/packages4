@@ -96,9 +96,9 @@ define Build/Configure/Default
 		Python_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-		Python_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
+		Python_INCLUDE_DIRS="$(HOST_PYTHON3_INC_DIR)" \
 		Python_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
-		PYTHON_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
+		PYTHON_INCLUDE_DIRS="$(HOST_PYTHON3_INC_DIR)" \
 		PYTHON_LIBRARY_DIRS="$(PYTHON3_LIB_DIR)" \
 		PYTHON_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
 		PYTHON_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
@@ -107,9 +107,9 @@ define Build/Configure/Default
 		Python3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-		Python3_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
+		Python3_INCLUDE_DIRS="$(HOST_PYTHON3_INC_DIR)" \
 		Python3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
-		PYTHON3_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
+		PYTHON3_INCLUDE_DIRS="$(HOST_PYTHON3_INC_DIR)" \
 		PYTHON3_LIBRARY_DIRS="$(PYTHON3_LIB_DIR)" \
 		PYTHON3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
 		PYTHON3_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
