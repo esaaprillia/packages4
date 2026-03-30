@@ -12,10 +12,13 @@ PKG_LICENSE:=Apache-2.0 MPL-2.0
 PKG_LICENSE_FILES:=LICENSE LICENSE.eigen
 
 PKG_BUILD_DEPENDS:=numpy/host python-absl-py/host
+HOST_BUILD_DEPENDS:=numpy/host python-absl-py/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-ml-dtypes
   SUBMENU:=Python
@@ -32,6 +35,7 @@ define Package/python3-ml-dtypes/description
 A stand-alone implementation of several NumPy dtype extensions used in machine learning.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-ml-dtypes))
 $(eval $(call BuildPackage,python3-ml-dtypes))
 $(eval $(call BuildPackage,python3-ml-dtypes-src))
