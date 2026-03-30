@@ -38,7 +38,7 @@ CMAKE_OPTIONS += \
     -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
     -DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
     -DPython3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-    -DPython3_INCLUDE_DIRS="$(PYTHON3_INC_DIR)" \
+    -DPython3_INCLUDE_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
     -DPython3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l$(PYTHON3)"
 
 define Build/InstallDev
