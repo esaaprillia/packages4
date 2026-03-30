@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aenum
-PKG_VERSION:=3.1.16
+PKG_VERSION:=3.1.17
 PKG_RELEASE:=1
 
 PYPI_NAME:=aenum
