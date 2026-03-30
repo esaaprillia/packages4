@@ -33,10 +33,6 @@ define Package/onnx/description
 	Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
 endef
 
-define Package/python3-onnx/description
-Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
-endef
-
 CMAKE_OPTIONS += \
     -DBUILD_SHARED_LIBS=ON \
     -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
