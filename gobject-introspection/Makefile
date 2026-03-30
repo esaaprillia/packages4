@@ -4,8 +4,8 @@ PKG_NAME:=gobject-introspection
 PKG_VERSION:=1.86.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/$(PKG_NAME)
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
