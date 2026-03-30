@@ -9,7 +9,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-wcwidth
-PKG_VERSION:=0.2.14
+PKG_VERSION:=0.6.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=wcwidth
@@ -19,7 +19,8 @@ PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
