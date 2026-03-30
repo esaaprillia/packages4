@@ -12,6 +12,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-setuptools-rust/host python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python-setuptools-rust/host python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
