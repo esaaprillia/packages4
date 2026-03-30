@@ -18,7 +18,7 @@ PYTHON3_PKG_BUILD:=0
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake2.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/onnx
@@ -37,10 +37,7 @@ CMAKE_OPTIONS += \
     -DBUILD_SHARED_LIBS=ON \
     -DONNX_BUILD_PYTHON=ON \
     -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
-    -DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-    -DPython3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-    -DPython3_INCLUDE_DIRS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
-    -DPython3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l$(PYTHON3)"
+    -DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
