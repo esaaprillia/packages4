@@ -36,6 +36,16 @@ define Package/gobject-introspection/description
 	The goal of the project is to describe the APIs and collect them in a uniform, machine readable format.
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(INSTALL_DIR) $(STAGING_DIR)/host/bin
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-compiler,g-ir-generate,g-ir-inspect} $(STAGING_DIR)/host/bin/
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-scanner,g-ir-annotation-tool} $(STAGING_DIR)/host/bin/
+	$(INSTALL_DIR) $(STAGING_DIR)/usr/bin
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-compiler,g-ir-generate,g-ir-inspect} $(STAGING_DIR)/usr/bin/
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-scanner,g-ir-annotation-tool} $(STAGING_DIR)/usr/bin/
+endef
+
 MESON_VARS += $(PYTHON3_VARS)
 MESON_HOST_VARS += $(HOST_PYTHON3_VARS)
 
