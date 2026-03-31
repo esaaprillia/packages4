@@ -24,14 +24,6 @@ include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-compiler,g-ir-generate,g-ir-inspect} $(STAGING_DIR)/usr/bin/
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-scanner,g-ir-annotation-tool} $(STAGING_DIR)/usr/bin/
-	$(RM) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-compiler,g-ir-generate,g-ir-inspect}
-	$(RM) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-scanner,g-ir-annotation-tool}
-endef
-
 define Package/gobject-introspection
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -49,11 +41,7 @@ MESON_VARS += $(PYTHON3_VARS)
 MESON_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
-	-Dtests=false \
-	-Dgir_dir_prefix="$(STAGING_DIR)/usr/bin" \
-	-Dgi_cross_use_prebuilt_gi=true \
-	-Dgi_cross_binary_wrapper="$(STAGING_DIR)/usr/bin/g-ir-compiler" \
-	-Dgi_cross_ldd_wrapper="$(STAGING_DIR)/usr/bin/g-ir-scanner"
+	-Dtests=false
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
