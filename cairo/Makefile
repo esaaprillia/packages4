@@ -14,6 +14,7 @@ PKG_LICENSE_FILES:=COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/meson.mk
+include $(INCLUDE_DIR)/host-build.mk
 
 define Package/libcairo
   SECTION:=libs
@@ -38,6 +39,16 @@ MESON_ARGS += \
 	-Dxlib-xcb=disabled \
 	-Dzlib=enabled
 
+MESON_HOST_ARGS += \
+	-Ddwrite=disabled \
+	-Dfontconfig=disabled \
+	-Dfreetype=disabled \
+	-Dpng=disabled \
+	-Dxcb=disabled \
+	-Dxlib=disabled \
+	-Dxlib-xcb=disabled \
+	-Dzlib=disabled
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include/cairo
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/cairo/*.h $(1)/usr/include/cairo
@@ -56,4 +67,5 @@ define Package/libcairo/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cairo/*.so $(1)/usr/lib/cairo
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,libcairo))
