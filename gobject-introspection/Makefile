@@ -4,7 +4,7 @@ PKG_NAME:=gobject-introspection
 PKG_VERSION:=1.86.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=download.gnome.org/sources/gobject-introspection/1.86/
 PKG_HASH:=skip
 
