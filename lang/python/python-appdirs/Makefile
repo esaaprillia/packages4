@@ -15,7 +15,9 @@ PKG_LICENSE:=MIT
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-appdirs
   SECTION:=lang
@@ -31,6 +33,7 @@ define Package/python-appdirs/description
   dirs, e.g. a "user data dir".
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-appdirs))
 $(eval $(call BuildPackage,python3-appdirs))
 $(eval $(call BuildPackage,python3-appdirs-src))
