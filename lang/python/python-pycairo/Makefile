@@ -12,11 +12,14 @@ PKG_LICENSE:=LGPL-2.1
 PKG_LICENSE_FILES:=COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 
 PKG_BUILD_DEPENDS:=meson-python/host
+HOST_BUILD_DEPENDS:=meson-python/host cairo/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../meson/meson.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-pycairo
   SUBMENU:=Python
@@ -31,6 +34,7 @@ define Package/python3-pycairo/description
   Pycairo is a Python module providing bindings for the cairo graphics library.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pycairo))
 $(eval $(call BuildPackage,python3-pycairo))
 $(eval $(call BuildPackage,python3-pycairo-src))
