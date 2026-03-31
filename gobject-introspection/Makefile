@@ -5,7 +5,7 @@ PKG_VERSION:=1.86.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=download.gnome.org/sources/gobject-introspection/1.86/
+PKG_SOURCE_URL:=https://download.gnome.org/sources/gobject-introspection/1.86/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
