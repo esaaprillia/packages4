@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0 license
 PKG_LICENSE_FILES:=COPYING COPYING.GPL COPYING.LGPL
 
-HOST_BUILD_DEPENDS:=glib2/host libffi/host meson/host
+HOST_BUILD_DEPENDS:=glib2/host libffi/host meson/host python-rnc2rng/host
 PKG_BUILD_DEPENDS:=python3 gobject-introspection/host
 
 PYTHON3_PKG_BUILD:=0
