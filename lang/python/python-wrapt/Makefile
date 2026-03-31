@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-wrapt
-PKG_VERSION:=2.0.1
+PKG_VERSION:=2.1.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=wrapt
