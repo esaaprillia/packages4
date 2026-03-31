@@ -36,16 +36,6 @@ define Package/gobject-introspection/description
 	The goal of the project is to describe the APIs and collect them in a uniform, machine readable format.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(INSTALL_DIR) $(STAGING_DIR)/host/bin
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-compiler,g-ir-generate,g-ir-inspect} $(STAGING_DIR)/host/bin/
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-scanner,g-ir-annotation-tool} $(STAGING_DIR)/host/bin/
-	$(INSTALL_DIR) $(STAGING_DIR)/usr/bin
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-compiler,g-ir-generate,g-ir-inspect} $(STAGING_DIR)/usr/bin/
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-scanner,g-ir-annotation-tool} $(STAGING_DIR)/usr/bin/
-endef
-
 MESON_VARS += $(PYTHON3_VARS)
 MESON_HOST_VARS += $(HOST_PYTHON3_VARS)
 
@@ -53,15 +43,17 @@ MESON_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
 	-Dtests=false \
-	-Dgi_cross_use_prebuilt_gi=true \
-	-Dgi_cross_binary_wrapper="$(STAGING_DIR)/usr/bin/g-ir-compiler" \
-	-Dgi_cross_ldd_wrapper="$(STAGING_DIR)/usr/bin/g-ir-scanner"
+	-Dgi_cross_use_prebuilt_gi=true
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
 	-Dtests=false \
 	-Dbuild_introspection_data=false
+
+define Build/Compile
+	$(call Build/Compile/Meson)
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
