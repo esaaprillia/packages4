@@ -52,12 +52,16 @@ MESON_HOST_VARS += $(HOST_PYTHON3_VARS)
 MESON_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
-	-Dtests=false
+	-Dtests=false \
+	-Dgi_cross_use_prebuilt_gi=true \
+	-Dgi_cross_binary_wrapper="$(STAGING_DIR)/usr/bin/g-ir-compiler" \
+	-Dgi_cross_ldd_wrapper="$(STAGING_DIR)/usr/bin/g-ir-scanner"
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
-	-Dtests=false
+	-Dtests=false \
+	-Dbuild_introspection_data=false
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
