@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gobject-introspection
-PKG_VERSION:=1.86.0
+PKG_VERSION:=1.82.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://download.gnome.org/sources/gobject-introspection/1.86/
+PKG_SOURCE_URL:=https://download.gnome.org/sources/gobject-introspection/1.82/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -36,13 +36,6 @@ define Package/gobject-introspection/description
 	The goal of the project is to describe the APIs and collect them in a uniform, machine readable format.
 endef
 
-define Build/Configure
-	$(INSTALL_DIR) $(STAGING_DIR)/host/bin
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-scanner,g-ir-annotation-tool} $(STAGING_DIR)/host/bin/
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/{g-ir-compiler,g-ir-generate,g-ir-inspect} $(STAGING_DIR)/host/bin/
-	$(call Build/Configure/Meson)
-endef
-
 MESON_VARS += $(PYTHON3_VARS)
 MESON_HOST_VARS += $(HOST_PYTHON3_VARS)
 
@@ -51,17 +44,13 @@ MESON_ARGS += \
 	-Dgtk_doc=false \
 	-Dtests=false \
 	-Dgi_cross_use_prebuilt_gi=true \
-	-Dgi_cross_binary_wrapper="$(STAGING_DIR)/host/bin/g-ir-compiler" \
-	-Dgi_cross_ldd_wrapper="$(STAGING_DIR)/host/bin/g-ir-scanner"
+	-Dgi_cross_binary_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-compiler" \
+	-Dgi_cross_ldd_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner"
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
 	-Dtests=false
-
-define Build/Compile
-	$(call Build/Compile/Meson)
-endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
