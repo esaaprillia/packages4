@@ -37,6 +37,7 @@ define Package/gobject-introspection/description
 endef
 
 MESON_VARS += $(PYTHON3_VARS)
+MESON_HOST_VARS += $(HOST_PYTHON3_VARS)
 
 MESON_ARGS += \
 	-Dcairo=disabled \
