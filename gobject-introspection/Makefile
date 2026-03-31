@@ -5,11 +5,11 @@ PKG_VERSION:=1.86.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/$(PKG_VERSION)
+PKG_SOURCE_URL:=download.gnome.org/sources/gobject-introspection/1.86/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=GPL-2.0 license
+PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=COPYING COPYING.GPL COPYING.LGPL
 
 HOST_BUILD_DEPENDS:=glib2/host libffi/host meson/host python-rnc2rng/host
