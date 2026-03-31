@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/$
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=GNU Library General Public License v2 only
+PKG_LICENSE:=GPL-2.0 license
 PKG_LICENSE_FILES:=COPYING COPYING.GPL COPYING.LGPL
 
 HOST_BUILD_DEPENDS:=glib2/host libffi/host meson/host
@@ -50,27 +50,21 @@ MESON_HOST_ARGS += \
 	-Dgtk_doc=false
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib \
-	  $(1)/usr/share
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
-	  $(1)/usr/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/* \
-	  $(1)/usr/lib/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/share/* \
-	  $(1)/usr/share/
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/gobject-introspection-1.0 $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/gobject-introspection $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/aclocal $(1)/usr/share/
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/gir-1.0 $(1)/usr/share/
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/gobject-introspection-1.0 $(1)/usr/share/
 endef
 
 define Package/gobject-introspection/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/girepository-1.0 $(1)/usr/lib/
 endef
 
 $(eval $(call HostBuild))
