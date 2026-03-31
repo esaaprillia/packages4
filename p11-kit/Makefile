@@ -22,7 +22,7 @@ define Package/p11-kit
   CATEGORY:=Libraries
   TITLE:=Provides a way to load and enumerate PKCS#11 modules.
   URL:=https://github.com/p11-glue/p11-kit
-  DEPENDS:=+libtasn1 +libffi
+  DEPENDS:=+libtasn1 +libffi +ca-certificates
 endef
 
 define Package/p11-kit/description
