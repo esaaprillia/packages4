@@ -34,6 +34,8 @@ define Package/python3-preprocess-cancellation/description
 Klipper GCode Preprocessor for Object Cancellation
 endef
 
+PYTHON3_PKG_WHEEL_VERSION:=0.0.0
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-preprocess-cancellation))
 $(eval $(call BuildPackage,python3-preprocess-cancellation))
