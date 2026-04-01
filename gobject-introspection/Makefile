@@ -57,7 +57,7 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/gobject-introspection $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/*.pc $(1)/usr/lib/pkgconfig/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/gobject-introspection*.pc $(1)/usr/lib/pkgconfig/
 	$(foreach BIN,g_ir_scanner g_ir_compiler g_ir_generate,$(SED) 's/^$(BIN)=$$$${bindir}\/\(.*\)/$(BIN)=$$$${prefix_hostpkg}\/bin\/\1/' $(1)/usr/lib/pkgconfig/gobject-introspection-1.0.pc)
 	$(foreach BIN,g_ir_scanner g_ir_compiler g_ir_generate,$(SED) 's/^$(BIN)=$$$${bindir}\/\(.*\)/$(BIN)=$$$${prefix_hostpkg}\/bin\/\1/' $(1)/usr/lib/pkgconfig/gobject-introspection-no-export-1.0.pc)
 	$(INSTALL_DIR) $(1)/usr/share
