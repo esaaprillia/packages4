@@ -35,6 +35,15 @@ define Package/gobject-introspection/description
 	The goal of the project is to describe the APIs and collect them in a uniform, machine readable format.
 endef
 
+export CC=$(TARGET_CC)
+export CXX=$(TARGET_CXX)
+export LD=$(TARGET_CC)
+export AR=$(TARGET_AR)
+export NM=$(TARGET_NM)
+export CFLAGS=$(TARGET_CFLAGS)
+export CXXFLAGS=$(TARGET_CXXFLAGS)
+export LDFLAGS=$(TARGET_LDFLAGS)
+
 MESON_VARS += $(PYTHON3_VARS)
 
 MESON_ARGS += \
