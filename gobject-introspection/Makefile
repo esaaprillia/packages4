@@ -17,10 +17,11 @@ PKG_BUILD_DEPENDS:=python3 gobject-introspection/host
 
 PYTHON3_PKG_BUILD:=0
 PYTHON3_HOST_BUILD:=0
+MESON_USE_STAGING_PYTHON:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
+include $(INCLUDE_DIR)/meson.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/gobject-introspection
