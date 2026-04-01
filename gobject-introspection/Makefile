@@ -22,7 +22,6 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 
 define Package/gobject-introspection
 	SECTION:=libs
@@ -37,18 +36,19 @@ define Package/gobject-introspection/description
 endef
 
 MESON_VARS += $(PYTHON3_VARS)
-MESON_HOST_VARS += $(HOST_PYTHON3_VARS)
 
 MESON_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
+	-Dbuild_introspection_data=false \
 	-Dgi_cross_use_prebuilt_gi=true \
 	-Dgi_cross_binary_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-compiler" \
 	-Dgi_cross_ldd_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner"
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
-	-Dgtk_doc=false
+	-Dgtk_doc=false \
+	-Dbuild_introspection_data=false
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
