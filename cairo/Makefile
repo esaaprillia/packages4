@@ -6,15 +6,19 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://cairo.freedesktop.org/releases/
-PKG_HASH:=skip
+PKG_HASH:=445ed8208a6e4823de1226a74ca319d3600e83f6369f99b14265006599c32ccb
 
 PKG_MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
 PKG_LICENSE:=LGPL-2.1-or-later MPL-1.1
 PKG_LICENSE_FILES:=COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 
+PKG_BUILD_DEPENDS:=pixman/host
+
+MESON_HOST_BUILD_DIR:=$(HOST_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/build/meson/openwrt-build
+
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/meson.mk
 include $(INCLUDE_DIR)/host-build.mk
+include $(INCLUDE_DIR)/meson.mk
 
 define Package/libcairo
   SECTION:=libs
@@ -22,7 +26,7 @@ define Package/libcairo
   SUBMENU:=Video
   TITLE:=cairo
   URL:=https://cairo.freedesktop.org/
-  DEPENDS:=+libpng +libfreetype +fontconfig +pixman +glib2 +libjpeg-turbo +zlib +liblzo
+  DEPENDS:=+libpng +libfreetype +fontconfig +pixman +glib2 +libjpeg +zlib +liblzo
 endef
 
 define Package/libcairo/description
@@ -47,7 +51,9 @@ MESON_HOST_ARGS += \
 	-Dxcb=disabled \
 	-Dxlib=disabled \
 	-Dxlib-xcb=disabled \
-	-Dzlib=disabled
+	-Dzlib=disabled \
+	-Dlzo=disabled \
+	-Dglib=disabled
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include/cairo
