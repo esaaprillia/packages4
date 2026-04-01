@@ -21,6 +21,7 @@ PKG_LICENSE_FILES:=COPYING
 PKG_CPE_ID:=cpe:/a:pixman:pixman
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/meson.mk
 
 define Package/pixman
@@ -48,4 +49,5 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,pixman))
