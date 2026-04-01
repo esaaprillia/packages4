@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
 PKG_LICENSE:=LGPL-2.1-or-later MPL-1.1
 PKG_LICENSE_FILES:=COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 
-PKG_BUILD_DEPENDS:=pixman/host
+HOST_BUILD_DEPENDS:=pixman/host
 
 MESON_HOST_BUILD_DIR:=$(HOST_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/build/meson/openwrt-build
 
