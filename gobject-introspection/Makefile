@@ -15,6 +15,8 @@ PKG_LICENSE_FILES:=COPYING COPYING.GPL COPYING.LGPL
 HOST_BUILD_DEPENDS:=glib2/host libffi/host meson/host python-rnc2rng/host python-mako/host
 PKG_BUILD_DEPENDS:=python3 gobject-introspection/host
 
+HOST_PATCH_DIR := ./patches-host
+
 PYTHON3_PKG_BUILD:=0
 PYTHON3_HOST_BUILD:=0
 MESON_USE_STAGING_PYTHON:=1
