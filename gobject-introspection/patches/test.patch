@@ -1,0 +1,22 @@
+From c75abaf4026fca604534768ae34ccc7f72422b4c Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 1 Apr 2026 16:09:20 +0800
+Subject: [PATCH] Update ccompiler.py
+
+---
+ giscanner/ccompiler.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/giscanner/ccompiler.py b/giscanner/ccompiler.py
+index 2f03fd8..1835a51 100644
+--- a/giscanner/ccompiler.py
++++ b/giscanner/ccompiler.py
+@@ -359,7 +359,7 @@ def compile(self, pkg_config_cflags, cpp_includes, source, init_sections):
+ 
+         # Do not add -Wall when using init code as we do not include any
+         # header of the library being introspected
+-        if self.compiler_cmd == 'gcc' and not init_sections:
++        if self.compiler_cmd == 'CC' and not init_sections:
+             extra_postargs.append('-Wall')
+         extra_postargs.append(self._cflags_no_deprecation_warnings)
+ 
