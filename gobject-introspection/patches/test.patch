@@ -1,22 +1,49 @@
-From c75abaf4026fca604534768ae34ccc7f72422b4c Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Wed, 1 Apr 2026 16:09:20 +0800
-Subject: [PATCH] Update ccompiler.py
-
----
- giscanner/ccompiler.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/giscanner/ccompiler.py b/giscanner/ccompiler.py
-index 2f03fd8..1835a51 100644
---- a/giscanner/ccompiler.py
-+++ b/giscanner/ccompiler.py
-@@ -359,7 +359,7 @@ def compile(self, pkg_config_cflags, cpp_includes, source, init_sections):
+diff --git a/tools/meson.build b/tools/meson.build
+index 7237a0b..1225413 100644
+--- a/tools/meson.build
++++ b/tools/meson.build
+@@ -66,7 +66,6 @@ gircompiler = executable('g-ir-compiler', 'compiler.c',
+   install: true,
+   c_args: custom_c_args,
+ )
+-meson.override_find_program('g-ir-compiler', gircompiler)
  
-         # Do not add -Wall when using init code as we do not include any
-         # header of the library being introspected
--        if self.compiler_cmd == 'gcc' and not init_sections:
-+        if self.compiler_cmd == 'CC' and not init_sections:
-             extra_postargs.append('-Wall')
-         extra_postargs.append(self._cflags_no_deprecation_warnings)
+ girgenerate = executable('g-ir-generate', 'generate.c',
+   dependencies: [
+@@ -77,7 +76,6 @@ girgenerate = executable('g-ir-generate', 'generate.c',
+   install: true,
+   c_args: custom_c_args,
+ )
+-meson.override_find_program('g-ir-generate', girgenerate)
  
+ girinspect = executable('g-ir-inspect', 'g-ir-inspect.c',
+   dependencies: [
+@@ -87,4 +85,9 @@ girinspect = executable('g-ir-inspect', 'g-ir-inspect.c',
+   install: true,
+   c_args: custom_c_args,
+ )
+-meson.override_find_program('g-ir-inspect', girinspect)
++
++if not get_option('gi_cross_use_prebuilt_gi')
++  meson.override_find_program('g-ir-compiler', gircompiler)
++  meson.override_find_program('g-ir-generate', girgenerate)
++  meson.override_find_program('g-ir-inspect', girinspect)
++endif
+diff --git a/gir/meson.build b/gir/meson.build
+index e5a7a13..3855a63 100644
+--- a/gir/meson.build
++++ b/gir/meson.build
+@@ -511,10 +511,11 @@ gir_girepository = custom_target('gir-girepository',
+ )
+ 
+ typelibs = []
++local_gircompiler = find_program('g-ir-compiler', native: false, required : false)
+ if get_option('gi_cross_binary_wrapper') != ''
+-  gircompiler_command = [get_option('gi_cross_binary_wrapper'), gircompiler.full_path(), ]
++  gircompiler_command = [get_option('gi_cross_binary_wrapper'), local_gircompiler.full_path(), ]
+ else
+-  gircompiler_command = [gircompiler, ]
++  gircompiler_command = [local_gircompiler, ]
+ endif
+ 
+ gircompiler_command += [
