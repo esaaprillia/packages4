@@ -38,7 +38,10 @@ define Package/gobject-introspection/description
 	The goal of the project is to describe the APIs and collect them in a uniform, machine readable format.
 endef
 
-#MESON_VARS += $(PYTHON3_VARS)
+MESON_VARS += $(PYTHON3_VARS)
+TARGET_CFLAGS += $(HOST_CFLAGS)
+TARGET_CXXFLAGS += $(HOST_CXXFLAGS)
+TARGET_LDFLAGS += $(HOST_LDFLAGS)
 
 MESON_ARGS += \
 	-Dcairo=disabled \
