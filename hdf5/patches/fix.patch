@@ -1,16 +1,5 @@
-From 846a76bdcac33463c9d2aacb998e4f58c8a3dfd2 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Fri, 3 Apr 2026 00:47:15 +0800
-Subject: [PATCH] Change FATAL_ERROR messages to STATUS in CMakeLists
-
----
- CMakeLists.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 41e77c2efc3..60d5f1ed79d 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- a/fortran/src/CMakeLists.txt
++++ b/fortran/src/CMakeLists.txt
 @@ -145,7 +145,7 @@ target_include_directories (H5match_types PRIVATE "${HDF5_SRC_BINARY_DIR};${HDF5
  # check if a pre-generated H5fortran_types.F90 file is present
  if (NOT EXISTS "${HDF5_GENERATED_SOURCE_DIR}/H5fortran_types.F90")
