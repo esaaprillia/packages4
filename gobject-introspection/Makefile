@@ -43,7 +43,6 @@ MESON_VARS += $(PYTHON3_VARS)
 MESON_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
-	-Dextra_library_paths="$(STAGING_DIR_HOSTPKG)/lib" \
 	-Dgi_cross_use_prebuilt_gi=true \
 	-Dgi_cross_binary_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-compiler" \
 	-Dgi_cross_ldd_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner"
