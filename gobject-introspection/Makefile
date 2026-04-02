@@ -13,7 +13,7 @@ PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=COPYING COPYING.GPL COPYING.LGPL
 
 HOST_BUILD_DEPENDS:=glib2/host libffi/host meson/host python-rnc2rng/host python-mako/host
-PKG_BUILD_DEPENDS:=python3 gobject-introspection/host
+PKG_BUILD_DEPENDS:=python3
 
 HOST_PATCH_DIR := ./patches-host
 
@@ -52,10 +52,7 @@ MESON_VARS += $(PYTHON3_VARS)
 MESON_ARGS += \
 	-Dcairo=disabled \
 	-Dgtk_doc=false \
-	-Dbuild_introspection_data=true \
-	-Dgi_cross_use_prebuilt_gi=true \
-	-Dgi_cross_binary_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-compiler" \
-	-Dgi_cross_ldd_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner"
+	-Dbuild_introspection_data=true
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
