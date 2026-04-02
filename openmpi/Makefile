@@ -165,7 +165,6 @@ define Build/InstallDev
 	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpif77
 	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpif90
 	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpifort
-	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/ortecc
 endef
 
 define Package/openmpi/install
@@ -173,7 +172,6 @@ define Package/openmpi/install
 	$(CP) $(PKG_INSTALL_DIR)/etc/openmpi $(1)/etc/openmpi
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(RM) $(PKG_INSTALL_DIR)/usr/bin/ompi_wrapper_script
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.mod $(1)/usr/lib/
