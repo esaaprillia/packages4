@@ -38,15 +38,6 @@ define Package/gobject-introspection/description
 	The goal of the project is to describe the APIs and collect them in a uniform, machine readable format.
 endef
 
-export CC=$(TARGET_CC)
-export CXX=$(TARGET_CXX)
-export LD=$(TARGET_CC)
-export AR=$(TARGET_AR)
-export NM=$(TARGET_NM)
-export CFLAGS=$(TARGET_CFLAGS)
-export CXXFLAGS=$(TARGET_CXXFLAGS)
-export LDFLAGS=$(TARGET_LDFLAGS)
-
 MESON_VARS += $(PYTHON3_VARS)
 
 MESON_ARGS += \
@@ -59,7 +50,8 @@ MESON_ARGS += \
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
-	-Dgtk_doc=false
+	-Dgtk_doc=false \
+	-Dbuild_introspection_data=false
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
