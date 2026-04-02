@@ -1,3 +1,14 @@
+--- a/hl/fortran/src/CMakeLists.txt
++++ b/hl/fortran/src/CMakeLists.txt
+@@ -124,7 +124,7 @@ set (HDF5_HL_F90_F_BASE_SOURCES
+ 
+ if (NOT EXISTS "${HDF5_GENERATED_SOURCE_DIR}/H5LTff_gen.F90")
+   if (CMAKE_CROSSCOMPILING AND NOT CMAKE_CROSSCOMPILING_EMULATOR)
+-    message (FATAL_ERROR "No pre-generated H5LTff_gen.F90 H5TBff_gen.F90 file found - cannot generate without cross-compiling emulator")
++    message (STATUS "No pre-generated H5LTff_gen.F90 H5TBff_gen.F90 file found - cannot generate without cross-compiling emulator")
+   endif ()
+   message (STATUS "No pre-generated H5LTff_gen.F90 H5TBff_gen.F90 file found - generating one")
+   add_custom_command (TARGET H5HL_buildiface POST_BUILD
 --- a/fortran/src/CMakeLists.txt
 +++ b/fortran/src/CMakeLists.txt
 @@ -145,7 +145,7 @@ target_include_directories (H5match_types PRIVATE "${HDF5_SRC_BINARY_DIR};${HDF5
