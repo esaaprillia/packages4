@@ -50,8 +50,7 @@ MESON_ARGS += \
 
 MESON_HOST_ARGS += \
 	-Dcairo=disabled \
-	-Dgtk_doc=false \
-	-Dbuild_introspection_data=false
+	-Dgtk_doc=false
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
