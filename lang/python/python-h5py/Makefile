@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-h5py
-PKG_VERSION:=3.15.1
+PKG_VERSION:=3.16.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=h5py
