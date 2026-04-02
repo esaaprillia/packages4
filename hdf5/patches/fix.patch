@@ -1,0 +1,22 @@
+From 08272618e05050f57bb268e229a4d71f21f7858e Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 3 Apr 2026 00:34:03 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ fortran/src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fortran/src/CMakeLists.txt b/fortran/src/CMakeLists.txt
+index 7f8610f0afa..4304edc5062 100644
+--- a/fortran/src/CMakeLists.txt
++++ b/fortran/src/CMakeLists.txt
+@@ -145,7 +145,7 @@ target_include_directories (H5match_types PRIVATE "${HDF5_SRC_BINARY_DIR};${HDF5
+ # check if a pre-generated H5fortran_types.F90 file is present
+ if (NOT EXISTS "${HDF5_GENERATED_SOURCE_DIR}/H5fortran_types.F90")
+   if (CMAKE_CROSSCOMPILING AND NOT CMAKE_CROSSCOMPILING_EMULATOR)
+-    message (FATAL_ERROR "No pre-generated H5fortran_types.F90 file found - cannot generate without cross-compiling emulator")
++    message (STATUS "No pre-generated H5fortran_types.F90 file found - cannot generate without cross-compiling emulator")
+   endif ()
+   message (STATUS "No pre-generated H5fortran_types.F90 file found - generating one")
+   # execute the H5match_types program
