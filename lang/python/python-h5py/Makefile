@@ -18,7 +18,7 @@ include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
 PYTHON3_PKG_SETUP_VARS += \
-	HDF5_VERSION=2.0.0 \
+	HDF5_VERSION=2.1.1 \
 	H5PY_ROS3=0 \
 	H5PY_DIRECT_VFD=0 \
 	HDF5_INCLUDEDIR="$(STAGING_DIR)/usr/include" \
