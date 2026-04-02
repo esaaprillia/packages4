@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openmpi
-PKG_VERSION:=5.0.9
+PKG_VERSION:=5.0.10
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -150,7 +150,9 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/*.pc $(1)/usr/lib/pkgconfig/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ompi_wrapper_script $(1)/usr/bin/
 	$(SED) 's,/usr/lib,$(STAGING_DIR)/usr/lib,g' $(1)/usr/bin/ompi_wrapper_script
@@ -163,15 +165,20 @@ define Build/InstallDev
 	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpif77
 	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpif90
 	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/mpifort
+	$(LN) ../../usr/bin/ompi_wrapper_script $(2)/bin/ortecc
 endef
 
 define Package/openmpi/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/etc/openmpi
 	$(CP) $(PKG_INSTALL_DIR)/etc/openmpi $(1)/etc/openmpi
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(RM) $(PKG_INSTALL_DIR)/usr/bin/ompi_wrapper_script
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.mod $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/openmpi $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pmix $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
 endef
