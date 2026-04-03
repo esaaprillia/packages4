@@ -15,6 +15,8 @@ PKG_LICENSE_FILES:=COPYRIGHT
 PKG_BUILD_DEPENDS:=cargo-c/host
 PKG_BUILD_PARALLEL:=1
 
+RUST_PKG_LOCKED:=0
+
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/rust/rust-package-mod2.mk
 
@@ -29,8 +31,6 @@ endef
 define Package/libimagequant/description
   Imagequant library converts RGBA images to palette-based 8-bit indexed images, including alpha component. It's ideal for generating tiny PNG images and nice-looking GIFs.
 endef
-
-RUST_PKG_LOCKED:=0
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
