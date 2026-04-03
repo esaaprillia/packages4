@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=spotifywebapipython
-PKG_VERSION:=1.0.264
+PKG_VERSION:=1.0.268
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/thlucas1/SpotifyWebApiPython.git
