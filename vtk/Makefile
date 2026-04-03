@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=vtk
-PKG_VERSION:=9.5.2
+PKG_VERSION:=9.6.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=VTK-$(PKG_VERSION).tar.gz
