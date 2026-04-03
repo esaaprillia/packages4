@@ -5,7 +5,7 @@ PKG_VERSION:=9.6.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=VTK-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://vtk.org/files/release/9.5/
+PKG_SOURCE_URL:=https://vtk.org/files/release/9.6/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
