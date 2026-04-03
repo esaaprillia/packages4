@@ -39,6 +39,7 @@ define Package/gobject-introspection/description
 endef
 
 MESON_VARS += $(PYTHON3_VARS)
+export GI_SCANNER_DISABLE_CACHE=1
 #TARGET_CFLAGS += $(HOST_CFLAGS)
 #TARGET_CXXFLAGS += $(HOST_CXXFLAGS)
 #TARGET_LDFLAGS += $(HOST_LDFLAGS)
