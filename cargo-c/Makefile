@@ -41,7 +41,7 @@ endef
 
 define Host/Install
 	$(INSTALL_DIR) $(STAGING_DIR)/host/bin
-	$(INSTALL_BIN) $(HOST_INSTALL_DIR)/bin/* $(STAGING_DIR)/host/bin/
+	$(INSTALL_BIN) $(HOST_INSTALL_DIR)/bin/cargo* $(STAGING_DIR)/host/bin/
 endef
 
 $(eval $(call RustBinHostBuild))
