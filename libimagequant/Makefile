@@ -30,6 +30,8 @@ define Package/libimagequant/description
   Imagequant library converts RGBA images to palette-based 8-bit indexed images, including alpha component. It's ideal for generating tiny PNG images and nice-looking GIFs.
 endef
 
+RUST_PKG_LOCKED:=0
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
