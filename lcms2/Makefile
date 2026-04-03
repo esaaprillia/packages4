@@ -22,7 +22,6 @@ define Package/lcms2
   TITLE:=Little CMS color engine
   DEPENDS:=+libtiff +libjpeg-turbo +zlib
   URL:=http://www.littlecms.com/
-  SUBMENU:=Printing
 endef
 
 define Package/lcms2/description
