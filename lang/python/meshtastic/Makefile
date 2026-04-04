@@ -22,7 +22,7 @@ define Package/meshtastic
   SUBMENU:=Python
   TITLE:=Home Assistant Integration for Meshtastic
   URL:=https://github.com/meshtastic/home-assistant
-  DEPENDS:=+python3 +python3-pyserial-asyncio +python3-aiomqtt
+  DEPENDS:=+python3
 endef
 
 define Package/meshtastic/description
