@@ -31,8 +31,7 @@ define Package/python3-spatialmath
 	+python3-scipy \
 	+python3-matplotlib \
 	+python3-ansitable \
-	+python3-typing-extensions \
-	+python3-pre-commit
+	+python3-typing-extensions
 endef
 
 define Package/python3-spatialmath/description
