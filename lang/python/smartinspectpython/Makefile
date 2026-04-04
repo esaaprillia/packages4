@@ -13,7 +13,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-watchdog/host
+PKG_BUILD_DEPENDS:=python-cryptodome/host python-watchdog/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
