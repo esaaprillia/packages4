@@ -1,0 +1,40 @@
+From 0d05f4237114e847339aee96de523856192c5bd1 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 30 Nov 2025 11:05:52 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ pyproject.toml | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+ create mode 100644 pyproject.toml
+
+diff --git a/pyproject.toml b/pyproject.toml
+new file mode 100644
+index 0000000..39125fc
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,24 @@
++[build-system]
++requires = ["setuptools"]
++build-backend = "setuptools.build_meta"
++
++[project]
++name         = "spotifyplus"
++version      = "1.0.200"
++license      = "MIT"
++license-files = ["LICENSE*"]
++description  = "Home Assistant integration for Spotify Player control, services, and soundtouchplus integration support."
++readme       = "README.md"
++authors      = [
++    {name = "Todd Lucas", email = "thlucas@yahoo.com"}
++]
++requires-python = ">=3.14.0"
++
++[project.urls]
++"Homepage" = "https://github.com/thlucas1/homeassistantcomponent_spotifyplus"
++
++[tool.setuptools.packages.find]
++include = ["custom_components*"]
++
++[tool.setuptools.package-data]
++custom_components = ["spotifyplus/automations/*.yaml", "spotifyplus/brand/*.png", "spotifyplus/intent_handlers/*", "spotifyplus/sentences/en/*.yaml", "spotifyplus/sentences/de/*.yaml", "spotifyplus/translations/*.json", "spotifyplus/*.json", "spotifyplus/*.yaml"]
