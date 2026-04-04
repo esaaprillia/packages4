@@ -1,6 +1,6 @@
-From 964d9c43226e1d44635379e704ac4e060b58db10 Mon Sep 17 00:00:00 2001
+From b0509630050c021cffafb9cc193565db67f994d2 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Wed, 28 Jan 2026 11:45:08 +0800
+Date: Sat, 4 Apr 2026 19:09:57 +0800
 Subject: [PATCH] Update pyproject.toml
 
 ---
@@ -8,10 +8,10 @@ Subject: [PATCH] Update pyproject.toml
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index 6875006..ce08a89 100644
+index 2ea1778..831fb77 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -82,7 +82,7 @@ compile = [
+@@ -83,7 +83,7 @@ compile = [
  ]
  dist = []
  install = []
