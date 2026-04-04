@@ -6,7 +6,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/thlucas1/SmartInspectPython.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=8a03e685824eaaaace1b856ea9ac311bcd4a6695
+PKG_SOURCE_VERSION:=84385d58772701b5a6c07b160a1413580bb304fa
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
