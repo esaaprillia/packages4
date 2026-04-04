@@ -6,7 +6,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/thlucas1/SpotifyWebApiPython.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=602331f6bdd6630f8166fb4b42cb62d2696965bd
+PKG_SOURCE_VERSION:=e641f04dd04ddfa1253ca0d3ed296d3d0cd25b6b
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
