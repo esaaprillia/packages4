@@ -25,7 +25,14 @@ define Package/python3-aioamazondevices
   CATEGORY:=Languages
   TITLE:=Python library to control Amazon devices
   URL:=https://github.com/chemelli74/aioamazondevices
-  DEPENDS:=+python3 +python3-aiohttp +python3-beautifulsoup4 +python3-colorlog +python3-langcodes +python3-orjson +python3-dateutil
+  DEPENDS:= \
+	+python3 \
+	+python3-aiohttp \
+	+python3-beautifulsoup4 \
+	+python3-colorlog \
+	+python3-langcodes \
+	+python3-orjson \
+	+python3-dateutil
 endef
 
 define Package/python3-aioamazondevices/description
