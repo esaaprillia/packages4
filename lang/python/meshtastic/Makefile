@@ -32,6 +32,11 @@ endef
 PYTHON3_PKG_WHEEL_NAME:=meshtastic
 PYTHON3_PKG_WHEEL_VERSION:=0.6.1
 
+define Py3Package/meshtastic/install
+	$(INSTALL_DIR) $(1)/etc/homeassistant
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/custom_components $(1)/etc/homeassistant/
+endef
+
 $(eval $(call Py3Package,meshtastic))
 $(eval $(call BuildPackage,meshtastic))
 $(eval $(call BuildPackage,meshtastic-src))
