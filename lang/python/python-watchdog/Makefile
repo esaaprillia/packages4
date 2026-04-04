@@ -11,9 +11,13 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=COPYING LICENSE
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-watchdog
   SECTION:=lang
@@ -32,6 +36,7 @@ define Package/python3-watchdog/description
   Python library and shell utilities to monitor filesystem events.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-watchdog))
 $(eval $(call BuildPackage,python3-watchdog))
 $(eval $(call BuildPackage,python3-watchdog-src))
