@@ -1,22 +1,23 @@
-From b0509630050c021cffafb9cc193565db67f994d2 Mon Sep 17 00:00:00 2001
+From 9337a022d159be1c2a34524e75ee3a52c2afab6c Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 4 Apr 2026 19:09:57 +0800
+Date: Sat, 4 Apr 2026 22:16:37 +0800
 Subject: [PATCH] Update pyproject.toml
 
 ---
- pyproject.toml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ pyproject.toml | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index 2ea1778..831fb77 100644
+index 2ea1778..e48de16 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -83,7 +83,7 @@ compile = [
+@@ -83,9 +83,6 @@ compile = [
  ]
  dist = []
  install = []
 -setup = [
-+#setup = [
-     "--vsenv",  # Force use of MSVC on Windows, ignored on other platforms
- ]
+-    "--vsenv",  # Force use of MSVC on Windows, ignored on other platforms
+-]
  
+ 
+ [tool.cibuildwheel]
