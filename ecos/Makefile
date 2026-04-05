@@ -19,7 +19,7 @@ PKG_BUILD_PARALLEL:=1
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-define Package/suitesparse
+define Package/ecos
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A lightweight conic solver for second-order cone programming.
@@ -27,7 +27,7 @@ define Package/suitesparse
 	URL:=https://github.com/embotech/ecos
 endef
 
-define Package/suitesparse/description
+define Package/ecos/description
 	Embedded Conic Solver (ECOS)
 endef
 
@@ -38,9 +38,9 @@ define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 endef
 
-define Package/suitesparse/install
+define Package/ecos/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,suitesparse))
+$(eval $(call BuildPackage,ecos))
