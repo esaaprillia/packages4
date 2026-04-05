@@ -34,7 +34,8 @@ define Package/suitesparse/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
