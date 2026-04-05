@@ -33,7 +33,7 @@ define Package/python3-cvxopt/description
 Python Software for Convex Optimization
 endef
 
-PYTHON3_HOST_BUILD_VARS += \
+PYTHON3_PKG_SETUP_VARS += \
 	CVXOPT_BUILD_DSDP=0 \
 	CVXOPT_BUILD_FFTW=0 \
 	CVXOPT_BUILD_GLPK=0 \
