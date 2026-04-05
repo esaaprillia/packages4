@@ -33,7 +33,7 @@ diff -urN ecos-python-2.0.7rc2-orig/setup.py ecos-python-2.0.7rc2/setup.py
 -                        'ecos/src/wright_omega.c'
 -                    ] + glob('ecos/external/amd/src/*.c')
 -                      + glob('ecos/ecos_bb/*.c'))       # glob bb source files
-+                    include_dirs = ['/usr/include/ecos'],
++                    include_dirs = ['../../include/ecos'],
 +                    sources = ['src/ecosmodule.c'])
  
  def set_builtin(name, value):
