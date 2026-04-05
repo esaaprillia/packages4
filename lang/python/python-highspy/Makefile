@@ -4,8 +4,7 @@ PKG_NAME:=python-highspy
 PKG_VERSION:=1.13.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=HiGHS
-PKG_SOURCE_URL:=https://github.com/ERGO-Code/HiGHS/archive/v$(PKG_VERSION)
+PYPI_NAME:=highspy
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -24,17 +23,14 @@ define Package/python3-highspy
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Linear optimization software
+  TITLE:=A thin set of pybind11 wrappers to HiGHS
   URL:=https://github.com/ERGO-Code/HiGHS
   DEPENDS:=+python3 +python3-numpy
 endef
 
 define Package/python3-highspy/description
-HiGHS is a high performance serial and parallel solver for large scale sparse linear optimization problems of the form
+HiGHS - Linear optimization software
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=highspy
-PYTHON3_PKG_WHEEL_VERSION:=1.13.1
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-highspy))
