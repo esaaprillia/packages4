@@ -23,10 +23,7 @@ define Package/python3-cvxopt
   CATEGORY:=Languages
   TITLE:=Convex optimization package
   URL:=https://cvxopt.org/
-  DEPENDS:= \
-	+python3 \
-	+openblas \
-	+suitesparse
+  DEPENDS:=+python3 +openblas +suitesparse
 endef
 
 define Package/python3-cvxopt/description
@@ -39,6 +36,8 @@ PYTHON3_PKG_SETUP_VARS += \
 	CVXOPT_BUILD_GLPK=0 \
 	CVXOPT_BUILD_GSL=0 \
 	CVXOPT_BLAS_LIB_DIR="$(STAGING_DIR)/usr/lib" \
+	CVXOPT_BLAS_LIB="openblas" \
+	CVXOPT_LAPACK_LIB="openblas" \
 	CVXOPT_SUITESPARSE_LIB_DIR="$(STAGING_DIR)/usr/lib" \
 	CVXOPT_SUITESPARSE_INC_DIR="$(STAGING_DIR)/usr/include/suitesparse"
 
