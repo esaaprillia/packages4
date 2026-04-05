@@ -23,7 +23,7 @@ define Package/python3-ecos
   CATEGORY:=Languages
   TITLE:=Python Wrapper for Embedded Conic Solver (ECOS)
   URL:=http://github.com/embotech/ecos
-  DEPENDS:=+python3 +python3-numpy +python3-scipy +ecos
+  DEPENDS:=+python3 +python3-numpy +python3-scipy
 endef
 
 define Package/python3-ecos/description
