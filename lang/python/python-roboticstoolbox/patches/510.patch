@@ -1,0 +1,34 @@
+From 527a7e8b725d19976dd68cafedb77ade7655c67a Mon Sep 17 00:00:00 2001
+From: Lidang-Jiang <lidangjiang@gmail.com>
+Date: Sat, 28 Mar 2026 22:34:47 +0800
+Subject: [PATCH] Fix duplicate variable in null-space condition of _calc_qnull
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The condition `if λΣ > 0 or λΣ > 0:` duplicates the λΣ check,
+which should be `if λΣ > 0 or λm > 0:`. This caused null-space
+motion to be skipped entirely when only km (manipulability
+maximisation) was enabled without kq (joint limit avoidance).
+
+Fixes #499
+
+Signed-off-by: Lidang-Jiang <lidangjiang@gmail.com>
+---
+ roboticstoolbox/robot/IK.py |  2 +-
+ tests/test_IK.py            | 70 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 71 insertions(+), 1 deletion(-)
+
+diff --git a/roboticstoolbox/robot/IK.py b/roboticstoolbox/robot/IK.py
+index f784158b6..5d350f5f9 100644
+--- a/roboticstoolbox/robot/IK.py
++++ b/roboticstoolbox/robot/IK.py
+@@ -569,7 +569,7 @@ def _calc_qnull(
+         qnull_grad += (1.0 / λm * Jm).flatten()
+ 
+     # Calculate the null-space motion
+-    if λΣ > 0 or λΣ > 0:
++    if λΣ > 0 or λm > 0:
+         null_space = np.eye(ets.n) - np.linalg.pinv(J) @ J
+         qnull = null_space @ qnull_grad
+ 
