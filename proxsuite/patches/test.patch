@@ -1,0 +1,21 @@
+From c7102fe656c1a8b576be06017fae5d62f9214cdc Mon Sep 17 00:00:00 2001
+From: Joris Vaillant <joris.vaillant@inria.fr>
+Date: Thu, 12 Feb 2026 10:08:54 +0100
+Subject: [PATCH] cmake: Define Python_VERSION alias for nanobind build
+
+---
+ bindings/python/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/bindings/python/CMakeLists.txt b/bindings/python/CMakeLists.txt
+index 2847bbe72..cf55a9d47 100644
+--- a/bindings/python/CMakeLists.txt
++++ b/bindings/python/CMakeLists.txt
+@@ -9,6 +9,7 @@ option(GENERATE_PYTHON_STUBS "Generate Python stubs" OFF)
+ 
+ FINDPYTHON(REQUIRED)
+ set(Python_INCLUDE_DIRS ${Python3_INCLUDE_DIRS})
++set(Python_VERSION ${Python3_VERSION})
+ # Nanobind expects these targets instead of Python3::*
+ # https://github.com/jrl-umi3218/jrl-cmakemodules/issues/708
+ add_library(Python::Module ALIAS Python3::Module)
