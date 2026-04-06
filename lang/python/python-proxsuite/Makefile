@@ -45,9 +45,14 @@ CMAKE_OPTIONS += \
 	-DBUILD_PYTHON_INTERFACE:BOOL=ON \
 	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 	-DPython_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-	-DPYWRAP_INSTALL_DIR="$(PYTHON3_PKG_DIR)"
+	-DPYTHON_SITELIB="$(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)"
 
 MAKE_FLAGS += $(PYTHON3_VARS)
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(CP) $(PKG_INSTALL_DIR)/$(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/proxsuite $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)
+endef
 
 $(eval $(call Py3Package,python3-proxsuite))
 $(eval $(call BuildPackage,python3-proxsuite))
