@@ -16,7 +16,6 @@ PKG_BUILD_DEPENDS:=numpy/host
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../meson/meson.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
