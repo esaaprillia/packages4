@@ -12,13 +12,17 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-cmeel/host python-cmeel-simde/host python-cmeel-eigen/host python-typing-extensions/host
+PYTHON3_PKG_BUILD:=0
+PKG_BUILD_DEPENDS:=eigen simde python3 python-nanobind/host
+
+CMAKE_BINARY_SUBDIR := build
+
+PKG_BUILD_PARALLEL:=1
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/host-build.mk
+include ../meson/cmake.mk
 include ../python3-package.mk
-include ../python3-host-build.mk
 
 define Package/python3-proxsuite
   SUBMENU:=Python
@@ -27,16 +31,24 @@ define Package/python3-proxsuite
   TITLE:=Quadratic Programming Solver for Robotics and beyond.
   URL:=https://github.com/Simple-Robotics/proxsuite
   DEPENDS:= \
-	+python3 \
-	+python3-numpy \
-	+python3-scipy
+	+python3
 endef
 
 define Package/python3-proxsuite/description
 ProxSuite is a collection of open-source, numerically robust, precise, and efficient numerical solvers (e.g., LPs, QPs, etc.)
 endef
 
-$(eval $(call HostBuild))
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_TESTING:BOOL=OFF \
+	-DINSTALL_DOCUMENTATION:BOOL=ON \
+	-DBUILD_PYTHON_INTERFACE:BOOL=ON \
+	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+	-DPython_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
+	-DPYTHON_SITELIB="$(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)"
+
+MAKE_FLAGS += $(PYTHON3_VARS)
+
 $(eval $(call Py3Package,python3-proxsuite))
 $(eval $(call BuildPackage,python3-proxsuite))
 $(eval $(call BuildPackage,python3-proxsuite-src))
