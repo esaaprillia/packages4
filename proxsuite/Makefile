@@ -42,6 +42,8 @@ CMAKE_OPTIONS += \
 	-DBUILD_PYTHON_INTERFACE:BOOL=ON \
 	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
+MAKE_FLAGS += $(PYTHON3_VARS)
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 endef
