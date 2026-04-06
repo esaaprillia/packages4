@@ -12,14 +12,16 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=eigen simde
+PYTHON3_PKG_BUILD:=0
+PKG_BUILD_DEPENDS:=eigen simde python3
 
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/proxsuite
 	SECTION:=libs
@@ -37,7 +39,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_TESTING:BOOL=OFF \
 	-DINSTALL_DOCUMENTATION:BOOL=ON \
-	-DBUILD_PYTHON_INTERFACE:BOOL=OFF
+	-DBUILD_PYTHON_INTERFACE:BOOL=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
