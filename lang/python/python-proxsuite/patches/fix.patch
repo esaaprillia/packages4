@@ -1,0 +1,22 @@
+From 7ff8a01e002d68ac2eb456b47f4321749a0117a8 Mon Sep 17 00:00:00 2001
+From: Joris Vaillant <joris.vaillant@inria.fr>
+Date: Thu, 26 Jun 2025 14:39:02 +0200
+Subject: [PATCH] pyproject: move configure-args in tool.cmeel section
+
+---
+ pyproject.toml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 9cf4f55ff..65ef76517 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,6 +19,8 @@ requires = [
+     "typing-extensions",
+     ]
+ build-backend = "cmeel.build"
++
++[tool.cmeel]
+ configure-args = ["-DBUILD_TESTING:BOOL=OFF","-DBUILD_PYTHON_INTERFACE:BOOL=ON","-DBUILD_WITH_VECTORIZATION_SUPPORT:BOOL=ON","-DINSTALL_DOCUMENTATION:BOOL=OFF","-DBUILD_WITH_OPENMP_SUPPORT=OFF"]
+ 
+ [tool.ruff.lint]
