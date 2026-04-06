@@ -19,7 +19,8 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
-PYTHON3_PKG_SETUP_VARS += CFLAGS= -Wno-error=incompatible-pointer-types TARGET_CFLAGS= -Wno-error=incompatible-pointer-types
+CFLAGS += -Wno-error=incompatible-pointer-types 
+TARGET_CFLAGS += -Wno-error=incompatible-pointer-types
 
 define Package/python3-pybullet
   SUBMENU:=Python
