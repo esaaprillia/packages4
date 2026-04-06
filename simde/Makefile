@@ -30,6 +30,9 @@ define Package/simde/description
 	The SIMDe header-only library provides fast, portable implementations of SIMD intrinsics on hardware which doesn't natively support them, such as calling SSE functions on ARM.
 endef
 
+MESON_ARGS += \
+	-Dtests=false
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/simde $(1)/usr/include/
