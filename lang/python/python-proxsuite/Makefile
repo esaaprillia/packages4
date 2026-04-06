@@ -13,7 +13,7 @@ PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PYTHON3_PKG_BUILD:=0
-PKG_BUILD_DEPENDS:=eigen simde python3 python-nanobind/host
+PKG_BUILD_DEPENDS:=eigen simde python-nanobind/host
 
 CMAKE_BINARY_SUBDIR := build
 
