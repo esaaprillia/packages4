@@ -28,7 +28,11 @@ define Package/python3-qpsolvers
   DEPENDS:= \
 	+python3 \
 	+python3-numpy \
-	+python3-scipy
+	+python3-scipy \
+	+python3-osqp \
+	+python3-proxsuite \
+	+python3-scs \
+	+python3-daqp
 endef
 
 define Package/python3-qpsolvers/description
