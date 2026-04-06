@@ -1,0 +1,21 @@
+From 611687d1c28571929306c8c408f30c944b714ac4 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 6 Apr 2026 11:40:34 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 5002977..e95bc29 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -39,7 +39,6 @@ version = "0.59.0"
+ 
+ [project.optional-dependencies]
+ build = [
+-  "cmake>=3.31.2",
+   "git-archive-all",
+   "packaging>=24.2",
+   "wheel>=0.45.1",
