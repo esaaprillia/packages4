@@ -28,7 +28,7 @@ define Package/python3-pybullet
   CATEGORY:=Languages
   TITLE:=Official Python Interface for the Bullet Physics SDK specialized for Robotics Simulation and Reinforcement Learning
   URL:=https://github.com/bulletphysics/bullet3
-  DEPENDS:=+python3 +python3-numpy
+  DEPENDS:=+python3 +python3-numpy +libx11
 endef
 
 define Package/python3-pybullet/description
