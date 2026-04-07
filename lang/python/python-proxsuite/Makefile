@@ -38,8 +38,6 @@ define Package/python3-proxsuite/description
 ProxSuite is a collection of open-source, numerically robust, precise, and efficient numerical solvers (e.g., LPs, QPs, etc.)
 endef
 
-PYTHON_SITELIB="$(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)"
-
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_TESTING:BOOL=OFF \
@@ -53,7 +51,7 @@ MAKE_FLAGS += $(PYTHON3_VARS)
 
 define Build/Install
 	$(call Build/Install/Default)
-	$(CP) $(PYTHON_SITELIB)/proxsuite $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)
+	$(CP) $(PKG_INSTALL_DIR)/$(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/proxsuite $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)
 endef
 
 $(eval $(call Py3Package,python3-proxsuite))
