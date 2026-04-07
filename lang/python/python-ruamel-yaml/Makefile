@@ -19,6 +19,8 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:ruamel.yaml_project:ruamel.yaml
 
+PKG_BUILD_DIR:=$(BUILD_DIR)/pypi/ruamel.yaml-$(PKG_VERSION)
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
