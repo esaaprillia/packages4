@@ -32,6 +32,8 @@ define Package/python3-proxsuite
   URL:=https://github.com/Simple-Robotics/proxsuite
   DEPENDS:= \
 	+python3 \
+	+python3-numpy \
+	+python3-scipy \
 	+libstdcpp
 endef
 
