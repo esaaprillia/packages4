@@ -31,7 +31,8 @@ define Package/python3-proxsuite
   TITLE:=Quadratic Programming Solver for Robotics and beyond.
   URL:=https://github.com/Simple-Robotics/proxsuite
   DEPENDS:= \
-	+python3
+	+python3 \
+	+libstdcpp
 endef
 
 define Package/python3-proxsuite/description
