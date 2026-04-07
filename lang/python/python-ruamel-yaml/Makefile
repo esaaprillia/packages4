@@ -11,15 +11,15 @@ PKG_NAME:=python-ruamel-yaml
 PKG_VERSION:=0.19.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=ruamel_yaml
+PYPI_NAME:=ruamel.yaml
+PKG_SOURCE_URL:=https://yaml.dev/ruamel-dl-tagged-releases/
+PYPI_SOURCE_EXT:=tar.xz
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:ruamel.yaml_project:ruamel.yaml
-
-PKG_BUILD_DIR:=$(BUILD_DIR)/pypi/ruamel.yaml-$(PKG_VERSION)
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
