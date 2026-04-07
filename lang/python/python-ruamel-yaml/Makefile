@@ -8,10 +8,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ruamel-yaml
-PKG_VERSION:=0.18.16
+PKG_VERSION:=0.19.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=ruamel.yaml
+PYPI_NAME:=ruamel_yaml
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com>
@@ -37,9 +37,6 @@ define Package/python3-ruamel-yaml/description
 ruamel-yaml is a YAML parser/emitter that supports roundtrip
 preservation of comments, seq/map flow style, and map key order
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=ruamel_yaml
-PYTHON3_PKG_WHEEL_VERSION:=0.18.16
 
 $(eval $(call Py3Package,python3-ruamel-yaml))
 $(eval $(call BuildPackage,python3-ruamel-yaml))
