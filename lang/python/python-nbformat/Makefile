@@ -26,7 +26,12 @@ define Package/python3-nbformat
   CATEGORY:=Languages
   TITLE:=The Jupyter Notebook format
   URL:=http://nbformat.readthedocs.io/
-  DEPENDS:=+python3 +python3-fastjsonschema +python3-jsonschema +python3-jupyter-core +python3-traitlets
+  DEPENDS:= \
+	+python3 \
+	+python3-fastjsonschema \
+	+python3-jsonschema \
+	+python3-jupyter-core \
+	+python3-traitlets
 endef
 
 define Package/python3-nbformat/description
