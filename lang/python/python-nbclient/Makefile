@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-nbclient
-PKG_VERSION:=0.10.2
+PKG_VERSION:=0.10.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=nbclient
@@ -25,7 +25,12 @@ define Package/python3-nbclient
   CATEGORY:=Languages
   TITLE:=A client library for executing notebooks. Formerly nbconvert's ExecutePreprocessor.
   URL:=https://nbclient.readthedocs.io
-  DEPENDS:=+python3 +python3-jupyter-client +python3-jupyter-core +python3-nbformat +python3-traitlets
+  DEPENDS:= \
+	+python3 \
+	+python3-jupyter-client \
+	+python3-jupyter-core \
+	+python3-nbformat \
+	+python3-traitlets
 endef
 
 define Package/python3-nbclient/description
