@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ipython
-PKG_VERSION:=9.6.0
+PKG_VERSION:=9.12.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=ipython
@@ -13,17 +13,14 @@ PKG_LICENSE_FILES:=LICENSE
 
 HOST_BUILD_DEPENDS:= \
 	python3/host \
-	python-colorama/host \
 	python-decorator/host \
 	python-ipython-pygments-lexers/host \
 	python-jedi/host \
 	python-matplotlib-inline/host \
-	python-pexpect/host \
 	python-prompt-toolkit/host \
 	python-pygments/host \
 	python-stack-data/host \
-	python-traitlets/host \
-	python-typing-extensions/host
+	python-traitlets/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -37,7 +34,16 @@ define Package/python3-ipython
   CATEGORY:=Languages
   TITLE:=IPython: Productive Interactive Computing
   URL:=https://ipython.readthedocs.org/
-  DEPENDS:=+python3 +python3-colorama +python3-decorator +python3-ipython-pygments-lexers +python3-jedi +python3-matplotlib-inline +python3-pexpect +python3-prompt-toolkit +python3-pygments +python3-stack-data +python3-traitlets +python3-typing-extensions
+  DEPENDS:= \
+	+python3 \
+	+python3-decorator \
+	+python3-ipython-pygments-lexers \
+	+python3-jedi \
+	+python3-matplotlib-inline \
+	+python3-prompt-toolkit \
+	+python3-pygments \
+	+python3-stack-data \
+	+python3-traitlets
 endef
 
 define Package/python3-ipython/description
