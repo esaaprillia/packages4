@@ -14,7 +14,6 @@ PKG_LICENSE_FILES:=LICENSE
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../meson/meson.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
