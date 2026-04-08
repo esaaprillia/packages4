@@ -1,10 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-send2trash
-PKG_VERSION:=1.8.3
+PKG_VERSION:=2.1.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=Send2Trash
+PYPI_NAME:=send2trash
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -31,11 +31,6 @@ endef
 define Package/python3-send2trash/description
 Send2Trash is a small package that sends files to the Trash (or Recycle Bin) natively and on all platforms. On OS X, it uses native FSMoveObjectToTrashSync Cocoa calls or can use pyobjc with NSFileManager.
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=send2trash
-PYTHON3_PKG_WHEEL_VERSION:=1.8.3
-PYTHON3_HOST_WHEEL_NAME:=send2trash
-PYTHON3_HOST_WHEEL_VERSION:=1.8.3
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-send2trash))
