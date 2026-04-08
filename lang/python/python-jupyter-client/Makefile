@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jupyter-client
-PKG_VERSION:=8.6.3
+PKG_VERSION:=8.8.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=jupyter_client
@@ -33,7 +33,13 @@ define Package/python3-jupyter-client
   CATEGORY:=Languages
   TITLE:=Jupyter protocol implementation and client libraries
   URL:=https://jupyter-client.readthedocs.io/
-  DEPENDS:=+python3 +python3-jupyter-core +python3-dateutil +python3-pyzmq +python3-tornado +python3-traitlets
+  DEPENDS:= \
+	+python3 \
+	+python3-jupyter-core \
+	+python3-dateutil \
+	+python3-pyzmq \
+	+python3-tornado \
+	+python3-traitlets
 endef
 
 define Package/python3-jupyter-client/description
