@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-json-logger
-PKG_VERSION:=4.0.0
+PKG_VERSION:=4.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_json_logger
@@ -22,8 +22,9 @@ define Package/python3-json-logger
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=JSON Log Formatter for the Python Logging Package
-  URL:=https://nhairs.github.io/python-json-logger/
-  DEPENDS:=+python3
+  URL:=https://github.com/nhairs/python-json-logger
+  DEPENDS:= \
+	+python3-light
 endef
 
 define Package/python3-json-logger/description
