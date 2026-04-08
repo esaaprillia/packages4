@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tinycss2
-PKG_VERSION:=1.4.0
+PKG_VERSION:=1.5.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=tinycss2
