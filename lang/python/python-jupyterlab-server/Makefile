@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jupyterlab-server
-PKG_VERSION:=2.27.3
+PKG_VERSION:=2.28.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=jupyterlab_server
@@ -12,16 +12,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
-HOST_BUILD_DEPENDS:= \
-	python3/host \
-	python-hatchling/host \
-	python-babel/host \
-	python-jinja2/host \
-	python-json5/host \
-	python-jsonschema/host \
-	python-jupyter-server/host \
-	python-packaging/host \
-	python-requests/host
+HOST_BUILD_DEPENDS:=python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -35,7 +26,15 @@ define Package/python3-jupyterlab-server
   CATEGORY:=Languages
   TITLE:=A set of server components for JupyterLab and JupyterLab like applications.
   URL:=http://jupyterlab-server.readthedocs.io
-  DEPENDS:=+python3 +python3-babel +python3-jinja2 +python3-json5 +python3-jsonschema +python3-jupyter-server +python3-packaging +python3-requests
+  DEPENDS:= \
+	+python3 \
+	+python3-babel \
+	+python3-jinja2 \
+	+python3-json5 \
+	+python3-jsonschema \
+	+python3-jupyter-server \
+	+python3-packaging \
+	+python3-requests
 endef
 
 define Package/python3-jupyterlab-server/description
