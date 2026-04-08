@@ -30,7 +30,7 @@ define Package/python3-jupyter-events
 	+python3 \
 	+python3-referencing \
 	+python3-jsonschema \
-  +python3-fqdn \
+	+python3-fqdn \
 	+python3-idna \
 	+python3-isoduration \
 	+python3-jsonpointer \
