@@ -12,28 +12,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host
-HOST_BUILD_DEPENDS:= \
-	python3/host \
-	python-hatchling/host \
-	python-hatch-jupyter-builder/host \
-	python-anyio/host \
-	python-argon2-cffi/host \
-	python-jinja2/host \
-	python-jupyter-client/host \
-	python-jupyter-core/host \
-	python-jupyter-server-terminals/host \
-	python-nbconvert/host \
-	python-nbformat/host \
-	python-packaging/host \
-	python-prometheus-client/host \
-	python-pyzmq/host \
-	python-send2trash/host \
-	python-terminado/host \
-	python-tornado/host \
-	python-traitlets/host \
-	python-websocket-client/host \
-	python-jupyter-events/host \
-	python-overrides/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-jupyter-builder/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -47,7 +26,26 @@ define Package/python3-jupyter-server
   CATEGORY:=Languages
   TITLE:=The backend—i.e. core services, APIs, and REST endpoints—to Jupyter web applications.
   URL:=https://jupyter-server.readthedocs.io/
-  DEPENDS:=+python3 +python3-anyio +python3-argon2-cffi +python3-jinja2 +python3-jupyter-client +python3-jupyter-core +python3-jupyter-server-terminals +python3-nbconvert +python3-nbformat +python3-packaging +python3-prometheus-client +python3-pyzmq +python3-send2trash +python3-terminado +python3-tornado +python3-traitlets +python3-websocket-client +python3-jupyter-events +python3-overrides
+  DEPENDS:= \
+	+python3 \
+	+python3-anyio \
+	+python3-argon2-cffi \
+	+python3-jinja2 \
+	+python3-jupyter-client \
+	+python3-jupyter-core \
+	+python3-jupyter-server-terminals \
+	+python3-nbconvert \
+	+python3-nbformat \
+	+python3-packaging \
+	+python3-prometheus-client \
+	+python3-pyzmq \
+	+python3-send2trash \
+	+python3-terminado \
+	+python3-tornado \
+	+python3-traitlets \
+	+python3-websocket-client \
+	+python3-jupyter-events \
+	+python3-overrides
 endef
 
 define Package/python3-jupyter-server/description
