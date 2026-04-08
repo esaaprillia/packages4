@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-nbconvert
-PKG_VERSION:=7.16.6
+PKG_VERSION:=7.17.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=nbconvert
@@ -26,7 +26,22 @@ define Package/python3-nbconvert
   CATEGORY:=Languages
   TITLE:=Jupyter Notebook Conversion
   URL:=https://nbconvert.readthedocs.io/
-  DEPENDS:=+python3 +python3-beautifulsoup4 +python3-bleach +python3-defusedxml +python3-importlib-metadata +python3-jinja2 +python3-jupyter-core +python3-jupyterlab-pygments +python3-markupsafe +python3-mistune +python3-nbclient +python3-nbformat +python3-packaging +python3-pandocfilters +python3-pygments +python3-traitlets
+  DEPENDS:= \
+	+python3 \
+	+python3-beautifulsoup4 \
+	+python3-bleach \
+	+python3-defusedxml \
+	+python3-jinja2 \
+	+python3-jupyter-core \
+	+python3-jupyterlab-pygments \
+	+python3-markupsafe \
+	+python3-mistune \
+	+python3-nbclient \
+	+python3-nbformat \
+	+python3-packaging \
+	+python3-pandocfilters \
+	+python3-pygments \
+	+python3-traitlets
 endef
 
 define Package/python3-nbconvert/description
