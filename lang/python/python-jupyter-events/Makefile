@@ -26,7 +26,23 @@ define Package/python3-jupyter-events
   CATEGORY:=Languages
   TITLE:=Jupyter Event System library
   URL:=https://jupyter-events.readthedocs.io
-  DEPENDS:=+python3 +python3-referencing +python3-jsonschema +python3-json-logger +python3-yaml +python3-traitlets +python3-packaging +python3-rfc3339-validator +python3-rfc3986-validator
+  DEPENDS:= \
+	+python3 \
+	+python3-referencing \
+	+python3-jsonschema \
+  +python3-fqdn \
+	+python3-idna \
+	+python3-isoduration \
+	+python3-jsonpointer \
+	+python3-rfc3987-syntax \
+	+python3-uri-template \
+	+python3-webcolors \
+	+python3-json-logger \
+	+python3-yaml \
+	+python3-traitlets \
+	+python3-packaging \
+	+python3-rfc3339-validator \
+	+python3-rfc3986-validator
 endef
 
 define Package/python3-jupyter-events/description
