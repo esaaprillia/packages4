@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bleach
-PKG_VERSION:=6.2.0
+PKG_VERSION:=6.3.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=bleach
