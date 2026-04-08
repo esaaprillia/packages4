@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-mistune
-PKG_VERSION:=3.1.4
+PKG_VERSION:=3.2.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=mistune
@@ -23,7 +23,7 @@ define Package/python3-mistune
   CATEGORY:=Languages
   TITLE:=A sane and fast Markdown parser with useful plugins and renderers
   URL:=https://mistune.lepture.com/
-  DEPENDS:=+python3 +python3-typing-extensions
+  DEPENDS:=+python3
 endef
 
 define Package/python3-mistune/description
