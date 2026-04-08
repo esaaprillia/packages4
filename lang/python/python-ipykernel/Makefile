@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ipykernel
-PKG_VERSION:=7.0.1
+PKG_VERSION:=7.2.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=ipykernel
@@ -40,7 +40,20 @@ define Package/python3-ipykernel
   CATEGORY:=Languages
   TITLE:=IPython Kernel for Jupyter
   URL:=https://ipykernel.readthedocs.io/
-  DEPENDS:=+python3 +python3-debugpy +python3-ipython +python3-comm +python3-traitlets +python3-jupyter-client +python3-jupyter-core +python3-nest-asyncio +python3-tornado +python3-matplotlib-inline +python3-pyzmq +python3-psutil +python3-packaging
+  DEPENDS:= \
+	+python3 \
+	+python3-debugpy \
+	+python3-ipython \
+	+python3-comm \
+	+python3-traitlets \
+	+python3-jupyter-client \
+	+python3-jupyter-core \
+	+python3-nest-asyncio \
+	+python3-tornado \
+	+python3-matplotlib-inline \
+	+python3-pyzmq \
+	+python3-psutil \
+	+python3-packaging
 endef
 
 define Package/python3-ipykernel/description
