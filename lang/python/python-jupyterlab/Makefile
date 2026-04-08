@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jupyterlab
-PKG_VERSION:=4.4.9
+PKG_VERSION:=4.5.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=jupyterlab
@@ -18,7 +18,6 @@ HOST_BUILD_DEPENDS:= \
 	python-hatch-jupyter-builder/host \
 	python-async-lru/host \
 	python-httpx/host \
-	python-importlib-metadata/host \
 	python-ipykernel/host \
 	python-jinja2/host \
 	python-jupyter-core/host \
@@ -43,7 +42,21 @@ define Package/python3-jupyterlab
   CATEGORY:=Languages
   TITLE:=JupyterLab computational environment
   URL:=https://jupyterlab.readthedocs.io/
-  DEPENDS:=+python3 +python3-async-lru +python3-httpx +python3-importlib-metadata +python3-ipykernel +python3-jinja2 +python3-jupyter-core +python3-jupyter-server +python3-jupyter-lsp +python3-jupyterlab-server +python3-notebook-shim +python3-packaging +python3-setuptools +python3-tornado +python3-traitlets
+  DEPENDS:= \
+	+python3 \
+	+python3-async-lru \
+	+python3-httpx \
+	+python3-ipykernel \
+	+python3-jinja2 \
+	+python3-jupyter-core \
+	+python3-jupyter-server \
+	+python3-jupyter-lsp \
+	+python3-jupyterlab-server \
+	+python3-notebook-shim \
+	+python3-packaging \
+	+python3-setuptools \
+	+python3-tornado \
+	+python3-traitlets
 endef
 
 define Package/python3-jupyterlab/description
