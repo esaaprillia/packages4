@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-async-lru
-PKG_VERSION:=2.0.5
+PKG_VERSION:=2.3.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=async_lru
