@@ -11,16 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:= \
-	python3/host \
-	python-decorator/host \
-	python-ipython-pygments-lexers/host \
-	python-jedi/host \
-	python-matplotlib-inline/host \
-	python-prompt-toolkit/host \
-	python-pygments/host \
-	python-stack-data/host \
-	python-traitlets/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
