@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-asttokens
-PKG_VERSION:=3.0.0
+PKG_VERSION:=3.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=asttokens
