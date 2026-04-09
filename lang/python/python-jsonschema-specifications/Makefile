@@ -18,11 +18,14 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
-PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-referencing/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-referencing/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-jsonschema-specifications
   SECTION:=lang
@@ -39,6 +42,7 @@ vocabularies, etc.), packaged for runtime access from Python as a
 referencing-based Schema Registry.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-jsonschema-specifications))
 $(eval $(call BuildPackage,python3-jsonschema-specifications))
 $(eval $(call BuildPackage,python3-jsonschema-specifications-src))
