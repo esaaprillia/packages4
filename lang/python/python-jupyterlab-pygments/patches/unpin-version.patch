@@ -1,0 +1,22 @@
+From 6052c4c2d143f94ca0b4db5124d4426c16f6bfb2 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 10 Apr 2026 06:46:28 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index b21c51a..0c80ae7 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,7 +1,7 @@
+ [build-system]
+ requires = [
+     "hatchling>=1.5.0",
+-    "jupyterlab>=4.0.0,<5",
++    "jupyterlab",
+     "hatch-nodejs-version>=0.3.2",
+ ]
+ build-backend = "hatchling.build"
