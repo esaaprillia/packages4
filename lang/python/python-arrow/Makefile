@@ -12,7 +12,7 @@ PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-flit-core/host
-HOST_BUILD_DEPENDS:=python-flit-core/host python-dateutil/host
+HOST_BUILD_DEPENDS:=python-flit-core/host python-dateutil/host python-tzdata/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -26,7 +26,7 @@ define Package/python3-arrow
   SUBMENU:=Python
   TITLE:=Better dates & times for Python
   URL:=https://arrow.readthedocs.io/
-  DEPENDS:=+python3 +python3-dateutil
+  DEPENDS:=+python3 +python3-dateutil +python3-tzdata
 endef
 
 define Package/python3-arrow/description
