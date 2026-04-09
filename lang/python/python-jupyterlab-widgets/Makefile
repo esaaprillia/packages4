@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jupyterlab-widgets
-PKG_VERSION:=3.0.15
+PKG_VERSION:=3.0.16
 PKG_RELEASE:=1
 
 PYPI_NAME:=jupyterlab_widgets
@@ -25,7 +25,7 @@ define Package/python3-jupyterlab-widgets
   CATEGORY:=Languages
   TITLE:=Jupyter interactive widgets for JupyterLab
   URL:=https://ipywidgets.readthedocs.io/
-  DEPENDS:=+python3
+  DEPENDS:=+python3 python3-jupyterlab
 endef
 
 define Package/python3-jupyterlab-widgets/description
