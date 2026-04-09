@@ -26,7 +26,7 @@ define Package/python3-jupyterlab-pygments
   CATEGORY:=Languages
   TITLE:=Pygments theme using JupyterLab CSS variables
   URL:=https://github.com/jupyterlab/jupyterlab_pygments
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-pygments
 endef
 
 define Package/python3-jupyterlab-pygments/description
