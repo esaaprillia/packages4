@@ -12,7 +12,15 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
 
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
+HOST_BUILD_DEPENDS:= \
+	python3/host \
+	python-hatchling/host \
+	python-hatch-vcs/host \
+	python-hatch-fancy-pypi-readme/host \
+	python-attrs/host \
+	python-jsonschema-specifications/host \
+	python-referencing/host \
+	python-rpds-py/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
