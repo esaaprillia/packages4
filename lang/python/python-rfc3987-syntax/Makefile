@@ -12,6 +12,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-lark/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
