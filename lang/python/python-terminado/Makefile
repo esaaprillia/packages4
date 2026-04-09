@@ -12,7 +12,7 @@ PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
-HOST_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-ptyprocess/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -26,7 +26,7 @@ define Package/python3-terminado
   CATEGORY:=Languages
   TITLE:=Terminals served by tornado websockets
   URL:=http://terminado.readthedocs.org/
-  DEPENDS:=+python3 +python3-tornado
+  DEPENDS:=+python3 +python3-tornado +python3-ptyprocess
 endef
 
 define Package/python3-terminado/description
