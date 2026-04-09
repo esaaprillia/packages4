@@ -13,12 +13,16 @@ PKG_MAINTAINER:=Eneas U de Queiroz <cotequeiroz@gmail.com>
 PKG_LICENSE:=Python-2.0
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 PYPI_NAME:=defusedxml
 PKG_HASH:=1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-defusedxml
   SUBMENU:=Python
@@ -36,6 +40,7 @@ define Package/python3-defusedxml/description
   denial of service and other vulnerabilities in Python’s XML libraries.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-defusedxml))
 $(eval $(call BuildPackage,python3-defusedxml))
 $(eval $(call BuildPackage,python3-defusedxml-src))
