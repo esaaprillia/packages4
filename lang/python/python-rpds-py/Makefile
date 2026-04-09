@@ -19,10 +19,13 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
 PKG_BUILD_DEPENDS:=python-maturin/host
+HOST_BUILD_DEPENDS:=python-maturin/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-rpds-py
   SECTION:=lang
@@ -37,6 +40,7 @@ define Package/python3-rpds-py/description
 Python bindings to the Rust rpds crate for persistent data structures.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-rpds-py))
 $(eval $(call BuildPackage,python3-rpds-py))
 $(eval $(call BuildPackage,python3-rpds-py-src))
