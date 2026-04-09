@@ -12,7 +12,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host
-HOST_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host python-cffi/host
+HOST_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host python-cffi/host argon2/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -29,7 +29,7 @@ define Package/python3-argon2-cffi-bindings
   CATEGORY:=Languages
   TITLE:=Low-level CFFI bindings for Argon2
   URL:=https://github.com/hynek/argon2-cffi-bindings
-  DEPENDS:=+python3 +python3-cffi
+  DEPENDS:=+python3 +python3-cffi +argon2
 endef
 
 define Package/python3-argon2-cffi-bindings/description
