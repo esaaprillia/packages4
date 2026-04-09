@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-parso
-PKG_VERSION:=0.8.5
+PKG_VERSION:=0.8.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=parso
