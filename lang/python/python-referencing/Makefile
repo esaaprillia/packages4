@@ -19,10 +19,13 @@ PKG_LICENSE_FILES:=COPYING
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-attrs/host python-rpds-py/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-referencing
   SECTION:=lang
@@ -42,6 +45,7 @@ define Package/python3-referencing/description
 An implementation-agnostic implementation of JSON reference resolution.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-referencing))
 $(eval $(call BuildPackage,python3-referencing))
 $(eval $(call BuildPackage,python3-referencing-src))
