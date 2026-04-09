@@ -11,6 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD
 PKG_LICENSE_FILES:=LICENSE.txt
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
