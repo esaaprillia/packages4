@@ -1,0 +1,24 @@
+From 8ea75252479203480a691a2a3a25a9f6a4ac101c Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 9 Apr 2026 16:24:26 +0800
+Subject: [PATCH] Update libargon2.pc.in
+
+---
+ libargon2.pc.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libargon2.pc.in b/libargon2.pc.in
+index a0d29292..ddb6e01b 100644
+--- a/libargon2.pc.in
++++ b/libargon2.pc.in
+@@ -7,8 +7,8 @@
+ 
+ prefix=@PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/@HOST_MULTIARCH@
+-includedir=${prefix}/@INCLUDE@
++libdir=${prefix}/lib
++includedir=${prefix}/include
+ 
+ Name: libargon2
+ Description: Development libraries for libargon2
