@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-webencodings/host +python-tinycss2/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-webencodings/host python-tinycss2/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
