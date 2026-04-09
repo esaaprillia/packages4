@@ -12,7 +12,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host
-HOST_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host python-cffi/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -21,6 +21,7 @@ include ../python3-package.mk
 include ../python3-host-build.mk
 
 PYTHON3_PKG_SETUP_VARS += ARGON2_CFFI_USE_SYSTEM=1
+PYTHON3_HOST_BUILD_VARS += ARGON2_CFFI_USE_SYSTEM=1
 
 define Package/python3-argon2-cffi-bindings
   SUBMENU:=Python
