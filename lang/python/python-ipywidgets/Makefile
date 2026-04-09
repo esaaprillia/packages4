@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ipywidgets
-PKG_VERSION:=8.1.7
+PKG_VERSION:=8.1.8
 PKG_RELEASE:=1
 
 PYPI_NAME:=ipywidgets
@@ -23,7 +23,13 @@ define Package/python3-ipywidgets
   CATEGORY:=Languages
   TITLE:=Jupyter interactive widgets
   URL:=https://ipywidgets.readthedocs.io/
-  DEPENDS:=+python3 +python3-comm +python3-ipython +python3-traitlets +python3-widgetsnbextension +python3-jupyterlab-widgets
+  DEPENDS:= \
+	+python3 \
+	+python3-comm \
+	+python3-ipython \
+	+python3-traitlets \
+	+python3-widgetsnbextension \
+	+python3-jupyterlab-widgets
 endef
 
 define Package/python3-ipywidgets/description
