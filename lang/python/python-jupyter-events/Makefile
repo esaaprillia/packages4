@@ -12,7 +12,24 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
-HOST_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:= \
+	python3/host \
+	python-hatchling/host \
+	python-referencing/host \
+	python-jsonschema/host \
+	python-fqdn/host \
+	python-idna/host \
+	python-isoduration/host \
+	python-jsonpointer/host \
+	python-rfc3987-syntax/host \
+	python-uri-template/host \
+	python-webcolors/host \
+	python-json-logger/host \
+	python-yaml/host \
+	python-traitlets/host \
+	python-packaging/host \
+	python-rfc3339-validator/host \
+	python-rfc3986-validator/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
