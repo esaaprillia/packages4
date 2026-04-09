@@ -17,6 +17,7 @@ HOST_BUILD_DEPENDS:= \
 	python-ipython-pygments-lexers/host \
 	python-jedi/host \
 	python-matplotlib-inline/host \
+	python-pexpect/host \
 	python-prompt-toolkit/host \
 	python-pygments/host \
 	python-stack-data/host \
@@ -40,6 +41,7 @@ define Package/python3-ipython
 	+python3-ipython-pygments-lexers \
 	+python3-jedi \
 	+python3-matplotlib-inline \
+	+python3-pexpect \
 	+python3-prompt-toolkit \
 	+python3-pygments \
 	+python3-stack-data \
