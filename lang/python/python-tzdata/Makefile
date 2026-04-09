@@ -11,9 +11,13 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-tzdata
   SUBMENU:=Python
@@ -29,6 +33,7 @@ define Package/python3-tzdata/description
   It is intended to be a fallback for systems that do not have system time zone data installed (or don’t have it installed in a standard location), as a part of PEP 615
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-tzdata))
 $(eval $(call BuildPackage,python3-tzdata))
 $(eval $(call BuildPackage,python3-tzdata-src))
