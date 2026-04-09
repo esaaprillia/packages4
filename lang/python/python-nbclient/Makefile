@@ -12,7 +12,13 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
-HOST_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:= \
+	python3/host \
+	python-hatchling/host \
+	python-jupyter-client/host \
+	python-jupyter-core/host \
+	python-nbformat/host \
+	python-traitlets/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
