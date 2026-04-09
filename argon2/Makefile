@@ -31,7 +31,7 @@ define Package/argon2/description
 endef
 
 define Build/Compile
-	$(MAKE_VARS)  $(MAKE) $(MAKE_FLAGS) OPTTARGET=none ARGON2_VERSION="$(PKG_VERSION)" -C $(PKG_BUILD_DIR)
+	$(MAKE_VARS) $(MAKE) $(MAKE_FLAGS) OPTTARGET=none ARGON2_VERSION="$(PKG_VERSION)" -C $(PKG_BUILD_DIR)
 endef
 
 define Host/Compile
