@@ -12,10 +12,13 @@ PKG_LICENSE_FILES:=LICENSE.md
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:=python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-soupsieve
   SECTION:=lang
@@ -32,6 +35,7 @@ It aims to provide selecting, matching, and filtering using modern CSS selectors
 Soup Sieve currently provides selectors from the CSS level 1 specifications up through the latest CSS level 4 drafts and beyond (though some are not yet implemented).
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-soupsieve))
 $(eval $(call BuildPackage,python3-soupsieve))
 $(eval $(call BuildPackage,python3-soupsieve-src))
