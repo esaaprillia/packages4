@@ -20,6 +20,8 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
+PYTHON3_PKG_SETUP_VARS += ARGON2_CFFI_USE_SYSTEM=1
+
 define Package/python3-argon2-cffi-bindings
   SUBMENU:=Python
   SECTION:=lang
