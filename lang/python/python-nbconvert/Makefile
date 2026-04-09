@@ -12,7 +12,23 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
-HOST_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:= \
+	python3/host \
+	python-hatchling/host \
+	python-beautifulsoup4/host \
+	python-bleach/host \
+	python-defusedxml/host \
+	python-jinja2/host \
+	python-jupyter-core/host \
+	python-jupyterlab-pygments/host \
+	python-markupsafe/host \
+	python-mistune/host \
+	python-nbclient/host \
+	python-nbformat/host \
+	python-packaging/host \
+	python-pandocfilters/host \
+	python-pygments/host \
+	python-traitlets/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
