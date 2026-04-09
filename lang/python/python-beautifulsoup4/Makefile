@@ -12,10 +12,13 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-typing-extensions/host python-soupsieve/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-beautifulsoup4
   SECTION:=lang
@@ -34,6 +37,7 @@ Beautiful Soup is a library that makes it easy to scrape information from web pa
 It sits atop an HTML or XML parser, providing Pythonic idioms for iterating, searching, and modifying the parse tree.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-beautifulsoup4))
 $(eval $(call BuildPackage,python3-beautifulsoup4))
 $(eval $(call BuildPackage,python3-beautifulsoup4-src))
