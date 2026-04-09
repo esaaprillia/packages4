@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-widgetsnbextension
-PKG_VERSION:=4.0.14
+PKG_VERSION:=4.0.15
 PKG_RELEASE:=1
 
 PYPI_NAME:=widgetsnbextension
