@@ -60,6 +60,11 @@ define Package/python3-ipykernel/description
 This package provides the IPython kernel for Jupyter.
 endef
 
+define Py3Package/python3-ipykernel/install
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/jupyter $(1)/usr/share/
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-ipykernel))
 $(eval $(call BuildPackage,python3-ipykernel))
