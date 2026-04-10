@@ -1,0 +1,21 @@
+From 25914925d6ddefbb9fb1151ab600cfb7cd61a6d8 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 10 Apr 2026 21:51:04 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index dd1212d9f..1372ca91f 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -26,7 +26,6 @@ dependencies = [
+     "importlib_metadata>=3.6;python_version<\"3.10\"",
+     "jinja2>=3.0",
+     "jupyter_core>=4.7",
+-    "jupyterlab_pygments",
+     "MarkupSafe>=2.0",
+     "mistune>=2.0.3,<4",
+     "nbclient>=0.5.0",
