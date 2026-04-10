@@ -14,6 +14,9 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-nodejs-version/host python-hatch-jupyter-builder/host
 HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-nodejs-version/host python-hatch-jupyter-builder/host
 
+HOST_PYTHON3_PACKAGE_BUILD_DEPENDS:=./host-pip-requirements.txt
+HOST_PYTHON3_HOST_BUILD_DEPENDS:=./host-pip-requirements.txt
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
