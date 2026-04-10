@@ -25,7 +25,13 @@ define Package/python3-kaleido
   CATEGORY:=Languages
   TITLE:=Plotly graph export library
   URL:=https://github.com/plotly/kaleido
-  DEPENDS:=+python3 +python3-choreographer +python3-logistro +python3-orjson +python3-packaging +python3-pytest-timeout
+  DEPENDS:= \
+	+python3-light \
+	+python3-choreographer \
+	+python3-logistro \
+	+python3-orjson \
+	+python3-packaging \
+	+python3-pytest-timeout
 endef
 
 define Package/python3-kaleido/description
