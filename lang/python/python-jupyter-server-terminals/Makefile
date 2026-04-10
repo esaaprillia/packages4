@@ -33,6 +33,11 @@ define Package/python3-jupyter-server-terminals/description
   Jupyter Server Terminals is a Jupyter Server Extension providing support for terminals.
 endef
 
+define Py3Package/python3-jupyter-server-terminals/install
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) $(PKG_INSTALL_DIR)/etc/jupyter $(1)/etc/
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-jupyter-server-terminals))
 $(eval $(call BuildPackage,python3-jupyter-server-terminals))
