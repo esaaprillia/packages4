@@ -63,6 +63,13 @@ define Package/python3-jupyterlab/description
   An extensible environment for interactive and reproducible computing, based on the Jupyter Notebook and Architecture.
 endef
 
+define Py3Package/python3-jupyterlab/install
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) $(PKG_INSTALL_DIR)/etc/jupyter $(1)/etc/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/{applications,icons,jupyter} $(1)/usr/share/
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-jupyterlab))
 $(eval $(call BuildPackage,python3-jupyterlab))
