@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jupyter-lsp
 PKG_VERSION:=2.3.1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=jupyter_lsp
 PKG_HASH:=skip
