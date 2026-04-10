@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jupyter-server-terminals
 PKG_VERSION:=0.5.4
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=jupyter_server_terminals
 PKG_HASH:=skip
