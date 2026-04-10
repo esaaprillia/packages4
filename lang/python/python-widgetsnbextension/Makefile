@@ -32,6 +32,13 @@ define Package/python3-widgetsnbextension/description
   This package makes Jupyter widgets available in the classic Jupyter Notebook. This package provides the necessary JavaScript controls in the Jupyter Notebook that communicate with the widget objects in the kernel.
 endef
 
+define Py3Package/python3-widgetsnbextension/install
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) $(PKG_INSTALL_DIR)/etc/jupyter $(1)/etc/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/jupyter $(1)/usr/share/
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-widgetsnbextension))
 $(eval $(call BuildPackage,python3-widgetsnbextension))
