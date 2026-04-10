@@ -9,7 +9,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zope-interface
-PKG_VERSION:=8.1.1
+PKG_VERSION:=8.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=zope_interface
