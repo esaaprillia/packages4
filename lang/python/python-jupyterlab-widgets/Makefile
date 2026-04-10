@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jupyterlab-widgets
 PKG_VERSION:=3.0.16
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=jupyterlab_widgets
 PKG_HASH:=skip
@@ -30,6 +30,11 @@ endef
 
 define Package/python3-jupyterlab-widgets/description
   A JupyterLab 3.0 extension for Jupyter/IPython widgets.
+endef
+
+define Py3Package/python3-jupyterlab-widgets/install
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/jupyter $(1)/usr/share/
 endef
 
 $(eval $(call HostBuild))
