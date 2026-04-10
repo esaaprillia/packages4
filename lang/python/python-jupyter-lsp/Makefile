@@ -33,6 +33,11 @@ define Package/python3-jupyter-lsp/description
 Coding assistance for JupyterLab (code navigation + hover suggestions + linters + autocompletion + rename) using Language Server Protocol
 endef
 
+define Py3Package/python3-jupyter-lsp/install
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) $(PKG_INSTALL_DIR)/etc/jupyter $(1)/etc/
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-jupyter-lsp))
 $(eval $(call BuildPackage,python3-jupyter-lsp))
