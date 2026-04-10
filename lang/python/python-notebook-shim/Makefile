@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-notebook-shim
 PKG_VERSION:=0.2.4
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=notebook_shim
 PKG_HASH:=skip
@@ -31,6 +31,11 @@ endef
 
 define Package/python3-notebook-shim/description
 This project provides a way for JupyterLab and other frontends to switch to Jupyter Server for their Python Web application backend.
+endef
+
+define Py3Package/python3-notebook-shim/install
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) $(PKG_INSTALL_DIR)/etc/jupyter $(1)/etc/
 endef
 
 $(eval $(call HostBuild))
