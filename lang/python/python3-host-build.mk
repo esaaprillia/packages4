@@ -28,6 +28,12 @@ PYTHON3_HOST_STAGING_DIR:=$(TMP_DIR)/host-stage-$(PYTHON3_HOST_DIR_NAME)
 PYTHON3_HOST_STAGING_FILES_LIST_DIR:=$(HOST_BUILD_PREFIX)/stamp
 PYTHON3_HOST_STAGING_FILES_LIST:=$(PYTHON3_HOST_STAGING_FILES_LIST_DIR)/$(PYTHON3_HOST_DIR_NAME).list
 
+HOST_PYTHON3_HOST_PIP_INSTALL_ARGS = \
+	$(foreach req,$(HOST_PYTHON3_HOST_BUILD_DEPENDS), \
+		--requirement \
+		$(if $(findstring /,$(req)),$(req),$(python3_mk_path)host-pip-requirements/$(req).txt) \
+	)
+
 define Py3Host/Compile/Bootstrap
 	$(call HostPython3/Run, \
 		$(HOST_BUILD_DIR), \
@@ -37,7 +43,14 @@ define Py3Host/Compile/Bootstrap
 	)
 endef
 
+define Py3Host/InstallHostDepends
+	$(if $(HOST_PYTHON3_HOST_PIP_INSTALL_ARGS), \
+		$(call HostPython3/PipInstall,$(HOST_PYTHON3_HOST_PIP_INSTALL_ARGS)) \
+	)
+endef
+
 define Py3Host/Compile
+	$(call Py3Host/InstallHostDepends)
 	$(call HostPython3/Run, \
 		$(HOST_BUILD_DIR), \
 		-m build \
