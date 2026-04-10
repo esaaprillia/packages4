@@ -32,6 +32,13 @@ define Package/python3-plotly/description
   Built on top of plotly.js, plotly.py is a high-level, declarative charting library. plotly.js ships with over 30 chart types, including scientific charts, 3D graphs, statistical charts, SVG maps, financial charts, and more.
 endef
 
+define Py3Package/python3-plotly/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/jupyter $(1)/usr/share/
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-plotly))
 $(eval $(call BuildPackage,python3-plotly))
