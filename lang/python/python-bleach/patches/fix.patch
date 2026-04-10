@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -31,7 +31,7 @@ def get_version():
+ 
+ EXTRAS_REQUIRE = {
+     "css": [
+-        "tinycss2>=1.1.0,<1.5",
++        "tinycss2>=1.1.0",
+     ],
+ }
+ 
