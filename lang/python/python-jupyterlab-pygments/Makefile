@@ -33,6 +33,11 @@ define Package/python3-jupyterlab-pygments/description
   This package contains a syntax coloring theme for pygments making use of the JupyterLab CSS variables.
 endef
 
+define Py3Package/python3-jupyterlab-pygments/install
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/jupyter $(1)/usr/share/
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-jupyterlab-pygments))
 $(eval $(call BuildPackage,python3-jupyterlab-pygments))
