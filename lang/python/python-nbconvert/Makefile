@@ -20,7 +20,6 @@ HOST_BUILD_DEPENDS:= \
 	python-defusedxml/host \
 	python-jinja2/host \
 	python-jupyter-core/host \
-	python-jupyterlab-pygments/host \
 	python-markupsafe/host \
 	python-mistune/host \
 	python-nbclient/host \
@@ -49,7 +48,6 @@ define Package/python3-nbconvert
 	+python3-defusedxml \
 	+python3-jinja2 \
 	+python3-jupyter-core \
-	+python3-jupyterlab-pygments \
 	+python3-markupsafe \
 	+python3-mistune \
 	+python3-nbclient \
