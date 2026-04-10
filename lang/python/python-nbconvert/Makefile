@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-nbconvert
 PKG_VERSION:=7.17.1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PYPI_NAME:=nbconvert
 PKG_HASH:=skip
@@ -62,6 +62,13 @@ endef
 
 define Package/python3-nbconvert/description
 The nbconvert tool, jupyter nbconvert, converts notebooks to various other formats via Jinja templates.
+endef
+
+define Py3Package/python3-nbconvert/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/jupyter $(1)/usr/share/
 endef
 
 $(eval $(call HostBuild))
