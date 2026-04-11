@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-librouteros
-PKG_VERSION:=3.4.1
+PKG_VERSION:=4.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=librouteros
-PKG_HASH:=132a377dc139486c7088f448407f0a1ef491cc90c265d7f4dd8612b128208665
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=GPL-2.0
@@ -23,7 +23,7 @@ define Package/python3-librouteros
   CATEGORY:=Languages
   TITLE:=Python implementation of MikroTik RouterOS API
   URL:=https://github.com/luqasz/librouteros
-  DEPENDS:=+python3 +python3-toml
+  DEPENDS:=+python3
 endef
 
 define Package/python3-librouteros/description
