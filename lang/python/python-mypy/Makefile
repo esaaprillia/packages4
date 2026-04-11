@@ -28,7 +28,7 @@ define Package/python3-mypy
   URL:=https://www.mypy-lang.org/
   DEPENDS:= \
 	+python3-light \
-	+python3-typing_extensions \
+	+python3-typing-extensions \
 	+python3-mypy-extensions \
 	+python3-pathspec \
 	+python3-librt
