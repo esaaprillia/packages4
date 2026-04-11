@@ -65,7 +65,7 @@ endef
 
 define Py3Package/python3-jupyterlab/install
 	$(INSTALL_DIR) $(1)/etc
-	$(CP) $(PKG_INSTALL_DIR)/etc/jupyter $(1)/etc/
+	$(CP) $(PKG_INSTALL_DIR)/usr/etc/jupyter $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/share
