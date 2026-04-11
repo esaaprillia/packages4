@@ -23,7 +23,14 @@ define Package/python3-black
   CATEGORY:=Languages
   TITLE:=The uncompromising code formatter.
   URL:=https://black.readthedocs.io/en/stable/
-  DEPENDS:=+python3 +python3-click +python3-mypy-extensions +python3-packaging +python3-pathspec +python3-platformdirs +python3-pytokens
+  DEPENDS:= \
+	+python3-light \
+	+python3-click \
+	+python3-mypy-extensions \
+	+python3-packaging \
+	+python3-pathspec \
+	+python3-platformdirs \
+	+python3-pytokens
 endef
 
 define Package/python3-black/description
