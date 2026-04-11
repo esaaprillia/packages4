@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-types-setuptools
-PKG_VERSION:=82.0.0.20260408
+PKG_VERSION:=81.0.0.20260209
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
