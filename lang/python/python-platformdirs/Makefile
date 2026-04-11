@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-platformdirs
-PKG_VERSION:=4.9.4
+PKG_VERSION:=4.9.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=platformdirs
