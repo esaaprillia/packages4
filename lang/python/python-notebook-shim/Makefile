@@ -35,7 +35,7 @@ endef
 
 define Py3Package/python3-notebook-shim/install
 	$(INSTALL_DIR) $(1)/etc
-	$(CP) $(PKG_INSTALL_DIR)/etc/jupyter $(1)/etc/
+	$(CP) $(PKG_INSTALL_DIR)/usr/etc/jupyter $(1)/etc/
 endef
 
 $(eval $(call HostBuild))
