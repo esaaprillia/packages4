@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-types-psutil
-PKG_VERSION:=7.2.2.20260408
+PKG_VERSION:=7.2.2.20260130
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
