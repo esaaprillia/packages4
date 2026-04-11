@@ -34,7 +34,7 @@ endef
 
 define Py3Package/python3-widgetsnbextension/install
 	$(INSTALL_DIR) $(1)/etc
-	$(CP) $(PKG_INSTALL_DIR)/etc/jupyter $(1)/etc/
+	$(CP) $(PKG_INSTALL_DIR)/usr/etc/jupyter $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/jupyter $(1)/usr/share/
 endef
