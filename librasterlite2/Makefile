@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://www.gaia-gis.it/gaia-sins/librasterlite2-sources/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=MPL 1.1
+PKG_LICENSE:=MPL-1.1
 PKG_LICENSE_FILES:=COPYING
 
 PKG_INSTALL:=1
