@@ -5,7 +5,7 @@ PKG_VERSION:=2.9.0.20260305
 PKG_RELEASE:=1
 
 PYPI_NAME:=types_python_dateutil
-PKG_HASH:=18f493414c26ffba692a72369fea7a154c502646301ebfe3d56a04b3767284cb
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
