@@ -28,7 +28,7 @@ include $(INCLUDE_DIR)/package.mk
 COREUTILS_APPLETS := \
 	base32 base64 basename basenc b2sum cat chgrp chmod chown chroot	\
 	cksum comm cp csplit cut date dd df dir dircolors dirname du echo env	\
-	expand expr factor false fmt fold groups head hostid id install join	\
+	expand expr factor false fmt fold groups head hostid hostname id install join	\
 	kill link ln logname ls md5sum mkdir mkfifo mknod mktemp mv nice nl	\
 	nohup nproc numfmt od paste pathchk pinky pr printenv printf ptx pwd	\
 	readlink realpath rm rmdir seq sha1sum sha224sum sha256sum		\
@@ -37,7 +37,7 @@ COREUTILS_APPLETS := \
 	unexpand uniq unlink uptime users vdir wc who whoami yes
 
 DIR_BIN := \
-	base64 cat chgrp chmod chown cp date dd df echo false kill link ln ls	\
+	base64 cat chgrp chmod chown cp date dd df echo false hostname kill link ln ls	\
 	mkdir mknod mktemp mv nice printenv pwd rm rmdir sleep stat stty sync	\
 	touch true uname
 
@@ -125,6 +125,7 @@ CONFIGURE_ARGS += \
 	--disable-rpath \
 	--disable-libsmack \
 	--enable-libcap \
+	--enable-install-program=hostname \
 	--without-linux-crypto \
 	--without-openssl \
 	--$(if $(CONFIG_USE_MUSL),with,without)-included-regex \
