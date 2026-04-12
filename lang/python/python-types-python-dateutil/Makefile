@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-types-python-dateutil
-PKG_VERSION:=2.9.0.20241206
+PKG_VERSION:=2.9.0.20260305
 PKG_RELEASE:=1
 
 PYPI_NAME:=types_python_dateutil
