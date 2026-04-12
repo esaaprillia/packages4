@@ -5,7 +5,7 @@ PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=QB3-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/lucianpls/QB3/archive/v$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/lucianpls/QB3/archive/V$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
