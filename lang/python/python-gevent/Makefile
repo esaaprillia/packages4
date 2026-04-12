@@ -11,7 +11,6 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_FLAGS:=no-mips16
 PKG_BUILD_DEPENDS:=python-cffi/host python-greenlet/host python-cython/host
 
 include ../pypi.mk
