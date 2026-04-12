@@ -1,10 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=librasterlite2
-PKG_VERSION:=1.1.0-beta1
+PKG_VERSION:=1.1.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-beta1.tar.gz
 PKG_SOURCE_URL:=https://www.gaia-gis.it/gaia-sins/librasterlite2-sources/
 PKG_HASH:=skip
 
@@ -14,6 +14,7 @@ PKG_LICENSE_FILES:=COPYING
 
 PKG_INSTALL:=1
 PKG_FIXUP:=autoreconf
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)-beta1
 
 include $(INCLUDE_DIR)/package.mk
 
