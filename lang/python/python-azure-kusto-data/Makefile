@@ -6,7 +6,7 @@ PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
-PKG_LICENSE_FILES:=
+PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=azure_kusto_data
 PKG_HASH:=skip
