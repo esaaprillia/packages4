@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-html-form
-PKG_VERSION:=6.07
+PKG_VERSION:=6.13
 PKG_RELEASE:=1
 
 PKG_SOURCE:=HTML-Form-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/O/OA/OALDERS
-PKG_HASH:=7daa8c7eaff4005501c3431c8bf478d58bbee7b836f863581aa14afe1b4b6227
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/HTML-Form-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
@@ -43,6 +43,5 @@ endef
 define Package/perl-html-form/install
 	$(call perlmod/Install,$(1),HTML auto/HTML)
 endef
-
 
 $(eval $(call BuildPackage,perl-html-form))
