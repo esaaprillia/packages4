@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-module-build-tiny
-PKG_VERSION:=0.052
+PKG_VERSION:=0.053
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Module-Build-Tiny-$(PKG_VERSION).tar.gz
