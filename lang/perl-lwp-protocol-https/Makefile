@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-lwp-protocol-https
-PKG_VERSION:=6.14
+PKG_VERSION:=6.15
 PKG_RELEASE:=1
 
 PKG_SOURCE:=LWP-Protocol-https-$(PKG_VERSION).tar.gz
