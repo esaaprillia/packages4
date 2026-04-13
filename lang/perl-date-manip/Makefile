@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-date-manip
-PKG_VERSION:=6.98
+PKG_VERSION:=6.99
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Date-Manip-$(PKG_VERSION).tar.gz
