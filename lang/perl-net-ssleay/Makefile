@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-net-ssleay
-PKG_VERSION:=1.94
+PKG_VERSION:=1.96
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Net-SSLeay-$(PKG_VERSION).tar.gz
