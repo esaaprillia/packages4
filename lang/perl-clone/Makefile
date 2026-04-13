@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-clone
-PKG_VERSION:=0.47
+PKG_VERSION:=0.50
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Clone-$(PKG_VERSION).tar.gz
