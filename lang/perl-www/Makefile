@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-www
-PKG_VERSION:=6.43
-PKG_RELEASE:=2
+PKG_VERSION:=6.82
+PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/O/OA/OALDERS
 PKG_SOURCE:=libwww-perl-$(PKG_VERSION).tar.gz
-PKG_HASH:=e9849d7ee6fd0e89cc999e63d7612c951afd6aeea6bc721b767870d9df4ac40d
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/libwww-perl-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
@@ -44,6 +44,5 @@ endef
 define Package/perl-www/install
 	$(call perlmod/Install,$(1),LWP.pm LWP LWP)
 endef
-
 
 $(eval $(call BuildPackage,perl-www))
