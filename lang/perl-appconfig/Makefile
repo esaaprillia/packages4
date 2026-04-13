@@ -49,15 +49,15 @@ define Host/Install
 endef
 
 define Build/Configure
-    $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-    $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-appconfig/install
-    $(call perlmod/Install,$(1),AppConfig.pm AppConfig)
+	$(call perlmod/Install,$(1),AppConfig.pm AppConfig)
 endef
 
 $(eval $(call HostBuild))

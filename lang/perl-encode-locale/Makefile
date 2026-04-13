@@ -48,15 +48,15 @@ define Host/Install
 endef
 
 define Build/Configure
-    $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-    $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-encode-locale/install
-    $(call perlmod/Install,$(1),Encode auto/Encode)
+	$(call perlmod/Install,$(1),Encode auto/Encode)
 endef
 
 $(eval $(call HostBuild))

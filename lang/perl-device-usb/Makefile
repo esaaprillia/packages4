@@ -49,8 +49,8 @@ define Build/Configure
 	
 	# Generate _Inline
 	$(call perlmod/Compile,config,LIBUSB_LIBDIR=$(PKG_BUILD_DIR)/syslib \
-	                              _INLINE_C_NO_COMPILE_=1 \
-	                              _INLINE_C_SYSTEM_TYPEMAP_=$(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/ExtUtils/typemap)
+					  _INLINE_C_NO_COMPILE_=1 \
+					  _INLINE_C_SYSTEM_TYPEMAP_=$(STAGING_DIR)/usr/lib/perl5/$(PERL_VERSION)/ExtUtils/typemap)
 	$(call perlmod/Compile,dynamic,_INLINE_C_NO_COMPILE_=1)
 	
 	# Configure _Inline
@@ -66,7 +66,7 @@ define Build/Compile
 endef
 
 define Package/perl-device-usb/install
-        $(call perlmod/Install,$(1),Device auto/Device)
+	$(call perlmod/Install,$(1),Device auto/Device)
 endef
 
 

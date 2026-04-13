@@ -32,15 +32,15 @@ define Package/perl-http-server-simple
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-http-server-simple/install
-        $(call perlmod/Install,$(1),HTTP auto/HTTP)
+	$(call perlmod/Install,$(1),HTTP auto/HTTP)
 endef
 
 

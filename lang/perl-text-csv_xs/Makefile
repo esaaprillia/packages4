@@ -32,15 +32,15 @@ define Package/perl-text-csv_xs
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-text-csv_xs/install
-        $(call perlmod/Install,$(1),Text Text/CSV_XS.pm auto/Text/CSV_XS)
+	$(call perlmod/Install,$(1),Text Text/CSV_XS.pm auto/Text/CSV_XS)
 endef
 
 

@@ -33,15 +33,15 @@ define Package/perl-html-form
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-html-form/install
-        $(call perlmod/Install,$(1),HTML auto/HTML)
+	$(call perlmod/Install,$(1),HTML auto/HTML)
 endef
 
 

@@ -29,9 +29,9 @@ define Package/spamassassin
   TITLE:=SpamAssassin
   URL:=https://spamassassin.apache.org/
   DEPENDS:=perl +perlbase-autoloader +perlbase-config +perlbase-data +perlbase-digest \
-          +perlbase-encode +perlbase-essential +perlbase-file +perlbase-getopt \
-          +perlbase-hash +perlbase-mime +perlbase-net +perlbase-socket \
-          +perl-dbi +perl-html-parser +perl-net-dns +perl-netaddr-ip
+	  +perlbase-encode +perlbase-essential +perlbase-file +perlbase-getopt \
+	  +perlbase-hash +perlbase-mime +perlbase-net +perlbase-socket \
+	  +perl-dbi +perl-html-parser +perl-net-dns +perl-netaddr-ip
   VARIANT:=ssl
 endef
 

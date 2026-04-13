@@ -29,27 +29,27 @@ define Package/perl-time-moment
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-time-moment/install
-        $(call perlmod/Install,$(1),Time auto/Time)
+	$(call perlmod/Install,$(1),Time auto/Time)
 endef
 
 define Host/Configure
-        $(call perlmod/host/Configure,,,)
+	$(call perlmod/host/Configure,,,)
 endef
 
 define Host/Compile
-        $(call perlmod/host/Compile,,)
+	$(call perlmod/host/Compile,,)
 endef
 
 define Host/Install
-        $(call perlmod/host/Install,$(1),)
+	$(call perlmod/host/Install,$(1),)
 endef
 
 $(eval $(call BuildPackage,perl-time-moment))

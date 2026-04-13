@@ -33,15 +33,15 @@ define Package/perl-net-cidr-lite
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-net-cidr-lite/install
-        $(call perlmod/Install,$(1),Net Net/CIDR Net/CIDR/Lite.pm)
+	$(call perlmod/Install,$(1),Net Net/CIDR Net/CIDR/Lite.pm)
 endef
 
 

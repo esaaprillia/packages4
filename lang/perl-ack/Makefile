@@ -37,8 +37,8 @@ define Package/perl-ack
   TITLE:=grep-like text finder
   URL:=http://search.cpan.org/dist/ack/
   DEPENDS:=perl +perl-file-next +perlbase-filetest +perlbase-if \
-    +perlbase-list +perlbase-pod +perlbase-test +perlbase-text \
-    +perlbase-term
+	+perlbase-list +perlbase-pod +perlbase-test +perlbase-text \
+	+perlbase-term
 endef
 
 define Build/Configure

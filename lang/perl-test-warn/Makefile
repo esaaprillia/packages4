@@ -32,15 +32,15 @@ define Package/perl-test-warn
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-test-warn/install
-        $(call perlmod/Install,$(1),Test auto/Test)
+	$(call perlmod/Install,$(1),Test auto/Test)
 endef
 
 

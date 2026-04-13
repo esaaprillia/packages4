@@ -59,7 +59,7 @@ endif
 endef
 
 define Package/perl-device-serialport/install
-        $(call perlmod/Install,$(1),Device auto/Device)
+	$(call perlmod/Install,$(1),Device auto/Device)
 endef
 
 
