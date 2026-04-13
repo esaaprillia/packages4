@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-datetime-timezone
-PKG_VERSION:=2.66
+PKG_VERSION:=2.67
 PKG_RELEASE:=1
 
 PKG_SOURCE:=DateTime-TimeZone-$(PKG_VERSION).tar.gz
