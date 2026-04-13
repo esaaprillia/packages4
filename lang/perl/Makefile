@@ -108,25 +108,25 @@ define Build/Configure
 	sed -i "s'@HOST_PERL@'$(HOST_PERL_PREFIX)/bin/perl'g" $(PKG_BUILD_DIR)/hostperl-wrapper
 
 	$(PERL_CMD) files/perlconfig.pl -Dowrt:target_cc='$(TARGET_CC)' \
-					-Dowrt:gccversion=$(CONFIG_GCC_VERSION) \
-					-Dowrt:target_cross='$(TARGET_CROSS)' \
-					-Dowrt:cflags='$(TARGET_CFLAGS_PERL) $(TARGET_CPPFLAGS_PERL)' \
-					-Dowrt:ldflags='$(TARGET_LDFLAGS)' \
-					-Dowrt:libc=$(subst uClibc,uclibc,$(CONFIG_LIBC)) \
-					-Dowrt:ipv6=$(if $($(CONFIG_IPV6)),define,undef) \
-					-Dowrt:threads=$(if $(CONFIG_PERL_THREADS),yes,no) \
-					-Dowrt:staging_dir='$(STAGING_DIR)' \
-					-Dowrt:host_perl_prefix='$(HOST_PERL_PREFIX)' \
-					-Dsysroot='$(TOOLCHAIN_ROOT_DIR)' \
-					files/version.config \
-					files/base.config \
-					files/$(patsubst i386,i486,$(ARCH)).config \
-					files/architecture.config \
-					files/signal.config \
-					files/threads.config \
-					files/libc.config \
-					files/misc.config \
-					> $(PKG_BUILD_DIR)/config.sh
+	                                -Dowrt:gccversion=$(CONFIG_GCC_VERSION) \
+	                                -Dowrt:target_cross='$(TARGET_CROSS)' \
+	                                -Dowrt:cflags='$(TARGET_CFLAGS_PERL) $(TARGET_CPPFLAGS_PERL)' \
+	                                -Dowrt:ldflags='$(TARGET_LDFLAGS)' \
+	                                -Dowrt:libc=$(subst uClibc,uclibc,$(CONFIG_LIBC)) \
+	                                -Dowrt:ipv6=$(if $($(CONFIG_IPV6)),define,undef) \
+	                                -Dowrt:threads=$(if $(CONFIG_PERL_THREADS),yes,no) \
+	                                -Dowrt:staging_dir='$(STAGING_DIR)' \
+	                                -Dowrt:host_perl_prefix='$(HOST_PERL_PREFIX)' \
+	                                -Dsysroot='$(TOOLCHAIN_ROOT_DIR)' \
+	                                files/version.config \
+	                                files/base.config \
+	                                files/$(patsubst i386,i486,$(ARCH)).config \
+	                                files/architecture.config \
+	                                files/signal.config \
+	                                files/threads.config \
+	                                files/libc.config \
+	                                files/misc.config \
+	                                > $(PKG_BUILD_DIR)/config.sh
 	(cd $(PKG_BUILD_DIR) && ./Configure -S)
 	install -m 0644 $(PKG_BUILD_DIR)/config.h $(PKG_BUILD_DIR)/xconfig.h
 endef
