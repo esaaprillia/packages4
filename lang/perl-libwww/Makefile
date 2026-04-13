@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-libwww
-PKG_VERSION:=6.81
+PKG_VERSION:=6.82
 PKG_RELEASE:=1
 
 PKG_SOURCE:=libwww-perl-$(PKG_VERSION).tar.gz
