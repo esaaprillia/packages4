@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-test-mockmodule
-PKG_VERSION:=0.179.0
+PKG_VERSION:=0.180.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Test-MockModule-v$(PKG_VERSION).tar.gz
