@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-net-cidr-lite
-PKG_VERSION:=0.21
+PKG_VERSION:=0.23
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Net-CIDR-Lite-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/D/DO/DOUGW
-PKG_HASH:=cfa125e8a2aef9259bc3a44e07cbdfb7894b64d22e7c0cee92aee2f5c7915093
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/Net-CIDR-Lite-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Philip Prindeville <philipp@redfish-solutions.com>
@@ -43,6 +43,5 @@ endef
 define Package/perl-net-cidr-lite/install
 	$(call perlmod/Install,$(1),Net Net/CIDR Net/CIDR/Lite.pm)
 endef
-
 
 $(eval $(call BuildPackage,perl-net-cidr-lite))
