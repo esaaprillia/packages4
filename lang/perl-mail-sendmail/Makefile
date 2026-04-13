@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-mail-sendmail
-PKG_VERSION:=0.80
+PKG_VERSION:=0.82
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Mail-Sendmail-$(PKG_VERSION).tar.gz
