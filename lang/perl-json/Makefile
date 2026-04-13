@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-json
-PKG_VERSION:=4.10
+PKG_VERSION:=4.11
 PKG_RELEASE:=1
 
 PKG_SOURCE:=JSON-$(PKG_VERSION).tar.gz
