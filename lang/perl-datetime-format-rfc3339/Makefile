@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-datetime-format-rfc3339
-PKG_VERSION:=1.8.0
+PKG_VERSION:=1.10.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=DateTime-Format-RFC3339-v$(PKG_VERSION).tar.gz
