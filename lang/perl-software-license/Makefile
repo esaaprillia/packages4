@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-software-license
-PKG_VERSION:=0.104006
+PKG_VERSION:=0.104007
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Software-License-$(PKG_VERSION).tar.gz
