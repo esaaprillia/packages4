@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-time-parsedate
-PKG_VERSION:=2015.103
+PKG_VERSION:=2026.033
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://www.cpan.org/authors/id/M/MU/MUIR/modules/
