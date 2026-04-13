@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-inline
-PKG_VERSION:=0.86
+PKG_VERSION:=0.87
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Inline-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/I/IN/INGY
-PKG_HASH:=510a7de2d011b0db80b0874e8c0f7390010991000ae135cff7474df1e6d51e3a
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
@@ -60,7 +60,6 @@ endef
 define Host/Install
 	$(call perlmod/host/Install,$(1),)
 endef
-
 
 $(eval $(call BuildPackage,perl-inline))
 $(eval $(call HostBuild))
