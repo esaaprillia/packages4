@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-authen-sasl
-PKG_VERSION:=2.1700
+PKG_VERSION:=2.2000
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Authen-SASL-$(PKG_VERSION).tar.gz
@@ -36,15 +36,15 @@ define Package/perl-authen-sasl
 endef
 
 define Host/Configure
-        $(call perlmod/host/Configure,,,)
+    $(call perlmod/host/Configure,,,)
 endef
 
 define Host/Compile
-        $(call perlmod/host/Compile,,)
+    $(call perlmod/host/Compile,,)
 endef
 
 define Host/Install
-        $(call perlmod/host/Install,$(1),)
+    $(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
