@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-app-cpanminus
-PKG_VERSION:=1.7048
+PKG_VERSION:=1.7049
 PKG_RELEASE:=1
 
 PKG_SOURCE:=App-cpanminus-$(PKG_VERSION).tar.gz
