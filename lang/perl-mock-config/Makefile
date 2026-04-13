@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-mock-config
-PKG_VERSION:=0.03
+PKG_VERSION:=0.05
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Mock-Config-$(PKG_VERSION).tar.gz
