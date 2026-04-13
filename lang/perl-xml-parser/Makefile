@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-xml-parser
-PKG_VERSION:=2.47
+PKG_VERSION:=2.57
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=http://www.cpan.org/authors/id/T/TO/TODDR/
