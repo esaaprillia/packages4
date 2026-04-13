@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-net-gemini
-PKG_VERSION:=0.10
+PKG_VERSION:=0.11
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Net-Gemini-$(PKG_VERSION).tar.gz
