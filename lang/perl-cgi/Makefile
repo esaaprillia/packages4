@@ -37,16 +37,15 @@ define Package/perl-cgi
 endef
 
 define Build/Configure
-        $(call perlmod/Configure,,)
+	$(call perlmod/Configure,,)
 endef
 
 define Build/Compile
-        $(call perlmod/Compile,,)
+	$(call perlmod/Compile,,)
 endef
 
 define Package/perl-cgi/install
-        $(call perlmod/Install,$(1),CGI CGI.pm auto/CGI)
+	$(call perlmod/Install,$(1),CGI CGI.pm auto/CGI)
 endef
-
 
 $(eval $(call BuildPackage,perl-cgi))
