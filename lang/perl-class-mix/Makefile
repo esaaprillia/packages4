@@ -55,4 +55,3 @@ endef
 
 $(eval $(call BuildPackage,perl-class-mix))
 $(eval $(call HostBuild))
-
