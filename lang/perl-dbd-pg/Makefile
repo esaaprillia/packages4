@@ -5,7 +5,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-dbd-pg
-PKG_VERSION:=3.18.0
+PKG_VERSION:=3.20.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=DBD-Pg-$(PKG_VERSION).tar.gz
