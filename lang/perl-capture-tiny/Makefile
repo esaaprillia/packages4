@@ -37,15 +37,15 @@ define Package/perl-capture-tiny
 endef
 
 define Host/Configure
-        $(call perlmod/host/Configure,,,)
+    $(call perlmod/host/Configure,,,)
 endef
 
 define Host/Compile
-        $(call perlmod/host/Compile,,)
+    $(call perlmod/host/Compile,,)
 endef
 
 define Host/Install
-        $(call perlmod/host/Install,$(1),)
+    $(call perlmod/host/Install,$(1),)
 endef
 
 define Build/Configure
