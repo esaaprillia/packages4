@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pydantic
-PKG_VERSION:=2.12.5
+PKG_VERSION:=2.13.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pydantic
