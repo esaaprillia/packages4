@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-sys-mmap
-PKG_VERSION:=0.20
+PKG_VERSION:=0.21
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Sys-Mmap-$(PKG_VERSION).tar.gz
