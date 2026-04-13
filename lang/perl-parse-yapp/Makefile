@@ -58,6 +58,5 @@ define Package/perl-parse-yapp/install
 	$(call perlmod/Install,$(1),Parse auto/Parse)
 endef
 
-
 $(eval $(call BuildPackage,perl-parse-yapp))
 $(eval $(call HostBuild))
