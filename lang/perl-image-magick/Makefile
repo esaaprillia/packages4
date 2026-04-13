@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-image-magick
-PKG_VERSION:=7.1.1
-PKG_VERSION_REV:=28
+PKG_VERSION:=7.1.2
+PKG_VERSION_REV:=3
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Image-Magick-$(PKG_VERSION)-$(PKG_VERSION_REV).tar.gz
