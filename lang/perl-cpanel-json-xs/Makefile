@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-cpanel-json-xs
-PKG_VERSION:=4.39
+PKG_VERSION:=4.40
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Cpanel-JSON-XS-$(PKG_VERSION).tar.gz
