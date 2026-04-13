@@ -45,5 +45,4 @@ define Package/perl-www-curl/install
 	$(call perlmod/Install,$(1),WWW/Curl WWW/Curl.pm auto/WWW/Curl)
 endef
 
-
 $(eval $(call BuildPackage,perl-www-curl))
