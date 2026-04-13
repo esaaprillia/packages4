@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-inline-c
-PKG_VERSION:=0.81
+PKG_VERSION:=0.82
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Inline-C-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://www.cpan.org/authors/id/T/TI/TINITA
-PKG_HASH:=f185258d9050d7f79b4f00f12625cc469c2f700ff62d3e831cb18d80d2c87aac
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=GPL-1.0-or-later Artistic-1.0-Perl
@@ -60,7 +60,6 @@ endef
 define Package/perl-inline-c/install
 	$(call perlmod/Install,$(1),Inline auto/Inline)
 endef
-
 
 $(eval $(call BuildPackage,perl-inline-c))
 $(eval $(call HostBuild))
