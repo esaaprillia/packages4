@@ -1,13 +1,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=perl-time-moment
-PKG_VERSION:=0.44
+PKG_VERSION:=0.46
 PKG_RELEASE:=1
 
 PKG_SOURCE_NAME:=Time-Moment
 PKG_SOURCE:=$(PKG_SOURCE_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://cpan.metacpan.org/authors/id/C/CH/CHANSEN
-PKG_HASH:=64acfa042f634fcef8dadf55e7f42ba4eaab8aaeb7d5212eb89815a31f78f6fd
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/perl/$(PKG_SOURCE_NAME)-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/perl/$(PKG_SOURCE_NAME)-$(PKG_VERSION)
 
