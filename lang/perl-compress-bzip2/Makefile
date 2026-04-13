@@ -44,5 +44,4 @@ define Package/perl-compress-bzip2/install
 	$(call perlmod/Install,$(1),Compress auto/Compress)
 endef
 
-
 $(eval $(call BuildPackage,perl-compress-bzip2))
