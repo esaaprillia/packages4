@@ -8,7 +8,7 @@ PYPI_NAME:=distlib
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=PSF-2.0
 PKG_LICENSE_FILES:=LICENSE.txt
 
 HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
