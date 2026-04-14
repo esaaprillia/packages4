@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-installer
-PKG_VERSION:=1.0.0
+PKG_VERSION:=0.7.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=installer
@@ -21,7 +21,7 @@ PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 PKG_HOST_ONLY:=1
 HOST_BUILD_DEPENDS:=python3/host python-flit-core/host
 
-#PYTHON3_HOST_INSTALL_VARS:=PYTHONPATH=src
+PYTHON3_HOST_INSTALL_VARS:=PYTHONPATH=src
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -45,7 +45,7 @@ distribution. It provides basic functionality and abstractions for
 handling wheels and installing packages from wheels.
 endef
 
-#Host/Compile=$(Py3Host/Compile/Bootstrap)
+Host/Compile=$(Py3Host/Compile/Bootstrap)
 
 $(eval $(call Py3Package,python3-installer))
 $(eval $(call BuildPackage,python3-installer))
