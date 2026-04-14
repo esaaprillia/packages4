@@ -44,7 +44,7 @@ help write tooling that generates distribution files from Python
 projects.
 endef
 
-Host/Compile=$(Py3Host/Compile/Bootstrap)
+#Host/Compile=$(Py3Host/Compile/Bootstrap)
 
 $(eval $(call Py3Package,python3-pyproject-hooks))
 $(eval $(call BuildPackage,python3-pyproject-hooks))
