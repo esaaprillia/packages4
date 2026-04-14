@@ -21,8 +21,6 @@ PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 PKG_HOST_ONLY:=1
 HOST_BUILD_DEPENDS:=python3/host python-flit-core/host python-installer/host
 
-PYTHON3_HOST_BUILD_VARS:=PYTHONPATH=src
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
