@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-more-itertools
-PKG_VERSION:=10.8.0
+PKG_VERSION:=11.0.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=more_itertools
