@@ -48,7 +48,6 @@ endef
 define Py3Host/Install/Installer
 	$(call HostPython3/Run, \
 		$(HOST_BUILD_DIR), \
-		bootstrap_install.py \
 			--installdir "$(1)/lib/python$(PYTHON3_VERSION)/site-packages" \
 			"$(PYTHON3_HOST_BUILD_DIR)"/openwrt-build/$(PYPI_SOURCE_NAME)-$(PKG_VERSION)-*.whl \
 	)
