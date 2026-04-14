@@ -26,7 +26,7 @@ HOST_BUILD_DEPENDS:= \
 	python-packaging/host \
 	python-pyproject-hooks/host
 
-PYTHON3_HOST_BUILD_VARS:=PYTHONPATH=src
+#PYTHON3_HOST_BUILD_VARS:=PYTHONPATH=src
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
