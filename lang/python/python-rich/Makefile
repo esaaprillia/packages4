@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-rich
-PKG_VERSION:=14.3.3
+PKG_VERSION:=15.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=rich
