@@ -20,8 +20,6 @@ PKG_LICENSE_FILES:=LICENSE.APACHE LICENSE.BSD
 PKG_BUILD_DEPENDS:=python-flit-core/host
 HOST_BUILD_DEPENDS:=python3/host python-installer/host python-flit-core/host
 
-PYTHON3_HOST_BUILD_VARS:=PYTHONPATH=src
-
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
