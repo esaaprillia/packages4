@@ -18,7 +18,7 @@ PKG_LICENSE:=Apache-2.0 BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE.APACHE LICENSE.BSD
 
 PKG_BUILD_DEPENDS:=python-flit-core/host
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-flit-core/host
+HOST_BUILD_DEPENDS:=python3/host python-installer/host python-flit-core/host
 
 PYTHON3_HOST_BUILD_VARS:=PYTHONPATH=src
 
