@@ -12,6 +12,7 @@ PKG_VERSION:=1.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=installer
+PKG_SOURCE_URL:=https://github.com/pypa/installer/archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_LICENSE:=MIT
