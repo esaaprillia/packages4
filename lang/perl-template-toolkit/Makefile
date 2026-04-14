@@ -51,7 +51,7 @@ endef
 MOD_CFLAGS_PERL += $(FPIC)
 
 define Build/Configure
-	$(call perlmod/Configure,,TT_ACCEPT=y,)
+	$(call perlmod/Configure,TT_XS_DEFAULT=y TT_ACCEPT=y,,)
 endef
 
 define Build/Compile
