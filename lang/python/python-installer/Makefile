@@ -45,14 +45,6 @@ distribution. It provides basic functionality and abstractions for
 handling wheels and installing packages from wheels.
 endef
 
-define Py3Host/Install/Installer
-	$(call HostPython3/Run, \
-		$(HOST_BUILD_DIR), \
-			--installdir "$(1)/lib/python$(PYTHON3_VERSION)/site-packages" \
-			"$(PYTHON3_HOST_BUILD_DIR)"/openwrt-build/$(PYPI_SOURCE_NAME)-$(PKG_VERSION)-*.whl \
-	)
-endef
-
 Host/Compile=$(Py3Host/Compile/Bootstrap)
 
 $(eval $(call Py3Package,python3-installer))
