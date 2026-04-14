@@ -23,8 +23,7 @@ HOST_BUILD_DEPENDS:= \
 	python3/host \
 	python-installer/host \
 	python-flit-core/host \
-	python-packaging/host \
-	python-pyproject-hooks/host
+	python-packaging/host
 
 PYTHON3_HOST_BUILD_VARS:=PYTHONPATH=src
 
