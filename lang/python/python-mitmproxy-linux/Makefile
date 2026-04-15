@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-maturin/host
-HOST_BUILD_DEPENDS:=python-maturin/host
+PKG_BUILD_DEPENDS:=python-maturin/host bpf-linker/host
+HOST_BUILD_DEPENDS:=python-maturin/host bpf-linker/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
