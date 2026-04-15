@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pylsqpack
-PKG_VERSION:=0.3.23
+PKG_VERSION:=0.3.24
 PKG_RELEASE:=1
 
 PYPI_NAME:=pylsqpack
