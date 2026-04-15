@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pymodbus
-PKG_VERSION:=3.12.1
+PKG_VERSION:=3.13.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pymodbus
