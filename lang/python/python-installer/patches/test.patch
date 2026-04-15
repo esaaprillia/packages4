@@ -1,0 +1,339 @@
+From 477ff26cd0696d675cba85da6ac5d4bed22c6f2c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Randy=20D=C3=B6ring?=
+ <30527984+radoering@users.noreply.github.com>
+Date: Sun, 29 Mar 2026 14:59:22 +0200
+Subject: [PATCH] Fix long path issue on Windows
+
+Path.is_relative_to does not work if one of both paths has a long path prefix and the other has not. A long path prefix may be added when calling Path.resolve().
+---
+ src/installer/destinations.py |  3 +-
+ src/installer/utils.py        | 28 +++++++++++++++
+ tests/test_utils.py           | 66 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 96 insertions(+), 1 deletion(-)
+
+diff --git a/src/installer/destinations.py b/src/installer/destinations.py
+index 2858c9b0..71a8f9f4 100644
+--- a/src/installer/destinations.py
++++ b/src/installer/destinations.py
+@@ -19,6 +19,7 @@
+     construct_record_file,
+     copyfileobj_with_hashing,
+     fix_shebang,
++    is_relative_to,
+     make_file_executable,
+ )
+ 
+@@ -139,7 +140,7 @@ def _path_with_destdir(self, scheme: Scheme, path: str) -> Path:
+         target_dir = Path(self.scheme_dict[scheme]).resolve()
+         file = (target_dir / path).resolve()
+ 
+-        if not file.is_relative_to(target_dir):
++        if not is_relative_to(file, target_dir):
+             raise ValueError(
+                 f"Attempting to write {path} outside of the target directory"
+             )
+diff --git a/src/installer/utils.py b/src/installer/utils.py
+index d7cc6704..515dd44a 100644
+--- a/src/installer/utils.py
++++ b/src/installer/utils.py
+@@ -270,3 +270,31 @@ def _current_umask() -> int:
+ def make_file_executable(path: Path) -> None:
+     """Make the file at the provided path executable."""
+     path.chmod(0o777 & ~_current_umask() | 0o111)
++
++
++# Borrowed from:
++# https://github.com/python-poetry/poetry/blob/95cd84c149a14b55ae8e41328bc6752fbb8b6883/src/poetry/utils/_compat.py#L56
++def is_relative_to(path1: Path, path2: Path) -> bool:
++    """Check if path1 is relative to path2.
++
++    Works also if one of both paths has a Windows long path prefix.
++    A long path prefix may be added when calling Path.resolve().
++    """
++    if _WINDOWS:  # pragma: no cover
++        # Work around an issue that is_relative_to() does not work if
++        # one of both paths has a long path prefix and the other path has not.
++        long_path_prefix = "\\\\?\\"
++        long_path_unc_prefix = f"{long_path_prefix}UNC\\"
++
++        def remove_long_path_prefix(path: Path) -> Path:
++            if (path_str := str(path)).startswith(long_path_prefix):
++                if path_str.startswith(long_path_unc_prefix):
++                    path = Path("\\\\" + path_str.removeprefix(long_path_unc_prefix))
++                else:
++                    path = Path(path_str.removeprefix(long_path_prefix))
++            return path
++
++        path1 = remove_long_path_prefix(path1)
++        path2 = remove_long_path_prefix(path2)
++
++    return path1.is_relative_to(path2)
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 22c262db..4bca8446 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -2,9 +2,11 @@
+ 
+ import base64
+ import hashlib
++import sys
+ import textwrap
+ from email.message import Message
+ from io import BytesIO
++from pathlib import Path
+ 
+ import pytest
+ 
+@@ -16,6 +18,7 @@
+     copyfileobj_with_hashing,
+     fix_shebang,
+     get_stream_length,
++    is_relative_to,
+     parse_entrypoints,
+     parse_metadata_file,
+     parse_wheel_filename,
+@@ -264,3 +267,66 @@ class TestParseEntryPoints:
+     def test_valid(self, script, expected):
+         iterable = parse_entrypoints(textwrap.dedent(script))
+         assert list(iterable) == expected, expected
++
++
++class TestIsRelativeTo:
++    @pytest.mark.parametrize(
++        ("path1", "path2", "expected"),
++        [
++            ("a", "a", True),
++            ("a/b", "a/b", True),
++            ("a/b", "a", True),
++            ("a", "a/b", False),
++            ("a/b/c/d", "a/b", True),
++            ("a/b", "a/b/c/d", False),
++        ],
++    )
++    def test_is_relative_to(self, path1: str, path2: str, expected: bool) -> None:
++        assert is_relative_to(Path(path1), Path(path2)) is expected
++
++    @pytest.mark.parametrize(
++        ("path1", "path2", "expected"),
++        [
++            ("/", "/", True),
++            ("/a/b", "/a/b", True),
++            ("/a/b", "/a", True),
++            ("/a", "/a/b", False),
++            ("/a/b/c/d", "/a/b", True),
++            ("/a/b", "/a/b/c/d", False),
++        ],
++    )
++    @pytest.mark.skipif(sys.platform == "win32", reason="non-Windows paths")
++    def test_is_relative_to_non_win32(
++        self, path1: str, path2: str, expected: bool
++    ) -> None:
++        assert is_relative_to(Path(path1), Path(path2)) is expected
++
++    @pytest.mark.parametrize(
++        ("path1", "path2", "expected"),
++        [
++            ("C:\\", "C:\\", True),
++            (r"C:\a\b", r"C:\a\b", True),
++            (r"C:\a\b", r"C:\a", True),
++            (r"C:\a", r"C:\a\b", False),
++            (r"C:\a\b\c\d", r"C:\a\b", True),
++            (r"C:\a\b", r"C:\a\b\c\d", False),
++            (r"C:\a\b", r"D:\a", False),
++            (r"C:\a\b", "D:\\", False),
++            (r"\\server\a\b", r"\\server\a", True),
++            (r"\\server\a", r"\\server\a\b", False),
++            (r"\\server2\a\b", r"\\server\a", False),
++            # long path prefix
++            (r"\\?\C:\a\b", r"\\?\C:\a", True),
++            (r"\\?\C:\a\b", r"C:\a", True),
++            (r"C:\a\b", r"\\?\C:\a", True),
++            (r"\\?\C:\a", r"\\?\C:\a\b", False),
++            # long path UNC prefix
++            (r"\\?\UNC\server\a\b", r"\\?\UNC\server\a", True),
++            (r"\\?\UNC\server\a\b", r"\\server\a", True),
++            (r"\\server\a\b", r"\\?\UNC\server\a", True),
++            (r"\\?\UNC\server\a", r"\\?\UNC\server\a\b", False),
++        ],
++    )
++    @pytest.mark.skipif(sys.platform != "win32", reason="Windows paths")
++    def test_is_relative_to_win32(self, path1: str, path2: str, expected: bool) -> None:
++        assert is_relative_to(Path(path1), Path(path2)) is expected
+
+From 05193bba11953ce49c3e9394dfd9c4e25d26a51f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Randy=20D=C3=B6ring?=
+ <30527984+radoering@users.noreply.github.com>
+Date: Sat, 4 Apr 2026 11:16:16 +0200
+Subject: [PATCH] perf: use `os.path.abspath()` instead of `Path.resolve()`
+
+Additionally, remove the Windows long path workaround because it should not be required if we no not resolve paths.
+---
+ src/installer/destinations.py | 19 +++++++---
+ src/installer/utils.py        | 28 ---------------
+ tests/test_utils.py           | 66 -----------------------------------
+ 3 files changed, 14 insertions(+), 99 deletions(-)
+
+diff --git a/src/installer/destinations.py b/src/installer/destinations.py
+index 71a8f9f4..ed5d07a9 100644
+--- a/src/installer/destinations.py
++++ b/src/installer/destinations.py
+@@ -19,7 +19,6 @@
+     construct_record_file,
+     copyfileobj_with_hashing,
+     fix_shebang,
+-    is_relative_to,
+     make_file_executable,
+ )
+ 
+@@ -137,10 +136,20 @@ class SchemeDictionaryDestination(WheelDestination):
+     """Silently overwrite existing files."""
+ 
+     def _path_with_destdir(self, scheme: Scheme, path: str) -> Path:
+-        target_dir = Path(self.scheme_dict[scheme]).resolve()
+-        file = (target_dir / path).resolve()
+-
+-        if not is_relative_to(file, target_dir):
++        # See https://docs.python.org/3/library/zipfile.html#zipfile.Path:
++        #  When handling untrusted archives,
++        #  consider resolving filenames using os.path.abspath()
++        #  and checking against the target directory with os.path.commonpath().
++        #
++        # Attention: Path.absolute() is not sufficient because it does not
++        #  normalize, i.e. does not remove "..".
++        #
++        # We want to avoid Path.resolve() because it is significantly slower
++        # than os.path.abspath()!
++        target_dir = Path(os.path.abspath(self.scheme_dict[scheme]))  # noqa: PTH100
++        file = Path(os.path.abspath(target_dir / path))  # noqa: PTH100
++
++        if not file.is_relative_to(target_dir):
+             raise ValueError(
+                 f"Attempting to write {path} outside of the target directory"
+             )
+diff --git a/src/installer/utils.py b/src/installer/utils.py
+index 515dd44a..d7cc6704 100644
+--- a/src/installer/utils.py
++++ b/src/installer/utils.py
+@@ -270,31 +270,3 @@ def _current_umask() -> int:
+ def make_file_executable(path: Path) -> None:
+     """Make the file at the provided path executable."""
+     path.chmod(0o777 & ~_current_umask() | 0o111)
+-
+-
+-# Borrowed from:
+-# https://github.com/python-poetry/poetry/blob/95cd84c149a14b55ae8e41328bc6752fbb8b6883/src/poetry/utils/_compat.py#L56
+-def is_relative_to(path1: Path, path2: Path) -> bool:
+-    """Check if path1 is relative to path2.
+-
+-    Works also if one of both paths has a Windows long path prefix.
+-    A long path prefix may be added when calling Path.resolve().
+-    """
+-    if _WINDOWS:  # pragma: no cover
+-        # Work around an issue that is_relative_to() does not work if
+-        # one of both paths has a long path prefix and the other path has not.
+-        long_path_prefix = "\\\\?\\"
+-        long_path_unc_prefix = f"{long_path_prefix}UNC\\"
+-
+-        def remove_long_path_prefix(path: Path) -> Path:
+-            if (path_str := str(path)).startswith(long_path_prefix):
+-                if path_str.startswith(long_path_unc_prefix):
+-                    path = Path("\\\\" + path_str.removeprefix(long_path_unc_prefix))
+-                else:
+-                    path = Path(path_str.removeprefix(long_path_prefix))
+-            return path
+-
+-        path1 = remove_long_path_prefix(path1)
+-        path2 = remove_long_path_prefix(path2)
+-
+-    return path1.is_relative_to(path2)
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 4bca8446..22c262db 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -2,11 +2,9 @@
+ 
+ import base64
+ import hashlib
+-import sys
+ import textwrap
+ from email.message import Message
+ from io import BytesIO
+-from pathlib import Path
+ 
+ import pytest
+ 
+@@ -18,7 +16,6 @@
+     copyfileobj_with_hashing,
+     fix_shebang,
+     get_stream_length,
+-    is_relative_to,
+     parse_entrypoints,
+     parse_metadata_file,
+     parse_wheel_filename,
+@@ -267,66 +264,3 @@ class TestParseEntryPoints:
+     def test_valid(self, script, expected):
+         iterable = parse_entrypoints(textwrap.dedent(script))
+         assert list(iterable) == expected, expected
+-
+-
+-class TestIsRelativeTo:
+-    @pytest.mark.parametrize(
+-        ("path1", "path2", "expected"),
+-        [
+-            ("a", "a", True),
+-            ("a/b", "a/b", True),
+-            ("a/b", "a", True),
+-            ("a", "a/b", False),
+-            ("a/b/c/d", "a/b", True),
+-            ("a/b", "a/b/c/d", False),
+-        ],
+-    )
+-    def test_is_relative_to(self, path1: str, path2: str, expected: bool) -> None:
+-        assert is_relative_to(Path(path1), Path(path2)) is expected
+-
+-    @pytest.mark.parametrize(
+-        ("path1", "path2", "expected"),
+-        [
+-            ("/", "/", True),
+-            ("/a/b", "/a/b", True),
+-            ("/a/b", "/a", True),
+-            ("/a", "/a/b", False),
+-            ("/a/b/c/d", "/a/b", True),
+-            ("/a/b", "/a/b/c/d", False),
+-        ],
+-    )
+-    @pytest.mark.skipif(sys.platform == "win32", reason="non-Windows paths")
+-    def test_is_relative_to_non_win32(
+-        self, path1: str, path2: str, expected: bool
+-    ) -> None:
+-        assert is_relative_to(Path(path1), Path(path2)) is expected
+-
+-    @pytest.mark.parametrize(
+-        ("path1", "path2", "expected"),
+-        [
+-            ("C:\\", "C:\\", True),
+-            (r"C:\a\b", r"C:\a\b", True),
+-            (r"C:\a\b", r"C:\a", True),
+-            (r"C:\a", r"C:\a\b", False),
+-            (r"C:\a\b\c\d", r"C:\a\b", True),
+-            (r"C:\a\b", r"C:\a\b\c\d", False),
+-            (r"C:\a\b", r"D:\a", False),
+-            (r"C:\a\b", "D:\\", False),
+-            (r"\\server\a\b", r"\\server\a", True),
+-            (r"\\server\a", r"\\server\a\b", False),
+-            (r"\\server2\a\b", r"\\server\a", False),
+-            # long path prefix
+-            (r"\\?\C:\a\b", r"\\?\C:\a", True),
+-            (r"\\?\C:\a\b", r"C:\a", True),
+-            (r"C:\a\b", r"\\?\C:\a", True),
+-            (r"\\?\C:\a", r"\\?\C:\a\b", False),
+-            # long path UNC prefix
+-            (r"\\?\UNC\server\a\b", r"\\?\UNC\server\a", True),
+-            (r"\\?\UNC\server\a\b", r"\\server\a", True),
+-            (r"\\server\a\b", r"\\?\UNC\server\a", True),
+-            (r"\\?\UNC\server\a", r"\\?\UNC\server\a\b", False),
+-        ],
+-    )
+-    @pytest.mark.skipif(sys.platform != "win32", reason="Windows paths")
+-    def test_is_relative_to_win32(self, path1: str, path2: str, expected: bool) -> None:
+-        assert is_relative_to(Path(path1), Path(path2)) is expected
