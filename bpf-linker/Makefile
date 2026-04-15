@@ -8,7 +8,7 @@ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/aya-rs/bpf-linker/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
-PKG_MAINTAINER:=Luca Barbato <lu_zero@luminem.org>
+PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0 MIT
 PKG_LICENSE_FILES:=LICENSE-APACHE LICENSE-MIT
 
