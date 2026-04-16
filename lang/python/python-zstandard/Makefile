@@ -8,7 +8,7 @@ PYPI_NAME:=zstandard
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:= LICENSE
 
 PKG_BUILD_DEPENDS:=python-cffi/host python-packaging/host
