@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-flask-httpauth
-PKG_VERSION:=4.8.0
-PKG_RELEASE:=2
+PKG_VERSION:=4.8.1
+PKG_RELEASE:=1
 
-PYPI_NAME:=Flask-HTTPAuth
-PKG_HASH:=66568a05bc73942c65f1e2201ae746295816dc009edd84b482c44c758d75097a
+PYPI_NAME:=flask_httpauth
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jan Pavlinec <jan.pavlinec1@gmail.com>
 PKG_LICENSE:=MIT
@@ -37,9 +37,6 @@ define Package/python3-flask-httpauth/description
   Flask-HTTPAuth is a Flask extension that simplifies the
   use of HTTP authentication with Flask routes
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=flask_httpauth
-PYTHON3_PKG_WHEEL_VERSION:=4.8.0
 
 $(eval $(call Py3Package,python3-flask-httpauth))
 $(eval $(call BuildPackage,python3-flask-httpauth))
