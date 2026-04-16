@@ -17,8 +17,8 @@ HOST_BUILD_DEPENDS:=python-maturin/host bpf-linker/host rustup/host
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../python3-package.mk
-include ../python3-host-build.mk
+include ../python3-package-rustup.mk
+include ../python3-host-build-rustup.mk
 
 define Package/python3-mitmproxy-linux
   SUBMENU:=Python
