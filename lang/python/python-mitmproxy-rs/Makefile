@@ -26,7 +26,7 @@ define Package/python3-mitmproxy-rs
   CATEGORY:=Languages
   TITLE:=The Rust bits in mitmproxy.
   URL:=https://github.com/mitmproxy/mitmproxy_rs
-  DEPENDS:=+python3 $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+python3 +python3-mitmproxy-linux $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-mitmproxy-rs/description
