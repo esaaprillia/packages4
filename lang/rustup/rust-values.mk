@@ -65,6 +65,8 @@ ifeq ($(ARCH),aarch64)
     RUSTUP_CFLAGS:=-mno-outline-atomics
 endif
 
+CARGO_HOST_PROFILE:=release
+
 # Support only a subset for now.
 RUST_ARCH_DEPENDS:=@(aarch64||arm||i386||i686||mips||mipsel||mips64||mips64el||mipsel||powerpc64||riscv64||x86_64)
 
@@ -77,3 +79,5 @@ CARGO_PKG_CONFIG_VARS = \
 	RUSTUP_HOME=$(RUSTUP_HOME) \
 	TARGET_CC=$(TARGET_CC_NOCACHE) \
 	TARGET_CFLAGS="$(TARGET_CFLAGS) $(RUSTUP_CFLAGS)"
+
+CARGO_PKG_PROFILE:=$(if $(CONFIG_DEBUG),dev,release)
