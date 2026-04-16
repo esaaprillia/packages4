@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-maturin/host
-HOST_BUILD_DEPENDS:=python-maturin/host
+PKG_BUILD_DEPENDS:=python-maturin/host bpf-linker/host
+HOST_BUILD_DEPENDS:=python-maturin/host bpf-linker/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -26,7 +26,7 @@ define Package/python3-mitmproxy-rs
   CATEGORY:=Languages
   TITLE:=The Rust bits in mitmproxy.
   URL:=https://github.com/mitmproxy/mitmproxy_rs
-  DEPENDS:=+python3 +python3-mitmproxy-linux $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+python3 $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-mitmproxy-rs/description
