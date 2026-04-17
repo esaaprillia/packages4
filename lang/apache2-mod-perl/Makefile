@@ -15,7 +15,7 @@ PKG_SOURCE:=mod_perl-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://dlcdn.apache.org/perl/
 PKG_HASH:=skip
 
-PKG_BUILD_DIR:=$(PKG_BUILD_DIR)/perl/mod_perl-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/perl/mod_perl-$(PKG_VERSION)
 
 PKG_MAINTAINER:=Marcel Denia <naoir@gmx.net>
 PKG_LICENSE:=Apache-2.0
