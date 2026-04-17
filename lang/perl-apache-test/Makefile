@@ -57,7 +57,7 @@ define Build/Compile
 endef
 
 define Package/perl-apache-test/install
-	$(call perlmod/Install,$(1),Apache)
+	$(call perlmod/Install,$(1),Apache Bundle)
 endef
 
 $(eval $(call HostBuild))
