@@ -26,7 +26,7 @@ define Package/perl-apache-test
   CATEGORY:=Languages
   TITLE:=Running and Developing Tests with the Apache::Test Framework
   URL:=https://metacpan.org/dist/Apache-Test
-  DEPENDS:=perl +perlbase-essential +perl-astro-suntime +perl-device-serialport +perl-time-parsedate
+  DEPENDS:=perl +perlbase-essential
 endef
 
 define Package/perl-apache-test/description
