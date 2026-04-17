@@ -139,9 +139,9 @@ define Build/Configure
 	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^LINKTYPE = .*!LINKTYPE=dynamic!' $(PKG_BUILD_DIR)/*/*/*/Makefile
-	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/Makefile
-	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/Makefile
-	sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	#sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/Makefile
+	#sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	#sed -i -e 's!^DESTDIR = .*!DESTDIR=$(PKG_INSTALL_DIR)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 	sed -i -e 's!^MODPERL_ARCHLIBEXP = .*!MODPERL_ARCHLIBEXP = $(STAGING_DIR)$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^MODPERL_ARCHLIBEXP = .*!MODPERL_ARCHLIBEXP = $(STAGING_DIR)$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^MODPERL_ARCHLIBEXP = .*!MODPERL_ARCHLIBEXP = $(STAGING_DIR)$(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
