@@ -181,6 +181,7 @@ endef
 
 define Build/Compile
 	$(call perlmod/Compile,,)
+	$(call Build/Compile/Default,,,$(PKG_BUILD_DIR)/src/modules/perl)
 endef
 
 define Package/apache2-mod-perl/install
