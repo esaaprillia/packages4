@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-lazy-loader
-PKG_VERSION:=0.4
+PKG_VERSION:=0.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=lazy_loader
@@ -10,6 +10,8 @@ PKG_HASH:=skip
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.md
+
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -25,8 +27,7 @@ define Package/python3-lazy-loader
   URL:=https://scientific-python.org/specs/spec-0001/
   DEPENDS:= \
 	+python3-light \
-	+python3-packaging \
-	+python3-importlib-metadata
+	+python3-packaging
 endef
 
 define Package/python3-lazy-loader/description
