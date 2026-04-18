@@ -1,0 +1,21 @@
+From 197321e531ff50612b693645b0f55d5b8b3cf193 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 18 Apr 2026 14:47:06 +0800
+Subject: [PATCH] Update modperl_sys.c
+
+---
+ src/modules/perl/modperl_sys.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/modules/perl/modperl_sys.c b/src/modules/perl/modperl_sys.c
+index 3ce3cbc63..cf0314d0d 100644
+--- a/src/modules/perl/modperl_sys.c
++++ b/src/modules/perl/modperl_sys.c
+@@ -40,6 +40,7 @@ int modperl_sys_is_dir(pTHX_ SV *sv)
+  */
+ int modperl_sys_dlclose(void *handle)
+ {
++#include <dlfcn.h>
+ #if defined(MP_SYS_DL_DLOPEN)
+ #ifdef I_DLFCN
+ #include <dlfcn.h>
