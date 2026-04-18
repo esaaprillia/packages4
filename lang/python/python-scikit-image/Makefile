@@ -9,7 +9,7 @@ PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
-PKG_LICENSE_FILES:=LICENSE
+PKG_LICENSE_FILES:=LICENSE.txt
 
 PKG_BUILD_DEPENDS:=meson-python/host python-cython/host python-pythran/host python-lazy-loader/host numpy/host
 
