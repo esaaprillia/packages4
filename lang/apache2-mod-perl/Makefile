@@ -180,7 +180,7 @@ define Build/Configure
 endef
 
 define Build/Compile
-	$(call perlmod/Compile,,,$(PKG_BUILD_DIR)/src/modules/perl)
+	$(call Build/Compile/Default,,,$(PKG_BUILD_DIR)/src/modules/perl)
 	$(call perlmod/Compile,,)
 endef
 
