@@ -152,18 +152,18 @@ define Build/Configure
 	sed -i -e 's!^MODPERL_CPPRUN = .*!MODPERL_CPPRUN = $(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^MODPERL_CPPRUN = .*!MODPERL_CPPRUN = $(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^MODPERL_CPPRUN = .*!MODPERL_CPPRUN = $(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/*/Makefile
-	sed -i -e 's!^MODPERL_LDDLFLAGS = .*!MODPERL_LDDLFLAGS = -shared -rdynamic $(TARGET_LDFLAGS)!' $(PKG_BUILD_DIR)/*/Makefile
-	sed -i -e 's!^MODPERL_LDDLFLAGS = .*!MODPERL_LDDLFLAGS = -shared -rdynamic $(TARGET_LDFLAGS)!' $(PKG_BUILD_DIR)/*/*/Makefile
-	sed -i -e 's!^MODPERL_LDDLFLAGS = .*!MODPERL_LDDLFLAGS = -shared -rdynamic $(TARGET_LDFLAGS)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^MODPERL_LDDLFLAGS = .*!MODPERL_LDDLFLAGS = -shared -rdynamic $(TARGET_LDFLAGS) -fstack-protector-strong!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^MODPERL_LDDLFLAGS = .*!MODPERL_LDDLFLAGS = -shared -rdynamic $(TARGET_LDFLAGS) -fstack-protector-strong!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^MODPERL_LDDLFLAGS = .*!MODPERL_LDDLFLAGS = -shared -rdynamic $(TARGET_LDFLAGS) -fstack-protector-strong!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 	sed -i -e 's!^MODPERL_PRIVLIBEXP = .*!MODPERL_PRIVLIBEXP = $(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^MODPERL_PRIVLIBEXP = .*!MODPERL_PRIVLIBEXP = $(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^MODPERL_PRIVLIBEXP = .*!MODPERL_PRIVLIBEXP = $(PERL_SITELIB)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 	sed -i -e 's!^MODPERL_LD = .*!MODPERL_LD = $(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^MODPERL_LD = .*!MODPERL_LD = $(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^MODPERL_LD = .*!MODPERL_LD = $(GNU_TARGET_NAME)-gcc!' $(PKG_BUILD_DIR)/*/*/*/Makefile
-	sed -i -e 's!^MODPERL_CCOPTS = .*!MODPERL_CCOPTS = -D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE -DMOD_PERL -DMP_COMPAT_1X -fgnu89-inline -DLINUX!' $(PKG_BUILD_DIR)/*/Makefile
-	sed -i -e 's!^MODPERL_CCOPTS = .*!MODPERL_CCOPTS = -D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE -DMOD_PERL -DMP_COMPAT_1X -fgnu89-inline -DLINUX!' $(PKG_BUILD_DIR)/*/*/Makefile
-	sed -i -e 's!^MODPERL_CCOPTS = .*!MODPERL_CCOPTS = -D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE -DMOD_PERL -DMP_COMPAT_1X -fgnu89-inline -DLINUX!' $(PKG_BUILD_DIR)/*/*/*/Makefile
+	sed -i -e 's!^MODPERL_CCOPTS = .*!MODPERL_CCOPTS = -D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE -DMOD_PERL -DMP_COMPAT_1X -fgnu89-inline -DLINUX -fPIC!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^MODPERL_CCOPTS = .*!MODPERL_CCOPTS = -D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE -DMOD_PERL -DMP_COMPAT_1X -fgnu89-inline -DLINUX -fPIC!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^MODPERL_CCOPTS = .*!MODPERL_CCOPTS = -D_LARGEFILE_SOURCE $(if $(CONFIG_USE_MUSL),-D_LARGEFILE64_SOURCE) -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_GNU_SOURCE -I$(STAGING_DIR)$(PERL_SITELIB)/CORE -DMOD_PERL -DMP_COMPAT_1X -fgnu89-inline -DLINUX -fPIC!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 	sed -i -e 's!^MODPERL_LDOPTS = .*!MODPERL_LDOPTS = -Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE -lperl -lpthread -ldl -lm -lcrypt -lutil -lc!' $(PKG_BUILD_DIR)/*/Makefile
 	sed -i -e 's!^MODPERL_LDOPTS = .*!MODPERL_LDOPTS = -Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE -lperl -lpthread -ldl -lm -lcrypt -lutil -lc!' $(PKG_BUILD_DIR)/*/*/Makefile
 	sed -i -e 's!^MODPERL_LDOPTS = .*!MODPERL_LDOPTS = -Wl,-rpath,$(PERL_SITELIB)/CORE -L$(STAGING_DIR)$(PERL_SITELIB)/CORE -lperl -lpthread -ldl -lm -lcrypt -lutil -lc!' $(PKG_BUILD_DIR)/*/*/*/Makefile
@@ -177,6 +177,9 @@ define Build/Configure
 	#mkdir -p $(PKG_INSTALL_DIR)/usr/bin
 	#mkdir -p $(PKG_INSTALL_DIR)/usr/lib/apache2
 	#mkdir -p $(PKG_INSTALL_DIR)/usr/include/apache2
+	sed -i -e 's!^MODPERL_PERLPATH = .*!MODPERL_PERLPATH = $(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)!' $(PKG_BUILD_DIR)/*/Makefile
+	sed -i -e 's!^MODPERL_PERLPATH = .*!MODPERL_PERLPATH = $(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)!' $(PKG_BUILD_DIR)/*/*/Makefile
+	sed -i -e 's!^MODPERL_PERLPATH = .*!MODPERL_PERLPATH = $(STAGING_DIR_HOSTPKG)/usr/bin/perl$(PERL_VERSION3)!' $(PKG_BUILD_DIR)/*/*/*/Makefile
 endef
 
 define Build/Compile
