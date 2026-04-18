@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSL-1.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-hatchling/host python-scikit-build/host python-scikit-build-core/host python-hatch-build-scripts/host python-pybind11-stubgen/ host numpy/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-scikit-build/host python-scikit-build-core/host python-hatch-build-scripts/host python-pybind11-stubgen/host numpy/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
