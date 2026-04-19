@@ -39,7 +39,7 @@ define Package/scrcpy/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/scrcpy $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/share/scrcpy
-	$(CP) files/scrcpy-server $(1)/usr/share/scrcpy
+	$(CP) files/scrcpy-server $(1)/usr/share/scrcpy/
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/{applications,bash-completion,icons,zsh} $(1)/usr/share/
 endef
 
