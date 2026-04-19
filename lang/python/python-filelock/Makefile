@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-filelock
-PKG_VERSION:=3.25.2
+PKG_VERSION:=3.28.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=filelock
