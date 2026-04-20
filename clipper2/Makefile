@@ -26,7 +26,7 @@ define Package/clipper2
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Polygon Clipping, Offsetting & Triangulation in C++, C# and Delphi
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=https://github.com/AngusJohnson/Clipper2
 endef
 
@@ -42,8 +42,8 @@ CMAKE_OPTIONS += \
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
-	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/Clipper2.pc
-	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/Clipper2.pc
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/Clipper2*.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/Clipper2*.pc
 endef
 
 define Package/clipper2/install
