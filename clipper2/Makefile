@@ -4,7 +4,7 @@ PKG_NAME:=clipper2
 PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=Clipper2-Clipper2_$(PKG_VERSION).tar.gz
+PKG_SOURCE:=Clipper2_$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/AngusJohnson/Clipper2/archive/
 PKG_HASH:=skip
 
