@@ -26,7 +26,7 @@ define Package/python3-tomli-w
   CATEGORY:=Languages
   TITLE:=A lil' TOML writer
   URL:=https://github.com/hukkin/tomli-w
-  DEPENDS:=+python3 +python3-tomli
+  DEPENDS:=+python3
 endef
 
 define Package/python3-tomli-w/description
