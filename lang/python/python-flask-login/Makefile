@@ -38,6 +38,8 @@ define Package/python3-flask-login/description
   and remembering your users’ sessions over extended periods of time.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=flask-login
+
 $(eval $(call Py3Package,python3-flask-login))
 $(eval $(call BuildPackage,python3-flask-login))
 $(eval $(call BuildPackage,python3-flask-login-src))
