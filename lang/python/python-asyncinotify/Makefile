@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-asyncinotify
-PKG_VERSION:=4.4.0
+PKG_VERSION:=4.4.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=asyncinotify
