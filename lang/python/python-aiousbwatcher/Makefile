@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiousbwatcher
-PKG_VERSION:=1.1.1
+PKG_VERSION:=1.1.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiousbwatcher
-PKG_HASH:=3a22a47b8dd1ca078bf8fbc3139cd16b7dabb11b901a1a96620246794baf679f
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
