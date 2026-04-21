@@ -1,0 +1,22 @@
+From 3a563f78563cee3ee6bdce8582dd6016fd9a58ed Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 21 Apr 2026 21:14:12 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 3653343..8240cab 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -2,7 +2,7 @@
+ # https://github.com/zopefoundation/meta/tree/master/src/zope/meta/pure-python
+ [build-system]
+ requires = [
+-    "setuptools >= 78.1.1,< 81",
++    "setuptools",
+     "wheel",
+ ]
+ build-backend = "setuptools.build_meta"
