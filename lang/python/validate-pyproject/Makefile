@@ -11,6 +11,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MPL-2.0 MIT BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 
+PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-setuptools-scm/host
 HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-setuptools-scm/host
 
 include ../pypi.mk
