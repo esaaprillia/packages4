@@ -26,11 +26,7 @@ define Package/python3-ordered-set
   TITLE:=An OrderedSet is a custom MutableSet that remembers its order, so that every
   URL:=https://github.com/rspeer/ordered-set
   DEPENDS:= \
-	+python3 \
-	+python3-limits \
-	+python3-flask \
-	+python3-ordered-set \
-	+python3-typing-extensions
+	+python3
 endef
 
 define Package/python3-ordered-set/description
