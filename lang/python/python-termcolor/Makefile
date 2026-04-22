@@ -10,8 +10,8 @@ PKG_HASH:=skip
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING.txt
 
-HOST_BUILD_DEPENDS:=python-hatch-vcs/host
-PKG_BUILD_DEPENDS:=python-hatch-vcs/host
+PKG_BUILD_DEPENDS:=python-hatch-vcs/host python-hatchling/host
+HOST_BUILD_DEPENDS:=python-hatch-vcs/host python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
