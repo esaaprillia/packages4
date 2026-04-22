@@ -30,9 +30,9 @@ define Package/python3-roborock
 	+python3-click \
 	+python3-aiohttp \
 	+python3-cryptodome \
-	+python3-cryptodomex \
 	+python3-paho-mqtt \
 	+python3-construct \
+	+python3-protobuf \
 	+python3-vacuum-map-parser-roborock \
 	+python3-pyrate-limiter \
 	+python3-aiomqtt \
