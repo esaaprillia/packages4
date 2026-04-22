@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-simplejson
-PKG_VERSION:=3.20.2
+PKG_VERSION:=4.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=simplejson
