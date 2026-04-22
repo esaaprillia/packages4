@@ -27,7 +27,7 @@ define Package/python3-smpp-pdu
   CATEGORY:=Languages
   SUBMENU:=Python
   TITLE:=Library for parsing Protocol Data Units (PDUs) in SMPP protocol
-  URL:=https://github.com/jookies/smpp.pdu
+  URL:=https://github.com/hologram-io/smpp.pdu
   DEPENDS:= \
 	+python3
 endef
