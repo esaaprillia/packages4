@@ -8,11 +8,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=micropython-lib
-PKG_VERSION:=1.26.0
+PKG_VERSION:=1.28.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/micropython/micropython-lib/tar.gz/v$(PKG_VERSION)?
+PKG_SOURCE_URL:=https://github.com/micropython/micropython-lib/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
