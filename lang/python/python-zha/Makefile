@@ -31,9 +31,7 @@ define Package/python3-zha
 	+python3-zigpy-deconz \
 	+python3-zigpy-xbee \
 	+python3-zigpy-zigate \
-	+python3-zha-quirks \
-	+python3-pyserial \
-	+python3-pyserial-asyncio-fast
+	+python3-zha-quirks
 endef
 
 define Package/python3-zha/description
