@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-smpp-pdu3
+PKG_NAME:=smpp.pdu
 PKG_VERSION:=0.6
 PKG_RELEASE:=1
 
