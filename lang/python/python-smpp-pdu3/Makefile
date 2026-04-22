@@ -4,8 +4,13 @@ PKG_NAME:=python-smpp-pdu3
 PKG_VERSION:=0.6
 PKG_RELEASE:=1
 
-PYPI_NAME:=smpp.pdu3
-PKG_HASH:=skip
+#PYPI_NAME:=smpp.pdu3
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/jookies/smpp.pdu.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=2a89deaf8580bbfbee646486f0afbf8e4b3c89e7
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
