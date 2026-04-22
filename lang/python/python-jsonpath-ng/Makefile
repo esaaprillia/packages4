@@ -5,12 +5,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jsonpath-ng
-PKG_VERSION:=1.7.0
+PKG_VERSION:=1.8.0
 PKG_RELEASE:=1
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com> 
 
-PYPI_NAME:=jsonpath-ng
-PKG_HASH:=f6f5f7fd4e5ff79c785f1573b394043b39849fb2bb47bcead935d12b00beab3c
+PYPI_NAME:=jsonpath_ng
+PKG_HASH:=skip
 
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
