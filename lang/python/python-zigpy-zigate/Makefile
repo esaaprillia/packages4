@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zigpy-zigate
-PKG_VERSION:=0.13.4
+PKG_VERSION:=0.14.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=zigpy_zigate
