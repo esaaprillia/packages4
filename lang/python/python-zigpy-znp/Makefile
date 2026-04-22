@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zigpy-znp
-PKG_VERSION:=0.14.3
+PKG_VERSION:=1.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=zigpy_znp
