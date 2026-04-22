@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bitstruct
-PKG_VERSION:=8.21.0
+PKG_VERSION:=8.22.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=bitstruct
