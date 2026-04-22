@@ -27,10 +27,7 @@ define Package/python3-jsonpath-ng
   TITLE:=Standard compliant implementation of JSONPath
   DEPENDS:= \
     +python3-light \
-    +python3-logging \
-    +python3-ply \
-    +python3-six \
-    +python3-decorator
+    +python3-logging
 endef
 
 define Package/python3-jsonpath-ng/description
