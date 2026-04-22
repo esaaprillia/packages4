@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rebar3
-PKG_VERSION:=3.25.1
+PKG_VERSION:=3.27.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -46,7 +46,7 @@ define Host/Install
 endef
 
 define Build/Install
-	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
+	$(INSTALL_DIR) $(PKG_INSTALL_DIR)/usr/bin
 	$(CP) $(PKG_BUILD_DIR)/rebar3 $(PKG_INSTALL_DIR)/usr/bin/
 endef
 
