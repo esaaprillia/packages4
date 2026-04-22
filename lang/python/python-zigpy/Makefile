@@ -32,7 +32,7 @@ define Package/python3-zigpy
 	+python3-cryptography \
 	+python3-voluptuous \
 	+python3-jsonschema \
-	+python3-pyserial-asyncio-fast \
+	+python3-serialx \
 	+python3-typing-extensions \
 	+python3-frozendict
 endef
