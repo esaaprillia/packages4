@@ -1,11 +1,16 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-smpp-twisted3
+PKG_NAME:=smpp.twisted
 PKG_VERSION:=0.8
 PKG_RELEASE:=1
 
-PYPI_NAME:=smpp.twisted3
-PKG_HASH:=skip
+#PYPI_NAME:=smpp.twisted3
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/jookies/smpp.twisted.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=c9b266f54e44e7aff964b64cfb05ca1ecbcd7710
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
