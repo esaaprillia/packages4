@@ -13,6 +13,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -34,6 +36,9 @@ endef
 
 PYTHON3_PKG_WHEEL_NAME:=ruamel_yaml_clib
 PYTHON3_PKG_WHEEL_VERSION:=0.2.15
+
+PYTHON3_HOST_WHEEL_NAME:=ruamel_yaml_clib
+PYTHON3_HOST_WHEEL_VERSION:=0.2.15
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-ruamel-yaml-clib))
