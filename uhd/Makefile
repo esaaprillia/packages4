@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE.md
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=host
 
-PKG_BUILD_DEPENDS:=numpy/host python-mako/host python-pybind11/host
+PKG_BUILD_DEPENDS:=numpy/host python-mako/host python-pybind11/host python-requests/host python-ruamel-yaml/host
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
@@ -26,7 +26,7 @@ define Package/uhd
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The USRP™ Hardware Driver Repository
-	DEPENDS:=+libstdcpp +boost-filesystem +boost-program_options +boost-thread +boost-test +libusb-1.0 +libpython3
+	DEPENDS:=+libstdcpp +boost-filesystem +boost-program_options +boost-serialization +boost-thread +boost-test +libusb-1.0 +libpython3
 	URL:=https://github.com/EttusResearch/uhd
 endef
 
