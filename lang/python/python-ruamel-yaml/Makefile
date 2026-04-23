@@ -43,6 +43,9 @@ endef
 PYTHON3_PKG_WHEEL_NAME:=ruamel_yaml
 PYTHON3_PKG_WHEEL_VERSION:=0.19.1
 
+PYTHON3_HOST_WHEEL_NAME:=ruamel_yaml
+PYTHON3_HOST_WHEEL_VERSION:=0.19.1
+
 $(eval $(call Py3Package,python3-ruamel-yaml))
 $(eval $(call BuildPackage,python3-ruamel-yaml))
 $(eval $(call BuildPackage,python3-ruamel-yaml-src))
