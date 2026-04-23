@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://gstreamer.freedesktop.org/src/orc/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
-PKG_LICENSE:=BSD 3-Clause
+PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=COPYING
 
 include $(INCLUDE_DIR)/package.mk
