@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pip
-PKG_VERSION:=25.3
+PKG_VERSION:=26.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=pip
