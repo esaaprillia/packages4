@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pybind11
-PKG_VERSION:=3.0.2
+PKG_VERSION:=3.0.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=pybind11
