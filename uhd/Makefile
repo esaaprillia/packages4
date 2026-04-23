@@ -50,6 +50,7 @@ define Package/uhd/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/uhd $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/uhd $(1)/usr/share/
 	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
