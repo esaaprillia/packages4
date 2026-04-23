@@ -33,7 +33,9 @@ endef
 
 PYTHON3_PKG_SETUP_VARS += \
 	LOCALBASE="$(STAGING_DIR)/usr" \
-	PORTMIDI_INC_PORTTIME=1
+	PORTMIDI_INC_PORTTIME=1 \
+	SDL_VIDEODRIVER=dummy \
+	SDL_AUDIODRIVER=disk
 
 $(eval $(call Py3Package,python3-pygame))
 $(eval $(call BuildPackage,python3-pygame))
