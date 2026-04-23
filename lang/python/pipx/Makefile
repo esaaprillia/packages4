@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pipx
-PKG_VERSION:=1.8.0
+PKG_VERSION:=1.11.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=pipx
