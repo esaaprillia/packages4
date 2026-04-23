@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-sip
-PKG_VERSION:=6.12.0
+PKG_VERSION:=6.15.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=sip
