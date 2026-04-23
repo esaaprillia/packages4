@@ -12,12 +12,20 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-cffi/host python-greenlet/host python-cython/host
+HOST_BUILD_DEPENDS:=python-cffi/host python-greenlet/host python-cython/host c-ares/host libuv/host libev/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 PYTHON3_PKG_SETUP_VARS:= \
+	GEVENTSETUP_EMBED=0 \
+	GEVENTSETUP_EMBED_LIBEV=0 \
+	GEVENTSETUP_EMBED_CARES=0
+
+PYTHON3_HOST_BUILD_VARS:= \
 	GEVENTSETUP_EMBED=0 \
 	GEVENTSETUP_EMBED_LIBEV=0 \
 	GEVENTSETUP_EMBED_CARES=0
@@ -44,6 +52,7 @@ define Package/python3-gevent/description
   to provide a high-level synchronous API on top of the libev or libuv event loop.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-gevent))
 $(eval $(call BuildPackage,python3-gevent))
 $(eval $(call BuildPackage,python3-gevent-src))
