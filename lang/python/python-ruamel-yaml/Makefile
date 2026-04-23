@@ -21,9 +21,13 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:ruamel.yaml_project:ruamel.yaml
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-ruamel-yaml-clib/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-ruamel-yaml
   SECTION:=lang
@@ -46,6 +50,7 @@ PYTHON3_PKG_WHEEL_VERSION:=0.19.1
 PYTHON3_HOST_WHEEL_NAME:=ruamel_yaml
 PYTHON3_HOST_WHEEL_VERSION:=0.19.1
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-ruamel-yaml))
 $(eval $(call BuildPackage,python3-ruamel-yaml))
 $(eval $(call BuildPackage,python3-ruamel-yaml-src))
