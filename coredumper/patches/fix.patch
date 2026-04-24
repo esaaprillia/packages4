@@ -1,0 +1,21 @@
+From 0b3927026c601025b11d0653b4f5e8aa9d516f44 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 24 Apr 2026 18:40:01 +0800
+Subject: [PATCH] Add unistd.h header inclusion
+
+---
+ src/thread_lister.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/thread_lister.c b/src/thread_lister.c
+index 1e4aceb..3572126 100644
+--- a/src/thread_lister.c
++++ b/src/thread_lister.c
+@@ -32,6 +32,7 @@
+  */
+ 
+ #include <stdio.h>         /* needed for NULL on some powerpc platforms (?!) */
++#include <unistd.h>
+ #include <sys/prctl.h>
+ #include "thread_lister.h"
+ #include "linuxthreads.h"
