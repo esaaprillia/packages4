@@ -1,0 +1,48 @@
+From 1f852621ed8f857c31e125b43254f92f7c35bad0 Mon Sep 17 00:00:00 2001
+From: "zodiac@gmail.com"
+ <zodiac@gmail.com@337ac9a6-8519-0410-9389-e36bf2bdbbd6>
+Date: Sun, 31 Aug 2008 18:02:13 +0000
+Subject: [PATCH] Remove all references to linux/dirent.h as modern versions of
+ glibc might no longer give access to all kernel data structures. Fortunately,
+ this does not break any core functionality. It only limits the scope of what
+ can be tested by the unittest.
+
+git-svn-id: http://google-coredumper.googlecode.com/svn/trunk@31 337ac9a6-8519-0410-9389-e36bf2bdbbd6
+---
+ src/linux_syscall_support_unittest.cc | 3 ---
+ src/linuxthreads.c                    | 1 -
+ 2 files changed, 4 deletions(-)
+
+diff --git a/src/linux_syscall_support_unittest.cc b/src/linux_syscall_support_unittest.cc
+index 3c7dd29..616f382 100644
+--- a/src/linux_syscall_support_unittest.cc
++++ b/src/linux_syscall_support_unittest.cc
+@@ -62,7 +62,6 @@ namespace linux_syscall_support {
+ #include <asm/posix_types.h>
+ #include <asm/types.h>
+ #include <errno.h>
+-#include <linux/dirent.h>
+ #include <linux/types.h>
+ #include <linux/unistd.h>
+ #include <signal.h>
+@@ -91,8 +90,6 @@ static void CheckStructures() {
+   // there are a small number of data structures (e.g "struct
+   // kernel_old_sigaction") that we cannot test at all, as glibc does
+   // not have any definitions for them.
+-  CHECK(sizeof(struct dirent64)  == sizeof(struct kernel_dirent64));
+-  CHECK(sizeof(struct dirent)    == sizeof(struct kernel_dirent));
+   CHECK(sizeof(struct iovec)     == sizeof(struct kernel_iovec));
+   CHECK(sizeof(struct msghdr)    == sizeof(struct kernel_msghdr));
+   CHECK(sizeof(struct pollfd)    == sizeof(struct kernel_pollfd));
+diff --git a/src/linuxthreads.c b/src/linuxthreads.c
+index c09c68e..0a7f7d1 100644
+--- a/src/linuxthreads.c
++++ b/src/linuxthreads.c
+@@ -49,7 +49,6 @@ extern "C" {
+ #include <asm/fcntl.h>
+ #include <asm/posix_types.h>
+ #include <asm/types.h>
+-#include <linux/dirent.h>
+ 
+ #include "linux_syscall_support.h"
+ #include "thread_lister.h"
