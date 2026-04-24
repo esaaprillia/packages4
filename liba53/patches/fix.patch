@@ -13,7 +13,7 @@ index 21d0423..6a8f34f 100644
 +++ b/Makefile
 @@ -1,4 +1,4 @@
 -DESTDIR := 
-+DESTDIR ?=
++#DESTDIR ?=
  
  SOURCE_FILES=a5.c bits.c gea.c kasumi.c utils.c ifc.cpp
  OBJECT_FILES=a5.o bits.o gea.o kasumi.o utils.o ifc.o
