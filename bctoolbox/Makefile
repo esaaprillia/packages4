@@ -21,7 +21,7 @@ define Package/bctoolbox
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=BcToolbox
-	DEPENDS:=+libdecaf +@MBEDTLS_SSL_RENEGOTIATION +libmbedtls +libstdcpp
+	DEPENDS:=+libopenssl +libstdcpp
 	URL:=https://gitlab.linphone.org/BC/public/bctoolbox
 endef
 
@@ -32,6 +32,8 @@ endef
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=YES \
 	-DENABLE_STRICT=NO \
+	-DENABLE_OPENSSL=ON \
+	-DENABLE_MBEDTLS=OFF \
 	-DENABLE_TESTS_COMPONENT=OFF
 
 define Build/InstallDev
