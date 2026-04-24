@@ -46,27 +46,29 @@ index c09c68e..0a7f7d1 100644
  
  #include "linux_syscall_support.h"
  #include "thread_lister.h"
-From ffd1489de6309c027bcf6ef45b65eae7ff9d4a2e Mon Sep 17 00:00:00 2001
+From dcbfee341edeb5acd799eecc2beade983af86728 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Fri, 24 Apr 2026 19:29:00 +0800
+Date: Fri, 24 Apr 2026 20:29:14 +0800
 Subject: [PATCH] Update linux_syscall_support_unittest.cc
 
 ---
- src/linux_syscall_support_unittest.cc | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ src/linux_syscall_support_unittest.cc | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/src/linux_syscall_support_unittest.cc b/src/linux_syscall_support_unittest.cc
-index 616f382..97a5a09 100644
+index 616f382..837bcc1 100644
 --- a/src/linux_syscall_support_unittest.cc
 +++ b/src/linux_syscall_support_unittest.cc
-@@ -62,8 +62,8 @@ namespace linux_syscall_support {
+@@ -62,11 +62,10 @@ namespace linux_syscall_support {
  #include <asm/posix_types.h>
  #include <asm/types.h>
  #include <errno.h>
 -#include <linux/types.h>
 -#include <linux/unistd.h>
-+#include <sys/types.h>
-+#include <cstring>
  #include <signal.h>
  #include <sys/socket.h>
  #include <sys/statfs.h>
++#include <cstring>
+ #include <sys/types.h>
+ #include <unistd.h>
+ 
