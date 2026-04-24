@@ -33,6 +33,13 @@ define Build/Compile
 		CXX=$(TARGET_CXX)
 endef
 
+define Build/Install
+	$(INSTALL_DIR) $(PKG_INSTALL_DIR)/usr/include
+	$(CP) $(PKG_BUILD_DIR)/a53.h $(PKG_INSTALL_DIR)/usr/include/
+	$(INSTALL_DIR) $(PKG_INSTALL_DIR)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/*.so* $(PKG_INSTALL_DIR)/usr/lib/
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/a53.h $(1)/usr/include/
