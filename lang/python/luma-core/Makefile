@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luma-core
-PKG_VERSION:=2.5.1
+PKG_VERSION:=2.5.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=luma_core
