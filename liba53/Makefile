@@ -20,7 +20,7 @@ define Package/liba53
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A5/3 Call Encryption Library
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=https://github.com/RangeNetworks/liba53/
 endef
 
