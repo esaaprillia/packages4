@@ -1,10 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luma-lcd
-PKG_VERSION:=2.11.0
+PKG_VERSION:=2.13.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=luma.lcd
+PYPI_NAME:=luma_lcd
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -29,9 +29,6 @@ endef
 define Package/python3-luma-lcd/description
   luma.lcd provides a Python 3 interface to small LCD displays connected to Raspberry Pi and other Linux-based single-board computers (SBC). It provides a Pillow-compatible drawing canvas, and other functionality to support
 endef
-
-PYTHON3_PKG_WHEEL_NAME:=luma_lcd
-PYTHON3_PKG_WHEEL_VERSION:=2.11.0
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-luma-lcd))
