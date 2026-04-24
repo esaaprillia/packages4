@@ -29,9 +29,8 @@ define Package/liba53/description
 endef
 
 define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		install
+	$(MAKE) -C $(PKG_BUILD_DIR) install \
+		DESTDIR="$(PKG_INSTALL_DIR)"
 endef
 
 define Build/InstallDev
