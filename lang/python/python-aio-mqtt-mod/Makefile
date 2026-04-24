@@ -7,11 +7,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aio-mqtt-mod
-PKG_VERSION:=0.3.4
-PKG_RELEASE:=2
+PKG_VERSION:=0.4.0
+PKG_RELEASE:=1
 
-PYPI_NAME:=aio-mqtt-mod
-PKG_HASH:=340184b35771b7eb7982072fcca313213d856638dd7f98b99bda3ab16ba23552
+PYPI_NAME:=aio_mqtt_mod
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Quintin Hill <stuff@quintin.me.uk>
 PKG_LICENSE:=Apache-2.0
