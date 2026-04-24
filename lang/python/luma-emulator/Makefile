@@ -1,10 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luma-emulator
-PKG_VERSION:=1.5.0
+PKG_VERSION:=1.7.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=luma.emulator
+PYPI_NAME:=luma_emulator
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
