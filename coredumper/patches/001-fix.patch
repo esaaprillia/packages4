@@ -1,3 +1,46 @@
+From 5b308d5c4b6041d743d727d83b2e243f2bd810f9 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 24 Apr 2026 19:07:51 +0800
+Subject: [PATCH] Update coredumper_unittest.c
+
+---
+ src/coredumper_unittest.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/coredumper_unittest.c b/src/coredumper_unittest.c
+index a6d89f7..b044f65 100644
+--- a/src/coredumper_unittest.c
++++ b/src/coredumper_unittest.c
+@@ -33,7 +33,7 @@
+ 
+ #define __STDC_LIMIT_MACROS
+ #include <assert.h>
+-#include <bits/wordsize.h>
++#include <ctype.h>
+ #include <endian.h>
+ #include <errno.h>
+ #include <fcntl.h>
+From 0b3927026c601025b11d0653b4f5e8aa9d516f44 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 24 Apr 2026 18:40:01 +0800
+Subject: [PATCH] Add unistd.h header inclusion
+
+---
+ src/thread_lister.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/thread_lister.c b/src/thread_lister.c
+index 1e4aceb..3572126 100644
+--- a/src/thread_lister.c
++++ b/src/thread_lister.c
+@@ -32,6 +32,7 @@
+  */
+ 
+ #include <stdio.h>         /* needed for NULL on some powerpc platforms (?!) */
++#include <unistd.h>
+ #include <sys/prctl.h>
+ #include "thread_lister.h"
+ #include "linuxthreads.h"
 From 9333876fa67cf35f6a7e868ddb6763b375cc85a4 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Sat, 25 Apr 2026 00:16:58 +0800
