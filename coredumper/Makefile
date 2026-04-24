@@ -31,7 +31,7 @@ endef
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
-		install
+		CFLAGS="$(TARGET_CFLAGS) -D_GNU_SOURCE" install
 endef
 
 define Build/InstallDev
