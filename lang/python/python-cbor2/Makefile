@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cbor2
-PKG_VERSION:=5.8.0
+PKG_VERSION:=5.9.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=cbor2
