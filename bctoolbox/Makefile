@@ -5,7 +5,7 @@ PKG_VERSION:=5.4.107
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/$(PKG_NAME)
+PKG_SOURCE_URL:=https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
