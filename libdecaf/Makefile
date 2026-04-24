@@ -8,7 +8,7 @@ PKG_RELEASE:=1
 #PKG_SOURCE_URL:=https://sourceforge.net/projects/ed448goldilocks/files/
 #PKG_HASH:=skip
 
-PKG_SOURCE_URL:=https://git.code.sf.net/p/ed448goldilocks/code ed448goldilocks-code
+PKG_SOURCE_URL:=https://git.code.sf.net/p/ed448goldilocks/code
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=ae7b1af200d068b8128791e6eb8b2cf946de3c0c
 PKG_MIRROR_HASH:=skip
