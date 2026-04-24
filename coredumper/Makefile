@@ -28,11 +28,7 @@ define Package/coredumper/description
 The coredumper library can be compiled into applications to create core dumps of the running program -- without terminating.
 endef
 
-define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
-		CFLAGS="$(TARGET_CFLAGS) -D_GNU_SOURCE" install
-endef
+TARGET_CFLAGS += -D_GNU_SOURCE
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
