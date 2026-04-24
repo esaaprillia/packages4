@@ -34,7 +34,7 @@ TARGET_CFLAGS += -D_GNU_SOURCE
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/google $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
