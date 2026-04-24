@@ -66,7 +66,7 @@ index 616f382..97a5a09 100644
 -#include <linux/types.h>
 -#include <linux/unistd.h>
 +#include <sys/types.h>
-+#include <unistd.h>
++#include <cstring>
  #include <signal.h>
  #include <sys/socket.h>
  #include <sys/statfs.h>
