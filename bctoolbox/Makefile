@@ -21,7 +21,7 @@ define Package/bctoolbox
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=BcToolbox
-	DEPENDS:=+libdecaf +libmbedtls +libstdcpp
+	DEPENDS:=+libdecaf +@MBEDTLS_SSL_RENEGOTIATION +libmbedtls +libstdcpp
 	URL:=https://gitlab.linphone.org/BC/public/bctoolbox
 endef
 
