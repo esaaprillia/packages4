@@ -1,3 +1,24 @@
+From a2118fe42858cafc40e1e519e9ba979c38e6a631 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 24 Apr 2026 18:57:25 +0800
+Subject: [PATCH] Update coredumper_unittest.c
+
+---
+ src/coredumper_unittest.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/coredumper_unittest.c b/src/coredumper_unittest.c
+index a6d89f7..8c601dd 100644
+--- a/src/coredumper_unittest.c
++++ b/src/coredumper_unittest.c
+@@ -33,7 +33,6 @@
+ 
+ #define __STDC_LIMIT_MACROS
+ #include <assert.h>
+-#include <bits/wordsize.h>
+ #include <endian.h>
+ #include <errno.h>
+ #include <fcntl.h>
 From 0b3927026c601025b11d0653b4f5e8aa9d516f44 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Fri, 24 Apr 2026 18:40:01 +0800
