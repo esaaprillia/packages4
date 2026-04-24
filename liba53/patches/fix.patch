@@ -1,24 +1,30 @@
-From 699bf92bae2ab16af98aff3557f53668cd79f309 Mon Sep 17 00:00:00 2001
+From f2607442dd674b7271bc746716b5f9f3522c449e Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Fri, 24 Apr 2026 15:01:35 +0800
+Date: Fri, 24 Apr 2026 15:29:36 +0800
 Subject: [PATCH] Update Makefile
 
 ---
- Makefile | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 21d0423..66dd3bb 100644
+index 21d0423..6a8f34f 100644
 --- a/Makefile
 +++ b/Makefile
+@@ -1,4 +1,4 @@
+-DESTDIR := 
++DESTDIR ?=
+ 
+ SOURCE_FILES=a5.c bits.c gea.c kasumi.c utils.c ifc.cpp
+ OBJECT_FILES=a5.o bits.o gea.o kasumi.o utils.o ifc.o
 @@ -6,8 +6,8 @@ INCLUDE_FILES=a5.h bits.h gea.h gprs_cipher.h kasumi.h linuxlist.h utils.h
  
  # build A5/3 library
  liba53.so.1.0: ${SOURCE_FILES} ${INCLUDE_FILES} Makefile
 -	g++ -O3 -Wall -fPIC -c ${SOURCE_FILES}
 -	g++ -shared -Wl,-soname,liba53.so.1 -o liba53.so.1.0 ${OBJECT_FILES}
-+	$(CXX) -O3 -Wall -fPIC -c ${SOURCE_FILES}
-+	$(CXX) -shared -Wl,-soname,liba53.so.1 -o liba53.so.1.0 ${OBJECT_FILES}
++	CXX -O3 -Wall -fPIC -c ${SOURCE_FILES}
++	CXX -shared -Wl,-soname,liba53.so.1 -o liba53.so.1.0 ${OBJECT_FILES}
  	ln -sf liba53.so.1.0 liba53.so.1
  	ln -sf liba53.so.1.0 liba53.so
  
@@ -27,7 +33,7 @@ index 21d0423..66dd3bb 100644
  # test installed A5/3 library
  installtest: install
 -	g++ -o a53test a53test.cpp -I$(DESTDIR)/usr/include -L$(DESTDIR)/usr/lib -la53
-+	$(CXX) -o a53test a53test.cpp -I$(DESTDIR)/usr/include -L$(DESTDIR)/usr/lib -la53
++	CXX -o a53test a53test.cpp -I$(DESTDIR)/usr/include -L$(DESTDIR)/usr/lib -la53
  	./a53test
  
  clean:
