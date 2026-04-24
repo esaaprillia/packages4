@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luma-oled
-PKG_VERSION:=3.14.0
+PKG_VERSION:=3.15.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=luma_oled
