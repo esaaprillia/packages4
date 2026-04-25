@@ -76,7 +76,7 @@ define Build/Compile
 		DESTDIR="$(PKG_INSTALL_DIR)" install
 endef
 
-define Package/smqueue/install
+define Package/openbts/install
 	$(INSTALL_DIR) $(1)/etc
 	$(CP) $(PKG_INSTALL_DIR)/etc/OpenBTS $(1)/etc/
 	$(CP) $(PKG_INSTALL_DIR)/etc/init $(1)/etc/
