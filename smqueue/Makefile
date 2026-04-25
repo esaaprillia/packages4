@@ -36,7 +36,7 @@ define Package/smqueue/description
 SMQueue RFC-3428 Store and Forward Server
 endef
 
-TARGET_CFLAGS += -D_GNU_SOURCE
+#TARGET_CFLAGS += -D_GNU_SOURCE
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
@@ -44,9 +44,25 @@ define Build/Prepare
 	#$(SED) 's,/usr/include/zmq.h,$(STAGING_DIR)/usr/include/zmq.h,g' $(PKG_BUILD_DIR)/configure.ac
 endef
 
+CONFIGURE_VARS += \
+	CC="$(TARGET_CC)" \
+	CXX="$(TARGET_CXX)" \
+	LD="$(TARGET_CC)" \
+	CFLAGS="$(TARGET_CFLAGS)" \
+	CXXFLAGS="$(TARGET_CXXFLAGS)" \
+	CPPFLAGS="$(TARGET_CPPFLAGS)" \
+	LDFLAGS="$(TARGET_LDFLAGS)"
+
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
+		CC="$(TARGET_CC)" \
+		CXX="$(TARGET_CXX)" \
+		LD="$(TARGET_CC)" \
+		CFLAGS="$(TARGET_CFLAGS)" \
+		CXXFLAGS="$(TARGET_CXXFLAGS)" \
+		CPPFLAGS="$(TARGET_CPPFLAGS)" \
+		LDFLAGS="$(TARGET_LDFLAGS)" \
 		install
 endef
 
