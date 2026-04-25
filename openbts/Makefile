@@ -46,6 +46,9 @@ define Build/Prepare
 	#$(SED) 's,/usr/include/zmq.h,$(STAGING_DIR)/usr/include/zmq.h,g' $(PKG_BUILD_DIR)/configure.ac
 endef
 
+CONFIGURE_ARGS += \
+	--prefix=/usr
+
 CONFIGURE_VARS += \
 	CC="$(TARGET_CC)" \
 	CCAS="$(TARGET_CC)" \
