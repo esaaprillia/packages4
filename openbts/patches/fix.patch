@@ -1,3 +1,16 @@
+--- a/SIP/SIP2Interface.cpp
++++ b/SIP/SIP2Interface.cpp
+@@ -756,7 +756,7 @@ void MySipInterface::msiInit()
+ 	// FIXME -- Can we coordinate this with the global logger?
+ 	//ortp_set_log_level_mask(ORTP_MESSAGE|ORTP_WARNING|ORTP_ERROR);
+ 
+-	ortp_set_log_handler(ortpLogFunc);
++	ortp_set_log_handler((BctbxLogFunc) ortpLogFunc);
+ 
+ 	mDriveThread.start((void *(*)(void*))driveLoop2, &gSipInterface );
+ 	mPeriodicServiceThread.start((void *(*)(void*))periodicServiceLoop, &gSipInterface );
+diff --git a/SIP/SIPRtp.cpp b/SIP/SIPRtp.cpp
+index ed8ed40c..12fb5f92 100644
 --- a/SIP/SIPRtp.cpp
 +++ b/SIP/SIPRtp.cpp
 @@ -125,13 +125,13 @@ void SipRtp::initRTP1(const char *d_ip_addr, unsigned d_port, unsigned dialogId)
