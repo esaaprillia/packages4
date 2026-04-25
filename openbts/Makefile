@@ -37,7 +37,7 @@ GSM+GPRS Radio Access Network Node
 endef
 
 #TARGET_CFLAGS += -D_GNU_SOURCE
-TARGET_CFLAGS += -std=c++14
+TARGET_CFLAGS += -std=c++14 -Dtypeof=__typeof__
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
