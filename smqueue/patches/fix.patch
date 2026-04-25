@@ -1,0 +1,21 @@
+From a61dfec68451af65386e4585a128f4e13e16bc10 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 25 Apr 2026 10:17:04 +0800
+Subject: [PATCH] Update Logger.h
+
+---
+ Logger.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Logger.h b/Logger.h
+index 7d98a00..9ffd7a7 100644
+--- a/Logger.h
++++ b/Logger.h
+@@ -43,6 +43,7 @@
+ #include <map>
+ #include <string>
+ #include <assert.h>
++#include <unistd.h>
+ #include <sys/syscall.h>
+ // We cannot include Utils.h because it includes Logger.h, so just declare timestr() here.
+ // If timestr decl is changed G++ will whine when Utils.h is included.
