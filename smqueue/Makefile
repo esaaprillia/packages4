@@ -17,7 +17,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_DEPENDS:=cppzmq libexecinfo
+PKG_BUILD_DEPENDS:=cppzmq
 
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
@@ -28,7 +28,7 @@ define Package/smqueue
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=SMQueue RFC-3428 Store and Forward Server
-	DEPENDS:=+libosip2 +libsqlite3 +libzmq-nc +coredumper
+	DEPENDS:=+libosip2 +libsqlite3 +libzmq-nc +coredumper +libexecinfo
 	URL:=https://github.com/RangeNetworks/smqueue/
 endef
 
