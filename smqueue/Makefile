@@ -46,24 +46,29 @@ endef
 
 CONFIGURE_VARS += \
 	CC="$(TARGET_CC)" \
+	CCAS="$(TARGET_CC)" \
 	CXX="$(TARGET_CXX)" \
 	LD="$(TARGET_CC)" \
+	LIBS=-lexecinfo \
 	CFLAGS="$(TARGET_CFLAGS)" \
+	CCASFLAGS="$(TARGET_CFLAGS)" \
 	CXXFLAGS="$(TARGET_CXXFLAGS)" \
 	CPPFLAGS="$(TARGET_CPPFLAGS)" \
 	LDFLAGS="$(TARGET_LDFLAGS)"
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" \
 		CC="$(TARGET_CC)" \
+		CCAS="$(TARGET_CC)" \
 		CXX="$(TARGET_CXX)" \
 		LD="$(TARGET_CC)" \
+		LIBS=-lexecinfo \
 		CFLAGS="$(TARGET_CFLAGS)" \
+		CCASFLAGS="$(TARGET_CFLAGS)" \
 		CXXFLAGS="$(TARGET_CXXFLAGS)" \
 		CPPFLAGS="$(TARGET_CPPFLAGS)" \
 		LDFLAGS="$(TARGET_LDFLAGS)" \
-		install
+		DESTDIR="$(PKG_INSTALL_DIR)" install
 endef
 
 define Build/InstallDev
