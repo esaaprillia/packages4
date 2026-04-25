@@ -1,0 +1,20 @@
+--- a/CommonLibs/Configuration.cpp
++++ b/CommonLibs/Configuration.cpp
+@@ -30,6 +30,7 @@
+ #include "Utils.h"
+ #include <fstream>
+ #include <iostream>
++#include <sys/types.h>
+ #include <string.h>
+ 
+ #ifdef DEBUG_CONFIG
+--- a/CommonLibs/Logger.h
++++ b/CommonLibs/Logger.h
+@@ -43,6 +43,7 @@
+ #include <map>
+ #include <string>
+ #include <assert.h>
++#include <unistd.h>
+ #include <sys/syscall.h>
+ // We cannot include Utils.h because it includes Logger.h, so just declare timestr() here.
+ // If timestr decl is changed G++ will whine when Utils.h is included.
