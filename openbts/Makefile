@@ -76,13 +76,16 @@ define Build/Compile
 		DESTDIR="$(PKG_INSTALL_DIR)" install
 endef
 
-define Package/openbts/install
+define Package/smqueue/install
 	$(INSTALL_DIR) $(1)/etc
 	$(CP) $(PKG_INSTALL_DIR)/etc/OpenBTS $(1)/etc/
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/sbin
-	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/* $(1)/usr/sbin/
+	$(CP) $(PKG_INSTALL_DIR)/etc/init $(1)/etc/
+	$(CP) $(PKG_INSTALL_DIR)/etc/rsyslog.d $(1)/etc/
+	$(CP) $(PKG_INSTALL_DIR)/etc/logrotate.d $(1)/etc/
+	$(INSTALL_DIR) $(1)/OpenBTS
+	$(CP) $(PKG_INSTALL_DIR)/OpenBTS $(1)/OpenBTS
+	$(INSTALL_DIR) $(1)/home
+	$(CP) $(PKG_INSTALL_DIR)/home $(1)/home
 endef
 
 $(eval $(call BuildPackage,openbts))
