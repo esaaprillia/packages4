@@ -1,3 +1,13 @@
+--- a/smqueue/SmqMessageHandler.cpp
++++ b/smqueue/SmqMessageHandler.cpp
+@@ -28,6 +28,7 @@
+ #include "SmqMessageHandler.h"
+ #include "SmqReader.h"
+ #include "SmqWriter.h"
++#include <fcntl.h>
+ 
+ // Pointers to handlers for the reader and writer queues
+ SmqReader* smqReader;
 --- a/CommonLibs/Configuration.cpp
 +++ b/CommonLibs/Configuration.cpp
 @@ -30,6 +30,7 @@
