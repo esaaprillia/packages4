@@ -28,7 +28,7 @@ define Package/smqueue
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=SMQueue RFC-3428 Store and Forward Server
-	DEPENDS:=+libosip2 +libzmq-nc
+	DEPENDS:=+libosip2 +libsqlite3 +libzmq-nc
 	URL:=https://github.com/RangeNetworks/smqueue/
 endef
 
