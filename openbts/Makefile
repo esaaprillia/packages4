@@ -28,7 +28,7 @@ define Package/openbts
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=GSM+GPRS Radio Access Network Node
-	DEPENDS:=+libosip2 +libsqlite3 +libzmq-nc +coredumper +libexecinfo +liba53
+	DEPENDS:=+libosip2 +libsqlite3 +libzmq-nc +coredumper +libexecinfo +liba53 +ortp
 	URL:=https://github.com/RangeNetworks/openbts
 endef
 
