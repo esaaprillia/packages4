@@ -37,7 +37,7 @@ endef
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(SED) 's,/usr/local/include/zmq.h,$(STAGING_DIR)/usr/include/zmq.h,g' $(PKG_BUILD_DIR)/configure.ac
-	$(SED) 's,/usr/include/zmq.h,$(STAGING_DIR)/usr/include/zmq.h,g' $(PKG_BUILD_DIR)/configure.ac
+	#$(SED) 's,/usr/include/zmq.h,$(STAGING_DIR)/usr/include/zmq.h,g' $(PKG_BUILD_DIR)/configure.ac
 endef
 
 define Build/Compile
