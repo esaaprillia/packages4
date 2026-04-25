@@ -37,6 +37,7 @@ SMQueue RFC-3428 Store and Forward Server
 endef
 
 #TARGET_CFLAGS += -D_GNU_SOURCE
+TARGET_CFLAGS += -std=c++14
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
