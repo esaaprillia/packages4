@@ -28,7 +28,7 @@ define Package/openbts
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=GSM+GPRS Radio Access Network Node
-	DEPENDS:=+libosip2 +libsqlite3 +libzmq-nc +coredumper +libexecinfo +liba53 +uhd
+	DEPENDS:=+libosip2 +libsqlite3 +libzmq-nc +coredumper +libexecinfo +liba53
 	URL:=https://github.com/RangeNetworks/openbts
 endef
 
@@ -45,9 +45,6 @@ define Build/Prepare
 	$(SED) 's,/usr/local/include,$(STAGING_DIR)/usr/include,g' $(PKG_BUILD_DIR)/configure.ac
 	#$(SED) 's,/usr/include/zmq.h,$(STAGING_DIR)/usr/include/zmq.h,g' $(PKG_BUILD_DIR)/configure.ac
 endef
-
-CONFIGURE_ARGS += \
-	--with-uhd
 
 CONFIGURE_VARS += \
 	CC="$(TARGET_CC)" \
