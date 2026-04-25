@@ -5,7 +5,7 @@ PKG_VERSION:=4.11.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/zeromq/cppzmq/archive/v$(PKG_NAME)
+PKG_SOURCE_URL:=https://github.com/zeromq/cppzmq/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
