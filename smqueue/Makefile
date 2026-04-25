@@ -25,13 +25,13 @@ include $(INCLUDE_DIR)/package.mk
 define Package/smqueue
 	SECTION:=libs
 	CATEGORY:=Libraries
-	TITLE:=oSIP is an implementation of SIP
+	TITLE:=SMQueue RFC-3428 Store and Forward Server
 	DEPENDS:=+libosip2 +libzmq-nc
 	URL:=https://github.com/RangeNetworks/smqueue/
 endef
 
 define Package/smqueue/description
-The GNU oSIP library is an implementation of SIP - rfc3261.
+SMQueue RFC-3428 Store and Forward Server
 endef
 
 define Build/Compile
