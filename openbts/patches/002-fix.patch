@@ -1,149 +1,30 @@
-From 14c13119ae4f6b9a06c2389739bdddcbf334675d Mon Sep 17 00:00:00 2001
-From: FlUxIuS <fluxius@gmail.com>
-Date: Thu, 5 Jan 2023 18:43:02 +0100
-Subject: [PATCH] Fixing build error in Ubuntu 22.04 with C++11
-
----
- Control/L3StateMachine.cpp   | 6 +++---
- GPRS/MSInfo.cpp              | 2 +-
- GSMShare/A51.h               | 2 +-
- SGSNGGSN/Sgsn.cpp            | 4 ++--
- SIP/SIP2Interface.cpp        | 2 +-
- SIP/SIPRtp.cpp               | 4 ++--
- Transceiver52M/UHDDevice.cpp | 6 +++---
- 7 files changed, 13 insertions(+), 13 deletions(-)
-
-diff --git a/Control/L3StateMachine.cpp b/Control/L3StateMachine.cpp
-index b0c8e207..9fe296b2 100644
---- a/Control/L3StateMachine.cpp
-+++ b/Control/L3StateMachine.cpp
-@@ -85,11 +85,11 @@ void MachineBase::machineErrorMessage(int level, int state, const L3Message *l3m
- 
- 	// This kind sucks, digging into the Logger.  The logger could be better.
- 	if (l3msg) {
--		Log(level).get() <<os <<" Unexpected L3 message:"<<l3msg;
-+		Log(level).get() <<os.str() <<" Unexpected L3 message:"<<l3msg;
- 	} else if (sipmsg) {
--		Log(level).get() <<os <<" Unexpected SIP message:"<<sipmsg;
-+		Log(level).get() <<os.str() <<" Unexpected SIP message:"<<sipmsg;
- 	} else {
--		Log(level).get() <<os <<" Unexpected"<<LOGHEX(state);
-+		Log(level).get() <<os.str() <<" Unexpected"<<LOGHEX(state);
- 	}
- }
- 
-diff --git a/GPRS/MSInfo.cpp b/GPRS/MSInfo.cpp
-index ba112b15..c0d87652 100644
---- a/GPRS/MSInfo.cpp
-+++ b/GPRS/MSInfo.cpp
-@@ -638,7 +638,7 @@ bool MSInfo::msAssignChannels()
-         if (msPCHDowns.size() > 1) {
-             std::ostringstream os;
-             msDumpChannels(os);
--            LOG(INFO) << "Multislot assignment for "<<this<<os;
-+            LOG(INFO) << "Multislot assignment for "<<this<<os.str();
-         }
- 
- 	} else {
-diff --git a/GSMShare/A51.h b/GSMShare/A51.h
-index d1337dee..5f650d35 100644
---- a/GSMShare/A51.h
-+++ b/GSMShare/A51.h
-@@ -7,5 +7,5 @@ typedef unsigned char byte;
- typedef unsigned long word;
- typedef word bit;
- 
--void A51_GSM( byte *key, int klen, int count, byte *block1, byte *block2 );
-+void A51_GSM( unsigned char *key, int klen, int count, unsigned char *block1, unsigned char *block2 );
- 
-diff --git a/SGSNGGSN/Sgsn.cpp b/SGSNGGSN/Sgsn.cpp
-index 3301b74a..f8b2a0c6 100644
 --- a/SGSNGGSN/Sgsn.cpp
 +++ b/SGSNGGSN/Sgsn.cpp
-@@ -127,7 +127,7 @@ void SgsnInfo::sirm()
- {
- 	std::ostringstream ss;
- 	sgsnInfoDump(this,ss);
--	SGSNLOG("Removing SgsnInfo:"<<ss);
-+	SGSNLOG("Removing SgsnInfo:"<<ss.str());
- 	sSgsnInfoList.remove(this);
- 	delete this;
- }
-@@ -224,7 +224,7 @@ static void GmmRemove(GmmInfo *gmm)
- {
- 	std::ostringstream ss;
- 	gmmInfoDump(gmm,ss,0);
--	SGSNLOG("Removing gmm:"<<ss);
-+	SGSNLOG("Removing gmm:"<<ss.str());
- 	SgsnInfo *si;
- 	RN_FOR_ALL(SgsnInfoList_t,sSgsnInfoList,si) {
- 		// The second test here should be redundant.
-diff --git a/SIP/SIP2Interface.cpp b/SIP/SIP2Interface.cpp
-index bf4e9f82..d2ee0e7d 100644
---- a/SIP/SIP2Interface.cpp
-+++ b/SIP/SIP2Interface.cpp
-@@ -756,7 +756,7 @@ void MySipInterface::msiInit()
- 	// FIXME -- Can we coordinate this with the global logger?
- 	//ortp_set_log_level_mask(ORTP_MESSAGE|ORTP_WARNING|ORTP_ERROR);
+@@ -13,6 +13,7 @@
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
  
--	ortp_set_log_handler(ortpLogFunc);
-+	ortp_set_log_handler((BctbxLogFunc) ortpLogFunc);
++#include <iostream>
+ #include <list>
+ #if RN_UMTS
+ #include <SIPInterface.h>
+--- a/GPRS/MSInfo.cpp
++++ b/GPRS/MSInfo.cpp
+@@ -24,6 +24,7 @@
+ #include "Sgsn.h"
+ #include <string.h>		// for strchr
+ #include <iomanip>		// For fmtflags, setprecision
++#include <iostream>
  
- 	mDriveThread.start((void *(*)(void*))driveLoop2, &gSipInterface );
- 	mPeriodicServiceThread.start((void *(*)(void*))periodicServiceLoop, &gSipInterface );
-diff --git a/SIP/SIPRtp.cpp b/SIP/SIPRtp.cpp
-index ed8ed40c..12fb5f92 100644
---- a/SIP/SIPRtp.cpp
-+++ b/SIP/SIPRtp.cpp
-@@ -125,13 +125,13 @@ void SipRtp::initRTP1(const char *d_ip_addr, unsigned d_port, unsigned dialogId)
- 	rtp_session_set_payload_type(mSession, 3);
- 	// (pat added) The last argument is user payload data that is passed to ourRtpTimestampJumpCallback()
- 	// I was going to use the dialogId but decided to look up the dialog by mSession.
--	rtp_session_signal_connect(mSession,"timestamp_jump",(RtpCallback)ourRtpTimestampJumpCallback,dialogId);
-+	rtp_session_signal_connect(mSession,"timestamp_jump",(RtpCallback)ourRtpTimestampJumpCallback,(void *) dialogId);
+ namespace GPRS {
  
- 	gCountRtpSockets++;
- #ifdef ORTP_NEW_API
- 	rtp_session_set_local_addr(mSession, "0.0.0.0", mRTPPort, -1);
- #else
--	rtp_session_set_local_addr(mSession, "0.0.0.0", mRTPPort);
-+	rtp_session_set_local_addr(mSession, "0.0.0.0", mRTPPort, mRTPPort+1);
- #endif
- 	rtp_session_set_remote_addr(mSession, d_ip_addr, d_port);
- 	WATCHF("*** initRTP local=%d remote=%s %d\n",mRTPPort,d_ip_addr,d_port);
-diff --git a/Transceiver52M/UHDDevice.cpp b/Transceiver52M/UHDDevice.cpp
-index d52be559..59a93813 100644
---- a/Transceiver52M/UHDDevice.cpp
-+++ b/Transceiver52M/UHDDevice.cpp
-@@ -26,7 +26,6 @@
- #include <uhd/property_tree.hpp>
- #include <uhd/usrp/multi_usrp.hpp>
- #include <uhd/utils/thread_priority.hpp>
--#include <uhd/utils/msg.hpp>
+--- a/Control/L3StateMachine.cpp
++++ b/Control/L3StateMachine.cpp
+@@ -32,6 +32,7 @@
+ #include <RRLPServer.h>
+ #include <Globals.h>
+ #include <typeinfo>
++#include <iostream>
  
- #ifdef HAVE_CONFIG_H
- #include "config.h"
-@@ -313,12 +312,13 @@ void *async_event_loop(uhd_device *dev)
- 	return NULL;
- }
- 
-+// TODO: Use the new API to display new stuff
- /* 
-     Catch and drop underrun 'U' and overrun 'O' messages from stdout
-     since we already report using the logging facility. Direct
-     everything else appropriately.
-  */
--void uhd_msg_handler(uhd::msg::type_t type, const std::string &msg)
-+/*void uhd_msg_handler(uhd::msg::type_t type, const std::string &msg)
- {
- 	switch (type) {
- 	case uhd::msg::status:
-@@ -333,7 +333,7 @@ void uhd_msg_handler(uhd::msg::type_t type, const std::string &msg)
- 	case uhd::msg::fastpath:
- 		break;
- 	}
--}
-+}*/
- 
- uhd_device::uhd_device(int sps, bool skip_rx)
- 	: tx_gain(0.0), tx_gain_min(0.0), tx_gain_max(0.0),
+ using namespace GSM;
+ namespace Control {
