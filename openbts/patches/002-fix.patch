@@ -1,37 +1,29 @@
 --- a/SGSNGGSN/Sgsn.cpp
 +++ b/SGSNGGSN/Sgsn.cpp
-@@ -34,6 +34,10 @@ using namespace SIP;
- using namespace Utils;
- #define CASENAME(x) case x: return #x;
- #define SRB3 3
-+#include <string.h>
-+#include <ostream>
-+#include <iostream>
+@@ -13,6 +13,7 @@
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+ 
 +#include <sstream>
- 
- 
- namespace SGSN {
+ #include <list>
+ #if RN_UMTS
+ #include <SIPInterface.h>
 --- a/GPRS/MSInfo.cpp
 +++ b/GPRS/MSInfo.cpp
-@@ -24,6 +24,9 @@
+@@ -24,6 +24,7 @@
  #include "Sgsn.h"
  #include <string.h>		// for strchr
  #include <iomanip>		// For fmtflags, setprecision
-+#include <ostream>
-+#include <iostream>
 +#include <sstream>
  
  namespace GPRS {
  
 --- a/Control/L3StateMachine.cpp
 +++ b/Control/L3StateMachine.cpp
-@@ -32,6 +32,10 @@
+@@ -32,6 +32,7 @@
  #include <RRLPServer.h>
  #include <Globals.h>
  #include <typeinfo>
-+#include <string.h>
-+#include <ostream>
-+#include <iostream>
 +#include <sstream>
  
  using namespace GSM;
