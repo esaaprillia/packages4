@@ -32,6 +32,8 @@ oRTP is a C library implementing the RTP protocol (rfc3550).
 It is available for most unix clones (primilarly Linux and HP-UX), and Microsoft Windows.
 endef
 
+TARGET_CFLAGS += -Wno-error=maybe-uninitialized
+
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
