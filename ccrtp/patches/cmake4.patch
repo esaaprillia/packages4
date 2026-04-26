@@ -1,0 +1,22 @@
+From de73310c491e9d6baff9c1657dc3ae362d857de8 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 26 Apr 2026 14:33:29 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9892faf7..e0bdcee1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@
+ ## implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ #
+ 
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.5...4.0)
+ 
+ PROJECT(ccrtp)
+ set (VERSION 2.1.2)
