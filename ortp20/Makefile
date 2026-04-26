@@ -23,7 +23,7 @@ define Package/ortp20
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=oRTP is a C library implementing the RTP protocol (rfc3550).
-	DEPENDS:=+libzrtpcpp +libstdcpp +libsrtp
+	DEPENDS:=+libzrtpcpp +libstdcpp
 	URL:=https://gitlab.linphone.org/BC/public/ortp
 endef
 
