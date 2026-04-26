@@ -1,36 +1,38 @@
 --- a/SGSNGGSN/Sgsn.cpp
 +++ b/SGSNGGSN/Sgsn.cpp
-@@ -13,6 +13,9 @@
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- */
- 
+@@ -34,6 +34,10 @@ using namespace SIP;
+ using namespace Utils;
+ #define CASENAME(x) case x: return #x;
+ #define SRB3 3
++#include <string.h>
 +#include <ostream>
 +#include <iostream>
 +#include <sstream>
- #include <list>
- #if RN_UMTS
- #include <SIPInterface.h>
+ 
+ 
+ namespace SGSN {
 --- a/GPRS/MSInfo.cpp
 +++ b/GPRS/MSInfo.cpp
-@@ -13,6 +13,9 @@
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- */
- 
+@@ -24,6 +24,9 @@
+ #include "Sgsn.h"
+ #include <string.h>		// for strchr
+ #include <iomanip>		// For fmtflags, setprecision
 +#include <ostream>
 +#include <iostream>
 +#include <sstream>
- #define LOG_GROUP LogGroup::GPRS		// Can set Log.Level.GPRS for debugging
  
- #include "MSInfo.h"
+ namespace GPRS {
+ 
 --- a/Control/L3StateMachine.cpp
 +++ b/Control/L3StateMachine.cpp
-@@ -15,6 +15,9 @@
- 
- */
- // Written by Pat Thompson
+@@ -32,6 +32,10 @@
+ #include <RRLPServer.h>
+ #include <Globals.h>
+ #include <typeinfo>
++#include <string.h>
 +#include <ostream>
 +#include <iostream>
 +#include <sstream>
- #define LOG_GROUP LogGroup::Control		// Can set Log.Level.Control for debugging
- #include "L3StateMachine.h"
- #include "L3CallControl.h"
+ 
+ using namespace GSM;
+ namespace Control {
