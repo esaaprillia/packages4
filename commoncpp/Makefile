@@ -35,7 +35,7 @@ GNU Common C++ is a class framework that was specifically designed for telephony
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_SHARED=ON \
 	-DBUILD_TESTING=OFF
 
 define Build/InstallDev
