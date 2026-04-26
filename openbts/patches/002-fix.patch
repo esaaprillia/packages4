@@ -1,30 +1,65 @@
---- a/SGSNGGSN/Sgsn.cpp
-+++ b/SGSNGGSN/Sgsn.cpp
-@@ -13,6 +13,7 @@
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- */
- 
-+#include <sstream>
- #include <list>
- #if RN_UMTS
- #include <SIPInterface.h>
---- a/GPRS/MSInfo.cpp
-+++ b/GPRS/MSInfo.cpp
-@@ -24,6 +24,7 @@
- #include "Sgsn.h"
- #include <string.h>		// for strchr
- #include <iomanip>		// For fmtflags, setprecision
-+#include <sstream>
- 
- namespace GPRS {
- 
+From 59b615b8ecc5be4e6a7b67104f57a8846a3c6ca8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E7=A7=A6=E5=AE=87=E8=88=AA?= <qinyuhangxiaoxiang@gmail.com>
+Date: Wed, 31 Mar 2021 11:16:27 +0800
+Subject: [PATCH] fix: openbts build error on gcc7
+
+---
+ Control/L3StateMachine.cpp | 6 +++---
+ GPRS/MSInfo.cpp            | 2 +-
+ SGSNGGSN/Sgsn.cpp          | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Control/L3StateMachine.cpp b/Control/L3StateMachine.cpp
+index b0c8e207..9fe296b2 100644
 --- a/Control/L3StateMachine.cpp
 +++ b/Control/L3StateMachine.cpp
-@@ -32,6 +32,7 @@
- #include <RRLPServer.h>
- #include <Globals.h>
- #include <typeinfo>
-+#include <sstream>
+@@ -85,11 +85,11 @@ void MachineBase::machineErrorMessage(int level, int state, const L3Message *l3m
  
- using namespace GSM;
- namespace Control {
+ 	// This kind sucks, digging into the Logger.  The logger could be better.
+ 	if (l3msg) {
+-		Log(level).get() <<os <<" Unexpected L3 message:"<<l3msg;
++		Log(level).get() <<os.str() <<" Unexpected L3 message:"<<l3msg;
+ 	} else if (sipmsg) {
+-		Log(level).get() <<os <<" Unexpected SIP message:"<<sipmsg;
++		Log(level).get() <<os.str() <<" Unexpected SIP message:"<<sipmsg;
+ 	} else {
+-		Log(level).get() <<os <<" Unexpected"<<LOGHEX(state);
++		Log(level).get() <<os.str() <<" Unexpected"<<LOGHEX(state);
+ 	}
+ }
+ 
+diff --git a/GPRS/MSInfo.cpp b/GPRS/MSInfo.cpp
+index ba112b15..c0d87652 100644
+--- a/GPRS/MSInfo.cpp
++++ b/GPRS/MSInfo.cpp
+@@ -638,7 +638,7 @@ bool MSInfo::msAssignChannels()
+         if (msPCHDowns.size() > 1) {
+             std::ostringstream os;
+             msDumpChannels(os);
+-            LOG(INFO) << "Multislot assignment for "<<this<<os;
++            LOG(INFO) << "Multislot assignment for "<<this<<os.str();
+         }
+ 
+ 	} else {
+diff --git a/SGSNGGSN/Sgsn.cpp b/SGSNGGSN/Sgsn.cpp
+index 3301b74a..f8b2a0c6 100644
+--- a/SGSNGGSN/Sgsn.cpp
++++ b/SGSNGGSN/Sgsn.cpp
+@@ -127,7 +127,7 @@ void SgsnInfo::sirm()
+ {
+ 	std::ostringstream ss;
+ 	sgsnInfoDump(this,ss);
+-	SGSNLOG("Removing SgsnInfo:"<<ss);
++	SGSNLOG("Removing SgsnInfo:"<<ss.str());
+ 	sSgsnInfoList.remove(this);
+ 	delete this;
+ }
+@@ -224,7 +224,7 @@ static void GmmRemove(GmmInfo *gmm)
+ {
+ 	std::ostringstream ss;
+ 	gmmInfoDump(gmm,ss,0);
+-	SGSNLOG("Removing gmm:"<<ss);
++	SGSNLOG("Removing gmm:"<<ss.str());
+ 	SgsnInfo *si;
+ 	RN_FOR_ALL(SgsnInfoList_t,sSgsnInfoList,si) {
+ 		// The second test here should be redundant.
