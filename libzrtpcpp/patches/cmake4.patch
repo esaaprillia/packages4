@@ -1,0 +1,22 @@
+From ebc39a8a977da5bb636df1852b24c43fe93a2218 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sun, 26 Apr 2026 08:56:53 +0800
+Subject: [PATCH] Update minimum CMake version requirement to 3.5
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1c0ab6cb..ba2eec90 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,7 +13,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ #
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5...4.0)
+ 
+ PROJECT(libzrtpcpp)
+ 
