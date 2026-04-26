@@ -15,7 +15,7 @@ index 8799f4cd..6e2f4d5b 100755
   * Authors: Werner Dittmann <Werner.Dittmann@t-online.de>
   */
  #include <sstream>
-+#include <stdint.h>
++#include <sys/types.h>
  
  #include <crypto/zrtpDH.h>
  #include <crypto/hmac256.h>
