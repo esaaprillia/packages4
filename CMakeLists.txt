@@ -12,7 +12,7 @@
 ## implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.5...4.0)
 
 PROJECT(ccrtp)
 set (VERSION 2.1.2)
