@@ -1,22 +1,26 @@
-From a403766777872e6e5796128791a5de5a8efb9af2 Mon Sep 17 00:00:00 2001
+From bbc25d787f6ebdca319777d1ba566f44d3e78b5d Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sun, 26 Apr 2026 20:07:21 +0800
-Subject: [PATCH] Add files via upload
+Date: Sun, 26 Apr 2026 21:02:12 +0800
+Subject: [PATCH] Update stun.c
 
 ---
- src/stun.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ src/stun.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/src/stun.c b/src/stun.c
-index 523c19b..e60842f 100644
+index 523c19b..8ad9529 100644
 --- a/src/stun.c
 +++ b/src/stun.c
-@@ -1640,7 +1640,7 @@ stunServerProcessMsg( char* buf,
-                      }
+@@ -67,6 +67,12 @@
+  *
+  */
+ 
++#include <cassert>
++#include <cstring>
++#include <iostream>
++#include <cstdlib>
++#include <errno.h>
++
+ #ifdef HAVE_CONFIG_H
+ #include "ortp-config.h"
  #endif
- 							
--                     if (memcmp(buf, hmac, 20) != 0)
-+                     if (memcmp(buf, hmac, 20) != NULL)
-                      {
-                         ortp_error("stun: SA_MESSAGEINTEGRITY is bad. Sending ");
-                         stunCreateErrorResponse(resp, 4, 3, "Unknown username. Try test with password 1234");
