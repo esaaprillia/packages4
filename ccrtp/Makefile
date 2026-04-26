@@ -26,6 +26,12 @@ define Package/ccrtp/description
 GNU ccRTP is an implementation of RTP, the real-time transport protocol from the IETF (see RFC  3550, RFC 3551 and RFC 3555).
 endef
 
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		DESTDIR="$(PKG_INSTALL_DIR)" \
+		install
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
