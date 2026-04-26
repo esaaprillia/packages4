@@ -45,8 +45,8 @@ define Build/InstallDev
 	$(SED) 's,^\(prefix\|exec_prefix\)=.*,\1=$(STAGING_DIR)/usr,g' $(1)/usr/bin/ucommon-config
 	$(SED) 's,^\(prefix\|exec_prefix\)=.*,\1=$(STAGING_DIR)/usr,g' $(1)/usr/bin/commoncpp-config
 	$(INSTALL_DIR) $(2)/bin
-	$(LN) ../../usr/bin/sdl2-config $(2)/bin/ucommon-config
-	$(LN) ../../usr/bin/sdl2-config $(2)/bin/commoncpp-config
+	$(LN) ../../usr/bin/ucommon-config $(2)/bin/ucommon-config
+	$(LN) ../../usr/bin/commoncpp-config $(2)/bin/commoncpp-config
 endef
 
 define Package/commoncpp/install
