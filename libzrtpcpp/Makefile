@@ -23,7 +23,7 @@ define Package/libzrtpcpp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=C++ Implementation of ZRTP protocol - GNU ZRTP C++
-	DEPENDS:=+libstdcpp
+	DEPENDS:=+libstdcpp +ccrtp
 	URL:=https://github.com/wernerd/ZRTPCPP
 endef
 
@@ -32,7 +32,7 @@ This package provides a library that adds ZRTP support to the GNU ccRTP stack an
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=YES
+	-DBUILD_SHARED_LIBS=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
