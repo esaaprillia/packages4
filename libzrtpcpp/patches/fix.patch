@@ -1,0 +1,21 @@
+From e20f363c1f9fc0090b71657eb3b91abf8ad70168 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sun, 26 Apr 2026 11:34:43 +0800
+Subject: [PATCH] Update ZRtp.cpp
+
+---
+ zrtp/ZRtp.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/zrtp/ZRtp.cpp b/zrtp/ZRtp.cpp
+index 8799f4cd..6e2f4d5b 100755
+--- a/zrtp/ZRtp.cpp
++++ b/zrtp/ZRtp.cpp
+@@ -18,6 +18,7 @@
+  * Authors: Werner Dittmann <Werner.Dittmann@t-online.de>
+  */
+ #include <sstream>
++#include <stdint.h>
+ 
+ #include <crypto/zrtpDH.h>
+ #include <crypto/hmac256.h>
