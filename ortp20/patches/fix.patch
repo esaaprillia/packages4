@@ -1,0 +1,22 @@
+From a403766777872e6e5796128791a5de5a8efb9af2 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 26 Apr 2026 20:07:21 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ src/stun.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/stun.c b/src/stun.c
+index 523c19b..e60842f 100644
+--- a/src/stun.c
++++ b/src/stun.c
+@@ -1640,7 +1640,7 @@ stunServerProcessMsg( char* buf,
+                      }
+ #endif
+ 							
+-                     if (memcmp(buf, hmac, 20) != 0)
++                     if (memcmp(buf, hmac, 20) != NULL)
+                      {
+                         ortp_error("stun: SA_MESSAGEINTEGRITY is bad. Sending ");
+                         stunCreateErrorResponse(resp, 4, 3, "Unknown username. Try test with password 1234");
