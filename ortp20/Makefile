@@ -4,13 +4,15 @@ PKG_NAME:=ortp20
 PKG_VERSION:=0.20.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=ortp-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/BelledonneCommunications/ortp/archive/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=AGPLv3
 PKG_LICENSE_FILES:=LICENSE.txt
+
+PKG_BUILD_DIR:=$(BUILD_DIR)/ortp-$(PKG_VERSION)
 
 PKG_BUILD_PARALLEL:=1
 PKG_FIXUP:=autoreconf
