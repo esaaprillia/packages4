@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=uhd310
+PKG_NAME:=uhd
 PKG_VERSION:=3.10.1.1
 PKG_RELEASE:=1
 
