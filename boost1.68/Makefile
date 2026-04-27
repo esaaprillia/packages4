@@ -68,6 +68,7 @@ This package provides the following run-time libraries:
  - random
  - regex
  - serialization and wserialization
+ - signals
  - stackstrace
  - system
  - thread
@@ -347,6 +348,7 @@ $(eval $(call DefineBoostLibrary,random,system))
 $(eval $(call DefineBoostLibrary,regex))
 $(eval $(call DefineBoostLibrary,serialization))
 $(eval $(call DefineBoostLibrary,wserialization,serialization))
+$(eval $(call DefineBoostLibrary,signals))
 $(eval $(call DefineBoostLibrary,stacktrace))
 $(eval $(call DefineBoostLibrary,system))
 $(eval $(call DefineBoostLibrary,thread,system chrono atomic))
