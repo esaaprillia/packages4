@@ -1,17 +1,6 @@
-From eefbe87468a897ee990c3f1f4fa6bc7c3abc6c62 Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Mon, 27 Apr 2026 19:38:39 +0800
-Subject: [PATCH] Update duc_block_ctrl_impl.cpp
-
----
- host/lib/rfnoc/duc_block_ctrl_impl.cpp | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/host/lib/rfnoc/duc_block_ctrl_impl.cpp b/host/lib/rfnoc/duc_block_ctrl_impl.cpp
-index d755bf5198..2de826ec91 100644
---- a/host/lib/rfnoc/duc_block_ctrl_impl.cpp
-+++ b/host/lib/rfnoc/duc_block_ctrl_impl.cpp
-@@ -21,6 +21,8 @@
+--- a/host/lib/rfnoc/ddc_block_ctrl_impl.cpp
++++ b/host/lib/rfnoc/ddc_block_ctrl_impl.cpp
+@@ -21,8 +21,12 @@
  #include <uhd/convert.hpp>
  #include <uhd/types/ranges.hpp>
  #include <boost/math/special_functions/round.hpp>
@@ -19,7 +8,40 @@ index d755bf5198..2de826ec91 100644
 +#include <functional>
  #include <cmath>
  
++using namespace boost::placeholders;
++using namespace std::placeholders;
  using namespace uhd::rfnoc;
+ 
+ // TODO move this to a central location
+--- a/host/lib/rfnoc/duc_block_ctrl_impl.cpp
++++ b/host/lib/rfnoc/duc_block_ctrl_impl.cpp
+@@ -21,8 +21,12 @@
+ #include <uhd/convert.hpp>
+ #include <uhd/types/ranges.hpp>
+ #include <boost/math/special_functions/round.hpp>
++#include <boost/bind/bind.hpp>
++#include <functional>
+ #include <cmath>
+ 
++using namespace boost::placeholders;
++using namespace std::placeholders;
+ using namespace uhd::rfnoc;
+ 
+ // TODO move this to a central location
+--- a/host/lib/rfnoc/dma_fifo_block_ctrl_impl.cpp
++++ b/host/lib/rfnoc/dma_fifo_block_ctrl_impl.cpp
+@@ -23,7 +23,11 @@
+ #include <uhd/types/wb_iface.hpp>
+ #include <boost/make_shared.hpp>
+ #include <boost/thread/mutex.hpp>
++#include <boost/bind/bind.hpp>
++#include <functional>
+ 
++using namespace boost::placeholders;
++using namespace std::placeholders;
+ using namespace uhd;
+ using namespace uhd::rfnoc;
+ 
 --- a/host/CMakeLists.txt
 +++ b/host/CMakeLists.txt
 @@ -348,7 +348,7 @@ SET(UHD_IMAGES_DOWNLOAD_SRC "uhd-images_003.010.001.001-release.zip")
