@@ -1,3 +1,86 @@
+--- a/host/lib/usrp/multi_usrp.cpp
++++ b/host/lib/usrp/multi_usrp.cpp
+@@ -33,9 +33,13 @@
+ #include <boost/foreach.hpp>
+ #include <boost/format.hpp>
+ #include <boost/algorithm/string.hpp>
++#include <boost/bind/bind.hpp>
++#include <functional>
+ #include <algorithm>
+ #include <cmath>
+ 
++using namespace boost::placeholders;
++using namespace std::placeholders;
+ using namespace uhd;
+ using namespace uhd::usrp;
+ 
+@@ -221,7 +225,7 @@ static gain_fcns_t make_gain_fcns_from_subtree(property_tree::sptr subtree){
+     gain_fcns_t gain_fcns;
+     gain_fcns.get_range = boost::bind(&get_gain_range, subtree);
+     gain_fcns.get_value = boost::bind(&get_gain_value, subtree);
+-    gain_fcns.set_value = boost::bind(&set_gain_value, subtree, _1);
++    gain_fcns.set_value = boost::bind(&set_gain_value, subtree, boost::placeholders::_1);
+     return gain_fcns;
+ }
+ 
+--- a/host/lib/usrp/mboard_eeprom.cpp
++++ b/host/lib/usrp/mboard_eeprom.cpp
+@@ -166,19 +166,19 @@ static void store_n100(const mboard_eeprom_t &mb_eeprom, i2c_iface &iface){
+ 
+     if (mb_eeprom.has_key("ip-addr")){
+         byte_vector_t ip_addr_bytes(4);
+-        byte_copy(boost::asio::ip::address_v4::from_string(mb_eeprom["ip-addr"]).to_bytes(), ip_addr_bytes);
++        byte_copy(boost::asio::ip::make_address_v4(mb_eeprom["ip-addr"]).to_bytes(), ip_addr_bytes);
+         iface.write_eeprom(N100_EEPROM_ADDR, offsetof(n100_eeprom_map, ip_addr), ip_addr_bytes);
+     }
+ 
+     if (mb_eeprom.has_key("subnet")){
+         byte_vector_t ip_addr_bytes(4);
+-        byte_copy(boost::asio::ip::address_v4::from_string(mb_eeprom["subnet"]).to_bytes(), ip_addr_bytes);
++        byte_copy(boost::asio::ip::make_address_v4(mb_eeprom["subnet"]).to_bytes(), ip_addr_bytes);
+         iface.write_eeprom(N100_EEPROM_ADDR, offsetof(n100_eeprom_map, subnet), ip_addr_bytes);
+     }
+ 
+     if (mb_eeprom.has_key("gateway")){
+         byte_vector_t ip_addr_bytes(4);
+-        byte_copy(boost::asio::ip::address_v4::from_string(mb_eeprom["gateway"]).to_bytes(), ip_addr_bytes);
++        byte_copy(boost::asio::ip::make_address_v4(mb_eeprom["gateway"]).to_bytes(), ip_addr_bytes);
+         iface.write_eeprom(N100_EEPROM_ADDR, offsetof(n100_eeprom_map, gateway), ip_addr_bytes);
+     }
+ 
+@@ -352,19 +352,19 @@ static void store_x300(const mboard_eeprom_t &mb_eeprom, i2c_iface &iface)
+     //store the ip addresses
+     byte_vector_t ip_addr_bytes(4);
+     if (mb_eeprom.has_key("gateway")){
+-        byte_copy(boost::asio::ip::address_v4::from_string(mb_eeprom["gateway"]).to_bytes(), ip_addr_bytes);
++        byte_copy(boost::asio::ip::make_address_v4(mb_eeprom["gateway"]).to_bytes(), ip_addr_bytes);
+         iface.write_eeprom(X300_EEPROM_ADDR, offsetof(x300_eeprom_map, gateway), ip_addr_bytes);
+     }
+     for (size_t i = 0; i < 4; i++)
+     {
+         const std::string n(1, i+'0');
+         if (mb_eeprom.has_key("ip-addr"+n)){
+-            byte_copy(boost::asio::ip::address_v4::from_string(mb_eeprom["ip-addr"+n]).to_bytes(), ip_addr_bytes);
++            byte_copy(boost::asio::ip::make_address_v4(mb_eeprom["ip-addr"+n]).to_bytes(), ip_addr_bytes);
+             iface.write_eeprom(X300_EEPROM_ADDR, offsetof(x300_eeprom_map, ip_addr)+(i*4), ip_addr_bytes);
+         }
+ 
+         if (mb_eeprom.has_key("subnet"+n)){
+-            byte_copy(boost::asio::ip::address_v4::from_string(mb_eeprom["subnet"+n]).to_bytes(), ip_addr_bytes);
++            byte_copy(boost::asio::ip::make_address_v4(mb_eeprom["subnet"+n]).to_bytes(), ip_addr_bytes);
+             iface.write_eeprom(X300_EEPROM_ADDR, offsetof(x300_eeprom_map, subnet)+(i*4), ip_addr_bytes);
+         }
+     }
+@@ -600,7 +600,7 @@ template <typename T> static const byte_vector_t to_bytes(const T &item){
+ }
+ 
+ #define sizeof_member(struct_name, member_name) \
+-    sizeof(reinterpret_cast<struct_name*>(NULL)->member_name)
++    sizeof(static_cast<struct_name*>(nullptr)->member_name)
+ 
+ static void load_e100(mboard_eeprom_t &mb_eeprom, i2c_iface &iface){
+     const size_t num_bytes = offsetof(e100_eeprom_map, model);
+
 --- a/host/lib/rfnoc/ddc_block_ctrl_impl.cpp
 +++ b/host/lib/rfnoc/ddc_block_ctrl_impl.cpp
 @@ -21,8 +21,12 @@
