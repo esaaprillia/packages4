@@ -1,0 +1,22 @@
+From 38e565913e58275ae54de9307260e0fd3d4c3889 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 27 Apr 2026 09:10:47 +0800
+Subject: [PATCH] Update byteswap.ipp
+
+---
+ host/include/uhd/utils/byteswap.ipp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/host/include/uhd/utils/byteswap.ipp b/host/include/uhd/utils/byteswap.ipp
+index fc15d8a0ac..12bcff379a 100644
+--- a/host/include/uhd/utils/byteswap.ipp
++++ b/host/include/uhd/utils/byteswap.ipp
+@@ -99,7 +99,7 @@
+ /***********************************************************************
+  * Define the templated network to/from host conversions
+  **********************************************************************/
+-#include <boost/detail/endian.hpp>
++#include <boost/endian/endian.hpp>
+ 
+ namespace uhd {
+ 
