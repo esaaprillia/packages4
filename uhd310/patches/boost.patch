@@ -1,24 +1,25 @@
-From c079c7e3b0b64ed22b76856c23ee0e2b5f0045b7 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Mon, 27 Apr 2026 17:04:01 +0800
+From eefbe87468a897ee990c3f1f4fa6bc7c3abc6c62 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 27 Apr 2026 19:38:39 +0800
 Subject: [PATCH] Update duc_block_ctrl_impl.cpp
 
 ---
- host/lib/rfnoc/duc_block_ctrl_impl.cpp | 1 +
- 1 file changed, 1 insertion(+)
+ host/lib/rfnoc/duc_block_ctrl_impl.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/host/lib/rfnoc/duc_block_ctrl_impl.cpp b/host/lib/rfnoc/duc_block_ctrl_impl.cpp
-index d755bf5198..e82e2fb7e1 100644
+index d755bf5198..2de826ec91 100644
 --- a/host/lib/rfnoc/duc_block_ctrl_impl.cpp
 +++ b/host/lib/rfnoc/duc_block_ctrl_impl.cpp
-@@ -20,6 +20,7 @@
- #include <uhd/utils/msg.hpp>
+@@ -21,6 +21,8 @@
  #include <uhd/convert.hpp>
  #include <uhd/types/ranges.hpp>
-+#include <functional>
  #include <boost/math/special_functions/round.hpp>
++#include <boost/bind/bind.hpp>
++#include <functional>
  #include <cmath>
  
+ using namespace uhd::rfnoc;
 --- a/host/CMakeLists.txt
 +++ b/host/CMakeLists.txt
 @@ -348,7 +348,7 @@ SET(UHD_IMAGES_DOWNLOAD_SRC "uhd-images_003.010.001.001-release.zip")
