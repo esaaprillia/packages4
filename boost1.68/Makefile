@@ -51,13 +51,12 @@ This package provides the following run-time libraries:
  - chrono
  - container
  - context
- - contract 
- - coroutine (Deprecated - use Coroutine2)
- - - coroutine2 (Requires GCC v5 and up)
+ - contract
+ - coroutine and coroutine2 (Coroutine is deprecated - use Coroutine2)
  - date_time
  - exception
  - filesystem
- - fiber (Requires GCC v5 and up)
+ - fiber
  - graph
  - - graph-parallel
  - iostreams
@@ -69,7 +68,6 @@ This package provides the following run-time libraries:
  - random
  - regex
  - serialization and wserialization
- - signals
  - stackstrace
  - system
  - thread
@@ -327,35 +325,34 @@ define DefineBoostLibrary
   endef
 endef
 
-$(eval $(call DefineBoostLibrary,atomic,system,))
-$(eval $(call DefineBoostLibrary,chrono,system,))
-$(eval $(call DefineBoostLibrary,container,,))
-$(eval $(call DefineBoostLibrary,context,chrono system thread,))
-$(eval $(call DefineBoostLibrary,contract,system,))
-$(eval $(call DefineBoostLibrary,coroutine,system chrono context thread,))
-$(eval $(call DefineBoostLibrary,date_time,,))
+$(eval $(call DefineBoostLibrary,atomic,system))
+$(eval $(call DefineBoostLibrary,chrono,system))
+$(eval $(call DefineBoostLibrary,container))
+$(eval $(call DefineBoostLibrary,context,chrono system,,!boost-context-exclude))
+$(eval $(call DefineBoostLibrary,contract,system))
+$(eval $(call DefineBoostLibrary,coroutine,system chrono context thread,,!boost-coroutine-exclude))
+$(eval $(call DefineBoostLibrary,date_time))
 #$(eval $(call DefineBoostLibrary,exception,,))
 $(eval $(call DefineBoostLibrary,fiber,coroutine filesystem,,!boost-fiber-exclude))
-$(eval $(call DefineBoostLibrary,filesystem,system,))
-$(eval $(call DefineBoostLibrary,graph,regex,))
-$(eval $(call DefineBoostLibrary,iostreams,,+zlib +liblzma +libbz2))
+$(eval $(call DefineBoostLibrary,filesystem,system))
+$(eval $(call DefineBoostLibrary,graph,regex))
+$(eval $(call DefineBoostLibrary,iostreams,,+zlib +liblzma +libbz2 +zstd))
 $(eval $(call DefineBoostLibrary,locale,system,$(ICONV_DEPENDS),BUILD_NLS))
-$(eval $(call DefineBoostLibrary,log,system chrono date_time thread filesystem regex,))
-$(eval $(call DefineBoostLibrary,math,,))
+$(eval $(call DefineBoostLibrary,log,system chrono date_time thread filesystem regex))
+$(eval $(call DefineBoostLibrary,math))
 #$(eval $(call DefineBoostLibrary,mpi,,)) # OpenMPI does no exist in OpenWRT at this time.
-$(eval $(call DefineBoostLibrary,program_options,,))
+$(eval $(call DefineBoostLibrary,program_options))
 $(eval $(call DefineBoostLibrary,python3,,,PACKAGE_python3))
-$(eval $(call DefineBoostLibrary,random,system,))
-$(eval $(call DefineBoostLibrary,regex,,))
-$(eval $(call DefineBoostLibrary,serialization,,))
-$(eval $(call DefineBoostLibrary,wserialization,serialization,))
-$(eval $(call DefineBoostLibrary,signals,,))
-$(eval $(call DefineBoostLibrary,stacktrace,,))
-$(eval $(call DefineBoostLibrary,system,,))
-$(eval $(call DefineBoostLibrary,thread,system chrono atomic,))
+$(eval $(call DefineBoostLibrary,random,system))
+$(eval $(call DefineBoostLibrary,regex))
+$(eval $(call DefineBoostLibrary,serialization))
+$(eval $(call DefineBoostLibrary,wserialization,serialization))
+$(eval $(call DefineBoostLibrary,stacktrace))
+$(eval $(call DefineBoostLibrary,system))
+$(eval $(call DefineBoostLibrary,thread,system chrono atomic))
 $(eval $(call DefineBoostLibrary,timer,chrono))
-$(eval $(call DefineBoostLibrary,type_erasure,chrono system thread,))
-$(eval $(call DefineBoostLibrary,wave,date_time thread filesystem,))
+$(eval $(call DefineBoostLibrary,type_erasure,chrono system thread))
+$(eval $(call DefineBoostLibrary,wave,date_time thread filesystem))
 
 include $(INCLUDE_DIR)/host-build.mk
 
