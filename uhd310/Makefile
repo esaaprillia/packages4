@@ -17,7 +17,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0-or-later
 PKG_LICENSE_FILES:=LICENSE.md
 
-CMAKE_BINARY_SUBDIR:=build
+#CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=host
 
 PKG_BUILD_DEPENDS:=python-mako/host python-requests/host
@@ -40,7 +40,7 @@ define Package/uhd310/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_SHARED_LIBS=ON -Wno-dev \
 	-DNEON_SIMD_ENABLE=ON \
 	-DUHD_VERSION="$(PKG_VERSION)" \
 	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
