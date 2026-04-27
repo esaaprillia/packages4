@@ -1,11 +1,13 @@
 --- a/host/lib/CMakeLists.txt
 +++ b/host/lib/CMakeLists.txt
-@@ -173,7 +173,16 @@ ENDIF(MSVC)
+@@ -172,8 +172,17 @@ ENDIF(MSVC)
+ ########################################################################
  # Setup libuhd library
  ########################################################################
- ADD_LIBRARY(uhd SHARED ${libuhd_sources})
+-ADD_LIBRARY(uhd SHARED ${libuhd_sources})
 -TARGET_LINK_LIBRARIES(uhd ${Boost_LIBRARIES} ${libuhd_libs})
-+TARGET_LINK_LIBRARIES(uhd
++add_library(uhd SHARED ${libuhd_sources})
++target_link_libraries(uhd
 +    PUBLIC
 +    Boost::boost
 +    Boost::chrono
@@ -18,14 +20,3 @@
  SET_TARGET_PROPERTIES(uhd PROPERTIES DEFINE_SYMBOL "UHD_DLL_EXPORTS")
  IF(NOT LIBUHDDEV_PKG)
      SET_TARGET_PROPERTIES(uhd PROPERTIES SOVERSION "${UHD_VERSION_MAJOR}")
---- a/host/include/uhd/utils/byteswap.ipp
-+++ b/host/include/uhd/utils/byteswap.ipp
-@@ -99,7 +99,7 @@
- /***********************************************************************
-  * Define the templated network to/from host conversions
-  **********************************************************************/
--#include <boost/detail/endian.hpp>
-+#include <boost/predef/other/endian.h>
- 
- namespace uhd {
- 
