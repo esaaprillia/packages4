@@ -15,7 +15,7 @@ index d755bf5198..e82e2fb7e1 100644
  #include <uhd/utils/msg.hpp>
  #include <uhd/convert.hpp>
  #include <uhd/types/ranges.hpp>
-+#include <boost/bind.hpp>
++#include <functional>
  #include <boost/math/special_functions/round.hpp>
  #include <cmath>
  
