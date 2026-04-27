@@ -39,6 +39,8 @@ define Package/uhd310/description
 	USRP Hardware Driver (UHD™) Software
 endef
 
+TARGET_CFLAGS += -DBOOST_BIND_GLOBAL_PLACEHOLDERS
+
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
