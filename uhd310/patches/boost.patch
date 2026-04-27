@@ -16,7 +16,7 @@ index fc15d8a0ac..12bcff379a 100644
   * Define the templated network to/from host conversions
   **********************************************************************/
 -#include <boost/detail/endian.hpp>
-+#include <boost/endian/endian.hpp>
++#include <boost/predef/other/endian.h>
  
  namespace uhd {
  
