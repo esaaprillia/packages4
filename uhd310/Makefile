@@ -40,7 +40,6 @@ define Package/uhd310/description
 endef
 
 CMAKE_OPTIONS += \
-	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
 	-DNEON_SIMD_ENABLE=ON \
 	-DUHD_VERSION="$(PKG_VERSION)" \
