@@ -31,7 +31,7 @@ define Package/uhd310
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The USRP™ Hardware Driver Repository
-	DEPENDS:=+libstdcpp +boost-filesystem +boost-program_options +boost-serialization +boost-thread +boost-test +libusb-1.0 +libpython3
+	DEPENDS:=+libstdcpp +boost-libs +boost-filesystem +boost-program_options +boost-serialization +boost-thread +boost-test +libusb-1.0 +libpython3
 	URL:=https://github.com/EttusResearch/uhd
 endef
 
@@ -43,11 +43,9 @@ TARGET_CFLAGS += -DBOOST_BIND_GLOBAL_PLACEHOLDERS
 TARGET_CXXFLAGS += -DBOOST_BIND_GLOBAL_PLACEHOLDERS
 
 CMAKE_OPTIONS += \
-	-Wno-dev \
 	-DBUILD_SHARED_LIBS=ON \
 	-DNEON_SIMD_ENABLE=ON \
 	-DUHD_VERSION="$(PKG_VERSION)" \
-	-DBoost_FOUND=TRUE \
 	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 	-DPython_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
