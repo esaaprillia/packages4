@@ -1,10 +1,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=uhd
-PKG_VERSION:=3.10.1.1
+PKG_VERSION:=3.10.3.0
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=release_003_010_001_001-$(PKG_VERSION).tar.gz
+#PKG_SOURCE:=release_003_010_003_000-$(PKG_VERSION).tar.gz
 #PKG_SOURCE_URL:=https://github.com/EttusResearch/uhd/archive/
 #PKG_HASH:=skip
 
