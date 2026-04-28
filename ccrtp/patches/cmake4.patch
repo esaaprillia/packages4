@@ -16,7 +16,7 @@ index 9892faf7..e0bdcee1 100644
  #
  
 -cmake_minimum_required(VERSION 2.6)
-+cmake_minimum_required(VERSION 3.5...4.0)
++cmake_minimum_required(VERSION 3.10)
  
  PROJECT(ccrtp)
  set (VERSION 2.1.2)
