@@ -11,18 +11,18 @@ https://bugs.python.org/issue32381
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/libs/python/src/exec.cpp b/libs/python/src/exec.cpp
-index b2eabe59f6..dd0c33103f 100644
+index 171c6f4..70fdfaa 100644
 --- a/libs/python/src/exec.cpp
 +++ b/libs/python/src/exec.cpp
-@@ -116,7 +116,7 @@ object BOOST_PYTHON_DECL exec_file(char const *filename, object global, object l
+@@ -109,7 +109,7 @@ object BOOST_PYTHON_DECL exec_file(char const *filename, object global, object l
+   FILE *fs = _Py_fopen(f, "r");
  #elif PY_VERSION_HEX >= 0x03000000
-   // Let python open the file to avoid potential binary incompatibilities.
    PyObject *fo = Py_BuildValue("s", f);
--  FILE *fs = _Py_fopen(fo, "r"); // Private CPython API
+-  FILE *fs = _Py_fopen(fo, "r");
 +  FILE *fs = fopen(fo, "r");
    Py_DECREF(fo);
  #else
-   // Let python open the file to avoid potential binary incompatibilities.
+   PyObject *pyfile = PyFile_FromString(f, const_cast<char*>("r"));
 From 944fa075b321cf53a972dfd0e9bab11cc194ee15 Mon Sep 17 00:00:00 2001
 From: Pat Riehecky <riehecky@fnal.gov>
 Date: Wed, 14 Oct 2020 13:54:24 -0500
