@@ -10,7 +10,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/EttusResearch/uhd.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=c705922a08e32c8b0ec7ef6af6137835f87b2f42
+PKG_SOURCE_VERSION:=ef1576780bc927b8611640091b15f3d051cb97ad
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
