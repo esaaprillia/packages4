@@ -457,7 +457,7 @@ define Build/Compile
 					$(if $(CONFIG_boost-runtime-static-and-shared),runtime-link=shared$(comma)static,) \
 					$(if $(CONFIG_boost-single-thread),threading=single,) \
 					threading=multi \
-					--with-python=python3 \
+					--with-python \
 				install ;\
 			,) \
 	)
