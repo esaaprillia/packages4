@@ -1,45 +1,17 @@
-From f6eb428d87aca6ed167a1d1d6f1e8b7dc57786ef Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Tue, 28 Apr 2026 21:38:52 +0800
+From bd93543e553e0da3b8103e982b103e96ab95ac9a Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 29 Apr 2026 05:19:03 +0800
 Subject: [PATCH] Update mboard_eeprom.cpp
 
 ---
- host/lib/usrp/mboard_eeprom.cpp | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ host/lib/usrp/mboard_eeprom.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/host/lib/usrp/mboard_eeprom.cpp b/host/lib/usrp/mboard_eeprom.cpp
-index 4cf58cd057..0919e4a7d7 100644
+index 4cf58cd057..64658d1ee1 100644
 --- a/host/lib/usrp/mboard_eeprom.cpp
 +++ b/host/lib/usrp/mboard_eeprom.cpp
-@@ -414,7 +414,7 @@ static void load_b000(mboard_eeprom_t &mb_eeprom, i2c_iface &iface){
-     );
-     std::copy(
-         rate_bytes.begin(), rate_bytes.end(), //input
--        reinterpret_cast<uint8_t *>(&master_clock_rate) //output
-+        static_cast<uint8_t *>(&master_clock_rate) //output
-     );
-     master_clock_rate = ntohl(master_clock_rate);
-     if (master_clock_rate > 1e6 and master_clock_rate < 1e9){
-@@ -441,8 +441,8 @@ static void store_b000(const mboard_eeprom_t &mb_eeprom, i2c_iface &iface){
-         uint32_t master_clock_rate = uint32_t(boost::lexical_cast<double>(mb_eeprom["mcr"]));
-         master_clock_rate = htonl(master_clock_rate);
-         const byte_vector_t rate_bytes(
--            reinterpret_cast<const uint8_t *>(&master_clock_rate),
--            reinterpret_cast<const uint8_t *>(&master_clock_rate) + sizeof(master_clock_rate)
-+            static_cast<const uint8_t *>(&master_clock_rate),
-+            static_cast<const uint8_t *>(&master_clock_rate) + sizeof(master_clock_rate)
-         );
-         iface.write_eeprom(
-             B000_EEPROM_ADDR, offsetof(b000_eeprom_map, mcr), rate_bytes
-@@ -594,13 +594,13 @@ struct e100_eeprom_map{
- 
- template <typename T> static const byte_vector_t to_bytes(const T &item){
-     return byte_vector_t(
--        reinterpret_cast<const byte_vector_t::value_type *>(&item),
--        reinterpret_cast<const byte_vector_t::value_type *>(&item)+sizeof(item)
-+        static_cast<const byte_vector_t::value_type *>(&item),
-+        static_cast<const byte_vector_t::value_type *>(&item)+sizeof(item)
-     );
+@@ -600,7 +600,7 @@ template <typename T> static const byte_vector_t to_bytes(const T &item){
  }
  
  #define sizeof_member(struct_name, member_name) \
