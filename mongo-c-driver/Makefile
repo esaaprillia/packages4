@@ -21,7 +21,7 @@ define Package/mongo-c-driver
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The Official MongoDB driver for C language
-	DEPENDS:=+libsasl2 +libopenssl +snappy +libzstd
+	DEPENDS:=+libsasl2 +libopenssl +snappy +libzstd +utf8proc
 	URL:=https://github.com/mongodb/mongo-c-driver/
 endef
 
@@ -33,7 +33,8 @@ endef
 
 CMAKE_OPTIONS += \
 	-DENABLE_TESTS=OFF \
-	-DENABLE_EXAMPLES=OFF
+	-DENABLE_EXAMPLES=OFF \
+	-DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -41,7 +42,7 @@ endef
 
 define Package/mongo-c-driver/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/mongoc-stat $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
