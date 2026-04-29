@@ -12,10 +12,13 @@ PKG_LICENSE:=License
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-dnspython
   SUBMENU:=Python
@@ -34,6 +37,7 @@ dnspython is a utility to work with DNS, /etc/hosts is thus not used. For simple
 dnspython originated at Nominum where it was developed to facilitate the testing of DNS software.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-dnspython))
 $(eval $(call BuildPackage,python3-dnspython))
 $(eval $(call BuildPackage,python3-dnspython-src))
