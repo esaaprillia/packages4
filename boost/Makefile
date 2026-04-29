@@ -13,7 +13,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=boost
 PKG_VERSION:=1.66.0
 PKG_SOURCE_VERSION:=1_66_0
-PKG_RELEASE:=1
+PKG_RELEASE:=6
 
 PKG_SOURCE:=$(PKG_NAME)_$(PKG_SOURCE_VERSION).tar.bz2
 PKG_SOURCE_URL:=@SF/$(PKG_NAME)/$(PKG_NAME)/$(PKG_VERSION) https://dl.bintray.com/boostorg/release/$(PKG_VERSION)/source/
@@ -56,8 +56,7 @@ This package provides the following run-time libraries:
  - atomic
  - chrono
  - container
- - context
- - contract 
+ - context 
  - coroutine (Deprecated - use Coroutine2)
  - - coroutine2 (Requires GCC v5 and up)
  - date_time
@@ -303,7 +302,6 @@ $(eval $(call DefineBoostLibrary,atomic,system,))
 $(eval $(call DefineBoostLibrary,chrono,system,))
 $(eval $(call DefineBoostLibrary,container,,))
 $(eval $(call DefineBoostLibrary,context,chrono system thread,))
-$(eval $(call DefineBoostLibrary,contract,system,))
 $(eval $(call DefineBoostLibrary,coroutine,system chrono context thread,))
 $(eval $(call DefineBoostLibrary,date_time,,))
 #$(eval $(call DefineBoostLibrary,exception,,))
