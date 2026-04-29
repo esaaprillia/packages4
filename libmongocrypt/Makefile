@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libmongocrypt
-PKG_VERSION:=1.17.3
+PKG_VERSION:=1.15.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -21,7 +21,7 @@ define Package/libmongocrypt
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The companion C library for client side encryption in drivers.
-	DEPENDS:=+libopenssl
+	DEPENDS:=+libsasl2 +libopenssl +snappy +libzstd +utf8proc +zlib
 	URL:=https://github.com/mongodb/libmongocrypt
 endef
 
@@ -30,6 +30,7 @@ Required C library for Client Side and Queryable Encryption in MongoDB
 endef
 
 CMAKE_OPTIONS += \
+	-DBUILD_VERSION="$(PKG_VERSION)" \
 	-DENABLE_TESTS=OFF \
 	-DENABLE_ONLINE_TESTS=OFF
 
