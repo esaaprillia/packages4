@@ -12,10 +12,14 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=bsd-compat-headers
+PYTHON3_PKG_BUILD:=0
+PKG_BUILD_DEPENDS:=bsd-compat-headers python3 meson/host
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/meson.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
+
+MESON_VARS += $(PYTHON3_VARS)
 
 define Package/open5gs
 	SECTION:=libs
