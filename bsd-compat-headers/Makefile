@@ -13,7 +13,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/bsd-compat-headers
   SECTION:=utils
   CATEGORY:=Base system
-  DEPENDS:=
+  URL:=https://gitlab.alpinelinux.org/alpine/aports
   TITLE:=BSD compatibility headers (cdefs, queue, tree)
 endef
 
