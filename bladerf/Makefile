@@ -38,6 +38,8 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=True \
+	-DTAGGED_RELEASE=ON \
+	-DLIBUSB_VERSION=1.0.29 \
 	-DUDEV_RULES_PATH=/usr/lib/udev/rules.d
 
 define Build/InstallDev
@@ -53,8 +55,6 @@ define Package/bladerf/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/udev
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/udev/rules.d $(1)/usr/lib/udev/
-	$(INSTALL_DIR) $(1)/usr/share
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/bladerf $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,bladerf))
