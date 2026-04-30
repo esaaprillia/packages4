@@ -4,15 +4,20 @@ PKG_NAME:=bladerf
 PKG_VERSION:=2025.10
 PKG_RELEASE:=1
 
-PKG_SOURCE:=bladeRF-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/Nuand/bladeRF/archive/$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=bladeRF-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/Nuand/bladeRF/archive/$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/Nuand/bladeRF.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=fcf9423325ae49f5fdd2e5b52ab68bfc2576ad47
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT LGPLv2.1 GPLv2
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/bladeRF-$(PKG_VERSION)
+#PKG_BUILD_DIR:=$(BUILD_DIR)/bladeRF-$(PKG_VERSION)
 
 CMAKE_BINARY_SUBDIR:=build
 
@@ -31,6 +36,10 @@ define Package/bladerf/description
 This repository contains all the source code required to program and interact with a bladeRF platform, including firmware for the Cypress FX3 USB controller, HDL for the Altera Cyclone IV FPGA, and C code for the host side libraries, drivers, and utilities.
 endef
 
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=True \
+	-DUDEV_RULES_PATH=/usr/lib/udev/rules.d
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libbladeRF.pc
@@ -42,6 +51,8 @@ define Package/bladerf/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/udev
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/udev/rules.d $(1)/usr/lib/udev/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/bladerf $(1)/usr/share/
 endef
