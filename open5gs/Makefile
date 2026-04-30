@@ -34,19 +34,19 @@ define Package/open5gs/description
 Open5GS is a C-language Open Source implementation for 5G Core and EPC, i.e. the core network of LTE/NR network (Release-17)
 endef
 
-define Build/Install/Meson
-	+DESTDIR="$(PKG_INSTALL_DIR)" $(NINJA) -C $(MESON_BUILD_DIR) install_conf install
-endef
+#define Build/Install/Meson
+#	+DESTDIR="$(PKG_INSTALL_DIR)" $(NINJA) -C $(MESON_BUILD_DIR) install_conf install
+#endef
 
 define Package/open5gs/install
 	$(INSTALL_DIR) $(1)/etc
-	$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
+	$(CP) $(PKG_BUILD_DIR)/etc/* $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/var/log
-	$(CP) $(PKG_INSTALL_DIR)/var/log/* $(1)/var/log/
+	$(CP) $(PKG_BUILD_DIR)/var/log/* $(1)/var/log/
 endef
 
 $(eval $(call BuildPackage,open5gs))
