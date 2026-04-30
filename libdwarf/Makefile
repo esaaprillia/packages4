@@ -13,7 +13,7 @@ PKG_LICENSE:=BSD-2-Clause BSD-3-Clause GPL-2.0-only LGPL-2.1-only LicenseRef-lib
 PKG_LICENSE_FILES:=COPYING DWARFDUMPCOPYRIGHT LIBDWARFCOPYRIGHT
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/meson.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/libdwarf
 	SECTION:=libs
@@ -28,12 +28,7 @@ define Package/libdwarf/description
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/libdwarf* $(1)/usr/include/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libdwarf.pc $(1)/usr/lib/pkgconfig/
+	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libdwarf.pc
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libdwarf.pc
 endef
