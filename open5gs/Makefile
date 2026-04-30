@@ -12,14 +12,10 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PYTHON3_PKG_BUILD:=0
-PKG_BUILD_DEPENDS:=bsd-compat-headers python3 meson/host
+PKG_BUILD_DEPENDS:=bsd-compat-headers
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
-
-MESON_VARS += $(PYTHON3_VARS)
+include $(INCLUDE_DIR)/meson.mk
 
 define Package/open5gs
 	SECTION:=libs
@@ -35,13 +31,13 @@ endef
 
 define Package/open5gs/install
 	$(INSTALL_DIR) $(1)/etc
-	$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
+	$(CP) /etc/{open5gs,freeDiameter} $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/var/log
-	$(CP) $(PKG_INSTALL_DIR)/var/log/* $(1)/var/log/
+	$(CP) /var/log/open5gs $(1)/var/log/
 endef
 
 $(eval $(call BuildPackage,open5gs))
