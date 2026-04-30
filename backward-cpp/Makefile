@@ -29,6 +29,8 @@ define Package/backward-cpp/description
 	Backward is a beautiful stack trace pretty printer for C++.
 endef
 
+TARGET_CFLAGS += -D_GNU_SOURCE
+
 CMAKE_OPTIONS += \
 	-DBACKWARD_TESTS=OFF \
 	-DBACKWARD_SHARED=ON
