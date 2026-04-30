@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=fftw3
-PKG_VERSION:=3.3.10
+PKG_VERSION:=3.3.11
 PKG_RELEASE:=1
 PKG_LICENSE:=GPL-2.0-or-later
 
@@ -72,7 +72,6 @@ CONFIGURE_ARGS += \
 	--enable-threads \
 	--enable-type-prefix \
 	--disable-debug \
-	--disable-fortran \
 	--disable-doc
 
 ifeq ($(BUILD_VARIANT), single)
