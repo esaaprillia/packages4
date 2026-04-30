@@ -33,7 +33,7 @@ define Package/open5gs
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open5GS
-	DEPENDS:=+libsctp +libgnutls +libgcrypt +libopenssl +mongo-c-driver +libyaml +libnghttp2 +libmicrohttpd-ssl +libcurl-gnutls +libnghttp2 +libtins +libtalloc +libidn
+	DEPENDS:=+libsctp +libgnutls +libgcrypt +libopenssl +mongo-c-driver +libyaml +libnghttp2 +libmicrohttpd-ssl +libcurl +libcurl-gnutls +libnghttp2 +libtins +libtalloc +libidn
 	URL:=https://open5gs.org/
 endef
 
