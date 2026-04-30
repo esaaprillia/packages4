@@ -17,6 +17,11 @@ PKG_BUILD_DEPENDS:=bsd-compat-headers
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/meson.mk
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's,DESTDIR,$(PKG_INSTALL_DIR),g' $(PKG_BUILD_DIR)/meson.build
+endef
+
 define Package/open5gs
 	SECTION:=libs
 	CATEGORY:=Libraries
