@@ -1,1 +1,20 @@
-mmm
+--- a/test_package/CMakeLists.txt
++++ b/test_package/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ project(backward-package-test)
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ 
+ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+ conan_basic_setup(TARGETS)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@
+ # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ # SOFTWARE.
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.14)
+ project(backward CXX)
+ 
+ # Introduce variables:
