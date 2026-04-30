@@ -24,7 +24,7 @@ include $(INCLUDE_DIR)/meson.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(SED) 's,DESTDIR,$(PKG_INSTALL_DIR),g' $(PKG_BUILD_DIR)/meson.build
+	#$(SED) 's,DESTDIR,$(PKG_INSTALL_DIR),g' $(PKG_BUILD_DIR)/meson.build
 	$(SED) 's,@0@,$(PKG_INSTALL_DIR),g' $(PKG_BUILD_DIR)/meson.build
 	#$(SED) 's,@1@,$(PKG_INSTALL_DIR),g' $(PKG_BUILD_DIR)/meson.build
 endef
