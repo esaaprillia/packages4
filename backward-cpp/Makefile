@@ -29,7 +29,7 @@ define Package/backward-cpp/description
 	Backward is a beautiful stack trace pretty printer for C++.
 endef
 
-TARGET_CFLAGS += -D_GNU_SOURCE
+TARGET_CFLAGS += -D_GNU_SOURCE -Wno-include-next -Wno-error=pedantic
 
 CMAKE_OPTIONS += \
 	-DBACKWARD_TESTS=OFF \
