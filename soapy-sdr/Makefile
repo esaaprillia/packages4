@@ -36,8 +36,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
-	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
-	-DPython_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)
+	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
