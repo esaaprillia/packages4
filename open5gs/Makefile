@@ -31,13 +31,13 @@ endef
 
 define Package/open5gs/install
 	$(INSTALL_DIR) $(1)/etc
-	$(CP) /etc/{open5gs,freeDiameter} $(1)/etc/
+	$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/var/log
-	$(CP) /var/log/open5gs $(1)/var/log/
+	$(CP) $(PKG_INSTALL_DIR)/var/log/* $(1)/var/log/
 endef
 
 $(eval $(call BuildPackage,open5gs))
