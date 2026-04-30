@@ -27,6 +27,9 @@ define Package/libdwarf/description
 	Libdwarf has been focused for years on both providing access to DWARF2 through DWARF5 data in a portable way while also detecting and reporting if the DWARF is corrupted and avoiding run-time crashes or memory leakage regardless how corrupted the DWARF being read may be.
 endef
 
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED=TRUE
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libdwarf.pc
