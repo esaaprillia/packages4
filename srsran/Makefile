@@ -35,7 +35,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DENABLE_GUI=OFF \
-	-DBoost_INCLUDE_DIRS="$(STAGING_DIR)/usr/include" \
+	-DBoost_INCLUDE_DIRS="$(STAGING_DIR)/usr/include/boost" \
 	-DBoost_LIBRARY_DIRS="$(STAGING_DIR)/usr/lib"
 
 define Build/InstallDev
