@@ -20,24 +20,3 @@ index c2ec9ac4585..d68bf004f1b 100644
  project( SRSRAN )
  message( STATUS "CMAKE_SYSTEM: " ${CMAKE_SYSTEM} )
  message( STATUS "CMAKE_SYSTEM_PROCESSOR: " ${CMAKE_SYSTEM_PROCESSOR} )
-From 88d88dbd696071ad413769d061ca8770a8ebc624 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Sat, 2 May 2026 06:15:13 +0800
-Subject: [PATCH] Add Boost version 1.89 to CMakeLists
-
----
- CMakeLists.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c2ec9ac4585..2f2316a4066 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -276,6 +276,7 @@ set(Boost_ADDITIONAL_VERSIONS
-     "1.55.0" "1.55" "1.56.0" "1.56" "1.57.0" "1.57" "1.58.0" "1.58" "1.59.0" "1.59"
-     "1.60.0" "1.60" "1.61.0" "1.61" "1.62.0" "1.62" "1.63.0" "1.63" "1.64.0" "1.64"
-     "1.65.0" "1.65" "1.66.0" "1.66" "1.67.0" "1.67" "1.68.0" "1.68" "1.69.0" "1.69"
-+    "1.89.0" "1.89"
- )
- find_package(Boost "1.35" COMPONENTS ${BOOST_REQUIRED_COMPONENTS})
- 
