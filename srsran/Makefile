@@ -16,6 +16,8 @@ PKG_LICENSE_FILES:=COPYRIGHT
 PKG_BUILD_DIR:=$(BUILD_DIR)/srsRAN_4G-release_$(PKG_SOURCE_VERSION)
 PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp
 
+CMAKE_BINARY_SUBDIR:=build
+
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
