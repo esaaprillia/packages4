@@ -14,7 +14,7 @@ PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=COPYRIGHT
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/srsRAN_4G-release_$(PKG_SOURCE_VERSION)
-PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp
+PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite lksctp-tools uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp
 
 CMAKE_BINARY_SUBDIR:=build
 
