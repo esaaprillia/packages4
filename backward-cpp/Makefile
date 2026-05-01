@@ -36,7 +36,7 @@ endef
 
 TARGET_CFLAGS += \
 	-D_GNU_SOURCE \
-	-Wno-errors \
+	-Wno-error \
 	-Wno-fatal-errors \
 	-Wno-pedantic \
 	-Wno-system-headers
