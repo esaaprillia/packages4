@@ -34,17 +34,10 @@ define Package/backward-cpp/description
 	Backward is a beautiful stack trace pretty printer for C++.
 endef
 
-TARGET_CFLAGS += \
-	-D_GNU_SOURCE \
-	-Wno-error \
-	-Wno-fatal-errors \
-	-Wno-pedantic \
-	-Wno-system-headers \
-	-Wno-gcc-extension
-
 CMAKE_OPTIONS += \
 	-DBACKWARD_TESTS=OFF \
-	-DBACKWARD_SHARED=ON
+	-DBACKWARD_SHARED=ON \
+	-DCMAKE_CXX_FLAGS=-Wno-pedantic-errors
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
