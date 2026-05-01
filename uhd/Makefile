@@ -26,7 +26,7 @@ define Package/uhd
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The USRP™ Hardware Driver Repository
-	DEPENDS:=+libstdcpp +boost-filesystem +boost-program_options +boost-serialization +boost-thread +boost-test +libusb-1.0 +libpython3
+	DEPENDS:=+libstdcpp +boost-filesystem +boost-program_options +boost-serialization +boost-thread +boost-test +libncurses +libusb-1.0 +python3
 	URL:=https://github.com/EttusResearch/uhd
 endef
 
