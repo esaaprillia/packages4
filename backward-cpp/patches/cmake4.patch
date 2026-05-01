@@ -1,21 +1,23 @@
-From bb6d229118a0ac13241cab8bfda0946d711f5145 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Fri, 1 May 2026 09:33:22 +0800
+From 04b894362f30315ba5fc2dfd664b5a70a67e7005 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 1 May 2026 10:33:41 +0800
 Subject: [PATCH] Update backward.hpp
 
 ---
- backward.hpp | 1 -
- 1 file changed, 1 deletion(-)
+ backward.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/backward.hpp b/backward.hpp
-index 263cd1b..aa3e57a 100644
+index 263cd1b..2e3b5a6 100644
 --- a/backward.hpp
 +++ b/backward.hpp
-@@ -220,7 +220,6 @@
+@@ -219,8 +219,8 @@
+ #endif
  #include <signal.h>
  #include <sys/stat.h>
- #include <syscall.h>
--#include <unistd.h>
+-#include <syscall.h>
+ #include <unistd.h>
++#include <sys/syscall.h>
  #ifndef _GNU_SOURCE
  #define _GNU_SOURCE
  #include <dlfcn.h>
