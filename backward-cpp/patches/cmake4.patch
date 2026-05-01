@@ -1,3 +1,24 @@
+From bb6d229118a0ac13241cab8bfda0946d711f5145 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 1 May 2026 09:33:22 +0800
+Subject: [PATCH] Update backward.hpp
+
+---
+ backward.hpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/backward.hpp b/backward.hpp
+index 263cd1b..aa3e57a 100644
+--- a/backward.hpp
++++ b/backward.hpp
+@@ -220,7 +220,6 @@
+ #include <signal.h>
+ #include <sys/stat.h>
+ #include <syscall.h>
+-#include <unistd.h>
+ #ifndef _GNU_SOURCE
+ #define _GNU_SOURCE
+ #include <dlfcn.h>
 --- a/test_package/CMakeLists.txt
 +++ b/test_package/CMakeLists.txt
 @@ -1,5 +1,5 @@
