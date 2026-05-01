@@ -34,7 +34,9 @@ define Package/srsran/description
 endef
 
 CMAKE_OPTIONS += \
-	-DENABLE_GUI=OFF
+	-DENABLE_GUI=OFF \
+	-DBoost_INCLUDE_DIRS="$(STAGING_DIR)/usr/include" \
+	-DBoost_LIBRARY_DIRS="$(STAGING_DIR)/usr/lib"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
