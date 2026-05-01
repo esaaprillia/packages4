@@ -26,7 +26,7 @@ define Package/backward-cpp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A beautiful stack trace pretty printer for C++
-	DEPENDS:=+libstdcpp +libbz2 +libdw +libelf +libunwind +libzstd +zlib
+	DEPENDS:=+libstdcpp +libbz2 +libdw +libelf +libunwind +liblzma +libzstd +zlib
 	URL:=https://github.com/bombela/backward-cpp
 endef
 
