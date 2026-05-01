@@ -39,7 +39,8 @@ TARGET_CFLAGS += \
 	-Wno-error \
 	-Wno-fatal-errors \
 	-Wno-pedantic \
-	-Wno-system-headers
+	-Wno-system-headers \
+	-Wno-gcc-extension
 
 CMAKE_OPTIONS += \
 	-DBACKWARD_TESTS=OFF \
