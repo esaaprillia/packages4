@@ -18,9 +18,13 @@ PKG_MAINTAINER:=Martin Matějek <martin.matejek@nic.cz>
 PKG_LICENSE:=GPL-2.0-or-later Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.GPL-2.0-or-later LICENSE.Apache-2.0
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-pyroute2
   SUBMENU:=Python
@@ -37,6 +41,7 @@ define Package/python3-pyroute2/description
   but now it supports many netlink protocols.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pyroute2))
 $(eval $(call BuildPackage,python3-pyroute2))
 $(eval $(call BuildPackage,python3-pyroute2-src))
