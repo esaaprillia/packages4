@@ -37,7 +37,8 @@ endef
 CMAKE_OPTIONS += \
 	-DBACKWARD_TESTS=OFF \
 	-DBACKWARD_SHARED=ON \
-	-DCMAKE_CXX_FLAGS=-Wno-pedantic-errors
+	-DBACKWARD_HAS_LIBUNWIND=1 \
+	-DCMAKE_CXX_FLAGS= -Wno-pedantic-errors
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
