@@ -1,3 +1,34 @@
+--- a/lib/src/srslog/sinks/stream_sink.h
++++ b/lib/src/srslog/sinks/stream_sink.h
+@@ -22,6 +22,7 @@
+ #ifndef SRSLOG_STREAM_SINK_H
+ #define SRSLOG_STREAM_SINK_H
+ 
++#include <stdio.h>
+ #include "srsran/srslog/sink.h"
+ 
+ namespace srslog {
+--- a/lib/src/phy/io/netsource.c
++++ b/lib/src/phy/io/netsource.c
+@@ -27,6 +27,7 @@
+ #include <stdlib.h>
+ #include <strings.h>
+ #include <sys/socket.h>
++#include <sys/time.h>
+ #include <unistd.h>
+ 
+ #include "srsran/phy/io/netsource.h"
+--- a/lib/src/phy/io/netsink.c
++++ b/lib/src/phy/io/netsink.c
+@@ -84,7 +84,7 @@ int srsran_netsink_set_nonblocking(srsran_netsink_t* q)
+ int srsran_netsink_write(srsran_netsink_t* q, void* buffer, int nof_bytes)
+ {
+   if (!q->connected) {
+-    if (connect(q->sockfd, &q->servaddr, sizeof(q->servaddr)) < 0) {
++    if (connect(q->sockfd, (struct sockaddr *)&q->servaddr, sizeof(q->servaddr)) < 0) {
+       if (errno == ECONNREFUSED || errno == EINPROGRESS) {
+         return SRSRAN_SUCCESS;
+       } else {
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -30,7 +30,7 @@ endif(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
@@ -9,3 +40,4 @@
  project( SRSRAN )
  message( STATUS "CMAKE_SYSTEM: " ${CMAKE_SYSTEM} )
  message( STATUS "CMAKE_SYSTEM_PROCESSOR: " ${CMAKE_SYSTEM_PROCESSOR} )
+
