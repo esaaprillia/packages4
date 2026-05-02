@@ -28,6 +28,10 @@ define Package/libconfig/description
 C/C++ library for processing structured configuration files.
 endef
 
+CONFIGURE_ARGS += \
+	--enable-shared \
+	--enable-static
+
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR="$(PKG_INSTALL_DIR)" install
