@@ -1,3 +1,25 @@
+From 70225180d510336289bd2baff3d1271845fbfbb4 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 2 May 2026 22:59:52 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c2ec9ac4585..f279ec6f276 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -263,7 +263,7 @@ set(BOOST_REQUIRED_COMPONENTS
+   program_options
+ )
+ if(UHD_FOUND) # Ubuntu 18.04 requires component 'system' to link UHD
+-  list(APPEND BOOST_REQUIRED_COMPONENTS "system")
++  list(APPEND BOOST_REQUIRED_COMPONENTS)
+ endif(UHD_FOUND)
+ if(UNIX AND EXISTS "/usr/lib64")
+   list(APPEND BOOST_LIBRARYDIR "/usr/lib64") #fedora 64-bit fix
 --- a/lib/src/srslog/sinks/stream_sink.h
 +++ b/lib/src/srslog/sinks/stream_sink.h
 @@ -22,6 +22,7 @@
@@ -36,7 +58,7 @@
  # Project setup
  ########################################################################
 -cmake_minimum_required(VERSION 3.5)
-+cmake_minimum_required(VERSION 4.0)
++cmake_minimum_required(VERSION 3.10)
  project( SRSRAN )
  message( STATUS "CMAKE_SYSTEM: " ${CMAKE_SYSTEM} )
  message( STATUS "CMAKE_SYSTEM_PROCESSOR: " ${CMAKE_SYSTEM_PROCESSOR} )
