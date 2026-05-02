@@ -14,7 +14,7 @@ PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=COPYRIGHT
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/srsRAN_4G-release_$(PKG_SOURCE_VERSION)
-PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite lksctp-tools uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp
+PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite libconfig lksctp-tools uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp
 
 CMAKE_BINARY_SUBDIR:=build
 
@@ -35,8 +35,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DENABLE_GUI=OFF \
-	-DBoost_INCLUDE_DIRS="$(STAGING_DIR)/usr/include/boost" \
-	-DBoost_LIBRARY_DIRS="$(STAGING_DIR)/usr/lib"
+	-Dboost_system_DIR="$(STAGING_DIR)/usr"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
