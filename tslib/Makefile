@@ -28,6 +28,11 @@ define Package/tslib/description
 tslib consists of the library libts and tools that help you calibrate and use it in your environment.
 endef
 
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		DESTDIR="$(PKG_INSTALL_DIR)" install
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
