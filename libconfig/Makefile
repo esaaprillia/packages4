@@ -20,7 +20,7 @@ define Package/libconfig
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=C/C++ Library for Processing Structured Configuration Files
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=https://github.com/hyperrealm/libconfig
 endef
 
