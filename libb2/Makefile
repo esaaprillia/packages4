@@ -20,7 +20,7 @@ define Package/libb2
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
-	DEPENDS:=
+	DEPENDS:=+libgomp
 	URL:=https://blake2.net/
 endef
 
