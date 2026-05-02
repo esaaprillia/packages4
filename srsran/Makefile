@@ -33,6 +33,12 @@ define Package/srsran/description
 	srsRAN is an open source 4G software radio suite developed by SRS. For 5G RAN, see our new O-RAN CU/DU solution - srsRAN Project.
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) 's,/usr/lib64,$(STAGING_DIR)/usr/lib,g' $(PKG_BUILD_DIR)/CMakeLists.txt
+	#$(SED) 's,Boost_LIBRARY_DIRS,$(STAGING_DIR)/usr/lib,g' $(PKG_BUILD_DIR)/CMakeLists.txt
+endef
+
 CMAKE_OPTIONS += \
 	-DENABLE_GUI=OFF \
 	-DENABLE_WERROR=OFF
