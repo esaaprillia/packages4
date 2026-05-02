@@ -1,14 +1,25 @@
-From efe2e1a90749177fa053a70c744298f5f1298646 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Fri, 1 May 2026 16:34:37 +0800
-Subject: [PATCH] Update minimum CMake version to 3.10
+From b37ffac25d039d218b86ac83489f76ad78de0425 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 2 May 2026 13:06:21 +0800
+Subject: [PATCH] Update netsink.c
 
 ---
- CMakeLists.txt | 2 +-
+ lib/src/phy/io/netsink.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c2ec9ac4585..d68bf004f1b 100644
+diff --git a/lib/src/phy/io/netsink.c b/lib/src/phy/io/netsink.c
+index 1cc599b41a8..70a892457d7 100644
+--- a/lib/src/phy/io/netsink.c
++++ b/lib/src/phy/io/netsink.c
+@@ -84,7 +84,7 @@ int srsran_netsink_set_nonblocking(srsran_netsink_t* q)
+ int srsran_netsink_write(srsran_netsink_t* q, void* buffer, int nof_bytes)
+ {
+   if (!q->connected) {
+-    if (connect(q->sockfd, &q->servaddr, sizeof(q->servaddr)) < 0) {
++    if (connect(q->sockfd, (struct sockaddr *)&q->servaddr, sizeof(q->servaddr)) < 0) {
+       if (errno == ECONNREFUSED || errno == EINPROGRESS) {
+         return SRSRAN_SUCCESS;
+       } else {
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -30,7 +30,7 @@ endif(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
