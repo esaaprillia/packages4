@@ -15,7 +15,7 @@
 +++ b/test_package/CMakeLists.txt
 @@ -1,5 +1,5 @@
  project(backward-package-test)
--cmake_minimum_required(VERSION 2.8.12)
+-cmake_minimum_required(VERSION 3.0)
 +cmake_minimum_required(VERSION 3.10)
  
  include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
