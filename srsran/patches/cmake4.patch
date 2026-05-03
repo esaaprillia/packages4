@@ -1,14 +1,16 @@
-From 70225180d510336289bd2baff3d1271845fbfbb4 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Sat, 2 May 2026 22:59:52 +0800
-Subject: [PATCH] Update CMakeLists.txt
-
----
- CMakeLists.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c2ec9ac4585..f279ec6f276 100644
+--- a/lib/include/srsran/common/backward.hpp
++++ b/lib/include/srsran/common/backward.hpp
+@@ -207,8 +207,9 @@
+ #endif
+ #include <signal.h>
+ #include <sys/stat.h>
+-#include <syscall.h>
++#include <sys/syscall.h>
+ #include <unistd.h>
++#include <dlfcn.h>
+ 
+ #if BACKWARD_HAS_BFD == 1
+ //              NOTE: defining PACKAGE{,_VERSION} is required before including
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -263,7 +263,7 @@ set(BOOST_REQUIRED_COMPONENTS
