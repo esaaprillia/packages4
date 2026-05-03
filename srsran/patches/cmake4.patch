@@ -22,12 +22,19 @@ index c2ec9ac4585..f279ec6f276 100644
    list(APPEND BOOST_LIBRARYDIR "/usr/lib64") #fedora 64-bit fix
 --- a/lib/src/srslog/sinks/stream_sink.h
 +++ b/lib/src/srslog/sinks/stream_sink.h
-@@ -22,6 +22,9 @@
+@@ -22,6 +22,16 @@
  #ifndef SRSLOG_STREAM_SINK_H
  #define SRSLOG_STREAM_SINK_H
  
++#include <stdio.h> // Or <stdio.h>
++
++#ifdef stdout
 +#undef stdout
++#endif
++
++#ifdef stderr
 +#undef stderr
++#endif
 +
  #include "srsran/srslog/sink.h"
  
