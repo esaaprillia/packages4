@@ -25,7 +25,7 @@ define Package/srsran
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open source SDR 4G software suite from Software Radio Systems (SRS)
-	DEPENDS:=+libstdcpp +libpthread
+	DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libconfig +libsctp +uhd +bladerf +soapy-sdr +libzmq-nc +boost-program_options +libexecinfo
 	URL:=https://github.com/srsran/srsRAN_4G
 endef
 
@@ -36,7 +36,6 @@ endef
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(SED) 's,/usr/lib64,$(STAGING_DIR)/usr/lib,g' $(PKG_BUILD_DIR)/CMakeLists.txt
-	#$(SED) 's,Boost_LIBRARY_DIRS,$(STAGING_DIR)/usr/lib,g' $(PKG_BUILD_DIR)/CMakeLists.txt
 endef
 
 TARGET_LDFLAGS +=-lpthread
