@@ -1,3 +1,14 @@
+--- a/srsue/src/stack/rrc/rrc.cc
++++ b/srsue/src/stack/rrc/rrc.cc
+@@ -40,6 +40,8 @@
+ #include <math.h>
+ #include <numeric>
+ #include <string.h>
++#include <sys/types.h>
++#include <stdint.h>
+ 
+ std::atomic<bool> simulate_rlf{false};
+ 
 --- a/lib/src/mac/mac_sch_pdu_nr.cc
 +++ b/lib/src/mac/mac_sch_pdu_nr.cc
 @@ -20,6 +20,7 @@
