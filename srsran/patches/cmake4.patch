@@ -1,3 +1,13 @@
+--- a/lib/src/mac/pdu.cc
++++ b/lib/src/mac/pdu.cc
+@@ -23,6 +23,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <strings.h>
++#include <endian.h>
+ 
+ #include "srsran/common/standard_streams.h"
+ #include "srsran/mac/pdu.h"
 --- a/lib/src/common/threads.c
 +++ b/lib/src/common/threads.c
 @@ -21,6 +21,7 @@
