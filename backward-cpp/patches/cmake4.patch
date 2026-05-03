@@ -11,12 +11,14 @@
  
  #if BACKWARD_HAS_BFD == 1
  //              NOTE: defining PACKAGE{,_VERSION} is required before including
---- a/test_package/CMakeLists.txt
-+++ b/test_package/CMakeLists.txt
-@@ -1,5 +1,5 @@
- project(backward-package-test)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@
+ # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ # SOFTWARE.
+ 
 -cmake_minimum_required(VERSION 3.0)
 +cmake_minimum_required(VERSION 3.10)
+ project(backward CXX)
  
- include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
- conan_basic_setup(TARGETS)
+ # Introduce variables:
