@@ -8,7 +8,7 @@
  #include <stdbool.h>
  #include <stdio.h>
  #include <string.h>
-@@ -141,10 +142,11 @@ bool threads_new_rt_cpu(pthread_t* thread, void* (*start_routine)(void*), void*
+@@ -141,10 +142,15 @@ bool threads_new_rt_cpu(pthread_t* thread, void* (*start_routine)(void*), void*
        CPU_ZERO(&cpuset);
        CPU_SET((size_t)cpu, &cpuset);
      }
@@ -17,6 +17,10 @@
      if (pthread_attr_setaffinity_np(&attr, sizeof(cpu_set_t), &cpuset)) {
        perror("pthread_attr_setaffinity_np");
      }
++#else
++    if (pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset)) {
++      perror("pthread_setaffinity_np");
++    }
 +#endif
    }
  
