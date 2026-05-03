@@ -1,3 +1,14 @@
+--- a/lib/include/srsran/common/string_helpers.h
++++ b/lib/include/srsran/common/string_helpers.h
+@@ -29,6 +29,8 @@
+ #include <sstream>
+ #include <string>
+ #include <vector>
++#include <sys/types.h>
++#include <stdint.h>
+ 
+ namespace srsran {
+ 
 --- a/lib/include/srsran/common/backward.hpp
 +++ b/lib/include/srsran/common/backward.hpp
 @@ -207,8 +207,9 @@
