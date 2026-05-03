@@ -36,12 +36,17 @@ CMAKE_OPTIONS += \
 	-DCMAKE_CXX_FLAGS=-Wno-pedantic-errors
 
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/backward.hpp $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/cmake
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/backward $(1)/usr/lib/cmake/
 endef
 
 define Package/backward-cpp/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,backward-cpp))
