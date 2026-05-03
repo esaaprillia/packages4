@@ -1,3 +1,16 @@
+--- a/lib/src/common/threads.c
++++ b/lib/src/common/threads.c
+@@ -19,8 +19,10 @@
+  *
+  */
+ 
++#define _GNU_SOURCE
+ #include <errno.h>
+ #include <pthread.h>
++#include <sched.h> // Needed for cpu_set_t and CPU_SET macros
+ #include <stdbool.h>
+ #include <stdio.h>
+ #include <string.h>
 --- a/lib/include/srsran/common/string_helpers.h
 +++ b/lib/include/srsran/common/string_helpers.h
 @@ -29,6 +29,8 @@
