@@ -1,17 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libdecaf
-PKG_VERSION:=1.0.2
+PKG_VERSION:=1.0.3
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tgz
-#PKG_SOURCE_URL:=https://sourceforge.net/projects/ed448goldilocks/files/
-#PKG_HASH:=skip
-
-PKG_SOURCE_URL:=https://git.code.sf.net/p/ed448goldilocks/code
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=ae7b1af200d068b8128791e6eb8b2cf946de3c0c
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tgz
+PKG_SOURCE_URL:=https://sourceforge.net/projects/ed448goldilocks/files/
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
