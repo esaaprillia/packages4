@@ -1,3 +1,13 @@
+--- a/lib/src/mac/mac_sch_pdu_nr.cc
++++ b/lib/src/mac/mac_sch_pdu_nr.cc
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include "srsran/mac/mac_sch_pdu_nr.h"
++#include <endian.h>
+ 
+ namespace srsran {
+ 
 --- a/lib/src/mac/pdu.cc
 +++ b/lib/src/mac/pdu.cc
 @@ -23,6 +23,7 @@
