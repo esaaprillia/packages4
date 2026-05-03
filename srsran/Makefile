@@ -39,6 +39,8 @@ define Build/Prepare
 	#$(SED) 's,Boost_LIBRARY_DIRS,$(STAGING_DIR)/usr/lib,g' $(PKG_BUILD_DIR)/CMakeLists.txt
 endef
 
+TARGET_LDFLAGS +=-lpthread
+
 CMAKE_OPTIONS += \
 	-DENABLE_GUI=OFF \
 	-DENABLE_WERROR=OFF
