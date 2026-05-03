@@ -4,14 +4,9 @@ PKG_NAME:=backward-cpp
 PKG_VERSION:=1.6
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://github.com/bombela/backward-cpp/archive/v$(PKG_VERSION)
-#PKG_HASH:=skip
-
-PKG_SOURCE_URL:=https://github.com/bombela/backward-cpp.git
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=0bfd0a07a61551413ccd2ab9a9099af3bad40681
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/bombela/backward-cpp/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
@@ -38,7 +33,7 @@ CMAKE_OPTIONS += \
 	-DBACKWARD_TESTS=OFF \
 	-DBACKWARD_SHARED=ON \
 	-DBACKWARD_HAS_LIBUNWIND=1 \
-	-DCMAKE_CXX_FLAGS= -Wno-pedantic-errors
+	-DCMAKE_CXX_FLAGS=-Wno-pedantic-errors
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
