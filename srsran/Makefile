@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=srsran
-PKG_VERSION:=25.10
+PKG_VERSION:=25.10.0
 PKG_SOURCE_VERSION:=25_10
 PKG_RELEASE:=1
 
@@ -14,7 +14,7 @@ PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=COPYRIGHT
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/srsRAN_4G-release_$(PKG_SOURCE_VERSION)
-PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite libconfig lksctp-tools uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp
+PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite libconfig lksctp-tools uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp libexecinfo
 
 CMAKE_BINARY_SUBDIR:=build
 
