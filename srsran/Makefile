@@ -25,7 +25,7 @@ define Package/srsran
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open source SDR 4G software suite from Software Radio Systems (SRS)
-	DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libconfig +libsctp +uhd +bladerf +soapy-sdr +libzmq-nc +boost-program_options +libexecinfo
+	DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libconfig +libsctp +uhd +bladerf +libdw +soapy-sdr +libzmq-nc +boost-program_options +libexecinfo
 	URL:=https://github.com/srsran/srsRAN_4G
 endef
 
@@ -41,8 +41,7 @@ endef
 TARGET_LDFLAGS +=-lpthread
 
 CMAKE_OPTIONS += \
-	-DENABLE_GUI=OFF \
-	-DENABLE_WERROR=OFF
+	-DENABLE_GUI=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -53,6 +52,8 @@ define Package/srsran/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,srsran))
