@@ -1,3 +1,14 @@
+--- a/srsue/src/stack/upper/tft_packet_filter.cc
++++ b/srsue/src/stack/upper/tft_packet_filter.cc
+@@ -29,6 +29,8 @@ extern "C" {
+ #include <linux/ip.h>
+ #include <linux/tcp.h>
+ #include <linux/udp.h>
++#include <sys/types.h>
++#include <stdint.h>
+ 
+ namespace srsue {
+ 
 --- a/srsue/src/stack/upper/gw.cc
 +++ b/srsue/src/stack/upper/gw.cc
 @@ -35,6 +35,7 @@
