@@ -41,7 +41,8 @@ endef
 TARGET_LDFLAGS +=-lpthread
 
 CMAKE_OPTIONS += \
-	-DENABLE_GUI=OFF
+	-DENABLE_GUI=OFF \
+	-DENABLE_WERROR=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
