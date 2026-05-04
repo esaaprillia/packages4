@@ -11,9 +11,13 @@ PKG_LICENSE_FILES:=LICENSE.txt
 PYPI_NAME:=regex
 PKG_HASH:=skip
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-regex
   SUBMENU:=Python
@@ -28,6 +32,7 @@ define Package/python3-regex/description
 This regex implementation is backwards-compatible with the standard ‘re’ module, but offers additional functionality.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-regex))
 $(eval $(call BuildPackage,python3-regex))
 $(eval $(call BuildPackage,python3-regex-src))
