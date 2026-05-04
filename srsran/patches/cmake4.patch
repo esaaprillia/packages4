@@ -1,14 +1,13 @@
-From c886275a0c63b2a72defa6dc8da439fb9c9fb02b Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Mon, 4 May 2026 10:03:52 +0800
-Subject: [PATCH] Update ipv6.h
-
----
- lib/include/srsran/upper/ipv6.h | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/lib/include/srsran/upper/ipv6.h b/lib/include/srsran/upper/ipv6.h
-index 2a28a2d400e..9e1c6571a8e 100644
+--- a/srsue/src/stack/upper/gw.cc
++++ b/srsue/src/stack/upper/gw.cc
+@@ -35,6 +35,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/socket.h>
+ #include <unistd.h>
++#include <netinet/ip6.h>
+ 
+ namespace srsue {
+ 
 --- a/lib/include/srsran/upper/ipv6.h
 +++ b/lib/include/srsran/upper/ipv6.h
 @@ -25,8 +25,10 @@
