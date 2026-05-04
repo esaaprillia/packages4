@@ -1,3 +1,25 @@
+From c6f18a7e31e8cfa92619ba6c0c65efdc0c43291a Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 4 May 2026 14:24:33 +0800
+Subject: [PATCH] Update pcsc_usim.cc
+
+---
+ srsue/src/stack/upper/pcsc_usim.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/srsue/src/stack/upper/pcsc_usim.cc b/srsue/src/stack/upper/pcsc_usim.cc
+index cc355c91317..5aa4262dc7e 100644
+--- a/srsue/src/stack/upper/pcsc_usim.cc
++++ b/srsue/src/stack/upper/pcsc_usim.cc
+@@ -20,6 +20,8 @@
+  */
+ 
+ #include <sstream>
++#include <sys/types.h>
++#include <stdint.h>
+ 
+ #include "srsran/common/bcd_helpers.h"
+ #include "srsran/common/standard_streams.h"
 --- a/srsue/src/stack/upper/tft_packet_filter.cc
 +++ b/srsue/src/stack/upper/tft_packet_filter.cc
 @@ -29,6 +29,8 @@ extern "C" {
