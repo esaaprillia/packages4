@@ -18,6 +18,7 @@ PKG_BUILD_DEPENDS:= \
 	scons/host \
 	python-psutil/host \
 	python-jsonschema/host \
+	python-bson/host \
 	python-yaml/host \
 	python-typing-extensions/host
 
