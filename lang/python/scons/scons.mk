@@ -7,6 +7,7 @@ SCONS_VARS = \
 	CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)" \
 	CPPFLAGS="$(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)" \
 	LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
+	LINKFLAGS="$(TARGET_LDFLAGS)" \
 	DESTDIR="$(PKG_INSTALL_DIR)"
 
 define Build/Configure/Default
@@ -14,6 +15,7 @@ define Build/Configure/Default
 		$(SCONS_VARS) \
 		scons \
 			prefix=/usr \
+			$(SCONS_VARS) \
 			$(SCONS_OPTIONS) \
 		install \
 	)
