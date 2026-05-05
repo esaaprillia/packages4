@@ -50,6 +50,8 @@ define Build/InstallDev
 endef
 
 define Package/snowball/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_BUILD_DIR)/{snowball,stemwords} $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/*.so* $(1)/usr/lib/
 endef
