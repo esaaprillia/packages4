@@ -40,7 +40,7 @@ SCONS_OPTIONS += \
 	--disable-warnings-as-errors \
 	--use-system-boost \
 	--use-system-icu \
-	--use-system-pcre \
+	--use-system-pcre2 \
 	--use-system-stemmer \
 	--use-system-snappy \
 	--use-system-zlib \
