@@ -18,8 +18,8 @@ PKG_BUILD_DEPENDS:= \
 	scons/host \
 	python-psutil/host \
 	python-jsonschema/host \
-	python-bson/host \
-	python-yaml/host
+	python-yaml/host \
+	python-typing-extensions/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
