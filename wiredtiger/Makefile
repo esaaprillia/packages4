@@ -25,7 +25,7 @@ define Package/wiredtiger
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=WiredTiger's source tree
-	DEPENDS:=+libstdcpp +liblz4 +snappy +zlib +libzstd
+	DEPENDS:=+libstdcpp +liblz4 +snappy +zlib +libzstd +libsodium
 	URL:=https://github.com/wiredtiger/wiredtiger
 endef
 
@@ -39,6 +39,7 @@ CMAKE_OPTIONS += \
 	-DHAVE_BUILTIN_EXTENSION_SNAPPY=1 \
 	-DHAVE_BUILTIN_EXTENSION_ZLIB=1 \
 	-DHAVE_BUILTIN_EXTENSION_ZSTD=1 \
+	-DHAVE_PTHREAD_COND_MONOTONIC=0 \
 	-DPYTHON_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 define Build/InstallDev
