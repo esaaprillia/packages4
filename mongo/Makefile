@@ -12,7 +12,9 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=SSPL-1.0
 PKG_LICENSE_FILES:=LICENSE-Community.txt
 
-PKG_BUILD_DEPENDS:=scons/host
+PKG_BUILD_DEPENDS:= \
+	scons/host \
+	python-psutil/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
