@@ -19,7 +19,8 @@ PKG_LICENSE_FILES:=COPYING
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
 PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-attrs/host python-rpds-py/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+#HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-attrs/host python-rpds-py/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
