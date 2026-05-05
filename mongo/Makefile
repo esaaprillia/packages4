@@ -18,7 +18,9 @@ PKG_BUILD_DEPENDS:= \
 	scons/host \
 	python-psutil/host \
 	python-jsonschema/host \
-	python-attrs/host
+	python-attrs/host \
+	python-referencing/host \
+	python-yaml/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
