@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE-Community.txt
 
 PKG_BUILD_DEPENDS:= \
 	scons/host \
-	python-psutil/host
+	python-psutil/host python-jsonschema/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
