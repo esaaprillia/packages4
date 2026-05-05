@@ -20,7 +20,8 @@ PKG_BUILD_DEPENDS:= \
 	python-jsonschema/host \
 	python-bson/host \
 	python-yaml/host \
-	python-typing-extensions/host
+	python-typing-extensions/host \
+	python-memory-profiler/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
