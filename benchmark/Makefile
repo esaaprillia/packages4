@@ -31,6 +31,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_CXX_FLAGS=-Wno-pedantic-errors \
 	-DBENCHMARK_ENABLE_GTEST_TESTS=OFF
 
 define Build/InstallDev
