@@ -25,7 +25,7 @@ define Package/wiredtiger
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=WiredTiger's source tree
-	DEPENDS:=+libstdcpp +liblz4 +snappy +zlib +libzstd +libsodium
+	DEPENDS:=+libstdcpp +liblz4 +snappy +zlib +libzstd +libsodium +libexecinfo
 	URL:=https://github.com/wiredtiger/wiredtiger
 endef
 
