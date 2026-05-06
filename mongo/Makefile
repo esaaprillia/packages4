@@ -25,7 +25,8 @@ PKG_BUILD_DEPENDS:= \
 	python-cheetah3/host \
 	python-requirements-parser/host \
 	python-puremagic/host \
-	python-mongo-tooling-metrics/host
+	python-mongo-tooling-metrics/host \
+	python-networkx/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
