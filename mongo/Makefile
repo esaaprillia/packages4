@@ -64,7 +64,7 @@ SCONS_OPTIONS += \
 	--use-system-wiredtiger \
 	--use-system-yaml \
 	--use-system-zlib \
-	--use-system-zstd
+	--use-system-zstd \
 	--use-sasl-client \
 	--ssl \
 	MONGO_VERSION="$(PKG_VERSION)"
