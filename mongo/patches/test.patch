@@ -17,35 +17,40 @@
  
  onlyServer = len(COMMAND_LINE_TARGETS) == 0 or (len(COMMAND_LINE_TARGETS) == 1 and str(
      COMMAND_LINE_TARGETS[0]) in ["mongod", "mongos", "test"])
+From a628b2baad5892e594a3bc1ed79b3b4a0e4baec5 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 6 May 2026 18:19:27 +0800
+Subject: [PATCH] Update SConscript
+
+---
+ src/third_party/SConscript | 38 ++++++++++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 12 deletions(-)
+
+diff --git a/src/third_party/SConscript b/src/third_party/SConscript
+index 74808075214d4..13086a01724f0 100644
 --- a/src/third_party/SConscript
 +++ b/src/third_party/SConscript
-@@ -21,13 +21,6 @@ tomcryptSuffix = '-1.18.2'
+@@ -21,7 +21,6 @@ tomcryptSuffix = '-1.18.2'
  variantSuffix = '-1.4.0'
  
  thirdPartyEnvironmentModifications = {
 -    'abseil-cpp': {'CPPPATH': ['#/src/third_party/abseil-cpp/dist'], },
--    'cares': {
--        'CPPPATH': [
--            '#src/third_party/cares/dist/include',
--            '#src/third_party/cares/platform/${TARGET_OS}_${TARGET_ARCH}/install/include'
--        ],
--    },
-     'folly': {'CPPPATH': ['#src/third_party/folly/dist'], },
-     'fmt': {'CPPPATH': ['#src/third_party/fmt/dist/include'], },
-     'immer': {'CPPPATH': ['#src/third_party/immer/dist'], },
-@@ -118,6 +111,11 @@ if not use_system_version_of_library('boost'):
+     'cares': {
+         'CPPPATH': [
+             '#src/third_party/cares/dist/include',
+@@ -118,6 +117,11 @@ if not use_system_version_of_library('boost'):
          'CCFLAGS': ['$NOERROR_FOR_UNKNOWN_WARNING_OPTION_GEN'] if env.ToolchainIs('clang') else []
      }
  
 +if not use_system_version_of_library('abseil-cpp'):
 +    thirdPartyEnvironmentModifications['abseil-cpp'] = {
-+        'CPPPATH' : ['#/src/third_party/abseil-cpp-master/abseil-cpp'],
++        'CPPPATH' : ['#/src/third_party/abseil-cpp/dist'],
 +    }
 +
  if not use_system_version_of_library('snappy'):
      thirdPartyEnvironmentModifications['snappy'] = {
          'CPPPATH': ['#/src/third_party/snappy' + snappySuffix],
-@@ -427,7 +425,6 @@ if use_system_version_of_library("boost"):
+@@ -427,7 +431,6 @@ if use_system_version_of_library("boost"):
          boostEnv = boostEnv.Clone(SYSLIBDEPS=[
              env['LIBDEPS_BOOST_PROGRAM_OPTIONS_SYSLIBDEP'],
              env['LIBDEPS_BOOST_FILESYSTEM_SYSLIBDEP'],
@@ -53,7 +58,7 @@
              env['LIBDEPS_BOOST_IOSTREAMS_SYSLIBDEP'],
              env['LIBDEPS_BOOST_THREAD_SYSLIBDEP'],
              env['LIBDEPS_BOOST_LOG_SYSLIBDEP'],
-@@ -447,17 +444,25 @@ else:
+@@ -447,17 +450,28 @@ else:
  
  boostEnv.ShimLibrary(name="boost")
  
@@ -71,21 +76,26 @@
 +if use_system_version_of_library("abseil-cpp"):
 +    abseilEnv = abseilEnv.Clone(
 +        SYSLIBDEPS=[
-+            env['LIBDEPS_ABSL_CONTAINER_SYSLIBDEP'],
++            env['LIBDEPS_ABSL_CITY_SYSLIBDEP'],
 +            env['LIBDEPS_ABSL_HASH_SYSLIBDEP'],
-+            env['LIBDEPS_ABSL_NUMERIC_SYSLIBDEP'],
++            env['LIBDEPS_ABSL_INT128_SYSLIBDEP'],
++            env['LIBDEPS_ABSL_LOW_LEVEL_HASH_SYSLIBDEP'],
++            env['LIBDEPS_ABSL_RAW_HASH_SET_SYSLIBDEP'],
 +        ])
 +else:
-+    abseilDirectory = 'abseil-cpp-master'
++    abseilDirectory = 'abseil-cpp'
 +    abseilEnv = abseilEnv.Clone()
 +    abseilEnv.InjectThirdParty(libraries=['abseil-cpp'])
-+    abseilEnv.SConscript(abseilDirectory + '/SConscript', exports={ 'env' : abseilEnv })
-+    abseilEnv = abseilEnv.Clone(
-+        LIBDEPS_INTERFACE=[
-+            abseilDirectory + '/absl_container',
++    abseilEnv.SConscript(abseilDirectory + '/SConscript', exports={'env' : abseilEnv})
++    abseilEnv = abseilEnv.Clone(LIBDEPS_INTERFACE=[
++            abseilDirectory + '/absl_city',
 +            abseilDirectory + '/absl_hash',
-+            abseilDirectory + '/absl_numeric',
++            abseilDirectory + '/absl_int128',
++            abseilDirectory + '/absl_low_level_hash',
++            abseilDirectory + '/absl_raw_hash_set',
 +        ])
  
  abseilEnv.ShimLibrary(name="abseil")
+ 
+
  
