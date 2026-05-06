@@ -1,0 +1,67 @@
+From 7fad4ddc3b79fc0d4eb2cb4756f779a32c9611de Mon Sep 17 00:00:00 2001
+From: jchen <29520270+jiechenbo@users.noreply.github.com>
+Date: Wed, 26 Mar 2025 14:56:48 +1100
+Subject: [PATCH] WT-14282 Fix release build compilation errors in V5 toolchain
+ (#11745)
+
+We encountered compiler bugs when testing v5 toolchain. This ticket aims
+to fix two compilation issues:
+- Inside intpack_inline.h, there is a known gcc bug as follows
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107842. I have applied a
+mitigation tactic.
+- Fixed possible NULL issue inside util_json.c
+---
+ dist/s_string.ok               |  1 +
+ src/include/intpack_inline.h   | 13 +++++++++++++
+ src/utilities/util_load_json.c |  2 +-
+ 3 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/dist/s_string.ok b/dist/s_string.ok
+index afdee9170f0..e0af82b230f 100644
+--- a/dist/s_string.ok
++++ b/dist/s_string.ok
+@@ -439,6 +439,7 @@ WTI
+ WTPERF
+ WaitForSingleObject
+ WaitOn
++Warray
+ Wconditional
+ Wduplicated
+ WeakHashLen
+diff --git a/src/include/intpack_inline.h b/src/include/intpack_inline.h
+index 2ccd8e88d53..8ecf08b9489 100644
+--- a/src/include/intpack_inline.h
++++ b/src/include/intpack_inline.h
+@@ -80,6 +80,19 @@
+     } while (0)
+ #endif
+ 
++#ifdef __GNUC__
++#if __GNUC__ == 14
++/*
++ * !!!
++ * GCC with -Warray-bounds complains about calls to __wt_vunpack_uint in this file.
++ * This is a GCC compiler bug referenced in https://gcc.gnu.org/bugzilla/show_bug.cgi?id=117829.
++ */
++#pragma GCC diagnostic ignored "-Warray-bounds"
++#elif __GNUC__ >= 15
++#pragma message( \
++  "Building with GCC 15 or later. Please check if we can close WT-14292 and remove suppression.")
++#endif
++#endif
+ /*
+  * __wt_vpack_posint --
+  *     Packs a positive variable-length integer in the specified location.
+diff --git a/src/utilities/util_load_json.c b/src/utilities/util_load_json.c
+index 5d29b36572f..4d15da6ecc1 100644
+--- a/src/utilities/util_load_json.c
++++ b/src/utilities/util_load_json.c
+@@ -324,7 +324,7 @@ json_data(WT_SESSION *session, JSON_INPUT_STATE *ins, CONFIG_LIST *clp, uint32_t
+      * loading files.
+      */
+     if (cursor != NULL && (tret = cursor->close(cursor)) != 0) {
+-        tret = util_err(session, tret, "%s: cursor.close", uri);
++        tret = util_err(session, tret, "%s: cursor.close", uri != NULL ? uri : "NULL");
+         if (ret == 0)
+             ret = tret;
+     }
