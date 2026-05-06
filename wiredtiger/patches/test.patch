@@ -1,21 +1,27 @@
-From 3533595b7b04a2b2850a5513820bb2781dc85d75 Mon Sep 17 00:00:00 2001
+From 46d529d0fd3a7abb00c01a19b2da596bab1c0d14 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 6 May 2026 12:08:35 +0800
+Date: Wed, 6 May 2026 14:51:57 +0800
 Subject: [PATCH] Update lazyfs.c
 
 ---
- test/utility/lazyfs.c | 1 +
- 1 file changed, 1 insertion(+)
+ test/utility/lazyfs.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/test/utility/lazyfs.c b/test/utility/lazyfs.c
-index 23400d75c85..d38d09c4257 100644
+index 23400d75c85..b93c4abb4c5 100644
 --- a/test/utility/lazyfs.c
 +++ b/test/utility/lazyfs.c
-@@ -34,6 +34,7 @@
- #include <sys/wait.h>
- #include <libgen.h>
+@@ -36,6 +36,13 @@
  #include <signal.h>
-+#include <stdlib.h>
  #endif
  
++#ifndef _GNU_SOURCE
++#include <stdlib.h>
++static inline char *canonicalize_file_name(const char *path) {
++    return realpath(path, NULL);
++}
++#endif
++
  #ifdef __linux__
+ #define LAZYFS_PATH "../../../lazyfs/src/lazyfs/lazyfs"
+ #endif
