@@ -15,6 +15,7 @@ HOST_BUILD_DEPENDS:= \
 	python-poetry-core/host \
 	python-distro/host \
 	python-pydantic/host \
+	python-pymongo-auth-aws/host \
 	python-pymongo/host \
 	python-gitpython/host \
 	python-setuptools/host
@@ -35,6 +36,7 @@ define Package/python3-mongo-tooling-metrics
 	+python3 \
 	+python3-distro \
 	+python3-pydantic \
+	+python3-pymongo-auth-aws \
 	+python3-pymongo \
 	+python3-gitpython \
 	+python3-setuptools
