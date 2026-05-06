@@ -17,17 +17,6 @@
  
  onlyServer = len(COMMAND_LINE_TARGETS) == 0 or (len(COMMAND_LINE_TARGETS) == 1 and str(
      COMMAND_LINE_TARGETS[0]) in ["mongod", "mongos", "test"])
-From a628b2baad5892e594a3bc1ed79b3b4a0e4baec5 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 6 May 2026 18:19:27 +0800
-Subject: [PATCH] Update SConscript
-
----
- src/third_party/SConscript | 38 ++++++++++++++++++++++++++------------
- 1 file changed, 26 insertions(+), 12 deletions(-)
-
-diff --git a/src/third_party/SConscript b/src/third_party/SConscript
-index 74808075214d4..13086a01724f0 100644
 --- a/src/third_party/SConscript
 +++ b/src/third_party/SConscript
 @@ -21,7 +21,6 @@ tomcryptSuffix = '-1.18.2'
@@ -58,7 +47,12 @@ index 74808075214d4..13086a01724f0 100644
              env['LIBDEPS_BOOST_IOSTREAMS_SYSLIBDEP'],
              env['LIBDEPS_BOOST_THREAD_SYSLIBDEP'],
              env['LIBDEPS_BOOST_LOG_SYSLIBDEP'],
-@@ -447,17 +450,28 @@ else:
+@@ -442,22 +445,32 @@ else:
+         boostDirectory + '/boost_iostreams',
+         boostDirectory + '/boost_log',
+         boostDirectory + '/boost_program_options',
+-        boostDirectory + '/boost_system',
+     ])
  
  boostEnv.ShimLibrary(name="boost")
  
@@ -96,6 +90,4 @@ index 74808075214d4..13086a01724f0 100644
 +        ])
  
  abseilEnv.ShimLibrary(name="abseil")
- 
-
  
