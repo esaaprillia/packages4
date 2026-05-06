@@ -11,9 +11,13 @@ PKG_MAINTAINER:=Daniel Danzberger <daniel@dd-wrt.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.txt
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-botocore
   SUBMENU:=Python
@@ -33,6 +37,7 @@ A low-level interface to a growing number of Amazon Web Services. The
 botocore package is the foundation for the AWS CLI as well as boto3.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-botocore))
 $(eval $(call BuildPackage,python3-botocore))
 $(eval $(call BuildPackage,python3-botocore-src))
