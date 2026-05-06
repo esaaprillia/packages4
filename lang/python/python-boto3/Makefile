@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Daniel Danzberger <daniel@dd-wrt.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-botocore/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-botocore/host python-jmespath/host python-s3transfer/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
