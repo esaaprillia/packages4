@@ -11,9 +11,13 @@ PKG_MAINTAINER:=Daniel Danzberger <daniel@dd-wrt.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-botocore/host
+
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-boto3
   SUBMENU:=Python
@@ -36,6 +40,7 @@ for Python, which allows Python developers to write software that makes
 use of services like Amazon S3 and Amazon EC2.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-boto3))
 $(eval $(call BuildPackage,python3-boto3))
 $(eval $(call BuildPackage,python3-boto3-src))
