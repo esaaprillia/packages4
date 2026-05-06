@@ -12,10 +12,13 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 
 PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-setuptools-scm/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-tabulate
   SECTION:=lang
@@ -30,6 +33,7 @@ define Package/python3-tabulate/description
 Pretty-print tabular data in Python, a library and a command-line utility. Repository migrated from bitbucket.org/astanin/python-tabulate.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-tabulate))
 $(eval $(call BuildPackage,python3-tabulate))
 $(eval $(call BuildPackage,python3-tabulate-src))
