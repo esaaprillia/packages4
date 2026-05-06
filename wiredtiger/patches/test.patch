@@ -1,0 +1,21 @@
+From 3533595b7b04a2b2850a5513820bb2781dc85d75 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 6 May 2026 12:08:35 +0800
+Subject: [PATCH] Update lazyfs.c
+
+---
+ test/utility/lazyfs.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/utility/lazyfs.c b/test/utility/lazyfs.c
+index 23400d75c85..d38d09c4257 100644
+--- a/test/utility/lazyfs.c
++++ b/test/utility/lazyfs.c
+@@ -34,6 +34,7 @@
+ #include <sys/wait.h>
+ #include <libgen.h>
+ #include <signal.h>
++#include <stdlib.h>
+ #endif
+ 
+ #ifdef __linux__
