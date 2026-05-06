@@ -23,7 +23,9 @@ PKG_BUILD_DEPENDS:= \
 	python-typing-extensions/host \
 	python-memory-profiler/host \
 	python-cheetah3/host \
-	python-requirements-parser/host
+	python-requirements-parser/host \
+	python-puremagic/host \
+	python-mongo-tooling-metrics/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
