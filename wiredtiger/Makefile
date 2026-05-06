@@ -33,9 +33,11 @@ define Package/wiredtiger/description
 	High performance, scalable, NoSQL, extensible platform for data management
 endef
 
+TARGET_CFLAGS +=-D_LARGEFILE64_SOURCE
+
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED=ON \
-	-DCMAKE_C_FLAGS=--param=min-pagesize=0 -D_LARGEFILE64_SOURCE \
+	-DCMAKE_C_FLAGS=--param=min-pagesize=0 \
 	-DHAVE_BUILTIN_EXTENSION_LZ4=1 \
 	-DHAVE_BUILTIN_EXTENSION_SNAPPY=1 \
 	-DHAVE_BUILTIN_EXTENSION_ZLIB=1 \
