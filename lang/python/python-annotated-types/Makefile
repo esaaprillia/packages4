@@ -12,10 +12,13 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-hatchling/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-annotated-types
   SECTION:=lang
@@ -32,6 +35,7 @@ PEP-593 added typing.Annotated as a way of adding context-specific metadata to e
 This package provides metadata objects which can be used to represent common constraints such as upper and lower bounds on scalar values and collection sizes, a Predicate marker for runtime checks, and descriptions of how we intend these metadata to be interpreted. In some cases, we also note alternative representations which do not require this package.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-annotated-types))
 $(eval $(call BuildPackage,python3-annotated-types))
 $(eval $(call BuildPackage,python3-annotated-types-src))
