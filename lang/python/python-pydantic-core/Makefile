@@ -12,10 +12,13 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-maturin/host python-typing-extensions/host
+HOST_BUILD_DEPENDS:=python-maturin/host python-typing-extensions/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-pydantic-core
   SECTION:=lang
@@ -32,6 +35,7 @@ This package provides the core functionality for pydantic validation and seriali
 Pydantic-core is currently around 17x faster than pydantic V1. See tests/benchmarks/ for details.
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pydantic-core))
 $(eval $(call BuildPackage,python3-pydantic-core))
 $(eval $(call BuildPackage,python3-pydantic-core-src))
