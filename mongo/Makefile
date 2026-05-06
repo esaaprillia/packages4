@@ -42,22 +42,29 @@ define Package/mongo/description
 A high-performance, open source, schema-free document-oriented database
 endef
 
-SCONS_VARS += \
-	CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) -L$(STAGING_DIR)/usr/lib" \
-	LINKFLAGS="$(TARGET_LDFLAGS)"
-
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
-	--use-system-boost \
-	--use-system-icu \
-	--use-system-pcre2 \
-	--use-system-stemmer \
-	--use-system-snappy \
-	--use-system-zlib \
-	--use-system-zstd \
-	--use-system-yaml \
 	--use-system-abseil-cpp \
+	--use-system-asio \
+	--use-system-boost \
+	--use-system-fmt \
+	--use-system-google-benchmark \
+	--use-system-grpc \
+	--use-system-icu \
+	--use-system-libbson \
+	--use-system-libmongocrypt \
+	--use-system-pcre2 \
+	--use-system-protobuf \
+	--use-system-snappy \
+	--use-system-stemmer \
+	--use-system-tcmalloc \
+	--use-system-libunwind \
+	--use-system-valgrind \
+	--use-system-wiredtiger \
+	--use-system-yaml \
+	--use-system-zlib \
+	--use-system-zstd
 	--use-sasl-client \
 	--ssl \
 	MONGO_VERSION="$(PKG_VERSION)"
