@@ -26,7 +26,13 @@ PKG_BUILD_DEPENDS:= \
 	python-requirements-parser/host \
 	python-puremagic/host \
 	python-mongo-tooling-metrics/host \
-	python-networkx/host
+	python-networkx/host \
+	python-cxxfilt/host \
+	python-regex/host \
+	python-types-pyyaml/host \
+	python-requests/host \
+	python-packaging/host \
+	python-tabulate/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
