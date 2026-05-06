@@ -17,7 +17,7 @@ index 23400d75c85..2fb52774953 100644
  
 +#ifndef __GLIBC__
 +#include <stdlib.h>
-+char *canonicalize_file_name(const char *path) {
++static char *canonicalize_file_name(const char *path) {
 +    return realpath(path, NULL);
 +}
 +#endif
