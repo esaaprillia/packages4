@@ -13,6 +13,7 @@ PKG_LICENSE:=SSPL-1.0
 PKG_LICENSE_FILES:=LICENSE-Community.txt
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/mongo-r$(PKG_VERSION)
+PYTHON3_PKG_BUILD:=0
 
 PKG_BUILD_DEPENDS:= \
 	scons/host \
@@ -36,13 +37,36 @@ PKG_BUILD_DEPENDS:= \
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/mongo
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The MongoDB Database
-	DEPENDS:=
 	URL:=https://www.mongodb.com/
+	DEPENDS:= \
+	+abseil-cpp \
+	+boost-filesystem \
+	+boost-iostreams \
+	+boost-log \
+	+boost-program_options \
+	+libfmt \
+	+benchmark \
+	+grpc \
+	+icu \
+	+mongo-c-driver \
+	+libmongocrypt \
+	+libpcre2 \
+	+protobuf \
+	+snappy \
+	+snowball \
+	+gperftools \
+	+libunwind \
+	+valgrind \
+	+wiredtiger \
+	+libyaml \
+	+zlib \
+	+libzstd
 endef
 
 define Package/mongo/description
@@ -76,22 +100,11 @@ SCONS_OPTIONS += \
 	--ssl \
 	MONGO_VERSION="$(PKG_VERSION)"
 
-define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/gps.h $(1)/usr/include/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libgps*.so* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libgps.pc $(1)/usr/lib/pkgconfig
-	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libgps.pc
-	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libgps.pc
-endef
-
 define Package/mongo/install
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,mongo))
