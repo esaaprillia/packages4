@@ -68,7 +68,9 @@ define Package/mongo
 	+valgrind \
 	+wiredtiger \
 	+libyaml \
+	+libyaml-cpp \
 	+zlib \
+	+liblzma \
 	+libzstd
 endef
 
