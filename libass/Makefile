@@ -37,8 +37,7 @@ CONFIGURE_ARGS = \
 	--enable-fontconfig \
 	--disable-directwrite \
 	--enable-libunibreak \
-	--disable-require-system-font-provider \
-	--disable-asm
+	--disable-require-system-font-provider
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
