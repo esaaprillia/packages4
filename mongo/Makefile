@@ -55,6 +55,7 @@ define Package/mongo
 	+grpc \
 	+icu \
 	+mongo-c-driver \
+	+libcurl \
 	+libmongocrypt \
 	+libpcre2 \
 	+protobuf \
