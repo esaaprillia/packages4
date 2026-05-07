@@ -103,7 +103,8 @@ SCONS_OPTIONS += \
 	--use-system-zstd \
 	--use-sasl-client \
 	--ssl \
-	MONGO_VERSION="$(PKG_VERSION)"
+	MONGO_VERSION="$(PKG_VERSION)" \
+	HOST_ARCH="$(GNU_TARGET_NAME)"
 
 define Package/mongo/install
 	$(INSTALL_DIR) $(1)/etc
