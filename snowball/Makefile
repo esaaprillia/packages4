@@ -13,6 +13,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=COPYING
 
 HOST_PATCH_DIR := ./patches-host
+PKG_BUILD_DEPENDS:=snowball/host
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
