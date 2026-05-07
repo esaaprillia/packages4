@@ -12,10 +12,10 @@ SCONS_VARS = \
 
 define Build/Configure/Default
 	(cd $(PKG_BUILD_DIR); \
-		$(SCONS_VARS) \
 		scons \
-			CC="$(TARGET_CC_NOCACHE)" \
-			CXX="$(TARGET_CXX_NOCACHE)" \
+			CC="$(TARGET_CROSS)gcc" \
+			CXX="$(TARGET_CROSS)g++" \
+			OBJCOPY="$(TARGET_CROSS)objcopy" \
 			CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 			CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)" \
 			LINKFLAGS="$(TARGET_LDFLAGS)" \
