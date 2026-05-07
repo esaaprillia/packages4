@@ -14,10 +14,14 @@ define Build/Configure/Default
 	(cd $(PKG_BUILD_DIR); \
 		$(SCONS_VARS) \
 		scons \
-			prefix=/usr \
-			$(SCONS_VARS) \
+			CC="$(TARGET_CC_NOCACHE)" \
+			CXX="$(TARGET_CXX_NOCACHE)" \
+			CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
+			CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)" \
+			LINKFLAGS="$(TARGET_LDFLAGS)" \
+			DESTDIR="$(PKG_INSTALL_DIR)" \
 			$(SCONS_OPTIONS) \
-		install \
+		install-core \
 	)
 endef
 
