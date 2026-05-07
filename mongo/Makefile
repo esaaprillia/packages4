@@ -56,6 +56,7 @@ define Package/mongo
 	+icu \
 	+mongo-c-driver \
 	+libcurl \
+	+libsasl2 \
 	+libmongocrypt \
 	+libpcre2 \
 	+protobuf \
