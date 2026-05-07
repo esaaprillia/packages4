@@ -18,6 +18,7 @@ PKG_BUILD_DEPENDS:= \
 	scons/host \
 	python-psutil/host \
 	python-jsonschema/host \
+	python-pymongo/host \
 	python-yaml/host \
 	python-typing-extensions/host \
 	python-memory-profiler/host \
