@@ -58,6 +58,7 @@ define Package/mongo
 	+libcurl \
 	+libsasl2 \
 	+libmongocrypt \
+	+libopenssl \
 	+libpcre2 \
 	+protobuf \
 	+snappy \
