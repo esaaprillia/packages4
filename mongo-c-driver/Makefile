@@ -21,7 +21,7 @@ define Package/mongo-c-driver
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The Official MongoDB driver for C language
-	DEPENDS:=+libsasl2 +libopenssl +snappy +libzstd +utf8proc +zlib
+	DEPENDS:=+libsasl2 +libopenssl +snappy +libzstd +utf8proc +zlib +libmongocrypt
 	URL:=https://github.com/mongodb/mongo-c-driver/
 endef
 
