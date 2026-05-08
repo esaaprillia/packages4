@@ -44,34 +44,6 @@ define Package/mongo
 	CATEGORY:=Libraries
 	TITLE:=The MongoDB Database
 	URL:=https://www.mongodb.com/
-	DEPENDS:= \
-	+abseil-cpp \
-	+boost-filesystem \
-	+boost-iostreams \
-	+boost-log \
-	+boost-program_options \
-	+libfmt \
-	+benchmark \
-	+grpc \
-	+icu \
-	+mongo-c-driver \
-	+libcurl \
-	+libsasl2 \
-	+libmongocrypt \
-	+libopenssl \
-	+libpcre2 \
-	+protobuf \
-	+snappy \
-	+snowball \
-	+gperftools \
-	+libunwind \
-	+valgrind \
-	+wiredtiger \
-	+libyaml \
-	+libyaml-cpp \
-	+zlib \
-	+liblzma \
-	+libzstd
 endef
 
 define Package/mongo/description
