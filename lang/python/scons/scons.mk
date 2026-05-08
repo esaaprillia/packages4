@@ -1,6 +1,4 @@
 export PLATFORM=posix
-export STAGING_DIR=/home/runner/work/mosdns/mosdns/sdk/staging_dir
-export PATH=$PATH:/home/runner/work/mosdns/mosdns/sdk/staging_dir/toolchain-aarch64_generic_gcc-14.3.0_musl/bin
 
 SCONS_VARS = \
 	CC="$(TARGET_CC_NOCACHE)" \
