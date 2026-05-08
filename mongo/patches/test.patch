@@ -31,8 +31,8 @@ index 2ebeb0e..44ce93a 100644
  
      # env.Append( " -Wconversion" ) TODO: this doesn't really work yet
      env.Append(CXXFLAGS=["-Woverloaded-virtual"])
-+    env.Append(CXXFLAGS=os.environ['CXXFLAGS'])
-+    env.Append(LINKFLAGS=os.environ['LDFLAGS'])
++    #env.Append(CXXFLAGS=os.environ['CXXFLAGS'])
++    #env.Append(LINKFLAGS=os.environ['LDFLAGS'])
  
      # On OS X, clang doesn't want the pthread flag at link time, or it
      # issues warnings which make it impossible for us to declare link
