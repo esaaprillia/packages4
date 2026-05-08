@@ -12,6 +12,7 @@ SCONS_VARS = \
 
 define Build/Configure/Default
 	(cd $(PKG_BUILD_DIR); \
+		$(SCONS_VARS) \
 		scons \
 			CC="$(TARGET_CC_NOCACHE)" \
 			CXX="$(TARGET_CXX_NOCACHE)" \
