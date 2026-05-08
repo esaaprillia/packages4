@@ -65,7 +65,7 @@ SCONS_OPTIONS += \
 	--use-sasl-client \
 	--ssl \
 	MONGO_VERSION="$(PKG_VERSION)" \
-	--variables-files=etc/scons/propagate_shell_environment.vars
+	--variables-files=$(PKG_BUILD_DIR)/etc/scons/propagate_shell_environment.vars
 
 define Package/mongo/install
 	$(INSTALL_DIR) $(1)/etc
