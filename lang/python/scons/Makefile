@@ -57,7 +57,7 @@ define Host/Install
 	for py in $(HOST_BUILD_DIR)/*.py; do \
 		bin=$$$${py%.py} ; \
 		$(CP) $$$$py $$$$bin ; \
-		$(SED) '1c#!$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3_VERSION)' $$$$bin ; \
+		$(SED) '1c#!$(STAGING_DIR_HOSTPKG)/bin/python$(PYTHON3_VERSION)' $$$$bin ; \
 		$(INSTALL_BIN) $$$$bin $(STAGING_DIR_HOSTPKG)/bin/ ; \
 	done
 
