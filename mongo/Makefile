@@ -18,22 +18,22 @@ PYTHON3_PKG_BUILD:=0
 PKG_BUILD_DEPENDS:= \
 	scons/host \
 	python-psutil/host \
-	python-jsonschema/host \
+	#python-jsonschema/host \
 	python-pymongo/host \
 	python-yaml/host \
-	python-typing-extensions/host \
-	python-memory-profiler/host \
+	#python-typing-extensions/host \
+	#python-memory-profiler/host \
 	python-cheetah3/host \
-	python-requirements-parser/host \
-	python-puremagic/host \
-	python-mongo-tooling-metrics/host \
-	python-networkx/host \
-	python-cxxfilt/host \
-	python-regex/host \
-	python-types-pyyaml/host \
-	python-requests/host \
+	#python-requirements-parser/host \
+	#python-puremagic/host \
+	#python-mongo-tooling-metrics/host \
+	#python-networkx/host \
+	#python-cxxfilt/host \
+	#python-regex/host \
+	#python-types-pyyaml/host \
+	#python-requests/host \
 	python-packaging/host \
-	python-tabulate/host
+	#python-tabulate/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
