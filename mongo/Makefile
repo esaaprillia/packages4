@@ -39,6 +39,18 @@ define Package/mongo/description
 A high-performance, open source, schema-free document-oriented database
 endef
 
+export $(TOOLCHAIN_ROOT_DIR)
+export $(TOOLCHAIN_BIN_DIRS)
+export $(TOOLCHAIN_INC_DIRS)
+export $(TOOLCHAIN_LIB_DIRS)
+export CC="$(TARGET_CC_NOCACHE)"
+export CXX="$(TARGET_CXX_NOCACHE)"
+export CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)"
+export CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)"
+export CPPFLAGS="$(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)"
+export LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)"
+export LINKFLAGS="$(TARGET_LDFLAGS)"
+
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
