@@ -1,3 +1,12 @@
+diff --git a/SCons/Platform/posix.py b/SCons/Platform/posix.py
+index 4c9f8f9ba..d68da1b08 100644
+--- a/SCons/Platform/posix.py
++++ b/SCons/Platform/posix.py
+@@ -30,0 +31 @@ selection method.
++import os
+@@ -87 +88 @@ def generate(env):
+-    env['ENV']['PATH']    = '/usr/local/bin:/opt/bin:/bin:/usr/bin:/snap/bin'
++    env['ENV']['PATH']    = os.environ["PATH"]
 --- a/SCons/Platform/__init__.py
 +++ b/SCons/Platform/__init__.py
 @@ -63,6 +63,8 @@ def platform_default():
