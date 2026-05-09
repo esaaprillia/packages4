@@ -21,7 +21,7 @@ index 3d831c9..f07feeb 100644
      SCons.Tool.DefaultToolpath.insert(0, os.path.abspath('site_scons/site_tools/next'))
  
 -env = Environment(variables=env_vars, **envDict)
-+env = Environment(variables=env_vars, ENV={'PATH': os.environ['PATH']}, **envDict)
++env = Environment(ENV = os.environ), **envDict)
  del envDict
  
  if get_option('cache-signature-mode') == 'validate':
