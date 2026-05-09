@@ -97,6 +97,8 @@ SCONS_OPTIONS += \
 	--use-system-zstd \
 	--use-sasl-client \
 	--ssl \
+	CPPPATH="$(STAGING_DIR)/usr/include" \
+	LIBPATH="$(STAGING_DIR)/usr/lib" \
 	MONGO_VERSION="$(PKG_VERSION)"
 
 define Package/mongo/install
