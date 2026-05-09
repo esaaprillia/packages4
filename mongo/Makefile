@@ -39,15 +39,9 @@ define Package/mongo/description
 A high-performance, open source, schema-free document-oriented database
 endef
 
-#export PATH="$(STAGING_DIR):$(TOOLCHAIN_ROOT_DIR):$(TOOLCHAIN_BIN_DIRS):$(TOOLCHAIN_INC_DIRS):$(TOOLCHAIN_LIB_DIRS):$(PATH)"
-export PATH=$PATH:"$(STAGING_DIR):$(TOOLCHAIN_ROOT_DIR):$(TOOLCHAIN_BIN_DIRS):$(TOOLCHAIN_INC_DIRS):$(TOOLCHAIN_LIB_DIRS)"
-export CC="$(TARGET_CC_NOCACHE)"
-export CXX="$(TARGET_CXX_NOCACHE)"
-export CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)"
-export CXXFLAGS="$(TARGET_CXXFLAGS) $(EXTRA_CXXFLAGS)"
-export CPPFLAGS="$(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS)"
-export LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)"
-export LINKFLAGS="$(TARGET_LDFLAGS)"
+TARGET_CFLAGS := $(filter-out -mcpu=generic,$(TARGET_CFLAGS))
+TARGET_CCFLAGS := $(filter-out -mcpu=generic,$(TARGET_CCFLAGS))
+TARGET_CXXFLAGS := $(filter-out -mcpu=generic,$(TARGET_CXXFLAGS))
 
 SCONS_OPTIONS += \
 	--allocator=system \
