@@ -10,7 +10,7 @@ index 4c9f8f9ba..d68da1b08 100644
          env['ENV']        = {}
 -    env['ENV']['PATH']    = '/usr/local/bin:/opt/bin:/bin:/usr/bin:/snap/bin'
 +    env['ENV']['PATH']    = os.environ["PATH"]
-+    env['ENV']['STAGING_DIR']    = '/root/hh/op/staging_dir'
++    env['ENV']['STAGING_DIR']    = '$STAGING_DIR'
      env['OBJPREFIX']      = ''
      env['OBJSUFFIX']      = '.o'
      env['SHOBJPREFIX']    = '$OBJPREFIX'
