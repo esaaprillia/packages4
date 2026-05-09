@@ -1,22 +1,26 @@
-From a40293f21d4584bfe759d24aecbd3bae58a39bec Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Sat, 9 May 2026 07:50:05 +0800
+From c39c59c821eff1e1d4ef9c6687734cc82edaf944 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 9 May 2026 08:00:26 +0800
 Subject: [PATCH] Update SConstruct
 
 ---
- SConstruct | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ SConstruct | 6 ------
+ 1 file changed, 6 deletions(-)
 
 diff --git a/SConstruct b/SConstruct
-index dcd591c10d7f4..2828b81049b5e 100644
+index dcd591c10d7f4..d3c7ca04bedc6 100644
 --- a/SConstruct
 +++ b/SConstruct
-@@ -3385,7 +3385,7 @@ def doConfigure(myenv):
+@@ -3383,12 +3383,6 @@ def doConfigure(myenv):
+     if releaseBuild and suppress_invalid:
+         env.FatalError("--disable-minimum-compiler-version-enforcement is forbidden with --release")
  
-     if not (c_compiler_validated and cxx_compiler_validated):
-         if not suppress_invalid:
+-    if not (c_compiler_validated and cxx_compiler_validated):
+-        if not suppress_invalid:
 -            env.ConfError("ERROR: Refusing to build with compiler that does not meet requirements")
-+
-         print("WARNING: Ignoring failed compiler version check per explicit user request.")
-         print("WARNING: The build may fail, binaries may crash, or may run but corrupt data...")
- 
+-        print("WARNING: Ignoring failed compiler version check per explicit user request.")
+-        print("WARNING: The build may fail, binaries may crash, or may run but corrupt data...")
+-
+     # Figure out what our minimum windows version is. If the user has specified, then use
+     # that.
+     if env.TargetOSIs('windows'):
