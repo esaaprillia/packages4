@@ -39,10 +39,7 @@ define Package/mongo/description
 A high-performance, open source, schema-free document-oriented database
 endef
 
-export $(TOOLCHAIN_ROOT_DIR)
-export $(TOOLCHAIN_BIN_DIRS)
-export $(TOOLCHAIN_INC_DIRS)
-export $(TOOLCHAIN_LIB_DIRS)
+export PATH="$(STAGING_DIR):$(TOOLCHAIN_ROOT_DIR):$(TOOLCHAIN_BIN_DIRS):$(TOOLCHAIN_INC_DIRS):$(TOOLCHAIN_LIB_DIRS):$(PATH)"
 export CC="$(TARGET_CC_NOCACHE)"
 export CXX="$(TARGET_CXX_NOCACHE)"
 export CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)"
