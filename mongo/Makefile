@@ -83,7 +83,6 @@ SCONS_OPTIONS += \
 	--use-system-google-benchmark \
 	--use-system-grpc \
 	--use-system-icu \
-	--use-system-mongo-c \
 	--use-system-libbson \
 	--use-system-libmongocrypt \
 	--use-system-pcre2 \
