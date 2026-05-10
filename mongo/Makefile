@@ -72,6 +72,8 @@ TARGET_CFLAGS := $(filter-out -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -mcpu=generic,$(TARGET_CXXFLAGS))
 
+TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
+
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
