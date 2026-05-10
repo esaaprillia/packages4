@@ -17,12 +17,13 @@ PYTHON3_PKG_BUILD:=0
 
 PKG_BUILD_DEPENDS:= \
 	scons/host \
+	protobuf/host \
 	python-psutil/host \
 	python-pymongo/host \
 	python-yaml/host \
 	python-cheetah3/host \
 	python-packaging/host \
-	python-setuptools/host
+	python-regex/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
