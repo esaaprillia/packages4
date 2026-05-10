@@ -1,16 +1,16 @@
-diff --git a/SCons/Platform/posix.py b/SCons/Platform/posix.py
-index 4c9f8f9ba..d68da1b08 100644
 --- a/SCons/Platform/posix.py
 +++ b/SCons/Platform/posix.py
 @@ -30,0 +31 @@ selection method.
 +import os
-@@ -82,7 +82,8 @@ def generate(env) -> None:
+@@ -82,7 +82,10 @@ def generate(env) -> None:
  
      if 'ENV' not in env:
          env['ENV']        = {}
 -    env['ENV']['PATH']    = '/usr/local/bin:/opt/bin:/bin:/usr/bin:/snap/bin'
-+    env['ENV']['PATH']    = os.environ["PATH"]
-+    env['ENV']['STAGING_DIR']    = '$STAGING_DIR'
++    env['ENV']['PATH']    = os.environ['PATH']
++    env['ENV']['STAGING_DIR']    = os.environ['STAGING_DIR']
++    env['ENV']['PKG_CONFIG']    = os.environ['PKG_CONFIG']
++    env['ENV']['PKG_CONFIG_PATH']    = os.environ['PKG_CONFIG_PATH']
      env['OBJPREFIX']      = ''
      env['OBJSUFFIX']      = '.o'
      env['SHOBJPREFIX']    = '$OBJPREFIX'
