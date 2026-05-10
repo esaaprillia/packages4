@@ -77,14 +77,15 @@ TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
+	--use-system-mongo-c \
 	--use-system-asio \
 	--use-system-boost \
 	--use-system-fmt \
-	--use-system-benchmark \
+	--use-system-google-benchmark \
 	--use-system-grpc \
 	--use-system-icu \
-	--use-system-bson \
-	--use-system-mongocrypt \
+	--use-system-libbson \
+	--use-system-libmongocrypt \
 	--use-system-pcre2 \
 	--use-system-protobuf \
 	--use-system-snappy \
@@ -98,6 +99,7 @@ SCONS_OPTIONS += \
 	--use-system-zstd \
 	--use-sasl-client \
 	--ssl \
+	PREFIX=/usr \
 	CPPPATH="$(STAGING_DIR)/usr/include" \
 	LIBPATH="$(STAGING_DIR)/usr/lib" \
 	PROTOC_GRPC_PLUGIN="$(STAGING_DIR_HOSTPKG)/bin/grpc_cpp_plugin" \
