@@ -34,7 +34,6 @@ define Package/mongo
 	TITLE:=The MongoDB Database
 	URL:=https://www.mongodb.com/
 	DEPENDS:= \
-	+abseil-cpp \
 	+boost-filesystem \
 	+boost-iostreams \
 	+boost-log \
@@ -77,13 +76,13 @@ TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
-	--use-system-abseil-cpp \
 	--use-system-asio \
 	--use-system-boost \
 	--use-system-fmt \
 	--use-system-google-benchmark \
 	--use-system-grpc \
 	--use-system-icu \
+	--use-system-mongo-c \
 	--use-system-libbson \
 	--use-system-libmongocrypt \
 	--use-system-pcre2 \
@@ -93,7 +92,6 @@ SCONS_OPTIONS += \
 	--use-system-tcmalloc \
 	--use-system-libunwind \
 	--use-system-valgrind \
-	--use-system-wiredtiger \
 	--use-system-yaml \
 	--use-system-zlib \
 	--use-system-zstd \
@@ -101,6 +99,8 @@ SCONS_OPTIONS += \
 	--ssl \
 	CPPPATH="$(STAGING_DIR)/usr/include" \
 	LIBPATH="$(STAGING_DIR)/usr/lib" \
+	PROTOC_GRPC_PLUGIN="$(STAGING_DIR_HOSTPKG)/bin/grpc_cpp_plugin" \
+	PROTOC="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	MONGO_VERSION="$(PKG_VERSION)"
 
 define Package/mongo/install
