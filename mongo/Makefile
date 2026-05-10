@@ -80,7 +80,7 @@ SCONS_OPTIONS += \
 	--use-system-asio \
 	--use-system-boost \
 	--use-system-fmt \
-	--use-system-google-benchmark \
+	--use-system-benchmark \
 	--use-system-grpc \
 	--use-system-icu \
 	--use-system-libbson \
