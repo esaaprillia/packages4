@@ -58,17 +58,3 @@ https://bugs.gentoo.org/969020
      detectCompiler = Configure(
          myenv,
          help=False,
---- a/SConstruct
-+++ b/SConstruct
-@@ -5326,6 +5288,9 @@ def doConfigure(myenv):
- 
-     mongoc_mode = get_option('use-system-mongo-c')
-     conf.env['MONGO_HAVE_LIBMONGOC'] = False
-+    conf.env.ParseConfig('pkg-config.real libbson-1.0 libmongoc-1.0 --cflags')
-+    conf.env['LIBDEPS_LIBBSON_SYSLIBDEP'] = 'bson-1.0'
-+
-     if mongoc_mode != 'off':
-         if conf.CheckLibWithHeader(
-             ["mongoc-1.0"],
-
-
