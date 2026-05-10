@@ -33,6 +33,34 @@ define Package/mongo
 	CATEGORY:=Libraries
 	TITLE:=The MongoDB Database
 	URL:=https://www.mongodb.com/
+	DEPENDS:= \
+	+boost-filesystem \
+	+boost-iostreams \
+	+boost-log \
+	+boost-program_options \
+	+libfmt \
+	+benchmark \
+	+grpc \
+	+icu \
+	+mongo-c-driver \
+	+libcurl \
+	+libsasl2 \
+	+libmongocrypt \
+	+libopenssl \
+	+libpcre2 \
+	+libpcap \
+	+protobuf \
+	+snappy \
+	+snowball \
+	+gperftools \
+	+libunwind \
+	+valgrind \
+	+wiredtiger \
+	+libyaml \
+	+libyaml-cpp \
+	+zlib \
+	+liblzma \
+	+libzstd
 endef
 
 define Package/mongo/description
@@ -43,9 +71,7 @@ TARGET_CFLAGS := $(filter-out -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -mcpu=generic,$(TARGET_CXXFLAGS))
 
-SCONS_VARS += \
-	CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS) -L$(STAGING_DIR)/usr/lib" \
-	LINKFLAGS="$(TARGET_LDFLAGS)"
+TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 
 SCONS_OPTIONS += \
 	--allocator=system \
