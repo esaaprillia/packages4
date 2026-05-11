@@ -23,7 +23,8 @@ PKG_BUILD_DEPENDS:= \
 	python-yaml/host \
 	python-cheetah3/host \
 	python-packaging/host \
-	python-regex/host
+	python-regex/host \
+	python-legacy-cgi/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/scons/scons.mk
