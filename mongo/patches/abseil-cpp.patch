@@ -1,0 +1,110 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -5071,6 +5071,22 @@ def doConfigure(myenv):
+     if use_system_version_of_library("snappy"):
+         conf.FindSysLibDep("snappy", ["snappy"])
+ 
++    if use_system_version_of_library("google-benchmark"):
++        conf.FindSysLibDep("benchmark", ["benchmark"])
++
++    if use_system_version_of_library("libbson"):
++        conf.FindSysLibDep("libbson", ["bson-1.0"])
++
++    if use_system_version_of_library("libmongocrypt"):
++        conf.FindSysLibDep("libmongocrypt", ["mongocrypt"])
++
++    if use_system_version_of_library('abseil-cpp'):
++        conf.FindSysLibDep("absl_city", ["absl_city"])
++        conf.FindSysLibDep("absl_hash", ["absl_hash"])
++        conf.FindSysLibDep("absl_int128", ["absl_int128"])
++        #conf.FindSysLibDep("absl_low_level_hash", ["absl_low_level_hash"])
++        conf.FindSysLibDep("absl_raw_hash_set", ["absl_raw_hash_set"])
++
+     if use_system_version_of_library("zlib"):
+         conf.FindSysLibDep("zlib", ["zdll" if conf.env.TargetOSIs('windows') else "z"])
+ 
+
+--- a/SConstruct
++++ b/SConstruct
+@@ -455,6 +455,7 @@ add_option(
+ 
+ # Most of the "use-system-*" options follow a simple form.
+ for pack in [
++    ('abseil-cpp',),
+     (
+         'asio',
+         'ASIO',
+From a628b2baad5892e594a3bc1ed79b3b4a0e4baec5 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 6 May 2026 18:19:27 +0800
+Subject: [PATCH] Update SConscript
+
+---
+ src/third_party/SConscript | 38 ++++++++++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 12 deletions(-)
+
+diff --git a/src/third_party/SConscript b/src/third_party/SConscript
+index 74808075214d4..13086a01724f0 100644
+--- a/src/third_party/SConscript
++++ b/src/third_party/SConscript
+@@ -21,7 +21,6 @@ tomcryptSuffix = '-1.18.2'
+ variantSuffix = '-1.4.0'
+ 
+ thirdPartyEnvironmentModifications = {
+-    'abseil-cpp': {'CPPPATH': ['#/src/third_party/abseil-cpp/dist'], },
+     'cares': {
+         'CPPPATH': [
+             '#src/third_party/cares/dist/include',
+@@ -118,6 +117,11 @@ if not use_system_version_of_library('boost'):
+         'CCFLAGS': ['$NOERROR_FOR_UNKNOWN_WARNING_OPTION_GEN'] if env.ToolchainIs('clang') else []
+     }
+ 
++if not use_system_version_of_library('abseil-cpp'):
++    thirdPartyEnvironmentModifications['abseil-cpp'] = {
++        'CPPPATH' : ['#/src/third_party/abseil-cpp/dist'],
++    }
++
+ if not use_system_version_of_library('snappy'):
+     thirdPartyEnvironmentModifications['snappy'] = {
+         'CPPPATH': ['#/src/third_party/snappy' + snappySuffix],
+@@ -447,17 +450,28 @@ else:
+ 
+ boostEnv.ShimLibrary(name="boost")
+ 
+-abseilDirectory = 'abseil-cpp'
+ abseilEnv = env.Clone()
+-abseilEnv.InjectThirdParty(libraries=['abseil-cpp'])
+-abseilEnv.SConscript(abseilDirectory + '/SConscript', exports={'env': abseilEnv})
+-abseilEnv = abseilEnv.Clone(LIBDEPS_INTERFACE=[
+-    abseilDirectory + '/absl_city',
+-    abseilDirectory + '/absl_hash',
+-    abseilDirectory + '/absl_int128',
+-    abseilDirectory + '/absl_low_level_hash',
+-    abseilDirectory + '/absl_raw_hash_set',
+-])
++if use_system_version_of_library("abseil-cpp"):
++    abseilEnv = abseilEnv.Clone(
++        SYSLIBDEPS=[
++            env['LIBDEPS_ABSL_CITY_SYSLIBDEP'],
++            env['LIBDEPS_ABSL_HASH_SYSLIBDEP'],
++            env['LIBDEPS_ABSL_INT128_SYSLIBDEP'],
++            #env['LIBDEPS_ABSL_LOW_LEVEL_HASH_SYSLIBDEP'],
++            env['LIBDEPS_ABSL_RAW_HASH_SET_SYSLIBDEP'],
++        ])
++else:
++    abseilDirectory = 'abseil-cpp'
++    abseilEnv = abseilEnv.Clone()
++    abseilEnv.InjectThirdParty(libraries=['abseil-cpp'])
++    abseilEnv.SConscript(abseilDirectory + '/SConscript', exports={'env' : abseilEnv})
++    abseilEnv = abseilEnv.Clone(LIBDEPS_INTERFACE=[
++            abseilDirectory + '/absl_city',
++            abseilDirectory + '/absl_hash',
++            abseilDirectory + '/absl_int128',
++            abseilDirectory + '/absl_low_level_hash',
++            abseilDirectory + '/absl_raw_hash_set',
++        ])
+ 
+ abseilEnv.ShimLibrary(name="abseil")
+ 
+
+ 
