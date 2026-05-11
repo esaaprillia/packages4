@@ -16,6 +16,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/mongo-r$(PKG_VERSION)
 PYTHON3_PKG_BUILD:=0
 
 PKG_BUILD_DEPENDS:= \
+	asio \
 	scons/host \
 	protobuf/host \
 	python-psutil/host \
