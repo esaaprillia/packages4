@@ -32,7 +32,10 @@ endef
 
 CMAKE_OPTIONS += \
 	-DC++11=ON \
-	-DLONGLONG=ON
+	-DLONGLONG=ON \
+	-DTESTS=OFF \
+	-DTESTS_BUILD_DISCOVER=OFF \
+	-DEXAMPLES=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
