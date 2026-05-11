@@ -36,7 +36,6 @@ define Package/mongo
 	TITLE:=The MongoDB Database
 	URL:=https://www.mongodb.com/
 	DEPENDS:= \
-	+abseil-cpp \
 	+boost-filesystem \
 	+boost-iostreams \
 	+boost-log \
@@ -79,7 +78,6 @@ TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
-	--use-system-abseil-cpp \
 	--use-system-mongo-c \
 	--use-system-asio \
 	--use-system-boost \
