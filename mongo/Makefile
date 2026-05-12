@@ -41,13 +41,11 @@ define Package/mongo
 	+boost-log \
 	+boost-program_options \
 	+libfmt \
-	+benchmark \
 	+grpc \
 	+icu \
 	+mongo-c-driver \
 	+libcurl \
 	+libsasl2 \
-	+libmongocrypt \
 	+libopenssl \
 	+libpcre2 \
 	+libpcap \
@@ -81,11 +79,8 @@ SCONS_OPTIONS += \
 	--use-system-mongo-c \
 	--use-system-boost \
 	--use-system-fmt \
-	--use-system-google-benchmark \
 	--use-system-grpc \
 	--use-system-icu \
-	--use-system-libbson \
-	--use-system-libmongocrypt \
 	--use-system-pcre2 \
 	--use-system-protobuf \
 	--use-system-snappy \
