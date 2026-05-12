@@ -43,7 +43,6 @@ define Package/mongo
 	+libfmt \
 	+grpc \
 	+icu \
-	+mongo-c-driver \
 	+libcurl \
 	+libsasl2 \
 	+libopenssl \
@@ -76,7 +75,6 @@ TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
-	--use-system-mongo-c \
 	--use-system-boost \
 	--use-system-fmt \
 	--use-system-grpc \
