@@ -46,7 +46,6 @@ define Package/mongo
 	+libcurl \
 	+libsasl2 \
 	+libopenssl \
-	+libpcre2 \
 	+libpcap \
 	+protobuf \
 	+snappy \
@@ -79,7 +78,6 @@ SCONS_OPTIONS += \
 	--use-system-fmt \
 	--use-system-grpc \
 	--use-system-icu \
-	--use-system-pcre2 \
 	--use-system-protobuf \
 	--use-system-snappy \
 	--use-system-stemmer \
