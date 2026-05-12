@@ -16,7 +16,6 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/mongo-r$(PKG_VERSION)
 PYTHON3_PKG_BUILD:=0
 
 PKG_BUILD_DEPENDS:= \
-	asio \
 	scons/host \
 	protobuf/host \
 	python-psutil/host \
@@ -80,7 +79,6 @@ SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
 	--use-system-mongo-c \
-	--use-system-asio \
 	--use-system-boost \
 	--use-system-fmt \
 	--use-system-google-benchmark \
