@@ -39,10 +39,6 @@ CMAKE_OPTIONS += \
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
-	$(INSTALL_DIR) $(STAGING_DIR)/usr/include
-	$(LN) $(STAGING_DIR)/usr/include/libbson-1.0/bson $(STAGING_DIR)/usr/include/bson
-	$(LN) $(STAGING_DIR)/usr/include/libbson-1.0/bson $(STAGING_DIR)/usr/include/libbson
-	$(LN) $(STAGING_DIR)/usr/include/libmongoc-1.0/mongoc $(STAGING_DIR)/usr/include/mongoc
 endef
 
 define Package/mongo-c-driver/install
