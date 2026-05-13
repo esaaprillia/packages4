@@ -54,9 +54,9 @@ define Package/mongo/description
 A high-performance, open source, schema-free document-oriented database
 endef
 
-TARGET_CFLAGS := $(filter-out -mcpu=generic,$(TARGET_CFLAGS))
-TARGET_CCFLAGS := $(filter-out -mcpu=generic,$(TARGET_CCFLAGS))
-TARGET_CXXFLAGS := $(filter-out -mcpu=generic,$(TARGET_CXXFLAGS))
+TARGET_CFLAGS := $(filter-out -mcpu=generic,$(TARGET_CFLAGS)) -D_LARGEFILE64_SOURCE
+TARGET_CCFLAGS := $(filter-out -mcpu=generic,$(TARGET_CCFLAGS)) -D_LARGEFILE64_SOURCE
+TARGET_CXXFLAGS := $(filter-out -mcpu=generic,$(TARGET_CXXFLAGS)) -D_LARGEFILE64_SOURCE
 
 TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 
