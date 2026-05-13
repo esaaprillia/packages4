@@ -37,8 +37,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
-	-DCMAKE_C_FLAGS="-march=armv8-a" \
-	-DCMAKE_CXX_FLAGS="-march=armv8-a"
+	-DCMAKE_SYSTEM_PROCESSOR="-march=armv8-a"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
