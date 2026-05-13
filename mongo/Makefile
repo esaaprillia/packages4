@@ -66,7 +66,6 @@ SCONS_OPTIONS += \
 	--use-system-fmt \
 	--use-system-snappy \
 	--use-system-stemmer \
-	--use-system-tcmalloc \
 	--use-system-libunwind \
 	--use-system-yaml \
 	--use-system-zlib \
