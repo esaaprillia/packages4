@@ -43,6 +43,8 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DHAVE_ARM_CRYPTO=1 \
 	-DHAVE_PLUS_CRYPTO=1 \
+	-DCMAKE_SYSTEM_PROCESSOR=-march=armv8-a \
+	-DCMAKE_REQUIRED_FLAGS=-march=armv8-a+crypto \
 	-DCMAKE_C_FLAGS=-march=armv8-a+crypto \
 	-DCMAKE_CXX_FLAGS=-march=armv8-a+crypto
 
