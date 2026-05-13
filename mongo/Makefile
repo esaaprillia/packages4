@@ -52,7 +52,6 @@ define Package/mongo
 	+snowball \
 	+gperftools \
 	+libunwind \
-	+valgrind \
 	+wiredtiger \
 	+libyaml \
 	+libyaml-cpp \
@@ -83,7 +82,6 @@ SCONS_OPTIONS += \
 	--use-system-stemmer \
 	--use-system-tcmalloc \
 	--use-system-libunwind \
-	--use-system-valgrind \
 	--use-system-wiredtiger \
 	--use-system-yaml \
 	--use-system-zlib \
