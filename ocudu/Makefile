@@ -35,6 +35,10 @@ endef
 
 #TARGET_LDFLAGS +=-lpthread
 
+TARGET_CFLAGS := $(filter-out -mcpu=generic,$(TARGET_CFLAGS))
+#TARGET_CCFLAGS := $(filter-out -mcpu=generic,$(TARGET_CCFLAGS))
+TARGET_CXXFLAGS := $(filter-out -mcpu=generic,$(TARGET_CXXFLAGS))
+
 CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DCMAKE_C_FLAGS=-march=armv8-a+crypto \
