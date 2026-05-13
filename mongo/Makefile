@@ -17,7 +17,6 @@ PYTHON3_PKG_BUILD:=0
 
 PKG_BUILD_DEPENDS:= \
 	scons/host \
-	protobuf/host \
 	python-psutil/host \
 	python-pymongo/host \
 	python-yaml/host \
@@ -36,21 +35,13 @@ define Package/mongo
 	TITLE:=The MongoDB Database
 	URL:=https://www.mongodb.com/
 	DEPENDS:= \
-	+boost-filesystem \
-	+boost-iostreams \
-	+boost-log \
-	+boost-program_options \
 	+libfmt \
-	+grpc \
-	+icu \
 	+libcurl \
 	+libsasl2 \
 	+libopenssl \
 	+libpcap \
-	+protobuf \
 	+snappy \
 	+snowball \
-	+gperftools \
 	+libunwind \
 	+libyaml \
 	+libyaml-cpp \
@@ -72,11 +63,7 @@ TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
-	--use-system-boost \
 	--use-system-fmt \
-	--use-system-grpc \
-	--use-system-icu \
-	--use-system-protobuf \
 	--use-system-snappy \
 	--use-system-stemmer \
 	--use-system-tcmalloc \
@@ -87,10 +74,8 @@ SCONS_OPTIONS += \
 	--use-sasl-client \
 	--ssl \
 	PREFIX=/usr \
-	CPPPATH="$(STAGING_DIR)/usr" \
-	LIBPATH="$(STAGING_DIR)/usr" \
-	PROTOC_GRPC_PLUGIN="$(STAGING_DIR_HOSTPKG)/bin/grpc_cpp_plugin" \
-	PROTOC="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	CPPPATH="$(STAGING_DIR)/usr/include" \
+	LIBPATH="$(STAGING_DIR)/usr/lib" \
 	MONGO_VERSION="$(PKG_VERSION)"
 
 define Package/mongo/install
