@@ -36,7 +36,9 @@ endef
 #TARGET_LDFLAGS +=-lpthread
 
 CMAKE_OPTIONS += \
-	-DBUILD_TESTING=OFF
+	-DBUILD_TESTING=OFF \
+	-DCMAKE_C_FLAGS="-march=armv8-a" \
+	-DCMAKE_CXX_FLAGS="-march=armv8-a"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
