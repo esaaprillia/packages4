@@ -1,0 +1,10 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -3034,7 +3026,6 @@ if env.TargetOSIs('posix'):
+     env.Append(
+         CCFLAGS=[
+             "-fasynchronous-unwind-tables",
+-            "-g2" if not env.TargetOSIs('emscripten') else "-g",
+             "-Wall",
+             "-Wsign-compare",
+             "-Wno-unknown-pragmas",
