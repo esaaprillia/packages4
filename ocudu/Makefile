@@ -41,6 +41,8 @@ TARGET_CXXFLAGS := $(filter-out -mcpu=generic,$(TARGET_CXXFLAGS))
 
 CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
+	-DHAVE_ARM_CRYPTO=1 \
+	-DHAVE_PLUS_CRYPTO=1 \
 	-DCMAKE_C_FLAGS=-march=armv8-a+crypto \
 	-DCMAKE_CXX_FLAGS=-march=armv8-a+crypto
 
