@@ -89,8 +89,8 @@ SCONS_OPTIONS += \
 	--use-sasl-client \
 	--ssl \
 	PREFIX=/usr \
-	CPPPATH="$(STAGING_DIR)/usr/include" \
-	LIBPATH="$(STAGING_DIR)/usr/lib" \
+	CPPPATH="$(STAGING_DIR)/usr" \
+	LIBPATH="$(STAGING_DIR)/usr" \
 	PROTOC_GRPC_PLUGIN="$(STAGING_DIR_HOSTPKG)/bin/grpc_cpp_plugin" \
 	PROTOC="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	MONGO_VERSION="$(PKG_VERSION)"
