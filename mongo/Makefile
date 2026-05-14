@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mongo
-PKG_VERSION:=7.0.32
+PKG_VERSION:=7.0.34
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-r$(PKG_VERSION).tar.gz
