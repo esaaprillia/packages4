@@ -54,6 +54,7 @@ A high-performance, open source, schema-free document-oriented database
 endef
 
 TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
+TARGET_CXXFLAGS += -D_LARGEFILE64_SOURCE
 
 SCONS_OPTIONS += \
 	--allocator=system \
