@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libyaml-cpp
 PKG_VERSION:=0.8.0
-PKG_RELEASE:=4
+PKG_RELEASE:=3
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/jbeder/yaml-cpp
