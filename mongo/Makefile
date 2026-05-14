@@ -35,7 +35,6 @@ define Package/mongo
 	TITLE:=The MongoDB Database
 	URL:=https://www.mongodb.com/
 	DEPENDS:= \
-	+libfmt \
 	+libcurl \
 	+libsasl2 \
 	+libopenssl \
@@ -63,7 +62,6 @@ TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
-	--use-system-fmt \
 	--use-system-snappy \
 	--use-system-stemmer \
 	--use-system-libunwind \
