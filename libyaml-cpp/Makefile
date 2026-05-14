@@ -32,6 +32,7 @@ define Package/libyaml-cpp
   TITLE:=libyaml-cpp
   URL:=https://github.com/jbeder/yaml-cpp
   DEPENDS:=+libstdcpp
+  ABI_VERSION:=0.8.0
 endef
 
 define Package/libyaml-cpp/description
@@ -51,7 +52,7 @@ endef
 
 define Package/libyaml-cpp/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libyaml-cpp.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libyaml-cpp.so.$(ABI_VERSION) $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,libyaml-cpp))
