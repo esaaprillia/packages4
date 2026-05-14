@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-orjson
-PKG_VERSION:=3.11.8
+PKG_VERSION:=3.11.9
 PKG_RELEASE:=1
 
 PYPI_NAME:=orjson
