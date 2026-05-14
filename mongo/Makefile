@@ -53,6 +53,8 @@ define Package/mongo/description
 A high-performance, open source, schema-free document-oriented database
 endef
 
+TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
+
 SCONS_OPTIONS += \
 	--allocator=system \
 	--disable-warnings-as-errors \
