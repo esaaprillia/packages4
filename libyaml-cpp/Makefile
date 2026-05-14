@@ -51,7 +51,7 @@ endef
 
 define Package/libyaml-cpp/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libyaml-cpp.so.* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libyaml-cpp.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,libyaml-cpp))
