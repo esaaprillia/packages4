@@ -77,8 +77,8 @@ SCONS_OPTIONS += \
 	MONGO_VERSION="$(PKG_VERSION)"
 
 define Package/mongo/install
-	$(INSTALL_DIR) $(1)/etc
-	$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
+	#$(INSTALL_DIR) $(1)/etc
+	#$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 endef
