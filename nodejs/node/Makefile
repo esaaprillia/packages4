@@ -16,7 +16,7 @@ PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://nodejs.org/dist/v$(PKG_VERSION)
 PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-v$(PKG_VERSION)
-NODEJS_BIN_SUM:=skip
+NODEJS_BIN_SUM:=19e56f0825510207dd904f087fe52faa0a4eb6b2aab5f0ea7a33830d04888b8b
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/$(PKG_NAME)-v$(PKG_VERSION)
 
 PKG_MAINTAINER:=Hirokazu MORIKAWA <morikw2@gmail.com>, Adrian Panella <ianchi74@outlook.com>
@@ -62,7 +62,7 @@ NODEJS_BIN:=node-v$(PKG_VERSION)-linux-x64.tar.gz
 define Download/nodebin
 	URL:=https://nodejs.org/download/release/v$(PKG_VERSION)/
 	FILE:=$(NODEJS_BIN)
-	#HASH:=$(NODEJS_BIN_SUM)
+	HASH:=$(NODEJS_BIN_SUM)
 endef
 
 define Host/Prepare
