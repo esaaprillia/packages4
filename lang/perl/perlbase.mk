@@ -194,7 +194,7 @@ DEPENDS+=+perlbase-bigint +perlbase-essential
 endef
 
 define Package/perlbase-bignum/install
-$(call perlmod/Install,$(1),bignum.pm bigrat.pm,)
+$(call perlmod/Install,$(1),bigfloat.pm bignum.pm bigrat.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/bignum/t)
 endef
 
