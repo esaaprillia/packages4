@@ -36,7 +36,7 @@ $(eval $(call BuildPackage,perlbase-app))
 define Package/perlbase-archive
 $(call Package/perlbase-template)
 TITLE:=Archive perl module
-DEPENDS+=+perlbase-cwd +perlbase-essential +perlbase-file +perlbase-io
+DEPENDS+=+perlbase-cwd +perlbase-essential +perlbase-file +perlbase-io +perlbase-data +perlbase-getopt +perlbase-storable +perlbase-pod
 endef
 
 define Package/perlbase-archive/install
@@ -1121,7 +1121,7 @@ $(eval $(call BuildPackage,perlbase-perlio))
 define Package/perlbase-pod
 $(call Package/perlbase-template)
 TITLE:=Pod perl module
-DEPENDS+=+perlbase-config +perlbase-cwd +perlbase-encode +perlbase-essential +perlbase-fcntl +perlbase-file +perlbase-getopt +perlbase-integer +perlbase-posix +perlbase-symbol +perlbase-term +perlbase-text
+DEPENDS+=+perlbase-config +perlbase-cwd +perlbase-encode +perlbase-essential +perlbase-fcntl +perlbase-file +perlbase-getopt +perlbase-integer +perlbase-posix +perlbase-symbol +perlbase-term +perlbase-text +perlbase-if +perlbase-storable
 endef
 
 define Package/perlbase-pod/install
@@ -1129,8 +1129,11 @@ $(call perlmod/Install,$(1),Pod,Pod/Usage.pm)
 $(call perlmod/Install/NoStrip,$(1),Pod/Usage.pm,)
 $(call perlmod/InstallBaseTests,$(1),cpan/Pod-Checker/t cpan/Pod-Escapes/t cpan/Pod-Perldoc/t cpan/Pod-Simple/t cpan/Pod-Usage/scripts cpan/Pod-Usage/t cpan/podlators/t ext/Pod-Functions/Functions.pm ext/Pod-Functions/t ext/Pod-Html/t lib/Pod/t)
 	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/pod2html $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/pod2man $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/pod2text $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/pod2usage $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/podchecker $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,perlbase-pod))
@@ -1362,7 +1365,7 @@ $(eval $(call BuildPackage,perlbase-term))
 define Package/perlbase-test
 $(call Package/perlbase-template)
 TITLE:=Test perl module
-DEPENDS+=+perlbase-base +perlbase-config +perlbase-essential +perlbase-io +perlbase-symbol +perlbase-tap +perlbase-text
+DEPENDS+=+perlbase-base +perlbase-config +perlbase-essential +perlbase-io +perlbase-symbol +perlbase-tap +perlbase-text +perlbase-app
 endef
 
 define Package/perlbase-test/install
