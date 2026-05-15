@@ -1,56 +1,90 @@
+# This is free software, licensed under the GNU General Public License v2.
+# See /LICENSE for more information.
+#
+
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=ocudu
-PKG_VERSION:=26.04
-PKG_SOURCE_VERSION:=26_04
+PKG_NPM_NAME:=mongosh
+PKG_NAME:=node-$(PKG_NPM_NAME)
+PKG_VERSION:=2.8.3
 PKG_RELEASE:=1
 
-PKG_SOURCE:=ocudu-release_$(PKG_SOURCE_VERSION).tar.gz
-PKG_SOURCE_URL:=https://gitlab.com/ocudu/ocudu/-/archive/release_$(PKG_SOURCE_VERSION)/
+#PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
+#PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
+#PKG_HASH:=f1e3f7b6621ca468d33b5be8a844c260d7de502e7205be0b298a01e8473e226e
+
+PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/mongodb-js/mongosh/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
-PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=BSD 3-Clause-Open-MPI
-PKG_LICENSE_FILES:=COPYRIGHT.txt LICENSE
+PKG_MAINTAINER:=Hirokazu MORIKAWA <morikw2@gmail.com>
+PKG_LICENSE:=MIT
+PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/ocudu-release_$(PKG_SOURCE_VERSION)
-#PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite libconfig lksctp-tools uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp libexecinfo libyaml-cpp
-
-CMAKE_BINARY_SUBDIR:=build
+PKG_BUILD_DEPENDS:=node/host
+PKG_BUILD_PARALLEL:=1
+PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
 
-define Package/ocudu
-	SECTION:=libs
-	CATEGORY:=Libraries
-	TITLE:=OCUDU is a permissively-licensed, open-source 5G
-	#DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libconfig +libsctp +uhd +bladerf +libdw +soapy-sdr +libzmq-nc +boost-program_options +libexecinfo
-	URL:=https://ocudu.org/
+define Package/node-mongosh
+  SUBMENU:=Node.js
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=An Argon2 library for Node
+  URL:=https://www.npmjs.com/package/argon2
+  DEPENDS:=
 endef
 
-define Package/ocudu/description
-	OCUDU is a permissively-licensed, open-source 5G (and beyond) CU/DU project designed for commercial deployment and broad industry adoption, as well as advanced research and development.
+define Package/node-mongosh/description
+ Bindings to the reference Argon2 implementation.
 endef
 
-#TARGET_LDFLAGS +=-lpthread
+TAR_OPTIONS+= --strip-components 1
+TAR_CMD=$(HOST_TAR) -C $(1) $(TAR_OPTIONS)
 
-CMAKE_OPTIONS += \
-	-DBUILD_TESTING=OFF \
-	-DHAVE_ARM_CRYPTO=1 \
-	-DHAVE_PLUS_CRYPTO=1
+NODEJS_CPU:=$(subst powerpc,ppc,$(subst aarch64,arm64,$(subst x86_64,x64,$(subst i386,ia32,$(ARCH)))))
+TMPNPM:=$(shell mktemp -u XXXXXXXXXX)
+NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(TMP_DIR))
 
-define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
+TARGET_CFLAGS+=$(FPIC)
+TARGET_CPPFLAGS+=$(FPIC)
+
+define Build/Compile
+	rm -rf $(PKG_BUILD_DIR)/prebuilds
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU) --ignore-scripts
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm run install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
+	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
+	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
+	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 endef
 
-define Package/ocudu/install
+define Package/node-mongosh/install
+	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
+	$(CP) $(PKG_BUILD_DIR)/{LICENSE,package.json,*.md} \
+		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
+	$(CP) $(PKG_BUILD_DIR)/{node_modules,bin} \
+		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/share
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
+	$(LN) ../lib/node/$(PKG_NPM_NAME)/mongosh.js $(1)/usr/bin/mongosh
+	$(INSTALL_DIR) $(1)/usr/lib/node_modules
+	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
 
-$(eval $(call BuildPackage,ocudu))
+define Package/node-mongosh/postrm
+#!/bin/sh
+rm /usr/lib/node_modules/mongosh || true
+rm -rf /usr/lib/node/mongosh || true
+endef
+
+$(eval $(call BuildPackage,node-mongosh))
