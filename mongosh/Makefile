@@ -57,7 +57,7 @@ endef
 
 define Package/node-mongosh/install
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
-	$(CP) $(PKG_BUILD_DIR)/{LICENSE,package.json,*.md} \
+	$(CP) $(PKG_BUILD_DIR)/{LICENSE,package.json,README.md} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(CP) $(PKG_BUILD_DIR)/{node_modules,bin} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
