@@ -29,7 +29,7 @@ define Package/node-mongosh
   CATEGORY:=Languages
   TITLE:=An Argon2 library for Node
   URL:=https://www.npmjs.com/package/argon2
-  DEPENDS:=
+  DEPENDS:=+node-npm
 endef
 
 define Package/node-mongosh/description
@@ -66,7 +66,7 @@ define Package/node-mongosh/install
 	$(CP) $(PKG_BUILD_DIR)/{node_modules,bin} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(LN) ../lib/node/$(PKG_NPM_NAME)/mongosh.js $(1)/usr/bin/mongosh
+	$(LN) ../lib/node/$(PKG_NPM_NAME)/bin/mongosh.js $(1)/usr/bin/mongosh
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
