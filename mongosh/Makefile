@@ -1,7 +1,3 @@
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=mongosh
@@ -13,8 +9,8 @@ PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
 PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 PKG_HASH:=skip
 
-PKG_MAINTAINER:=Hirokazu MORIKAWA <morikw2@gmail.com>
-PKG_LICENSE:=MIT
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=node/host
@@ -27,13 +23,13 @@ define Package/node-mongosh
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=An Argon2 library for Node
-  URL:=https://www.npmjs.com/package/argon2
-  DEPENDS:=+node-npm
+  TITLE:=The MongoDB Shell
+  URL:=https://www.npmjs.com/package/mongosh
+  DEPENDS:=+node +node-npm
 endef
 
 define Package/node-mongosh/description
- Bindings to the reference Argon2 implementation.
+ This repository is a monorepo for all the various components in the MongoDB Shell across all environments (REPL, Browser, Compass, etc).
 endef
 
 TAR_OPTIONS+= --strip-components 1
