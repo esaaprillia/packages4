@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ocudu
-PKG_VERSION:=26.04
+PKG_VERSION:=26.04.0
 PKG_SOURCE_VERSION:=26_04
 PKG_RELEASE:=1
 
@@ -14,7 +14,7 @@ PKG_LICENSE:=BSD 3-Clause-Open-MPI
 PKG_LICENSE_FILES:=COPYRIGHT.txt LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/ocudu-release_$(PKG_SOURCE_VERSION)
-PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite libconfig lksctp-tools uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp libexecinfo libyaml-cpp
+PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite lksctp-tools zmq backward-cpp libdwarf
 
 CMAKE_BINARY_SUBDIR:=build
 
@@ -25,7 +25,7 @@ define Package/ocudu
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=OCUDU is a permissively-licensed, open-source 5G
-	#DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libconfig +libsctp +uhd +bladerf +libdw +soapy-sdr +libzmq-nc +boost-program_options +libexecinfo
+	DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libsctp +libdw +libzmq-nc +libyaml-cpp
 	URL:=https://ocudu.org/
 endef
 
@@ -35,18 +35,12 @@ endef
 
 #TARGET_LDFLAGS +=-lpthread
 
-TARGET_CFLAGS := $(filter-out -mcpu=generic,$(TARGET_CFLAGS))
-#TARGET_CCFLAGS := $(filter-out -mcpu=generic,$(TARGET_CCFLAGS))
-TARGET_CXXFLAGS := $(filter-out -mcpu=generic,$(TARGET_CXXFLAGS))
-
 CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
+	-DMCPU=generic \
 	-DHAVE_ARM_CRYPTO=1 \
 	-DHAVE_PLUS_CRYPTO=1 \
-	-DCMAKE_SYSTEM_PROCESSOR=-march=armv8-a \
-	-DCMAKE_REQUIRED_FLAGS=-march=armv8-a+crypto \
-	-DCMAKE_C_FLAGS=-march=armv8-a+crypto \
-	-DCMAKE_CXX_FLAGS=-march=armv8-a+crypto
+	-DENABLE_WERROR=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
