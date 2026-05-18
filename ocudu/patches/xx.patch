@@ -1,22 +1,24 @@
-From bfe9033c5e879598ca9a4cfd0b0d8e6e1d8c70c1 Mon Sep 17 00:00:00 2001
+From 54eac1217e96b9def3356e76b2656247652301a1 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Mon, 18 May 2026 17:26:47 +0800
-Subject: [PATCH] Define M_SQRT2f32 if not already defined
+Date: Mon, 18 May 2026 17:33:22 +0800
+Subject: [PATCH] Update demodulation_mapper_impl.cpp
 
 ---
- lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp | 4 ++++
- 1 file changed, 4 insertions(+)
+ .../upper/channel_modulation/demodulation_mapper_impl.cpp   | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp b/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
-index d4e0b11724..abc75c4841 100644
+index d4e0b11724..1f081dd620 100644
 --- a/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
 +++ b/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
-@@ -10,6 +10,10 @@
+@@ -10,6 +10,12 @@
  #include "ocudu/support/math/math_utils.h"
  #include "ocudu/support/ocudu_assert.h"
  
++#include <math.h>
++
 +#ifndef M_SQRT2f32
-+#define M_SQRT2f32 1.41421356237309504880168872420969808f
++#define M_SQRT2f32 1.414213562373095048801688724209698079f
 +#endif
 +
  using namespace ocudu;
