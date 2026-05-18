@@ -1,3 +1,24 @@
+From 3c4f81e1cb7c42f211c03e0f4058bb2983f0cab0 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 18 May 2026 11:37:54 +0800
+Subject: [PATCH] Add linux/stddef.h include to ldpc_decoder_neon.cpp
+
+---
+ lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp b/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp
+index 9387bf4cc4..790fe44606 100644
+--- a/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp
++++ b/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp
+@@ -10,6 +10,7 @@
+ #include "neon_support.h"
+ #include "ocudu/ocuduvec/circ_shift.h"
+ #include "ocudu/ocuduvec/copy.h"
++#include <linux/stddef.h>
+ 
+ using namespace ocudu;
+ using namespace ocudu::ldpc;
 From b9037270fb6fd8d31fca454c48416226b69b953d Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
 Date: Mon, 18 May 2026 08:42:35 +0800
