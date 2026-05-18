@@ -1,3 +1,27 @@
+From b9037270fb6fd8d31fca454c48416226b69b953d Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 18 May 2026 08:42:35 +0800
+Subject: [PATCH] Update backward.hpp
+
+---
+ external/Backward/backward.hpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/external/Backward/backward.hpp b/external/Backward/backward.hpp
+index 6b8bcdb245..5e1903d10a 100644
+--- a/external/Backward/backward.hpp
++++ b/external/Backward/backward.hpp
+@@ -207,8 +207,9 @@
+ #endif
+ #include <signal.h>
+ #include <sys/stat.h>
+-#include <syscall.h>
++#include <sys/syscall.h>
+ #include <unistd.h>
++#include <dlfcn.h>
+ 
+ #if BACKWARD_HAS_BFD == 1
+ //              NOTE: defining PACKAGE{,_VERSION} is required before including
 --- a/lib/ofh/ethernet/ethernet_receiver_impl.cpp
 +++ b/lib/ofh/ethernet/ethernet_receiver_impl.cpp
 @@ -14,6 +14,8 @@
