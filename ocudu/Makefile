@@ -37,7 +37,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
-	-DMCPU=cortex-a53 \
+	-DMCPU=generic+crypto \
 	-DHAVE_ARM_CRYPTO=1 \
 	-DHAVE_PLUS_CRYPTO=1 \
 	-DENABLE_WERROR=OFF
