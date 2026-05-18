@@ -15,7 +15,7 @@ index d4e0b11724..0cd910fdfe 100644
  #include "demodulation_mapper_qpsk.h"
  #include "ocudu/support/math/math_utils.h"
  #include "ocudu/support/ocudu_assert.h"
-+#include <math.h>
++#include <cmath>
  
  using namespace ocudu;
  
