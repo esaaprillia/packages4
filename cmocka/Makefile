@@ -4,7 +4,7 @@ PKG_NAME:=cmocka
 PKG_VERSION:=2.0.2
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-r$(PKG_VERSION).tar.xz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://cmocka.org/files/2.0/
 PKG_HASH:=skip
 
