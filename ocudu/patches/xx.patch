@@ -1,3 +1,24 @@
+From a0f904a2e2459d370bf14c4fe90b29524c2098b6 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 18 May 2026 12:24:11 +0800
+Subject: [PATCH] Include math.h for mathematical functions
+
+---
+ lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp b/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
+index d4e0b11724..0cd910fdfe 100644
+--- a/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
++++ b/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
+@@ -9,6 +9,7 @@
+ #include "demodulation_mapper_qpsk.h"
+ #include "ocudu/support/math/math_utils.h"
+ #include "ocudu/support/ocudu_assert.h"
++#include <math.h>
+ 
+ using namespace ocudu;
+ 
 From 3c4f81e1cb7c42f211c03e0f4058bb2983f0cab0 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Mon, 18 May 2026 11:37:54 +0800
