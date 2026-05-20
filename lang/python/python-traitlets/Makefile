@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-traitlets
-PKG_VERSION:=5.14.3
+PKG_VERSION:=5.15.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=traitlets
