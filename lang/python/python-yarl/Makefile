@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=yarl
-PKG_VERSION:=1.23.0
+PKG_VERSION:=1.24.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=$(PKG_NAME)
