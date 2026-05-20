@@ -1,3 +1,27 @@
+From c9ec5970031abbf166ebf0d354033ef831b3034f Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 20 May 2026 22:43:10 +0800
+Subject: [PATCH] Update mac_ul_sch_pdu.h
+
+---
+ lib/mac/mac_ul/mac_ul_sch_pdu.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/mac/mac_ul/mac_ul_sch_pdu.h b/lib/mac/mac_ul/mac_ul_sch_pdu.h
+index c8371c44de..42952252bb 100644
+--- a/lib/mac/mac_ul/mac_ul_sch_pdu.h
++++ b/lib/mac/mac_ul/mac_ul_sch_pdu.h
+@@ -15,6 +15,10 @@
+ #include "ocudu/support/ocudu_assert.h"
+ #include "fmt/std.h"
+ 
++#include <endian.h>
++#include <stdio.h>
++#include <stdint.h>
++
+ namespace ocudu {
+ 
+ class mac_ul_sch_subpdu
 From 3ea2ea46a63b90026e7712e534071e93fbb04445 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Wed, 20 May 2026 21:04:55 +0800
