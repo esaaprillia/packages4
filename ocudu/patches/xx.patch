@@ -1,3 +1,27 @@
+From e73a69afea6021752cd1f4a0137c46b59fe1c599 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 21 May 2026 06:23:36 +0800
+Subject: [PATCH] Define iszero macro for zero checking
+
+---
+ .../du_high/metrics/consumers/scheduler_metrics_consumers.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
+index f20b2f0630..80b07ce40f 100644
+--- a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
++++ b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
+@@ -7,6 +7,10 @@
+ #include "ocudu/support/format/custom_formattable.h"
+ #include "ocudu/support/format/fmt_to_c_str.h"
+ 
++#ifndef iszero
++#define iszero(x) ((x) == 0)
++#endif
++
+ using namespace ocudu;
+ 
+ static void print_sched_header()
 From c9ec5970031abbf166ebf0d354033ef831b3034f Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Wed, 20 May 2026 22:43:10 +0800
