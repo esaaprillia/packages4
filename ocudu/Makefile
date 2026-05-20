@@ -40,7 +40,9 @@ CMAKE_OPTIONS += \
 	-DMCPU=generic+crypto \
 	-DHAVE_ARM_CRYPTO=1 \
 	-DHAVE_PLUS_CRYPTO=1 \
-	-DENABLE_WERROR=OFF
+	-DENABLE_WERROR=OFF \
+	-DCMAKE_C_FLAGS=-D_GNU_SOURCE \
+	-DCMAKE_CXX_FLAGS=-D_GNU_SOURCE
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
