@@ -1,3 +1,29 @@
+From 4ad1313fd071725436ad377582725538102e2cbb Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 20 May 2026 18:47:54 +0800
+Subject: [PATCH] Update demodulation_mapper_qpsk.cpp
+
+---
+ .../upper/channel_modulation/demodulation_mapper_qpsk.cpp   | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/lib/phy/upper/channel_modulation/demodulation_mapper_qpsk.cpp b/lib/phy/upper/channel_modulation/demodulation_mapper_qpsk.cpp
+index e414995757..8b71c4667c 100644
+--- a/lib/phy/upper/channel_modulation/demodulation_mapper_qpsk.cpp
++++ b/lib/phy/upper/channel_modulation/demodulation_mapper_qpsk.cpp
+@@ -12,6 +12,12 @@
+ #include "neon_helpers.h"
+ #endif // __ARM_NEON
+ 
++#include <math.h>
++
++#ifndef M_SQRT2f32
++#define M_SQRT2f32 1.414213562373095048801688724209698079f
++#endif
++
+ using namespace ocudu;
+ 
+ // Maximum (absolute) value considered for quantization. Larger values will be clipped.
 From 54eac1217e96b9def3356e76b2656247652301a1 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Mon, 18 May 2026 17:33:22 +0800
