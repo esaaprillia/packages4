@@ -1,3 +1,27 @@
+From a6896631fe8e0c1d1bd7397744b7aa5354432a66 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 21 May 2026 06:32:09 +0800
+Subject: [PATCH] Update resource_grid_test.cpp
+
+---
+ tests/unittests/phy/support/resource_grid_test.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/tests/unittests/phy/support/resource_grid_test.cpp b/tests/unittests/phy/support/resource_grid_test.cpp
+index 3a94229926..f324ba4106 100644
+--- a/tests/unittests/phy/support/resource_grid_test.cpp
++++ b/tests/unittests/phy/support/resource_grid_test.cpp
+@@ -9,6 +9,10 @@
+ #include "ocudu/support/ocudu_test.h"
+ #include <random>
+ 
++#ifndef iszero
++#define iszero(x) ((x) == 0)
++#endif
++
+ using namespace ocudu;
+ 
+ static std::mt19937 rgen(0);
 From e73a69afea6021752cd1f4a0137c46b59fe1c599 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Thu, 21 May 2026 06:23:36 +0800
