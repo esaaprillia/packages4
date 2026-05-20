@@ -1,3 +1,27 @@
+From 9b7aebd689edceb65660233c5a4efe5afe4258c6 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 20 May 2026 20:10:39 +0800
+Subject: [PATCH] Update cell_scheduler.cpp
+
+---
+ lib/scheduler/cell_scheduler.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/scheduler/cell_scheduler.cpp b/lib/scheduler/cell_scheduler.cpp
+index ca58d6097e..ab3d5ba545 100644
+--- a/lib/scheduler/cell_scheduler.cpp
++++ b/lib/scheduler/cell_scheduler.cpp
+@@ -5,6 +5,10 @@
+ #include "cell_scheduler.h"
+ #include "logging/scheduler_metrics_handler.h"
+ 
++#ifndef iszero
++#define iszero(x) ((x) == 0)
++#endif
++
+ using namespace ocudu;
+ 
+ cell_scheduler::cell_scheduler(const scheduler_expert_config&                  sched_cfg,
 From 179b32041d3768a10e177cbdf6316252685a8e5e Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Wed, 20 May 2026 19:26:06 +0800
