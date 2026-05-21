@@ -27,54 +27,69 @@ index 1e2540e920..9511aeed40 100644
    if (dl_handle == nullptr) {
      err = ::dlerror();
      if (err != nullptr) {
-From a6896631fe8e0c1d1bd7397744b7aa5354432a66 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Thu, 21 May 2026 06:32:09 +0800
+From 1106ba52900954373dcbd9069c9e7da1aaf9e29a Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 21 May 2026 19:09:55 +0800
+Subject: [PATCH] Update scheduler.cpp
+
+---
+ apps/helpers/metrics/json_generators/du_high/scheduler.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
+index 463817bee3..f44a4e6f4e 100644
+--- a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
++++ b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
+@@ -6,6 +6,7 @@
+ #include "helpers.h"
+ #include "json_generators/generator_helpers.h"
+ #include "ocudu/scheduler/scheduler_metrics.h"
++#include <math.h>
+ 
+ using namespace ocudu;
+ using namespace app_helpers;
+From f28c764c1586a535173a606ac6c51408d5123071 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 21 May 2026 18:56:36 +0800
+Subject: [PATCH] Update scheduler_metrics_consumers.cpp
+
+---
+ .../du_high/metrics/consumers/scheduler_metrics_consumers.cpp    | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
+index f20b2f0630..c0d329fef4 100644
+--- a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
++++ b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
+@@ -6,6 +6,7 @@
+ #include "ocudu/support/engineering_notation.h"
+ #include "ocudu/support/format/custom_formattable.h"
+ #include "ocudu/support/format/fmt_to_c_str.h"
++#include <math.h>
+ 
+ using namespace ocudu;
+ 
+From d812969d7b1d8a7bfb1c414763be95afb74ab551 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 21 May 2026 18:53:29 +0800
 Subject: [PATCH] Update resource_grid_test.cpp
 
 ---
- tests/unittests/phy/support/resource_grid_test.cpp | 4 ++++
- 1 file changed, 4 insertions(+)
+ tests/unittests/phy/support/resource_grid_test.cpp | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/tests/unittests/phy/support/resource_grid_test.cpp b/tests/unittests/phy/support/resource_grid_test.cpp
-index 3a94229926..f324ba4106 100644
+index 3a94229926..657fc0e95a 100644
 --- a/tests/unittests/phy/support/resource_grid_test.cpp
 +++ b/tests/unittests/phy/support/resource_grid_test.cpp
-@@ -9,6 +9,10 @@
+@@ -7,6 +7,7 @@
+ #include "ocudu/phy/support/resource_grid_writer.h"
+ #include "ocudu/phy/support/support_factories.h"
  #include "ocudu/support/ocudu_test.h"
++#include <math.h>
  #include <random>
  
-+#ifndef iszero
-+#define iszero(x) ((x) == 0)
-+#endif
-+
  using namespace ocudu;
- 
- static std::mt19937 rgen(0);
-From e73a69afea6021752cd1f4a0137c46b59fe1c599 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Thu, 21 May 2026 06:23:36 +0800
-Subject: [PATCH] Define iszero macro for zero checking
-
----
- .../du_high/metrics/consumers/scheduler_metrics_consumers.cpp | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
-index f20b2f0630..80b07ce40f 100644
---- a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
-+++ b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
-@@ -7,6 +7,10 @@
- #include "ocudu/support/format/custom_formattable.h"
- #include "ocudu/support/format/fmt_to_c_str.h"
- 
-+#ifndef iszero
-+#define iszero(x) ((x) == 0)
-+#endif
-+
- using namespace ocudu;
- 
- static void print_sched_header()
 From c9ec5970031abbf166ebf0d354033ef831b3034f Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Wed, 20 May 2026 22:43:10 +0800
@@ -99,54 +114,6 @@ index c8371c44de..42952252bb 100644
  namespace ocudu {
  
  class mac_ul_sch_subpdu
-From 3ea2ea46a63b90026e7712e534071e93fbb04445 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 20 May 2026 21:04:55 +0800
-Subject: [PATCH] Update scheduler.cpp
-
----
- apps/helpers/metrics/json_generators/du_high/scheduler.cpp | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
-index 463817bee3..2132494d6c 100644
---- a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
-+++ b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
-@@ -7,6 +7,10 @@
- #include "json_generators/generator_helpers.h"
- #include "ocudu/scheduler/scheduler_metrics.h"
- 
-+#ifndef iszero
-+#define iszero(x) ((x) == 0)
-+#endif
-+
- using namespace ocudu;
- using namespace app_helpers;
- using namespace json_generators;
-From 9b7aebd689edceb65660233c5a4efe5afe4258c6 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 20 May 2026 20:10:39 +0800
-Subject: [PATCH] Update cell_scheduler.cpp
-
----
- lib/scheduler/cell_scheduler.cpp | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/lib/scheduler/cell_scheduler.cpp b/lib/scheduler/cell_scheduler.cpp
-index ca58d6097e..ab3d5ba545 100644
---- a/lib/scheduler/cell_scheduler.cpp
-+++ b/lib/scheduler/cell_scheduler.cpp
-@@ -5,6 +5,10 @@
- #include "cell_scheduler.h"
- #include "logging/scheduler_metrics_handler.h"
- 
-+#ifndef iszero
-+#define iszero(x) ((x) == 0)
-+#endif
-+
- using namespace ocudu;
- 
- cell_scheduler::cell_scheduler(const scheduler_expert_config&                  sched_cfg,
 From 21beca4328194af0ac0ec2e41ef01ab237c4960c Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
 Date: Thu, 21 May 2026 18:06:58 +0800
