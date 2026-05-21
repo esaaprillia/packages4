@@ -275,6 +275,17 @@ index 6b8bcdb245..5e1903d10a 100644
  
  #if BACKWARD_HAS_BFD == 1
  //              NOTE: defining PACKAGE{,_VERSION} is required before including
+From 25fa0b3ccd56f17634122596e25a172dfd2b8bb0 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 22 May 2026 06:47:23 +0800
+Subject: [PATCH] Update ethernet_receiver_impl.cpp
+
+---
+ lib/ofh/ethernet/ethernet_receiver_impl.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lib/ofh/ethernet/ethernet_receiver_impl.cpp b/lib/ofh/ethernet/ethernet_receiver_impl.cpp
+index 15881878ed..219f262e07 100644
 --- a/lib/ofh/ethernet/ethernet_receiver_impl.cpp
 +++ b/lib/ofh/ethernet/ethernet_receiver_impl.cpp
 @@ -14,6 +14,8 @@
@@ -286,7 +297,15 @@ index 6b8bcdb245..5e1903d10a 100644
  #include <unistd.h>
  
  using namespace ocudu;
-
+@@ -124,7 +126,7 @@ static bool wait_for_data(int socket, std::chrono::microseconds timeout)
+   fd_set read_fs;
+   FD_ZERO(&read_fs);
+   FD_SET(socket, &read_fs);
+-  timeval tv = {0, static_cast<__suseconds_t>(timeout.count())};
++  timeval tv = {0, static_cast<suseconds_t>(timeout.count())};
+ 
+   return (::select(socket + 1, &read_fs, nullptr, nullptr, &tv) > 0);
+ }
 From 2c5d231db5d9bf14b40c104e97894fa1eb229b1c Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Mon, 18 May 2026 01:55:39 +0800
