@@ -157,27 +157,35 @@ index e414995757..f45882fcab 100644
  
  using namespace ocudu;
  
-From 11d3420ac007c093f9c3143ba885cb4fbbd9e6a0 Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 21 May 2026 21:04:16 +0800
+From b65a9d1d3dbe876e9c6d91e0782d9fd16e2b4836 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 21 May 2026 22:16:48 +0800
 Subject: [PATCH] Update demodulation_mapper_impl.cpp
 
 ---
- lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp | 2 ++
- 1 file changed, 2 insertions(+)
+ lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp b/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
-index d4e0b11724..a7d193d59c 100644
+index d4e0b11724..ac707a8ed7 100644
 --- a/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
 +++ b/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
-@@ -9,6 +9,8 @@
+@@ -9,6 +9,7 @@
  #include "demodulation_mapper_qpsk.h"
  #include "ocudu/support/math/math_utils.h"
  #include "ocudu/support/ocudu_assert.h"
-+#define _USE_MATH_DEFINES
 +#include <math.h>
  
  using namespace ocudu;
+ 
+@@ -18,7 +19,7 @@ static log_likelihood_ratio demod_BPSK_symbol(cf_t z, float noise_var, float ran
+   if (!(noise_var > 0)) {
+     return 0;
+   }
+-  float l_value = 2.0F * M_SQRT2f32 * (std::real(z) + std::imag(z)) / noise_var;
++  float l_value = 2.0F * M_SQRT2 * (std::real(z) + std::imag(z)) / noise_var;
+   return log_likelihood_ratio::quantize(l_value, range_limit);
+ }
  
 From 3c4f81e1cb7c42f211c03e0f4058bb2983f0cab0 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
