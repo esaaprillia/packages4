@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zeroconf
-PKG_VERSION:=0.149.13
+PKG_VERSION:=0.149.16
 PKG_RELEASE:=1
 
 PYPI_NAME:=zeroconf
