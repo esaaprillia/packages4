@@ -229,7 +229,7 @@ index 6b8bcdb245..5e1903d10a 100644
  #include <net/if.h>
  #include <sys/ioctl.h>
  #include <thread>
-+#define __suseconds_t suseconds_t
++#include <sys/types.h>
 +#include <sys/time.h>
  #include <unistd.h>
  
