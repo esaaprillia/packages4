@@ -114,27 +114,30 @@ index c8371c44de..42952252bb 100644
  namespace ocudu {
  
  class mac_ul_sch_subpdu
-From 21beca4328194af0ac0ec2e41ef01ab237c4960c Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 21 May 2026 18:06:58 +0800
+From 179b32041d3768a10e177cbdf6316252685a8e5e Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 20 May 2026 19:26:06 +0800
 Subject: [PATCH] Update port_channel_estimator_average_impl.cpp
 
 ---
- .../channel_estimator/port_channel_estimator_average_impl.cpp    | 1 +
- 1 file changed, 1 insertion(+)
+ .../channel_estimator/port_channel_estimator_average_impl.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/lib/phy/upper/signal_processors/channel_estimator/port_channel_estimator_average_impl.cpp b/lib/phy/upper/signal_processors/channel_estimator/port_channel_estimator_average_impl.cpp
-index a2584db337..71ba870fba 100644
+index a2584db337..06dd342fa4 100644
 --- a/lib/phy/upper/signal_processors/channel_estimator/port_channel_estimator_average_impl.cpp
 +++ b/lib/phy/upper/signal_processors/channel_estimator/port_channel_estimator_average_impl.cpp
-@@ -16,6 +16,7 @@
- #include "ocudu/phy/support/re_buffer.h"
+@@ -17,6 +17,10 @@
  #include "ocudu/phy/support/resource_grid_reader.h"
  #include "ocudu/support/transform_optional.h"
-+#include <sys/cdefs.h>
  
++#ifndef __attribute_noinline__
++#define __attribute_noinline__ __attribute__((noinline))
++#endif
++
  using namespace ocudu;
  
+ static const unsigned& MAX_LAYERS   = port_channel_estimator_average_impl::MAX_LAYERS;
 From fe118e4142434b38aa6540fbc9848f25ed216959 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Thu, 21 May 2026 23:06:10 +0800
