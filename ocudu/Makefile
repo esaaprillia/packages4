@@ -25,7 +25,7 @@ define Package/ocudu
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=OCUDU is a permissively-licensed, open-source 5G
-	DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libsctp +libdw +libzmq-nc +libyaml-cpp +uhd
+	DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libsctp +libdw +libzmq-nc +libyaml-cpp +uhd +rohc
 	URL:=https://ocudu.org/
 endef
 
