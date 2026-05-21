@@ -27,38 +27,17 @@ index 1e2540e920..9511aeed40 100644
    if (dl_handle == nullptr) {
      err = ::dlerror();
      if (err != nullptr) {
-From 1106ba52900954373dcbd9069c9e7da1aaf9e29a Mon Sep 17 00:00:00 2001
+From aebcae9312385dafb27e06d0bc3ae23edc168f5e Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 21 May 2026 19:09:55 +0800
-Subject: [PATCH] Update scheduler.cpp
-
----
- apps/helpers/metrics/json_generators/du_high/scheduler.cpp | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
-index 463817bee3..f44a4e6f4e 100644
---- a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
-+++ b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
-@@ -6,6 +6,7 @@
- #include "helpers.h"
- #include "json_generators/generator_helpers.h"
- #include "ocudu/scheduler/scheduler_metrics.h"
-+#include <math.h>
- 
- using namespace ocudu;
- using namespace app_helpers;
-From f28c764c1586a535173a606ac6c51408d5123071 Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 21 May 2026 18:56:36 +0800
+Date: Fri, 22 May 2026 01:35:50 +0800
 Subject: [PATCH] Update scheduler_metrics_consumers.cpp
 
 ---
- .../du_high/metrics/consumers/scheduler_metrics_consumers.cpp    | 1 +
- 1 file changed, 1 insertion(+)
+ .../metrics/consumers/scheduler_metrics_consumers.cpp        | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
-index f20b2f0630..c0d329fef4 100644
+index f20b2f0630..d97656a218 100644
 --- a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
 +++ b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
 @@ -6,6 +6,7 @@
@@ -69,27 +48,62 @@ index f20b2f0630..c0d329fef4 100644
  
  using namespace ocudu;
  
-From d812969d7b1d8a7bfb1c414763be95afb74ab551 Mon Sep 17 00:00:00 2001
+@@ -86,7 +87,7 @@ void scheduler_cell_metrics_consumer_stdout::handle_metric(const std::optional<s
+ 
+       fmt::print(" |");
+ 
+-      if (!std::isnan(ue.pusch_snr_db) && !iszero(ue.pusch_snr_db)) {
++      if (!std::isnan(ue.pusch_snr_db) && std::fpclassify(ue.pusch_snr_db) != FP_ZERO) {
+         fmt::print(" {:>5.1f}", std::clamp(ue.pusch_snr_db, -99.9f, 99.9f));
+       } else {
+         fmt::print(" {:>5.5}", "n/a");
+@@ -311,7 +312,7 @@ void scheduler_cell_metrics_consumer_log::handle_metric(const std::optional<sche
+         fmt::format_to(std::back_inserter(buffer), " dl_olla={:.4}", ue.last_dl_olla.value());
+       }
+ 
+-      if (!std::isnan(ue.pusch_snr_db) && !iszero(ue.pusch_snr_db)) {
++      if (!std::isnan(ue.pusch_snr_db) && std::fpclassify(ue.pusch_snr_db) != FP_ZERO) {
+         fmt::format_to(std::back_inserter(buffer), " pusch_snr_db={:.1f}", std::clamp(ue.pusch_snr_db, -99.9f, 99.9f));
+       } else {
+         fmt::format_to(std::back_inserter(buffer), " pusch_snr_db=n/a");
+From 09f532f2134d7f13d6c361688e5b708b5973779e Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 21 May 2026 18:53:29 +0800
-Subject: [PATCH] Update resource_grid_test.cpp
+Date: Fri, 22 May 2026 01:29:41 +0800
+Subject: [PATCH] Update scheduler.cpp
 
 ---
- tests/unittests/phy/support/resource_grid_test.cpp | 1 +
- 1 file changed, 1 insertion(+)
+ apps/helpers/metrics/json_generators/du_high/scheduler.cpp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/tests/unittests/phy/support/resource_grid_test.cpp b/tests/unittests/phy/support/resource_grid_test.cpp
-index 3a94229926..657fc0e95a 100644
---- a/tests/unittests/phy/support/resource_grid_test.cpp
-+++ b/tests/unittests/phy/support/resource_grid_test.cpp
-@@ -7,6 +7,7 @@
- #include "ocudu/phy/support/resource_grid_writer.h"
- #include "ocudu/phy/support/support_factories.h"
- #include "ocudu/support/ocudu_test.h"
+diff --git a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
+index 463817bee3..3f332dc52b 100644
+--- a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
++++ b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
+@@ -6,6 +6,7 @@
+ #include "helpers.h"
+ #include "json_generators/generator_helpers.h"
+ #include "ocudu/scheduler/scheduler_metrics.h"
 +#include <math.h>
- #include <random>
  
  using namespace ocudu;
+ using namespace app_helpers;
+@@ -52,13 +53,13 @@ void to_json(nlohmann::json& json, const scheduler_ue_metrics& metrics)
+   json["dl_nof_ok"]  = metrics.dl_nof_ok;
+   json["dl_nof_nok"] = metrics.dl_nof_nok;
+   json["dl_bs"]      = metrics.dl_bs;
+-  if (!std::isnan(metrics.pusch_snr_db) && !iszero(metrics.pusch_snr_db)) {
++  if (!std::isnan(metrics.pusch_snr_db) && std::fpclassify(metrics.pusch_snr_db) != FP_ZERO) {
+     json["pusch_snr_db"] = std::clamp(metrics.pusch_snr_db, -99.9f, 99.9f);
+   }
+-  if (!std::isnan(metrics.pusch_rsrp_db) && !iszero(metrics.pusch_rsrp_db)) {
++  if (!std::isnan(metrics.pusch_rsrp_db) && std::fpclassify(metrics.pusch_rsrp_db) != FP_ZERO) {
+     json["pusch_rsrp_db"] = std::clamp(metrics.pusch_rsrp_db, -99.9f, 0.0f);
+   }
+-  if (!std::isnan(metrics.pucch_snr_db) && !iszero(metrics.pucch_snr_db)) {
++  if (!std::isnan(metrics.pucch_snr_db) && std::fpclassify(metrics.pucch_snr_db) != FP_ZERO) {
+     json["pucch_snr_db"] = std::clamp(metrics.pucch_snr_db, -99.9f, 99.9f);
+   }
+ 
 From c9ec5970031abbf166ebf0d354033ef831b3034f Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Wed, 20 May 2026 22:43:10 +0800
