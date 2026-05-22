@@ -306,33 +306,3 @@ index 15881878ed..219f262e07 100644
  
    return (::select(socket + 1, &read_fs, nullptr, nullptr, &tv) > 0);
  }
-From 2c5d231db5d9bf14b40c104e97894fa1eb229b1c Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Mon, 18 May 2026 01:55:39 +0800
-Subject: [PATCH] Update resource_usage_utils.h
-
----
- .../support/resource_usage/resource_usage_utils.h      | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/include/ocudu/support/resource_usage/resource_usage_utils.h b/include/ocudu/support/resource_usage/resource_usage_utils.h
-index e6f8cdff80..860e6227d3 100644
---- a/include/ocudu/support/resource_usage/resource_usage_utils.h
-+++ b/include/ocudu/support/resource_usage/resource_usage_utils.h
-@@ -15,7 +15,15 @@ using rusage_meas_clock      = std::chrono::high_resolution_clock;
- using rusage_meas_time_point = rusage_meas_clock::time_point;
- using rusage_meas_duration   = std::chrono::nanoseconds;
- 
--enum class rusage_measurement_type : __rusage_who_t { THREAD = RUSAGE_THREAD, PROCESS = RUSAGE_SELF, NONE };
-+#if defined(__GLIBC__)
-+enum class rusage_measurement_type : __rusage_who_t { 
-+#else
-+enum class rusage_measurement_type : int { 
-+#endif
-+    THREAD = RUSAGE_THREAD, 
-+    PROCESS = RUSAGE_SELF, 
-+    NONE 
-+};
- 
- /// Used to store the CPU time used by a thread or process, as well as process's memory usage.
- struct measurements {
