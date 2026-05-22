@@ -1,0 +1,59 @@
+From 49aa0a98134a96eb347b1b14c9ec367909113598 Mon Sep 17 00:00:00 2001
+From: Predators <andysyam61@gmail.com>
+Date: Sun, 17 May 2026 14:46:04 +0000
+Subject: [PATCH] Edit sockets.cpp
+
+---
+ lib/support/network/sockets.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/support/network/sockets.cpp
+b/lib/support/network/sockets.cpp
+index d918ad87a8..f8b9ad67a8 100644
+--- a/lib/support/network/sockets.cpp
++++ b/lib/support/network/sockets.cpp
+@@ -7,6 +7,7 @@
+ #include <fcntl.h>
+ #include <net/if.h>
+ #include <sys/socket.h>
++#include <sys/time.h>
+ #include <unistd.h>
+ 
+ using namespace ocudu;
+-- 
+GitLab
+
+From 4c3dc351cdd472a4ac5841493963f702b8641996 Mon Sep 17 00:00:00 2001
+From: Predators <andysyam61@gmail.com>
+Date: Sun, 17 May 2026 14:37:17 +0000
+Subject: [PATCH] Edit stream_sink.h
+
+---
+ lib/ocudulog/sinks/stream_sink.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/lib/ocudulog/sinks/stream_sink.h b/lib/ocudulog/sinks/stream_sink.h
+index 311db73195..32b74edf71 100644
+--- a/lib/ocudulog/sinks/stream_sink.h
++++ b/lib/ocudulog/sinks/stream_sink.h
+@@ -3,6 +3,15 @@
+ 
+ #pragma once
+ 
++#include <stdio.h>
++#ifdef stdout
++#undef stdout
++#endif
++
++#ifdef stderr
++#undef stderr
++#endif
++
+ #include "ocudu/ocudulog/sink.h"
+ 
+ namespace ocudulog {
+-- 
+GitLab
+
+
+

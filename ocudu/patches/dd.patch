@@ -1,0 +1,23 @@
+From 4c3f69955cd74e422ef894bfe0fab2bcbf9121c1 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 22 May 2026 11:46:51 +0800
+Subject: [PATCH] Update plugin_radio_factory.cpp
+
+---
+ lib/radio/plugin_radio_factory.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/radio/plugin_radio_factory.cpp b/lib/radio/plugin_radio_factory.cpp
+index 1e2540e920..c31fdda78a 100644
+--- a/lib/radio/plugin_radio_factory.cpp
++++ b/lib/radio/plugin_radio_factory.cpp
+@@ -104,7 +104,7 @@ std::unique_ptr<radio_factory> ocudu::create_plugin_radio_factory(std::string dr
+   char*       err         = nullptr;
+   std::string plugin_name = "libocudu_radio_" + driver_name + ".so";
+ 
+-  void* dl_handle = ::dlopen(plugin_name.c_str(), RTLD_NOW + RTLD_DEEPBIND + RTLD_GLOBAL);
++  void* dl_handle = ::dlopen(plugin_name.c_str(), RTLD_NOW + RTLD_GLOBAL);
+   if (dl_handle == nullptr) {
+     err = ::dlerror();
+     if (err != nullptr) {
+

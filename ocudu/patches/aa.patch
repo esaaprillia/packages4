@@ -1,0 +1,280 @@
+From aebcae9312385dafb27e06d0bc3ae23edc168f5e Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 22 May 2026 01:35:50 +0800
+Subject: [PATCH] Update scheduler_metrics_consumers.cpp
+
+---
+ .../metrics/consumers/scheduler_metrics_consumers.cpp        | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
+index f20b2f0630..d97656a218 100644
+--- a/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
++++ b/apps/units/flexible_o_du/o_du_high/du_high/metrics/consumers/scheduler_metrics_consumers.cpp
+@@ -6,6 +6,7 @@
+ #include "ocudu/support/engineering_notation.h"
+ #include "ocudu/support/format/custom_formattable.h"
+ #include "ocudu/support/format/fmt_to_c_str.h"
++#include <math.h>
+ 
+ using namespace ocudu;
+ 
+@@ -86,7 +87,7 @@ void scheduler_cell_metrics_consumer_stdout::handle_metric(const std::optional<s
+ 
+       fmt::print(" |");
+ 
+-      if (!std::isnan(ue.pusch_snr_db) && !iszero(ue.pusch_snr_db)) {
++      if (!std::isnan(ue.pusch_snr_db) && std::fpclassify(ue.pusch_snr_db) != FP_ZERO) {
+         fmt::print(" {:>5.1f}", std::clamp(ue.pusch_snr_db, -99.9f, 99.9f));
+       } else {
+         fmt::print(" {:>5.5}", "n/a");
+@@ -311,7 +312,7 @@ void scheduler_cell_metrics_consumer_log::handle_metric(const std::optional<sche
+         fmt::format_to(std::back_inserter(buffer), " dl_olla={:.4}", ue.last_dl_olla.value());
+       }
+ 
+-      if (!std::isnan(ue.pusch_snr_db) && !iszero(ue.pusch_snr_db)) {
++      if (!std::isnan(ue.pusch_snr_db) && std::fpclassify(ue.pusch_snr_db) != FP_ZERO) {
+         fmt::format_to(std::back_inserter(buffer), " pusch_snr_db={:.1f}", std::clamp(ue.pusch_snr_db, -99.9f, 99.9f));
+       } else {
+         fmt::format_to(std::back_inserter(buffer), " pusch_snr_db=n/a");
+From 09f532f2134d7f13d6c361688e5b708b5973779e Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 22 May 2026 01:29:41 +0800
+Subject: [PATCH] Update scheduler.cpp
+
+---
+ apps/helpers/metrics/json_generators/du_high/scheduler.cpp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
+index 463817bee3..3f332dc52b 100644
+--- a/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
++++ b/apps/helpers/metrics/json_generators/du_high/scheduler.cpp
+@@ -6,6 +6,7 @@
+ #include "helpers.h"
+ #include "json_generators/generator_helpers.h"
+ #include "ocudu/scheduler/scheduler_metrics.h"
++#include <math.h>
+ 
+ using namespace ocudu;
+ using namespace app_helpers;
+@@ -52,13 +53,13 @@ void to_json(nlohmann::json& json, const scheduler_ue_metrics& metrics)
+   json["dl_nof_ok"]  = metrics.dl_nof_ok;
+   json["dl_nof_nok"] = metrics.dl_nof_nok;
+   json["dl_bs"]      = metrics.dl_bs;
+-  if (!std::isnan(metrics.pusch_snr_db) && !iszero(metrics.pusch_snr_db)) {
++  if (!std::isnan(metrics.pusch_snr_db) && std::fpclassify(metrics.pusch_snr_db) != FP_ZERO) {
+     json["pusch_snr_db"] = std::clamp(metrics.pusch_snr_db, -99.9f, 99.9f);
+   }
+-  if (!std::isnan(metrics.pusch_rsrp_db) && !iszero(metrics.pusch_rsrp_db)) {
++  if (!std::isnan(metrics.pusch_rsrp_db) && std::fpclassify(metrics.pusch_rsrp_db) != FP_ZERO) {
+     json["pusch_rsrp_db"] = std::clamp(metrics.pusch_rsrp_db, -99.9f, 0.0f);
+   }
+-  if (!std::isnan(metrics.pucch_snr_db) && !iszero(metrics.pucch_snr_db)) {
++  if (!std::isnan(metrics.pucch_snr_db) && std::fpclassify(metrics.pucch_snr_db) != FP_ZERO) {
+     json["pucch_snr_db"] = std::clamp(metrics.pucch_snr_db, -99.9f, 99.9f);
+   }
+ 
+From c9ec5970031abbf166ebf0d354033ef831b3034f Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 20 May 2026 22:43:10 +0800
+Subject: [PATCH] Update mac_ul_sch_pdu.h
+
+---
+ lib/mac/mac_ul/mac_ul_sch_pdu.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/mac/mac_ul/mac_ul_sch_pdu.h b/lib/mac/mac_ul/mac_ul_sch_pdu.h
+index c8371c44de..42952252bb 100644
+--- a/lib/mac/mac_ul/mac_ul_sch_pdu.h
++++ b/lib/mac/mac_ul/mac_ul_sch_pdu.h
+@@ -15,6 +15,10 @@
+ #include "ocudu/support/ocudu_assert.h"
+ #include "fmt/std.h"
+ 
++#include <endian.h>
++#include <stdio.h>
++#include <stdint.h>
++
+ namespace ocudu {
+ 
+ class mac_ul_sch_subpdu
+From 179b32041d3768a10e177cbdf6316252685a8e5e Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 20 May 2026 19:26:06 +0800
+Subject: [PATCH] Update port_channel_estimator_average_impl.cpp
+
+---
+ .../channel_estimator/port_channel_estimator_average_impl.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/phy/upper/signal_processors/channel_estimator/port_channel_estimator_average_impl.cpp b/lib/phy/upper/signal_processors/channel_estimator/port_channel_estimator_average_impl.cpp
+index a2584db337..06dd342fa4 100644
+--- a/lib/phy/upper/signal_processors/channel_estimator/port_channel_estimator_average_impl.cpp
++++ b/lib/phy/upper/signal_processors/channel_estimator/port_channel_estimator_average_impl.cpp
+@@ -17,6 +17,10 @@
+ #include "ocudu/phy/support/resource_grid_reader.h"
+ #include "ocudu/support/transform_optional.h"
+ 
++#ifndef __attribute_noinline__
++#define __attribute_noinline__ __attribute__((noinline))
++#endif
++
+ using namespace ocudu;
+ 
+ static const unsigned& MAX_LAYERS   = port_channel_estimator_average_impl::MAX_LAYERS;
+From fe118e4142434b38aa6540fbc9848f25ed216959 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 21 May 2026 23:06:10 +0800
+Subject: [PATCH] Update demodulation_mapper_qpsk.cpp
+
+---
+ .../upper/channel_modulation/demodulation_mapper_qpsk.cpp  | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/lib/phy/upper/channel_modulation/demodulation_mapper_qpsk.cpp b/lib/phy/upper/channel_modulation/demodulation_mapper_qpsk.cpp
+index e414995757..8ca9dd7b5b 100644
+--- a/lib/phy/upper/channel_modulation/demodulation_mapper_qpsk.cpp
++++ b/lib/phy/upper/channel_modulation/demodulation_mapper_qpsk.cpp
+@@ -11,6 +11,7 @@
+ #ifdef __ARM_NEON
+ #include "neon_helpers.h"
+ #endif // __ARM_NEON
++#include <math.h>
+ 
+ using namespace ocudu;
+ 
+@@ -48,7 +49,7 @@ static void demod_QPSK_avx2(log_likelihood_ratio* llr, const cf_t* symbol, const
+   __m256 rcp_noise_3_ = _mm256_permute2f128_ps(rcp_noise_2, rcp_noise_3, 0x31);
+ 
+   // Calculate l_value.
+-  __m256 GAIN      = _mm256_set1_ps(2.0F * M_SQRT2f32);
++  __m256 GAIN      = _mm256_set1_ps(2.0F * M_SQRT2);
+   __m256 l_value_0 = _mm256_mul_ps(_mm256_mul_ps(GAIN, symbols_0), rcp_noise_0_);
+   __m256 l_value_1 = _mm256_mul_ps(_mm256_mul_ps(GAIN, symbols_1), rcp_noise_1_);
+   __m256 l_value_2 = _mm256_mul_ps(_mm256_mul_ps(GAIN, symbols_2), rcp_noise_2_);
+@@ -88,7 +89,7 @@ static void demod_QPSK_neon(log_likelihood_ratio* llr, const cf_t* symbol, const
+   // float32x4_t   rcp_noise_3_ = noise_rep_1.val[1];
+ 
+   // Calculate l_value.
+-  float32x4_t GAIN      = vdupq_n_f32(2.0F * M_SQRT2f32);
++  float32x4_t GAIN      = vdupq_n_f32(2.0F * M_SQRT2);
+   float32x4_t l_value_0 = vmulq_f32(vmulq_f32(GAIN, symbols_0), noise_rep_0.val[0]);
+   float32x4_t l_value_1 = vmulq_f32(vmulq_f32(GAIN, symbols_1), noise_rep_0.val[1]);
+   float32x4_t l_value_2 = vmulq_f32(vmulq_f32(GAIN, symbols_2), noise_rep_1.val[0]);
+@@ -107,7 +108,7 @@ static log_likelihood_ratio demod_QPSK_symbol(float x, float noise_var)
+   if (!(noise_var > 0)) {
+     return log_likelihood_ratio(0);
+   }
+-  float l_value = 2.0F * M_SQRT2f32 * x / noise_var;
++  float l_value = 2.0F * M_SQRT2 * x / noise_var;
+   return log_likelihood_ratio::quantize(l_value, RANGE_LIMIT_FLOAT);
+ }
+ 
+From b65a9d1d3dbe876e9c6d91e0782d9fd16e2b4836 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 21 May 2026 22:16:48 +0800
+Subject: [PATCH] Update demodulation_mapper_impl.cpp
+
+---
+ lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp b/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
+index d4e0b11724..ac707a8ed7 100644
+--- a/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
++++ b/lib/phy/upper/channel_modulation/demodulation_mapper_impl.cpp
+@@ -9,6 +9,7 @@
+ #include "demodulation_mapper_qpsk.h"
+ #include "ocudu/support/math/math_utils.h"
+ #include "ocudu/support/ocudu_assert.h"
++#include <math.h>
+ 
+ using namespace ocudu;
+ 
+@@ -18,7 +19,7 @@ static log_likelihood_ratio demod_BPSK_symbol(cf_t z, float noise_var, float ran
+   if (!(noise_var > 0)) {
+     return 0;
+   }
+-  float l_value = 2.0F * M_SQRT2f32 * (std::real(z) + std::imag(z)) / noise_var;
++  float l_value = 2.0F * M_SQRT2 * (std::real(z) + std::imag(z)) / noise_var;
+   return log_likelihood_ratio::quantize(l_value, range_limit);
+ }
+ 
+From 3c4f81e1cb7c42f211c03e0f4058bb2983f0cab0 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 18 May 2026 11:37:54 +0800
+Subject: [PATCH] Add linux/stddef.h include to ldpc_decoder_neon.cpp
+
+---
+ lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp b/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp
+index 9387bf4cc4..790fe44606 100644
+--- a/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp
++++ b/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp
+@@ -10,6 +10,7 @@
+ #include "neon_support.h"
+ #include "ocudu/ocuduvec/circ_shift.h"
+ #include "ocudu/ocuduvec/copy.h"
++
+ 
+ using namespace ocudu;
+ using namespace ocudu::ldpc;
+From b9037270fb6fd8d31fca454c48416226b69b953d Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 18 May 2026 08:42:35 +0800
+Subject: [PATCH] Update backward.hpp
+
+---
+ external/Backward/backward.hpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/external/Backward/backward.hpp b/external/Backward/backward.hpp
+index 6b8bcdb245..5e1903d10a 100644
+--- a/external/Backward/backward.hpp
++++ b/external/Backward/backward.hpp
+@@ -207,8 +207,9 @@
+ #endif
+ #include <signal.h>
+ #include <sys/stat.h>
+-#include <syscall.h>
++#include <sys/syscall.h>
+ #include <unistd.h>
++#include <dlfcn.h>
+ 
+ #if BACKWARD_HAS_BFD == 1
+ //              NOTE: defining PACKAGE{,_VERSION} is required before including
+From 25fa0b3ccd56f17634122596e25a172dfd2b8bb0 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 22 May 2026 06:47:23 +0800
+Subject: [PATCH] Update ethernet_receiver_impl.cpp
+
+---
+ lib/ofh/ethernet/ethernet_receiver_impl.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lib/ofh/ethernet/ethernet_receiver_impl.cpp b/lib/ofh/ethernet/ethernet_receiver_impl.cpp
+index 15881878ed..219f262e07 100644
+--- a/lib/ofh/ethernet/ethernet_receiver_impl.cpp
++++ b/lib/ofh/ethernet/ethernet_receiver_impl.cpp
+@@ -14,6 +14,8 @@
+ #include <net/if.h>
+ #include <sys/ioctl.h>
+ #include <thread>
++#include <sys/types.h>
++#include <sys/time.h>
+ #include <unistd.h>
+ 
+ using namespace ocudu;
+@@ -124,7 +126,7 @@ static bool wait_for_data(int socket, std::chrono::microseconds timeout)
+   fd_set read_fs;
+   FD_ZERO(&read_fs);
+   FD_SET(socket, &read_fs);
+-  timeval tv = {0, static_cast<__suseconds_t>(timeout.count())};
++  timeval tv = {0, static_cast<suseconds_t>(timeout.count())};
+ 
+   return (::select(socket + 1, &read_fs, nullptr, nullptr, &tv) > 0);
+ }
+
