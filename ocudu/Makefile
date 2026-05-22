@@ -44,7 +44,7 @@ TARGET_CXXFLAGS += -Os -pipe -mcpu=generic+crypto
 #TARGET_LDFLAGS +=-lpthread
 
 CMAKE_OPTIONS += \
-	-DBUILD_TESTING=OFF \
+	-DBUILD_TESTING=OFF -DENABLE_WERROR=OFF \
 	-DMCPU=generic+crypto \
 	-DHAVE_ARM_CRYPTO=1 \
 	-DHAVE_PLUS_CRYPTO=1
