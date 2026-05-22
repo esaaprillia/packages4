@@ -201,27 +201,30 @@ index d4e0b11724..ac707a8ed7 100644
    return log_likelihood_ratio::quantize(l_value, range_limit);
  }
  
-From 3c4f81e1cb7c42f211c03e0f4058bb2983f0cab0 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Mon, 18 May 2026 11:37:54 +0800
-Subject: [PATCH] Add linux/stddef.h include to ldpc_decoder_neon.cpp
+From 8f7b0c584bac9bdb55fcbb17aee494cd15720d0a Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 22 May 2026 13:04:40 +0800
+Subject: [PATCH] Update ldpc_decoder_neon.cpp
 
 ---
- lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp | 1 +
- 1 file changed, 1 insertion(+)
+ lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp b/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp
-index 9387bf4cc4..790fe44606 100644
+index 9387bf4cc4..cae1d50c76 100644
 --- a/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp
 +++ b/lib/phy/upper/channel_coding/ldpc/ldpc_decoder_neon.cpp
-@@ -10,6 +10,7 @@
- #include "neon_support.h"
+@@ -11,6 +11,10 @@
  #include "ocudu/ocuduvec/circ_shift.h"
  #include "ocudu/ocuduvec/copy.h"
-+
  
++#ifndef __always_inline
++#define __always_inline __inline __attribute__((__always_inline__))
++#endif
++
  using namespace ocudu;
  using namespace ocudu::ldpc;
+ 
 From b9037270fb6fd8d31fca454c48416226b69b953d Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
 Date: Mon, 18 May 2026 08:42:35 +0800
