@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bluetooth-data-tools
-PKG_VERSION:=1.29.15
+PKG_VERSION:=1.29.18
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
