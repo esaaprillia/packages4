@@ -42,9 +42,9 @@ TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
-TARGET_CFLAGS += -Os -pipe -mcpu=generic-armv8-a
-TARGET_CCFLAGS += -Os -pipe -mcpu=generic-armv8-a
-TARGET_CXXFLAGS += -Os -pipe -mcpu=generic-armv8-a
+TARGET_CFLAGS += -Os -pipe -mcpu=generic-armv8-a+crypto
+TARGET_CCFLAGS += -Os -pipe -mcpu=generic-armv8-a+crypto
+TARGET_CXXFLAGS += -Os -pipe -mcpu=generic-armv8-a+crypto
 
 TARGET_CFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS))
 TARGET_CCFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS))
@@ -54,7 +54,7 @@ TARGET_CXXFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS))
 
 CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF -DENABLE_WERROR=ON \
-	-DMCPU=generic-armv8-a \
+	-DMCPU=generic-armv8-a+crypto \
 	-DHAVE_ARM_CRYPTO=1 \
 	-DHAVE_PLUS_CRYPTO=1
 
