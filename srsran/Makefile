@@ -25,7 +25,7 @@ define Package/srsran
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open source SDR 4G software suite from Software Radio Systems (SRS)
-	DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libconfig +libsctp +uhd +bladerf +libdw +soapy-sdr +libzmq-nc +boost-program_options
+	DEPENDS:=+libatomic +libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libconfig +libsctp +uhd +bladerf +libdw +soapy-sdr +libzmq-nc +boost-program_options
 	URL:=https://github.com/srsran/srsRAN_4G
 endef
 
