@@ -14,7 +14,7 @@ PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=COPYRIGHT
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/srsRAN_4G-release_$(PKG_SOURCE_VERSION)
-PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite libconfig lksctp-tools uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp libexecinfo
+PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite libconfig lksctp-tools uhd bladerf soapy-sdr zmq boost rapidjson backward-cpp
 
 CMAKE_BINARY_SUBDIR:=build
 
@@ -25,7 +25,7 @@ define Package/srsran
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open source SDR 4G software suite from Software Radio Systems (SRS)
-	DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libconfig +libsctp +uhd +bladerf +libdw +soapy-sdr +libzmq-nc +boost-program_options +libexecinfo
+	DEPENDS:=+libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libconfig +libsctp +uhd +bladerf +libdw +soapy-sdr +libzmq-nc +boost-program_options
 	URL:=https://github.com/srsran/srsRAN_4G
 endef
 
@@ -38,7 +38,7 @@ define Build/Prepare
 	$(SED) 's,/usr/lib64,$(STAGING_DIR)/usr/lib,g' $(PKG_BUILD_DIR)/CMakeLists.txt
 endef
 
-TARGET_LDFLAGS +=-lpthread
+#TARGET_LDFLAGS +=-lpthread
 
 CMAKE_OPTIONS += \
 	-DENABLE_GUI=OFF \
