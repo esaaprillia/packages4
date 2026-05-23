@@ -19,7 +19,7 @@ PKG_LICENSE:=BSD 3-Clause-Open-MPI
 PKG_LICENSE_FILES:=COPYRIGHT.txt LICENSE
 
 #PKG_BUILD_DIR:=$(BUILD_DIR)/ocudu-release_$(PKG_SOURCE_VERSION)
-PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite lksctp-tools zmq backward-cpp libdwarf rohc
+PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite lksctp-tools zmq backward-cpp libdwarf rohc uhd
 
 CMAKE_BINARY_SUBDIR:=build
 
@@ -30,7 +30,7 @@ define Package/ocudu
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=OCUDU is a permissively-licensed, open-source 5G
-	DEPENDS:=+libatomic +libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libsctp +libdw +libzmq-nc +libyaml-cpp +rohc
+	DEPENDS:=+libatomic +libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libsctp +libdw +libzmq-nc +libyaml-cpp +rohc +uhd
 	URL:=https://ocudu.org/
 endef
 
