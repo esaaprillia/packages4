@@ -46,9 +46,9 @@ TARGET_CFLAGS += -Os -pipe -mcpu=generic-armv8-a+crypto
 TARGET_CCFLAGS += -Os -pipe -mcpu=generic-armv8-a+crypto
 TARGET_CXXFLAGS += -Os -pipe -mcpu=generic-armv8-a+crypto
 
-TARGET_CFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS))
-TARGET_CCFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS))
-TARGET_CXXFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS))
+TARGET_CFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O1
+TARGET_CCFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O1
+TARGET_CXXFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O1
 
 #TARGET_LDFLAGS +=-lpthread
 
