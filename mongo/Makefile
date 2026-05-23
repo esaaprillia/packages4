@@ -57,9 +57,9 @@ TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
-TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc -D_LARGEFILE64_SOURCE
-TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc -D_LARGEFILE64_SOURCE
-TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -D_LARGEFILE64_SOURCE
+TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc
 
 SCONS_OPTIONS += \
 	--allocator=system \
