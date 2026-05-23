@@ -46,10 +46,14 @@ TARGET_CFLAGS += -Os -pipe -mcpu=generic-armv8-a
 TARGET_CCFLAGS += -Os -pipe -mcpu=generic-armv8-a
 TARGET_CXXFLAGS += -Os -pipe -mcpu=generic-armv8-a
 
+TARGET_CFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS))
+TARGET_CCFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS))
+TARGET_CXXFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS))
+
 #TARGET_LDFLAGS +=-lpthread
 
 CMAKE_OPTIONS += \
-	-DBUILD_TESTING=OFF -DENABLE_WERROR=OFF \
+	-DBUILD_TESTING=OFF -DENABLE_WERROR=ON \
 	-DMCPU=generic-armv8-a \
 	-DHAVE_ARM_CRYPTO=1 \
 	-DHAVE_PLUS_CRYPTO=1
