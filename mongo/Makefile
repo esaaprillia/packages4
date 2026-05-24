@@ -73,7 +73,7 @@ SCONS_OPTIONS += \
 	--use-sasl-client \
 	--ssl \
 	PREFIX=/usr \
-    RPATH="$(STAGING_DIR)/usr/lib" \
+	RPATH="$(STAGING_DIR)/usr/lib" \
 	CPPPATH="$(STAGING_DIR)/usr/include" \
 	LIBPATH="$(STAGING_DIR)/usr/lib" \
 	MONGO_VERSION="$(PKG_VERSION)"
