@@ -74,7 +74,7 @@ SCONS_OPTIONS += \
 	--ssl \
 	PREFIX=/usr \
     RPATH="$(STAGING_DIR)/usr/lib" \
-	CPPPATH="$(STAGING_DIR)/usr/include" \
+	CPPPATH="$(STAGING_DIR)/usr/include/openssl" \
 	LIBPATH="$(STAGING_DIR)/usr/lib" \
 	MONGO_VERSION="$(PKG_VERSION)"
 
