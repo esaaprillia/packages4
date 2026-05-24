@@ -1,4 +1,4 @@
-export PLATFORM=posix
+#export PLATFORM=posix
 
 SCONS_VARS = \
 	CC="$(TARGET_CC_NOCACHE)" \
