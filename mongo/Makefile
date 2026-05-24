@@ -72,8 +72,9 @@ SCONS_OPTIONS += \
 	--use-system-zstd \
 	--use-sasl-client \
 	--ssl \
+	--runtime-hardening=off \
 	PREFIX=/usr \
-    RPATH="$(STAGING_DIR)/usr/lib" \
+	RPATH="$(STAGING_DIR)/usr/lib" \
 	CPPPATH="$(STAGING_DIR)/usr/include" \
 	LIBPATH="$(STAGING_DIR)/usr/lib" \
 	MONGO_VERSION="$(PKG_VERSION)"
