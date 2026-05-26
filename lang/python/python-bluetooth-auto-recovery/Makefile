@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bluetooth-auto-recovery
-PKG_VERSION:=1.6.0
+PKG_VERSION:=1.6.4
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
