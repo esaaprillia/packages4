@@ -60,7 +60,7 @@ CMAKE_OPTIONS += \
 	-DHDF5_ENABLE_SZIP_ENCODING=ON \
 	-DHDF5_INSTALL_CMAKE_DIR=/usr/lib/cmake \
 	-DHDF5_INSTALL_MODULE_DIR=/usr/include/mod \
-	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
+	-DCMAKE_Fortran_COMPILER="$(TARGET_CROSS)gfortran"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
