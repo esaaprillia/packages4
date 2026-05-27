@@ -46,7 +46,7 @@ TARGET_LDFLAGS += $(if $(CONFIG_USE_GLIBC),-lpthread)
 
 CMAKE_OPTIONS += \
 	-DENABLE_GUI=OFF \
-	-DENABLE_WERROR=OFF
+	-DENABLE_WERROR=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
