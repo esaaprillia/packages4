@@ -1,7 +1,7 @@
 [binaries]
 c = [@CC@]
 cpp = [@CXX@]
-fortran = '@GFORTRAN@'
+fortran = '@FORTRAN@'
 pkg-config = '@PKGCONFIG@'
 cmake = '@CMAKE@'
 python = '@PYTHON@'
