@@ -38,7 +38,11 @@ define Build/Prepare
 	$(SED) 's,/usr/lib64,$(STAGING_DIR)/usr/lib,g' $(PKG_BUILD_DIR)/CMakeLists.txt
 endef
 
-#TARGET_LDFLAGS +=-lpthread
+TARGET_CFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O1
+TARGET_CCFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O1
+TARGET_CXXFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O1
+
+TARGET_LDFLAGS += $(if $(CONFIG_USE_GLIBC),-lpthread)
 
 CMAKE_OPTIONS += \
 	-DENABLE_GUI=OFF \
