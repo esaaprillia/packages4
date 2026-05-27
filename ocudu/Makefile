@@ -11,7 +11,7 @@ PKG_RELEASE:=3
 
 PKG_SOURCE_URL:=https://gitlab.com/ocudu/ocudu.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=3aaea2b7558db524ff9cff14f033fcedcf308124
+PKG_SOURCE_VERSION:=c8daaba6acb1a0b10c6cde45d788dd5660e7409c
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
