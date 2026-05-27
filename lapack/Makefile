@@ -41,7 +41,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DLAPACKE=ON \
 	-DCBLAS=ON \
-	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
+	-DCMAKE_Fortran_COMPILER="$(TARGET_CROSS)gfortran"
 
 CMAKE_HOST_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
