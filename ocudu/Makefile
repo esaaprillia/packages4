@@ -3,7 +3,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=ocudu
 PKG_VERSION:=26.04.0
 #PKG_SOURCE_VERSION:=26_04
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 #PKG_SOURCE:=ocudu-release_$(PKG_SOURCE_VERSION).tar.gz
 #PKG_SOURCE_URL:=https://gitlab.com/ocudu/ocudu/-/archive/release_$(PKG_SOURCE_VERSION)/
@@ -42,19 +42,19 @@ TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
-TARGET_CFLAGS += -Os -pipe -mcpu=generic-armv8-a+crypto
-TARGET_CCFLAGS += -Os -pipe -mcpu=generic-armv8-a+crypto
-TARGET_CXXFLAGS += -Os -pipe -mcpu=generic-armv8-a+crypto
+TARGET_CFLAGS += -Os -pipe -mcpu=generic+crypto
+TARGET_CCFLAGS += -Os -pipe -mcpu=generic+crypto
+TARGET_CXXFLAGS += -Os -pipe -mcpu=generic+crypto
 
 TARGET_CFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O1
 TARGET_CCFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O1
 TARGET_CXXFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O1
 
-#TARGET_LDFLAGS +=-lpthread
+TARGET_LDFLAGS += $(if $(CONFIG_USE_GLIBC),-lpthread)
 
 CMAKE_OPTIONS += \
-	-DBUILD_TESTING=OFF -DENABLE_WERROR=ON \
-	-DMCPU=generic-armv8-a+crypto \
+	-DBUILD_TESTING=OFF \
+	-DMCPU=generic+crypto \
 	-DHAVE_ARM_CRYPTO=1 \
 	-DHAVE_PLUS_CRYPTO=1
 
