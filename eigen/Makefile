@@ -33,7 +33,7 @@ define Package/eigen/description
 endef
 
 CMAKE_OPTIONS += \
-	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
+	-DCMAKE_Fortran_COMPILER="$(TARGET_CROSS)gfortran"
 
 CMAKE_HOST_OPTIONS += \
 	-DCMAKE_Fortran_COMPILER=gfortran
