@@ -39,7 +39,6 @@ endef
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=True \
 	-DTAGGED_RELEASE=ON \
-	-DLIBUSB_VERSION=1.0.29 \
 	-DUDEV_RULES_PATH=/usr/lib/udev/rules.d
 
 define Build/InstallDev
