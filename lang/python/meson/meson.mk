@@ -65,6 +65,7 @@ define Meson/CreateNativeFile
 	$(STAGING_DIR_HOST)/bin/sed \
 		-e "s|@CC@|$(foreach BIN,$(HOSTCC),'$(BIN)',)|" \
 		-e "s|@CXX@|$(foreach BIN,$(HOSTCXX),'$(BIN)',)|" \
+		-e "s|@FORTRAN@|$(STAGING_DIR_HOST)/bin/gfortran|" \
 		-e "s|@PKGCONFIG@|$(PKG_CONFIG)|" \
 		-e "s|@CMAKE@|$(STAGING_DIR_HOST)/bin/cmake|" \
 		-e "s|@PYTHON@|$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON)|" \
@@ -81,6 +82,7 @@ define Meson/CreateCrossFile
 		-e "s|@CC@|$(foreach BIN,$(TARGET_CC),'$(BIN)',)|" \
 		-e "s|@CXX@|$(foreach BIN,$(TARGET_CXX),'$(BIN)',)|" \
 		-e "s|@LD@|$(foreach FLAG,$(TARGET_LINKER),'$(FLAG)',)|" \
+		-e "s|@FORTRAN@|$(TARGET_CROSS)gfortran|" \
 		-e "s|@AR@|$(TARGET_AR)|" \
 		-e "s|@STRIP@|$(TARGET_CROSS)strip|" \
 		-e "s|@NM@|$(TARGET_NM)|" \
