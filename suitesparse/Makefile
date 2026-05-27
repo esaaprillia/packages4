@@ -35,7 +35,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
-	-DCMAKE_Fortran_COMPILER=aarch64-openwrt-linux-musl-gfortran
+	-DCMAKE_Fortran_COMPILER="$(TARGET_CROSS)gfortran"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
