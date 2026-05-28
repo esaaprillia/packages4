@@ -3,7 +3,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=ocudu
 PKG_VERSION:=26.04.0
 #PKG_SOURCE_VERSION:=26_04
-PKG_RELEASE:=4
+PKG_RELEASE:=3
 
 #PKG_SOURCE:=ocudu-release_$(PKG_SOURCE_VERSION).tar.gz
 #PKG_SOURCE_URL:=https://gitlab.com/ocudu/ocudu/-/archive/release_$(PKG_SOURCE_VERSION)/
@@ -11,7 +11,7 @@ PKG_RELEASE:=4
 
 PKG_SOURCE_URL:=https://gitlab.com/ocudu/ocudu.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=3aaea2b7558db524ff9cff14f033fcedcf308124
+PKG_SOURCE_VERSION:=c8daaba6acb1a0b10c6cde45d788dd5660e7409c
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -19,7 +19,7 @@ PKG_LICENSE:=BSD 3-Clause-Open-MPI
 PKG_LICENSE_FILES:=COPYRIGHT.txt LICENSE
 
 #PKG_BUILD_DIR:=$(BUILD_DIR)/ocudu-release_$(PKG_SOURCE_VERSION)
-#PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite lksctp-tools zmq backward-cpp libdwarf rohc uhd
+PKG_BUILD_DEPENDS:=fftw3 mbedtls pcsc-lite lksctp-tools zmq backward-cpp libdwarf rohc uhd
 
 CMAKE_BINARY_SUBDIR:=build
 
@@ -30,7 +30,7 @@ define Package/ocudu
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=OCUDU is a permissively-licensed, open-source 5G
-	DEPENDS:=+libatomic +libstdcpp +libpthread +libsctp +libyaml-cpp +libmbedtls
+	DEPENDS:=+libatomic +libstdcpp +libpthread +fftw3f +libmbedtls +libpcsclite +libsctp +libdw +libzmq-nc +libyaml-cpp +rohc +uhd
 	URL:=https://ocudu.org/
 endef
 
