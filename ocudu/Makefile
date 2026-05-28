@@ -33,25 +33,11 @@ define Package/ocudu/description
 	OCUDU is a permissively-licensed, open-source 5G (and beyond) CU/DU project designed for commercial deployment and broad industry adoption, as well as advanced research and development.
 endef
 
-TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
-TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
-TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
-
-TARGET_CFLAGS += -Os -pipe -mcpu=generic+crypto
-TARGET_CCFLAGS += -Os -pipe -mcpu=generic+crypto
-TARGET_CXXFLAGS += -Os -pipe -mcpu=generic+crypto
-
-#TARGET_LDFLAGS +=-lpthread
-
 CMAKE_OPTIONS += \
-	-DBUILD_TESTING=OFF -DENABLE_WERROR=OFF \
+	-DBUILD_TESTING=OFF \
+	-DENABLE_WERROR=OFF \
 	-DMCPU=generic+crypto \
-	-DHAVE_ARM_CRYPTO=1 \
-	-DHAVE_PLUS_CRYPTO=1
-
-define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
-endef
+	-DMARCH=armv8-a+crypto
 
 define Package/ocudu/install
 	$(INSTALL_DIR) $(1)/usr/bin
