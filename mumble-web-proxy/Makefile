@@ -38,11 +38,10 @@ define Package/mumble-web-proxy/description
 endef
 
 define Build/Compile
-  cd $(PKG_BUILD_DIR) && \
   $(CARGO_PKG_CONFIG_VARS) \
   $(CARGO) install -v $(CARGO_PKG_CONFIG_ARGS) \
   --root $(PKG_INSTALL_DIR) \
-  --path "$(PKG_BUILD_DIR)/$(if $(strip $(1)),$(strip $(1)),$(strip $(MAKE_PATH)))"
+  --path "$(PKG_BUILD_DIR)/$(MAKE_PATH)"
 endef
 
 define Package/mumble-web-proxy/install
