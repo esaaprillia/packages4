@@ -42,6 +42,7 @@ define Build/Compile
   $(CARGO_PKG_CONFIG_VARS) \
   $(CARGO) install -v \
   $(CARGO_PKG_CONFIG_ARGS) \
+  --target "$(RUSTUP_TARGET_ARCH)" \
   --root "$(PKG_INSTALL_DIR)" \
   --path "$(PKG_BUILD_DIR)/$(MAKE_PATH)"
 endef
