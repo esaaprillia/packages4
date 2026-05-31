@@ -1,0 +1,21 @@
+From 4d940e0a526d6a338b23b53f1e1ea7d029035c57 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 1 Jun 2026 06:56:06 +0800
+Subject: [PATCH] Update tnode.h
+
+---
+ deps/v8/src/codegen/tnode.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/deps/v8/src/codegen/tnode.h b/deps/v8/src/codegen/tnode.h
+index 83a05d0d441c29..385ba35f66da5e 100644
+--- a/deps/v8/src/codegen/tnode.h
++++ b/deps/v8/src/codegen/tnode.h
+@@ -6,6 +6,7 @@
+ #define V8_CODEGEN_TNODE_H_
+ 
+ #include "src/codegen/machine-type.h"
++#include "src/objects/cell.h"
+ 
+ namespace v8 {
+ namespace internal {
