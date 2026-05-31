@@ -15,7 +15,7 @@ index 83a05d0d441c29..385ba35f66da5e 100644
  #define V8_CODEGEN_TNODE_H_
  
  #include "src/codegen/machine-type.h"
-+#include "src/objects/cell.h"
++#include "src/objects/tagged.h"
  
  namespace v8 {
  namespace internal {
