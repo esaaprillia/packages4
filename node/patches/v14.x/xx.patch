@@ -1,0 +1,22 @@
+From 4a93259d74fdc8df2a71c2145ec37c7b3415bf1d Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 31 May 2026 17:54:42 +0800
+Subject: [PATCH] Update configure
+
+---
+ configure | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/configure b/configure
+index debd3cc3d452d0..887acca3a238d3 100755
+--- a/configure
++++ b/configure
+@@ -11,7 +11,6 @@ command -v python3.8 >/dev/null && exec python3.8 "$0" "$@"
+ command -v python3.7 >/dev/null && exec python3.7 "$0" "$@"
+ command -v python3.6 >/dev/null && exec python3.6 "$0" "$@"
+ command -v python3.5 >/dev/null && exec python3.5 "$0" "$@"
+-command -v python3 >/dev/null && exec python3 "$0" "$@"
+ command -v python2.7 >/dev/null && exec python2.7 "$0" "$@"
+ exec python "$0" "$@"
+ ''' "$0" "$@"
+

@@ -1,0 +1,66 @@
+From 30072fa54d2db210da7d253d66d753a5e3d3f85b Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 31 May 2026 18:26:04 +0800
+Subject: [PATCH] Update logging.h
+
+---
+ deps/v8/src/base/logging.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/deps/v8/src/base/logging.h b/deps/v8/src/base/logging.h
+index 790018c98e9889..c079c3037b5c4f 100644
+--- a/deps/v8/src/base/logging.h
++++ b/deps/v8/src/base/logging.h
+@@ -13,6 +13,7 @@
+ #include "src/base/build_config.h"
+ #include "src/base/compiler-specific.h"
+ #include "src/base/template-utils.h"
++#include <cstdint>
+ 
+ V8_BASE_EXPORT V8_NOINLINE void V8_Dcheck(const char* file, int line,
+                                           const char* message);
+
+From 72c735a408876345e3eb2a213fadadf9911ebd83 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 31 May 2026 18:29:08 +0800
+Subject: [PATCH] Update macros.h
+
+---
+ deps/v8/src/base/macros.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/deps/v8/src/base/macros.h b/deps/v8/src/base/macros.h
+index 067a9115b26f5c..7cf97f4eae9d36 100644
+--- a/deps/v8/src/base/macros.h
++++ b/deps/v8/src/base/macros.h
+@@ -10,6 +10,7 @@
+ 
+ #include "src/base/compiler-specific.h"
+ #include "src/base/logging.h"
++#include <cstdint>
+ 
+ // No-op macro which is used to work around MSVC's funky VA_ARGS support.
+ #define EXPAND(x) x
+From 09d3d839bad5dc22f6e630865003aa7debf5b309 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 1 Jun 2026 03:23:28 +0800
+Subject: [PATCH] Update v8-string-conversions.h
+
+---
+ deps/v8/src/inspector/v8-string-conversions.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/deps/v8/src/inspector/v8-string-conversions.h
+b/deps/v8/src/inspector/v8-string-conversions.h
+index c1d69c18f0a8e5..66b3564ccad240 100644
+--- a/deps/v8/src/inspector/v8-string-conversions.h
++++ b/deps/v8/src/inspector/v8-string-conversions.h
+@@ -6,6 +6,7 @@
+ #define V8_INSPECTOR_V8_STRING_CONVERSIONS_H_
+ 
+ #include <string>
++#include <cstdint>
+ 
+ // Conversion routines between UT8 and UTF16, used by string-16.{h,cc}.
+ // You may
+ // want to use string-16.h directly rather than these.

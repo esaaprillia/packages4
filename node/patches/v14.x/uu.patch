@@ -1,0 +1,23 @@
+From d5ab7fe2072eaebacde67b2da471d8c0e9a87091 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 31 May 2026 19:51:14 +0800
+Subject: [PATCH] Update icutrim.py
+
+---
+ tools/icu/icutrim.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/icu/icutrim.py b/tools/icu/icutrim.py
+index f857e73bbce298..0ae8c23319db93 100755
+--- a/tools/icu/icutrim.py
++++ b/tools/icu/icutrim.py
+@@ -316,7 +316,7 @@ def removeList(count=0):
+             erritems = fi.readlines()
+             fi.close()
+             #Item zone/zh_Hant_TW.res depends on missing item zone/zh_Hant.res
+-            pat = re.compile(bytes(r"^Item ([^ ]+) depends on missing item ([^ ]+).*", 'utf-8'))
++            pat = re.compile(br"^Item ([^ ]+) depends on missing item ([^ ]+).*")
+             for i in range(len(erritems)):
+                 line = erritems[i].strip()
+                 m = pat.match(line)
+
