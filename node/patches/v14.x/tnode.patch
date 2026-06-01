@@ -18,7 +18,7 @@ index 83a05d0d441c29..f2407e57f14479 100644
 +#include "src/objects/cell.h"
 +#include "src/objects/js-generator.h"
 +#include "src/objects/js-promise.h"
-+
++#include "src/execution/frames.h"
 +
 +
 +
