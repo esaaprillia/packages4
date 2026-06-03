@@ -140,6 +140,7 @@ CONFIGURE_ARGS:= \
 	--shared-zlib \
 	--shared-openssl \
 	--shared-nghttp2 \
+	--openssl-legacy-provider \
 	--with-intl=$(if $(CONFIG_NODEJS_ICU_SMALL),small-icu,$(if $(CONFIG_NODEJS_ICU_SYSTEM),system-icu,none)) \
 	$(if $(findstring mips,$(NODEJS_CPU)), \
 		$(if $(CONFIG_SOFT_FLOAT),--with-mips-float-abi=soft)) \
