@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-gevent
-PKG_VERSION:=26.4.0
+PKG_VERSION:=26.5.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=gevent
