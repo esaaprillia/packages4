@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiohttp
-PKG_VERSION:=3.13.5
+PKG_VERSION:=3.14.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiohttp
