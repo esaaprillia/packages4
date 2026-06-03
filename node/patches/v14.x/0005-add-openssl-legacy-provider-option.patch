@@ -1,0 +1,106 @@
+From 86d1c0cc6a5dcf57e413a1cc1c29203e87cf9a14 Mon Sep 17 00:00:00 2001
+From: Daniel Bevenius <daniel.bevenius@gmail.com>
+Date: Sat, 16 Oct 2021 08:50:16 +0200
+Subject: [PATCH] src: add --openssl-legacy-provider option
+
+This commit adds an option to Node.js named --openssl-legacy-provider
+and if specified will load OpenSSL 3.0 Legacy provider.
+
+$ ./node --help
+...
+--openssl-legacy-provider  enable OpenSSL 3.0 legacy provider
+
+Example usage:
+
+$ ./node --openssl-legacy-provider  -p 'crypto.createHash("md4")'
+Hash {
+  _options: undefined,
+  [Symbol(kHandle)]: Hash {},
+  [Symbol(kState)]: { [Symbol(kFinalized)]: false }
+}
+
+Co-authored-by: Richard Lau <rlau@redhat.com>
+
+Refs: https://github.com/nodejs/node/issues/40455
+---
+ src/node_options.cc                                    | 10 ++++++++++
+ src/node_options.h                                     |  7 +++++++
+ .../test-process-env-allowed-flags-are-documented.js   |  5 +++++
+ 5 files changed, 42 insertions(+)
+
+diff --git a/src/node_options.cc b/src/node_options.cc
+index 00bdc6688a4c..3363860919a9 100644
+--- a/src/node_options.cc
++++ b/src/node_options.cc
+@@ -4,6 +4,9 @@
+ #include "env-inl.h"
+ #include "node_binding.h"
+ #include "node_internals.h"
++#if HAVE_OPENSSL
++#include "openssl/opensslv.h"
++#endif
+ 
+ #include <errno.h>
+ #include <sstream>
+@@ -809,6 +812,13 @@ PerProcessOptionsParser::PerProcessOptionsParser(
+             &PerProcessOptions::secure_heap_min,
+             kAllowedInEnvironment);
+ #endif
++#if OPENSSL_VERSION_MAJOR >= 3
++  AddOption("--openssl-legacy-provider",
++            "enable OpenSSL 3.0 legacy provider",
++            &PerProcessOptions::openssl_legacy_provider,
++            kAllowedInEnvironment);
++
++#endif  // OPENSSL_VERSION_MAJOR
+   AddOption("--use-largepages",
+             "Map the Node.js static code to large pages. Options are "
+             "'off' (the default value, meaning do not map), "
+diff --git a/src/node_options.h b/src/node_options.h
+index fd772478d04d..1c0e018ab16f 100644
+--- a/src/node_options.h
++++ b/src/node_options.h
+@@ -11,6 +11,10 @@
+ #include "node_mutex.h"
+ #include "util.h"
+ 
++#if HAVE_OPENSSL
++#include "openssl/opensslv.h"
++#endif
++
+ namespace node {
+ 
+ class HostPort {
+@@ -251,6 +255,9 @@ class PerProcessOptions : public Options {
+   bool enable_fips_crypto = false;
+   bool force_fips_crypto = false;
+ #endif
++#if OPENSSL_VERSION_MAJOR >= 3
++  bool openssl_legacy_provider = false;
++#endif
+ 
+   // Per-process because reports can be triggered outside a known V8 context.
+   bool report_on_fatalerror = false;
+diff --git a/test/parallel/test-process-env-allowed-flags-are-documented.js b/test/parallel/test-process-env-allowed-flags-are-documented.js
+index 5a5d23e028935d..a9c7f140d9ef15 100644
+--- a/test/parallel/test-process-env-allowed-flags-are-documented.js
++++ b/test/parallel/test-process-env-allowed-flags-are-documented.js
+@@ -40,6 +40,10 @@ for (const line of [...nodeOptionsLines, ...v8OptionsLines]) {
+   }
+ }
+ 
++if (!common.hasOpenSSL3) {
++  documented.delete('--openssl-legacy-provider');
++}
++
+ // Filter out options that are conditionally present.
+ const conditionalOpts = [
+   {
+@@ -48,6 +52,7 @@ const conditionalOpts = [
+       return [
+         '--openssl-config',
+         '--openssl-shared-config',
++        common.hasOpenSSL3 ? '--openssl-legacy-provider' : '',
+         '--tls-cipher-list',
+         '--use-bundled-ca',
+         '--use-openssl-ca',
