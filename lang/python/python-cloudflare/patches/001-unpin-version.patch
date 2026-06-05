@@ -1,0 +1,22 @@
+From 7fb7f71ad3529686d26dffbccf67fd1888969f73 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 5 Jun 2026 20:30:37 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index e82a503ac6f..ac6ddb07f0b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -78,7 +78,7 @@ pydantic-v2 = [
+ ]
+ 
+ [build-system]
+-requires = ["hatchling==1.26.3", "hatch-fancy-pypi-readme"]
++requires = ["hatchling", "hatch-fancy-pypi-readme"]
+ build-backend = "hatchling.build"
+ 
+ [tool.hatch.build]
