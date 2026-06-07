@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-poetry
-PKG_VERSION:=2.3.3
+PKG_VERSION:=2.4.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=poetry
