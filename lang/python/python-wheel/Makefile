@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-wheel
-PKG_VERSION:=0.46.3
+PKG_VERSION:=0.47.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=wheel
