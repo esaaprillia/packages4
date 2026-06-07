@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-multipart
-PKG_VERSION:=0.0.20
+PKG_VERSION:=0.0.32
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_multipart
