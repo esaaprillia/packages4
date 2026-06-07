@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-beautifulsoup4
-PKG_VERSION:=4.14.3
+PKG_VERSION:=4.15.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=beautifulsoup4
