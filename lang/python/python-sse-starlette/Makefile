@@ -23,7 +23,7 @@ define Package/python3-sse-starlette
   CATEGORY:=Languages
   TITLE:=SSE plugin for Starlette
   URL:=https://github.com/sysid/sse-starlette
-  DEPENDS:=+python3 +python3-anyio
+  DEPENDS:=+python3 +python3-starlette +python3-anyio
 endef
 
 define Package/python3-sse-starlette/description
