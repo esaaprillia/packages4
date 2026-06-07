@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-brotlicffi
-PKG_VERSION:=1.2.0.0
+PKG_VERSION:=1.2.0.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=brotlicffi
