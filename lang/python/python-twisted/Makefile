@@ -9,11 +9,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-twisted
-PKG_VERSION:=25.5.0
+PKG_VERSION:=26.4.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=Twisted
-PYPI_SOURCE_NAME:=twisted
+PYPI_NAME:=twisted
 PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=libtirpc
