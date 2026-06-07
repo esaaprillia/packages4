@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-poetry-dynamic-versioning
-PKG_VERSION:=1.9.1
+PKG_VERSION:=1.10.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=poetry_dynamic_versioning
