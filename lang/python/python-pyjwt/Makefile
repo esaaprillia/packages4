@@ -21,7 +21,7 @@ define Package/python3-pyjwt
   CATEGORY:=Languages
   TITLE:=JSON Web Token implementation in Python
   URL:=https://github.com/jpadilla/pyjwt
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +python3-cryptography
 endef
 
 define Package/python3-pyjwt/description
