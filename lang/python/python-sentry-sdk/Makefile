@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-sentry-sdk
-PKG_VERSION:=2.58.0
+PKG_VERSION:=2.61.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=sentry_sdk
