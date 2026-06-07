@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-markdown-it-py
-PKG_VERSION:=4.0.0
+PKG_VERSION:=4.2.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=markdown_it_py
