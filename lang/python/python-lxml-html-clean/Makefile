@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-lxml-html-clean
-PKG_VERSION:=0.4.4
+PKG_VERSION:=0.4.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=lxml_html_clean
