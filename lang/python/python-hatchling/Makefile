@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hatchling
-PKG_VERSION:=1.29.0
+PKG_VERSION:=1.30.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=hatchling
