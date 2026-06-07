@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-starlette
-PKG_VERSION:=1.0.0
+PKG_VERSION:=1.2.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=starlette
