@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-coherent-build
-PKG_VERSION:=0.36.2
+PKG_VERSION:=0.39.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=coherent_build
