@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-zipstream-ng
-PKG_VERSION:=1.9.0
+PKG_VERSION:=1.9.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=zipstream_ng
