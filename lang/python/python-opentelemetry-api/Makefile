@@ -25,7 +25,7 @@ define Package/python3-opentelemetry-api
   CATEGORY:=Languages
   TITLE:=OpenTelemetry Python API
   URL:=https://opentelemetry.io/
-  DEPENDS:=+python3 +python3-typing-extensions +python3-importlib-metadata
+  DEPENDS:=+python3 +python3-typing-extensions
 endef
 
 define Package/python3-opentelemetry-api/description
