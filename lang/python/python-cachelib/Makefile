@@ -5,11 +5,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cachelib
-PKG_VERSION:=0.13.0
+PKG_VERSION:=0.14.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=cachelib
-PKG_HASH:=209d8996e3c57595bee274ff97116d1d73c4980b2fd9a34c7846cd07fd2e1a48
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Stepan Henek <stepan.henek@nic.cz>
 PKG_LICENSE:=BSD-3-Clause
