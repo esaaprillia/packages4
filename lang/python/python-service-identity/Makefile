@@ -34,9 +34,7 @@ define Package/python3-service-identity
   DEPENDS:= \
       +python3-light \
       +python3-attrs \
-      +python3-cryptography \
-      +python3-pyasn1 \
-      +python3-pyasn1-modules
+      +python3-cryptography
 endef
 
 define Package/python3-service-identity/description
