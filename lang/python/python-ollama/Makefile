@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ollama
-PKG_VERSION:=0.6.1
+PKG_VERSION:=0.6.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=ollama
