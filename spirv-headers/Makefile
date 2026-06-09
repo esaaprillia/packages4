@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=spirv-headers
-PKG_VERSION:=1.4.335.0
+PKG_VERSION:=1.4.350.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=SPIRV-Headers-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/KhronosGroup/SPIRV-Headers/tar.gz/vulkan-sdk-$(PKG_VERSION)?
+PKG_SOURCE:=SPIRV-Headers-vulkan-sdk-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/KhronosGroup/SPIRV-Headers/archive/vulkan-sdk-$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
