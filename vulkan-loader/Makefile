@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=vulkan-loader
-PKG_VERSION:=1.4.337
+PKG_VERSION:=1.4.350.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=Vulkan-Loader-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/KhronosGroup/Vulkan-Loader/archive/v$(PKG_VERSION)
+PKG_SOURCE:=Vulkan-Loader-vulkan-sdk-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/KhronosGroup/Vulkan-Loader/archive/vulkan-sdk-$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE.txt
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:= vulkan-headers
-PKG_BUILD_DIR:=$(BUILD_DIR)/Vulkan-Loader-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/Vulkan-Loader-vulkan-sdk-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
