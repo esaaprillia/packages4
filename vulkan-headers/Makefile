@@ -5,7 +5,7 @@ PKG_VERSION:=1.4.350.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Vulkan-Headers-vulkan-sdk-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/KhronosGroup/Vulkan-Headers/archive/v$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/KhronosGroup/Vulkan-Headers/archive/vulkan-sdk-$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
