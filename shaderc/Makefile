@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=shaderc
-PKG_VERSION:=2025.5
+PKG_VERSION:=2026.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_VERSION)-$(PKG_VERSION).tar.gz
