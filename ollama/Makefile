@@ -16,7 +16,7 @@ PKG_LICENSE_FILES:=LICENSE
 CMAKE_SOURCE_SUBDIR := llama/server
 PKG_BUILD_PARALLEL:=1
 
-#PKG_BUILD_DEPENDS:= shaderc vulkan-loader
+PKG_BUILD_DEPENDS:= shaderc shaderc/host
 
 PKG_BUILD_DEPENDS:=golang/host
 
@@ -28,7 +28,7 @@ define Package/ollama
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Get up and running with large language models.
-	DEPENDS:=+libstdcpp +libgomp $(GO_ARCH_DEPENDS)
+	DEPENDS:=+libstdcpp +libgomp +vulkan-loader $(GO_ARCH_DEPENDS)
 	URL:=https://github.com/ollama/ollama
 endef
 
@@ -37,7 +37,7 @@ define Package/ollama/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON -DGGML_VULKAN=ON
 
 GO_PKG:=github.com/ollama/ollama
 GO_PKG_LDFLAGS_X:= \
