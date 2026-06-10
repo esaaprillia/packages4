@@ -5,7 +5,7 @@ PKG_VERSION:=7.360.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://code.videolan.org/videolan/libplacebo/-/archive/v$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/haasn/libplacebo/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
