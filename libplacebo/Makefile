@@ -14,7 +14,6 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_DEPENDS:=meson/host python-glad2/host python-mako/host
-PKG_BUILD_DIR:=$(BUILD_DIR)/libplacebo-v$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
