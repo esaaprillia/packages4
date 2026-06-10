@@ -14,7 +14,10 @@ PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR := build
 
+HOST_BUILD_DEPENDS:=spirv-tools/host glslang/host
+
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/shaderc
@@ -29,6 +32,11 @@ define Package/shaderc/description
 	A collection of tools, libraries, and tests for Vulkan shader compilation.
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-DSHADERC_SKIP_TESTS=ON \
+	-DSHADERC_ENABLE_TESTS=OFF \
+	-DSHADERC_ENABLE_EXAMPLES=OFF
+
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DSHADERC_SKIP_TESTS=ON \
@@ -36,7 +44,12 @@ CMAKE_OPTIONS += \
 	-DSHADERC_ENABLE_EXAMPLES=OFF
 
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/shaderc $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/{*.so*.*.a} $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/shaderc*.pc $(1)/usr/lib/pkgconfig/
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/shaderc*.pc
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/shaderc*.pc
 endef
@@ -48,4 +61,5 @@ define Package/shaderc/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,shaderc))
