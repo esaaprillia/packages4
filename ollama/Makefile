@@ -16,9 +16,7 @@ PKG_LICENSE_FILES:=LICENSE
 CMAKE_SOURCE_SUBDIR := llama/server
 PKG_BUILD_PARALLEL:=1
 
-PKG_BUILD_DEPENDS:= shaderc shaderc/host
-
-PKG_BUILD_DEPENDS:=golang/host
+PKG_BUILD_DEPENDS:= shaderc shaderc/host golang/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
