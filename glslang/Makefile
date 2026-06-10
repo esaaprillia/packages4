@@ -13,10 +13,14 @@ PKG_LICENSE:=BSD-3-Clause AND BSD-2-Clause AND MIT AND Apache-2.0 AND GPL-3.0-or
 PKG_LICENSE_FILES:=LICENSE.txt
 
 CMAKE_BINARY_SUBDIR := build
+
 PKG_BUILD_DEPENDS:=glslang-static
 PKG_BUILD_DIR:=$(BUILD_DIR)/glslang-vulkan-sdk-$(PKG_VERSION)
+HOST_BUILD_DEPENDS:=spirv-tools/host
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/glslang-vulkan-sdk-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/glslang
@@ -31,6 +35,11 @@ define Package/glslang/description
 	Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-DBUILD_EXTERNAL=OFF \
+	-DALLOW_EXTERNAL_SPIRV_TOOLS=YES \
+	-DGLSLANG_TESTS=OFF
+
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_EXTERNAL=OFF \
@@ -38,7 +47,11 @@ CMAKE_OPTIONS += \
 	-DGLSLANG_TESTS=OFF
 
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/glslang $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/{*.so*,*.a} $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cmake $(1)/usr/lib/
 endef
 
 define Package/glslang/install
@@ -48,4 +61,5 @@ define Package/glslang/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,glslang))
