@@ -35,7 +35,7 @@ define Package/ollama/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON -DGGML_VULKAN=ON -DOLLAMA_RUNNER_DIR="vulkan"
 
 GO_PKG:=github.com/ollama/ollama
 GO_PKG_LDFLAGS_X:= \
