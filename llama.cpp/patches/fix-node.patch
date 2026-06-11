@@ -1,0 +1,23 @@
+From 21cc9577ae82527a3fa9ab0586b7f5b01837a0ee Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 11 Jun 2026 22:10:46 +0800
+Subject: [PATCH] Update package.json
+
+---
+ tools/ui/package.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/ui/package.json b/tools/ui/package.json
+index 4f5ef4d64fa0..c7cc302bc26a 100644
+--- a/tools/ui/package.json
++++ b/tools/ui/package.json
+@@ -5,7 +5,7 @@
+ 	"type": "module",
+ 	"scripts": {
+ 		"dev": "bash scripts/dev.sh",
+-		"build": "vite build",
++		"build": "svelte-kit sync && vite build",
+ 		"preview": "vite preview",
+ 		"prepare": "svelte-kit sync || echo ''",
+ 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+
