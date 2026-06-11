@@ -17,7 +17,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-b$(PKG_VERSION)
 #CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
 
-PKG_BUILD_DEPENDS:=node/host python-ninja2/host
+PKG_BUILD_DEPENDS:=node/host python-jinja2/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
