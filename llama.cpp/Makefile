@@ -17,7 +17,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-b$(PKG_VERSION)
 #CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
 
-PKG_BUILD_DEPENDS:=node/host python-jinja2/host
+PKG_BUILD_DEPENDS:=node/host python-jinja2/host shaderc shaderc/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -26,7 +26,7 @@ define Package/llama.cpp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=LLM inference in C/C++
-	DEPENDS:=+libstdcpp +libgomp +libopenssl +openblas
+	DEPENDS:=+libstdcpp +libgomp +libopenssl +openblas ++vulkan-loader
 	URL:=https://llama.app/
 endef
 
@@ -47,9 +47,8 @@ CMAKE_OPTIONS += \
 	-DGGML_LTO=ON \
 	-DGGML_NATIVE=OFF \
 	-DGGML_RPC=ON \
-	-DGGML_VULKAN=OFF \
+	-DGGML_VULKAN=ON \
 	-DGGML_BACKEND_DIR=/usr/lib \
-	-DLLAMA_BUILD_COMMIT=18ef86e \
 	-DLLAMA_USE_PREBUILT_UI=OFF \
 	-DNPM_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/npm"
 
