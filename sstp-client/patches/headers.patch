@@ -1,0 +1,22 @@
+From ab1c57715e9cc0c4965955398966bca2d3e4602e Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 15 Jun 2026 22:57:47 +0800
+Subject: [PATCH] Update sstp-plugin.c
+
+---
+ src/pppd-plugin/sstp-plugin.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pppd-plugin/sstp-plugin.c b/src/pppd-plugin/sstp-plugin.c
+index 806466b..152cad7 100644
+--- a/src/pppd-plugin/sstp-plugin.c
++++ b/src/pppd-plugin/sstp-plugin.c
+@@ -36,7 +36,7 @@
+ #include <pppd/fsm.h>
+ #include <pppd/lcp.h>
+ #include <pppd/eap.h>
+-#include <pppd/chap-new.h>
++#include <pppd/chap.h>
+ 
+ #include <sstp-api.h>
+ #include <sstp-mppe.h>
