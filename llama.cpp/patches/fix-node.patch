@@ -16,7 +16,7 @@ index 4803922889a7..e5d8ac277001 100644
  	"type": "module",
  	"scripts": {
 -		"build": "npm run build-pwa-assets && vite build",
-+		"build": "npm run build-pwa-assets svelte-kit sync && vite build",
++		"build": "npm run build-pwa-assets && svelte-kit sync && vite build",
  		"build-pwa-assets": "npx @vite-pwa/assets-generator --root . --config pwa-assets.config.ts && npx @vite-pwa/assets-generator --root . --config pwa-assets-dark.config.ts && node scripts/make-icons-circular.js",
  		"dev": "bash scripts/dev.sh",
  		"preview": "vite preview",
