@@ -1,3 +1,24 @@
+From e08fab8864e1189603fd8b94c5f14111a3fb04b8 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 17 Jun 2026 21:23:37 +0800
+Subject: [PATCH] Update compat.cmake
+
+---
+ llama/compat/compat.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/llama/compat/compat.cmake b/llama/compat/compat.cmake
+index 02a5b56eeec..7ca167f67bf 100644
+--- a/llama/compat/compat.cmake
++++ b/llama/compat/compat.cmake
+@@ -47,6 +47,7 @@ set(OLLAMA_LLAMA_CPP_COMPAT_DIR
+ # custom (e.g. emit a dependency on the patch so reconfigures re-apply).
+ set(OLLAMA_LLAMA_CPP_COMPAT_PATCH_FILE
+     "${_compat_dir}/001-llama-cpp-hooks.patch"
++    "${_compat_dir}/fix-node.patch"
+     CACHE INTERNAL "Path to the llama.cpp compat patch")
+ 
+ set(OLLAMA_LLAMA_CPP_COMPAT_SOURCES
 From 9b236c2a9ea41b6e2d9346b7bc91562102ebd508 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
 Date: Wed, 17 Jun 2026 20:33:07 +0800
