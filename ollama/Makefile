@@ -53,9 +53,7 @@ define Package/ollama/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ollama $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/lib/ollama
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/ollama/{*.so*,llama-*} $(1)/usr/lib/ollama/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/ollama $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,ollama))
