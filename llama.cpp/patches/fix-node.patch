@@ -1,6 +1,6 @@
-From 21cc9577ae82527a3fa9ab0586b7f5b01837a0ee Mon Sep 17 00:00:00 2001
+From 34cd3ace1fc2552743f004cdcd27725f6215bf32 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 11 Jun 2026 22:10:46 +0800
+Date: Thu, 18 Jun 2026 01:29:32 +0800
 Subject: [PATCH] Update package.json
 
 ---
@@ -8,16 +8,15 @@ Subject: [PATCH] Update package.json
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tools/ui/package.json b/tools/ui/package.json
-index 4f5ef4d64fa0..c7cc302bc26a 100644
+index 4803922889a7..e5d8ac277001 100644
 --- a/tools/ui/package.json
 +++ b/tools/ui/package.json
-@@ -5,7 +5,7 @@
+@@ -4,7 +4,7 @@
+ 	"version": "1.0.0",
  	"type": "module",
  	"scripts": {
- 		"dev": "bash scripts/dev.sh",
 -		"build": "npm run build-pwa-assets && vite build",
 +		"build": "npm run build-pwa-assets svelte-kit sync && vite build",
+ 		"build-pwa-assets": "npx @vite-pwa/assets-generator --root . --config pwa-assets.config.ts && npx @vite-pwa/assets-generator --root . --config pwa-assets-dark.config.ts && node scripts/make-icons-circular.js",
+ 		"dev": "bash scripts/dev.sh",
  		"preview": "vite preview",
- 		"prepare": "svelte-kit sync || echo ''",
- 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-
