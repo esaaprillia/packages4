@@ -1,12 +1,3 @@
-From a58ac61831b95a23f7595ec106a7df6293471a49 Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Wed, 17 Jun 2026 23:02:08 +0800
-Subject: [PATCH] Update 001-llama-cpp-hooks.patch
-
----
- llama/compat/001-llama-cpp-hooks.patch | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
-
 diff --git a/llama/compat/001-llama-cpp-hooks.patch b/llama/compat/001-llama-cpp-hooks.patch
 index 454e516022c..015aeb7f633 100644
 --- a/llama/compat/001-llama-cpp-hooks.patch
