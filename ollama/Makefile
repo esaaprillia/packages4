@@ -16,7 +16,7 @@ CMAKE_BINARY_SUBDIR := build
 CMAKE_SOURCE_SUBDIR := llama/server
 PKG_BUILD_PARALLEL:=1
 
-PKG_BUILD_DEPENDS:= shaderc shaderc/host golang/host
+PKG_BUILD_DEPENDS:= shaderc shaderc/host golang/host node/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
