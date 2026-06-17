@@ -35,7 +35,7 @@ define Package/ollama/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON -DNPM_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/npm"
 
 GO_PKG:=github.com/ollama/ollama
 GO_PKG_LDFLAGS_X:= \
