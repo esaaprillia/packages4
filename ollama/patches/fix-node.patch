@@ -1,40 +1,17 @@
-From e08fab8864e1189603fd8b94c5f14111a3fb04b8 Mon Sep 17 00:00:00 2001
+From a58ac61831b95a23f7595ec106a7df6293471a49 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Wed, 17 Jun 2026 21:23:37 +0800
-Subject: [PATCH] Update compat.cmake
+Date: Wed, 17 Jun 2026 23:02:08 +0800
+Subject: [PATCH] Update 001-llama-cpp-hooks.patch
 
 ---
- llama/compat/compat.cmake | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/llama/compat/compat.cmake b/llama/compat/compat.cmake
-index 02a5b56eeec..7ca167f67bf 100644
---- a/llama/compat/compat.cmake
-+++ b/llama/compat/compat.cmake
-@@ -47,6 +47,7 @@ set(OLLAMA_LLAMA_CPP_COMPAT_DIR
- # custom (e.g. emit a dependency on the patch so reconfigures re-apply).
- set(OLLAMA_LLAMA_CPP_COMPAT_PATCH_FILE
-     "${_compat_dir}/001-llama-cpp-hooks.patch"
-+    "${_compat_dir}/fix-node.patch"
-     CACHE INTERNAL "Path to the llama.cpp compat patch")
- 
- set(OLLAMA_LLAMA_CPP_COMPAT_SOURCES
-From 9b236c2a9ea41b6e2d9346b7bc91562102ebd508 Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Wed, 17 Jun 2026 20:33:07 +0800
-Subject: [PATCH] Create fix-node.patch
-
----
- llama/compat/fix-node.patch | 23 +++++++++++++++++++++++
+ llama/compat/001-llama-cpp-hooks.patch | 23 +++++++++++++++++++++++
  1 file changed, 23 insertions(+)
- create mode 100644 llama/compat/fix-node.patch
 
-diff --git a/llama/compat/fix-node.patch b/llama/compat/fix-node.patch
-new file mode 100644
-index 00000000000..90efc75a2dc
---- /dev/null
-+++ b/llama/compat/fix-node.patch
-@@ -0,0 +1,23 @@
+diff --git a/llama/compat/001-llama-cpp-hooks.patch b/llama/compat/001-llama-cpp-hooks.patch
+index 454e516022c..015aeb7f633 100644
+--- a/llama/compat/001-llama-cpp-hooks.patch
++++ b/llama/compat/001-llama-cpp-hooks.patch
+@@ -1,3 +1,26 @@
 +From 21cc9577ae82527a3fa9ab0586b7f5b01837a0ee Mon Sep 17 00:00:00 2001
 +From: esaaprillia <esaapriliasalsabila@gmail.com>
 +Date: Thu, 11 Jun 2026 22:10:46 +0800
@@ -58,3 +35,6 @@ index 00000000000..90efc75a2dc
 + 		"prepare": "svelte-kit sync || echo ''",
 + 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 +
+ diff --git a/src/llama-model-loader.cpp b/src/llama-model-loader.cpp
+ index 4e65a45..a6e4fe2 100644
+ --- a/src/llama-model-loader.cpp
