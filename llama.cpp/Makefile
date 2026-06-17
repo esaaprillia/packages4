@@ -26,7 +26,7 @@ define Package/llama.cpp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=LLM inference in C/C++
-	DEPENDS:=+libstdcpp +libgomp +libopenssl +openblas +vulkan-loader
+	DEPENDS:=+libstdcpp +libgomp +libopenssl +libopenssl-legacy +openblas +vulkan-loader
 	URL:=https://llama.app/
 endef
 
