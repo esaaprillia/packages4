@@ -1,11 +1,22 @@
-diff --git a/llama/compat/001-llama-cpp-hooks.patch b/llama/compat/001-llama-cpp-hooks.patch
-index 454e516022c..015aeb7f633 100644
---- a/llama/compat/001-llama-cpp-hooks.patch
-+++ b/llama/compat/001-llama-cpp-hooks.patch
-@@ -1,3 +1,26 @@
-+From 21cc9577ae82527a3fa9ab0586b7f5b01837a0ee Mon Sep 17 00:00:00 2001
+From 38c244703923b5d9248d765e9ba4ace94d825624 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 18 Jun 2026 01:38:32 +0800
+Subject: [PATCH] Create fix-node.patch
+
+---
+ llama/compat/fix-node.patch | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+ create mode 100644 llama/compat/fix-node.patch
+
+diff --git a/llama/compat/fix-node.patch b/llama/compat/fix-node.patch
+new file mode 100644
+index 00000000000..c1b761533b3
+--- /dev/null
++++ b/llama/compat/fix-node.patch
+@@ -0,0 +1,22 @@
++From 34cd3ace1fc2552743f004cdcd27725f6215bf32 Mon Sep 17 00:00:00 2001
 +From: esaaprillia <esaapriliasalsabila@gmail.com>
-+Date: Thu, 11 Jun 2026 22:10:46 +0800
++Date: Thu, 18 Jun 2026 01:29:32 +0800
 +Subject: [PATCH] Update package.json
 +
 +---
@@ -13,19 +24,15 @@ index 454e516022c..015aeb7f633 100644
 + 1 file changed, 1 insertion(+), 1 deletion(-)
 +
 +diff --git a/tools/ui/package.json b/tools/ui/package.json
-+index 4f5ef4d64fa0..c7cc302bc26a 100644
++index 4803922889a7..e5d8ac277001 100644
 +--- a/tools/ui/package.json
 ++++ b/tools/ui/package.json
-+@@ -5,7 +5,7 @@
++@@ -4,7 +4,7 @@
++ 	"version": "1.0.0",
 + 	"type": "module",
 + 	"scripts": {
++-		"build": "npm run build-pwa-assets && vite build",
+++		"build": "npm run build-pwa-assets && svelte-kit sync && vite build",
++ 		"build-pwa-assets": "npx @vite-pwa/assets-generator --root . --config pwa-assets.config.ts && npx @vite-pwa/assets-generator --root . --config pwa-assets-dark.config.ts && node scripts/make-icons-circular.js",
 + 		"dev": "bash scripts/dev.sh",
-+-		"build": "vite build",
-++		"build": "svelte-kit sync && vite build",
 + 		"preview": "vite preview",
-+ 		"prepare": "svelte-kit sync || echo ''",
-+ 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-+
- diff --git a/src/llama-model-loader.cpp b/src/llama-model-loader.cpp
- index 4e65a45..a6e4fe2 100644
- --- a/src/llama-model-loader.cpp
