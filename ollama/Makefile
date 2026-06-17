@@ -26,7 +26,7 @@ define Package/ollama
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Get up and running with large language models.
-	DEPENDS:=+libstdcpp +libgomp +vulkan-loader $(GO_ARCH_DEPENDS)
+	DEPENDS:=+libstdcpp +libgomp $(GO_ARCH_DEPENDS)
 	URL:=https://github.com/ollama/ollama
 endef
 
