@@ -1,0 +1,39 @@
+From 9b236c2a9ea41b6e2d9346b7bc91562102ebd508 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 17 Jun 2026 20:33:07 +0800
+Subject: [PATCH] Create fix-node.patch
+
+---
+ llama/compat/fix-node.patch | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+ create mode 100644 llama/compat/fix-node.patch
+
+diff --git a/llama/compat/fix-node.patch b/llama/compat/fix-node.patch
+new file mode 100644
+index 00000000000..90efc75a2dc
+--- /dev/null
++++ b/llama/compat/fix-node.patch
+@@ -0,0 +1,23 @@
++From 21cc9577ae82527a3fa9ab0586b7f5b01837a0ee Mon Sep 17 00:00:00 2001
++From: esaaprillia <esaapriliasalsabila@gmail.com>
++Date: Thu, 11 Jun 2026 22:10:46 +0800
++Subject: [PATCH] Update package.json
++
++---
++ tools/ui/package.json | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/tools/ui/package.json b/tools/ui/package.json
++index 4f5ef4d64fa0..c7cc302bc26a 100644
++--- a/tools/ui/package.json
+++++ b/tools/ui/package.json
++@@ -5,7 +5,7 @@
++ 	"type": "module",
++ 	"scripts": {
++ 		"dev": "bash scripts/dev.sh",
++-		"build": "vite build",
+++		"build": "svelte-kit sync && vite build",
++ 		"preview": "vite preview",
++ 		"prepare": "svelte-kit sync || echo ''",
++ 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
++
