@@ -4,16 +4,16 @@ PKG_NAME:=libxscrnsaver
 PKG_VERSION:=1.2.5
 PKG_RELEASE:=1
 
-PKG_SOURCE:=libxscrnsaver-libXScrnSaver-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver/-/archive/libXScrnSaver-$(PKG_VERSION)
+PKG_SOURCE:=libXScrnSaver-$(PKG_VERSION).tar.xz
+PKG_SOURCE_URL:=https://www.x.org/releases/individual/lib/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LICENSE
 PKG_LICENSE_FILES:=COPYING
 
-HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/libxscrnsaver-libXScrnSaver-$(PKG_VERSION)
-PKG_BUILD_DIR:=$(BUILD_DIR)/libxscrnsaver-libXScrnSaver-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/libXScrnSaver-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/libXScrnSaver-$(PKG_VERSION)
 
 HOST_BUILD_DEPENDS:=xorgproto/host util-macros/host
 PKG_BUILD_DEPENDS:=util-macros xorgproto
