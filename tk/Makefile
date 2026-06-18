@@ -40,7 +40,7 @@ define Package/tk
   SUBMENU:=Tcl
   SECTION:=lang
   CATEGORY:=Languages
-  DEPENDS:=+tcl +libx11
+  DEPENDS:=+tcl +libx11 +libXft
   TITLE:=The Tcl language
   URL:=https://www.tcl.tk/
 endef
