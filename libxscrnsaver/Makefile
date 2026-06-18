@@ -4,7 +4,7 @@ PKG_NAME:=libxscrnsaver
 PKG_VERSION:=1.2.5
 PKG_RELEASE:=1
 
-PKG_SOURCE:=libxscrnsaver-libXScrnSaver-$(PKG_VERSION).tar.xz
+PKG_SOURCE:=libxscrnsaver-libXScrnSaver-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver/-/archive/libXScrnSaver-$(PKG_VERSION)
 PKG_HASH:=skip
 
