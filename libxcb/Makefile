@@ -18,12 +18,10 @@ PKG_BUILD_DEPENDS:=xcb-proto
 HOST_BUILD_PARALLEL:=1
 PKG_BUILD_PARALLEL:=1
 PYTHON3_PKG_BUILD:=0
-PYTHON3_HOST_BUILD:=0
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/libxcb
@@ -41,9 +39,6 @@ endef
 TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed
 
 CONFIGURE_VARS += \
-	PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
-
-HOST_CONFIGURE_VARS += \
 	PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 CONFIGURE_ARGS += \
