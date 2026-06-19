@@ -12,19 +12,16 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
 
-HOST_BUILD_DEPENDS:=python3/host
 PKG_BUILD_DEPENDS:=python3/host
 
 HOST_BUILD_PARALLEL:=1
 PKG_BUILD_PARALLEL:=1
 
 PYTHON3_PKG_BUILD:=0
-PYTHON3_HOST_BUILD:=0
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/xcb-proto
@@ -46,9 +43,6 @@ CONFIGURE_VARS += \
 
 CONFIGURE_ARGS += \
 	--prefix=/usr
-
-HOST_CONFIGURE_VARS += \
-	PYTHON="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
