@@ -290,6 +290,10 @@ endif
 # HOST_MAKE_VARS += \
 # 	PYTHONSTRICTEXTENSIONBUILD=1
 
+HOST_EXTRA_LDFLAGS+= \
+	-L$(BUILD_DIR_HOST) \
+	-L$(STAGING_DIR_HOSTPKG)/lib -L$(STAGING_DIR_HOST)/lib
+
 # Bypass configure test
 HOST_CONFIGURE_VARS += \
 	ac_cv_working_openssl_hashlib=yes
