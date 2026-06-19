@@ -23,7 +23,7 @@ PKG_LICENSE:=TCL
 PKG_LICENSE_FILES:=license.terms
 PKG_CPE_ID:=cpe:/a:tcl_tk:tcl_tk
 
-PKG_BUILD_DEPENDS:=HOST_OS_MACOS:fakeuname/host
+PKG_BUILD_DEPENDS:=HOST_OS_MACOS:fakeuname/host tcl/host
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
@@ -53,6 +53,8 @@ define Package/tk/description
   programming API makes it an ideal choice for an enormous variety of
   programming jobs.
 endef
+
+HOST_LDFLAGS += $(HOST_FPIC)
 
 CONFIGURE_PATH := unix
 
