@@ -18,5 +18,6 @@ This package contains the tkinter module.
 endef
 
 $(eval $(call Py3BasePackage,python3-tkinter, \
+	/usr/lib/python$(PYTHON3_VERSION)/tkinter \
 	/usr/lib/python$(PYTHON3_VERSION)/lib-dynload/_tkinter.$(PYTHON3_SO_SUFFIX) \
 ))
