@@ -48,7 +48,7 @@ CONFIGURE_ARGS += \
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--disable-shared \
+	--enable-shared \
 	--disable-docs \
 	--without-xmlto \
 	--without-xsltproc \
