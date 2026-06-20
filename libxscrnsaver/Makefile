@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=COPYING
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/libXScrnSaver-$(PKG_VERSION)
 PKG_BUILD_DIR:=$(BUILD_DIR)/libXScrnSaver-$(PKG_VERSION)
 
-HOST_BUILD_DEPENDS:=xorgproto/host util-macros/host
+HOST_BUILD_DEPENDS:=xorgproto/host util-macros/host libxext/host libx11/host
 PKG_BUILD_DEPENDS:=util-macros xorgproto
 HOST_BUILD_PARALLEL:=1
 PKG_BUILD_PARALLEL:=1
@@ -42,6 +42,8 @@ TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed
 CONFIGURE_ARGS += \
 	--enable-malloc0returnsnull \
 	--prefix=/usr
+
+HOST_CFLAGS += $(HOST_FPIC)
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
