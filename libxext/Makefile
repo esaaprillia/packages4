@@ -45,9 +45,11 @@ CONFIGURE_ARGS += \
 	--without-xmlto \
 	--enable-malloc0returnsnull
 
+HOST_CFLAGS += $(HOST_FPIC)
+
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--enable-shared \
+	--disable-shared \
 	--without-fop \
 	--without-xmlto \
 	--enable-malloc0returnsnull
