@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=COPYING
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/libXft-$(PKG_VERSION)
 PKG_BUILD_DIR:=$(BUILD_DIR)/libXft-$(PKG_VERSION)
 
-HOST_BUILD_DEPENDS:=xorgproto/host util-macros/host libx11/host libxrender/host
+HOST_BUILD_DEPENDS:=xorgproto/host util-macros/host libx11/host libxrender/host fontconfig/host freetype/host
 PKG_BUILD_DEPENDS:=util-macros xorgproto
 HOST_BUILD_PARALLEL:=1
 PKG_BUILD_PARALLEL:=1
