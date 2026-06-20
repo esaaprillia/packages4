@@ -45,7 +45,7 @@ CONFIGURE_ARGS += \
 	--without-xmlto \
 	--without-xsltproc
 
-HOST_CFLAGS += $(HOST_FPIC)
+HOST_LDFLAGS += $(HOST_FPIC)
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
