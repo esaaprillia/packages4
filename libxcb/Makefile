@@ -48,9 +48,11 @@ CONFIGURE_ARGS += \
 	--without-doxygen \
 	--disable-devel-docs
 
+HOST_CFLAGS += $(HOST_FPIC)
+
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--enable-shared \
+	--disable-shared \
 	--without-doxygen \
 	--disable-devel-docs
 
