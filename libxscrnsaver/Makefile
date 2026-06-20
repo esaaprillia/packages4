@@ -43,7 +43,7 @@ CONFIGURE_ARGS += \
 	--enable-malloc0returnsnull \
 	--prefix=/usr
 
-HOST_CFLAGS += $(HOST_FPIC)
+HOST_LDFLAGS += $(HOST_FPIC)
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
