@@ -104,7 +104,7 @@ endef
 
 HOST_LDFLAGS += $(HOST_FPIC)
 
-HOST_CONFIGURE_ARGS += \
+#HOST_CONFIGURE_ARGS += \
 	--enable-static \
 	--disable-shared \
 	--x-includes="$(STAGING_DIR_HOSTPKG)/include" \
