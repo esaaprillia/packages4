@@ -104,10 +104,6 @@ endef
 
 HOST_LDFLAGS += $(HOST_FPIC)
 
-HOST_CONFIGURE_ARGS += \
-	--enable-static \
-	--disable-shared
-
 define Host/Compile
 	+$(HOST_MAKE_VARS) \
 	$(MAKE) $(HOST_JOBS) -C $(HOST_BUILD_DIR)/$(MAKE_PATH) \
