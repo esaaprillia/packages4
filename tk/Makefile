@@ -106,9 +106,8 @@ HOST_LDFLAGS += $(HOST_FPIC)
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--disable-shared --disable-load \
-	--x-includes="$(STAGING_DIR_HOSTPKG)/include" \
-	--x-libraries="$(STAGING_DIR_HOSTPKG)/lib"
+	--disable-shared \
+	--disable-load
 
 define Host/Compile
 	+$(HOST_MAKE_VARS) \
