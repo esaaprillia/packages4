@@ -43,12 +43,14 @@ MESON_ARGS += \
 	-Dtests=disabled \
 	-Dtools=enabled
 
+HOST_LDFLAGS += $(HOST_FPIC)
+
 MESON_HOST_ARGS += \
 	-Ddoc=disabled \
 	-Ddoc-txt=disabled \
 	-Dnls=disabled \
 	-Dtests=disabled \
-	-Dtools=enabled -Ddefault_library=both
+	-Dtools=enabled
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
