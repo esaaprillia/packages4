@@ -109,7 +109,7 @@ HOST_CONFIGURE_ARGS += \
 	--disable-shared
 
 HOST_CONFIGURE_VARS += \
-	LIBS="-lX11 -lxcb -lXau -lXdmcp -lXft -lfontconfig"
+	LIBS="-lX11 -lxcb -lXau -lXdmcp -lXft -lfontconfig -lfreetype -lXrender"
 
 define Host/Compile
 	+$(HOST_MAKE_VARS) \
