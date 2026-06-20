@@ -53,7 +53,7 @@ MESON_HOST_ARGS += \
 	-Dpng=disabled \
 	-Dharfbuzz=disabled \
 	-Dbrotli=disabled \
-	-Dmmap=enabled
+	-Dmmap=enabled -Ddefault_library=both
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include/freetype2
