@@ -45,9 +45,11 @@ CONFIGURE_ARGS += \
 	--without-xmlto \
 	--without-xsltproc
 
+HOST_CFLAGS += $(HOST_FPIC)
+
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--enable-shared \
+	--disable-shared \
 	--disable-docs \
 	--without-fop \
 	--without-xmlto \
