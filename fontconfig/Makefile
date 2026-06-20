@@ -48,7 +48,7 @@ MESON_HOST_ARGS += \
 	-Ddoc-txt=disabled \
 	-Dnls=disabled \
 	-Dtests=disabled \
-	-Dtools=enabled
+	-Dtools=enabled -Ddefault_library=both
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
