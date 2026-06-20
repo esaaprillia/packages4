@@ -41,9 +41,11 @@ TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed
 CONFIGURE_ARGS += \
 	--prefix=/usr
 
+HOST_CFLAGS += $(HOST_FPIC)
+
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--enable-shared
+	--disable-shared
 
 define Build/InstallDev
 	$(INSTALL_DIR) \
