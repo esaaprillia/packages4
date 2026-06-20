@@ -44,7 +44,7 @@ CONFIGURE_ARGS += \
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--disable-shared \
+	--enable-shared \
 	--enable-malloc0returnsnull
 
 define Build/InstallDev
