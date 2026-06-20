@@ -23,7 +23,7 @@ PKG_LICENSE:=TCL
 PKG_LICENSE_FILES:=license.terms
 PKG_CPE_ID:=cpe:/a:tcl_tk:tcl_tk
 
-HOST_BUILD_DEPENDS:=HOST_OS_MACOS:fakeuname/host tcl/host libx11/host
+HOST_BUILD_DEPENDS:=HOST_OS_MACOS:fakeuname/host tcl/host libx11/host libxft/host
 PKG_BUILD_DEPENDS:=HOST_OS_MACOS:fakeuname/host
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
