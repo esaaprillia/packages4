@@ -52,7 +52,7 @@ HOST_LDFLAGS += $(HOST_FPIC)
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--enable-shared \
+	--disable-shared \
 	--enable-xkb \
 	--enable-xinput \
 	--without-doxygen \
