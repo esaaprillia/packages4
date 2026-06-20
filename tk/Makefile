@@ -102,12 +102,11 @@ define Host/Configure
 	$(call Host/Configure/Default,$(1),$(2),$(CONFIGURE_PATH)/$(3))
 endef
 
-HOST_LDFLAGS += $(HOST_FPIC) -lX11 -lxcb -lXft
+HOST_LDFLAGS += $(HOST_FPIC) -lX11 -lxcb -lXau -lXdmcp -lXft
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--disable-shared \
-	--disable-load
+	--disable-shared
 
 define Host/Compile
 	+$(HOST_MAKE_VARS) \
