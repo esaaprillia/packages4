@@ -41,7 +41,7 @@ TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed
 CONFIGURE_ARGS += \
 	--prefix=/usr
 
-HOST_CFLAGS += $(HOST_FPIC)
+HOST_LDFLAGS += $(HOST_FPIC)
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
