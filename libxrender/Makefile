@@ -43,9 +43,11 @@ CONFIGURE_ARGS += \
 	--enable-malloc0returnsnull \
 	--prefix=/usr
 
+HOST_CFLAGS += $(HOST_FPIC)
+
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--enable-shared \
+	--disable-shared \
 	--enable-malloc0returnsnull
 
 define Build/InstallDev
