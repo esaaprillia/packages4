@@ -102,11 +102,13 @@ define Host/Configure
 	$(call Host/Configure/Default,$(1),$(2),$(CONFIGURE_PATH)/$(3))
 endef
 
-HOST_LDFLAGS += $(HOST_FPIC) -lxcb
+HOST_LDFLAGS += $(HOST_FPIC)
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--disable-shared
+	--disable-shared \
+	--x-includes="$(STAGING_DIR_HOSTPKG)/include" \
+	--x-libraries="$(STAGING_DIR_HOSTPKG)/lib"
 
 define Host/Compile
 	+$(HOST_MAKE_VARS) \
