@@ -102,16 +102,19 @@ endef
 define Package/fftw3/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libfftw3.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libfftw3_threads.so* $(1)/usr/lib/
 endef
 
 define Package/fftw3f/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libfftw3f.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libfftw3f_threads.so* $(1)/usr/lib/
 endef
 
 define Package/fftw3l/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libfftw3l.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libfftw3l_threads.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,fftw3))
