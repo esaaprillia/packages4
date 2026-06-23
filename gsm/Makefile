@@ -12,6 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=TU-Berlin-2.0
 PKG_LICENSE_FILES:=COPYRIGHT
 
+PKG_BUILD_DIR:=$(BUILD_DIR)/gsm-1.0-pl24
+
 include $(INCLUDE_DIR)/package.mk
 
 define Package/gsm
