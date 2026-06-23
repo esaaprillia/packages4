@@ -29,7 +29,7 @@ define Package/gsm/description
 endef
 
 define Build/Compile
-	$(MAKE_VARS) $(MAKE) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS)
+	$(MAKE_VARS) $(MAKE) RPM_OPT_FLAGS="$(TARGET_CFLAGS) $(FPIC)" -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS)
 endef
 
 define Build/Install
