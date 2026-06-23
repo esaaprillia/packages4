@@ -17,7 +17,7 @@ index 0e80c43..2a70e52 100644
 @@ -1,6 +1,6 @@
  #top dir cmake project for libairspy + airspy-tools
  
--cmake_minimum_required(VERSION 2.8.12.1)
+-cmake_minimum_required(VERSION 2.8)
 +cmake_minimum_required(VERSION 3.5)
  project (airspy_all)
  
@@ -39,7 +39,7 @@ index 495bfbe..29f28d3 100644
  
  # Based heavily upon the libftdi cmake setup.
  
--cmake_minimum_required(VERSION 2.8.12.1)
+-cmake_minimum_required(VERSION 2.8)
 +cmake_minimum_required(VERSION 3.5)
  project(airspy-tools C)
  set(MAJOR_VERSION 0)
@@ -52,7 +52,7 @@ index 5ea578a..c093c28 100644
  
  # Based heavily upon the libftdi cmake setup.
  
--cmake_minimum_required(VERSION 2.8.12.1)
+-cmake_minimum_required(VERSION 2.8)
 +cmake_minimum_required(VERSION 3.5)
  project(libairspy C)
  file(READ ${CMAKE_CURRENT_SOURCE_DIR}/src/airspy.h AIRSPY_H_CONTENTS)
