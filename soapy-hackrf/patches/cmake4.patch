@@ -1,1 +1,67 @@
-mmm
+From 143ff5e7e0f786e341df8846c04e8273c5183c26 Mon Sep 17 00:00:00 2001
+From: "Christian W. Zuckschwerdt" <christian@zuckschwerdt.org>
+Date: Thu, 9 Oct 2025 18:13:43 +0200
+Subject: [PATCH] Update for compat with newer CMake
+
+---
+ CMakeLists.txt | 31 +++++++++++++++----------------
+ 1 file changed, 15 insertions(+), 16 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 793a8eb..b2ed5f3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,21 +1,20 @@
+-######################################################################## 
+- # Build Soapy SDR support module for HackRF
+- ######################################################################## 
+-
+-cmake_minimum_required(VERSION 2.8.7)
++########################################################################
++# Build Soapy SDR support module for HackRF
++########################################################################
++cmake_minimum_required(VERSION 2.8.12...3.10)
+ project(SoapyHackRF CXX)
+ 
+ find_package(SoapySDR "0.4.0" NO_MODULE)
+- if (NOT SoapySDR_FOUND) 
+-    message(FATAL_ERROR "Soapy SDR development files not found...") 
+- endif () 
++if (NOT SoapySDR_FOUND)
++    message(FATAL_ERROR "Soapy SDR development files not found...")
++endif ()
+ 
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+ find_package(LIBHACKRF)
+ 
+-if (NOT LIBHACKRF_FOUND) 
+-     message(FATAL_ERROR "HackRF development files not found...") 
+-endif () 
++if (NOT LIBHACKRF_FOUND)
++    message(FATAL_ERROR "HackRF development files not found...")
++endif ()
+ message(STATUS "LIBHACKRF_INCLUDE_DIRS - ${LIBHACKRF_INCLUDE_DIRS}")
+ message(STATUS "LIBHACKRF_LIBRARIES - ${LIBHACKRF_LIBRARIES}")
+ 
+@@ -49,16 +48,16 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+ endif(CMAKE_COMPILER_IS_GNUCXX)
+ 
+ if (APPLE)
+-   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wc++11-extensions")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wc++11-extensions")
+ endif(APPLE)
+ 
+ SOAPY_SDR_MODULE_UTIL(
+     TARGET HackRFSupport
+     SOURCES
+-	HackRF_Registration.cpp
+-	HackRF_Settings.cpp
+-	HackRF_Streaming.cpp
+-	HackRF_Session.cpp
++    HackRF_Registration.cpp
++    HackRF_Settings.cpp
++    HackRF_Streaming.cpp
++    HackRF_Session.cpp
+     LIBRARIES ${LIBHACKRF_LIBRARIES}
+ )
+ 
