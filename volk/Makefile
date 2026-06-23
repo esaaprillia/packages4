@@ -34,7 +34,8 @@ define Package/volk/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DORCC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/orcc"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
