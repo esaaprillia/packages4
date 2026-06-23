@@ -28,8 +28,7 @@ define Package/gsm/description
 	GSM 06.10 lossy speech compression
 endef
 
-CONFIGURE_VARS += \
-	LD="$(TARGET_CC)"
+TARGET_LDFLAGS += $(FPIC)
 
 define Build/Compile
 	$(MAKE_VARS) $(MAKE) LDFLAGS="$(TARGET_LDFLAGS)" CC="$(TARGET_CC)" LD="$(TARGET_CC)" -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS)
