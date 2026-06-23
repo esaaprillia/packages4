@@ -22,7 +22,7 @@ define Package/hackrf
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=low cost software radio platform
-	DEPENDS:=+libusb-1.0 +fftw3l
+	DEPENDS:=+libusb-1.0 +fftw3f
 	URL:=https://github.com/greatscottgadgets/hackrf
 endef
 
