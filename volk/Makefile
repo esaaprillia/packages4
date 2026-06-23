@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=COPYING
 
 CMAKE_BINARY_SUBDIR:=build
 
-PKG_BUILD_DEPENDS:=python-mako/host boost
+PKG_BUILD_DEPENDS:=python-mako/host boost orc/host
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
