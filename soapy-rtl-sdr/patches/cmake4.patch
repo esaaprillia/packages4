@@ -1,0 +1,43 @@
+From 448c9d0d326c2600905b7ce84222ff9d72ba2189 Mon Sep 17 00:00:00 2001
+From: "Christian W. Zuckschwerdt" <christian@zuckschwerdt.org>
+Date: Thu, 18 Apr 2024 00:21:18 +0200
+Subject: [PATCH] Fix minor CMake compatibility issues
+
+---
+ CMakeLists.txt | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2824d93..850bd2d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ########################################################################
+ # Build Soapy SDR support module for RTL-SDR Devices
+ ########################################################################
+-cmake_minimum_required(VERSION 2.8.7)
++cmake_minimum_required(VERSION 3.5)
+ project(SoapyRTLSDR CXX)
+ 
+ find_package(SoapySDR "0.4.0" NO_MODULE REQUIRED)
+@@ -28,7 +28,7 @@ if(NOT HAVE_CXX_ATOMICS_WITHOUT_LIB OR NOT HAVE_CXX_ATOMICS64_WITHOUT_LIB)
+ endif()
+ 
+ #enable c++11 features
+-if(CMAKE_COMPILER_IS_GNUCXX)
++if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+ 
+     #C++11 is a required language feature for this project
+     include(CheckCXXCompilerFlag)
+@@ -43,9 +43,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+     list(APPEND RTLSDR_LIBRARIES -pthread)
+ 
+     #disable warnings for unused parameters
+-    add_definitions(-Wno-unused-parameter)
+-
+-endif(CMAKE_COMPILER_IS_GNUCXX)
++    add_compile_options(-Wall -Wextra -Wno-unused-parameter)
++endif()
+ 
+ if (APPLE)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wc++11-extensions")
