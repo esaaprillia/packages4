@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=TU-Berlin-2.0
 PKG_LICENSE_FILES:=COPYRIGHT
 
+PKG_INSTALL:=1
 PKG_BUILD_DIR:=$(BUILD_DIR)/gsm-1.0-pl24
 
 include $(INCLUDE_DIR)/package.mk
@@ -28,14 +29,12 @@ define Package/gsm/description
 	GSM 06.10 lossy speech compression
 endef
 
-TARGET_LDFLAGS += $(FPIC)
-
 define Build/Compile
 	$(MAKE_VARS) $(MAKE) RPM_OPT_FLAGS="$(TARGET_CFLAGS) $(FPIC)" -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS)
 endef
 
 define Build/Install
-	$(MAKE_VARS) $(MAKE) INSTALL_ROOT=$(PKG_INSTALL_DIR) GSM_INSTALL_INC=/usr/include/gsm GSM_INSTALL_LIB=/usr/lib -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_INSTALL_FLAGS)
+	$(MAKE_VARS) $(MAKE) INSTALL_ROOT="$(PKG_INSTALL_DIR)/usr" GSM_INSTALL_INC=/usr/include/gsm GSM_INSTALL_LIB=/usr/lib -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_INSTALL_FLAGS)
 endef
 
 define Build/InstallDev
