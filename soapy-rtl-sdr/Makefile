@@ -23,7 +23,7 @@ define Package/soapy-rtl-sdr
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=SoapySDR RTL-SDR Support Module
-	DEPENDS:=+librtlsdr +soapysdr
+	DEPENDS:=+librtlsdr +soapy-sdr
 	URL:=https://github.com/pothosware/SoapyRTLSDR
 endef
 
