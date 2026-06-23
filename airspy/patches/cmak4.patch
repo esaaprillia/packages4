@@ -11,7 +11,7 @@ Subject: [PATCH] Update cmake_minimum_required to 3.5 for cmake 4
  3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0e80c43..2a70e52 100644
+index 65efe39..91cf3ba 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,6 +1,6 @@
@@ -22,15 +22,6 @@ index 0e80c43..2a70e52 100644
  project (airspy_all)
  
  #provide missing strtoull() for VC11
-@@ -43,7 +43,7 @@ if(WIN32 AND NOT CMAKE_CROSSCOMPILING)
-        ${CMAKE_CURRENT_BINARY_DIR}/airspy-tools/src/libusb-1.0.dll
-    COPYONLY)
-    endif()
--   
-+
-    if (NOT DEFINED THREADS_PTHREADS_WIN32_LIBRARY)
-    configure_file(
-        ${CMAKE_CURRENT_BINARY_DIR}/../libs_win32/pthreadGC2.dll
 diff --git a/airspy-tools/CMakeLists.txt b/airspy-tools/CMakeLists.txt
 index 495bfbe..29f28d3 100644
 --- a/airspy-tools/CMakeLists.txt
