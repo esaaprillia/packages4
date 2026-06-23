@@ -1,0 +1,59 @@
+From f467acd587617640741ecbfade819d10ecd032c2 Mon Sep 17 00:00:00 2001
+From: Jon Beniston <jon@beniston.com>
+Date: Sat, 20 Sep 2025 19:27:57 +0100
+Subject: [PATCH] Update cmake_minimum_required to 3.5 for cmake 4
+ compatibility.
+
+---
+ CMakeLists.txt              | 4 ++--
+ airspy-tools/CMakeLists.txt | 2 +-
+ libairspy/CMakeLists.txt    | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e80c43..2a70e52 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ #top dir cmake project for libairspy + airspy-tools
+ 
+-cmake_minimum_required(VERSION 2.8.12.1)
++cmake_minimum_required(VERSION 3.5)
+ project (airspy_all)
+ 
+ #provide missing strtoull() for VC11
+@@ -43,7 +43,7 @@ if(WIN32 AND NOT CMAKE_CROSSCOMPILING)
+        ${CMAKE_CURRENT_BINARY_DIR}/airspy-tools/src/libusb-1.0.dll
+    COPYONLY)
+    endif()
+-   
++
+    if (NOT DEFINED THREADS_PTHREADS_WIN32_LIBRARY)
+    configure_file(
+        ${CMAKE_CURRENT_BINARY_DIR}/../libs_win32/pthreadGC2.dll
+diff --git a/airspy-tools/CMakeLists.txt b/airspy-tools/CMakeLists.txt
+index 495bfbe..29f28d3 100644
+--- a/airspy-tools/CMakeLists.txt
++++ b/airspy-tools/CMakeLists.txt
+@@ -21,7 +21,7 @@
+ 
+ # Based heavily upon the libftdi cmake setup.
+ 
+-cmake_minimum_required(VERSION 2.8.12.1)
++cmake_minimum_required(VERSION 3.5)
+ project(airspy-tools C)
+ set(MAJOR_VERSION 0)
+ set(MINOR_VERSION 2)
+diff --git a/libairspy/CMakeLists.txt b/libairspy/CMakeLists.txt
+index 5ea578a..c093c28 100644
+--- a/libairspy/CMakeLists.txt
++++ b/libairspy/CMakeLists.txt
+@@ -21,7 +21,7 @@
+ 
+ # Based heavily upon the libftdi cmake setup.
+ 
+-cmake_minimum_required(VERSION 2.8.12.1)
++cmake_minimum_required(VERSION 3.5)
+ project(libairspy C)
+ file(READ ${CMAKE_CURRENT_SOURCE_DIR}/src/airspy.h AIRSPY_H_CONTENTS)
+ 
