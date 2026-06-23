@@ -35,6 +35,12 @@ endef
 
 define Build/Install
 	$(MAKE_VARS) $(MAKE) INSTALL_ROOT="$(PKG_INSTALL_DIR)/usr" GSM_INSTALL_INC=/usr/include/gsm GSM_INSTALL_LIB=/usr/lib -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_INSTALL_FLAGS)
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/lib"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/include/gsm"
+	$(CP) $(PKG_BUILD_DIR)/bin/* $(PKG_INSTALL_DIR)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/lib/*.so* $(PKG_INSTALL_DIR)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/inc/gsm.h $(PKG_INSTALL_DIR)/usr/include/gsm/
 endef
 
 define Build/InstallDev
