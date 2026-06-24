@@ -49,7 +49,7 @@ HOST_LDFLAGS += $(HOST_FPIC)
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--disable-shared \
+	--enable-shared \
 	--without-fop \
 	--without-xmlto \
 	--enable-malloc0returnsnull
