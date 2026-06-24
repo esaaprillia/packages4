@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pydantic-extra-types
-PKG_VERSION:=2.11.0
+PKG_VERSION:=2.11.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=pydantic_extra_types
