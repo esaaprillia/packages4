@@ -23,7 +23,7 @@ define Package/python3-pyfftw
   CATEGORY:=Languages
   TITLE:=A pythonic python wrapper around FFTW
   URL:=https://github.com/pyFFTW/pyFFTW
-  DEPENDS:=+python3 +python3-numpy +fftw3f
+  DEPENDS:=+python3 +python3-numpy +fftw3f +fftw3 +fftw3l
 endef
 
 define Package/python3-pyfftw/description
