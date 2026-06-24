@@ -26,7 +26,7 @@ define Package/openmp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=LLVM OpenMP Runtime Library
-	DEPENDS:=+libffi +libelf +libzstd +libcurl
+	DEPENDS:=+libffi +libelf +libzstd +libcurl +libxml2 +libstdcpp
 	URL:=https://openmp.llvm.org/
 endef
 
