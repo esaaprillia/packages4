@@ -4,8 +4,8 @@ PKG_NAME:=python-pandas-datareader
 PKG_VERSION:=0.11.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=pandas-datareader
-PKG_HASH:=9fc3c63d39bc0c10c2683f1c6d503ff625020383e38f6cbe14134826b454d5a6
+PYPI_NAME:=pandas_datareader
+PKG_HASH:=skip
 
 PKG_LICENSE:=BSD
 PKG_LICENSE_FILES:=LICENSES.md
