@@ -23,7 +23,7 @@ PKG_LICENSE:=TCL
 PKG_LICENSE_FILES:=license.terms
 PKG_CPE_ID:=cpe:/a:tcl_tk:tcl_tk
 
-HOST_BUILD_DEPENDS:=HOST_OS_MACOS:fakeuname/host tcl/host libx11/host libxft/host
+HOST_BUILD_DEPENDS:=HOST_OS_MACOS:fakeuname/host tcl/host libx11/host libxft/host libxext/host libxscrnsaver/host
 PKG_BUILD_DEPENDS:=HOST_OS_MACOS:fakeuname/host
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
@@ -41,7 +41,7 @@ define Package/tk
   SUBMENU:=Tcl
   SECTION:=lang
   CATEGORY:=Languages
-  DEPENDS:=+tcl +libx11 +libxft
+  DEPENDS:=+tcl +libx11 +libxft +libxext +libxscrnsaver
   TITLE:=The Tcl language
   URL:=https://www.tcl.tk/
 endef
