@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
 
+PKG_INSTALL:=1
 PKG_FIXUP:=autoreconf
 #CMAKE_BINARY_SUBDIR := build
 
