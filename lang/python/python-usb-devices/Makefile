@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PYPI_NAME:=usb_devices
-PKG_HASH:=9b5c7606df2bc791c6c45b7f76244a0cbed83cb6fa4c68791a143c03345e195d
+PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-poetry-core/host
 
