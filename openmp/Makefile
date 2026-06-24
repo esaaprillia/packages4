@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openmp
-PKG_VERSION:=18.1.7
+PKG_VERSION:=21.1.6
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).src.tar.xz
@@ -26,7 +26,7 @@ define Package/openmp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=LLVM OpenMP Runtime Library
-	DEPENDS:=+libffi +libelf
+	DEPENDS:=+libffi +libelf +libzstd +libcurl
 	URL:=https://openmp.llvm.org/
 endef
 
@@ -43,12 +43,12 @@ CMAKE_OPTIONS += \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DLIBOMP_INSTALL_ALIASES=OFF \
-	-DLLVM_DIR="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/lib/cmake/llvm" \
-	-DCLANG_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin/clang" \
-	-DLINK_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin/llvm-link" \
-	-DOPT_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin/opt" \
-	-DPACKAGER_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin/clang-offload-packager" \
-	-DOPENMP_LLVM_TOOLS_DIR="$(STAGING_DIR_HOST)/llvm-bpf-18.1.7.Linux-x86_64/bin"
+	-DLLVM_DIR="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/lib/cmake/llvm" \
+	-DCLANG_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/bin/clang" \
+	-DLINK_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/bin/llvm-link" \
+	-DOPT_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/bin/opt" \
+	-DPACKAGER_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/bin/clang-offload-packager" \
+	-DOPENMP_LLVM_TOOLS_DIR="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/bin"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -64,3 +64,4 @@ define Package/openmp/install
 endef
 
 $(eval $(call BuildPackage,openmp))
+
