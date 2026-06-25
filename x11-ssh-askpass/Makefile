@@ -58,11 +58,11 @@ endef
 
 define Package/x11-ssh-askpass/install
 	$(INSTALL_DIR) \
-	  $(1)/usr/lib
+	  $(1)/usr/libexec
 
 	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/* \
-	  $(1)/usr/lib/
+	  $(PKG_INSTALL_DIR)/usr/libexec/* \
+	  $(1)/usr/libexec/
 endef
 
 $(eval $(call BuildPackage,x11-ssh-askpass))
