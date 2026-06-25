@@ -5,7 +5,7 @@ PKG_VERSION:=1.2.4.1
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://src.fedoraproject.org/repo/pkgs/openssh/x11-ssh-askpass-1.2.4.1.tar.gz/8f2e41f3f7eaa8543a2440454637f3c3/
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_HASH:=skip
 
 HOST_BUILD_DEPENDS:=imake/host libxt/host
