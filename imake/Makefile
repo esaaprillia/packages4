@@ -8,8 +8,8 @@ PKG_SOURCE_URL:=https://xorg.freedesktop.org/archive/individual/util/
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=font-util/host util-macros/host xorgproto/host
-PKG_BUILD_DEPENDS:=font-util/host util-macros/host xorgproto/host
+HOST_BUILD_DEPENDS:=font-util/host util-macros/host xorgproto/host xorg-cf-files/host
+PKG_BUILD_DEPENDS:=font-util/host util-macros/host xorgproto/host xorg-cf-files
 
 PKG_FIXUP:=autoreconf
 HOST_BUILD_PARALLEL:=1
