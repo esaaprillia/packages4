@@ -36,6 +36,10 @@ CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--with-app-defaults-dir=/etc/X11/app-defaults
 
+define Build/Compile
+	$(MAKE_VARS) $(MAKE) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS) xmkmf includes
+endef
+
 define Package/x11-ssh-askpass/install
 	$(INSTALL_DIR) \
 	  $(1)/usr/lib
