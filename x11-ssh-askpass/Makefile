@@ -62,7 +62,7 @@ define Package/x11-ssh-askpass/install
 
 	$(CP) \
 	  $(PKG_INSTALL_DIR)/usr/lib/* \
-	  $(1)/usr/bin/
+	  $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,x11-ssh-askpass))
