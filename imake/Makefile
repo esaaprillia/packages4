@@ -11,6 +11,7 @@ PKG_HASH:=skip
 HOST_BUILD_DEPENDS:=font-util/host util-macros/host xorgproto/host
 PKG_BUILD_DEPENDS:=font-util/host util-macros/host xorgproto/host
 
+PKG_FIXUP:=autoreconf
 HOST_BUILD_PARALLEL:=1
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
