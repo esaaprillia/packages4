@@ -51,7 +51,6 @@ define Build/InstallDev
 		's,/usr,$$$${prefix},g; \
 		 s,/usr/share,$$$${exec_prefix}/share,g' \
 		 $(1)/usr/lib/pkgconfig/fontutil.pc
-
 endef
 
 define Package/font-util/install
