@@ -36,11 +36,23 @@ CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--with-app-defaults-dir=/etc/X11/app-defaults
 
+define Build/Configure
+	$(call Build/Configure/Default)
+	(cd $(PKG_BUILD_DIR); xmkmf )
+endef
+
+define Host/Configure
+	$(call Host/Configure/Default)
+	(cd $(HOST_BUILD_DIR); xmkmf )
+endef
+
 define Build/Compile
-	$(MAKE_VARS) $(MAKE) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS) xmkmf includes
+	$(MAKE_VARS) $(MAKE) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS) includes
+	$(MAKE_VARS) $(MAKE) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS)
 endef
 
 define Host/Compile
+	$(HOST_MAKE_VARS) $(MAKE) -C $(HOST_BUILD_DIR)/$(HOST_MAKE_PATH) $(HOST_MAKE_FLAGS) includes
 	$(HOST_MAKE_VARS) $(MAKE) -C $(HOST_BUILD_DIR)/$(HOST_MAKE_PATH) $(HOST_MAKE_FLAGS)
 endef
 
