@@ -38,6 +38,11 @@ define Build/Compile
 		CC="$(TARGET_CC)"
 endef
 
+define Host/Install
+	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
+	$(CP) $(HOST_BUILD_DIR)/{snowball,stemwords} $(STAGING_DIR_HOSTPKG)/bin/
+endef
+
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_BUILD_DIR)/include/libstemmer.h $(1)/usr/include/
