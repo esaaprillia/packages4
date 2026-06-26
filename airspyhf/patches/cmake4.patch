@@ -1,3 +1,26 @@
+From 0dbb10cd22e2ef1546c8a79d418529bd577acd23 Mon Sep 17 00:00:00 2001
+From: markjfine <mark.fine@fineware-swl.com>
+Date: Sun, 27 Apr 2025 19:54:15 -0400
+Subject: [PATCH] Update CMakeLists.txt
+
+Updated minimum cmake version from 2.8 to 3.12.
+---
+ libairspyhf/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libairspyhf/CMakeLists.txt b/libairspyhf/CMakeLists.txt
+index 4c6ff58..f539f93 100644
+--- a/libairspyhf/CMakeLists.txt
++++ b/libairspyhf/CMakeLists.txt
+@@ -21,7 +21,7 @@
+ 
+ # Based heavily upon the libftdi cmake setup.
+ 
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.12)
+ project(libairspyhf C)
+ file(READ ${CMAKE_CURRENT_SOURCE_DIR}/src/airspyhf.h AIRSPYHF_H_CONTENTS)
+ 
 From e9c483aaa6da6faebc648ba2a065608dc7f3ee08 Mon Sep 17 00:00:00 2001
 From: markjfine <mark.fine@fineware-swl.com>
 Date: Sun, 27 Apr 2025 19:53:01 -0400
