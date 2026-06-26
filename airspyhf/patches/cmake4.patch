@@ -1,0 +1,22 @@
+From e9c483aaa6da6faebc648ba2a065608dc7f3ee08 Mon Sep 17 00:00:00 2001
+From: markjfine <mark.fine@fineware-swl.com>
+Date: Sun, 27 Apr 2025 19:53:01 -0400
+Subject: [PATCH] Update CMakeLists.txt
+
+Updated minimum cmake version from 2.8 to 3.12.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c96fd8c..e37f58e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ #top dir cmake project for libairspyhf
+ 
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.12)
+ project (airspyhf_all)
+ 
+ #provide missing strtoull() for VC11
