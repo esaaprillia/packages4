@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jwcrypto
-PKG_VERSION:=1.5.7
+PKG_VERSION:=1.5.8
 PKG_RELEASE:=1
 
 PYPI_NAME:=jwcrypto
