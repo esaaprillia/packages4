@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mongo
-PKG_VERSION:=7.0.34
-PKG_RELEASE:=2
+PKG_VERSION:=7.0.37
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-r$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/mongodb/mongo/archive/r$(PKG_VERSION)
