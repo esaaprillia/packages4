@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tifffile
-PKG_VERSION:=2026.4.11
+PKG_VERSION:=2026.6.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=tifffile
