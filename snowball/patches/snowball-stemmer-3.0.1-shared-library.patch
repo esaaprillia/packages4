@@ -1,18 +1,14 @@
-This is based on a patch taken from alpinelinux, however, duplicated
-libstemmer.o and stemwords targets were removed and the patch was
-rebased on top of v3.0.1 tag.
+From 7bfe13a1e282f81bcd8f0061b00156570e98544e Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 26 Jun 2026 21:56:54 +0800
+Subject: [PATCH] Update GNUmakefile
 
-Created shared library contains a lot of relocations, which slow down loading.
-It is known issue and probably the main reason why upstream does not support
-shared library yet [1].
-
-[1] https://github.com/snowballstem/snowball/issues/34#issuecomment-203200078
-
-Alpinelinux-patch: https://git.alpinelinux.org/aports/tree/community/snowball/libstemmer-library.patch?id=28f9d9e192876c43fd96bc5856cd9d8a50dd49c0
-Upstream-issue: https://github.com/snowballstem/snowball/issues/34
+---
+ GNUmakefile | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
 
 diff --git a/GNUmakefile b/GNUmakefile
-index 98eb1fa..9b539ec 100644
+index 4694184d..9307b6a2 100644
 --- a/GNUmakefile
 +++ b/GNUmakefile
 @@ -4,6 +4,8 @@
@@ -24,11 +20,20 @@ index 98eb1fa..9b539ec 100644
  ifeq ($(OS),Windows_NT)
  EXEEXT = .exe
  endif
-@@ -170,12 +172,17 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
- JAVA_CLASSES = $(JAVA_SOURCES:.java=.class)
- JAVA_RUNTIME_CLASSES=$(JAVARUNTIME_SOURCES:.java=.class)
+@@ -22,7 +24,7 @@ endif
+ # `make SNOWBALL_FLAGS=-comments` to generate target language code with
+ # comments indicating the corresponding lines in the .sbl source.
+ SNOWBALL_FLAGS ?=
+-SNOWBALL_COMPILE := ./snowball $(SNOWBALL_FLAGS)
++SNOWBALL_COMPILE := snowball $(SNOWBALL_FLAGS)
  
--CFLAGS=-g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
+ # Ada
+ 
+@@ -311,12 +313,17 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
+ JAVA_CLASSES = $(JAVA_SOURCES:.java=.class)
+ JAVA_RUNTIME_CLASSES=$(JAVA_RUNTIME_SOURCES:.java=.class)
+ 
+-CFLAGS=-g -O2 -W -Wall -Wcast-qual -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
 -CPPFLAGS=
 +CFLAGS+=-fPIC -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow
 +CPPFLAGS+=
@@ -43,8 +48,8 @@ index 98eb1fa..9b539ec 100644
 +	ln -s $@.$(SNOWBALL_VERSION) $@.$(MAJOR_VERSION)
 +	ln -s $@.$(SNOWBALL_VERSION) $@
  
- algorithms.mk: libstemmer/mkalgorithms.pl libstemmer/modules.txt
- 	libstemmer/mkalgorithms.pl algorithms.mk libstemmer/modules.txt
+ algorithms.mk: GNUmakefile libstemmer/mkalgorithms.pl $(MODULES)
+ 	libstemmer/mkalgorithms.pl algorithms.mk $(MODULES)
 diff --git a/libstemmer/symbol.map b/libstemmer/symbol.map
 new file mode 100644
 index 0000000..7a3d423
