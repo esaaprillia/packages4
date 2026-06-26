@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-fastapi
-PKG_VERSION:=0.135.2
+PKG_VERSION:=0.138.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=fastapi
