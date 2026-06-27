@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-setuptools-git-versioning
-PKG_VERSION:=3.0.1
+PKG_VERSION:=3.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=setuptools_git_versioning
