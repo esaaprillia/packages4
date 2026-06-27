@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ipykernel
-PKG_VERSION:=7.2.0
-PKG_RELEASE:=2
+PKG_VERSION:=7.3.0
+PKG_RELEASE:=1
 
 PYPI_NAME:=ipykernel
 PKG_HASH:=skip
