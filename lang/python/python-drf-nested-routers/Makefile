@@ -21,7 +21,7 @@ define Package/python3-drf-nested-routers
   CATEGORY:=Languages
   TITLE:=Nested resources for the Django Rest Framework
   URL:=https://github.com/alanjds/drf-nested-routers
-  DEPENDS:=+python3-django-restframework +django +python3-light
+  DEPENDS:=+python3-django-restframework +python3-django +python3-light
 endef
 
 define Package/python3-drf-nested-routers/description
