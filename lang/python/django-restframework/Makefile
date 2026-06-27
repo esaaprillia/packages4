@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=django-restframework
-PKG_VERSION:=3.16.1
+PKG_VERSION:=3.17.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=djangorestframework
