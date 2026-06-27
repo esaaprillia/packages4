@@ -5,7 +5,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-decorator
-PKG_VERSION:=5.2.1
+PKG_VERSION:=5.3.1
 PKG_RELEASE:=1
 PKG_MAINTAINER:=Josef Schlehofer <pepe.schlehofer@gmail.com> 
 PKG_CPE_ID:=cpe:/a:python:decorator
