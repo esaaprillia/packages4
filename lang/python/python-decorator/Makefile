@@ -26,7 +26,7 @@ define Package/python3-decorator
   CATEGORY:=Languages
   SUBMENU:=Python
   URL:=https://github.com/micheles/decorator
-  TITLE:=python3-decodator
+  TITLE:=Decorators for Humans
   DEPENDS:=+python3-light
 endef
 
