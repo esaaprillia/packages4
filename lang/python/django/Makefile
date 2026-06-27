@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=django
-PKG_VERSION:=5.2.8
+PKG_VERSION:=6.0.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=django
