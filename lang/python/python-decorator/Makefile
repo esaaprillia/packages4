@@ -30,6 +30,10 @@ define Package/python3-decorator
   DEPENDS:=+python3-light
 endef
 
+define Package/python3-decorator/description
+  IPython provides a rich toolkit to help you make the most out of using Python interactively.
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-decorator))
 $(eval $(call BuildPackage,python3-decorator))
