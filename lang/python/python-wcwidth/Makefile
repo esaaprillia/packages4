@@ -9,7 +9,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-wcwidth
-PKG_VERSION:=0.8.0
+PKG_VERSION:=0.8.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=wcwidth
