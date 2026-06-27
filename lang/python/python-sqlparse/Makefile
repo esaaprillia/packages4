@@ -12,7 +12,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 PKG_CPE_ID:=cpe:/a:sqlparse_project:sqlparse
 
-PKG_BUILD_DEPENDS:=python-flit-core/host
+PKG_BUILD_DEPENDS:=python-hatchling/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
