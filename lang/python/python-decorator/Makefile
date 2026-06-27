@@ -31,7 +31,7 @@ define Package/python3-decorator
 endef
 
 define Package/python3-decorator/description
-  IPython provides a rich toolkit to help you make the most out of using Python interactively.
+  The goal of the decorator module is to make it easy to define signature-preserving function decorators and decorator factories.
 endef
 
 $(eval $(call HostBuild))
