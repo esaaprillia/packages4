@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ipython
-PKG_VERSION:=9.12.0
+PKG_VERSION:=9.15.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=ipython
