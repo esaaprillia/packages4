@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-debugpy
-PKG_VERSION:=1.8.20
+PKG_VERSION:=1.8.21
 PKG_RELEASE:=1
 
 PYPI_NAME:=debugpy
