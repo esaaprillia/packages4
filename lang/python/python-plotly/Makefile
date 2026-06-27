@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-plotly
-PKG_VERSION:=6.7.0
+PKG_VERSION:=6.8.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=plotly
