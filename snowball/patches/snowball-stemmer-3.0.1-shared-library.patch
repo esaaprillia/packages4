@@ -1,55 +1,41 @@
-From 7bfe13a1e282f81bcd8f0061b00156570e98544e Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Fri, 26 Jun 2026 21:56:54 +0800
-Subject: [PATCH] Update GNUmakefile
-
----
- GNUmakefile | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
-
-diff --git a/GNUmakefile b/GNUmakefile
-index 4694184d..9307b6a2 100644
---- a/GNUmakefile
+--- a/GNUmakefile.orig
 +++ b/GNUmakefile
-@@ -4,6 +4,8 @@
- # which hard-code it.
- SNOWBALL_VERSION = 3.1.1
+@@ -8,6 +8,8 @@
+ EXEEXT = .exe
+ endif
  
 +MAJOR_VERSION := $(shell echo $(SNOWBALL_VERSION) | cut -d. -f1)
 +
- ifeq ($(OS),Windows_NT)
- EXEEXT = .exe
- endif
-@@ -22,7 +24,7 @@ endif
- # `make SNOWBALL_FLAGS=-comments` to generate target language code with
- # comments indicating the corresponding lines in the .sbl source.
- SNOWBALL_FLAGS ?=
--SNOWBALL_COMPILE := ./snowball $(SNOWBALL_FLAGS)
-+SNOWBALL_COMPILE := snowball $(SNOWBALL_FLAGS)
- 
- # Ada
- 
-@@ -311,12 +313,17 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
+ # `make SAVETMP=1` to save stemwords output for UTF-8 C stemmers on failure.
+ # Intended for use with snowball-data's stemmer-compare.
+ ifneq '$(SAVETMP)' ''
+@@ -311,12 +313,12 @@
  JAVA_CLASSES = $(JAVA_SOURCES:.java=.class)
  JAVA_RUNTIME_CLASSES=$(JAVA_RUNTIME_SOURCES:.java=.class)
  
 -CFLAGS=-g -O2 -W -Wall -Wcast-qual -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
--CPPFLAGS=
-+CFLAGS+=-fPIC -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow
-+CPPFLAGS+=
++CFLAGS=-fPIC -O2 -W -Wall -Wcast-qual -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
+ CPPFLAGS=
  
  INCLUDES=-Iinclude
  
 -all: snowball$(EXEEXT) libstemmer.a stemwords$(EXEEXT) $(C_OTHER_SOURCES) $(C_OTHER_HEADERS) $(C_OTHER_OBJECTS)
 +all: snowball$(EXEEXT) libstemmer.a libstemmer.so stemwords$(EXEEXT) $(C_OTHER_SOURCES) $(C_OTHER_HEADERS) $(C_OTHER_OBJECTS)
+ 
+ algorithms.mk: GNUmakefile libstemmer/mkalgorithms.pl $(MODULES)
+ 	libstemmer/mkalgorithms.pl algorithms.mk $(MODULES)
+@@ -425,6 +427,11 @@
+ 
+ libstemmer.a: libstemmer/libstemmer.o $(RUNTIME_OBJECTS) $(C_LIB_OBJECTS)
+ 	$(AR) $(ARFLAGS) $@ $^
 +
 +libstemmer.so: libstemmer/libstemmer.o $(RUNTIME_OBJECTS) $(C_LIB_OBJECTS)
 +	$(CC) $(CFLAGS) -shared $(LDFLAGS) -Wl,-soname,$@.$(MAJOR_VERSION),-version-script,libstemmer/symbol.map -o $@.$(SNOWBALL_VERSION) $^
 +	ln -s $@.$(SNOWBALL_VERSION) $@.$(MAJOR_VERSION)
 +	ln -s $@.$(SNOWBALL_VERSION) $@
  
- algorithms.mk: GNUmakefile libstemmer/mkalgorithms.pl $(MODULES)
- 	libstemmer/mkalgorithms.pl algorithms.mk $(MODULES)
+ examples/%.o: examples/%.c
+ 	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c -o $@ $<
 diff --git a/libstemmer/symbol.map b/libstemmer/symbol.map
 new file mode 100644
 index 0000000..7a3d423
