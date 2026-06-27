@@ -4,7 +4,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=flask
+PKG_NAME:=python-flask
 PKG_VERSION:=3.1.3
 PKG_RELEASE:=1
 
