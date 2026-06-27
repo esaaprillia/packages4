@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python3-drf-nested-routers
-PKG_VERSION:=0.94.1
+PKG_NAME:=python-drf-nested-routers
+PKG_VERSION:=0.95.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=drf-nested-routers
-PKG_HASH:=2b846385ed95c9f17bf4242db3b264ac826b5af00dda6c737d3fe7cc7bf2c7db
+PYPI_NAME:=drf_nested_routers
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Peter Stadler <peter.stadler@student.uibk.ac.at>
 PKG_LICENSE:=Apache-2.0
