@@ -2,8 +2,8 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=streamflow
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=2.2
-PKG_RELEASE:=2
+PKG_VERSION:=2.2.2
+PKG_RELEASE:=1
 
 #PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
 #PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
@@ -66,7 +66,7 @@ define Package/node-streamflow/install
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(CP) $(PKG_BUILD_DIR)/{node_modules,generate-secret.js,public} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/{models,services,utils,views,reset-password.js} \
+	$(CP) $(PKG_BUILD_DIR)/{models,services,utils,views,reset-password.js,database.sqlite} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
