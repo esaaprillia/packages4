@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-mypy
-PKG_VERSION:=1.20.0
+PKG_VERSION:=2.1.0
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -11,8 +11,8 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=mypy
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python-types-psutil/host python-librt/host python-mypy-extensions/host python-types-setuptools/host python-typing-extensions/host python-pathspec/host
-HOST_BUILD_DEPENDS:=python-types-psutil/host python-librt/host python-mypy-extensions/host python-types-setuptools/host python-typing-extensions/host python-pathspec/host
+PKG_BUILD_DEPENDS:=python-types-psutil/host python-librt/host python-mypy-extensions/host python-types-setuptools/host python-typing-extensions/host python-pathspec/host python-ast-serialize/host
+HOST_BUILD_DEPENDS:=python-types-psutil/host python-librt/host python-mypy-extensions/host python-types-setuptools/host python-typing-extensions/host python-pathspec/host python-ast-serialize/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -31,7 +31,8 @@ define Package/python3-mypy
 	+python3-typing-extensions \
 	+python3-mypy-extensions \
 	+python3-pathspec \
-	+python3-librt
+	+python3-librt \
+	+python3-ast-serialize
 endef
 
 define Package/python3-mypy/description
