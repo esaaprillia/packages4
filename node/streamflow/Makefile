@@ -29,7 +29,7 @@ define Package/node-streamflow
   CATEGORY:=Languages
   TITLE:=Web-Based App for Managing and Automating YouTube Live Streams
   URL:=https://github.com/bangtutorial/streamflow
-  DEPENDS:=+node +node-pm2 +libpthread +libstdcpp
+  #DEPENDS:=+node +node-pm2 +libpthread +libstdcpp
 endef
 
 define Package/node-streamflow/description
@@ -52,7 +52,7 @@ define Build/Compile
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock --build-from-source --ignore-scripts=false
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
