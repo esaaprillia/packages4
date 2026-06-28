@@ -5,7 +5,7 @@ PKG_VERSION:=9.4.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=llhttp-release-v$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/nodejs/llhttp/archive/v$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/nodejs/llhttp/archive/release/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR:=build
 
-PKG_BUILD_DEPENDS:=node/host
+#PKG_BUILD_DEPENDS:=node/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/llhttp-release-v$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
