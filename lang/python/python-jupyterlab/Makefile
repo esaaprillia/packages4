@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-jupyterlab
-PKG_VERSION:=4.5.6
-PKG_RELEASE:=2
+PKG_VERSION:=4.6.0
+PKG_RELEASE:=1
 
 PYPI_NAME:=jupyterlab
 PKG_HASH:=skip
