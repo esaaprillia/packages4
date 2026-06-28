@@ -29,7 +29,7 @@ define Package/node-streamflow
   CATEGORY:=Languages
   TITLE:=Web-Based App for Managing and Automating YouTube Live Streams
   URL:=https://github.com/bangtutorial/streamflow
-  DEPENDS:=
+  DEPENDS:=+node +node-pm2 +libpthread +libstdcpp
 endef
 
 define Package/node-streamflow/description
@@ -56,7 +56,6 @@ define Build/Compile
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
-	ls -l $(PKG_BUILD_DIR)/*
 endef
 
 define Package/node-streamflow/install
