@@ -41,7 +41,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/Python-$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/Python-$(PKG_VERSION)
 
 PKG_BUILD_DEPENDS:=bluez python3/host python-build/host python-installer/host python-setuptools/host python-wheel/host
-HOST_BUILD_DEPENDS:=bzip2/host libffi/host readline/host tcl/host tk/host
+HOST_BUILD_DEPENDS:=bzip2/host libffi/host readline/host
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
@@ -165,6 +165,7 @@ CONFIGURE_VARS += \
 # Disable stdlib modules
 # Check for a better way in the future: https://github.com/python/cpython/issues/98558
 CONFIGURE_VARS += \
+	py_cv_module__tkinter=n/a \
 	py_cv_module_nis=n/a
 
 # Workaround for hardfloat mips
