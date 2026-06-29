@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=streamflow
-PKG_NAME:=node-$(PKG_NPM_NAME)
+PKG_NAME:=$(PKG_NPM_NAME)
 PKG_VERSION:=2.2.2
 PKG_RELEASE:=1
 
