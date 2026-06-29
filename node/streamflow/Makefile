@@ -28,7 +28,7 @@ PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/node-streamflow
+define Package/streamflow
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
@@ -37,7 +37,7 @@ define Package/node-streamflow
   DEPENDS:=+libpthread +libstdcpp
 endef
 
-define Package/node-streamflow/description
+define Package/streamflow/description
  StreamFlow adalah platform live streaming berbasis web yang powerful dan mudah digunakan.
 endef
 
@@ -64,7 +64,7 @@ define Build/Compile
 	rm -rf $(PKG_BUILD_DIR)/node_modules/bcrypt/prebuilds
 endef
 
-define Package/node-streamflow/install
+define Package/streamflow/install
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
 	$(CP) $(PKG_BUILD_DIR)/{package.json,*.md} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
@@ -78,10 +78,10 @@ define Package/node-streamflow/install
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
 
-define Package/node-streamflow/postrm
+define Package/streamflow/postrm
 #!/bin/sh
 rm /usr/lib/node_modules/streamflow || true
 rm -rf /usr/lib/node/streamflow || true
 endef
 
-$(eval $(call BuildPackage,node-streamflow))
+$(eval $(call BuildPackage,streamflow))
