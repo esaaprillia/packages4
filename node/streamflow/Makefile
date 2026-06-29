@@ -9,14 +9,14 @@ PKG_RELEASE:=1
 #PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 #PKG_HASH:=e668a26657a9a95ee0d903c6acfaf62995b5a219ac3a673773eded08b4465e5b
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/firmwarecostum/streamflow/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/firmwarecostum/streamflow/archive/v$(PKG_VERSION)
+#PKG_HASH:=skip
 
-#PKG_SOURCE_URL:=https://github.com/bangtutorial/streamflow.git
-#PKG_SOURCE_PROTO:=git
-#PKG_SOURCE_VERSION:=9279f8a1ae086ff6b32c0296f4fe9ff3bbf07270
-#PKG_MIRROR_HASH:=skip
+PKG_SOURCE_URL:=https://github.com/bangtutorial/streamflow.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=9279f8a1ae086ff6b32c0296f4fe9ff3bbf07270
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
@@ -57,7 +57,7 @@ define Build/Compile
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock --save-optional --build-from-source --target_arch=$(NODEJS_CPU)
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
