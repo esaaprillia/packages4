@@ -1,6 +1,6 @@
-From 036e328a72df960df55f8655a3b8c0198f5cf7d6 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Mon, 29 Jun 2026 14:17:53 +0800
+From 8e51d7a778777bc353b57d51405ceaca19aa03be Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 29 Jun 2026 14:22:29 +0800
 Subject: [PATCH] Update package.json
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] Update package.json
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/package.json b/package.json
-index f46a2ac3..03572955 100644
+index f46a2ac3..b24a299f 100644
 --- a/package.json
 +++ b/package.json
 @@ -38,7 +38,11 @@
@@ -18,7 +18,7 @@ index f46a2ac3..03572955 100644
 +  "optionalDependencies": {
 +    "@ffmpeg-installer/linux-arm64": "^4.1.4",
 +    "@ffprobe-installer/linux-arm64": "^5.2.0"
-+  }
++  },
    "devDependencies": {
      "nodemon": "^3.0.1"
    }
