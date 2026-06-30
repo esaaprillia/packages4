@@ -53,11 +53,12 @@ TARGET_CPPFLAGS+=$(FPIC)
 
 define Build/Compile
 	cd $(PKG_BUILD_DIR); \
+	rm -f $(PKG_BUILD_DIR)/package-lock.json \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm install sqlite3 --prefer-offline --no-audit --global-style --install-strategy=shallow --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
