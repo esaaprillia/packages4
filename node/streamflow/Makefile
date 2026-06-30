@@ -80,6 +80,7 @@ define Build/Compile
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 	rm -rf $(PKG_BUILD_DIR)/node_modules/bcrypt/prebuilds
+	rm -rf $(PKG_BUILD_DIR)/node_modules/get-video-duration/node_modules/@ffprobe-installer/linux-x64
 endef
 
 define Package/streamflow/install
