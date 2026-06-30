@@ -34,7 +34,7 @@ define Package/streamflow
   CATEGORY:=Languages
   TITLE:=Web-Based App for Managing and Automating YouTube Live Streams
   URL:=https://github.com/bangtutorial/streamflow
-  DEPENDS:=+node +node-pm2 +libpthread +libstdcpp +ffmpeg
+  DEPENDS:=+node +node-pm2 +libpthread +libstdcpp
 endef
 
 define Package/streamflow/description
@@ -70,7 +70,7 @@ define Build/Compile
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
 	npm install @ffprobe-installer/linux-arm64 --prefer-offline --no-audit --global-style --install-strategy=shallow --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU) --force
-	cd $(PKG_BUILD_DIR)/node_modules/get-video-duration/node_modules/@ffprobe-installer; \
+	cd $(PKG_BUILD_DIR)/node_modules/get-video-duration; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
