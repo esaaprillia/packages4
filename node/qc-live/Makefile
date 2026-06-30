@@ -34,7 +34,7 @@ define Package/qc-live
   CATEGORY:=Languages
   TITLE:=QC Live - Professional 24/7 Streaming Application
   URL:=https://github.com/himanshu-hivecorp/QC-Live
-  DEPENDS:=+libpthread +libstdcpp
+  DEPENDS:=+libpthread +libstdcpp +node
 endef
 
 define Package/qc-live/description
