@@ -52,8 +52,8 @@ TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
 define Build/Compile
+	rm -rf $(PKG_BUILD_DIR)/package-lock.json
 	cd $(PKG_BUILD_DIR); \
-	rm -f $(PKG_BUILD_DIR)/package-lock.json \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
