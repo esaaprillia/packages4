@@ -41,6 +41,8 @@ CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON -DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Package/lightnvr/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
