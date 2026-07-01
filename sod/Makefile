@@ -28,7 +28,7 @@ define Package/sod/description
 An Embedded Computer Vision & Machine Learning Library (CPU Optimized & IoT Capable)
 endef
 
-TARGET_LDFLAGS += $(FPIC) -lm
+TARGET_CFLAGS += $(FPIC) -lm -Ofast -march=native -Wall -std=c99
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
