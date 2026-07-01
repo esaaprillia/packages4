@@ -38,7 +38,7 @@ define Package/lightnvr/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON -DGO2RTC_BINARY_PATH=/usr/bin
 
 define Package/lightnvr/install
 	$(INSTALL_DIR) $(1)/usr/lib
