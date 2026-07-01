@@ -48,11 +48,10 @@ NODEJS_CPU:=$(subst powerpc,ppc,$(subst aarch64,arm64,$(subst x86_64,x64,$(subst
 TMPNPM:=$(shell mktemp -u XXXXXXXXXX)
 NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(TMP_DIR))
 
-TARGET_CFLAGS+=$(FPIC)
-TARGET_CPPFLAGS+=$(FPIC)
+TARGET_CFLAGS+=$(FPIC) -std=c++20
+TARGET_CPPFLAGS+=$(FPIC) -std=c++20
 
 define Build/Compile
-	rm -rf $(PKG_BUILD_DIR)/package-lock.json
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
