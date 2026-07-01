@@ -38,7 +38,7 @@ define Package/lightnvr/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DBUILD_SHARED_LIBS=ON
 
 define Package/lightnvr/install
 	$(INSTALL_DIR) $(1)/usr/lib
