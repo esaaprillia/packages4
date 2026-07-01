@@ -19,7 +19,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR:=build
 
-PKG_BUILD_DEPENDS:=node/host
+#PKG_BUILD_DEPENDS:=node/host flatbuffers/host flatbuffers
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -28,7 +28,7 @@ define Package/lightnvr
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=fully OSS lightweight network video recorder system witten in C with modern js frontend
-	DEPENDS:=+cJSON +llhttp +libsqlite3 +ffmpeg +libuv +libmbedtls +libmosquittopp +libyaml +curl
+	#DEPENDS:=+cJSON +llhttp +libsqlite3 +ffmpeg +libuv +libmbedtls +libmosquittopp +libyaml +curl
 	URL:=https://github.com/opensensor/lightNVR
 endef
 
