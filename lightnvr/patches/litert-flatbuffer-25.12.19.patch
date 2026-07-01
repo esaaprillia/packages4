@@ -1,0 +1,105 @@
+From 46bd254e1d6d49c97f3027a0277a762ec6e5a1f8 Mon Sep 17 00:00:00 2001
+From: Fergus Henderson <fergus@google.com>
+Date: Wed, 1 Oct 2025 16:09:04 -0700
+Subject: [PATCH] Update from flatbuffers 25.2.10 to 25.9.23.
+
+PiperOrigin-RevId: 813955553
+---
+ tflite/acceleration/configuration/configuration_generated.h   | 4 ++--
+ tflite/delegates/gpu/cl/compiled_program_cache_generated.h    | 4 ++--
+ tflite/delegates/gpu/cl/serialization_generated.h             | 4 ++--
+ tflite/delegates/gpu/common/gpu_model_generated.h             | 4 ++--
+ .../gpu/common/task/tflite_serialization_base_generated.h     | 4 ++--
+ .../acceleration/configuration/configuration_generated.h      | 4 ++--
+ tflite/tools/cmake/modules/flatbuffers.cmake                  | 2 +-
+ 7 files changed, 13 insertions(+), 13 deletions(-)
+
+--- a/third_party/litert/tflite/acceleration/configuration/configuration_generated.h
++++ b/third_party/litert/tflite/acceleration/configuration/configuration_generated.h
+@@ -23,8 +23,8 @@ limitations under the License.
+ // Ensure the included flatbuffers.h is the same version as when this file was
+ // generated, otherwise it may not be compatible.
+ static_assert(FLATBUFFERS_VERSION_MAJOR == 25 &&
+-              FLATBUFFERS_VERSION_MINOR == 9 &&
+-              FLATBUFFERS_VERSION_REVISION == 23,
++              FLATBUFFERS_VERSION_MINOR == 12 &&
++              FLATBUFFERS_VERSION_REVISION == 19,
+              "Non-compatible flatbuffers version included");
+ 
+ namespace tflite {
+--- a/third_party/litert/tflite/delegates/gpu/cl/compiled_program_cache_generated.h
++++ b/third_party/litert/tflite/delegates/gpu/cl/compiled_program_cache_generated.h
+@@ -23,8 +23,8 @@ limitations under the License.
+ // Ensure the included flatbuffers.h is the same version as when this file was
+ // generated, otherwise it may not be compatible.
+ static_assert(FLATBUFFERS_VERSION_MAJOR == 25 &&
+-              FLATBUFFERS_VERSION_MINOR == 9 &&
+-              FLATBUFFERS_VERSION_REVISION == 23,
++              FLATBUFFERS_VERSION_MINOR == 12 &&
++              FLATBUFFERS_VERSION_REVISION == 19,
+              "Non-compatible flatbuffers version included");
+ 
+ namespace tflite {
+--- a/third_party/litert/tflite/delegates/gpu/cl/serialization_generated.h
++++ b/third_party/litert/tflite/delegates/gpu/cl/serialization_generated.h
+@@ -23,8 +23,8 @@ limitations under the License.
+ // Ensure the included flatbuffers.h is the same version as when this file was
+ // generated, otherwise it may not be compatible.
+ static_assert(FLATBUFFERS_VERSION_MAJOR == 25 &&
+-              FLATBUFFERS_VERSION_MINOR == 9 &&
+-              FLATBUFFERS_VERSION_REVISION == 23,
++              FLATBUFFERS_VERSION_MINOR == 12 &&
++              FLATBUFFERS_VERSION_REVISION == 19,
+              "Non-compatible flatbuffers version included");
+ 
+ #include "gpu_model_generated.h"
+--- a/third_party/litert/tflite/delegates/gpu/common/gpu_model_generated.h
++++ b/third_party/litert/tflite/delegates/gpu/common/gpu_model_generated.h
+@@ -22,8 +22,8 @@ limitations under the License.
+ // Ensure the included flatbuffers.h is the same version as when this file was
+ // generated, otherwise it may not be compatible.
+ static_assert(FLATBUFFERS_VERSION_MAJOR == 25 &&
+-              FLATBUFFERS_VERSION_MINOR == 9 &&
+-              FLATBUFFERS_VERSION_REVISION == 23,
++              FLATBUFFERS_VERSION_MINOR == 12 &&
++              FLATBUFFERS_VERSION_REVISION == 19,
+              "Non-compatible flatbuffers version included");
+ 
+ #include "tflite_serialization_base_generated.h"
+--- a/third_party/litert/tflite/delegates/gpu/common/task/tflite_serialization_base_generated.h
++++ b/third_party/litert/tflite/delegates/gpu/common/task/tflite_serialization_base_generated.h
+@@ -23,8 +23,8 @@ limitations under the License.
+ // Ensure the included flatbuffers.h is the same version as when this file was
+ // generated, otherwise it may not be compatible.
+ static_assert(FLATBUFFERS_VERSION_MAJOR == 25 &&
+-              FLATBUFFERS_VERSION_MINOR == 9 &&
+-              FLATBUFFERS_VERSION_REVISION == 23,
++              FLATBUFFERS_VERSION_MINOR == 12 &&
++              FLATBUFFERS_VERSION_REVISION == 19,
+              "Non-compatible flatbuffers version included");
+ 
+ namespace tflite {
+--- a/third_party/litert/tflite/experimental/acceleration/configuration/configuration_generated.h
++++ b/third_party/litert/tflite/experimental/acceleration/configuration/configuration_generated.h
+@@ -23,8 +23,8 @@ limitations under the License.
+ // Ensure the included flatbuffers.h is the same version as when this file was
+ // generated, otherwise it may not be compatible.
+ static_assert(FLATBUFFERS_VERSION_MAJOR == 25 &&
+-              FLATBUFFERS_VERSION_MINOR == 9 &&
+-              FLATBUFFERS_VERSION_REVISION == 23,
++              FLATBUFFERS_VERSION_MINOR == 12 &&
++              FLATBUFFERS_VERSION_REVISION == 19,
+              "Non-compatible flatbuffers version included");
+ 
+ namespace tflite {
+--- a/third_party/litert/tflite/tools/cmake/modules/flatbuffers.cmake
++++ b/third_party/litert/tflite/tools/cmake/modules/flatbuffers.cmake
+@@ -23,7 +23,7 @@ OverridableFetchContent_Declare(
+   flatbuffers
+   GIT_REPOSITORY https://github.com/google/flatbuffers
+   # Keep in sync with tensorflow/third_party/flatbuffers/workspace.bzl
+-  GIT_TAG v25.9.23
++  GIT_TAG v25.12.19
+   # NOTE: b/340264458 - `GIT_SHALLOW TRUE` works for tag name only.
+   GIT_SHALLOW FALSE
+   GIT_PROGRESS TRUE
