@@ -28,7 +28,7 @@ define Package/lightnvr
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=fully OSS lightweight network video recorder system witten in C with modern js frontend
-	DEPENDS:=+cJSON +llhttp +libsqlite3 +ffmpeg +libuv +libmbedtls +libmosquittopp +libyaml +curl
+	DEPENDS:=+cJSON +llhttp +libsqlite3 +ffmpeg +libuv +libmosquittopp +libyaml +curl
 	URL:=https://github.com/opensensor/lightNVR
 endef
 
@@ -38,7 +38,7 @@ define Package/lightnvr/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON -DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" -DUSE_MBEDTLS=ON
+	-DBUILD_SHARED_LIBS=ON -DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" -DMBEDTLS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include"
 
 define Package/lightnvr/install
 	$(INSTALL_DIR) $(1)/usr/bin
