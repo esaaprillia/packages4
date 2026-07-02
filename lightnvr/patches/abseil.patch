@@ -1,0 +1,11 @@
+--- a/third_party/litert/third_party/tensorflow/tensorflow/lite/tools/cmake/modules/Findabsl.cmake
++++ b/third_party/litert/third_party/tensorflow/tensorflow/lite/tools/cmake/modules/Findabsl.cmake
+@@ -98,6 +98,8 @@ if(abseil-cpp_POPULATED)
+     leak_check_api_disabled_for_testing
+     leak_check_api_enabled_for_testing
+     leak_check_disable
++    log_internal_message
++    log_internal_check_op
+     log_severity
+     main_lib
+     malloc_internal
