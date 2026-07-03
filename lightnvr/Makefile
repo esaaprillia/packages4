@@ -17,7 +17,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-#CMAKE_BINARY_SUBDIR:=build
+CMAKE_BINARY_SUBDIR:=build
 
 PKG_BUILD_DEPENDS:=node/host flatbuffers/host flatbuffers
 
