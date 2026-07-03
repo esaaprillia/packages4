@@ -20,6 +20,8 @@ PKG_LICENSE_FILES:=LICENSE
 CMAKE_BINARY_SUBDIR:=build
 
 PKG_BUILD_DEPENDS:=node/host flatbuffers/host
+PKG_BUILD_PARALLEL:=1
+PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -28,7 +30,7 @@ define Package/lightnvr
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=fully OSS lightweight network video recorder system witten in C with modern js frontend
-	DEPENDS:=+cJSON +llhttp +libsqlite3 +ffmpeg +libuv +libmbedtls +libmosquittopp +libyaml +curl
+	DEPENDS:=+libpthread +libstdcpp +cJSON +llhttp +libsqlite3 +ffmpeg +libuv +libmbedtls +libmosquittopp +libyaml +curl
 	URL:=https://github.com/opensensor/lightNVR
 endef
 
@@ -37,8 +39,32 @@ define Package/lightnvr/description
 	While originally designed for resource-constrained devices like the Ingenic A1 SoC with only 256MB of RAM, it can run on any Linux system.
 endef
 
+NODEJS_CPU:=$(subst powerpc,ppc,$(subst aarch64,arm64,$(subst x86_64,x64,$(subst i386,ia32,$(ARCH)))))
+TMPNPM:=$(shell mktemp -u XXXXXXXXXX)
+NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(TMP_DIR))
+
+TARGET_CFLAGS+=$(FPIC)
+TARGET_CPPFLAGS+=$(FPIC)
+
 CMAKE_OPTIONS += \
-	-DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" -DMBEDTLS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include"
+	-DGIT_COMMIT=e33ce83c -DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+
+define Build/Compile
+	cd $(PKG_BUILD_DIR)/web; \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
+	cd $(PKG_BUILD_DIR)/web; \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
+	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
+	$(call Build/Compile/Default)
+endef
 
 define Package/lightnvr/install
 	$(INSTALL_DIR) $(1)/etc/lightnvr
@@ -49,6 +75,8 @@ define Package/lightnvr/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/lightnvr $(1)/usr/share/
+	$(INSTALL_DIR) $(1)/var/lib/lightnvr/www
+	$(CP) $(PKG_BUILD_DIR)/web/dist/* $(1)/var/lib/lightnvr/www/
 endef
 
 $(eval $(call BuildPackage,lightnvr))
