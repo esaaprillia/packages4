@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=lightnvr-web
 PKG_NAME:=$(PKG_NPM_NAME)
-PKG_VERSION:=2.7.7
+PKG_VERSION:=1.0.0
 PKG_RELEASE:=1
 
 #PKG_SOURCE:=open5gs-$(PKG_VERSION).tgz
