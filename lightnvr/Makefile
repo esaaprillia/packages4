@@ -48,7 +48,8 @@ NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,
 TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
-GO_PKG:=github.com/opensensor/go2rtc
+GO_PKG_BUILD_VARS+= GO111MODULE=off
+#GO_PKG:=github.com/opensensor/go2rtc
 #GO_PKG_BUILD_DIR:=$(PKG_BUILD_DIR)/go2rtc/$(GO_PKG_WORK_DIR_NAME)/build
 
 CMAKE_OPTIONS += \
