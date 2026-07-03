@@ -48,16 +48,15 @@ NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,
 TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
-GO_PKG_BUILD_VARS+= GO111MODULE=off
-#GO_PKG:=github.com/opensensor/go2rtc
-#GO_PKG_BUILD_DIR:=$(PKG_BUILD_DIR)/go2rtc/$(GO_PKG_WORK_DIR_NAME)/build
+GO_PKG:=github.com/opensensor/go2rtc
+GO_PKG_BUILD_VARS+= BUILD_DIR="$(PKG_BUILD_DIR)/go2rtc" GO111MODULE=auto
 
 CMAKE_OPTIONS += \
 	-DGIT_COMMIT=e33ce83c -DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Build/Compile
-	$(call GoPackage/Build/Configure,go2rtc)
-	$(call GoPackage/Build/Compile,go2rtc)
+	$(call GoPackage/Build/Configure)
+	$(call GoPackage/Build/Compile)
 endef
 
 define Package/lightnvr/install
