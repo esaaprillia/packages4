@@ -56,7 +56,6 @@ CMAKE_OPTIONS += \
 	-DGIT_COMMIT=e33ce83c -DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Build/Compile
-	$(call GoPackage/Build/Configure)
 	$(call GoPackage/Build/Compile)
 endef
 
