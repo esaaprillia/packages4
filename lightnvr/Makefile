@@ -38,7 +38,7 @@ define Package/lightnvr/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON -DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" -DMBEDTLS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include"
+	-DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" -DMBEDTLS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include"
 
 define Package/lightnvr/install
 	$(INSTALL_DIR) $(1)/usr/bin
