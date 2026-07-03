@@ -10,7 +10,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/opensensor/lightNVR.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=2335e3f5de8b1a5aec45548759e4f87e8f765214
+PKG_SOURCE_VERSION:=e33ce83c69eafa4780de1df41410019a67aec907
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
