@@ -17,6 +17,9 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
+GO_PKG:=github.com/opensensor/go2rtc
+GO_PKG_BUILD_PKG:=$(GO_PKG)
+
 CMAKE_BINARY_SUBDIR:=build
 
 #PKG_BUILD_DEPENDS:=node/host flatbuffers/host golang/host
@@ -48,7 +51,7 @@ NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,
 TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
-GO_PKG:=github.com/opensensor/go2rtc
+#GO_PKG:=github.com/opensensor/go2rtc
 GO_PKG_BUILD_CONFIG_VARS+= BUILD_DIR="$(PKG_BUILD_DIR)/go2rtc"
 #GO_PKG_BUILD_DIR:=$(PKG_BUILD_DIR)/go2rtc/$(GO_PKG_WORK_DIR_NAME)/build
 
