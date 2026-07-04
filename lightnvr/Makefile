@@ -17,26 +17,20 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-GO_PKG:=github.com/opensensor/go2rtc
-#GO_PKG_BUILD_PKG:=$(GO_PKG)
-GO_PKG_BUILD_DIR:=$(PKG_BUILD_DIR)/$(GO_PKG_WORK_DIR_NAME)/build/src/$(GO_PKG)
-
 CMAKE_BINARY_SUBDIR:=build
 
-#PKG_BUILD_DEPENDS:=node/host flatbuffers/host golang/host
-PKG_BUILD_DEPENDS:=golang/host
+PKG_BUILD_DEPENDS:=node/host flatbuffers/host
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
-###include $(INCLUDE_DIR)/cmake.mk
-include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/lightnvr
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=fully OSS lightweight network video recorder system witten in C with modern js frontend
-	DEPENDS:=+libpthread +libstdcpp $(GO_ARCH_DEPENDS)
+	DEPENDS:=+libpthread +libstdcpp +cJSON +llhttp +libsqlite3 +ffmpeg +libuv +libmbedtls +libmosquittopp +libyaml +curl
 	URL:=https://github.com/opensensor/lightNVR
 endef
 
@@ -52,20 +46,37 @@ NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,
 TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
-#GO_PKG:=github.com/opensensor/go2rtc
-GO_PKG_BUILD_CONFIG_VARS+= BUILD_DIR="$(PKG_BUILD_DIR)/go2rtc" GO_BUILD_DIR="$(PKG_BUILD_DIR)/$(GO_PKG_WORK_DIR_NAME)/build/src/$(GO_PKG)"
-#GO_PKG_BUILD_DIR:=$(PKG_BUILD_DIR)/$(GO_PKG_WORK_DIR_NAME)/build/src/$(GO_PKG)
-
 CMAKE_OPTIONS += \
-	-DGIT_COMMIT=e33ce83c -DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DGIT_COMMIT=d23e6cad -DGO2RTC_BINARY_PATH=/usr/bin -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Build/Compile
-	$(call GoPackage/Build/Configure)
-	$(call GoPackage/Build/Compile)
+	cd $(PKG_BUILD_DIR)/web; \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
+	cd $(PKG_BUILD_DIR)/web; \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
+	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
+	$(call Build/Compile/Default)
 endef
 
 define Package/lightnvr/install
-	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	$(INSTALL_DIR) $(1)/etc/lightnvr
+	$(CP) $(PKG_INSTALL_DIR)/etc/lightnvr/* $(1)/etc/lightnvr/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/lightnvr $(1)/usr/share/
+	$(INSTALL_DIR) $(1)/var/lib/lightnvr/www
+	$(CP) $(PKG_BUILD_DIR)/web/dist/* $(1)/var/lib/lightnvr/www/
 endef
 
 $(eval $(call BuildPackage,lightnvr))
