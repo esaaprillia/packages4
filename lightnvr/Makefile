@@ -25,6 +25,7 @@ PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/lightnvr
 	SECTION:=libs
