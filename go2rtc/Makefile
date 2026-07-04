@@ -49,9 +49,8 @@ define Build/Compile
 endef
 
 define Package/go2rtc/install
-	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/go2rtc $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/go2rtc $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,go2rtc))
