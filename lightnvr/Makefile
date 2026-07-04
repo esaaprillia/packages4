@@ -64,6 +64,8 @@ define Build/Compile
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
 	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
+	rm -rf $(PKG_BUILD_DIR)/go2rtc/pkg/alsa/device/asound_arch.c
+	rm -rf $(PKG_BUILD_DIR)/go2rtc/pkg/v4l2/device/videodev2_arch.c
 	cd $(PKG_BUILD_DIR)/go2rtc; \
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
