@@ -17,9 +17,9 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-GO_PKG:=github.com/AlexxIT/go2rtc
+GO_PKG:=github.com/opensensor/go2rtc@v1.9.12
 GO_PKG_BUILD_PKG:=$(GO_PKG)
-GO_PKG_BUILD_DIR:=$(PKG_BUILD_DIR)/$(GO_PKG_WORK_DIR_NAME)/build/src/$(GO_PKG)
+#GO_PKG_BUILD_DIR:=$(PKG_BUILD_DIR)/$(GO_PKG_WORK_DIR_NAME)/build/src/$(GO_PKG)
 
 CMAKE_BINARY_SUBDIR:=build
 
