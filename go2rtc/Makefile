@@ -22,7 +22,7 @@ PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
 
-GO_PKG:=github.com/opensensor/go2rtc
+#GO_PKG:=github.com/opensensor/go2rtc
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
@@ -38,6 +38,14 @@ endef
 
 define Package/go2rtc/description
   Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV, WebRTC, MSE, HLS, MP4, MJPEG, HomeKit, FFmpeg, etc.
+endef
+
+define Build/Compile
+	cd $(PKG_BUILD_DIR); \
+	$(GO_GENERAL_BUILD_CONFIG_VARS) \
+	$(GO_PKG_BUILD_CONFIG_VARS) \
+	$(GO_PKG_VARS) \
+	go build
 endef
 
 define Package/go2rtc/install
