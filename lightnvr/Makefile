@@ -19,7 +19,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR:=build
 
-PKG_BUILD_DEPENDS:=node/host flatbuffers/host
+PKG_BUILD_DEPENDS:=node/host flatbuffers/host golang/host
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
 
@@ -63,6 +63,11 @@ define Build/Compile
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
 	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
+	cd $(PKG_BUILD_DIR)/go2rtc; \
+	$(GO_GENERAL_BUILD_CONFIG_VARS) \
+	$(GO_PKG_BUILD_CONFIG_VARS) \
+	$(GO_PKG_VARS) \
+	go build
 	$(call Build/Compile/Default)
 endef
 
