@@ -32,7 +32,7 @@ define Package/go2rtc
   SECTION:=net
   CATEGORY:=Network
   URL:=Ultimate camera streaming application with support for dozens formats and protocols.
-  DEPENDS:=$(GO_ARCH_DEPENDS)
+  DEPENDS:=$(GO_ARCH_DEPENDS) +alsa-lib +libv4l
   URL:=https://github.com/opensensor/go2rtc
 endef
 
