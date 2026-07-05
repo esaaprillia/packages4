@@ -77,6 +77,8 @@ endef
 define Package/lightnvr/install
 	$(INSTALL_DIR) $(1)/etc/lightnvr
 	$(CP) $(PKG_INSTALL_DIR)/etc/lightnvr/* $(1)/etc/lightnvr/
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/lightnvr.init $(1)/etc/init.d/lightnvr
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_BUILD_DIR)/go2rtc/go2rtc $(1)/usr/bin/
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
