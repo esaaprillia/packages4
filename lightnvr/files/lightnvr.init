@@ -14,6 +14,7 @@ start_service() {
         mkdir -p /var/lib/lightnvr/data/recordings
         mkdir -p /var/lib/lightnvr/data/models
         mkdir -p /var/lib/lightnvr/data/database
+        mkdir -p /var/lib/lightnvr/data/recordings/mp4
         procd_open_instance
         procd_set_param command "$PROG" -c "$CONF"
         procd_set_param respawn
