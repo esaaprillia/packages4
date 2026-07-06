@@ -25,7 +25,7 @@ define Package/libx265
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open Source H265/HEVC video encoder
-	DEPENDS:=+libstdcpp +numactl
+	DEPENDS:=+libstdcpp +numactl +libmvec
 	URL:=https://bitbucket.org/multicoreware/x265_git
 endef
 
