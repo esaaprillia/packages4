@@ -20,5 +20,5 @@ index 00000000..0f0ae425
 + * DO NOT EDIT MANUALLY
 + */
 +
-+export const VERSION = '0.36.1';
-+export const GIT_COMMIT = '09535de7';
++export const VERSION = '0.36.2';
++export const GIT_COMMIT = '4aaae6f9';
