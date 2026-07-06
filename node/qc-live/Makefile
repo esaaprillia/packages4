@@ -48,8 +48,9 @@ NODEJS_CPU:=$(subst powerpc,ppc,$(subst aarch64,arm64,$(subst x86_64,x64,$(subst
 TMPNPM:=$(shell mktemp -u XXXXXXXXXX)
 NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(TMP_DIR))
 
-TARGET_CFLAGS+=$(FPIC) -std=c++20
-TARGET_CPPFLAGS+=$(FPIC) -std=c++20
+TARGET_CFLAGS+=$(FPIC)
+TARGET_CPPFLAGS+=$(FPIC)
+TARGET_CXXFLAGS+="-std=c++20"
 
 define Build/Compile
 	cd $(PKG_BUILD_DIR); \
@@ -58,6 +59,12 @@ define Build/Compile
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
 	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm rebuild sqlite3 --prefer-offline --no-audit --global-style --install-strategy=shallow --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
