@@ -86,6 +86,7 @@ define Package/libavcodec
 	+shine \
 	+fdk-aac \
 	+libx264 \
+	+libx265 \
 	+twolame \
 	+xvidcore \
 	+zlib
@@ -209,7 +210,7 @@ CONFIGURE_ARGS = \
 	--enable-libshine \
 	--enable-libmp3lame \
 	--enable-libx264 \
-	--disable-libx265 \
+	--enable-libx265 \
 	--enable-libfdk-aac \
 	--enable-libtwolame \
 	--enable-libxvid
