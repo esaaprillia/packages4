@@ -50,7 +50,6 @@ NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,
 
 TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
-TARGET_CXXFLAGS+="-std=c++20"
 
 define Build/Compile
 	cd $(PKG_BUILD_DIR); \
