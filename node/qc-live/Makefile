@@ -34,7 +34,7 @@ define Package/qc-live
   CATEGORY:=Languages
   TITLE:=QC Live - Professional 24/7 Streaming Application
   URL:=https://github.com/himanshu-hivecorp/QC-Live
-  DEPENDS:=+libpthread +libstdcpp +node
+  DEPENDS:=+libpthread +libstdcpp +librt +node +node-pm2 +ffmpeg
 endef
 
 define Package/qc-live/description
@@ -74,8 +74,6 @@ define Build/Compile
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 	rm -rf $(PKG_BUILD_DIR)/node_modules/bcrypt/prebuilds
-	ls $(PKG_BUILD_DIR)/*
-	ls $(PKG_BUILD_DIR)/.*
 endef
 
 define Package/qc-live/install
@@ -86,7 +84,7 @@ define Package/qc-live/install
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(CP) $(PKG_BUILD_DIR)/{node_modules,scripts,styles} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/{types,next-env.d.ts,*.js,*.json} \
+	$(CP) $(PKG_BUILD_DIR)/{types,next-env.d.ts,*.js,*.json,version.date,.next} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
