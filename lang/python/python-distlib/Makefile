@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-distlib
-PKG_VERSION:=0.4.1
+PKG_VERSION:=0.4.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=distlib
