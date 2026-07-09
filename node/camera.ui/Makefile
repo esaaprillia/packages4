@@ -18,7 +18,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_BUILD_DEPENDS:=node/host
+PKG_BUILD_DEPENDS:=node/host python-mypy/host
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
 
@@ -30,7 +30,7 @@ define Package/camera.ui
   CATEGORY:=Languages
   TITLE:=The modern, local-first platform for professional video surveillance — built for maximum flexibility and ease of use.
   URL:=https://github.com/cameraui/camera.ui
-  DEPENDS:=+libpthread +libstdcpp
+  DEPENDS:=+libpthread +libstdcpp +node
 endef
 
 define Package/camera.ui/description
