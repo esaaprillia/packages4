@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=camera.ui
 PKG_NAME:=$(PKG_NPM_NAME)
-PKG_VERSION:=2.0.4
+PKG_VERSION:=2.0.5
 PKG_RELEASE:=1
 
 #PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -11,14 +11,14 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/cameraui/camera.ui.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=0327ee68408c8ecefb288e1b8481c9ab6ba957a9
+PKG_SOURCE_VERSION:=18c6ac1d4426e2848872c1c58fd7edc609eb32c9
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_BUILD_DEPENDS:=node/host python-mypy/host
+PKG_BUILD_DEPENDS:=node/host python-mypy/host python-ruff/host
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
 
