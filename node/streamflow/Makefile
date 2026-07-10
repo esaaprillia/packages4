@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NPM_NAME:=streamflow
+PKG_NPM_NAME:=streamflow lightnvr
 PKG_NAME:=$(PKG_NPM_NAME)
 PKG_VERSION:=2.2.2
 PKG_RELEASE:=1
@@ -84,6 +84,8 @@ define Build/Compile
 endef
 
 define Package/streamflow/install
+	$(INSTALL_DIR) $(1)/etc/uci-defaults
+	$(CP) ./files/99-streamflow $(1)/etc/uci-defaults/
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/streamflow.init $(1)/etc/init.d/streamflow
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
@@ -97,15 +99,6 @@ define Package/streamflow/install
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
-endef
-
-define Package/streamflow/postinst
-#!/bin/sh
-cd /usr/lib/node_modules/streamflow
-node generate-secret.js
-pm2 describe streamflow &> /dev/null && pm2 delete streamflow || true
-pm2 start app.js --name streamflow
-pm2 save
 endef
 
 define Package/streamflow/postrm
