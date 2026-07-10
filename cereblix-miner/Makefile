@@ -33,7 +33,7 @@ define Package/cereblix-miner/description
 Cereblix (CRB) NeuroMorph CPU miner: desktop, HiveOS, and a universal Android app (all ABIs, hardware AES/NEON, thread and core selection).
 endef
 
-TARGET_CFLAGS += -O3 -march=armv8-a -funroll-loops -fno-tree-vectorize -ffp-contract=off -pthread
+TARGET_CFLAGS += -O3 -funroll-loops -fno-tree-vectorize -ffp-contract=off -pthread
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
