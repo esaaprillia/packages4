@@ -84,8 +84,6 @@ define Build/Compile
 endef
 
 define Package/streamflow/install
-	$(INSTALL_DIR) $(1)/etc/uci-defaults
-	$(CP) ./files/99-streamflow $(1)/etc/uci-defaults/
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/streamflow.init $(1)/etc/init.d/streamflow
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
