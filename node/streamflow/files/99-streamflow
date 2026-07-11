@@ -1,6 +1,0 @@
-#!/bin/sh
-
-cd /usr/lib/node_modules/streamflow
-node generate-secret.js
-pm2 start app.js --name streamflow
-pm2 save
