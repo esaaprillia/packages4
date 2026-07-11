@@ -103,6 +103,7 @@ endef
 
 define Package/streamflow/postrm
 #!/bin/sh
+pm2 describe streamflow &> /dev/null && pm2 delete streamflow || true
 rm /usr/lib/node_modules/streamflow || true
 rm -rf /usr/lib/node/streamflow || true
 endef
