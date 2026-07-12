@@ -45,6 +45,7 @@ CONFIGURE_ARGS = \
 	--enable-vp9-temporal-denoising
 
 CONFIGURE_VARS += LD="$(TARGET_CC)"
+MAKE_FLAGS += LD="$(TARGET_CC)"
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
