@@ -23,7 +23,7 @@ define Package/srt
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Secure Reliable Transport (SRT) Protocol
-	DEPENDS:=+libopenssl +libstdcpp +libgcc
+	DEPENDS:=+libopenssl +libstdcpp +libgcc +libatomic
 	URL:=https://www.srtalliance.org/
 endef
 
