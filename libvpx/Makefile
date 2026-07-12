@@ -29,7 +29,7 @@ define Package/libvpx/description
 Library for the vp8/vp9 codecs
 endef
 
-CONFIGURE_ARGS += \
+CONFIGURE_ARGS = \
 	--disable-install-docs \
 	--disable-install-srcs \
 	--disable-unit-tests \
