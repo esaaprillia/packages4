@@ -23,10 +23,9 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/core
-  TITLE:=A platform for building proxies to bypass network restrictions
   SECTION:=net
   CATEGORY:=Network
-  URL:=datarhei Core is management for FFmpeg processes without development effort.
+  TITLE:=datarhei Core is management for FFmpeg processes without development effort.
   DEPENDS:=$(GO_ARCH_DEPENDS)
   URL:=https://github.com/datarhei/core
 endef
