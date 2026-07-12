@@ -29,6 +29,8 @@ define Package/libvpx/description
 Library for the vp8/vp9 codecs
 endef
 
+TARGET_LDFLAGS += -lstdc++
+
 CONFIGURE_ARGS = \
 	--target=generic-gnu \
 	--prefix=/usr \
