@@ -30,7 +30,8 @@ Library for the vp8/vp9 codecs
 endef
 
 CONFIGURE_ARGS = \
-	--target=$(GNU_TARGET_NAME) \
+	--target=arm64-linux-gcc \
+	--prefix=/usr \
 	--disable-install-docs \
 	--disable-install-srcs \
 	--disable-unit-tests \
