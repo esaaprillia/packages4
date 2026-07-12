@@ -21,7 +21,7 @@ define Package/libvpx
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=VP8/VP9 Codec SDK
-	DEPENDS:=
+	DEPENDS:=+libstdcpp
 	URL:=http://www.webmproject.org/
 endef
 
