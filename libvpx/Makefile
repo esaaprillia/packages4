@@ -30,7 +30,7 @@ Library for the vp8/vp9 codecs
 endef
 
 CONFIGURE_ARGS = \
-	--target=arm64-linux-gcc \
+	--target=generic-gnu \
 	--prefix=/usr \
 	--disable-install-docs \
 	--disable-install-srcs \
@@ -43,6 +43,8 @@ CONFIGURE_ARGS = \
 	--enable-vp9 \
 	--enable-vp9-highbitdepth \
 	--enable-vp9-temporal-denoising
+
+CONFIGURE_VARS += LD="$(TARGET_CC)"
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
