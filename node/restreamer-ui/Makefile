@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=restreamer-ui
 PKG_NAME:=$(PKG_NPM_NAME)
-PKG_VERSION:=1.13.0
+PKG_VERSION:=1.14.0
 PKG_RELEASE:=1
 
 #PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -50,7 +50,7 @@ define Build/Compile
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
-	yarn install && yarn run build
+	yarn cache clean && rm -rf node_modules && yarn install && yarn run build
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
