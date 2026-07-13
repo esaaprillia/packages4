@@ -79,8 +79,10 @@ SCONS_OPTIONS += \
 	MONGO_VERSION="$(PKG_VERSION)"
 
 define Package/mongo/install
-	#$(INSTALL_DIR) $(1)/etc
-	#$(CP) $(PKG_INSTALL_DIR)/etc/* $(1)/etc/
+	$(INSTALL_DIR) $(1)/etc/mongo
+	$(CP) ./files/mongod.conf $(1)/etc/mongo/mongod.conf
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/mongod.init $(1)/etc/init.d/mongod
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 endef
