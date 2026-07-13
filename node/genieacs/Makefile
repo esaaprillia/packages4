@@ -49,13 +49,20 @@ define Build/Compile
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU) --ignore-scripts
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 endef
 
 define Package/node-genieacs/install
+	$(INSTALL_DIR) $(1)/opt/genieacs
+	$(CP) ./files/genieacs.env $(1)/opt/genieacs/genieacs.env
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/genieacs-cwmp.init $(1)/etc/init.d/genieacs-cwmp
+	$(INSTALL_BIN) ./files/genieacs-fs.init $(1)/etc/init.d/genieacs-fs
+	$(INSTALL_BIN) ./files/genieacs-nbi.init $(1)/etc/init.d/genieacs-nbi
+	$(INSTALL_BIN) ./files/genieacs-ui.init $(1)/etc/init.d/genieacs-ui
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
 	$(CP) $(PKG_BUILD_DIR)/{CHANGELOG.md,LICENSE,npm-shrinkwrap.json,package.json,README.md} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
