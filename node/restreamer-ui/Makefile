@@ -55,7 +55,7 @@ define Build/Compile
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
-	yarn cache clean && rm -rf node_modules && yarn install && yarn run build
+	yarn install && yarn add --dev @babel/plugin-proposal-private-property-in-object && yarn run build
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
