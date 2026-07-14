@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-restrictedpython
-PKG_VERSION:=8.3
+PKG_VERSION:=8.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=restrictedpython
