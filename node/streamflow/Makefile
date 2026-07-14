@@ -15,7 +15,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/bangtutorial/streamflow.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=9279f8a1ae086ff6b32c0296f4fe9ff3bbf07270
+PKG_SOURCE_VERSION:=9dc36f020c3d112494ce2d4da67f66a4b238a9e8
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
