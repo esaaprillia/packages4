@@ -9,14 +9,9 @@ PKG_RELEASE:=1
 #PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
 #PKG_HASH:=e668a26657a9a95ee0d903c6acfaf62995b5a219ac3a673773eded08b4465e5b
 
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://github.com/datarhei/restreamer-ui/archive/v$(PKG_VERSION)
-#PKG_HASH:=skip
-
-PKG_SOURCE_URL:=https://github.com/datarhei/restreamer-ui.git
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=08b1dd0ba0a3f8c54a51aa67ae7c4b24b8372893
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/datarhei/restreamer-ui/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -52,16 +47,19 @@ TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
 define Build/Compile
-	cd $(PKG_BUILD_DIR); \
-	$(MAKE_VARS) \
-	$(MAKE_FLAGS) \
-	rm -rf /home/runner/work/mosdns/mosdns/sdk/.config && yarn install && yarn run build
+	rm -rf /home/runner/work/mosdns/mosdns/sdk/.config
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	#yarn run build --target_arch=$(NODEJS_CPU)
+	yarn install --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	yarn run build --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
@@ -83,16 +81,12 @@ define Build/Compile
 endef
 
 define Package/restreamer-ui/install
-	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/streamflow.init $(1)/etc/init.d/streamflow
+	#$(INSTALL_DIR) $(1)/etc/init.d
+	#$(INSTALL_BIN) ./files/streamflow.init $(1)/etc/init.d/streamflow
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
-	$(CP) $(PKG_BUILD_DIR)/{package.json,*.md} \
+	$(CP) $(PKG_BUILD_DIR)/{package.json,*.md,LICENSE,yarn.lock} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/{app.js,middleware,scripts,db} \
-		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/{node_modules,generate-secret.js,public} \
-		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/{models,services,utils,views,reset-password.js,database.sqlite} \
+	$(CP) $(PKG_BUILD_DIR)/{node_modules,public,src,build} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
@@ -100,7 +94,6 @@ endef
 
 define Package/restreamer-ui/postrm
 #!/bin/sh
-pm2 describe restreamer-ui &> /dev/null && pm2 delete restreamer-ui || true
 rm /usr/lib/node_modules/restreamer-ui || true
 rm -rf /usr/lib/node/restreamer-ui || true
 endef
