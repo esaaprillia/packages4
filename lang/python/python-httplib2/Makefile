@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-httplib2
-PKG_VERSION:=0.31.2
+PKG_VERSION:=0.32.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=httplib2
