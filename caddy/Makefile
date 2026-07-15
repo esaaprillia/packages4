@@ -40,7 +40,7 @@ define Build/Compile
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
-	go build -v -ldflags -X github.com/caddyserver/caddy/v2.CustomVersion=$(PKG_VERSION) -compressdwarf=false -linkmode=external -o build/caddy ./cmd/caddy
+	go build -v -ldflags "-X github.com/caddyserver/caddy/v2.CustomVersion=$(PKG_VERSION) -compressdwarf=false -linkmode=external" -o build/caddy ./cmd/caddy
 endef
 
 define Package/caddy/install
