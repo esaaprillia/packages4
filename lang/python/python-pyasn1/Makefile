@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyasn1
-PKG_VERSION:=0.6.3
+PKG_VERSION:=0.6.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyasn1
