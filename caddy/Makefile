@@ -17,10 +17,8 @@ PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
 
-GO_PKG:=github.com/caddyserver/caddy
-GO_PKG_BUILD_PKG:=github.com/caddyserver/caddy/cmd/...
-GO_PKG_LDFLAGS_X:= \
-	$(GO_PKG)/v2.CustomVersion=v$(PKG_VERSION)
+#GO_PKG:=github.com/caddyserver/caddy
+#GO_PKG_BUILD_PKG:=$(GO_PKG)/cmd/caddy
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
@@ -37,10 +35,17 @@ define Package/caddy/description
   Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
 endef
 
+define Build/Compile
+	cd $(PKG_BUILD_DIR); \
+	$(GO_GENERAL_BUILD_CONFIG_VARS) \
+	$(GO_PKG_BUILD_CONFIG_VARS) \
+	$(GO_PKG_VARS) \
+	go build -v -ldflags "-X github.com/caddyserver/caddy/v2.CustomVersion=v$(PKG_VERSION)" -o build/caddy ./cmd/caddy
+endef
+
 define Package/caddy/install
-	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/build/* $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,caddy))
