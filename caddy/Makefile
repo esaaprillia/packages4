@@ -18,7 +18,7 @@ PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
 
 GO_PKG:=github.com/caddyserver/caddy
-GO_PKG_BUILD_PKG:=$(GO_PKG) ./cmd/caddy
+GO_PKG_BUILD_PKG:=github.com/caddyserver/caddy/...
 GO_PKG_LDFLAGS_X:= \
 	$(GO_PKG)/v2.CustomVersion=v$(PKG_VERSION)
 
