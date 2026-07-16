@@ -29,7 +29,7 @@ define Package/restreamer-ui
   CATEGORY:=Languages
   TITLE:=Restreamer-UI
   URL:=https://datarhei.com/
-  DEPENDS:=+libpthread +libstdcpp
+  DEPENDS:=+libpthread +libstdcpp +libx11
 endef
 
 define Package/restreamer-ui/description
@@ -76,15 +76,13 @@ define Build/Compile
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 	rm -rf $(PKG_BUILD_DIR)/node_modules/bcrypt/prebuilds
-	ls -l $(PKG_BUILD_DIR)/*
-	ls -l $(PKG_BUILD_DIR)/.*
 endef
 
 define Package/restreamer-ui/install
 	#$(INSTALL_DIR) $(1)/etc/init.d
 	#$(INSTALL_BIN) ./files/streamflow.init $(1)/etc/init.d/streamflow
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
-	$(CP) $(PKG_BUILD_DIR)/{package.json,*.md,LICENSE,yarn.lock} \
+	$(CP) $(PKG_BUILD_DIR)/{package.json,*.md,LICENSE,yarn.lock,version.date} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(CP) $(PKG_BUILD_DIR)/{node_modules,public,src,build} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
