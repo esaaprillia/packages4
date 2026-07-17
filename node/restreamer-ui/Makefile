@@ -64,7 +64,7 @@ endef
 define Package/restreamer-ui/install
 	#$(INSTALL_DIR) $(1)/etc/init.d
 	#$(INSTALL_BIN) ./files/streamflow.init $(1)/etc/init.d/streamflow
-	#$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
+	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
 	#$(CP) $(PKG_BUILD_DIR)/{package.json,*.md,LICENSE,yarn.lock,version.date} \
 	#	$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	#$(CP) $(PKG_BUILD_DIR)/{node_modules,public,src,build} \
