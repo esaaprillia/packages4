@@ -91,6 +91,7 @@ define Package/libavcodec
 	+xvidcore \
 	+libvpx \
 	+libvorbis \
+	+rav1e \
 	+zlib
 endef
 
@@ -225,6 +226,7 @@ CONFIGURE_ARGS = \
 	--enable-libsrt \
 	--enable-libvpx \
 	--enable-libvorbis \
+	--enable-librav1e \
 	--enable-libxml2
 
 define Build/Compile
