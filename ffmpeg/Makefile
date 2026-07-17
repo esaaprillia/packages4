@@ -92,6 +92,8 @@ define Package/libavcodec
 	+libvpx \
 	+libvorbis \
 	+rav1e \
+	+dav1d \
+	+libaom \
 	+zlib
 endef
 
@@ -128,7 +130,8 @@ define Package/libavfilter
 	+libavutil \
 	+libswresample \
 	+libswscale \
-	+libfreetype
+	+libfreetype \
+	+harfbuzz
 endef
 
 define Package/libavfilter/description
@@ -158,7 +161,7 @@ define Package/libavutil
 	CATEGORY:=Libraries
 	TITLE:=(libavutil library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libva
+	DEPENDS:=+libva +libxcb
 endef
 
 define Package/libavutil/description
@@ -223,11 +226,15 @@ CONFIGURE_ARGS = \
 	--enable-libxvid \
 	--enable-vaapi \
 	--enable-libfreetype \
+	--enable-libharfbuzz \
 	--enable-libsrt \
 	--enable-libvpx \
 	--enable-libvorbis \
+	--enable-libdav1d \
 	--enable-librav1e \
-	--enable-libxml2
+	--enable-libxml2 \
+	--enable-libaom \
+	--enable-libxcb
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
