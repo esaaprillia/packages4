@@ -226,8 +226,7 @@ CONFIGURE_ARGS = \
 	--enable-libvpx \
 	--enable-libvorbis \
 	--enable-openssl \
-	--enable-libxml2 \
-	
+	--enable-libxml2
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
