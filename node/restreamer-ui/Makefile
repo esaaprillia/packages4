@@ -55,7 +55,7 @@ define Build/Compile
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
-	yarn run build
+	PUBLIC_URL="./" yarn run build
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 	rm -rf $(PKG_BUILD_DIR)/node_modules/bcrypt/prebuilds
@@ -64,10 +64,12 @@ endef
 define Package/restreamer-ui/install
 	#$(INSTALL_DIR) $(1)/etc/init.d
 	#$(INSTALL_BIN) ./files/streamflow.init $(1)/etc/init.d/streamflow
-	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
-	$(CP) $(PKG_BUILD_DIR)/{package.json,*.md,LICENSE,yarn.lock,version.date} \
-		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/{node_modules,public,src,build} \
+	#$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
+	#$(CP) $(PKG_BUILD_DIR)/{package.json,*.md,LICENSE,yarn.lock,version.date} \
+	#	$(1)/usr/lib/node/$(PKG_NPM_NAME)/
+	#$(CP) $(PKG_BUILD_DIR)/{node_modules,public,src,build} \
+	#	$(1)/usr/lib/node/$(PKG_NPM_NAME)/
+	$(CP) $(PKG_BUILD_DIR)/build \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
