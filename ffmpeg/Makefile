@@ -89,6 +89,8 @@ define Package/libavcodec
 	+libx265 \
 	+twolame \
 	+xvidcore \
+	+libvpx \
+	+libvorbis \
 	+zlib
 endef
 
@@ -124,7 +126,8 @@ define Package/libavfilter
 	+libavformat \
 	+libavutil \
 	+libswresample \
-	+libswscale
+	+libswscale \
+	+libfreetype
 endef
 
 define Package/libavfilter/description
@@ -140,7 +143,9 @@ define Package/libavformat
 	+libavcodec \
 	+libavutil \
 	+libbz2 \
-	+libgnutls
+	+libgnutls \
+	+libxml2 \
+	+srt
 endef
 
 define Package/libavformat/description
@@ -152,7 +157,7 @@ define Package/libavutil
 	CATEGORY:=Libraries
 	TITLE:=(libavutil library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=
+	DEPENDS:=+libva +libopenssl
 endef
 
 define Package/libavutil/description
@@ -214,7 +219,15 @@ CONFIGURE_ARGS = \
 	--enable-libx265 \
 	--enable-libfdk-aac \
 	--enable-libtwolame \
-	--enable-libxvid
+	--enable-libxvid \
+	--enable-vaapi \
+	--enable-libfreetype \
+	--enable-libsrt \
+	--enable-libvpx \
+	--enable-libvorbis \
+	--enable-openssl \
+	--enable-libxml2 \
+	
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
