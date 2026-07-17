@@ -4,9 +4,14 @@ PKG_NAME:=core
 PKG_VERSION:=16.16.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/datarhei/core/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/datarhei/core/archive/v$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/datarhei/core.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=bdbc059da2275dd6a034aac98a551b003287c467
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
