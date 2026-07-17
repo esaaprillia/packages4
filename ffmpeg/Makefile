@@ -157,7 +157,7 @@ define Package/libavutil
 	CATEGORY:=Libraries
 	TITLE:=(libavutil library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libva +libopenssl
+	DEPENDS:=+libva
 endef
 
 define Package/libavutil/description
@@ -225,7 +225,6 @@ CONFIGURE_ARGS = \
 	--enable-libsrt \
 	--enable-libvpx \
 	--enable-libvorbis \
-	--enable-openssl \
 	--enable-libxml2
 
 define Build/Compile
