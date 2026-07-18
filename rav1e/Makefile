@@ -22,13 +22,16 @@ define Package/rav1e
   SECTION:=sound
   CATEGORY:=Sound
   TITLE:=The fastest and safest AV1 encoder.
-  DEPENDS:=$(RUST_ARCH_DEPENDS) +libstdcpp
+  DEPENDS:=$(RUST_ARCH_DEPENDS) +libstdcpp +zlib
   URL:=https://github.com/xiph/rav1e/
 endef
 
 define Package/rav1e/description
   rav1e is an AV1 video encoder. It is designed to eventually cover all use cases, though in its current form it is most suitable for cases where libaom (the reference encoder) is too slow.
 endef
+
+export LIBZ_SYS_STATIC=1
+CARGO_PKG_VARS += LIBZ_SYS_STATIC=1
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
