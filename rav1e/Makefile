@@ -22,7 +22,7 @@ define Package/rav1e
   SECTION:=sound
   CATEGORY:=Sound
   TITLE:=The fastest and safest AV1 encoder.
-  DEPENDS:=$(RUST_ARCH_DEPENDS) +libstdcpp +zlib
+  DEPENDS:=$(RUST_ARCH_DEPENDS) +libstdcpp
   URL:=https://github.com/xiph/rav1e/
 endef
 
