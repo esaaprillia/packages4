@@ -31,7 +31,7 @@ define Package/core
   SECTION:=net
   CATEGORY:=Network
   TITLE:=datarhei Core is management for FFmpeg processes without development effort.
-  DEPENDS:=$(GO_ARCH_DEPENDS)
+  DEPENDS:=$(GO_ARCH_DEPENDS) +ffmpeg +restreamer-ui
   URL:=https://github.com/datarhei/core
 endef
 
@@ -41,8 +41,14 @@ endef
 
 define Package/core/install
 	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/core $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/restreamer.init $(1)/etc/init.d/restreamer
+	$(INSTALL_DIR) $(1)/var/lib/restreamer
+	$(CP) ./files/mime.types $(1)/var/lib/restreamer/
+	$(INSTALL_DIR) $(1)/var/lib/restreamer/data
+	$(CP) ./files/{index.html,index_icon.svg} $(1)/var/lib/restreamer/data/
 endef
 
 $(eval $(call BuildPackage,core))
