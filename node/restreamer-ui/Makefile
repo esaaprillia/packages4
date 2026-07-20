@@ -69,21 +69,22 @@ endef
 define Package/restreamer-ui/install
 	#$(INSTALL_DIR) $(1)/etc/init.d
 	#$(INSTALL_BIN) ./files/streamflow.init $(1)/etc/init.d/streamflow
-	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
+	#$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
+	$(INSTALL_DIR) $(1)/var/lib/restreamer/ui
 	#$(CP) $(PKG_BUILD_DIR)/{package.json,*.md,LICENSE,yarn.lock,version.date} \
 	#	$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	#$(CP) $(PKG_BUILD_DIR)/{node_modules,public,src,build} \
 	#	$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/build \
-		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(INSTALL_DIR) $(1)/usr/lib/node_modules
-	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
+	$(CP) $(PKG_BUILD_DIR)/build/* \
+		$(1)/var/lib/restreamer/ui/
+	#$(INSTALL_DIR) $(1)/usr/lib/node_modules
+	#$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
 
-define Package/restreamer-ui/postrm
-#!/bin/sh
-rm /usr/lib/node_modules/restreamer-ui || true
-rm -rf /usr/lib/node/restreamer-ui || true
-endef
+#define Package/restreamer-ui/postrm
+##!/bin/sh
+#rm /usr/lib/node_modules/restreamer-ui || true
+#rm -rf /usr/lib/node/restreamer-ui || true
+#endef
 
 $(eval $(call BuildPackage,restreamer-ui))
