@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=fontconfig
-PKG_VERSION:=2.15.0
+PKG_VERSION:=2.18.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://www.freedesktop.org/software/fontconfig/release/
-PKG_HASH:=63a0658d0e06e0fa886106452b58ef04f21f58202ea02a94c39de0d3335d7c0e
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=
 PKG_LICENSE:=
