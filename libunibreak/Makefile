@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libunibreak
-PKG_VERSION:=6.1
+PKG_VERSION:=7.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/adah1972/libunibreak/releases/download/libunibreak_6_1
+PKG_SOURCE_URL:=https://github.com/adah1972/libunibreak/releases/download/libunibreak_7_0
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
