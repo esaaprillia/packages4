@@ -91,9 +91,11 @@ define Package/libavcodec
 	+xvidcore \
 	+libvpx \
 	+libvorbis \
+	+libtheora \
 	+rav1e \
 	+dav1d \
 	+libaom \
+	+libwebp \
 	+zlib
 endef
 
@@ -131,6 +133,7 @@ define Package/libavfilter
 	+libswresample \
 	+libswscale \
 	+libfreetype \
+	+libass \
 	+harfbuzz
 endef
 
@@ -149,6 +152,7 @@ define Package/libavformat
 	+libbz2 \
 	+libgnutls \
 	+libxml2 \
+	+libssh \
 	+srt
 endef
 
@@ -227,9 +231,13 @@ CONFIGURE_ARGS = \
 	--enable-vaapi \
 	--enable-libfreetype \
 	--enable-libharfbuzz \
+	--enable-libass \
 	--enable-libsrt \
+	--enable-libssh \
+	--enable-libtheora \
 	--enable-libvpx \
 	--enable-libvorbis \
+	--enable-libwebp \
 	--enable-libdav1d \
 	--enable-librav1e \
 	--enable-libxml2 \
