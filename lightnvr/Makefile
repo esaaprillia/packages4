@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=lightnvr
-PKG_VERSION:=0.36.3
+PKG_VERSION:=0.36.4
 PKG_RELEASE:=1
 
 #PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -10,7 +10,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/opensensor/lightNVR.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=73e181b25eaafb2e27ccedd7fc89d34a1766f97c
+PKG_SOURCE_VERSION:=f59e26c5f4a24c63a2b729f7882f2cf523ea7c7c
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -48,7 +48,7 @@ TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
 CMAKE_OPTIONS += \
-	-DGIT_COMMIT=73e181b2 -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DGIT_COMMIT=f59e26c5 -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Build/Compile
 	cd $(PKG_BUILD_DIR)/web; \
