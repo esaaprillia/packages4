@@ -20,12 +20,12 @@ PKG_LICENSE:=
 PKG_LICENSE_FILES:=
 PKG_CPE_ID:=cpe:/a:fontconfig_project:fontconfig
 
-PKG_BUILD_DEPENDS:=gperf/host
-HOST_BUILD_DEPENDS:=gperf/host freetype/host
+PKG_BUILD_DEPENDS:=gperf/host meson/host
+HOST_BUILD_DEPENDS:=gperf/host freetype/host meson/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(INCLUDE_DIR)/meson.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 
 define Package/fontconfig
   SECTION:=xorg-util
