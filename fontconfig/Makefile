@@ -12,7 +12,7 @@ PKG_VERSION:=2.18.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://www.freedesktop.org/software/fontconfig/release/
+PKG_SOURCE_URL:=https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=
