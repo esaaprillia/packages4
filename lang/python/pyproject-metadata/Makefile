@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pyproject-metadata
-PKG_VERSION:=0.11.0
+PKG_VERSION:=0.12.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyproject_metadata
