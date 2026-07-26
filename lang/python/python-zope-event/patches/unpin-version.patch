@@ -15,7 +15,7 @@ index 03d3cbf..2340d95 100644
  
  [build-system]
  requires = [
--    "setuptools >= 78.1.1,< 81",
+-    "setuptools >= 78.1.1,< 82",
 +    "setuptools",
      "wheel",
  ]
