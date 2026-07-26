@@ -72,6 +72,7 @@ SCONS_OPTIONS += \
 	--use-system-zstd \
 	--use-sasl-client \
 	--ssl \
+	--runtime-hardening=off \
 	PREFIX=/usr \
 	RPATH="$(STAGING_DIR)/usr/lib" \
 	CPPPATH="$(STAGING_DIR)/usr/include" \
