@@ -31,7 +31,7 @@ define Package/lightnvr
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=fully OSS lightweight network video recorder system witten in C with modern js frontend
-	DEPENDS:=+libpthread +libstdcpp +cJSON +llhttp +libsqlite3 +ffmpeg +libuv +libmbedtls +libmosquittopp +libyaml +curl $(GO_ARCH_DEPENDS)
+	DEPENDS:=+libpthread +libstdcpp +cJSON +llhttp +sqlite3-cli +ffmpeg +libuv +libmbedtls +libmosquittopp +libyaml +curl $(GO_ARCH_DEPENDS)
 	URL:=https://github.com/opensensor/lightNVR
 endef
 
