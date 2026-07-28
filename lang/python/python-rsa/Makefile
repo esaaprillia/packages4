@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-rsa
-PKG_VERSION:=4.9
-PKG_RELEASE:=2
+PKG_VERSION:=4.9.1
+PKG_RELEASE:=1
 
 PYPI_NAME:=rsa
-PKG_HASH:=e38464a49c6c85d7f1351b0126661487a7e0a14a50f1675ec50eb34d4f20ef21
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Daniel Danzberger <daniel@dd-wrt.com>
 PKG_LICENSE:=Apache-2.0
