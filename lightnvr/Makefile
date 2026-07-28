@@ -50,6 +50,10 @@ TARGET_CPPFLAGS+=$(FPIC)
 CMAKE_OPTIONS += \
 	-DGIT_COMMIT=f59e26c5 -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
+define Package/lightnvr/conffiles
+/etc/lightnvr
+endef
+
 define Build/Compile
 	cd $(PKG_BUILD_DIR)/web; \
 	$(MAKE_VARS) \
