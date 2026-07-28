@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiobotocore
-PKG_VERSION:=2.25.1
+PKG_VERSION:=3.8.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiobotocore
