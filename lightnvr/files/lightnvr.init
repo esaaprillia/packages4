@@ -9,8 +9,6 @@ CONF=/etc/lightnvr/lightnvr.ini
 
 start_service() {
         mkdir -p /var/lib/lightnvr/data
-        mkdir -p /var/log/lightnvr
-        mkdir -p /var/run/lightnvr
         mkdir -p /var/lib/lightnvr/data/recordings
         mkdir -p /var/lib/lightnvr/data/models
         mkdir -p /var/lib/lightnvr/data/database
