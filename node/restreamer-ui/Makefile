@@ -22,7 +22,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-#PKG_BUILD_DEPENDS:=node/host node-yarn/host
+PKG_BUILD_DEPENDS:=node/host node-yarn/host
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
 
@@ -34,7 +34,7 @@ define Package/restreamer-ui
   CATEGORY:=Languages
   TITLE:=Restreamer-UI
   URL:=https://datarhei.com/
-  #DEPENDS:=+libpthread +libstdcpp +libx11
+  DEPENDS:=+libpthread +libstdcpp +libx11
 endef
 
 define Package/restreamer-ui/description
