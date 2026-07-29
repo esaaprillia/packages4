@@ -28,17 +28,13 @@ PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/restreamer-ui/extra_provides
-    echo "libX11.so";
-endef
-
 define Package/restreamer-ui
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Restreamer-UI
   URL:=https://datarhei.com/
-  DEPENDS:=+libpthread +libstdcpp
+  DEPENDS:=+libpthread +libstdcpp +libx11
 endef
 
 define Package/restreamer-ui/description
