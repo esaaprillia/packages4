@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-kiwisolver
-PKG_VERSION:=1.4.9
+PKG_VERSION:=1.5.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=kiwisolver
