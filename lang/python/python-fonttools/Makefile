@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-fonttools
-PKG_VERSION:=4.62.1
+PKG_VERSION:=4.63.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=fonttools
