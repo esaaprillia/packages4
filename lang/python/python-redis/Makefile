@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-redis
-PKG_VERSION:=8.0.1
+PKG_VERSION:=8.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=redis
