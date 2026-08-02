@@ -20,7 +20,7 @@ define Package/python3-home-assistant-intents
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Intents to be used with Home Assistant
-  URL:=https://developers.home-assistant.io/docs/voice/overview/
+  URL:=https://github.com/OHF-Voice/intents
   DEPENDS:=+python3
 endef
 
