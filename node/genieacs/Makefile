@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=genieacs
-PKG_NAME:=node-$(PKG_NPM_NAME)
+PKG_NAME:=$(PKG_NPM_NAME)
 PKG_VERSION:=1.2.16
 PKG_RELEASE:=1
 
@@ -19,7 +19,7 @@ PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/node-genieacs
+define Package/genieacs
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
@@ -28,7 +28,7 @@ define Package/node-genieacs
   DEPENDS:=
 endef
 
-define Package/node-genieacs/description
+define Package/genieacs/description
  GenieACS is a high performance Auto Configuration Server (ACS) for remote management of TR-069 enabled devices.
 endef
 
@@ -62,7 +62,7 @@ define Build/Compile
 	ls -l $(PKG_BUILD_DIR)/*
 endef
 
-define Package/node-genieacs/install
+define Package/genieacs/install
 	$(INSTALL_DIR) $(1)/opt/genieacs
 	$(CP) ./files/genieacs.env $(1)/opt/genieacs/genieacs.env
 	$(INSTALL_DIR) $(1)/etc/logrotate.d
@@ -87,10 +87,10 @@ define Package/node-genieacs/install
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
 
-define Package/node-genieacs/postrm
+define Package/genieacs/postrm
 #!/bin/sh
 rm /usr/lib/node_modules/genieacs || true
 rm -rf /usr/lib/node/genieacs || true
 endef
 
-$(eval $(call BuildPackage,node-genieacs))
+$(eval $(call BuildPackage,genieacs))
