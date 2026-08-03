@@ -58,6 +58,8 @@ endef
 define Package/node-genieacs/install
 	$(INSTALL_DIR) $(1)/opt/genieacs
 	$(CP) ./files/genieacs.env $(1)/opt/genieacs/genieacs.env
+	$(INSTALL_DIR) $(1)/etc/logrotate.d
+	$(CP) ./files/genieacs $(1)/etc/logrotate.d/genieacs
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/genieacs-cwmp.init $(1)/etc/init.d/genieacs-cwmp
 	$(INSTALL_BIN) ./files/genieacs-fs.init $(1)/etc/init.d/genieacs-fs
