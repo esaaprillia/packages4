@@ -1,18 +1,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=genieacs
-PKG_NAME:=$(PKG_NPM_NAME)
+PKG_NAME:=node-$(PKG_NPM_NAME)
 PKG_VERSION:=1.2.16
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://github.com/genieacs/genieacs/archive/v$(PKG_VERSION)
-#PKG_HASH:=skip
-
-PKG_SOURCE_URL:=https://github.com/genieacs/genieacs.git
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=38e9dfd0e6dcac51087d11040784fda76ad2460a
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
+PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=AGPL-3.0
@@ -24,7 +19,7 @@ PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/genieacs
+define Package/node-genieacs
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
@@ -33,7 +28,7 @@ define Package/genieacs
   DEPENDS:=
 endef
 
-define Package/genieacs/description
+define Package/node-genieacs/description
  GenieACS is a high performance Auto Configuration Server (ACS) for remote management of TR-069 enabled devices.
 endef
 
@@ -54,20 +49,13 @@ define Build/Compile
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
-	cd $(PKG_BUILD_DIR); \
-	$(MAKE_VARS) \
-	$(MAKE_FLAGS) \
-	npm_config_nodedir=$(STAGING_DIR)/usr/ \
-	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
-	ls -l $(PKG_BUILD_DIR)/*
 endef
 
-define Package/genieacs/install
+define Package/node-genieacs/install
 	$(INSTALL_DIR) $(1)/opt/genieacs
 	$(CP) ./files/genieacs.env $(1)/opt/genieacs/genieacs.env
 	$(INSTALL_DIR) $(1)/etc/logrotate.d
@@ -92,10 +80,10 @@ define Package/genieacs/install
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
 
-define Package/genieacs/postrm
+define Package/node-genieacs/postrm
 #!/bin/sh
 rm /usr/lib/node_modules/genieacs || true
 rm -rf /usr/lib/node/genieacs || true
 endef
 
-$(eval $(call BuildPackage,genieacs))
+$(eval $(call BuildPackage,node-genieacs))
