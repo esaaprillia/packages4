@@ -25,7 +25,7 @@ define Package/node-genieacs
   CATEGORY:=Languages
   TITLE:=A fast and lightweight TR-069 Auto Configuration Server (ACS)
   URL:=https://www.npmjs.com/package/genieacs
-  DEPENDS:=
+  DEPENDS:=+node +mongo
 endef
 
 define Package/node-genieacs/description
