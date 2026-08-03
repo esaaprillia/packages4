@@ -10,8 +10,8 @@ start_service() {
         mkdir -p /var/log/genieacs
         mkdir -p /etc/logrotate.d
         procd_open_instance
+        procd_set_param env GENIEACS_NBI_INTERFACE=0.0.0.0 GENIEACS_NBI_ACCESS_LOG_FILE=/var/log/genieacs/genieacs-nbi-access.log GENIEACS_DEBUG_FILE=/var/log/genieacs/genieacs-debug.yaml NODE_OPTIONS=--enable-source-maps GENIEACS_EXT_DIR=/opt/genieacs/ext
         procd_set_param command "/usr/bin/genieacs-nbi"
-        procd_set_param file "/opt/genieacs/genieacs.env"
         procd_set_param respawn
         procd_set_param stdout 1
         procd_set_param stderr 1
