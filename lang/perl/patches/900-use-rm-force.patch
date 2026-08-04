@@ -160,7 +160,7 @@
 -	rm -f *$(OBJ_EXT) *$(LIB_EXT) all perlmain.c $(mini_only_src) generate_uudmap$(EXE_EXT) $(generated_headers)
 +	$(RMS) *$(OBJ_EXT) *$(LIB_EXT) all perlmain.c $(mini_only_src) generate_uudmap$(EXE_EXT) $(generated_headers)
  	-rmdir .depending
- 	-rm *.depends makedepend_file
+ 	-rm *.depends
 -	-@test -f extra.pods && rm -f `cat extra.pods`
 -	-@test -f vms/README_vms.pod && rm -f vms/README_vms.pod
 -	-rm -f perl.exp ext.libs $(generated_pods) uni.data $(mini_only_objs) pod/roffitall
