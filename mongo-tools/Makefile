@@ -45,7 +45,7 @@ endef
 define Package/mongo-tools/install
 	#$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/bin/* $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,mongo-tools))
