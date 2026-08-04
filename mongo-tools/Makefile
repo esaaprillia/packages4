@@ -47,15 +47,9 @@ define Package/mongo-tools/description
 endef
 
 define Package/mongo-tools/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(GO_PKG)/bsondump/main/main $(1)/usr/bin/bsondump
-	$(INSTALL_BIN) $(GO_PKG)/mongoimport/main/main $(1)/usr/bin/mongoimport
-	$(INSTALL_BIN) $(GO_PKG)/mongoexport/main/main $(1)/usr/bin/mongoexport
-	$(INSTALL_BIN) $(GO_PKG)/mongodump/main/main $(1)/usr/bin/mongodump
-	$(INSTALL_BIN) $(GO_PKG)/mongorestore/main/main $(1)/usr/bin/mongorestore
-	$(INSTALL_BIN) $(GO_PKG)/mongostat/main/main $(1)/usr/bin/mongostat
-	$(INSTALL_BIN) $(GO_PKG)/mongofiles/main/main $(1)/usr/bin/mongofiles
-	$(INSTALL_BIN) $(GO_PKG)/mongotop/main/main $(1)/usr/bin/mongotop
+	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,mongo-tools))
