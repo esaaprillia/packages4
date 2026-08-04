@@ -23,6 +23,7 @@ GO_PKG_BUILD_PKG:= \
 	github.com/mongodb/mongo-tools/mongoimport/main/ \
 	github.com/mongodb/mongo-tools/mongoexport/main/ \
 	github.com/mongodb/mongo-tools/mongodump/main/ \
+	github.com/mongodb/mongo-tools/mongorestore/main/ \
 	github.com/mongodb/mongo-tools/mongostat/main/ \
 	github.com/mongodb/mongo-tools/mongofiles/main/ \
 	github.com/mongodb/mongo-tools/mongotop/main/
@@ -51,6 +52,7 @@ define Package/mongo-tools/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongoimport/main/main $(1)/usr/bin/mongoimport
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongoexport/main/main $(1)/usr/bin/mongoexport
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongodump/main/main $(1)/usr/bin/mongodump
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongorestore/main/main $(1)/usr/bin/mongorestore
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongostat/main/main $(1)/usr/bin/mongostat
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongofiles/main/main $(1)/usr/bin/mongofiles
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongotop/main/main $(1)/usr/bin/mongotop
