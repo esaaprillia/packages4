@@ -17,7 +17,18 @@ PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
 
-#GO_PKG:=github.com/mongodb/mongo-tools
+GO_PKG:=github.com/mongodb/mongo-tools
+GO_PKG_BUILD_PKG:= \
+	github.com/mongodb/mongo-tools/bsondump/main/ \
+	github.com/mongodb/mongo-tools/mongoimport/main/ \
+	github.com/mongodb/mongo-tools/mongoexport/main/ \
+	github.com/mongodb/mongo-tools/mongodump/main/ \
+	github.com/mongodb/mongo-tools/mongostat/main/ \
+	github.com/mongodb/mongo-tools/mongofiles/main/ \
+	github.com/mongodb/mongo-tools/mongotop/main/
+GO_PKG_LDFLAGS_X:= \
+	main.VersionStr=$(PKG_VERSION) \
+	main.GitCommit=0b142f65e139525881b6a343bc56d8d98e5a1f90
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
@@ -34,18 +45,10 @@ define Package/mongo-tools/description
   The MongoDB tools provide import, export, and diagnostic capabilities.
 endef
 
-define Build/Compile
-	cd $(PKG_BUILD_DIR); \
-	$(GO_GENERAL_BUILD_CONFIG_VARS) \
-	$(GO_PKG_BUILD_CONFIG_VARS) \
-	$(GO_PKG_VARS) \
-	go run build.go -v -ldflags="-X main.VersionStr=$(PKG_VERSION) -X main.GitCommit=0b142f65e139525881b6a343bc56d8d98e5a1f90" build
-endef
-
 define Package/mongo-tools/install
-	#$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,mongo-tools))
