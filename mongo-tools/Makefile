@@ -19,14 +19,14 @@ PKG_BUILD_FLAGS:=no-mips16
 
 GO_PKG:=github.com/mongodb/mongo-tools
 GO_PKG_BUILD_PKG:= \
-	github.com/mongodb/mongo-tools/bsondump/main/ \
-	github.com/mongodb/mongo-tools/mongoimport/main/ \
-	github.com/mongodb/mongo-tools/mongoexport/main/ \
-	github.com/mongodb/mongo-tools/mongodump/main/ \
-	github.com/mongodb/mongo-tools/mongorestore/main/ \
-	github.com/mongodb/mongo-tools/mongostat/main/ \
-	github.com/mongodb/mongo-tools/mongofiles/main/ \
-	github.com/mongodb/mongo-tools/mongotop/main/
+	github.com/mongodb/mongo-tools/bsondump/... \
+	github.com/mongodb/mongo-tools/mongoimport/... \
+	github.com/mongodb/mongo-tools/mongoexport/... \
+	github.com/mongodb/mongo-tools/mongodump/... \
+	github.com/mongodb/mongo-tools/mongorestore/... \
+	github.com/mongodb/mongo-tools/mongostat/... \
+	github.com/mongodb/mongo-tools/mongofiles/... \
+	github.com/mongodb/mongo-tools/mongotop/...
 GO_PKG_LDFLAGS_X:= \
 	main.VersionStr=$(PKG_VERSION) \
 	main.GitCommit=0b142f65e139525881b6a343bc56d8d98e5a1f90
