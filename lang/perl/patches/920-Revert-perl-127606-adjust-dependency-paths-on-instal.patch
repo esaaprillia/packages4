@@ -11,26 +11,25 @@ Signed-off-by: Georgi Valkov <gvalkov@gmail.com>
 
 --- a/Makefile.SH
 +++ b/Makefile.SH
-@@ -59,17 +59,8 @@ true)
- 	darwin*)
- 		shrpldflags="${ldflags} -dynamiclib \
+@@ -61,16 +61,8 @@ true)
                              -compatibility_version \
--				${api_revision}.${api_version}.${api_subversion} \
--			     -current_version \
+ 				${api_revision}.${api_version}.${api_subversion} \
+ 			     -current_version \
 -				${revision}.${patchlevel}.${subversion}"
 -		case "$osvers" in
 -	        1[5-9]*|[2-9]*)
--			shrpldflags="$shrpldflags -install_name `pwd -P`/\$@ -Xlinker -headerpad_max_install_names"
+-			shrpldflags="$shrpldflags -install_name `pwd`/\$@ -Xlinker -headerpad_max_install_names"
 -			exeldflags="-Xlinker -headerpad_max_install_names"
 -			;;
 -		*)
 -			shrpldflags="$shrpldflags -install_name \$(shrpdir)/\$@"
 -			;;
+-		esac
 +				${revision}.${patchlevel}.${subversion} \
 +			     -install_name \$(shrpdir)/\$@"
- 		esac
  		;;
  	cygwin*)
+ 		shrpldflags="$shrpldflags -Wl,--out-implib=libperl.dll.a"
 @@ -359,14 +351,6 @@ MANIFEST_SRT = MANIFEST.srt
  
  !GROK!THIS!
