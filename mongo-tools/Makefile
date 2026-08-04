@@ -90,9 +90,8 @@ define Build/Compile
 endef
 
 define Package/mongo-tools/install
-	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/build/* $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,mongo-tools))
