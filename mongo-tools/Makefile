@@ -48,14 +48,14 @@ endef
 
 define Package/mongo-tools/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/bsondump/main/main $(1)/usr/bin/bsondump
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongoimport/main/main $(1)/usr/bin/mongoimport
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongoexport/main/main $(1)/usr/bin/mongoexport
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongodump/main/main $(1)/usr/bin/mongodump
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongorestore/main/main $(1)/usr/bin/mongorestore
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongostat/main/main $(1)/usr/bin/mongostat
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongofiles/main/main $(1)/usr/bin/mongofiles
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/mongotop/main/main $(1)/usr/bin/mongotop
+	$(INSTALL_BIN) $(GO_PKG)/bsondump/main/main $(1)/usr/bin/bsondump
+	$(INSTALL_BIN) $(GO_PKG)/mongoimport/main/main $(1)/usr/bin/mongoimport
+	$(INSTALL_BIN) $(GO_PKG)/mongoexport/main/main $(1)/usr/bin/mongoexport
+	$(INSTALL_BIN) $(GO_PKG)/mongodump/main/main $(1)/usr/bin/mongodump
+	$(INSTALL_BIN) $(GO_PKG)/mongorestore/main/main $(1)/usr/bin/mongorestore
+	$(INSTALL_BIN) $(GO_PKG)/mongostat/main/main $(1)/usr/bin/mongostat
+	$(INSTALL_BIN) $(GO_PKG)/mongofiles/main/main $(1)/usr/bin/mongofiles
+	$(INSTALL_BIN) $(GO_PKG)/mongotop/main/main $(1)/usr/bin/mongotop
 endef
 
 $(eval $(call BuildPackage,mongo-tools))
