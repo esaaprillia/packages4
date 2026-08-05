@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=mongosh
-PKG_NAME:=node-$(PKG_NPM_NAME)
+PKG_NAME:=$(PKG_NPM_NAME)
 PKG_VERSION:=2.9.2
 PKG_RELEASE:=1
 
@@ -19,7 +19,7 @@ PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/node-mongosh
+define Package/mongosh
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
@@ -28,7 +28,7 @@ define Package/node-mongosh
   DEPENDS:=
 endef
 
-define Package/node-mongosh/description
+define Package/mongosh/description
  This repository is a monorepo for all the various components in the MongoDB Shell across all environments (REPL, Browser, Compass, etc).
 endef
 
@@ -55,7 +55,7 @@ define Build/Compile
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 endef
 
-define Package/node-mongosh/install
+define Package/mongosh/install
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
 	$(CP) $(PKG_BUILD_DIR)/{LICENSE,package.json,README.md} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
@@ -67,10 +67,10 @@ define Package/node-mongosh/install
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
 
-define Package/node-mongosh/postrm
+define Package/mongosh/postrm
 #!/bin/sh
 rm /usr/lib/node_modules/mongosh || true
 rm -rf /usr/lib/node/mongosh || true
 endef
 
-$(eval $(call BuildPackage,node-mongosh))
+$(eval $(call BuildPackage,mongosh))
