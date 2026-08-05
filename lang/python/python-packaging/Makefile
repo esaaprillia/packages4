@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-packaging
-PKG_VERSION:=26.2
+PKG_VERSION:=26.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=packaging
