@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=genieacs
-PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=1.2.13
+PKG_NAME:=$(PKG_NPM_NAME)
+PKG_VERSION:=1.2.16
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -19,7 +19,7 @@ PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/node-genieacs
+define Package/genieacs
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
@@ -28,7 +28,7 @@ define Package/node-genieacs
   DEPENDS:=
 endef
 
-define Package/node-genieacs/description
+define Package/genieacs/description
  GenieACS is a high performance Auto Configuration Server (ACS) for remote management of TR-069 enabled devices.
 endef
 
@@ -49,13 +49,15 @@ define Build/Compile
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --no-save --omit=dev --no-package-lock --build-from-source --target_arch=$(NODEJS_CPU)
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 endef
 
-define Package/node-genieacs/install
+define Package/genieacs/install
+	$(INSTALL_DIR) $(1)/opt/genieacs
+	$(CP) ./files/genieacs.env $(1)/opt/genieacs/genieacs.env
 	$(INSTALL_DIR) $(1)/etc/logrotate.d
 	$(CP) ./files/genieacs $(1)/etc/logrotate.d/genieacs
 	$(INSTALL_DIR) $(1)/etc/init.d
@@ -78,10 +80,10 @@ define Package/node-genieacs/install
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
 
-define Package/node-genieacs/postrm
+define Package/genieacs/postrm
 #!/bin/sh
 rm /usr/lib/node_modules/genieacs || true
 rm -rf /usr/lib/node/genieacs || true
 endef
 
-$(eval $(call BuildPackage,node-genieacs))
+$(eval $(call BuildPackage,genieacs))
