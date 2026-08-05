@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-typing-extensions
-PKG_VERSION:=4.15.0
+PKG_VERSION:=4.16.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=typing-extensions
