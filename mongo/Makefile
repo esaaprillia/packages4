@@ -23,6 +23,7 @@ PKG_BUILD_DEPENDS:= \
 	python-cheetah3/host \
 	python-packaging/host \
 	python-regex/host \
+	python-requirements-parser/host \
 	python-legacy-cgi/host
 
 include $(INCLUDE_DIR)/package.mk
