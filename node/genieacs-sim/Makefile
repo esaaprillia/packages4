@@ -25,7 +25,7 @@ define Package/genieacs-sim
   CATEGORY:=Languages
   TITLE:=TR-069 client simulator for GenieACS
   URL:=https://www.npmjs.com/package/genieacs-sim
-  DEPENDS:=
+  DEPENDS:=+node
 endef
 
 define Package/genieacs-sim/description
