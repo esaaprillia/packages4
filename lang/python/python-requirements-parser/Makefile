@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-requirements-parser
-PKG_VERSION:=0.13.0
+PKG_VERSION:=0.13.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=requirements_parser
