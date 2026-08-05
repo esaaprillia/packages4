@@ -42,7 +42,7 @@ endef
 define Package/core/install
 	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/core $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/{core,import,ffmigrate} $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/restreamer.init $(1)/etc/init.d/restreamer
 	$(INSTALL_DIR) $(1)/var/lib/restreamer
