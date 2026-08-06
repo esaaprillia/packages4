@@ -11,8 +11,7 @@ start_service() {
         mkdir -p /var/lib/mongodb
         mkdir -p /var/log/mongodb
         procd_open_instance
-        procd_set_param env MONGODB_CONFIG_OVERRIDE_NOFORK=1
-        procd_set_param env GLIBC_TUNABLES=glibc.pthread.rseq=0
+        procd_set_param env MONGODB_CONFIG_OVERRIDE_NOFORK=1 GLIBC_TUNABLES=glibc.pthread.rseq=0
         procd_set_param command "$PROG" --config "$CONF"
         procd_set_param limits fsize="unlimited unlimited"
         procd_set_param limits cpu="unlimited unlimited"
