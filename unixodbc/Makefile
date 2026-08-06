@@ -58,7 +58,7 @@ $(call Package/unixodbc/Default)
   TITLE+= Driver Manager library
   SECTION:=libs
   CATEGORY:=Libraries
-  DEPENDS:=+libltdl +libpthread
+  DEPENDS:=+USE_GLIBC:libcrypt-compat +libltdl +libpthread
   ABI_VERSION:=2
 endef
 
