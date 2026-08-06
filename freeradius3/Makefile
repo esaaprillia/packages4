@@ -63,7 +63,7 @@ endef
 define Package/freeradius3-common
   $(call Package/freeradius3/Default)
   TITLE:=common files
-  DEPENDS:=+USE_GLIBC:libpthread +USE_GLIBC:libbsd +FREERADIUS3_OPENSSL:libopenssl +libcap +libpcap +libncurses +libreadline +libtalloc +libatomic
+  DEPENDS:=+USE_GLIBC:libpthread +USE_GLIBC:libbsd +FREERADIUS3_OPENSSL:libopenssl +FREERADIUS3_OPENSSL:libopenssl-legacy +libcap +libpcap +libncurses +libreadline +libtalloc +libatomic
 endef
 
 define Package/freeradius3-default
@@ -590,6 +590,16 @@ define Package/freeradius3-mod-sql-map/conffiles
 /etc/freeradius3/mods-available/sql_map
 endef
 
+define Package/freeradius3-mod-sql-mongo
+  $(call Package/freeradius3/Default)
+  DEPENDS:=freeradius3-mod-sql +mongo-c-driver
+  TITLE:=Radius MongoDB back-end drivers
+endef
+
+define Package/freeradius3-mod-sql-mongo/conffiles
+/etc/freeradius3/mods-config/sql/main/mongo
+endef
+
 define Package/freeradius3-mod-sql-mysql
   $(call Package/freeradius3/Default)
   DEPENDS:=freeradius3-mod-sql +libmysqlclient
@@ -650,9 +660,6 @@ define Package/freeradius3-mod-sqlippool
 endef
 
 define Package/freeradius3-mod-sqlippool/conffiles
-/etc/freeradius3/mods-config/sql/ippool
-/etc/freeradius3/mods-config/sql/ippool-dhcp
-/etc/freeradius3/mods-available/dhcp_sqlippool
 /etc/freeradius3/mods-available/sqlippool
 endef
 
@@ -928,6 +935,17 @@ else
   CONFIGURE_ARGS+= --without-rlm_sql
 endif
 
+ifneq ($(SDK)$(CONFIG_PACKAGE_freeradius3-mod-sql-mongo),)
+  CONFIGURE_ARGS+= \
+		--with-rlm_sql_mongo \
+		--with-mongoc-include-dir="$(STAGING_DIR)/usr/include/libmongoc-1.0" \
+		--with-mongoc-lib-dir="$(STAGING_DIR)/usr/lib" \
+		--with-bson-include-dir="$(STAGING_DIR)/usr/include/libbson-1.0" \
+		--with-bson-lib-dir="$(STAGING_DIR)/usr/lib"
+else
+  CONFIGURE_ARGS+= --without-rlm_sql_mongo
+endif
+
 ifneq ($(SDK)$(CONFIG_PACKAGE_freeradius3-mod-sql-mysql),)
   CONFIGURE_ARGS+= \
 		--with-rlm_sql_mysql \
@@ -1148,6 +1166,7 @@ $(eval $(call BuildPlugin,freeradius3-mod-soh,rlm_soh,))
 $(eval $(call BuildPlugin,freeradius3-mod-sometimes,rlm_sometimes,))
 $(eval $(call BuildPlugin,freeradius3-mod-sql,rlm_sql,))
 $(eval $(call BuildPlugin,freeradius3-mod-sql-map,rlm_sql_map,))
+$(eval $(call BuildPlugin,freeradius3-mod-sql-mongo,rlm_sql_mongo,))
 $(eval $(call BuildPlugin,freeradius3-mod-sql-mysql,rlm_sql_mysql,))
 $(eval $(call BuildPlugin,freeradius3-mod-sql-null,rlm_sql_null,))
 $(eval $(call BuildPlugin,freeradius3-mod-sql-postgresql,rlm_sql_postgresql,))
