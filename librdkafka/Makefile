@@ -14,6 +14,8 @@ PKG_LICENSE_FILES:=LICENSES LICENSES.txt
 
 CMAKE_BINARY_SUBDIR:=build
 
+PKG_BUILD_DEPENDS:=rapidjson
+
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
