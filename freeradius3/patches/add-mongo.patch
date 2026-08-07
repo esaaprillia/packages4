@@ -1,0 +1,18 @@
+From 52d1a4be76d4a63f1bb03370333b8511dc8b474b Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 7 Aug 2026 14:43:43 +0800
+Subject: [PATCH] Update stable
+
+---
+ src/modules/rlm_sql/stable | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/modules/rlm_sql/stable b/src/modules/rlm_sql/stable
+index 7d23dd2da333..a59c762b056b 100644
+--- a/src/modules/rlm_sql/stable
++++ b/src/modules/rlm_sql/stable
+@@ -5,3 +5,4 @@ rlm_sql_oracle
+ rlm_sql_unixodbc
+ rlm_sql_sqlite
+ rlm_sql_freetds
++rlm_sql_mongo
