@@ -33,7 +33,7 @@ define Package/moonfire-nvr/description
 endef
 
 CARGO_PKG_CONFIG_VARS += RUSTFLAGS="--cfg tokio_unstable" VERSION=$(PKG_VERSION)
-RUSTFLAGS +="--cfg tokio_unstable"
+RUSTFLAGS +="--cfg tokio_unstable" VERSION=$(PKG_VERSION)
 
 define Build/Compile
   cd $(PKG_BUILD_DIR)/server && \
