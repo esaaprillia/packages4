@@ -15,7 +15,7 @@ index 1e5d43212283..411f41c65a73 100644
  #include <pwd.h>
  #include <grp.h>
  #include <ctype.h>
-+#include <unistd.h>
++#include <bsd/unistd.h>
  
  typedef struct fr_command_table_t fr_command_table_t;
  
