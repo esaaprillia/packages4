@@ -51,6 +51,7 @@ define Build/Compile
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
+	ls -l $(PKG_BUILD_DIR)/ui/dist/*
 	cd $(PKG_BUILD_DIR)/server && \
 	$(CARGO_PKG_CONFIG_VARS) \
 	$(CARGO) install -v --features=bundled-ui \
