@@ -1,0 +1,21 @@
+From 1f87c86d3888d63389f3a4fcd23166b6b709cf2a Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 7 Aug 2026 11:57:38 +0800
+Subject: [PATCH] Update command.c
+
+---
+ src/main/command.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/main/command.c b/src/main/command.c
+index 1e5d43212283..411f41c65a73 100644
+--- a/src/main/command.c
++++ b/src/main/command.c
+@@ -42,6 +42,7 @@
+ #include <pwd.h>
+ #include <grp.h>
+ #include <ctype.h>
++#include <unistd.h>
+ 
+ typedef struct fr_command_table_t fr_command_table_t;
+ 
