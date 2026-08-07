@@ -12,7 +12,7 @@ PKG_MAINTAINER:=example <example@gmail.com>
 PKG_LICENSE:=GPLv3
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=rustup/host
+PKG_BUILD_DEPENDS:=rustup/host node/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
@@ -36,13 +36,21 @@ CARGO_PKG_CONFIG_VARS += RUSTFLAGS="--cfg tokio_unstable" VERSION=$(PKG_VERSION)
 RUSTFLAGS +="--cfg tokio_unstable" VERSION=$(PKG_VERSION)
 
 define Build/Compile
-  cd $(PKG_BUILD_DIR)/server && \
-  $(CARGO_PKG_CONFIG_VARS) \
-  $(CARGO) install -v \
-  $(CARGO_PKG_CONFIG_ARGS) \
-  --target "$(RUSTUP_TARGET_ARCH)" \
-  --root "$(PKG_INSTALL_DIR)" \
-  --path "$(PKG_BUILD_DIR)/server/$(MAKE_PATH)"
+	cd $(PKG_BUILD_DIR)/ui; \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	pnpm install
+	cd $(PKG_BUILD_DIR)/ui; \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	pnpm run build
+	cd $(PKG_BUILD_DIR)/server && \
+	$(CARGO_PKG_CONFIG_VARS) \
+	$(CARGO) install -v --features=bundled-ui \
+	$(CARGO_PKG_CONFIG_ARGS) \
+	--target "$(RUSTUP_TARGET_ARCH)" \
+	--root "$(PKG_INSTALL_DIR)" \
+	--path "$(PKG_BUILD_DIR)/server/$(MAKE_PATH)"
 endef
 
 define Package/moonfire-nvr/install
