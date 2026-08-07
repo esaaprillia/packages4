@@ -36,16 +36,13 @@ CARGO_PKG_CONFIG_VARS += RUSTFLAGS="--cfg tokio_unstable"
 RUSTFLAGS +="--cfg tokio_unstable"
 
 define Build/Compile
-	cd $(PKG_BUILD_DIR)/server/db && \
-	$(CARGO_PKG_CONFIG_VARS) \
-	$(CARGO) install -v $(CARGO_PKG_CONFIG_ARGS)
-	cd $(PKG_BUILD_DIR)/server && \
-	$(CARGO_PKG_CONFIG_VARS) \
-	$(CARGO) install -v \
-	$(CARGO_PKG_CONFIG_ARGS) \
-	--target "$(RUSTUP_TARGET_ARCH)" \
-	--root "$(PKG_INSTALL_DIR)" \
-	--path "$(PKG_BUILD_DIR)/server/$(MAKE_PATH)"
+  cd $(PKG_BUILD_DIR)/server && \
+  $(CARGO_PKG_CONFIG_VARS) \
+  $(CARGO) install -v \
+  $(CARGO_PKG_CONFIG_ARGS) \
+  --target "$(RUSTUP_TARGET_ARCH)" \
+  --root "$(PKG_INSTALL_DIR)" \
+  --path "$(PKG_BUILD_DIR)/server/$(MAKE_PATH)"
 endef
 
 define Package/moonfire-nvr/install
