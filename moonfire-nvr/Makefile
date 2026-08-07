@@ -32,8 +32,8 @@ define Package/moonfire-nvr/description
   Moonfire NVR is an open-source security camera network video recorder, started by Scott Lamb <slamb@slamb.org>.
 endef
 
-CARGO_PKG_CONFIG_VARS += RUSTFLAGS="--cfg tokio_unstable" VERSION=$(PKG_VERSION) UI_BUILD_DIR=$(PKG_BUILD_DIR)/ui/dist
-RUSTFLAGS +="--cfg tokio_unstable" VERSION=$(PKG_VERSION) UI_BUILD_DIR=$(PKG_BUILD_DIR)/ui/dist
+CARGO_PKG_CONFIG_VARS += RUSTFLAGS="--cfg tokio_unstable" VERSION=$(PKG_VERSION) UI_BUILD_DIR=../ui/dist
+RUSTFLAGS +="--cfg tokio_unstable" VERSION=$(PKG_VERSION) UI_BUILD_DIR=../ui/dist
 
 define Build/Compile
 	cd $(PKG_BUILD_DIR)/ui; \
@@ -64,6 +64,8 @@ endef
 define Package/moonfire-nvr/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/moonfire-nvr $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/var/lib/moonfire-nvr/ui
+	$(CP) $(PKG_BUILD_DIR)/ui/dist/* $(1)/var/lib/moonfire-nvr/ui/
 endef
 
 $(eval $(call BuildPackage,moonfire-nvr))
