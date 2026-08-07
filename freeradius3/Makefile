@@ -367,6 +367,16 @@ define Package/freeradius3-mod-json/conffiles
 /etc/freeradius3/mods-available/json
 endef
 
+define Package/freeradius3-mod-kafka
+  $(call Package/freeradius3/Default)
+  DEPENDS:=freeradius3 +librdkafka
+  TITLE:=kafka module
+endef
+
+define Package/freeradius3-mod-kafka/conffiles
+/etc/freeradius3/mods-available/kafka
+endef
+
 define Package/freeradius3-mod-krb5
   $(call Package/freeradius3/Default)
   DEPENDS:=freeradius3 +krb5-libs
@@ -473,6 +483,16 @@ define Package/freeradius3-mod-preprocess/conffiles
 /etc/freeradius3/mods-config/preprocess/huntgroups
 /etc/freeradius3/mods-available/preprocess
 /etc/freeradius3/mods-enabled/preprocess
+endef
+
+define Package/freeradius3-mod-proxy-rate-limit
+  $(call Package/freeradius3/Default)
+  DEPENDS:=freeradius3
+  TITLE:=proxy-rate-limit module
+endef
+
+define Package/freeradius3-mod-proxy-rate-limit/conffiles
+/etc/freeradius3/mods-available/proxy_rate_limit
 endef
 
 define Package/freeradius3-mod-python3
@@ -862,6 +882,14 @@ else
   CONFIGURE_ARGS+= --without-rlm_json
 endif
 
+ifneq ($(SDK)$(CONFIG_PACKAGE_freeradius3-mod-kafka),)
+  CONFIGURE_ARGS+= --with-rlm_kafka \
+		--with-rlm_kafka-include-dir="$(STAGING_DIR)/usr/include" \
+		--with-rlm_kafka-lib-dir="$(STAGING_DIR)/usr/lib"
+else
+  CONFIGURE_ARGS+= --without-rlm_kafka
+endif
+
 ifneq ($(SDK)$(CONFIG_PACKAGE_freeradius3-mod-krb5),)
   CONFIGURE_ARGS+= \
 		--with-rlm_krb5 \
@@ -1145,6 +1173,7 @@ $(eval $(call BuildPlugin,freeradius3-mod-expr,rlm_expr,))
 $(eval $(call BuildPlugin,freeradius3-mod-files,rlm_files,))
 $(eval $(call BuildPlugin,freeradius3-mod-ippool,rlm_ippool,))
 $(eval $(call BuildPlugin,freeradius3-mod-json,rlm_json,))
+$(eval $(call BuildPlugin,freeradius3-mod-kafka,rlm_kafka,))
 $(eval $(call BuildPlugin,freeradius3-mod-krb5,rlm_krb5,))
 $(eval $(call BuildPlugin,freeradius3-mod-ldap,rlm_ldap,))
 $(eval $(call BuildPlugin,freeradius3-mod-linelog,rlm_linelog,))
@@ -1155,6 +1184,7 @@ $(eval $(call BuildPlugin,freeradius3-mod-pap,rlm_pap,))
 $(eval $(call BuildPlugin,freeradius3-mod-passwd,rlm_passwd,))
 $(eval $(call BuildPlugin,freeradius3-mod-perl,rlm_perl,))
 $(eval $(call BuildPlugin,freeradius3-mod-preprocess,rlm_preprocess,))
+$(eval $(call BuildPlugin,freeradius3-mod-proxy-rate-limit,rlm_proxy_rate_limit,))
 $(eval $(call BuildPlugin,freeradius3-mod-python3,rlm_python3,))
 $(eval $(call BuildPlugin,freeradius3-mod-radutmp,rlm_radutmp,))
 $(eval $(call BuildPlugin,freeradius3-mod-realm,rlm_realm,))
