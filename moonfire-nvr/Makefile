@@ -39,7 +39,7 @@ define Build/Compile
 	cd $(PKG_BUILD_DIR)/ui; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
-	pnpm install
+	pnpm install approve-builds
 	cd $(PKG_BUILD_DIR)/ui; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
