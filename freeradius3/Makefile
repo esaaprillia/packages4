@@ -1040,7 +1040,7 @@ else
 endif
 
 ifeq ($(CONFIG_USE_GLIBC),y)
-  TARGET_CFLAGS+= -DLIBBSD_OVERLAY -I$(STAGING_DIR)/usr/include/bsd \
+  TARGET_CFLAGS+= -isystem -I$(STAGING_DIR)/usr/include/bsd -DLIBBSD_OVERLAY \
 	-D_RPC_NETDB_H
 	#^^^^^^^^^^^^^ avoid inclusion of librpc's netdb.h
   CONFIGURE_LIBS+= -Wl,--push-state,--as-needed -lbsd -Wl,--pop-state
