@@ -39,7 +39,7 @@ define Build/Compile
 	cd $(PKG_BUILD_DIR)/ui; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
-	pnpm install approve-builds
+	pnpm i --frozen-lockfile
 	cd $(PKG_BUILD_DIR)/ui; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
