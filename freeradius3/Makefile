@@ -374,7 +374,7 @@ define Package/freeradius3-mod-kafka
 endef
 
 define Package/freeradius3-mod-kafka/conffiles
-/etc/freeradius3/mods-available/kafka
+/etc/freeradius3/mods-config/kafka
 endef
 
 define Package/freeradius3-mod-krb5
