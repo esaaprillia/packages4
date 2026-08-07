@@ -39,11 +39,18 @@ define Build/Compile
 	cd $(PKG_BUILD_DIR)/ui; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
-	pnpm i --frozen-lockfile
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
 	cd $(PKG_BUILD_DIR)/ui; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
-	pnpm run build
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
+	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
+	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
+	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 	cd $(PKG_BUILD_DIR)/server && \
 	$(CARGO_PKG_CONFIG_VARS) \
 	$(CARGO) install -v --features=bundled-ui \
