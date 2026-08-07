@@ -35,7 +35,7 @@ endef
 RUSTFLAGS += "--cfg tokio_unstable"
 
 define Build/Compile
-  cd $(PKG_BUILD_DIR)/db && \
+  cd $(PKG_BUILD_DIR)/server/db && \
   $(CARGO_PKG_CONFIG_VARS) \
   $(CARGO) install -v \
   $(CARGO_PKG_CONFIG_ARGS)
