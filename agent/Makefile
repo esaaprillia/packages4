@@ -44,23 +44,25 @@ define Build/Compile
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
 	PUBLIC_URL="./" yarn run build
-	cd $(PKG_BUILD_DIR); \
+	cd $(PKG_BUILD_DIR)/machinery; \
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
-	go build -v -tags "timetzdata,netgo,osusergo" --ldflags "-s -w -X github.com/kerberos-io/agent/machinery/src/utils.VERSION=$(PKG_VERSION)" -o build/main ./machinery
+	go build -v -tags "timetzdata,netgo,osusergo" --ldflags "-s -w -X github.com/kerberos-io/agent/machinery/src/utils.VERSION=$(PKG_VERSION)" main.go
+	ls -l $(PKG_BUILD_DIR)/machinery/*
+	ls -l $(PKG_BUILD_DIR)/ui/*
 endef
 
 define Package/agent/install
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/build/* $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/main $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/agent
 	$(CP) ./files/version $(1)/agent/version
 	$(INSTALL_DIR) $(1)/agent/data
 	$(CP) $(PKG_BUILD_DIR)/machinery/data/* $(1)/agent/data/
 	$(CP) $(PKG_BUILD_DIR)/machinery/data/config/config.json $(1)/agent/data/config.template.json
 	$(INSTALL_DIR) $(1)/agent/www
-	$(CP) $(PKG_BUILD_DIR)/ui/dist/* $(1)/agent/www/
+	$(CP) $(PKG_BUILD_DIR)/machinery/www/* $(1)/agent/www/
 endef
 
 $(eval $(call BuildPackage,agent))
