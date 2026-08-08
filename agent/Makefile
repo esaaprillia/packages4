@@ -27,7 +27,7 @@ define Package/agent
   SECTION:=net
   CATEGORY:=Network
   TITLE:=Kerberos Agent
-  DEPENDS:=$(GO_ARCH_DEPENDS)
+  DEPENDS:=$(GO_ARCH_DEPENDS) +ffmpeg
   URL:=https://github.com/kerberos-io/agent
 endef
 
