@@ -48,6 +48,11 @@ define Build/Compile
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
+	go mod download
+	cd $(PKG_BUILD_DIR)/machinery; \
+	$(GO_GENERAL_BUILD_CONFIG_VARS) \
+	$(GO_PKG_BUILD_CONFIG_VARS) \
+	$(GO_PKG_VARS) \
 	go build -v -tags "timetzdata,netgo,osusergo" --ldflags "-s -w -X github.com/kerberos-io/agent/machinery/src/utils.VERSION=$(PKG_VERSION)" main.go
 	ls -l $(PKG_BUILD_DIR)/machinery/*
 	ls -l $(PKG_BUILD_DIR)/ui/*
