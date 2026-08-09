@@ -27,7 +27,7 @@ define Package/agent
   SECTION:=net
   CATEGORY:=Network
   TITLE:=Kerberos Agent
-  DEPENDS:=$(GO_ARCH_DEPENDS)
+  DEPENDS:=$(GO_ARCH_DEPENDS) +ffmpeg
   URL:=https://github.com/kerberos-io/agent
 endef
 
@@ -53,7 +53,7 @@ define Build/Compile
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
-	go build -v -tags "timetzdata,netgo,osusergo" --ldflags "-s -w -X github.com/kerberos-io/agent/machinery/src/utils.VERSION=$(PKG_VERSION)" main.go
+	go build -v -tags "timetzdata,netgo,osusergo" --ldflags "-s -w -X github.com/kerberos-io/agent/machinery/src/utils.VERSION=$(PKG_VERSION) -checklinkname=0" main.go
 	ls -l $(PKG_BUILD_DIR)/machinery/*
 	ls -l $(PKG_BUILD_DIR)/ui/*
 endef
