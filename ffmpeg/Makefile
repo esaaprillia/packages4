@@ -5,7 +5,7 @@ PKG_VERSION:=8.1.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://ffmpeg.org/releases/
+PKG_SOURCE_URL:=https://github.com/esaaprillia/packages/releases/download/ffmpeg/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
