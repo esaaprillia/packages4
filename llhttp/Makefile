@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=llhttp
-PKG_VERSION:=9.4.2
+PKG_VERSION:=9.4.3
 PKG_RELEASE:=1
 
 PKG_SOURCE:=llhttp-release-v$(PKG_VERSION).tar.gz
