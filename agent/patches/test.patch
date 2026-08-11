@@ -1,6 +1,6 @@
-From ba78c8f640d0289d1d81510944c6d7eb893659fc Mon Sep 17 00:00:00 2001
+From fc056115bf9978dc8599a5c91530ba95016dd1fe Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Sun, 9 Aug 2026 18:45:05 +0800
+Date: Tue, 11 Aug 2026 11:49:00 +0800
 Subject: [PATCH] Replace avcodec_close with avcodec_free_context
 
 ---
@@ -8,10 +8,10 @@ Subject: [PATCH] Replace avcodec_close with avcodec_free_context
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/machinery/src/capture/gortsplib.go b/machinery/src/capture/gortsplib.go
-index ac57838e..511349e8 100644
+index 956bf3dc..d767a884 100644
 --- a/machinery/src/capture/gortsplib.go
 +++ b/machinery/src/capture/gortsplib.go
-@@ -1353,13 +1353,13 @@ func newDecoder(codecName string) (*Decoder, error) {
+@@ -1359,13 +1359,13 @@ func newDecoder(codecName string) (*Decoder, error) {
  
  	res := C.avcodec_open2(codecCtx, codec, nil)
  	if res < 0 {
@@ -27,7 +27,7 @@ index ac57838e..511349e8 100644
  		return nil, fmt.Errorf("av_frame_alloc() failed")
  	}
  
-@@ -1375,7 +1375,7 @@ func (d *Decoder) Close() {
+@@ -1381,7 +1381,7 @@ func (d *Decoder) Close() {
  		C.av_frame_free(&d.srcFrame)
  	}
  	C.av_frame_free(&d.srcFrame)
