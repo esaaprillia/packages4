@@ -5,7 +5,7 @@ START=80
 STOP=10
 
 PROG=/usr/bin/main
-CONF=
+CONF=/agent
 
 start_service() {
         mkdir -p /agent/data/cloud
@@ -15,7 +15,7 @@ start_service() {
         mkdir -p /agent/data/capture-test
         mkdir -p /agent/data/config
         procd_open_instance
-        procd_set_param command "$PROG" -action=run -port=7575
+        procd_set_param command "$PROG" -config="$CONF" -action=run -port=7575
         procd_set_param respawn
         procd_set_param stdout 1
         procd_set_param stderr 1
