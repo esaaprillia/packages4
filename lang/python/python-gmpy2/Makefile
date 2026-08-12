@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-gmpy2
-PKG_VERSION:=2.3.0
+PKG_VERSION:=2.3.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=gmpy2
