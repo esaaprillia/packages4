@@ -64,7 +64,7 @@ TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
 TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
-TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable -Wno-error=unused-result
 
 CMAKE_OPTIONS += \
 	-DONNX_BUILD_PYTHON=ON \
