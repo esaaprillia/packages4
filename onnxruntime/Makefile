@@ -64,7 +64,7 @@ CMAKE_OPTIONS += \
 	-Donnxruntime_BUILD_UNIT_TESTS=OFF \
 	-Donnxruntime_ENABLE_PYTHON=ON \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
-	-DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+	-DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
