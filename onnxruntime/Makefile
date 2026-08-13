@@ -58,7 +58,13 @@ define Package/python3-onnxruntime/description
 	ONNX Runtime is a performance-focused scoring engine for Open Neural Network Exchange (ONNX) models.
 endef
 
-TARGET_CXXFLAGS +=-Wno-error=unused-variable
+TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
+TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
+TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
+
+TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable
 
 CMAKE_OPTIONS += \
 	-DONNX_BUILD_PYTHON=ON \
