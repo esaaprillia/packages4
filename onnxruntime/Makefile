@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 CMAKE_BINARY_SUBDIR := build
 CMAKE_SOURCE_SUBDIR:= cmake
 
-PKG_BUILD_DEPENDS:=nlohmannjson icu flatbuffers/host googletest/host protobuf/host python-pybind11/host numpy/host
+PKG_BUILD_DEPENDS:=nlohmannjson icu googletest/host protobuf/host python-pybind11 numpy/host
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
@@ -27,8 +27,8 @@ PYTHON3_PKG_SETUP_DIR:= build
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(RM) $(STAGING_DIR)/usr/bin/flatc*
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc* $(STAGING_DIR)/usr/bin/
+	#$(RM) $(STAGING_DIR)/usr/bin/flatc*
+	#$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc* $(STAGING_DIR)/usr/bin/
 	$(RM) $(STAGING_DIR)/usr/bin/protoc*
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 endef
@@ -64,9 +64,7 @@ CMAKE_OPTIONS += \
 	-Donnxruntime_BUILD_UNIT_TESTS=OFF \
 	-Donnxruntime_ENABLE_PYTHON=ON \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
-	-DPython_NumPy_INCLUDE_DIRS="$(HOST_PYTHON3_PKG_DIR)/numpy/_core/include" \
-	-DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-Dpybind11_DIR="$(HOST_PYTHON3_PKG_DIR)/pybind11/share/cmake/pybind11"
+	-DONNX_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
