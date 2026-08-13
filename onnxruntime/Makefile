@@ -23,7 +23,7 @@ include $(INCLUDE_DIR)/nls.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
-PYTHON3_PKG_SETUP_DIR:= build
+#PYTHON3_PKG_SETUP_DIR:= build
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
