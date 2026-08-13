@@ -26,7 +26,7 @@ define Package/python3-flatbuffers
   CATEGORY:=Languages
   TITLE:=The FlatBuffers serialization format for Python
   URL:=https://google.github.io/flatbuffers/
-  DEPENDS:=+python3 +flatbuffers
+  DEPENDS:=+python3
 endef
 
 define Package/python3-flatbuffers/description
