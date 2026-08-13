@@ -59,11 +59,11 @@ define Package/python3-onnxruntime/description
 endef
 
 CMAKE_OPTIONS += \
-	-DONNX_BUILD_PYTHON=ON -DCMAKE_CXX_STANDARD=20 \
+	-DONNX_BUILD_PYTHON=ON \
 	-Donnxruntime_BUILD_SHARED_LIB=ON \
 	-Donnxruntime_BUILD_UNIT_TESTS=OFF \
 	-Donnxruntime_ENABLE_PYTHON=ON \
-	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
+	-DCMAKE_CXX_STANDARD=20 \
 	-DONNX_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc"
 
 define Build/InstallDev
