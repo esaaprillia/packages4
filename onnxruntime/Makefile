@@ -59,7 +59,7 @@ define Package/python3-onnxruntime/description
 endef
 
 CMAKE_OPTIONS += \
-	-DONNX_BUILD_PYTHON=ON \
+	-DONNX_BUILD_PYTHON=ON -DCMAKE_CXX_STANDARD=20 \
 	-Donnxruntime_BUILD_SHARED_LIB=ON \
 	-Donnxruntime_BUILD_UNIT_TESTS=OFF \
 	-Donnxruntime_ENABLE_PYTHON=ON \
