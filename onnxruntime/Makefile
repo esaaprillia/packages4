@@ -66,6 +66,16 @@ TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable -Wno-error=unused-result
 
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install)
+endef
+
 CMAKE_OPTIONS += \
 	-DONNX_BUILD_PYTHON=ON \
 	-Donnxruntime_BUILD_SHARED_LIB=ON \
