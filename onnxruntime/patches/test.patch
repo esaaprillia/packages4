@@ -1,0 +1,14 @@
+From 9215c60c7669a141ef4b786e6455a897620ba3b9 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 14 Aug 2026 22:26:13 +0800
+Subject: [PATCH] Rename build.py to setup.py
+
+---
+ tools/ci_build/{build.py => setup.py} | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename tools/ci_build/{build.py => setup.py} (100%)
+
+diff --git a/tools/ci_build/build.py b/tools/ci_build/setup.py
+similarity index 100%
+rename from tools/ci_build/build.py
+rename to tools/ci_build/setup.py
