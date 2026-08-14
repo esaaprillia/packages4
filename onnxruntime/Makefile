@@ -23,7 +23,7 @@ include $(INCLUDE_DIR)/nls.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
-#PYTHON3_PKG_SETUP_DIR:= build
+PYTHON3_PKG_SETUP_DIR:= tools/ci_build
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
@@ -76,8 +76,6 @@ define Build/Install
 	$(call Build/Install/Default)
 	$(call Py3Build/Install)
 endef
-
-PYTHON3_PKG_SETUP_GLOBAL_ARGS +=build
 
 CMAKE_OPTIONS += \
 	-DONNX_BUILD_PYTHON=ON \
