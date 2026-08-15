@@ -63,6 +63,8 @@ define Package/agent/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/machinery/main $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/agent
 	$(CP) ./files/version $(1)/agent/version
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/agent.init $(1)/etc/init.d/agent
 	$(INSTALL_DIR) $(1)/agent/data
 	$(CP) $(PKG_BUILD_DIR)/machinery/data/* $(1)/agent/data/
 	$(CP) $(PKG_BUILD_DIR)/machinery/data/config/config.json $(1)/agent/data/config.template.json
