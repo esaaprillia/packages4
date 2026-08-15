@@ -1,10 +1,10 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=tensorflow-lite
+PKG_NAME:=tensorflow
 PKG_VERSION:=2.21.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=tensorflow-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
@@ -12,11 +12,9 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
-
 PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host swig/host python-pybind11/host numpy/host python-pybind11
 
-#CMAKE_BINARY_SUBDIR:=build
+CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
 PYTHON3_PKG_BUILD:=0
@@ -30,29 +28,29 @@ PYTHON3_PKG_WHEEL_NAME:=tflite_runtime
 PYTHON3_PKG_WHEEL_VERSION:=2.21.0
 PYTHON3_PKG_SETUP_DIR:=build-pip
 
-define Package/tensorflow-lite
+define Package/tensorflow
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +re2
+	DEPENDS:=+libstdcpp
 	URL:=https://www.tensorflow.org/lite/
 endef
 
-define Package/tensorflow-lite/description
+define Package/tensorflow/description
 	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
 endef
 
-define Package/python3-tensorflow-lite
+define Package/python3-tensorflow
 	SUBMENU:=Python
 	SECTION:=lang
 	CATEGORY:=Languages
-	TITLE:=Python bindings tensorflow-lite
-	DEPENDS:=+python3-light +python3-numpy +libjpeg-turbo +zlib +tensorflow-lite
+	TITLE:=Python bindings tensorflow
+	DEPENDS:=+python3-light +python3-numpy +libjpeg-turbo +zlib +tensorflow
 	URL:=https://www.tensorflow.org/lite/
 endef
 
-define Package/python3-tensorflow-lite/description
-	Python bindings tensorflow-lite
+define Package/python3-tensorflow/description
+	Python bindings tensorflow
 endef
 
 PYTHON3_PKG_SETUP_VARS += PROJECT_NAME=tflite_runtime PACKAGE_VERSION="$(PKG_VERSION)"
@@ -95,12 +93,12 @@ define Build/InstallDev
 	#$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libonnxruntime.pc
 endef
 
-define Package/tensorflow-lite/install
+define Package/tensorflow/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,tensorflow-lite))
-$(eval $(call Py3Package,python3-tensorflow-lite))
-$(eval $(call BuildPackage,python3-tensorflow-lite))
-$(eval $(call BuildPackage,python3-tensorflow-lite-src))
+$(eval $(call BuildPackage,tensorflow))
+$(eval $(call Py3Package,python3-tensorflow))
+$(eval $(call BuildPackage,python3-tensorflow))
+$(eval $(call BuildPackage,python3-tensorflow-src))
