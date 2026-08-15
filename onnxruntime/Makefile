@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-CMAKE_BINARY_SUBDIR := build
+#CMAKE_BINARY_SUBDIR := build
 CMAKE_SOURCE_SUBDIR:= cmake
 
 PKG_BUILD_DEPENDS:=nlohmannjson icu boost googletest/host protobuf/host python-pybind11 numpy/host python-nanobind/host
@@ -68,14 +68,12 @@ TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable -Wno-
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	cd $(PKG_BUILD_DIR)/build; \
-	$(PYTHON3_VARS) $(HOST_PYTHON3_BIN) ../setup.py build $(PYTHON3_PKG_BUILD_ARGS) $(PYTHON3_PKG_BUILD_VARS)
+	$(call Py3Build/Compile)
 endef
 
 define Build/Install
 	$(call Build/Install/Default)
-	cd $(PKG_BUILD_DIR)/build; \
-	$(PYTHON3_VARS) $(HOST_PYTHON3_BIN) ../setup.py install --skip-build --destdir="$(PKG_INSTALL_DIR)" --no-compile-bytecode --prefix=/usr $(PYTHON3_PKG_INSTALL_VARS)
+	$(call Py3Build/Install)
 endef
 
 CMAKE_OPTIONS += \
