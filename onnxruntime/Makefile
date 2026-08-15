@@ -23,7 +23,7 @@ include $(INCLUDE_DIR)/nls.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
-PYTHON3_PKG_SETUP_DIR:= tools/ci_build
+#PYTHON3_PKG_SETUP_DIR:= tools/ci_build
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
@@ -68,17 +68,15 @@ TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable -Wno-
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	ls -l $(PKG_BUILD_DIR)/build/*
-	$(call Py3Build/Compile)
+	cd $(PKG_BUILD_DIR)/build; \
+	$(PYTHON3_VARS) $(HOST_PYTHON3_BIN) ../setup.py build
 endef
 
 define Build/Install
 	$(call Build/Install/Default)
-	$(call Py3Build/Install)
+	cd $(PKG_BUILD_DIR)/build; \
+	$(PYTHON3_VARS) $(HOST_PYTHON3_BIN) ../setup.py install --skip-build --root="$(PKG_INSTALL_DIR)"
 endef
-
-PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
-	--build-option=--build_dir="$(PKG_BUILD_DIR)/build"
 
 CMAKE_OPTIONS += \
 	-DONNX_BUILD_PYTHON=ON \
