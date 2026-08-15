@@ -1,16 +1,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pthreadpool
-PKG_VERSION:=2023-08-29
-PKG_RELEASE:=2
+#PKG_VERSION:=2023-08-29
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Maratyszcza/pthreadpool.git
-PKG_SOURCE_VERSION:=4fe0e1e183925bf8cfa6aae24237e724a96479b8
+PKG_SOURCE_DATE:=2024-06-17
+PKG_SOURCE_VERSION:=560c60d342a76076f0557a3946924c6478470044
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=fxdiv
@@ -43,26 +44,12 @@ CMAKE_OPTIONS += \
 	-DPTHREADPOOL_USE_SYSTEM_LIBS=ON
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
 define Package/pthreadpool/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/lib
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,pthreadpool))
