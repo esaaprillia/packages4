@@ -51,7 +51,7 @@ define Package/python3-onnxruntime
   SUBMENU:=Python
   TITLE:=onnxruntime (python3 bindings)
   URL:=https://onnxruntime.ai/
-  DEPENDS:=+python3-light +python3-coloredlogs +python3-flatbuffers +python3-numpy +python3-packaging +python3-sympy +onnxruntime
+  DEPENDS:=+python3-light +python3-coloredlogs +python3-flatbuffers +python3-numpy +python3-packaging +python3-sympy
 endef
 
 define Package/python3-onnxruntime/description
