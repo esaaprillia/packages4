@@ -5,9 +5,9 @@ PKG_NAME:=pthreadpool
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/Maratyszcza/pthreadpool.git
-PKG_SOURCE_DATE:=2024-06-17
-PKG_SOURCE_VERSION:=560c60d342a76076f0557a3946924c6478470044
+PKG_SOURCE_URL:=https://github.com/google/pthreadpool.git
+PKG_SOURCE_DATE:=2026-05-19
+PKG_SOURCE_VERSION:=02460584c6092e527c8b89f7df4de143d70e801f
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -28,7 +28,7 @@ define Package/pthreadpool
 	CATEGORY:=Libraries
 	TITLE:=Portable (POSIX/Windows/Emscripten) thread pool for C/C++
 	DEPENDS:=
-	URL:=https://github.com/Maratyszcza/pthreadpool
+	URL:=https://github.com/google/pthreadpool
 endef
 
 define Package/pthreadpool/description
