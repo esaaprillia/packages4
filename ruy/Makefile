@@ -40,17 +40,7 @@ CMAKE_OPTIONS += \
 	-DRUY_FIND_CPUINFO=ON
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/ruy \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{cmake,*.a*} \
-	  $(1)/usr/lib/
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
 $(eval $(call BuildPackage,ruy))
