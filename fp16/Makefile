@@ -1,12 +1,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=fp16
-PKG_VERSION:=2024-06-20
+#PKG_VERSION:=2024-06-20
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Maratyszcza/FP16.git
-PKG_SOURCE_VERSION:=98b0a46bce017382a6351a19577ec43a715b6835
+PKG_SOURCE_DATE:=2026-06-20
+PKG_SOURCE_VERSION:=782eea126dc5c755827be751a099eb01826175cf
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -38,12 +39,7 @@ CMAKE_OPTIONS += \
 	-DFP16_BUILD_BENCHMARKS=OFF
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/{fp16.h,fp16} \
-	  $(1)/usr/include/
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
 $(eval $(call BuildPackage,fp16))
