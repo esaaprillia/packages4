@@ -34,7 +34,7 @@ define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +re2 +abseil-cpp
+	DEPENDS:=+libstdcpp +re2
 	URL:=https://www.tensorflow.org/lite/
 endef
 
@@ -69,9 +69,7 @@ define Build/Prepare
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/Compile
