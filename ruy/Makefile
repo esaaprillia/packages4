@@ -1,12 +1,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ruy
-PKG_VERSION:=2024-12-20
+#PKG_VERSION:=2024-12-20
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/google/ruy.git
-PKG_SOURCE_VERSION:=83fd40d730feb0804fafbc2d8814bcc19a17b2e5
+PKG_SOURCE_DATE:=2025-11-05
+PKG_SOURCE_VERSION:=927f5d53caf8111721e734cf24724686bb745f55
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
