@@ -12,7 +12,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-#CMAKE_BINARY_SUBDIR := build
 CMAKE_SOURCE_SUBDIR:= cmake
 
 PKG_BUILD_DEPENDS:=nlohmannjson icu boost googletest/host protobuf/host python-pybind11 numpy/host python-nanobind/host
@@ -22,16 +21,6 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
-
-#PYTHON3_PKG_SETUP_DIR:= tools/ci_build
-
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	#$(RM) $(STAGING_DIR)/usr/bin/flatc*
-	#$(CP) $(STAGING_DIR_HOSTPKG)/bin/flatc* $(STAGING_DIR)/usr/bin/
-	$(RM) $(STAGING_DIR)/usr/bin/protoc*
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
-endef
 
 define Package/onnxruntime
 	SECTION:=libs
@@ -51,7 +40,7 @@ define Package/python3-onnxruntime
   SUBMENU:=Python
   TITLE:=onnxruntime (python3 bindings)
   URL:=https://onnxruntime.ai/
-  DEPENDS:=+protobuf-lite +re2 +python3-light +python3-protobuf +python3-coloredlogs +python3-flatbuffers +python3-numpy +python3-packaging +python3-sympy
+  DEPENDS:=+protobuf-lite +re2 +abseil-cpp +python3-light +python3-protobuf +python3-coloredlogs +python3-flatbuffers +python3-numpy +python3-packaging +python3-sympy
 endef
 
 define Package/python3-onnxruntime/description
@@ -82,7 +71,7 @@ CMAKE_OPTIONS += \
 	-Donnxruntime_BUILD_UNIT_TESTS=OFF \
 	-Donnxruntime_ENABLE_PYTHON=ON \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
-	-DONNX_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc"
+	-DONNX_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
