@@ -78,7 +78,7 @@ define Build/Install
 endef
 
 PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
-	--build-option=--build_dir $(PKG_BUILD_DIR)/build
+	--build-option=--build_dir="$(PKG_BUILD_DIR)/build"
 
 CMAKE_OPTIONS += \
 	-DONNX_BUILD_PYTHON=ON \
