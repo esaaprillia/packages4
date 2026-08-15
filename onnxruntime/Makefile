@@ -77,6 +77,9 @@ define Build/Install
 	$(call Py3Build/Install)
 endef
 
+PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
+	--build-option=--build_dir \
+
 CMAKE_OPTIONS += \
 	-DONNX_BUILD_PYTHON=ON \
 	-Donnxruntime_BUILD_SHARED_LIB=ON \
