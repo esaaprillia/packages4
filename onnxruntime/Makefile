@@ -69,13 +69,13 @@ TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable -Wno-
 define Build/Compile
 	$(call Build/Compile/Default)
 	cd $(PKG_BUILD_DIR)/build; \
-	$(PYTHON3_VARS) $(HOST_PYTHON3_BIN) ../setup.py build
+	$(PYTHON3_VARS) $(HOST_PYTHON3_BIN) ../setup.py build $(PYTHON3_PKG_BUILD_ARGS) $(PYTHON3_PKG_BUILD_VARS)
 endef
 
 define Build/Install
 	$(call Build/Install/Default)
 	cd $(PKG_BUILD_DIR)/build; \
-	$(PYTHON3_VARS) $(HOST_PYTHON3_BIN) ../setup.py install --skip-build --destdir="$(PKG_INSTALL_DIR)" --no-compile-bytecode --prefix=/usr
+	$(PYTHON3_VARS) $(HOST_PYTHON3_BIN) ../setup.py install --skip-build --destdir="$(PKG_INSTALL_DIR)" --no-compile-bytecode --prefix=/usr $(PYTHON3_PKG_INSTALL_VARS)
 endef
 
 CMAKE_OPTIONS += \
