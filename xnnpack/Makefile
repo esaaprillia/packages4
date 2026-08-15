@@ -1,16 +1,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xnnpack
-PKG_VERSION:=2024-09-18
-PKG_RELEASE:=2
+#PKG_VERSION:=2024-09-18
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/google/XNNPACK.git
-PKG_SOURCE_VERSION:=6b83f69d4938da4dc9ad63c00bd13e9695659a51
+PKG_SOURCE_DATE:=2026-08-15
+PKG_SOURCE_VERSION:=b0db58b434f3dee7ded5024723d282369f7a290e
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=License
+PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR := build
@@ -46,26 +47,12 @@ CMAKE_OPTIONS += \
 	-DXNNPACK_LIBRARY_TYPE=shared
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/* \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
 define Package/xnnpack/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/lib
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,xnnpack))
