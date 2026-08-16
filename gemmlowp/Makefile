@@ -1,11 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gemmlowp
-PKG_VERSION:=2023-11-4
+#PKG_VERSION:=2023-11-4
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/google/gemmlowp.git
+PKG_SOURCE_DATE:=2023-11-4
 PKG_SOURCE_VERSION:=16e8662c34917be0065110bfcd9cc27d30f52fdf
 PKG_MIRROR_HASH:=skip
 
