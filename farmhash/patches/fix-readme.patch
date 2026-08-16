@@ -1,0 +1,14 @@
+From fc548f6758ad67967b937c3fb51cd8a2d89875e4 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 16 Aug 2026 18:58:01 +0800
+Subject: [PATCH] Rename README.md to README
+
+---
+ README.md => README | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename README.md => README (100%)
+
+diff --git a/README.md b/README
+similarity index 100%
+rename from README.md
+rename to README
