@@ -14,8 +14,8 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
 
 PKG_BUILD_PARALLEL:=1
-PKG_FIXUP:=autoreconf
-#PKG_INSTALL:=1
+#PKG_FIXUP:=autoreconf
+PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -29,13 +29,6 @@ endef
 
 define Package/farmhash/description
 A general overview of hash functions and their use is available in the file Understanding_Hash_Functions in this directory.  It may be helpful to read it before using FarmHash.
-endef
-
-define Build/Compile
-	$(MAKE) all -C $(PKG_BUILD_DIR) DESTDIR="$(PKG_INSTALL_DIR)" \
-		LDFLAGS="$(TARGET_LDFLAGS)" \
-		CXXFLAGS="$(TARGET_CXXFLAGS) $(TARGET_CPPFLAGS)" \
-		CXX="$(TARGET_CXX)"
 endef
 
 define Build/InstallDev
