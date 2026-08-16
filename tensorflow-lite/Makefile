@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=eigen benchmark protobuf/host flatbuffers/host swig/host python-pybind11/host numpy/host python-pybind11
+PKG_BUILD_DEPENDS:=flatbuffers/host swig/host python-pybind11/host numpy/host python-pybind11
 
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
@@ -34,7 +34,7 @@ define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +re2 +abseil-cpp
+	DEPENDS:=+libstdcpp
 	URL:=https://www.tensorflow.org/lite/
 endef
 
@@ -47,7 +47,7 @@ define Package/python3-tensorflow-lite
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=Python bindings tensorflow-lite
-	DEPENDS:=+python3-light +libjpeg-turbo +zlib +tensorflow-lite
+	DEPENDS:=+python3-light +python3-numpy +libjpeg-turbo +zlib +tensorflow-lite
 	URL:=https://www.tensorflow.org/lite/
 endef
 
@@ -68,22 +68,11 @@ define Build/Prepare
 	echo "__version__ = '$(PKG_VERSION)'" >> $(PKG_BUILD_DIR)/build-pip/tflite_runtime/__init__.py
 endef
 
+TARGET_CFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
+TARGET_CXXFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
+
 CMAKE_OPTIONS += \
-	-Wno-dev \
-	-DBUILD_SHARED_LIBS=ON \
-	-DTFLITE_ENABLE_INSTALL=ON \
-	-DTFLITE_ENABLE_EXTERNAL_DELEGATE=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
-	-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-	-DBUILD_DOC=OFF \
-	-DBUILD_DOCS=OFF \
-	-DBUILD_EXAMPLE=OFF \
-	-DBUILD_EXAMPLES=OFF \
-	-DBUILD_TEST=OFF \
-	-DBUILD_TESTS=OFF \
-	-DBUILD_TESTING=OFF \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/Compile
