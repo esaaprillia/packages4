@@ -1,0 +1,26 @@
+From 30742d6f7ef4180aff372ceafcc92ab8d3e67645 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 16 Aug 2026 15:40:14 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1db8cfc34e6..4c5c7817b8d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1329,11 +1329,10 @@ IF(XNNPACK_ENABLE_KLEIDIAI)
+         "${CMAKE_BINARY_DIR}/kleidiai")
+     ELSE()
+       ADD_LIBRARY(kleidiai SHARED IMPORTED)
+-      FIND_LIBRARY(KLEIDIAI_LIBRARY kleidiai PATHS "${KLEIDIAI_SOURCE_DIR}/lib")
++      FIND_LIBRARY(KLEIDIAI_LIBRARY kleidiai)
+       IF(NOT KLEIDIAI_LIBRARY)
+         MESSAGE(FATAL_ERROR "Cannot find KleidiAI")
+       ENDIF()
+-      TARGET_INCLUDE_DIRECTORIES(kleidiai INTERFACE "${KLEIDIAI_SOURCE_DIR}")
+       SET_PROPERTY(TARGET kleidiai PROPERTY IMPORTED_LOCATION "${KLEIDIAI_LIBRARY}")
+       SET_PROPERTY(TARGET kleidiai PROPERTY IMPORTED_IMPLIB "${KLEIDIAI_LIBRARY}")
+     ENDIF()
