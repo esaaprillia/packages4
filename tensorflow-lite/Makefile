@@ -97,8 +97,8 @@ CMAKE_OPTIONS += \
 	-Dgoogle_benchmark_DIR=$(STAGING_DIR)/usr/lib/cmake/benchmark \
 	-Dcpuinfo_DIR=$(STAGING_DIR)/usr/share/cpuinfo \
 	-Druy_DIR=$(STAGING_DIR)/usr/lib/cmake/ruy \
-	-Ddfp16_headers_DIR=$(STAGING_DIR)/usr/include \
-	-DXNNPACK_DIR=$(STAGING_DIR)/usr/include \
+	-DFP16_SOURCE_DIR=$(STAGING_DIR)/usr/include \
+	-DXNNPACK_SOURCE_DIR=$(STAGING_DIR)/usr/include \
 	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
