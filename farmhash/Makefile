@@ -34,8 +34,8 @@ endef
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) all \
 		LDFLAGS="$(TARGET_LDFLAGS)" \
-		CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-		CC="$(TARGET_CC)"
+		CXXFLAGS="$(TARGET_CXXFLAGS) $(TARGET_CPPFLAGS)" \
+		CXX="$(TARGET_CXX)"
 endef
 
 define Build/InstallDev
