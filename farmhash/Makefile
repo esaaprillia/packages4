@@ -32,7 +32,7 @@ A general overview of hash functions and their use is available in the file Unde
 endef
 
 define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) DESTDIR="$(PKG_INSTALL_DIR)" \
+	$(MAKE) all -C $(PKG_BUILD_DIR) DESTDIR="$(PKG_INSTALL_DIR)" \
 		LDFLAGS="$(TARGET_LDFLAGS)" \
 		CXXFLAGS="$(TARGET_CXXFLAGS) $(TARGET_CPPFLAGS)" \
 		CXX="$(TARGET_CXX)"
