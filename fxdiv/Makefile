@@ -1,11 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=fxdiv
-PKG_VERSION:=2020-12-09
+#PKG_VERSION:=2020-12-09
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Maratyszcza/FXdiv.git
+PKG_SOURCE_DATE:=2020-12-09
 PKG_SOURCE_VERSION:=63058eff77e11aa15bf531df5dd34395ec3017c8
 PKG_MIRROR_HASH:=skip
 
@@ -39,12 +40,7 @@ CMAKE_OPTIONS += \
 	-DFXDIV_BUILD_BENCHMARKS=OFF
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/fxdiv.h \
-	  $(1)/usr/include/
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
 $(eval $(call BuildPackage,fxdiv))
