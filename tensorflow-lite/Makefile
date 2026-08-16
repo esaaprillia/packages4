@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=flatbuffers/host swig/host python-pybind11/host numpy/host python-pybind11
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host swig/host python-pybind11/host numpy/host python-pybind11
 
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
@@ -74,6 +74,7 @@ TARGET_CPPFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
 
 CMAKE_OPTIONS += \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/Compile
