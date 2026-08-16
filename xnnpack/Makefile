@@ -26,7 +26,7 @@ define Package/xnnpack
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=High-efficiency floating-point neural network inference operators for mobile, server, and Web
-	DEPENDS:=+libstdcpp +cpuinfo +pthreadpool
+	DEPENDS:=+libstdcpp +cpuinfo +pthreadpool +kleidiai
 	URL:=https://github.com/google/XNNPACK
 endef
 
