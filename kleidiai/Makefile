@@ -4,7 +4,7 @@ PKG_NAME:=kleidiai
 PKG_VERSION:=1.30.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://gitlab.arm.com/kleidi/kleidiai/-/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
