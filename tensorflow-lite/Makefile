@@ -88,6 +88,16 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DSYSTEM_FARMHASH=ON \
 	-DSYSTEM_PTHREADPOOL=ON \
+	-DPTHREADPOOL_SOURCE_DIR=$(STAGING_DIR)/usr/include \
+	-Dabsl_DIR=$(STAGING_DIR)/usr/lib/cmake/absl \
+	-DEigen3_DIR=$(STAGING_DIR)/usr/share/eigen3/cmake \
+	-DFlatBuffers_DIR=$(STAGING_DIR)/usr/lib/cmake/flatbuffers \
+	-Dgemmlowp_DIR=$(STAGING_DIR)/usr/lib/cmake/gemmlowp \
+	-DProtobuf=$(STAGING_DIR)/usr/lib/cmake/protobuf \
+	-Dcpuinfo_DIR=$(STAGING_DIR)/usr/share/cpuinfo \
+	-Druy_DIR=$(STAGING_DIR)/usr/lib/cmake/ruy \
+	-Ddfp16_headers_DIR=$(STAGING_DIR)/usr/include \
+	-DXNNPACK_DIR=$(STAGING_DIR)/usr/include \
 	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
