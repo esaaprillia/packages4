@@ -70,6 +70,7 @@ endef
 
 TARGET_CFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
 TARGET_CXXFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
+TARGET_CPPFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
 
 CMAKE_OPTIONS += \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
