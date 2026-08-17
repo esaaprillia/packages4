@@ -1,0 +1,21 @@
+From b4ffb1e44fb9f634fa4669756e622a9d11d9c055 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 17 Aug 2026 12:56:27 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ tensorflow/lite/tools/benchmark/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tensorflow/lite/tools/benchmark/CMakeLists.txt b/tensorflow/lite/tools/benchmark/CMakeLists.txt
+index aee420c6a52b9f..47159ae31f747f 100644
+--- a/tensorflow/lite/tools/benchmark/CMakeLists.txt
++++ b/tensorflow/lite/tools/benchmark/CMakeLists.txt
+@@ -52,7 +52,6 @@ list(APPEND TFLITE_BENCHMARK_LIBS
+   example_proto
+   model_runtime_info_proto
+   benchmark_result_proto
+-  protobuf::libprotobuf
+   absl::log
+ )
+ 
