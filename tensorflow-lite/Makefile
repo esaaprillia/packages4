@@ -70,6 +70,9 @@ define Build/Prepare
 	echo "__version__ = '$(PKG_VERSION)'" >> $(PKG_BUILD_DIR)/build-pip/tflite_runtime/__init__.py
 endef
 
+TARGET_CFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
+TARGET_CXXFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
+
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_DOC=OFF \
