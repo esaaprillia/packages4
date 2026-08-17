@@ -22,7 +22,7 @@ define Package/libplacebo
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Reusable library for GPU-accelerated video/image rendering
-	DEPENDS:=+libstdcpp +glslang +lcms2 +shaderc +vulkan-loader +libxxhash +libunwind
+	DEPENDS:=+libstdcpp +glslang +lcms2 +shaderc +vulkan-loader +libxxhash +libunwind +libdovi
 	URL:=https://libplacebo.org/
 endef
 
@@ -37,6 +37,8 @@ endef
 
 MESON_ARGS += \
 	-Ddemos=false \
+	-Ddovi=enabled \
+	-Dlibdovi=enabled \
 	-Dglslang=enabled \
 	-Dlcms=enabled \
 	-Dopengl=enabled \
