@@ -1,12 +1,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tensorflow-lite
-PKG_VERSION:=2.21.0
+#PKG_VERSION:=2.21.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=tensorflow-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=tensorflow-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow/archive/v$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow.git
+PKG_SOURCE_VERSION:=a481b10260dfdf833a1b16007eead49c1d7febf3
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -14,13 +19,12 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host swig/host python-pybind11/host numpy/host
+PKG_BUILD_DEPENDS:=flatbuffers/host swig/host
 
-CMAKE_BINARY_SUBDIR:=build
+#CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
 PYTHON3_PKG_BUILD:=0
-PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
@@ -47,7 +51,7 @@ define Package/python3-tensorflow-lite
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=Python bindings tensorflow-lite
-	DEPENDS:=+python3-light +libjpeg-turbo +zlib +tensorflow-lite
+	DEPENDS:=+libjpeg-turbo +zlib +tensorflow-lite
 	URL:=https://www.tensorflow.org/lite/
 endef
 
@@ -59,8 +63,6 @@ PYTHON3_PKG_SETUP_VARS += PROJECT_NAME=tflite_runtime PACKAGE_VERSION="$(PKG_VER
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(RM) $(STAGING_DIR)/usr/bin/protoc*
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/build-pip/setup.py
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/MANIFEST.in $(PKG_BUILD_DIR)/build-pip/
@@ -69,9 +71,6 @@ define Build/Prepare
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/python/metrics/{metrics_interface.py,metrics_portable.py} $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
 	echo "__version__ = '$(PKG_VERSION)'" >> $(PKG_BUILD_DIR)/build-pip/tflite_runtime/__init__.py
 endef
-
-TARGET_CFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
-TARGET_CXXFLAGS += -I$(PKG_BUILD_DIR)/build/protobuf/src
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
@@ -82,9 +81,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
 	-DBUILD_TESTING=OFF \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
-	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Build/Compile
 	$(call Build/Compile/Default)
