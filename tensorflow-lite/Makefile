@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=tensorflow-lite
+PKG_NAME:=tensorflow
 #PKG_VERSION:=2.21.0
 PKG_RELEASE:=1
 
