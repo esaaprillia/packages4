@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=vulkan-loader
-PKG_VERSION:=1.4.350.0
+PKG_VERSION:=1.4.357.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=Vulkan-Loader-vulkan-sdk-$(PKG_VERSION).tar.gz
