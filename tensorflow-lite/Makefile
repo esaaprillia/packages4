@@ -4,14 +4,9 @@ PKG_NAME:=tensorflow
 PKG_VERSION:=2.21.0
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=tensorflow-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow/archive/v$(PKG_VERSION)
-#PKG_HASH:=skip
-
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow.git
-PKG_SOURCE_VERSION:=a481b10260dfdf833a1b16007eead49c1d7febf3
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=tensorflow-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -79,7 +74,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
 	-DBUILD_TESTING=OFF \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" -DProtobuf_PROTOC_EXECUTABLE="$(PKG_BUILD_DIR)/tensorflow/lite/_deps/protobuf-build/protoc-3.21.9.0"
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Build/Compile
 	$(call Build/Compile/Default)
