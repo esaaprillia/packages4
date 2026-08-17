@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=glslang
-PKG_VERSION:=1.4.350.0
+PKG_VERSION:=1.4.357.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=glslang-vulkan-sdk-$(PKG_VERSION).tar.gz
