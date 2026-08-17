@@ -79,7 +79,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
 	-DBUILD_TESTING=OFF \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" -DProtobuf_PROTOC_EXECUTABLE="$(PKG_BUILD_DIR)/_deps/protobuf-build/protoc-3.21.9.0"
 
 define Build/Compile
 	$(call Build/Compile/Default)
