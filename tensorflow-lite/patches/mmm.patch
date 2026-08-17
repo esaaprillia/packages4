@@ -1,35 +1,33 @@
-From 7b36b9cb77ddd8edd7a7a650cdf8cf2e1d82d795 Mon Sep 17 00:00:00 2001
+From eafd8510cf2a8d7a8f7d7c5c6da92687031e7278 Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Mon, 17 Aug 2026 10:55:33 +0800
+Date: Mon, 17 Aug 2026 12:51:55 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- tensorflow/lite/CMakeLists.txt | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ tensorflow/lite/CMakeLists.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt
-index 7e877cd92f1cd1..32f4a2892172f1 100644
+index 7e877cd92f1cd1..8be69b4fd59518 100644
 --- a/tensorflow/lite/CMakeLists.txt
 +++ b/tensorflow/lite/CMakeLists.txt
-@@ -575,7 +575,7 @@ if(TFLITE_ENABLE_XNNPACK)
+@@ -575,7 +575,6 @@ if(TFLITE_ENABLE_XNNPACK)
    add_dependencies(xnnpack-delegate xnnpack_weight_cache_schema_cc_fbs)
    target_link_libraries(xnnpack-delegate
      Eigen3::Eigen
 -    flatbuffers::flatbuffers
-+    FlatBuffers::FlatBuffers
      gemmlowp::gemmlowp
      ruy::ruy
      ${XNNPACK_NEON_2_SSE}
-@@ -766,7 +766,7 @@ target_link_libraries(tensorflow-lite
+@@ -766,7 +765,6 @@ target_link_libraries(tensorflow-lite
      absl::variant
      farmhash
      fft2d_fftsg2d
 -    flatbuffers::flatbuffers
-+    FlatBuffers::FlatBuffers
      gemmlowp::gemmlowp
      ml_dtypes
      ruy::ruy
-@@ -886,4 +886,4 @@ if(TFLITE_ENABLE_XNNPACK)
+@@ -886,4 +884,4 @@ if(TFLITE_ENABLE_XNNPACK)
      PUBLIC ${TFLITE_TARGET_PUBLIC_OPTIONS}
      PRIVATE ${TFLITE_TARGET_PRIVATE_OPTIONS}
    )
