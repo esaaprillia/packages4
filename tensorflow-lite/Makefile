@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host eigen ruy fp16 fxdiv swig/host python-pybind11 python-pybind11/host numpy/host benchmark
+PKG_BUILD_DEPENDS:=protobuf/host flatbuffers/host swig/host python-pybind11/host numpy/host
 
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
@@ -34,7 +34,7 @@ define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp +protobuf +flatbuffers +re2 +abseil-cpp +farmhash +pthreadpool +cpuinfo +gemmlowp +xnnpack
+	DEPENDS:=+libstdcpp
 	URL:=https://www.tensorflow.org/lite/
 endef
 
@@ -47,7 +47,7 @@ define Package/python3-tensorflow-lite
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=Python bindings tensorflow-lite
-	DEPENDS:=+python3-light +python3-numpy +libjpeg-turbo +zlib +tensorflow-lite
+	DEPENDS:=+python3-light +libjpeg-turbo +zlib +tensorflow-lite
 	URL:=https://www.tensorflow.org/lite/
 endef
 
@@ -59,6 +59,8 @@ PYTHON3_PKG_SETUP_VARS += PROJECT_NAME=tflite_runtime PACKAGE_VERSION="$(PKG_VER
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
+	$(RM) $(STAGING_DIR)/usr/bin/protoc*
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/build-pip/setup.py
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/MANIFEST.in $(PKG_BUILD_DIR)/build-pip/
@@ -70,15 +72,6 @@ endef
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
-	-DBUILD_SHARED_LIBS=ON \
-	-DTFLITE_ENABLE_INSTALL=ON \
-	-DTFLITE_ENABLE_EXTERNAL_DELEGATE=ON \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DTFLITE_ENABLE_GPU=OFF \
-	-DTFLITE_ENABLE_MMAP=ON \
-	-DTFLITE_ENABLE_NNAPI=OFF \
-	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
-	-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 	-DBUILD_DOC=OFF \
 	-DBUILD_DOCS=OFF \
 	-DBUILD_EXAMPLE=OFF \
@@ -86,20 +79,8 @@ CMAKE_OPTIONS += \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
 	-DBUILD_TESTING=OFF \
-	-DSYSTEM_FARMHASH=ON \
-	-DSYSTEM_PTHREADPOOL=ON \
-	-DPTHREADPOOL_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
-	-Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" \
-	-DEigen3_DIR="$(STAGING_DIR)/usr/share/eigen3/cmake" \
-	-DFlatBuffers_DIR="$(STAGING_DIR)/usr/lib/cmake/flatbuffers" \
-	-Dgemmlowp_DIR="$(STAGING_DIR)/usr/lib/cmake/gemmlowp" \
-	-DProtobuf_DIR="$(STAGING_DIR)/usr/lib/cmake/protobuf" \
-	-Dgoogle_benchmark_DIR="$(STAGING_DIR)/usr/lib/cmake/benchmark" \
-	-Dcpuinfo_DIR="$(STAGING_DIR)/usr/share/cpuinfo" \
-	-Druy_DIR="$(STAGING_DIR)/usr/lib/cmake/ruy" \
-	-DFP16_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
-	-DXNNPACK_SOURCE_DIR="$(STAGING_DIR)/usr/include" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/Compile
