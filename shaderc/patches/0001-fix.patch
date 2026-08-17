@@ -35,9 +35,9 @@ index 000000000..fa45a679c
 --- /dev/null
 +++ b/glslc/src/build-version.inc
 @@ -0,0 +1,3 @@
-+"shaderc 2026.2\n"
-+"SPIRV-Tools 1.4.350.0\n"
-+"glslang 1.4.350.0\n"
++"shaderc 2026.3\n"
++"SPIRV-Tools 1.4.357.0\n"
++"glslang 1.4.357.0\n"
 From 4da0fb0a623583b62f98dbaa3e88b17e0add8a4d Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
 Date: Wed, 10 Jun 2026 05:45:45 +0800
