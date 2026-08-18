@@ -23,7 +23,7 @@ define Package/protobuf-protoc
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A structured data encoding library
-	DEPENDS:=
+	DEPENDS:=+zlib +libpthread +libatomic +libstdcpp
 	URL:=https://github.com/google/protobuf
 endef
 
@@ -38,6 +38,22 @@ CMAKE_HOST_OPTIONS += \
 	-Dprotobuf_BUILD_TESTS=OFF \
 	-DBUILD_SHARED_LIBS=OFF \
 	-DCMAKE_INSTALL_LIBDIR=lib
+
+CMAKE_OPTIONS += \
+	-Dprotobuf_BUILD_PROTOC_BINARIES=ON \
+	-Dprotobuf_BUILD_TESTS=OFF \
+	-Dprotobuf_WITH_ZLIB=ON \
+	-DBUILD_SHARED_LIBS=ON
+
+TARGET_LDFLAGS += -latomic
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/protobuf.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/protobuf.pc
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/protobuf-lite.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/protobuf-lite.pc
+endef
 
 $(eval $(call HostBuild))
 $(eval $(call BuildPackage,protobuf-protoc))
