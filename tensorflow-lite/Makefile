@@ -56,6 +56,8 @@ PYTHON3_PKG_SETUP_VARS += PROJECT_NAME=tflite_runtime PACKAGE_VERSION="$(PKG_VER
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
+	$(RM) -rf $(STAGING_DIR)/usr/bin/protoc*
+	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/build-pip/setup.py
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/MANIFEST.in $(PKG_BUILD_DIR)/build-pip/
@@ -75,7 +77,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTS=OFF \
 	-DBUILD_TESTING=OFF \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/Compile
