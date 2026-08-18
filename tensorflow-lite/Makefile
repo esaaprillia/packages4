@@ -56,6 +56,7 @@ PYTHON3_PKG_SETUP_VARS += PROJECT_NAME=tflite_runtime PACKAGE_VERSION="$(PKG_VER
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
+	mkdir -p $(STAGING_DIR)/usr/bin
 	$(RM) -rf $(STAGING_DIR)/usr/bin/protoc*
 	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
