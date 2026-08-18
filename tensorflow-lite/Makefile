@@ -78,8 +78,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTS=OFF \
 	-DBUILD_TESTING=OFF \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc" \
-	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc"
 
 define Build/Compile
 	$(call Build/Compile/Default)
