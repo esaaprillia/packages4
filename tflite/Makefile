@@ -26,7 +26,7 @@ include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 PYTHON3_PKG_WHEEL_NAME:=tflite_runtime
 PYTHON3_PKG_WHEEL_VERSION:=2.2.0
-PYTHON3_PKG_SETUP_DIR:=build-pip
+#PYTHON3_PKG_SETUP_DIR:=build-pip
 
 define Package/tflite
 	SECTION:=libs
@@ -99,6 +99,6 @@ define Package/tflite/install
 endef
 
 $(eval $(call BuildPackage,tflite))
-$(eval $(call Py3Package,python3-tflite))
-$(eval $(call BuildPackage,python3-tflite))
-$(eval $(call BuildPackage,python3-tflite-src))
+#$(eval $(call Py3Package,python3-tflite))
+#$(eval $(call BuildPackage,python3-tflite))
+#$(eval $(call BuildPackage,python3-tflite-src))
