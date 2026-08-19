@@ -52,9 +52,6 @@ endef
 
 define Package/tflite/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	ls $(PKG_BUILD_DIR)/tflite/*
-	ls $(PKG_BUILD_DIR)/*
-	ls $(PKG_BUILD_DIR)/tflite/_deps/*
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 	$(CP) $(PKG_BUILD_DIR)/libtensorflow-lite.so $(1)/usr/lib/
 endef
