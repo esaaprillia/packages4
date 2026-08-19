@@ -1,0 +1,57 @@
+include $(TOPDIR)/rules.mk
+
+PKG_NAME:=flatbuffers-flatc
+PKG_VERSION:=25.9.23
+PKG_RELEASE:=1
+
+PKG_SOURCE:=flatbuffers-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/google/flatbuffers/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
+
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=Apache-2.0
+PKG_LICENSE_FILES:=LICENSE
+
+CMAKE_BINARY_SUBDIR := build
+PKG_BUILD_DIR:=$(BUILD_DIR)/flatbuffers-$(PKG_VERSION)
+HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/flatbuffers-$(PKG_VERSION)
+
+include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include $(INCLUDE_DIR)/cmake.mk
+
+define Package/flatbuffers-flatc
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=FlatBuffers Memory Efficient Serialization Library
+	DEPENDS:=+libstdcpp
+	URL:=https://flatbuffers.dev/
+endef
+
+define Package/flatbuffers-flatc/description
+	FlatBuffers is a cross platform serialization library architected for maximum memory efficiency. It allows you to directly access serialized data without parsing/unpacking it first, while still having great forwards/backwards compatibility.
+endef
+
+CMAKE_HOST_OPTIONS += \
+	-DFLATBUFFERS_BUILD_TESTS=OFF
+
+CMAKE_OPTIONS += \
+	-DFLATBUFFERS_BUILD_TESTS=OFF \
+	-DFLATBUFFERS_BUILD_FLATLIB=OFF \
+	-DFLATBUFFERS_BUILD_SHAREDLIB=ON
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
+	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/flatbuffers.pc
+endef
+
+define Package/flatbuffers-flatc/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/flatc $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+endef
+
+$(eval $(call HostBuild))
+$(eval $(call BuildPackage,flatbuffers-flatc))
