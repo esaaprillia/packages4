@@ -1,0 +1,22 @@
+From d19ace0af4ad82094766d804235df2954327d04d Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 19 Aug 2026 09:36:10 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ tflite/tools/benchmark/proto/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tflite/tools/benchmark/proto/CMakeLists.txt b/tflite/tools/benchmark/proto/CMakeLists.txt
+index 6a39f06e03..9628b38ec1 100644
+--- a/tflite/tools/benchmark/proto/CMakeLists.txt
++++ b/tflite/tools/benchmark/proto/CMakeLists.txt
+@@ -26,7 +26,7 @@ list(APPEND benchmark_result_generated_files
+ add_custom_command(
+     OUTPUT ${benchmark_result_generated_files}
+     COMMAND ${Protobuf_PROTOC_EXECUTABLE}
+-    ARGS --cpp_out=${CMAKE_BINARY_DIR} --proto_path=${TENSORFLOW_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/benchmark_result.proto
++    ARGS --cpp_out=${CMAKE_BINARY_DIR} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/../../../.. tflite/tools/benchmark/proto/benchmark_result.proto
+     DEPENDS ${Protobuf_PROTOC_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/benchmark_result.proto
+ )
+ 
