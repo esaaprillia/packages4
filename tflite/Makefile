@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host
+PKG_BUILD_DEPENDS:=flatbuffers-flatc/host protobuf-protoc/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/LiteRT-$(PKG_VERSION)
 
 #CMAKE_BINARY_SUBDIR:=build
@@ -45,7 +45,7 @@ define Package/python3-tflite
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=Python bindings tflite
-	DEPENDS:=+libjpeg-turbo +zlib +tflite
+	DEPENDS:=+zlib +tflite
 	URL:=https://github.com/google-ai-edge/LiteRT
 endef
 
