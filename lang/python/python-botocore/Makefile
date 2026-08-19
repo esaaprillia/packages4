@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-botocore
-PKG_VERSION:=1.43.57
+PKG_VERSION:=1.43.74
 PKG_RELEASE:=1
 
 PYPI_NAME:=botocore
