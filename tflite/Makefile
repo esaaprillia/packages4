@@ -54,6 +54,7 @@ define Package/tflite/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 	$(CP) $(PKG_BUILD_DIR)/libtensorflow-lite.so $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/_deps/farmhash-build/libfarmhash.so $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,tflite))
