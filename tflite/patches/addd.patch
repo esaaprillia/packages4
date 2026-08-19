@@ -1,16 +1,27 @@
-From d19ace0af4ad82094766d804235df2954327d04d Mon Sep 17 00:00:00 2001
+From 00d07b006d5abd27673681677f0d8dca3cf92a0c Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Wed, 19 Aug 2026 09:36:10 +0800
+Date: Wed, 19 Aug 2026 10:43:16 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- tflite/tools/benchmark/proto/CMakeLists.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tflite/tools/benchmark/proto/CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/tflite/tools/benchmark/proto/CMakeLists.txt b/tflite/tools/benchmark/proto/CMakeLists.txt
-index 6a39f06e03..9628b38ec1 100644
+index 6a39f06e03..12a7e577bd 100644
 --- a/tflite/tools/benchmark/proto/CMakeLists.txt
 +++ b/tflite/tools/benchmark/proto/CMakeLists.txt
+@@ -17,8 +17,8 @@ find_package(Protobuf REQUIRED)
+ add_library(benchmark_result_proto benchmark_result.proto)
+ 
+ list(APPEND benchmark_result_generated_files
+-    ${CMAKE_BINARY_DIR}/tensorflow/lite/tools/benchmark/proto/benchmark_result.pb.cc
+-    ${CMAKE_BINARY_DIR}/tensorflow/lite/tools/benchmark/proto/benchmark_result.pb.h)
++    ${CMAKE_BINARY_DIR}/tflite/tools/benchmark/proto/benchmark_result.pb.cc
++    ${CMAKE_BINARY_DIR}/tflite/tools/benchmark/proto/benchmark_result.pb.h)
+ 
+ # Generate benchmark_result.pb.cc and benchmark_result.pb.h from
+ # benchmark_result.proto using protoc. Once the protobuf package version is
 @@ -26,7 +26,7 @@ list(APPEND benchmark_result_generated_files
  add_custom_command(
      OUTPUT ${benchmark_result_generated_files}
