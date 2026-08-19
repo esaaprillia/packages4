@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=flatbuffers-flatc/host protobuf-protoc/host
+PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/LiteRT-$(PKG_VERSION)
 
 #CMAKE_BINARY_SUBDIR:=build
@@ -25,7 +25,7 @@ define Package/tflite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Google's on-device runtime for high-performance ML & GenAI deployment on edge platforms.
-	DEPENDS:=+libstdcpp
+	DEPENDS:=+libstdcpp +abseil-cpp +flatbuffers
 	URL:=https://github.com/google-ai-edge/LiteRT
 endef
 
