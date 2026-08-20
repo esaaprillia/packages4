@@ -12,26 +12,33 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host
+PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host swig/host python-pybind11/host numpy/host python-pybind11
 PKG_BUILD_DIR:=$(BUILD_DIR)/LiteRT-$(PKG_VERSION)
 
+PYTHON3_PKG_BUILD:=0
 #CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tflite
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/tflite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Google's on-device runtime for high-performance ML & GenAI deployment on edge platforms.
-	DEPENDS:=+libstdcpp +abseil-cpp +flatbuffers
+	DEPENDS:=+libstdcpp +abseil-cpp +flatbuffers +python3-numpy +libjpeg-turbo +zlib
 	URL:=https://github.com/google-ai-edge/LiteRT
 endef
 
 define Package/tflite/description
 	LiteRT, successor to TensorFlow Lite. is Google's On-device framework for high-performance ML & GenAI deployment on edge platforms, via efficient conversion, runtime, and optimization
 endef
+
+PYTHON_INCLUDE=$("$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" -c "from sysconfig import get_paths as gp; print(gp()['include'])")
+PYBIND11_INCLUDE=$("$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" -c "import pybind11; print (pybind11.get_include())")
+NUMPY_INCLUDE=$("$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" -c "import numpy; print (numpy.get_include())")
+PYTHON_INCLUDE_FLAGS="-I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) -I$(NUMPY_INCLUDE)"
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
@@ -41,8 +48,9 @@ CMAKE_OPTIONS += \
 	-DBUILD_EXAMPLES=OFF \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
-	-DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=ON -DCMAKE_C_FLAGS=-fPIC -DCMAKE_CXX_FLAGS=-fPIC \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=ON -DCMAKE_C_FLAGS="-fPIC $(PYTHON_INCLUDE_FLAGS)" -DCMAKE_CXX_FLAGS="-fPIC $(PYTHON_INCLUDE_FLAGS)" \
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
+	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
