@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-rdflib
-PKG_VERSION:=7.5.0
+PKG_VERSION:=7.6.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=rdflib
