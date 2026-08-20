@@ -35,10 +35,12 @@ define Package/tflite/description
 	LiteRT, successor to TensorFlow Lite. is Google's On-device framework for high-performance ML & GenAI deployment on edge platforms, via efficient conversion, runtime, and optimization
 endef
 
-#PYTHON_INCLUDE=$("$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" -c "from sysconfig import get_paths as gp; print(gp()['include'])")
-#PYBIND11_INCLUDE=$("$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" -c "import pybind11; print (pybind11.get_include())")
-#NUMPY_INCLUDE=$("$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" -c "import numpy; print (numpy.get_include())")
-#PYTHON_INCLUDE_FLAGS="-I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) -I$(NUMPY_INCLUDE)"
+PYTHON_INCLUDE="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)"
+PYBIND11_INCLUDE=$("$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" -c "import pybind11; print (pybind11.get_include())")
+NUMPY_INCLUDE=$("$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" -c "import numpy; print (numpy.get_include())")
+
+TARGET_CFLAGS += "-I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) -I$(NUMPY_INCLUDE)"
+TARGET_CXXFLAGS += "-I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) -I$(NUMPY_INCLUDE)"
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
