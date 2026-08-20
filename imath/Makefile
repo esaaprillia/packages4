@@ -40,7 +40,7 @@ define Package/python3-imath
 	CATEGORY:=Languages
 	TITLE:=Imath Python library
 	DEPENDS:=+python3-light +python3-numpy +imath
-	URL:=https://www.tensorflow.org/lite/
+	URL:=https://imath.readthedocs.io/
 endef
 
 define Package/python3-imath/description
