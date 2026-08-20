@@ -35,9 +35,9 @@ define Package/tflite/description
 	LiteRT, successor to TensorFlow Lite. is Google's On-device framework for high-performance ML & GenAI deployment on edge platforms, via efficient conversion, runtime, and optimization
 endef
 
-PYTHON_INCLUDE="$(PYTHON3_INC_DIR)"
-PYBIND11_INCLUDE="$(STAGING_DIR)/usr/include/pybind11"
-NUMPY_INCLUDE="$(STAGING_DIR)/$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy"
+PYTHON_INCLUDE:="$(PYTHON3_INC_DIR)"
+PYBIND11_INCLUDE:="$(STAGING_DIR)/usr/include/pybind11"
+NUMPY_INCLUDE:="$(STAGING_DIR)/$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy"
 
 TARGET_CFLAGS += "-I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) -I$(NUMPY_INCLUDE)"
 TARGET_CXXFLAGS += "-I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) -I$(NUMPY_INCLUDE)"
