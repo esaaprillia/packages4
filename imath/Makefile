@@ -26,12 +26,25 @@ define Package/imath
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Imath is a C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics
-	DEPENDS:=+libstdcpp +boost-python3 +python3-numpy
+	DEPENDS:=+libstdcpp +boost-python3
 	URL:=https://imath.readthedocs.io/
 endef
 
 define Package/imath/description
 	Imath is a basic, light-weight, and efficient C++ representation of 2D and 3D vectors and matrices and other simple but useful mathematical objects, functions, and data types common in computer graphics applications, including the “half” 16-bit floating-point type.
+endef
+
+define Package/python3-imath
+	SUBMENU:=Python
+	SECTION:=lang
+	CATEGORY:=Languages
+	TITLE:=Imath Python library
+	DEPENDS:=+python3-light +python3-numpy +imath
+	URL:=https://www.tensorflow.org/lite/
+endef
+
+define Package/python3-imath/description
+	Imath Python library
 endef
 
 CMAKE_OPTIONS += \
@@ -49,8 +62,9 @@ endef
 define Package/imath/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
-	$(CP) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* $(1)$(PYTHON3_PKG_DIR)
 endef
 
 $(eval $(call BuildPackage,imath))
+$(eval $(call Py3Package,python3-imath))
+$(eval $(call BuildPackage,python3-imath))
+$(eval $(call BuildPackage,python3-imath-src))
