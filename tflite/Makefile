@@ -36,7 +36,7 @@ define Package/tflite/description
 endef
 
 PYTHON_INCLUDE:="$(PYTHON3_INC_DIR)"
-PYBIND11_INCLUDE:="$(STAGING_DIR)/usr/include/pybind11"
+PYBIND11_INCLUDE:="$(STAGING_DIR)/usr/include"
 NUMPY_INCLUDE:="$(STAGING_DIR)/$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy"
 
 TARGET_CFLAGS += "-I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) -I$(NUMPY_INCLUDE)"
