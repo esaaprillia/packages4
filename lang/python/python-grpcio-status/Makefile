@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-grpcio-status
-PKG_VERSION:=1.82.1
+PKG_VERSION:=1.83.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=grpcio_status
