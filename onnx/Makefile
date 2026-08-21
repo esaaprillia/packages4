@@ -14,12 +14,12 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=googletest/host protobuf/host python-pybind11 numpy/host python-nanobind/host python-protobuf/host python-scikit-build-core/host
 PYTHON3_PKG_BUILD:=0
-CMAKE_SOURCE_SUBDIR:=.setuptools-cmake-build
+CMAKE_BINARY_SUBDIR:=.setuptools-cmake-build
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
-include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/onnx
 	SECTION:=libs
@@ -65,13 +65,13 @@ CMAKE_OPTIONS += \
 	-DONNX_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/Compile
-	$(call Py3Build/Compile)
 	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
 endef
 
 define Build/Install
-	$(call Py3Build/Install)
 	$(call Build/Install/Default)
+	$(call Py3Build/Install)
 endef
 
 define Build/InstallDev
