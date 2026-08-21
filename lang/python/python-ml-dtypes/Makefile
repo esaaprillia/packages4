@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ml-dtypes
-PKG_VERSION:=0.5.4
+PKG_VERSION:=0.6.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=ml_dtypes
@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0 MPL-2.0
 PKG_LICENSE_FILES:=LICENSE LICENSE.eigen
 
-PKG_BUILD_DEPENDS:=numpy/host python-absl-py/host
-HOST_BUILD_DEPENDS:=numpy/host python-absl-py/host
+PKG_BUILD_DEPENDS:=numpy/host python-absl-py/host python-scikit-build-core/host
+HOST_BUILD_DEPENDS:=numpy/host python-absl-py/host python-scikit-build-core/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
