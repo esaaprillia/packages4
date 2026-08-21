@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=onnx
-PKG_VERSION:=1.20.0
+PKG_VERSION:=1.22.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -12,12 +12,11 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=numpy/host python-protobuf/host python-pybind11/host python-ml-dtypes/host python-nanobind/host
-
+PKG_BUILD_DEPENDS:=googletest/host protobuf/host python-pybind11 numpy/host python-nanobind/host
 PYTHON3_PKG_BUILD:=0
-#CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/nls.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
@@ -25,7 +24,7 @@ define Package/onnx
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Open standard for machine learning interoperability
-	DEPENDS:=+libstdcpp +protobuf +abseil-cpp +python3
+	DEPENDS:=+libstdcpp +abseil-cpp +protobuf $(ICONV_DEPENDS)
 	URL:=https://onnx.ai/
 endef
 
@@ -33,11 +32,31 @@ define Package/onnx/description
 	Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
 endef
 
+define Package/python3-onnx
+  SECTION:=lang
+  CATEGORY:=Languages
+  SUBMENU:=Python
+  TITLE:=onnx (python3 bindings)
+  URL:=https://onnx.ai/
+  DEPENDS:=+python3-light +python3-numpy +python3-protobuf +python3-typing-extensions +python3-ml-dtypes
+endef
+
+define Package/python3-onnx/description
+	Open Neural Network Exchange (ONNX) is an open ecosystem that empowers AI developers to choose the right tools as their project evolves.
+endef
+
+TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
+TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
+TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
+
+TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable -Wno-error=unused-result
+
 CMAKE_OPTIONS += \
-    -DBUILD_SHARED_LIBS=ON \
-    -DONNX_BUILD_PYTHON=ON \
-    -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
-    -DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+	-DONNX_BUILD_PYTHON=ON \
+	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
+	-DONNX_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -49,3 +68,6 @@ define Package/onnx/install
 endef
 
 $(eval $(call BuildPackage,onnx))
+$(eval $(call Py3Package,python3-onnx))
+$(eval $(call BuildPackage,python3-onnx))
+$(eval $(call BuildPackage,python3-onnx-src))
