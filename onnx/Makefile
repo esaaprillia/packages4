@@ -12,8 +12,9 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=googletest/host protobuf/host python-pybind11 numpy/host python-nanobind/host
+PKG_BUILD_DEPENDS:=googletest/host protobuf/host python-pybind11 numpy/host python-nanobind/host python-protobuf/host python-scikit-build-core/host
 PYTHON3_PKG_BUILD:=0
+CMAKE_SOURCE_SUBDIR:=.setuptools-cmake-build
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
@@ -53,9 +54,25 @@ TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable -Wno-error=unused-result
 
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DONNX_ML=ON -DONNX_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" -DONNX_USE_PROTOBUF_SHARED_LIBS=ON"
+
 CMAKE_OPTIONS += \
-	-DONNX_BUILD_PYTHON=ON -DBUILD_SHARED_LIBS=ON -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
+	-DONNX_BUILD_PYTHON=OFF \
+	-DONNX_ML=ON \
+	-DBUILD_SHARED_LIBS=ON \
+	-DONNX_INSTALL=ON \
+	-DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
 	-DONNX_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+
+define Build/Compile
+	$(call Py3Build/Compile)
+	$(call Build/Compile/Default)
+endef
+
+define Build/Install
+	$(call Py3Build/Install)
+	$(call Build/Install/Default)
+endef
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
