@@ -66,11 +66,8 @@ CMAKE_OPTIONS += \
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	$(call Py3Build/Compile)
-endef
-
-define Build/Install
 	$(call Build/Install/Default)
+	$(call Py3Build/Compile)
 	$(call Py3Build/Install)
 endef
 
