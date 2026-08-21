@@ -54,7 +54,7 @@ TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable -Wno-error=unused-result
 
 CMAKE_OPTIONS += \
-	-DONNX_BUILD_PYTHON=ON \
+	-DONNX_BUILD_PYTHON=ON -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
 	-DONNX_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
