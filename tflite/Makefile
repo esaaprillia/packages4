@@ -35,9 +35,6 @@ define Package/tflite/description
 	LiteRT, successor to TensorFlow Lite. is Google's On-device framework for high-performance ML & GenAI deployment on edge platforms, via efficient conversion, runtime, and optimization
 endef
 
-TARGET_CFLAGS=-I$(PYTHON3_INC_DIR) -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/pybind11/include/pybind11 -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy
-TARGET_CXXFLAGS=-I$(PYTHON3_INC_DIR) -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/pybind11/include/pybind11 -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy
-
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_DOC=OFF \
@@ -46,6 +43,8 @@ CMAKE_OPTIONS += \
 	-DBUILD_EXAMPLES=OFF \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
+	-DCMAKE_C_FLAGS=-I$(PYTHON3_INC_DIR) -I$(STAGING_DIR)/usr/include/pybind11 -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy \
+	-DCMAKE_CXX_FLAGS=-I$(PYTHON3_INC_DIR) -I$(STAGING_DIR)/usr/include/pybind11 -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include/numpy \
 	-DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
