@@ -1,0 +1,23 @@
+From a89f490bce24985bbf6e9562fc689c0490040782 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 21 Aug 2026 18:29:31 +0800
+Subject: [PATCH] Update pyproject.toml
+
+Signed-off-by: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 05e7796632d..c27e71b0c8b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -3,7 +3,7 @@
+ # SPDX-License-Identifier: Apache-2.0
+ 
+ [build-system]
+-requires = ["scikit-build-core>=0.11", "protobuf==4.25.1"]
++requires = ["scikit-build-core>=0.11", "protobuf"]
+ build-backend = "scikit_build_core.build"
+ 
+ [project]
