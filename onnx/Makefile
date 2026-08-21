@@ -18,8 +18,8 @@ CMAKE_SOURCE_SUBDIR:=.setuptools-cmake-build
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 
 define Package/onnx
 	SECTION:=libs
