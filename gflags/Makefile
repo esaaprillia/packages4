@@ -10,7 +10,7 @@ PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
-PKG_LICENSE_FILES:=
+PKG_LICENSE_FILES:=COPYING.txt
 
 CMAKE_BINARY_SUBDIR := build
 
