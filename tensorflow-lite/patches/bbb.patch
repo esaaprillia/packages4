@@ -1,0 +1,22 @@
+From 262c0aa6fad612bddd77f140ebc95eef08305887 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 22 Aug 2026 13:26:44 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ tensorflow/lite/tools/benchmark/proto/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tensorflow/lite/tools/benchmark/proto/CMakeLists.txt b/tensorflow/lite/tools/benchmark/proto/CMakeLists.txt
+index 6a39f06e03c32b..50b4514b0113ab 100644
+--- a/tensorflow/lite/tools/benchmark/proto/CMakeLists.txt
++++ b/tensorflow/lite/tools/benchmark/proto/CMakeLists.txt
+@@ -26,7 +26,7 @@ list(APPEND benchmark_result_generated_files
+ add_custom_command(
+     OUTPUT ${benchmark_result_generated_files}
+     COMMAND ${Protobuf_PROTOC_EXECUTABLE}
+-    ARGS --cpp_out=${CMAKE_BINARY_DIR} --proto_path=${TENSORFLOW_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/benchmark_result.proto
++    ARGS --cpp_out=${CMAKE_BINARY_DIR} --proto_path=${CMAKE_CURRENT_SOURCE_DIR}/../../../../.. tensorflow/lite/tools/benchmark/proto/benchmark_result.proto
+     DEPENDS ${Protobuf_PROTOC_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/benchmark_result.proto
+ )
+ 
