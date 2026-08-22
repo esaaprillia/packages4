@@ -26,13 +26,13 @@ include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
-	TITLE:=Google's on-device runtime for high-performance ML & GenAI deployment on edge platforms.
+	TITLE:=An Open Source Machine Learning Framework for Everyone
 	DEPENDS:=+libstdcpp +abseil-cpp +flatbuffers
 	URL:=https://www.tensorflow.org/lite/
 endef
 
 define Package/tensorflow-lite/description
-	LiteRT, successor to TensorFlow Lite. is Google's On-device framework for high-performance ML & GenAI deployment on edge platforms, via efficient conversion, runtime, and optimization
+	TensorFlow Lite is TensorFlow's lightweight solution for mobile and embedded devices. It enables low-latency inference of on-device machine learning models with a small binary size and fast performance supporting hardware acceleration.
 endef
 
 define Package/python3-tensorflow-lite
