@@ -12,9 +12,9 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=flatbuffers-flatc/host swig/host protobuf-protoc/host
+PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host
 
-#CMAKE_BINARY_SUBDIR:=build
+CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
 PYTHON3_PKG_BUILD:=0
@@ -44,7 +44,7 @@ define Package/python3-tensorflow-lite
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=Python bindings tensorflow-lite
-	DEPENDS:=+libjpeg-turbo +zlib +tensorflow-lite
+	#DEPENDS:=+libjpeg-turbo +zlib +tensorflow-lite
 	URL:=https://www.tensorflow.org/lite/
 endef
 
@@ -82,12 +82,10 @@ CMAKE_OPTIONS += \
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	$(call Py3Build/Compile)
 endef
 
 define Build/Install
 	$(call Build/Install/Default)
-	$(call Py3Build/Install/Default)
 endef
 
 define Build/InstallDev
