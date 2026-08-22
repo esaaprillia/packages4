@@ -10,7 +10,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow.git
-PKG_SOURCE_VERSION:=beb1f715ef824f9e189a17e6c20ab8ed837cdd70
+PKG_SOURCE_VERSION:=64fbb70af661b3f64be626fa1172d43b882c39bb
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
