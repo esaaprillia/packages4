@@ -1,19 +1,23 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=tensorflow-lite
+PKG_NAME:=tensorflow
 PKG_VERSION:=2.21.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=tensorflow-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=tensorflow-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow/archive/v$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/tensorflow/tensorflow.git
+PKG_SOURCE_VERSION:=beb1f715ef824f9e189a17e6c20ab8ed837cdd70
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host swig/host python-pybind11/host numpy/host python-pybind11
-PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
 
 PYTHON3_PKG_BUILD:=0
 CMAKE_BINARY_SUBDIR:=build
