@@ -51,7 +51,7 @@ CMAKE_OPTIONS += \
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	cd $(PKG_BUILD_DIR)/build; \
+	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
 	cmake --build build --target _pywrap_tensorflow_interpreter_wrapper
