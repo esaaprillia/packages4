@@ -32,6 +32,16 @@ define Package/moonfire-nvr/description
   Moonfire NVR is an open-source security camera network video recorder, started by Scott Lamb <slamb@slamb.org>.
 endef
 
+TAR_OPTIONS+= --strip-components 1
+TAR_CMD=$(HOST_TAR) -C $(1) $(TAR_OPTIONS)
+
+NODEJS_CPU:=$(subst powerpc,ppc,$(subst aarch64,arm64,$(subst x86_64,x64,$(subst i386,ia32,$(ARCH)))))
+TMPNPM:=$(shell mktemp -u XXXXXXXXXX)
+NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(TMP_DIR))
+
+TARGET_CFLAGS+=$(FPIC)
+TARGET_CPPFLAGS+=$(FPIC)
+
 CARGO_PKG_CONFIG_VARS += RUSTFLAGS="--cfg tokio_unstable" VERSION=$(PKG_VERSION) UI_BUILD_DIR=../ui/dist
 RUSTFLAGS +="--cfg tokio_unstable" VERSION=$(PKG_VERSION) UI_BUILD_DIR=../ui/dist
 
