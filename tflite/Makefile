@@ -35,6 +35,8 @@ define Package/tflite/description
 	LiteRT, successor to TensorFlow Lite. is Google's On-device framework for high-performance ML & GenAI deployment on edge platforms, via efficient conversion, runtime, and optimization
 endef
 
+MAKE_FLAGS += _pywrap_tensorflow_interpreter_wrapper
+
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_DOC=OFF \
