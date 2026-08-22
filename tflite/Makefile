@@ -51,7 +51,7 @@ CMAKE_OPTIONS += \
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	cd $(PKG_BUILD_DIR); \
+	cd $(PKG_BUILD_DIR)/build; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
 	cmake --build build --target _pywrap_tensorflow_interpreter_wrapper
@@ -65,8 +65,11 @@ endef
 
 define Package/tflite/install
 	$(INSTALL_DIR) $(1)/usr/lib
+	ls -l $(PKG_BUILD_DIR)/*
+	ls -l $(PKG_BUILD_DIR)/build/*
+	ls -l $(PKG_BUILD_DIR)/_deps/*
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/libtensorflow-lite.so $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/build/libtensorflow-lite.so $(1)/usr/lib/
 	$(CP) $(PKG_BUILD_DIR)/build/_deps/farmhash-build/libfarmhash.so $(1)/usr/lib/
 endef
 
