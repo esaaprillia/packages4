@@ -1,61 +1,30 @@
-From 7a50d47ed1a083797305ffcc646800bc6a6d6894 Mon Sep 17 00:00:00 2001
-From: Stephen WU <stephen0811@gmail.com>
-Date: Sun, 26 Apr 2026 15:13:06 +0800
-Subject: [PATCH 1/2] Build: Synchronize TensorFlow and XNNPACK tags for ARM
- build
+From f66d3319862c1b62a7df6cb54573ac55bcd65808 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 22 Aug 2026 18:57:28 +0800
+Subject: [PATCH] Update CMakeLists.txt
 
 ---
- tensorflow/lite/CMakeLists.txt                    | 2 +-
- tensorflow/lite/tools/cmake/modules/xnnpack.cmake | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ tensorflow/lite/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt
-index 4cfd59427542a2..f85d2b91159a96 100644
---- a/tensorflow/lite/CMakeLists.txt
-+++ b/tensorflow/lite/CMakeLists.txt
-@@ -52,7 +52,7 @@ if(NOT TENSORFLOW_SOURCE_DIR)
-     tensorflow
-     GIT_REPOSITORY https://github.com/tensorflow/tensorflow.git
-     # v2.21.0-rc0 has updated schema_generated.h file.
--    GIT_TAG v2.21.0-rc0
-+    GIT_TAG fef4d514da6f7813f2bc61f209fb578630560b0c
-     GIT_SHALLOW TRUE
-     GIT_PROGRESS TRUE
-     SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/tensorflow-src
-diff --git a/tensorflow/lite/tools/cmake/modules/xnnpack.cmake b/tensorflow/lite/tools/cmake/modules/xnnpack.cmake
-index c2717b7581f087..31c71a0be6580e 100644
---- a/tensorflow/lite/tools/cmake/modules/xnnpack.cmake
-+++ b/tensorflow/lite/tools/cmake/modules/xnnpack.cmake
-@@ -23,7 +23,7 @@ OverridableFetchContent_Declare(
-   xnnpack
-   GIT_REPOSITORY https://github.com/google/XNNPACK
-   # Sync with tensorflow/workspace2.bzl
--  GIT_TAG bf362487d3c00ed7040a0c9c4b885f2ba20a6c45
-+  GIT_TAG 1c5800aea5fca56cdb50cf5f8bd761c7b6dd0ee4
-   GIT_PROGRESS TRUE
-   PREFIX "${CMAKE_BINARY_DIR}"
-   SOURCE_DIR "${CMAKE_BINARY_DIR}/xnnpack"
-
-From c0c4209c2f949316e1476b2af19739d692986d9f Mon Sep 17 00:00:00 2001
-From: cloudx123789 <stephen0811@gmail.com>
-Date: Thu, 25 Jun 2026 23:20:20 +0800
-Subject: [PATCH 2/2] Doc: Update CMakeLists comment to reflect specific commit
- tag
-
----
- tensorflow/lite/CMakeLists.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt
-index f85d2b91159a96..cd3140828c457b 100644
+index 7e877cd92f1cd1..b1773e57d4f153 100644
 --- a/tensorflow/lite/CMakeLists.txt
 +++ b/tensorflow/lite/CMakeLists.txt
 @@ -51,7 +51,7 @@ if(NOT TENSORFLOW_SOURCE_DIR)
    FetchContent_Declare(
      tensorflow
      GIT_REPOSITORY https://github.com/tensorflow/tensorflow.git
--    # v2.21.0-rc0 has updated schema_generated.h file.
-+    # Use specific commit instead of v2.21.0-rc0 tag (has updated schema_generated.h)
-     GIT_TAG fef4d514da6f7813f2bc61f209fb578630560b0c
+-    GIT_TAG v2.19.0
++    GIT_TAG v2.21.0-rc0
      GIT_SHALLOW TRUE
      GIT_PROGRESS TRUE
+     SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/tensorflow-src
+@@ -886,4 +886,4 @@ if(TFLITE_ENABLE_XNNPACK)
+     PUBLIC ${TFLITE_TARGET_PUBLIC_OPTIONS}
+     PRIVATE ${TFLITE_TARGET_PRIVATE_OPTIONS}
+   )
+-endif()
+\ No newline at end of file
++endif()
+
