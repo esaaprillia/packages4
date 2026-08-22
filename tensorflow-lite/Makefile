@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host
 
-#CMAKE_BINARY_SUBDIR:=build
+CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
 PYTHON3_PKG_BUILD:=0
