@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-typing-inspection
-PKG_VERSION:=0.4.2
+PKG_VERSION:=0.4.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=typing_inspection
