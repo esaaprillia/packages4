@@ -1,0 +1,22 @@
+From 0524ba19a78f764953f2dd53438eedc1a3f8ea96 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 23 Aug 2026 15:19:09 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ tensorflow/lite/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt
+index 39599a21cc5681..75eae0e7153d49 100644
+--- a/tensorflow/lite/CMakeLists.txt
++++ b/tensorflow/lite/CMakeLists.txt
+@@ -52,7 +52,7 @@ if(NOT TENSORFLOW_SOURCE_DIR)
+     tensorflow
+     GIT_REPOSITORY https://github.com/tensorflow/tensorflow.git
+     # v2.21.0-rc0 has updated schema_generated.h file.
+-    GIT_TAG v2.21.0-rc0
++    GIT_TAG 64fbb70af661b3f64be626fa1172d43b882c39bb
+     GIT_SHALLOW TRUE
+     GIT_PROGRESS TRUE
+     SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/tensorflow-src
