@@ -27,13 +27,43 @@ define Package/tflite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Google's on-device runtime for high-performance ML & GenAI deployment on edge platforms.
-	DEPENDS:=+libstdcpp +abseil-cpp +flatbuffers +python3-numpy +libjpeg-turbo +zlib
+	DEPENDS:=+libstdcpp +abseil-cpp +flatbuffers
 	URL:=https://github.com/google-ai-edge/LiteRT
 endef
 
 define Package/tflite/description
 	LiteRT, successor to TensorFlow Lite. is Google's On-device framework for high-performance ML & GenAI deployment on edge platforms, via efficient conversion, runtime, and optimization
 endef
+
+define Package/python3-tflite
+	SUBMENU:=Python
+	SECTION:=lang
+	CATEGORY:=Languages
+	TITLE:=Python bindings tflite
+	DEPENDS:=+python3-light +python3-numpy +libjpeg-turbo +zlib +tflite
+	URL:=https://github.com/google-ai-edge/LiteRT
+endef
+
+define Package/python3-tflite/description
+	Python bindings tflite
+endef
+
+PYTHON3_PKG_SETUP_VARS += PROJECT_NAME=tflite_runtime PACKAGE_VERSION="$(PKG_VERSION)"
+
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
+	$(CP) $(PKG_BUILD_DIR)/tflite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/build-pip/setup.py
+	$(CP) $(PKG_BUILD_DIR)/tflite/tools/pip_package/MANIFEST.in $(PKG_BUILD_DIR)/build-pip/
+	$(CP) $(PKG_BUILD_DIR)/tflite/python/interpreter_wrapper $(PKG_BUILD_DIR)/build-pip/
+	$(CP) $(PKG_BUILD_DIR)/tflite/python/interpreter.py $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
+	$(CP) $(PKG_BUILD_DIR)/tflite/python/metrics/{metrics_interface.py,metrics_portable.py} $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
+	echo "__version__ = '$(PKG_VERSION)'" >> $(PKG_BUILD_DIR)/build-pip/tflite_runtime/__init__.py
+endef
+
+PYTHON3_PKG_WHEEL_NAME:=tflite_runtime
+PYTHON3_PKG_WHEEL_VERSION:=2.2.0
+PYTHON3_PKG_SETUP_DIR:=build-pip
 
 CMAKE_OPTIONS += \
 	-Wno-dev \
@@ -55,6 +85,13 @@ define Build/Compile
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
 	cmake --build build --target _pywrap_tensorflow_interpreter_wrapper
+	$(CP) $(PKG_BUILD_DIR)/build/_pywrap_tensorflow_interpreter_wrapper.so $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install/Default)
 endef
 
 define Build/InstallDev
@@ -71,3 +108,6 @@ define Package/tflite/install
 endef
 
 $(eval $(call BuildPackage,tflite))
+$(eval $(call Py3Package,python3-tflite))
+$(eval $(call BuildPackage,python3-tflite))
+$(eval $(call BuildPackage,python3-tflite-src))
