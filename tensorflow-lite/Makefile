@@ -62,7 +62,7 @@ PYTHON3_PKG_SETUP_VARS += PROJECT_NAME=tflite_runtime PACKAGE_VERSION="$(PKG_VER
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(RM) -rf $(PKG_BUILD_DIR)/tensorflow/lite/tools/cmake/modules/abseil-cpp.cmake
+	#$(RM) -rf $(PKG_BUILD_DIR)/tensorflow/lite/tools/cmake/modules/abseil-cpp.cmake
 	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/build-pip/setup.py
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/MANIFEST.in $(PKG_BUILD_DIR)/build-pip/
@@ -80,7 +80,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_EXAMPLES=OFF \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
-	-DBUILD_TESTING=OFF -Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" -DBUILD_SHARED_LIBS=ON \
+	-DBUILD_TESTING=OFF -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON -Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" -DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Build/Compile
