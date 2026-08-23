@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyturbojpeg
-PKG_VERSION:=2.2.0
+PKG_VERSION:=2.5.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyturbojpeg
