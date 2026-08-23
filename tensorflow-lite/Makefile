@@ -17,7 +17,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host abseil-cpp zlib
+PKG_BUILD_DEPENDS:=flatbuffers/host protobuf/host abseil-cpp zlib protobuf
 
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
@@ -80,7 +80,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_EXAMPLES=OFF \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
-	-DBUILD_TESTING=OFF -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON -Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" -DBUILD_SHARED_LIBS=ON \
+	-DBUILD_TESTING=OFF -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON -Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" -DFlatBuffers_DIR="$(STAGING_DIR)/usr/lib/cmake/flatbuffers" -DProtobuf_DIR="$(STAGING_DIR)/usr/lib/cmake/protobuf" -DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Build/Compile
