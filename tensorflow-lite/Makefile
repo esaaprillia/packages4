@@ -17,27 +17,21 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host
-
-CMAKE_BINARY_SUBDIR:=build
-CMAKE_SOURCE_SUBDIR:=tensorflow/lite
+PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host swig/host python-pybind11/host numpy/host python-pybind11
 
 PYTHON3_PKG_BUILD:=0
-PKG_BUILD_DIR:=$(BUILD_DIR)/tensorflow-$(PKG_VERSION)
+CMAKE_BINARY_SUBDIR:=build
+CMAKE_SOURCE_SUBDIR:=tensorflow/lite
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
-PYTHON3_PKG_WHEEL_NAME:=tflite_runtime
-PYTHON3_PKG_WHEEL_VERSION:=2.21.0
-PYTHON3_PKG_SETUP_DIR:=build-pip
-
 define Package/tensorflow-lite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=An Open Source Machine Learning Framework for Everyone
-	DEPENDS:=+libstdcpp
+	DEPENDS:=+libstdcpp +abseil-cpp +flatbuffers
 	URL:=https://www.tensorflow.org/lite/
 endef
 
@@ -50,7 +44,7 @@ define Package/python3-tensorflow-lite
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=Python bindings tensorflow-lite
-	#DEPENDS:=+libjpeg-turbo +zlib +tensorflow-lite
+	DEPENDS:=+python3-light +python3-numpy +libjpeg-turbo +zlib +tensorflow-lite
 	URL:=https://www.tensorflow.org/lite/
 endef
 
@@ -62,9 +56,6 @@ PYTHON3_PKG_SETUP_VARS += PROJECT_NAME=tflite_runtime PACKAGE_VERSION="$(PKG_VER
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	mkdir -p $(STAGING_DIR)/usr/bin
-	$(RM) -rf $(STAGING_DIR)/usr/bin/protoc*
-	$(CP) $(STAGING_DIR_HOSTPKG)/bin/protoc* $(STAGING_DIR)/usr/bin/
 	mkdir -p $(PKG_BUILD_DIR)/build-pip/tflite_runtime
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/setup_with_binary.py $(PKG_BUILD_DIR)/build-pip/setup.py
 	$(CP) $(PKG_BUILD_DIR)/tensorflow/lite/tools/pip_package/MANIFEST.in $(PKG_BUILD_DIR)/build-pip/
@@ -74,6 +65,10 @@ define Build/Prepare
 	echo "__version__ = '$(PKG_VERSION)'" >> $(PKG_BUILD_DIR)/build-pip/tflite_runtime/__init__.py
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=tflite_runtime
+PYTHON3_PKG_WHEEL_VERSION:=2.21.0
+PYTHON3_PKG_SETUP_DIR:=build-pip
+
 CMAKE_OPTIONS += \
 	-Wno-dev \
 	-DBUILD_DOC=OFF \
@@ -82,16 +77,25 @@ CMAKE_OPTIONS += \
 	-DBUILD_EXAMPLES=OFF \
 	-DBUILD_TEST=OFF \
 	-DBUILD_TESTS=OFF \
+	-DCMAKE_C_FLAGS="-I$(PYTHON3_INC_DIR) -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/pybind11/include -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include" \
+	-DCMAKE_CXX_FLAGS="-I$(PYTHON3_INC_DIR) -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/pybind11/include -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include" \
 	-DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR)/usr/bin/protoc"
+	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/Compile
 	$(call Build/Compile/Default)
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	cmake --build build --target _pywrap_tensorflow_interpreter_wrapper
+	$(CP) $(PKG_BUILD_DIR)/build/_pywrap_tensorflow_interpreter_wrapper.so $(PKG_BUILD_DIR)/build-pip/tflite_runtime/
+	$(call Py3Build/Compile)
 endef
 
 define Build/Install
 	$(call Build/Install/Default)
+	$(call Py3Build/Install/Default)
 endef
 
 define Build/InstallDev
@@ -103,6 +107,8 @@ endef
 define Package/tensorflow-lite/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/build/libtensorflow-lite.so $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/build/_deps/farmhash-build/libfarmhash.so $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,tensorflow-lite))
