@@ -97,7 +97,7 @@ endef
 
 define Package/tensorflow-lite/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 	$(CP) $(PKG_BUILD_DIR)/build/libtensorflow-lite.so $(1)/usr/lib/
 endef
 
