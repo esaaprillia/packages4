@@ -17,7 +17,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=flatbuffers/host protobuf/host abseil-cpp zlib protobuf flatbuffers
+PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host zlib
 
 CMAKE_BINARY_SUBDIR:=build
 CMAKE_SOURCE_SUBDIR:=tensorflow/lite
@@ -79,9 +79,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_EXAMPLE=OFF \
 	-DBUILD_EXAMPLES=OFF \
 	-DBUILD_TEST=OFF \
-	-DBUILD_TESTS=OFF -DABSL_LIBRARIES="$(STAGING_DIR)/usr/lib" -DFLATBUFFERS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include" -DFLATBUFFERS_LIBRARIES="$(STAGING_DIR)/usr/lib" -DProtobuf_INCLUDE_DIR="$(STAGING_DIR)/usr/include" -DProtobuf_LIBRARIES="$(STAGING_DIR)/usr/lib" \
-	-DBUILD_TESTING=OFF -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON -Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" -DFlatBuffers_DIR="$(STAGING_DIR)/usr/lib/cmake/flatbuffers" -DProtobuf_DIR="$(STAGING_DIR)/usr/lib/cmake/protobuf" -DBUILD_SHARED_LIBS=ON \
-	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" -DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Build/Compile
 	$(call Build/Compile/Default)
@@ -101,7 +99,6 @@ define Package/tensorflow-lite/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 	$(CP) $(PKG_BUILD_DIR)/build/libtensorflow-lite.so $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/build/_deps/farmhash-build/libfarmhash.so $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,tensorflow-lite))
