@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=svt-av1
-PKG_VERSION:=3.1.2
+PKG_VERSION:=4.2.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=SVT-AV1-v$(PKG_VERSION).tar.gz
