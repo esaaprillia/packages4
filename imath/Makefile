@@ -26,7 +26,7 @@ define Package/imath
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Imath is a C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics
-	DEPENDS:=+libstdcpp +boost-python3
+	DEPENDS:=+libstdcpp
 	URL:=https://imath.readthedocs.io/
 endef
 
@@ -39,7 +39,7 @@ define Package/python3-imath
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=Imath Python library
-	DEPENDS:=+python3-light +python3-numpy +imath
+	DEPENDS:=+python3-light +boost-python3 +python3-numpy +imath
 	URL:=https://imath.readthedocs.io/
 endef
 
