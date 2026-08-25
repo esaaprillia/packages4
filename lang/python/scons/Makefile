@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=scons
-PKG_VERSION:=4.10.1
+PKG_VERSION:=4.11.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=$(PKG_NAME)
