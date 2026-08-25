@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=flatbuffers/host protobuf-protoc/host swig/host python-pybind11/host numpy/host python-pybind11
+PKG_BUILD_DEPENDS:=flatbuffers/host protobuf/host swig/host python-pybind11/host numpy/host python-pybind11
 PKG_BUILD_DIR:=$(BUILD_DIR)/LiteRT-$(PKG_VERSION)
 
 PYTHON3_PKG_BUILD:=0
@@ -27,7 +27,7 @@ define Package/tflite
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Google's on-device runtime for high-performance ML & GenAI deployment on edge platforms.
-	DEPENDS:=+libstdcpp +abseil-cpp +flatbuffers
+	DEPENDS:=+libstdcpp +abseil-cpp +flatbuffers +protobuf
 	URL:=https://github.com/google-ai-edge/LiteRT
 endef
 
@@ -65,19 +65,17 @@ PYTHON3_PKG_WHEEL_NAME:=tflite_runtime
 PYTHON3_PKG_WHEEL_VERSION:=2.2.0
 PYTHON3_PKG_SETUP_DIR:=build-pip
 
+TARGET_LDFLAGS += -lflatbuffers -lprotobuf
+
 CMAKE_OPTIONS += \
 	-Wno-dev \
-	-DBUILD_DOC=OFF \
-	-DBUILD_DOCS=OFF \
-	-DBUILD_EXAMPLE=OFF \
-	-DBUILD_EXAMPLES=OFF \
-	-DBUILD_TEST=OFF \
-	-DBUILD_TESTS=OFF \
+	-DABSL_LIBRARIES="$(STAGING_DIR)/usr/lib" -DFLATBUFFERS_INCLUDE_DIRS="$(STAGING_DIR)/usr/include" -DFLATBUFFERS_LIBRARIES="$(STAGING_DIR)/usr/lib" -DProtobuf_INCLUDE_DIR="$(STAGING_DIR)/usr/include" -DProtobuf_LIBRARIES="$(STAGING_DIR)/usr/lib" \
+	-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON -Dabsl_DIR="$(STAGING_DIR)/usr/lib/cmake/absl" -DFlatBuffers_DIR="$(STAGING_DIR)/usr/lib/cmake/flatbuffers" -DProtobuf_DIR="$(STAGING_DIR)/usr/lib/cmake/protobuf" \
 	-DCMAKE_C_FLAGS="-I$(PYTHON3_INC_DIR) -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/pybind11/include -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include" \
 	-DCMAKE_CXX_FLAGS="-I$(PYTHON3_INC_DIR) -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/pybind11/include -I$(STAGING_DIR)$(PYTHON3_PKG_DIR)/numpy/_core/include" \
-	-DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=ON \
+	-DBUILD_SHARED_LIBS=ON \
 	-DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin" \
-	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
+	-DProtobuf_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/Compile
 	$(call Build/Compile/Default)
