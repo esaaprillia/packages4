@@ -16,7 +16,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
 #PKG_BUILD_DEPENDS:=sleef
-PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host protobuf/host onnx sleef libfmt abseil-cpp cpuinfo eigen gflags glog libuv numactl openmp openmpi protobuf python-pybind11 python-filelock python-fsspec python-jinja2 python-networkx numpy python-sympy python-typing-extensions python-yaml vulkan-loader
+PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host protobuf/host sleef libfmt abseil-cpp cpuinfo eigen gflags glog libuv numactl openmp openmpi protobuf python-pybind11 python-filelock python-fsspec python-jinja2 python-networkx numpy python-sympy python-typing-extensions python-yaml vulkan-loader
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
@@ -49,7 +49,6 @@ define Package/python3-pytorch/description
 endef
 
 CMAKE_OPTIONS += \
-	-DPYTHON=ON \
 	-DINSTALL_TEST=OFF \
 	-DBUILD_TEST=OFF \
 	-DBUILD_CUSTOM_PROTOBUF=OFF \
@@ -58,10 +57,13 @@ CMAKE_OPTIONS += \
 	-DUSE_SYSTEM_PYBIND11=ON \
 	-DUSE_SYSTEM_EIGEN_INSTALL=ON \
 	-DUSE_SYSTEM_FMT=ON \
-	-DUSE_SYSTEM_ONNX=ON \
+	-DUSE_GLOG=ON \
+	-DUSE_GFLAGS=ON \
 	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
+	-DPython_SITELIB="$(PYTHON3_PKG_DIR)" \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
