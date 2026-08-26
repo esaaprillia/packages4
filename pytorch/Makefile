@@ -15,6 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
+PKG_BUILD_DEPENDS:=sleef
 #PKG_BUILD_DEPENDS:=abseil-cpp cpuinfo eigen gflags glog libgomp libuv numactl openmp openmpi protobuf python-pybind11 python-filelock python-fsspec python-jinja2 python-networkx numpy python-sympy python-typing-extensions python-yaml vulkan-loader
 PYTHON3_PKG_BUILD:=0
 
@@ -51,7 +52,7 @@ MAKE_FLAGS+=VERBOSE=0
 
 CMAKE_OPTIONS += \
 	-DPYTHON=ON \
-	-DBUILD_SHARED_LIBS=ON -DUSE_PRIORITIZED_TEXT_FOR_LD=OFF
+	-DBUILD_SHARED_LIBS=ON -DUSE_PRIORITIZED_TEXT_FOR_LD=OFF -DUSE_SYSTEM_SLEEF=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
