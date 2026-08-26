@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hassil
-PKG_VERSION:=3.11.0
+PKG_VERSION:=3.12.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=hassil
