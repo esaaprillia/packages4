@@ -35,14 +35,14 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
-	-DSLEEF_BUILD_TESTS=OFF -DSLEEF_NATIVE_BINARY_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DSLEEF_BUILD_TESTS=OFF
 
 CMAKE_HOST_OPTIONS += \
 	-DSLEEF_BUILD_TESTS=OFF
 
 define Host/Install
-	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
-	$(CP) $(HOST_BUILD_DIR)/build/bin/{mkrename,mkdisp,mkalias,addSuffix} $(STAGING_DIR_HOSTPKG)/bin/
+	$(INSTALL_DIR) $(STAGING_DIR_HOST)/bin
+	$(CP) $(HOST_BUILD_DIR)/build/bin/{mkrename,mkdisp,mkalias,addSuffix} $(STAGING_DIR_HOST)/bin/
 endef
 
 define Build/InstallDev
