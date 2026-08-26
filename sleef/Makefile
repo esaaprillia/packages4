@@ -15,8 +15,10 @@ PKG_LICENSE_FILES:=LICENSE.txt
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
+PKG_BUILD_DEPENDS:=sleef/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/sleef
@@ -45,4 +47,5 @@ define Package/sleef/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,sleef))
