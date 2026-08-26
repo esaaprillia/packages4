@@ -51,7 +51,7 @@ MAKE_FLAGS+=VERBOSE=0
 
 CMAKE_OPTIONS += \
 	-DPYTHON=ON \
-	-DBUILD_SHARED_LIBS=ON -DPython_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)"
+	-DBUILD_SHARED_LIBS=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
