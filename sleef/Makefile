@@ -34,7 +34,11 @@ define Package/sleef/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DSLEEF_BUILD_TESTS=OFF
+
+CMAKE_HOST_OPTIONS += \
+	-DSLEEF_BUILD_TESTS=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
