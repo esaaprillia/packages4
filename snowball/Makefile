@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=snowball
-PKG_VERSION:=3.0.1
+PKG_VERSION:=3.1.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -39,8 +39,8 @@ define Build/Compile
 endef
 
 define Host/Install
-	$(INSTALL_DIR) $(STAGING_DIR_HOST)/bin
-	$(CP) $(HOST_BUILD_DIR)/{snowball,stemwords} $(STAGING_DIR_HOST)/bin/
+	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
+	$(CP) $(HOST_BUILD_DIR)/{snowball,stemwords} $(STAGING_DIR_HOSTPKG)/bin/
 endef
 
 define Build/InstallDev
