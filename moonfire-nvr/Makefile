@@ -12,7 +12,7 @@ PKG_MAINTAINER:=example <example@gmail.com>
 PKG_LICENSE:=GPLv3
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=rustup/host node/host node-pnpm/host
+PKG_BUILD_DEPENDS:=rustup/host node/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
