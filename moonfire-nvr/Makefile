@@ -24,7 +24,7 @@ define Package/moonfire-nvr
   SECTION:=net
   CATEGORY:=Network
   TITLE:=Moonfire NVR, a security camera network video recorder
-  DEPENDS:=+sqlite3-cli $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+sqlite3-cli +zoneinfo-all +zoneinfo-core $(RUST_ARCH_DEPENDS)
   URL:=https://github.com/scottlamb/moonfire-nvr
 endef
 
