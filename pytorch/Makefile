@@ -48,8 +48,6 @@ define Package/python3-pytorch/description
 	pytorch Python library
 endef
 
-MAKE_FLAGS+=VERBOSE=0
-
 CMAKE_OPTIONS += \
 	-DPYTHON=ON \
 	-DBUILD_SHARED_LIBS=ON -DUSE_PRIORITIZED_TEXT_FOR_LD=OFF -DUSE_SYSTEM_SLEEF=ON
