@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
-#PKG_BUILD_DEPENDS:=numpy/host
+PKG_BUILD_DEPENDS:=abseil-cpp cpuinfo eigen gflags glog libgomp libuv numactl openmp openmpi protobuf python-pybind11 python-filelock python-fsspec python-jinja2 python-networkx numpy python-sympy python-typing-extensions python-yaml vulkan-loader
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
