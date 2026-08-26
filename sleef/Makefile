@@ -40,6 +40,11 @@ CMAKE_OPTIONS += \
 CMAKE_HOST_OPTIONS += \
 	-DSLEEF_BUILD_TESTS=OFF
 
+define Host/Install
+	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
+	$(CP) $(HOST_BUILD_DIR)/build/bin/{mkrename,mkdisp,mkalias,addSuffix} $(STAGING_DIR_HOSTPKG)/bin/
+endef
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libbrotli*.pc
