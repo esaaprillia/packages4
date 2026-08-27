@@ -103,6 +103,7 @@ define Build/Configure/Default
 		PYTHON_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
 		PYTHON_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
 		PYTHON_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
+		Python_SITELIB="$(PYTHON3_PKG_DIR)" \
 		Python3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		Python3_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
 		PYTHON3="$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3)" \
@@ -114,6 +115,7 @@ define Build/Configure/Default
 		PYTHON3_LIBRARIES="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --ldflags) -l${PYTHON3}" \
 		PYTHON3_CPPFLAGS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --includes)" \
 		PYTHON3_LIBS="$(shell $(STAGING_DIR)/host/bin/$(PYTHON3)-config --libs)" \
+		Python3_SITELIB="$(PYTHON3_PKG_DIR)" \
 		$(PYTHON3_VARS) \
 		cmake \
 			--no-warn-unused-cli \
