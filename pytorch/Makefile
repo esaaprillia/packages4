@@ -15,8 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
-#PKG_BUILD_DEPENDS:=sleef
-PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host protobuf/host sleef libfmt abseil-cpp cpuinfo eigen gflags glog libuv numactl openmp openmpi protobuf python-pybind11 python-filelock python-fsspec python-jinja2 python-networkx numpy python-sympy python-typing-extensions python-yaml vulkan-loader
+PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host libfmt eigen python-pybind11
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
@@ -27,7 +26,7 @@ define Package/pytorch
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	DEPENDS:=+libstdcpp
+	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +gflags +glog +numactl +openmp +openblas +protobuf +sleef +libuv
 	URL:=https://github.com/pytorch/pytorch
 endef
 
@@ -40,7 +39,7 @@ define Package/python3-pytorch
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=pytorch Python library
-	#DEPENDS:=+python3-light +boost-python3 +python3-numpy +pytorch
+	DEPENDS:=+python3-light +python3-filelock +python3-fsspec +python3-jinja2 +python3-networkx +python3-numpy +python3-sympy +python3-typing-extensions +python3-yaml +pytorch
 	URL:=https://github.com/pytorch/pytorch
 endef
 
@@ -77,6 +76,16 @@ CMAKE_OPTIONS += \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
+
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install)
+endef
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
