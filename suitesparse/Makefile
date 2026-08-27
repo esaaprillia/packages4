@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=suitesparse
-PKG_VERSION:=7.12.2
+PKG_VERSION:=7.14.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=SuiteSparse-$(PKG_VERSION).tar.gz
