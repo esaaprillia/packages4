@@ -48,6 +48,11 @@ define Package/python3-pytorch/description
 	pytorch Python library
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	mkdir -p $(PKG_INSTALL_DIR)
+endef
+
 TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
