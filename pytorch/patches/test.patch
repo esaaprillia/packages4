@@ -1,0 +1,22 @@
+From bec32f3a3afb800ee08a40cbc59b11a7d43008eb Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 27 Aug 2026 09:36:39 +0800
+Subject: [PATCH] Update logging_is_google_glog.h
+
+---
+ c10/util/logging_is_google_glog.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/c10/util/logging_is_google_glog.h b/c10/util/logging_is_google_glog.h
+index 13760c5737cdd..f809b1734b280 100644
+--- a/c10/util/logging_is_google_glog.h
++++ b/c10/util/logging_is_google_glog.h
+@@ -1,3 +1,7 @@
++#ifndef GLOG_USE_GLOG_EXPORT
++#define GLOG_USE_GLOG_EXPORT
++#endif
++
+ #ifndef C10_UTIL_LOGGING_IS_GOOGLE_GLOG_H_
+ #define C10_UTIL_LOGGING_IS_GOOGLE_GLOG_H_
+ 
+
