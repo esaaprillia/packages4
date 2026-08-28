@@ -47,8 +47,12 @@ define Package/python3-pytorch/description
 	pytorch Python library
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=torch
+#PYTHON3_PKG_WHEEL_VERSION:=2.13.0a0+gitUnknown
+
 define Build/Prepare
 	$(call Build/Prepare/Default)
+	rm -rf $(PKG_BUILD_DIR)/pyproject.toml
 	mkdir -p $(PKG_INSTALL_DIR)
 endef
 
@@ -73,11 +77,22 @@ CMAKE_OPTIONS += \
 	-DUSE_GFLAGS=ON \
 	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
 	-DPython_SITELIB="$(PYTHON3_PKG_DIR)" \
+	-DTORCH_BUILD_VERSION="$(PKG_VERSION)" \
 	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
 	-DPYTORCH_BUILD_NUMBER=1 \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
+
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
+
+define Build/Install
+	$(call Build/Install/Default)
+	$(call Py3Build/Install)
+endef
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -89,8 +104,7 @@ endef
 
 define Package/pytorch/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	ls -l $(PKG_INSTALL_DIR)/usr/*
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,pytorch))
