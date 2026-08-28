@@ -1,14 +1,14 @@
-From d2fe8624b3f6055bea00d7b1cacb1536a7b18c50 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Fri, 28 Aug 2026 15:18:41 +0800
-Subject: [PATCH] Update Makefile
-
----
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Makefile b/Makefile
-index 640fa900..fe346f3f 100644
+--- a/scripts/build-libidn2.sh
++++ b/scripts/build-libidn2.sh
+@@ -13,7 +13,7 @@ build_deps_dir="$build_dir/deps/build"
+ downloads_dir="$build_dir/deps/downloads"
+ 
+ libidn2_version=${LIBIDN2_VERSION:-2.3.7}
+-libidn2_url=${LIBIDN2_URL:-https://ftp.gnu.org/gnu/libidn/libidn2-$libidn2_version.tar.gz}
++libidn2_url=${LIBIDN2_URL:-https://github.com/libidn/libidn2/archive/v$libidn2_version/libidn2-$libidn2_version.tar.gz}
+ 
+ make_cmd=${MAKE:-make}
+ if command -v gmake >/dev/null 2>&1; then
 --- a/Makefile
 +++ b/Makefile
 @@ -8,7 +8,7 @@ CMAKE_INSTALL_ARGS ?=
