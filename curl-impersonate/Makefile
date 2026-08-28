@@ -33,7 +33,7 @@ define Package/curl-impersonate/description
 endef
 
 define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2
+	$(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2 BUILD_DIR=$(PKG_BUILD_DIR)
 	$(call Build/Configure/Cmake)
 	$(call Build/Compile/Cmake)
 	$(call Build/Install/Cmake)
