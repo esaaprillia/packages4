@@ -53,7 +53,7 @@ endef
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	rm -rf $(PKG_BUILD_DIR)/pyproject.toml
-	mkdir -p $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch
+	mkdir -p $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/torch
 endef
 
 TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
@@ -84,15 +84,6 @@ CMAKE_OPTIONS += \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
-define Build/Install
-	$(call Build/Install/Default)
-	rm -rf $(PKG_INSTALL_DIR)/usr/bin
-	rm -rf $(PKG_INSTALL_DIR)/usr/lib
-	rm -rf $(PKG_INSTALL_DIR)/usr/share
-	rm -rf $(PKG_INSTALL_DIR)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/usr/* $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/
-endef
-
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	#$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/Imath.pc
@@ -104,6 +95,11 @@ endef
 define Package/pytorch/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+endef
+
+define Py3Package/python3-pytorch/install
+	rm -rf $(PKG_INSTALL_DIR)/usr/{bin,lib,share,include}
+	$(CP) $(PKG_INSTALL_DIR)/usr/* $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/torch/
 endef
 
 $(eval $(call BuildPackage,pytorch))
