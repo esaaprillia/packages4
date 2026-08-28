@@ -79,16 +79,6 @@ CMAKE_OPTIONS += \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
-define Build/Compile
-	$(call Build/Compile/Default)
-	#$(call Py3Build/Compile)
-endef
-
-define Build/Install
-	$(call Build/Install/Default)
-	#$(call Py3Build/Install)
-endef
-
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	#$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/Imath.pc
@@ -99,7 +89,7 @@ endef
 
 define Package/pytorch/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,pytorch))
