@@ -18,7 +18,7 @@ PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake-golang.mk
 
 define Package/curl-impersonate
 	SECTION:=libs
@@ -34,7 +34,7 @@ endef
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2
-	$(call Build/Compile/Default)
+	$(call Build/Compile/Cmake)
 endef
 
 define Build/InstallDev
