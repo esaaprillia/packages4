@@ -89,6 +89,7 @@ endef
 
 define Package/pytorch/install
 	$(INSTALL_DIR) $(1)/usr/lib
+	ls -l $(PKG_INSTALL_DIR)/usr/*
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 endef
 
