@@ -73,18 +73,20 @@ CMAKE_OPTIONS += \
 	-DUSE_GFLAGS=ON \
 	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
 	-DPython_SITELIB="$(PYTHON3_PKG_DIR)" \
+	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
+	-DPYTORCH_BUILD_NUMBER=1 \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	$(call Py3Build/Compile)
+	#$(call Py3Build/Compile)
 endef
 
 define Build/Install
 	$(call Build/Install/Default)
-	$(call Py3Build/Install)
+	#$(call Py3Build/Install)
 endef
 
 define Build/InstallDev
