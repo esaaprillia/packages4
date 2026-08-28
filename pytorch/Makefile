@@ -47,13 +47,13 @@ define Package/python3-pytorch/description
 	pytorch Python library
 endef
 
-PYTHON3_PKG_WHEEL_NAME:=torch
+#PYTHON3_PKG_WHEEL_NAME:=torch
 #PYTHON3_PKG_WHEEL_VERSION:=2.13.0a0+gitUnknown
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	rm -rf $(PKG_BUILD_DIR)/pyproject.toml
-	mkdir -p $(PKG_INSTALL_DIR)
+	mkdir -p $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch
 endef
 
 TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
@@ -84,14 +84,13 @@ CMAKE_OPTIONS += \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
-define Build/Compile
-	$(call Build/Compile/Default)
-	$(call Py3Build/Compile)
-endef
-
 define Build/Install
 	$(call Build/Install/Default)
-	$(call Py3Build/Install)
+	rm -rf $(PKG_INSTALL_DIR)/usr/bin
+	rm -rf $(PKG_INSTALL_DIR)/usr/lib
+	rm -rf $(PKG_INSTALL_DIR)/usr/share
+	rm -rf $(PKG_INSTALL_DIR)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/* $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/
 endef
 
 define Build/InstallDev
