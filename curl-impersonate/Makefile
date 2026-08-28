@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE.md
 
-#CMAKE_BINARY_SUBDIR := build
+CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
 
@@ -34,7 +34,9 @@ endef
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2
+	$(call Build/Configure/Cmake)
 	$(call Build/Compile/Cmake)
+	$(call Build/Install/Cmake)
 endef
 
 define Build/InstallDev
