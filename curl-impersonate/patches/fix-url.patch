@@ -1,0 +1,22 @@
+From d2fe8624b3f6055bea00d7b1cacb1536a7b18c50 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Fri, 28 Aug 2026 15:18:41 +0800
+Subject: [PATCH] Update Makefile
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 640fa900..fe346f3f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,7 +8,7 @@ CMAKE_INSTALL_ARGS ?=
+ TARGET ?= curl-impersonate
+ CURL_BIN ?= $(BUILD_DIR)/deps/build/curl/src/curl-impersonate
+ LIBIDN2_VERSION ?= 2.3.7
+-LIBIDN2_URL ?= https://ftp.gnu.org/gnu/libidn/libidn2-$(LIBIDN2_VERSION).tar.gz
++LIBIDN2_URL ?= https://github.com/libidn/libidn2/archive/v$(LIBIDN2_VERSION)/libidn2-$(LIBIDN2_VERSION).tar.gz
+ 
+ all: build checkbuild
+ .PHONY: all
