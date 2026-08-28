@@ -20,7 +20,7 @@ define Package/python3-gazetteer-matcher
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Constraint-driven gazetteer matcher for Home Assistant intents
-  URL:=https://github.com/home-assistant
+  URL:=https://github.com/OHF-Voice/gazetteer-matcher
   DEPENDS:=+python3 +python3-yaml +python3-unicode-rbnf +python3-home-assistant-intents
 endef
 
