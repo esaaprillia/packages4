@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-msgpack
-PKG_VERSION:=1.1.2
+PKG_VERSION:=1.2.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=msgpack
