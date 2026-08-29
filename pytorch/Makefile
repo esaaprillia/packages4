@@ -46,7 +46,7 @@ TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc
 
-PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS = "\
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="\
 	-DINSTALL_TEST=OFF \
 	-DBUILD_TEST=OFF \
 	-DBUILD_CUSTOM_PROTOBUF=OFF \
