@@ -42,7 +42,7 @@ CMAKE_OPTIONS += \
 
 define Build/Compile
 	mkdir -p $(PKG_BUILD_DIR)/build
-	$(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2 BUILD_DIR=$(PKG_BUILD_DIR)/build
+	$(CONFIGURE_VARS) $(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2 BUILD_DIR=$(PKG_BUILD_DIR)/build
 	$(call Build/Configure/Cmake)
 	$(call Build/Compile/Cmake)
 	$(call Build/Install/Cmake)
