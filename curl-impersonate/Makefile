@@ -32,6 +32,8 @@ define Package/curl-impersonate/description
 	An active fork of curl-impersonate with more versions and build targets. A series of patches that make curl requests look like Chrome, Firefox and Safari.
 endef
 
+TARGET_CFLAGS+=$(FPIC)
+TARGET_CPPFLAGS+=$(FPIC)
 MAKE_FLAGS += BUILD_DIR=$(PKG_BUILD_DIR)/build
 
 CMAKE_OPTIONS += \
