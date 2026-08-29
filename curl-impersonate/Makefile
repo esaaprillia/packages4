@@ -32,8 +32,10 @@ define Package/curl-impersonate/description
 	An active fork of curl-impersonate with more versions and build targets. A series of patches that make curl requests look like Chrome, Firefox and Safari.
 endef
 
+MAKE_FLAGS += BUILD_DIR=$(PKG_BUILD_DIR)/build
+
 define Build/Compile
-	$(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2 BUILD_DIR=$(PKG_BUILD_DIR)
+	$(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2 BUILD_DIR=$(PKG_BUILD_DIR)/build
 	$(call Build/Configure/Cmake)
 	$(call Build/Compile/Cmake)
 	$(call Build/Install/Cmake)
