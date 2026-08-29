@@ -53,7 +53,7 @@ endef
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	rm -rf $(PKG_BUILD_DIR)/pyproject.toml
-	mkdir -p $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/torch
+	mkdir -p $(PKG_INSTALL_DIR)
 endef
 
 TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
@@ -99,7 +99,8 @@ endef
 
 define Py3Package/python3-pytorch/install
 	rm -rf $(PKG_INSTALL_DIR)/usr/{bin,lib,share,include}
-	$(CP) $(PKG_INSTALL_DIR)/usr/* $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/torch/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/torch
+	$(CP) $(PKG_INSTALL_DIR)/usr/* $(1)$(PYTHON3_PKG_DIR)/torch/
 endef
 
 $(eval $(call BuildPackage,pytorch))
