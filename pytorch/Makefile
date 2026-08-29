@@ -1,60 +1,42 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pytorch
-PKG_VERSION:=2.13.0
+PKG_VERSION:=2.14.0
 PKG_RELEASE:=1
 
-PKG_SOURCE:=pytorch-v$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/pytorch/pytorch/releases/download/v$(PKG_VERSION)
-PKG_HASH:=skip
+#PKG_SOURCE:=pytorch-v$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/pytorch/pytorch/releases/download/v$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/pytorch/pytorch.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=08187d9e0fba026dc8217405802ab5381dc88d90
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause-Modification
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
-CMAKE_BINARY_SUBDIR := build
-
-PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host libfmt eigen python-pybind11
-PYTHON3_PKG_BUILD:=0
+PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host libfmt eigen python-pybind11
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
-
-define Package/pytorch
-	SECTION:=libs
-	CATEGORY:=Libraries
-	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +gflags +glog +numactl +openmp +openblas +protobuf +sleef +libuv
-	URL:=https://github.com/pytorch/pytorch
-endef
-
-define Package/pytorch/description
-	You can reuse your favorite Python packages such as NumPy, SciPy, and Cython to extend PyTorch when needed.
-endef
 
 define Package/python3-pytorch
 	SUBMENU:=Python
 	SECTION:=lang
 	CATEGORY:=Languages
-	TITLE:=pytorch Python library
-	DEPENDS:=+python3-light +python3-filelock +python3-fsspec +python3-jinja2 +python3-networkx +python3-numpy +python3-sympy +python3-typing-extensions +python3-yaml +pytorch
+	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
+	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +gflags +glog +numactl +openmp +openblas +protobuf +sleef +libuv +python3-light +python3-filelock +python3-fsspec +python3-jinja2 +python3-networkx +python3-numpy +python3-sympy +python3-typing-extensions +python3-yaml +pytorch
 	URL:=https://github.com/pytorch/pytorch
 endef
 
 define Package/python3-pytorch/description
-	pytorch Python library
+	You can reuse your favorite Python packages such as NumPy, SciPy, and Cython to extend PyTorch when needed.
 endef
 
-#PYTHON3_PKG_WHEEL_NAME:=torch
+PYTHON3_PKG_WHEEL_NAME:=torch
 #PYTHON3_PKG_WHEEL_VERSION:=2.13.0a0+gitUnknown
-
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	rm -rf $(PKG_BUILD_DIR)/pyproject.toml
-	mkdir -p $(PKG_INSTALL_DIR)
-endef
 
 TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
@@ -64,7 +46,7 @@ TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
 TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc
 
-CMAKE_OPTIONS += \
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS = "\
 	-DINSTALL_TEST=OFF \
 	-DBUILD_TEST=OFF \
 	-DBUILD_CUSTOM_PROTOBUF=OFF \
@@ -81,30 +63,8 @@ CMAKE_OPTIONS += \
 	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
 	-DPYTORCH_BUILD_NUMBER=1 \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc""
 
-define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
-	#$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/Imath.pc
-	#$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/Imath.pc
-	#$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/PyImath.pc
-	#$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/PyImath.pc
-endef
-
-define Package/pytorch/install
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-endef
-
-define Py3Package/python3-pytorch/install
-	rm -rf $(PKG_INSTALL_DIR)/usr/{bin,lib,share,include}
-	mkdir -p "$(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/torch"
-	$(INSTALL_DIR) $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/torch
-	$(CP) $(PKG_INSTALL_DIR)/usr/* $(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/torch
-endef
-
-$(eval $(call BuildPackage,pytorch))
 $(eval $(call Py3Package,python3-pytorch))
 $(eval $(call BuildPackage,python3-pytorch))
 $(eval $(call BuildPackage,python3-pytorch-src))
