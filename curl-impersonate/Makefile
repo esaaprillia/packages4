@@ -34,6 +34,10 @@ endef
 
 MAKE_FLAGS += BUILD_DIR=$(PKG_BUILD_DIR)/build
 
+CMAKE_OPTIONS += \
+	-DCMAKE_C_FLAGS=-fPIC \
+	-DCMAKE_CXX_FLAGS=-fPIC
+
 define Build/Compile
 	mkdir -p $(PKG_BUILD_DIR)/build
 	$(call Build/Configure/Cmake)
