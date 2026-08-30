@@ -53,7 +53,7 @@ define Package/python3-pytorch/description
 endef
 
 PYTHON3_PKG_WHEEL_NAME:=torch
-#PYTHON3_PKG_WHEEL_VERSION:=2.13.0a0+gitUnknown
+PYTHON3_PKG_WHEEL_VERSION:=2.14.0a0+gitunknown
 
 TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
