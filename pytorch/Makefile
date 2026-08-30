@@ -54,6 +54,7 @@ endef
 
 PYTHON3_PKG_WHEEL_NAME:=torch
 PYTHON3_PKG_WHEEL_VERSION:=2.14.0a0+gitunknown
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DBUILD_PYTHON=ON"
 
 TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
