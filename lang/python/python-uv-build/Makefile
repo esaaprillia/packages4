@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-uv-build
-PKG_VERSION:=0.12.5
+PKG_VERSION:=0.12.9
 PKG_RELEASE:=1
 
 PYPI_NAME:=uv_build
