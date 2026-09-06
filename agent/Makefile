@@ -27,7 +27,7 @@ define Package/agent
   SECTION:=net
   CATEGORY:=Network
   TITLE:=Kerberos Agent
-  DEPENDS:=$(GO_ARCH_DEPENDS) +ffmpeg +libatomic +libstdcpp +curl +ca-certificates +libopenssl +libjpeg-turbo +libcap-bin
+  DEPENDS:=$(GO_ARCH_DEPENDS) +ffmpeg +libatomic +libstdcpp +curl +ca-certificates +libopenssl +libopenssl-legacy +libjpeg-turbo +libcap-bin
   URL:=https://github.com/kerberos-io/agent
 endef
 
