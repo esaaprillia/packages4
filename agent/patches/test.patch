@@ -1,17 +1,18 @@
-From fc056115bf9978dc8599a5c91530ba95016dd1fe Mon Sep 17 00:00:00 2001
+From e4703fedc35eaed75f6a1a5ebcf6ef4c3e9f4262 Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Tue, 11 Aug 2026 11:49:00 +0800
-Subject: [PATCH] Replace avcodec_close with avcodec_free_context
+Date: Mon, 7 Sep 2026 07:14:16 +0800
+Subject: [PATCH] Update codec context and frame deallocation methods
 
+Replaced avcodec_close with avcodec_free_context for proper resource management.
 ---
  machinery/src/capture/gortsplib.go | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/machinery/src/capture/gortsplib.go b/machinery/src/capture/gortsplib.go
-index 956bf3dc..d767a884 100644
+index c0784740..0c5b0e65 100644
 --- a/machinery/src/capture/gortsplib.go
 +++ b/machinery/src/capture/gortsplib.go
-@@ -1359,13 +1359,13 @@ func newDecoder(codecName string) (*Decoder, error) {
+@@ -1527,13 +1527,13 @@ func newDecoder(codecName string) (*Decoder, error) {
  
  	res := C.avcodec_open2(codecCtx, codec, nil)
  	if res < 0 {
@@ -27,7 +28,7 @@ index 956bf3dc..d767a884 100644
  		return nil, fmt.Errorf("av_frame_alloc() failed")
  	}
  
-@@ -1381,7 +1381,7 @@ func (d *Decoder) Close() {
+@@ -1549,7 +1549,7 @@ func (d *Decoder) Close() {
  		C.av_frame_free(&d.srcFrame)
  	}
  	C.av_frame_free(&d.srcFrame)
