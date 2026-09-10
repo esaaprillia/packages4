@@ -1,6 +1,6 @@
-From bf5a41bfac261934cdeb444ce8b1402b2d92b690 Mon Sep 17 00:00:00 2001
+From 3c467f1ca8377258ddea9c4151bb3f0ad3dde01e Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Wed, 26 Nov 2025 16:57:10 +0800
+Date: Fri, 11 Sep 2026 00:12:42 +0800
 Subject: [PATCH] Update pyproject.toml
 
 ---
@@ -8,15 +8,15 @@ Subject: [PATCH] Update pyproject.toml
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index 75118d46be..e85d56fcab 100644
+index e0ece9a922..39d7891207 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -103,7 +103,7 @@ typecheck = { chain = [
- "typecheck:mypy" = "mypy ."
+@@ -106,7 +106,7 @@ build-constraint-dependencies = [
+ 
  
  [build-system]
--requires = ["hatchling==1.26.3", "hatch-fancy-pypi-readme"]
-+requires = ["hatchling", "hatch-fancy-pypi-readme"]
+-requires = ["hatchling==1.27.0"]
++requires = ["hatchling"]
  build-backend = "hatchling.build"
  
  [tool.hatch.build]
