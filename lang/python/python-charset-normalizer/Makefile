@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-charset-normalizer
-PKG_VERSION:=3.4.9
+PKG_VERSION:=3.5.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=charset_normalizer
