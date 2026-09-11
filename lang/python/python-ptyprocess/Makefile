@@ -8,7 +8,7 @@ PYPI_NAME:=ptyprocess
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=ISC license
+PKG_LICENSE:=ISC
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-flit-core/host
