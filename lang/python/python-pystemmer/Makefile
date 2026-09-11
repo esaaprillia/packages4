@@ -32,6 +32,8 @@ define Package/python3-pystemmer/description
   PyStemmer is a Python interface to the stemming algorithms from the Snowball project (https://snowballstem.org/).
 endef
 
+PYTHON3_PKG_SETUP_VARS += PYSTEMMER_SYSTEM_LIBSTEMMER=1
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pystemmer))
 $(eval $(call BuildPackage,python3-pystemmer))
