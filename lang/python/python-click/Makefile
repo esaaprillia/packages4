@@ -5,7 +5,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-click
-PKG_VERSION:=8.4.2
+PKG_VERSION:=8.5.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=click
