@@ -23,7 +23,7 @@ define Package/python3-snowballstemmer
   CATEGORY:=Languages
   TITLE:=Snowball stemming library collection for Python
   URL:=https://github.com/snowballstem/snowball
-  DEPENDS:=+python3 python3-pystemmer
+  DEPENDS:=+python3 +python3-pystemmer
 endef
 
 define Package/python3-snowballstemmer/description
