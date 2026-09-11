@@ -7,6 +7,7 @@ PKG_RELEASE:=1
 PYPI_NAME:=termcolor
 PKG_HASH:=skip
 
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING.txt
 
