@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-websockets
-PKG_VERSION:=16.0
+PKG_VERSION:=17.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=websockets
