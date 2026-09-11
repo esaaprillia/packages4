@@ -25,12 +25,16 @@ define Package/python3-httptools
   CATEGORY:=Languages
   TITLE:=Fast HTTP parser
   URL:=https://github.com/MagicStack/httptools
-  DEPENDS:=+python3
+  DEPENDS:=+python3 +llhttp
 endef
 
 define Package/python3-httptools/description
   httptools is a Python binding for the nodejs HTTP parser.
 endef
+
+PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
+	--build-option=build_ext \
+	--build-option=--use-system-llhttp
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-httptools))
