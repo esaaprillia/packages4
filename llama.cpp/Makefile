@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 #CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
 
-PKG_BUILD_DEPENDS:=node/host python-jinja2/host shaderc shaderc/host
+PKG_BUILD_DEPENDS:=node/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
