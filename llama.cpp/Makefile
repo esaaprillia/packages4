@@ -24,7 +24,7 @@ define Package/llama.cpp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=LLM inference in C/C++
-	DEPENDS:=+libstdcpp +libgomp +libopenssl +libopenssl-legacy +openblas +vulkan-loader
+	DEPENDS:=+libstdcpp +libgomp +libopenssl +libopenssl-legacy +ggml
 	URL:=https://llama.app/
 endef
 
@@ -34,19 +34,13 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
-	-DGGML_ALL_WARNINGS=OFF \
-	-DGGML_ALL_WARNINGS_3RD_PARTY=OFF \
-	-DGGML_BACKEND_DL=ON \
-	-DGGML_BLAS=ON \
-	-DGGML_BLAS_VENDOR=OpenBLAS \
-	-DGGML_BUILD_EXAMPLES=OFF \
-	-DGGML_CPU_ALL_VARIANTS=ON \
-	-DGGML_CUDA_FA_ALL_QUANTS=ON \
-	-DGGML_LTO=ON \
-	-DGGML_NATIVE=OFF \
-	-DGGML_RPC=ON \
-	-DGGML_VULKAN=ON \
-	-DGGML_BACKEND_DIR=/usr/lib \
+	-DLLAMA_BUILD_APP=OFF \
+	-DLLAMA_BUILD_EXAMPLES=ON \
+	-DLLAMA_BUILD_SERVER=ON \
+	-DLLAMA_BUILD_TESTS=OFF \
+	-DLLAMA_BUILD_TOOLS=ON \
+	-DLLAMA_BUILD_UI=ON \
+	-DLLAMA_USE_SYSTEM_GGML=ON \
 	-DLLAMA_USE_PREBUILT_UI=OFF \
 	-DNPM_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/npm"
 
