@@ -21,7 +21,7 @@ define Package/ggml
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Tensor library for machine learning
-	DEPENDS:=+libstdcpp +openblas +libgomp
+	DEPENDS:=+libstdcpp +openblas +libgomp +vulkan-loader
 	URL:=https://github.com/ggml-org/ggml
 endef
 
