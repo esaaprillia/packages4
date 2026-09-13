@@ -1,18 +1,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=llama.cpp
-PKG_VERSION:=9830
+PKG_VERSION:=0.4.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/ggml-org/llama.cpp/archive/b$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/ggml-org/llama.cpp/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
-
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-b$(PKG_VERSION)
 
 #CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
