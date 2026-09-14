@@ -1,6 +1,6 @@
-From 34cd3ace1fc2552743f004cdcd27725f6215bf32 Mon Sep 17 00:00:00 2001
+From 0c2e6278957a3cb20cca530aaa8a3bbca78e547f Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Thu, 18 Jun 2026 01:29:32 +0800
+Date: Mon, 14 Sep 2026 09:13:35 +0800
 Subject: [PATCH] Update package.json
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] Update package.json
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tools/ui/package.json b/tools/ui/package.json
-index 4803922889a7..e5d8ac277001 100644
+index 3c1528997341..d55e16b3fccd 100644
 --- a/tools/ui/package.json
 +++ b/tools/ui/package.json
 @@ -4,7 +4,7 @@
@@ -17,6 +17,6 @@ index 4803922889a7..e5d8ac277001 100644
  	"scripts": {
 -		"build": "npm run build-pwa-assets && vite build",
 +		"build": "npm run build-pwa-assets && svelte-kit sync && vite build",
- 		"build-pwa-assets": "npx @vite-pwa/assets-generator --root . --config pwa-assets.config.ts && npx @vite-pwa/assets-generator --root . --config pwa-assets-dark.config.ts && node scripts/make-icons-circular.js",
+ 		"build-pwa-assets": "pwa-assets-generator --root . --config pwa-assets.config.ts && pwa-assets-generator --root . --config pwa-assets-dark.config.ts && node scripts/make-icons-circular.js",
  		"dev": "bash scripts/dev.sh",
  		"preview": "vite preview",
