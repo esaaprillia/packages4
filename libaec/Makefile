@@ -5,7 +5,7 @@ PKG_VERSION:=1.1.7
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://gitlab.dkrz.de/k202009/libaec/-/archive/v$(PKG_VERSION)/
+PKG_SOURCE_URL:=https://gitlab.dkrz.de/dkrz-sw/libaec/-/archive/v$(PKG_VERSION)/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
