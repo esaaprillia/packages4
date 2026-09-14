@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-typer
-PKG_VERSION:=0.26.7
+PKG_VERSION:=0.27.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=typer
