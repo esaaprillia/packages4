@@ -25,6 +25,7 @@ define Package/python3-huggingface-hub
   URL:=https://huggingface.co/docs/huggingface_hub
   DEPENDS:= \
 	+python3 \
+	+python3-click \
 	+python3-filelock \
 	+python3-fsspec \
 	+python3-hf-xet \
@@ -32,7 +33,6 @@ define Package/python3-huggingface-hub
 	+python3-packaging \
 	+python3-yaml \
 	+python3-tqdm \
-	+python3-typer \
 	+python3-typing-extensions
 endef
 
