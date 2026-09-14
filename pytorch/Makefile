@@ -4,20 +4,15 @@ PKG_NAME:=pytorch
 PKG_VERSION:=2.14.0
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=pytorch-v$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://github.com/pytorch/pytorch/releases/download/v$(PKG_VERSION)
-#PKG_HASH:=skip
-
-PKG_SOURCE_URL:=https://github.com/pytorch/pytorch.git
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=08187d9e0fba026dc8217405802ab5381dc88d90
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=pytorch-v$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/pytorch/pytorch/releases/download/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause-Modification
 PKG_LICENSE_FILES:=LICENSE
 
-#PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host libfmt eigen python-pybind11
