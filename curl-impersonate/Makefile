@@ -15,11 +15,10 @@ PKG_LICENSE_FILES:=LICENSE.md
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
-PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake-golang.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/curl-impersonate
 	SECTION:=libs
@@ -33,20 +32,14 @@ define Package/curl-impersonate/description
 	An active fork of curl-impersonate with more versions and build targets. A series of patches that make curl requests look like Chrome, Firefox and Safari.
 endef
 
-TARGET_CFLAGS+=$(FPIC)
-TARGET_CPPFLAGS+=$(FPIC)
 MAKE_FLAGS += BUILD_DIR=$(PKG_BUILD_DIR)/build
 
-define Build/Compile
+define Build/Configure
 	mkdir -p $(PKG_BUILD_DIR)/build
 	$(CONFIGURE_VARS) $(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2 BUILD_DIR=$(PKG_BUILD_DIR)/build
-	$(call Build/Configure/Cmake)
-	$(call Build/Compile/Cmake)
+	$(call Build/Configure/Default)
+	$(call Build/Compile/Default)
 endef
-
-#define Build/InstallDev
-#	$(call Build/InstallDev/cmake,$(1))
-#endef
 
 define Package/curl-impersonate/install
 	$(INSTALL_DIR) $(1)/usr/bin
