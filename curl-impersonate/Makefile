@@ -36,25 +36,16 @@ TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 MAKE_FLAGS += BUILD_DIR=$(PKG_BUILD_DIR)/build
 
-CONFIGURE_ARGS += \
-	--build=$(GNU_HOST_NAME) \
-	--host=$(GNU_TARGET_NAME)
-
-CMAKE_OPTIONS += \
-	-DCMAKE_C_FLAGS=-fPIC \
-	-DCMAKE_CXX_FLAGS=-fPIC
-
 define Build/Compile
 	mkdir -p $(PKG_BUILD_DIR)/build
 	$(CONFIGURE_VARS) $(MAKE) -C $(PKG_BUILD_DIR) prepare-libidn2 BUILD_DIR=$(PKG_BUILD_DIR)/build
 	$(call Build/Configure/Cmake)
 	$(call Build/Compile/Cmake)
-	$(call Build/Install/Cmake)
 endef
 
-define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
-endef
+#define Build/InstallDev
+#	$(call Build/InstallDev/cmake,$(1))
+#endef
 
 define Package/curl-impersonate/install
 	$(INSTALL_DIR) $(1)/usr/bin
