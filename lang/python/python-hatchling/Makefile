@@ -27,6 +27,7 @@ HOST_BUILD_DEPENDS:= \
 	python-packaging/host \
 	python-pathspec/host \
 	python-pluggy/host \
+	python-tomlkit/host \
 	python-trove-classifiers/host
 
 include ../pypi.mk
@@ -48,6 +49,7 @@ define Package/python3-hatchling
       +python3-packaging \
       +python3-pathspec \
       +python3-pluggy \
+      +python3-tomlkit \
       +python3-trove-classifiers
   BUILDONLY:=1
 endef
