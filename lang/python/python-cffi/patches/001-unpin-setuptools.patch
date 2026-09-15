@@ -1,10 +1,22 @@
+From 25fbcb177ac6f44665b51a51527dda6822641023 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 15 Sep 2026 16:34:39 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index a4a84744..d351d3b1 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -2,6 +2,6 @@
+@@ -1,7 +1,7 @@
+ [build-system]
  requires = [
-     # first version that supports Python 3.12; older versions may work
-     # with previous Python versions, but are not tested
--    "setuptools >= 66.1"
+     # Required for PEP 639 support
+-    "setuptools >= 77.0.3"
 +    "setuptools"
  ]
  build-backend = "setuptools.build_meta"
+ 
