@@ -1,0 +1,23 @@
+From 1ecdb360f5666c6768a6bb5c2a9d8669b0589831 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 16 Sep 2026 04:35:48 +0800
+Subject: [PATCH] Update build-libidn2.sh
+
+---
+ scripts/build-libidn2.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/build-libidn2.sh b/scripts/build-libidn2.sh
+index a1e595ef..735a3403 100755
+--- a/scripts/build-libidn2.sh
++++ b/scripts/build-libidn2.sh
+@@ -55,7 +55,8 @@ if [ ! -f "$install_dir/lib/libidn2.a" ] || [ ! -f "$included_unistring_marker"
+       --with-pic \
+       --disable-nls \
+       --with-included-libunistring \
+-      $host_arg
++      --build=x86_64-pc-linux-gnu \
++      --host=aarch64-openwrt-linux
+   "$make_cmd" MAKEFLAGS="$make_jobs"
+   "$make_cmd" install MAKEFLAGS=
+   touch "$included_unistring_marker"
