@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-greenlet
-PKG_VERSION:=3.5.5
+PKG_VERSION:=3.5.6
 PKG_RELEASE:=1
 
 PYPI_NAME:=greenlet
