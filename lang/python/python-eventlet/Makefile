@@ -32,8 +32,7 @@ define Package/python3-eventlet
   URL:=https://eventlet.net/
   DEPENDS:= \
 	+python3-light \
-	+python3-six \
-	+python3-dns \
+	+python3-dnspython \
 	+python3-greenlet \
 	+python3-email \
 	+python3-logging \
