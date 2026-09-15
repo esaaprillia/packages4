@@ -41,6 +41,10 @@ define Build/Configure
 	$(call Build/Compile/Default)
 endef
 
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+endef
+
 define Package/curl-impersonate/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
