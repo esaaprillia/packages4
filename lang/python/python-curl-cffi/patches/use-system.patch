@@ -181,7 +181,7 @@
 -    else:
 -        return []
 -
-+__version__ = "@CURL_IMPERSONATE_VERSION@"
++__version__ = "2.2.2"
  
  ffibuilder = FFI()
 -system = platform.system()
