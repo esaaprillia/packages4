@@ -1,0 +1,22 @@
+From d2d3d0bc4be125ecf2636043ba88d0cd2d4b5fb6 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 17 Sep 2026 07:38:47 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 741b76f330584..cff6768d6f255 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -50,7 +50,7 @@ requires = [
+     "meson-python>=0.17.1,<0.22.0",
+     # TODO: once https://github.com/cython/cython/issues/7846 is fixed and in a Cython release
+     # change to "cython>[fixed-version]" or "cython>=3.1.2,!=3.2.6,!=3.2.7,!=3.2.8,!=3.2.9"
+-    "cython>=3.1.2,<3.2.6",
++    "cython",
+     "numpy>=2,<2.6.0",
+     "scipy>=1.10.0,<1.19.0",
+ ]
