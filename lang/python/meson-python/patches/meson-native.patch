@@ -18,7 +18,7 @@ index cc25284a8..dfe6ab607 100644
 -        self._build_dir = pathlib.Path(build_dir).absolute()
 -        self._meson_native_file = self._build_dir / 'meson-python-native-file.ini'
 -        self._meson_cross_file = self._build_dir / 'meson-python-cross-file.ini'
-+        self._build_dir = pathlib.Path(openwrt-build).absolute()
++        self._build_dir = pathlib.Path('openwrt-build').absolute()
 +        self._meson_native_file = self._build_dir / 'openwrt-native.txt'
 +        self._meson_cross_file = self._build_dir / 'openwrt-cross.txt'
          self._meson_args: MesonArgs = collections.defaultdict(list)
