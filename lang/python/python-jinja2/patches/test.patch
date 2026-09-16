@@ -1,0 +1,22 @@
+From 2841f286f3598c87c722681afed820cffc5c2b66 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 16 Sep 2026 09:29:26 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index a7cfa7f93..0b63c05b4 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -33,7 +33,7 @@ i18n = ["Babel>=2.7"]
+ jinja2 = "jinja2.ext:babel_extract[i18n]"
+ 
+ [build-system]
+-requires = ["flit_core<4"]
++requires = ["flit_core"]
+ build-backend = "flit_core.buildapi"
+ 
+ [tool.flit.module]
