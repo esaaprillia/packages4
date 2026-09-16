@@ -1,0 +1,27 @@
+From 046d6a2c7bdda8ff4de195f282387c8877a54ced Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 16 Sep 2026 19:17:18 +0800
+Subject: [PATCH] Update dependencies in pyproject.toml
+
+Removed specific version constraints for Cython and pybind11.
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 6deb11a5668e..22ad223c9c98 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -23,10 +23,10 @@ requires = [
+     "meson-python>=0.15.0,<0.22.0",
+     # for Cython, 3.2.4 works at time of writing; pre-emptive
+     # guard only:
+-    "Cython>=3.2.0,<3.3.0",
++    "Cython",
+     # Pre-emptive upper bound on pybind11
+     # (3.0.4 works at time of writing)
+-    "pybind11>=2.13.2,<3.1.0",
++    "pybind11",
+     # Pre-emptive upper bound on pythran
+     # (0.19.0 works at time of writing)
+     "pythran>=0.18.1,<0.20.0; python_version < '3.15'",
