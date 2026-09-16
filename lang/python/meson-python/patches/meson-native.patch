@@ -1,27 +1,26 @@
-From d304395dcdf8b2d4b1353199f972fa13999090b5 Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sun, 14 Sep 2025 07:22:30 +0800
-Subject: [PATCH] Update __init__.py
+From 27c142a232a655eaeeba44326b7e4442a2af2ab7 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 16 Sep 2026 16:58:01 +0800
+Subject: [PATCH] Update build directory and native/cross file names
 
 ---
  mesonpy/__init__.py | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/mesonpy/__init__.py b/mesonpy/__init__.py
-index 4d785a3..ad4b70f 100644
+index cc25284a8..dfe6ab607 100644
 --- a/mesonpy/__init__.py
 +++ b/mesonpy/__init__.py
-@@ -637,10 +637,10 @@ def __init__(
-         editable_verbose: bool = False,
+@@ -698,9 +698,9 @@ def __init__(
+         editable_verbose: Optional[bool] = None,
      ) -> None:
          self._source_dir = pathlib.Path(source_dir).absolute()
 -        self._build_dir = pathlib.Path(build_dir).absolute()
-+        self._build_dir = pathlib.Path('openwrt-build').absolute()
-         self._editable_verbose = editable_verbose
 -        self._meson_native_file = self._build_dir / 'meson-python-native-file.ini'
 -        self._meson_cross_file = self._build_dir / 'meson-python-cross-file.ini'
-+        self._meson_native_file = self._source_dir / 'openwrt-native.txt'
-+        self._meson_cross_file = self._source_dir / 'openwrt-cross.txt'
++        self._build_dir = pathlib.Path(openwrt-build).absolute()
++        self._meson_native_file = self._build_dir / 'openwrt-native.txt'
++        self._meson_cross_file = self._build_dir / 'openwrt-cross.txt'
          self._meson_args: MesonArgs = collections.defaultdict(list)
          self._limited_api = False
  
