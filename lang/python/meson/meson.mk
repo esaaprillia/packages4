@@ -83,6 +83,7 @@ define Meson/CreateCrossFile
 		-e "s|@CXX@|$(foreach BIN,$(TARGET_CXX),'$(BIN)',)|" \
 		-e "s|@LD@|$(foreach FLAG,$(TARGET_LINKER),'$(FLAG)',)|" \
 		-e "s|@FORTRAN@|$(TARGET_CROSS)gfortran|" \
+		-e "s|@NUMPY@|$(STAGING_DIR_HOSTPKG)/bin/numpy-config|" \
 		-e "s|@AR@|$(TARGET_AR)|" \
 		-e "s|@STRIP@|$(TARGET_CROSS)strip|" \
 		-e "s|@NM@|$(TARGET_NM)|" \
