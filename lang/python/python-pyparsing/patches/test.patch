@@ -1,0 +1,20 @@
+From a18c9b9cc5a65bab0c61d99adf6098d4ba880959 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Thu, 17 Sep 2026 06:12:49 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 8987ccd3..875d61e9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["flit_core >=3.12,<4"]
++requires = ["flit_core"]
+ build-backend = "flit_core.buildapi"
+ 
+ [project]
