@@ -32,7 +32,7 @@ define Package/python3-scikit-learn
 	+python3-numpy \
 	+python3-scipy \
 	+python3-joblib \
-	+python3-threadpoolctl \
+	+python3-narwhals \
 	+python3-threadpoolctl
 endef
 
