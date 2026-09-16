@@ -46,6 +46,9 @@ endef
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(2)/bin
+	$(LN) ../../usr/bin/f2py $(2)/bin/f2py
+	$(LN) ../../usr/bin/f2py $(2)/bin/numpy-config
 	$(INSTALL_DIR) $(1)/$(PYTHON3_PKG_DIR)
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/numpy $(1)/$(PYTHON3_PKG_DIR)
 endef
