@@ -9,7 +9,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/numpy/meson.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=3ffac339705c9898227a99584d9e670c9500c9dc
+PKG_SOURCE_VERSION:=983fca5b39b62060c733a58fd8ecd276591bdf12
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
