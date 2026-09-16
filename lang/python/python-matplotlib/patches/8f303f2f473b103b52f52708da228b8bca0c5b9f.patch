@@ -1,20 +1,41 @@
+From 685372ed844a4d2e941b38b1fc62783c2166e65e Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Wed, 16 Sep 2026 23:55:03 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 4b1744399152..1ce1a053a895 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -46,7 +46,7 @@ requires-python = ">=3.10"
- [project.optional-dependencies]
- # Should be a copy of the build dependencies below.
- dev = [
--    "meson-python>=0.13.1,<0.17.0",
-+    "meson-python>=0.13.1",
-     "pybind11>=2.13.2,!=2.13.3",
-     "setuptools_scm>=7",
-     # Not required by us but setuptools_scm without a version, cso _if_
-@@ -70,7 +70,7 @@ dev = [
- build-backend = "mesonpy"
- # Also keep in sync with optional dependencies above.
+@@ -59,11 +59,11 @@ build-backend = "mesonpy"
  requires = [
--    "meson-python>=0.13.1,<0.17.0",
-+    "meson-python>=0.13.1",
-     "pybind11>=2.13.2,!=2.13.3",
-     "setuptools_scm>=7",
+     # meson-python 0.17.x breaks symlinks in sdists. You can remove this pin if
+     # you really need it and aren't using an sdist.
+-    "meson-python>=0.13.2,!=0.17.*",
+-    "pybind11>=2.13.2,!=2.13.3",
++    "meson-python",
++    "pybind11",
+     # setuptools_scm 10 breaks versioning in editable installs. You can remove this pin
+     # if you're a downstream distributor just building wheels or your equivalent.
+-    "setuptools_scm>=7,<10",
++    "setuptools_scm",
  ]
+ 
+ [dependency-groups]
+@@ -80,9 +80,9 @@ build = [
+     "python-dateutil >= 2.7",
+ 
+     # Should be the same as `[build-system] requires` above.
+-    "meson-python>=0.13.1,!=0.17.*",
+-    "pybind11>=2.13.2,!=2.13.3",
+-    "setuptools_scm>=7,<10",
++    "meson-python",
++    "pybind11",
++    "setuptools_scm",
+     # Not required by us but setuptools_scm without a version, so _if_
+     # installed, then setuptools_scm 8 requires at least this version.
+     # Unfortunately, we can't do a sort of minimum-if-installed dependency, so
