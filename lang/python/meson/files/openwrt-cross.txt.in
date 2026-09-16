@@ -4,6 +4,7 @@ c_ld = [@LD@]
 cpp = [@CXX@]
 cpp_ld = [@LD@]
 fortran = '@FORTRAN@'
+numpy-config ='@NUMPY@'
 ar = '@AR@'
 strip = '@STRIP@'
 nm = '@NM@'
