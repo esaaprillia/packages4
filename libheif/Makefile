@@ -21,7 +21,7 @@ define Package/libheif
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=libheif is an HEIF and AVIF file format decoder and encoder.
-	DEPENDS:=+libstdcpp +libaom +libde265 +libwebp +libx265 +libtiff +libpng +libjpeg-turbo +openh264
+	DEPENDS:=+libstdcpp +dav1d +ffmpeg +openjpeg +rav1e +svt-av1 +libaom +libde265 +libwebp +libx264 +libx265 +libtiff +libpng +libjpeg-turbo +openh264
 	URL:=https://github.com/strukturag/libheif/
 endef
 
@@ -30,7 +30,14 @@ define Package/libheif/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DWITH_DAV1D=ON \
+	-DWITH_RAV1E=ON \
+	-DWITH_FFMPEG_DECODER=ON \
+	-DWITH_FFMPEG_DECODER_PLUGIN=ON \
+	-DWITH_SvtEnc=ON \
+	-DWITH_OpenJPEG_DECODER=ON \
+	-DWITH_GDK_PIXBUF=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
