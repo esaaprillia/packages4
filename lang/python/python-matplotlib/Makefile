@@ -39,6 +39,7 @@ define Package/python3-matplotlib
 	+python3-pyparsing \
 	+python3-dateutil \
 	+libfreetype \
+	+libfreetype \
 	+qhull
 endef
 
@@ -47,6 +48,7 @@ define Package/python3-matplotlib/description
 endef
 
 MESON_ARGS += \
+	-Dsystem-freetype=true \
 	-Dsystem-freetype=true \
 	-Dsystem-qhull=true
 
