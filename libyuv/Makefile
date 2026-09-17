@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libyuv
-PKG_VERSION:=0.0.1887.20251502
+PKG_VERSION:=0.0.1928
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://chromium.googlesource.com/libyuv/libyuv
-PKG_SOURCE_VERSION:=a6a2ec654b1be1166b376476a7555c89eca0c275
+PKG_SOURCE_VERSION:=94644361b4fc21befdadbf425a5d256b17f20565
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
