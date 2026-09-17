@@ -33,7 +33,8 @@ define Package/python3-scikit-learn
 	+python3-scipy \
 	+python3-joblib \
 	+python3-narwhals \
-	+python3-threadpoolctl
+	+python3-threadpoolctl \
+	+libgomp
 endef
 
 define Package/python3-scikit-learn/description
