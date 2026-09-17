@@ -39,7 +39,7 @@ define Package/python3-matplotlib
 	+python3-pyparsing \
 	+python3-dateutil \
 	+libfreetype \
-	+libfreetype \
+	+raqm \
 	+qhull
 endef
 
@@ -49,7 +49,7 @@ endef
 
 MESON_ARGS += \
 	-Dsystem-freetype=true \
-	-Dsystem-freetype=true \
+	-Dsystem-libraqm=true \
 	-Dsystem-qhull=true
 
 $(eval $(call HostBuild))
