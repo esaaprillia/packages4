@@ -12,9 +12,12 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=LGPL-3.0-or-later
 PKG_LICENSE_FILES:=COPYING
 
+CMAKE_BINARY_SUBDIR := build
+
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/libde265
 	SECTION:=libs
