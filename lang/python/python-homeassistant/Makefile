@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-homeassistant
-PKG_VERSION:=2026.8.3
+PKG_VERSION:=2026.9.3
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
@@ -29,6 +29,8 @@ define Package/python3-homeassistant
 	+python3-restrictedpython \
 	+python3-pyotp \
 	+python3-pyqrcode \
+	+python3-infrared-protocols \
+	+python3-aiohasupervisor \
 	+python3-aiodhcpwatcher \
 	+python3-aiodiscover \
 	+python3-aiodns \
@@ -62,6 +64,7 @@ define Package/python3-homeassistant
 	+python3-dbus-fast \
 	+python3-file-read-backwards \
 	+python3-fnv-hash-fast \
+	+python3-gazetteer-matcher \
 	+python3-go2rtc-client \
 	+python3-ha-ffmpeg \
 	+python3-habluetooth \
@@ -80,19 +83,20 @@ define Package/python3-homeassistant
 	+python3-packaging \
 	+python3-paho-mqtt \
 	+python3-pillow \
+	+python3-probatio \
 	+python3-propcache \
 	+python3-psutil-home-assistant \
 	+python3-pyjwt \
 	+python3-pymicro-vad \
 	+python3-pynacl \
 	+python3-pyopenssl \
-	+python3-serialx \
 	+python3-pyspeex-noise \
 	+python3-slugify \
 	+python3-pyturbojpeg \
 	+python3-yaml \
 	+python3-requests \
 	+python3-securetar \
+	+python3-serialx \
 	+python3-sqlalchemy \
 	+python3-standard-aifc \
 	+python3-standard-telnetlib \
@@ -100,9 +104,6 @@ define Package/python3-homeassistant
 	+python3-ulid-transform \
 	+python3-urllib3 \
 	+python3-uv \
-	+python3-voluptuous-openapi \
-	+python3-voluptuous-serialize \
-	+python3-voluptuous \
 	+python3-webrtc-models \
 	+python3-yarl \
 	+python3-zeroconf
