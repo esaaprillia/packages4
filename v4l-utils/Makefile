@@ -10,7 +10,7 @@ PKG_VERSION:=1.32.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://linuxtv.org/downloads/v4l-utils/
+PKG_SOURCE_URL:=https://github.com/esaaprillia/packages/releases/download/ffmpeg/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Ted Hess <thess@kitschensync.net>
