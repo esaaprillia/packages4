@@ -12,6 +12,7 @@ PYPI_NAME:=hermes-agent
 PKG_SOURCE_URL:=https://github.com/NousResearch/hermes-agent/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
+PYTHON3_PKG_BUILD:=0
 PKG_BUILD_DEPENDS:=node/host
 
 include ../pypi.mk
@@ -113,6 +114,8 @@ define Build/Compile
 	find $(PKG_BUILD_DIR)/ui-tui/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 	mkdir -p $(PKG_BUILD_DIR)/hermes_cli/tui_dist
 	$(CP) $(PKG_BUILD_DIR)/ui-tui/dist/entry.js $(PKG_BUILD_DIR)/hermes_cli/tui_dist/entry.js
+	$(call Py3Build/Compile)
+	$(call Py3Build/Install)
 endef
 
 $(eval $(call Py3Package,python3-hermes-agent))
