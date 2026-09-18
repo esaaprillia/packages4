@@ -24,7 +24,7 @@ define Package/python3-hermes-agent
   CATEGORY:=Languages
   TITLE:=The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere
   URL:=https://hermes-agent.nousresearch.com/
-  #DEPENDS:= \
+  DEPENDS:= \
 	+python3 \
 	+python3-openai \
 	+python3-certifi \
