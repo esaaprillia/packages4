@@ -1,15 +1,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-hermes-agent
-PKG_VERSION:=0.19.0
+PKG_VERSION:=2026.9.14
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PYPI_NAME:=hermes_agent
+PYPI_NAME:=hermes-agent
+PKG_SOURCE_URL:=https://github.com/NousResearch/hermes-agent/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
+
+PKG_BUILD_DEPENDS:=node/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -21,7 +24,7 @@ define Package/python3-hermes-agent
   CATEGORY:=Languages
   TITLE:=The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere
   URL:=https://hermes-agent.nousresearch.com/
-  DEPENDS:= \
+  #DEPENDS:= \
 	+python3 \
 	+python3-openai \
 	+python3-certifi \
@@ -35,9 +38,11 @@ define Package/python3-hermes-agent
 	+python3-ruamel-yaml \
 	+python3-requests \
 	+python3-jinja2 \
+	+python3-firecrawl-anydoc \
 	+python3-pydantic \
 	+python3-prompt-toolkit \
 	+python3-croniter \
+	+python3-snowballstemmer \
 	+python3-packaging \
 	+python3-markdown \
 	+python3-pyjwt \
@@ -49,13 +54,55 @@ define Package/python3-hermes-agent
 	+python3-fastapi \
 	+python3-uvicorn \
 	+python3-httptools \
-	+python3-watchfiles \
 	+python3-multipart \
-	+python3-pillow
+	+python3-pillow \
+	+python3-pillow-heif \
+	+python3-nemo-relay
 endef
 
 define Package/python3-hermes-agent/description
 The self-improving AI agent built by Nous Research. It's the only agent with a built-in learning loop — it creates skills from experience, improves them during use, nudges itself to persist knowledge, searches its own past conversations, and builds a deepening model of who you are across sessions.
+endef
+
+PYTHON3_PKG_WHEEL_NAME:=hermes_agent
+PYTHON3_PKG_WHEEL_VERSION:=0.21.3
+
+define Build/Compile
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm install --workspace web
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm install --workspace ui-tui
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm run build --workspace web
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm run build:ink --workspace ui-tui
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm run build --workspace ui-tui
+	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
+	rm -f $(PKG_BUILD_DIR)/web/node_modules/.package-lock.json
+	find $(PKG_BUILD_DIR)/web/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
+	rm -f $(PKG_BUILD_DIR)/ui-tui/node_modules/.package-lock.json
+	find $(PKG_BUILD_DIR)/ui-tui/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 endef
 
 $(eval $(call Py3Package,python3-hermes-agent))
