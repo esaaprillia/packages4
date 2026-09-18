@@ -112,7 +112,7 @@ define Build/Compile
 	rm -f $(PKG_BUILD_DIR)/ui-tui/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/ui-tui/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 	mkdir -p $(PKG_BUILD_DIR)/hermes_cli/tui_dist
-    $(CP) $(PKG_BUILD_DIR)/ui-tui/dist/entry.js $(PKG_BUILD_DIR)/hermes_cli/tui_dist/entry.js
+	$(CP) $(PKG_BUILD_DIR)/ui-tui/dist/entry.js $(PKG_BUILD_DIR)/hermes_cli/tui_dist/entry.js
 endef
 
 $(eval $(call Py3Package,python3-hermes-agent))
