@@ -50,6 +50,8 @@ define Package/libheif/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/libheif
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libheif/*.so* $(1)/usr/lib/libheif/
 endef
 
 $(eval $(call BuildPackage,libheif))
