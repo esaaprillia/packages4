@@ -31,7 +31,7 @@ define Package/python3-pillow
   TITLE:=The friendly PIL fork
   URL:=https://python-pillow.org/
   DEPENDS:=+libfreetype +libjpeg +libtiff +zlib \
-	   +libwebp +lcms2 +openjpeg +libimagequant +raqm +python3
+	   +libwebp +lcms2 +openjpeg +libimagequant +raqm +libxcb +python3
 endef
 
 define Package/python3-pillow/description
