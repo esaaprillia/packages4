@@ -1,0 +1,33 @@
+From 509c6de850dadab3922a6bdd84e31a2083214a28 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 18 Sep 2026 15:05:52 +0800
+Subject: [PATCH] Update setup.py
+
+Signed-off-by: esaaprillia <esaapriliasalsabila@gmail.com>
+---
+ setup.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index f6d444de..c8306d33 100644
+--- a/setup.py
++++ b/setup.py
+@@ -210,12 +210,12 @@ def build_extensions(self) -> None:  # noqa
+             )
+         else:  # let's assume it's some kind of linux
+             # this old code waiting for refactoring, when time comes.
+-            self._add_directory(include_dirs, "/usr/local/include")
+-            self._add_directory(include_dirs, "/usr/include")
+-            self._add_directory(library_dirs, "/usr/local/lib")
+-            self._add_directory(library_dirs, "/usr/lib64")
+-            self._add_directory(library_dirs, "/usr/lib")
+-            self._add_directory(library_dirs, "/lib")
++            self._add_directory(include_dirs, "")
++            self._add_directory(include_dirs, "")
++            self._add_directory(library_dirs, "")
++            self._add_directory(library_dirs, "")
++            self._add_directory(library_dirs, "")
++            self._add_directory(library_dirs, "")
+ 
+             self._update_extension("_pillow_heif", ["heif"], extra_compile_args=["-O3", "-Werror"])
+ 
