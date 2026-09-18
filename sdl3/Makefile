@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=sdl3
-PKG_VERSION:=3.4.4
+PKG_VERSION:=3.4.16
 PKG_RELEASE:=1
 
 PKG_SOURCE:=SDL3-$(PKG_VERSION).tar.gz
