@@ -57,7 +57,8 @@ define Package/python3-hermes-agent
 	+python3-multipart \
 	+python3-pillow \
 	+python3-pillow-heif \
-	+python3-nemo-relay
+	+python3-nemo-relay \
+	+ripgrep
 endef
 
 define Package/python3-hermes-agent/description
@@ -110,6 +111,8 @@ define Build/Compile
 	find $(PKG_BUILD_DIR)/web/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
 	rm -f $(PKG_BUILD_DIR)/ui-tui/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/ui-tui/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
+	mkdir -p $(PKG_BUILD_DIR)/hermes_cli/tui_dist
+    $(CP) $(PKG_BUILD_DIR)/ui-tui/dist/entry.js $(PKG_BUILD_DIR)/hermes_cli/tui_dist/entry.js
 endef
 
 $(eval $(call Py3Package,python3-hermes-agent))
