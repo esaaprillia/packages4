@@ -31,6 +31,10 @@ define Package/libde265/description
 libde265 is an open source implementation of the h.265 video codec. It is written from scratch and has a plain C API to enable a simple integration into other software.
 endef
 
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
+	-DENABLE_ENCODER=OFF
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libde265.pc
