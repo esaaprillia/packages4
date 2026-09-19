@@ -13,7 +13,7 @@ PKG_SOURCE_URL:=https://github.com/NousResearch/hermes-agent/archive/v$(PKG_VERS
 PKG_HASH:=skip
 
 PYTHON3_PKG_BUILD:=0
-PKG_BUILD_DEPENDS:=node/host
+PKG_BUILD_DEPENDS:=node/host python-uv/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
