@@ -59,6 +59,7 @@ define Package/python3-hermes-agent
 	+python3-pillow \
 	+python3-pillow-heif \
 	+python3-nemo-relay \
+	+python3-telegram-bot \
 	+python3-tornado \
 	+python3-discord-py \
 	+python3-pynacl \
