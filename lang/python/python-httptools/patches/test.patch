@@ -1,0 +1,21 @@
+From 3995243c8502af3859eceb7b637d22fd42a899b1 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 19 Sep 2026 14:19:25 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 3602efc..ea5f127 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,6 +1,6 @@
+ [build-system]
+ build-backend = "setuptools.build_meta"
+-requires = ["setuptools>=80.9.0,<=82.0.1"]
++requires = ["setuptools"]
+ 
+ [project]
+ name = "httptools"
