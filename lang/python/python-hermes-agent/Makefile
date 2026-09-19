@@ -119,6 +119,15 @@ define Build/Compile
 	$(call Py3Build/Install)
 endef
 
+define Py3Package/python3-hermes-agent/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/hermes_cli
+	$(CP) $(PKG_BUILD_DIR)/hermes_cli/web_dist $(1)$(PYTHON3_PKG_DIR)/hermes_cli/
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)/hermes_cli/tui_dist
+	$(CP) $(PKG_BUILD_DIR)/ui-tui/dist/entry.js $(1)$(PYTHON3_PKG_DIR)/hermes_cli/tui_dist/
+endef
+
 $(eval $(call Py3Package,python3-hermes-agent))
 $(eval $(call BuildPackage,python3-hermes-agent))
 $(eval $(call BuildPackage,python3-hermes-agent-src))
