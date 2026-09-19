@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:= setuptools
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
