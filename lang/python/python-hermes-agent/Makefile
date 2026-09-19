@@ -68,6 +68,7 @@ endef
 
 PYTHON3_PKG_WHEEL_NAME:=hermes_agent
 PYTHON3_PKG_WHEEL_VERSION:=0.21.3
+PYTHON3_PKG_SETUP_VARS += LINK_SYSTEM_LIB
 
 NODEJS_CPU:=$(subst powerpc,ppc,$(subst aarch64,arm64,$(subst x86_64,x64,$(subst i386,ia32,$(ARCH)))))
 TMPNPM:=$(shell mktemp -u XXXXXXXXXX)
