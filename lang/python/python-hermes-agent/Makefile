@@ -59,6 +59,15 @@ define Package/python3-hermes-agent
 	+python3-pillow \
 	+python3-pillow-heif \
 	+python3-nemo-relay \
+	+python3-tornado \
+	+python3-discord-py \
+	+python3-pynacl \
+	+python3-davey \
+	+python3-aiohttp \
+	+python3-brotlicffi \
+	+python3-slack-bolt \
+	+python3-slack-sdk \
+	+python3-qrcode \
 	+ripgrep
 endef
 
