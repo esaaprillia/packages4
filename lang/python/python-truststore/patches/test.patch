@@ -1,1 +1,20 @@
-mmmm
+From 1c94053b771974e30a84df43a0354c8f42de5ea3 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sun, 20 Sep 2026 16:52:16 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 846014d..b3a9aaf 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["flit_core >=3.11,<4"]
++requires = ["flit_core"]
+ build-backend = "flit_core.buildapi"
+ 
+ [project]
