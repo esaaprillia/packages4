@@ -5,8 +5,12 @@ PKG_NAME:=$(PKG_NPM_NAME)
 PKG_VERSION:=0.5.81
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
+#PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
+#PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
+#PKG_HASH:=skip
+
+PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/decolua/9router/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -50,6 +54,12 @@ define Build/Compile
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
 	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
+	cd $(PKG_BUILD_DIR); \
+	$(MAKE_VARS) \
+	$(MAKE_FLAGS) \
+	npm_config_nodedir=$(STAGING_DIR)/usr/ \
+	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
+	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
@@ -58,12 +68,15 @@ endef
 
 define Package/9router/install
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
-	$(CP) $(PKG_BUILD_DIR)/{LICENSE,README.md,package.json} \
+	$(CP) $(PKG_BUILD_DIR)/* \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/{app,cli.js,app,hooks,src} \
-		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(LN) ../lib/node/$(PKG_NPM_NAME)/cli.js $(1)/usr/bin/9router
+	#$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
+	#$(CP) $(PKG_BUILD_DIR)/{LICENSE,README.md,package.json} \
+	#	$(1)/usr/lib/node/$(PKG_NPM_NAME)/
+	#$(CP) $(PKG_BUILD_DIR)/{app,cli.js,app,hooks,src} \
+	#	$(1)/usr/lib/node/$(PKG_NPM_NAME)/
+	#$(INSTALL_DIR) $(1)/usr/bin
+	#$(LN) ../lib/node/$(PKG_NPM_NAME)/cli.js $(1)/usr/bin/9router
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(LN) ../node/$(PKG_NPM_NAME) $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)
 endef
