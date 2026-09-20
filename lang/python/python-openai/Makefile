@@ -25,13 +25,11 @@ define Package/python3-openai
   URL:=https://github.com/openai/openai-python
   DEPENDS:= \
 	+python3 \
-	+python3-httpx \
+	+python3-httpx2 \
 	+python3-pydantic \
 	+python3-typing-extensions \
 	+python3-anyio \
-	+python3-distro \
 	+python3-sniffio \
-	+python3-tqdm \
 	+python3-jiter
 endef
 
