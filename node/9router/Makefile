@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NPM_NAME:=9router
 PKG_NAME:=$(PKG_NPM_NAME)
-PKG_VERSION:=0.5.35
+PKG_VERSION:=0.5.81
 PKG_RELEASE:=1
 
 #PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
@@ -53,7 +53,7 @@ define Build/Compile
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm install approve-scripts --allow-scripts-pending
+	npm install
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
