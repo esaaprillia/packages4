@@ -68,7 +68,7 @@ endef
 
 define Package/9router/install
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
-	$(CP) $(PKG_BUILD_DIR)/* \
+	cp -r $(PKG_BUILD_DIR)/* \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	#$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
 	#$(CP) $(PKG_BUILD_DIR)/{LICENSE,README.md,package.json} \
