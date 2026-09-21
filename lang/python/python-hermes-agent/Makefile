@@ -13,7 +13,7 @@ PKG_SOURCE_URL:=https://github.com/NousResearch/hermes-agent/archive/v$(PKG_VERS
 PKG_HASH:=skip
 
 PYTHON3_PKG_BUILD:=0
-PKG_BUILD_DEPENDS:=node/host python-uv/host
+PKG_BUILD_DEPENDS:=node/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -25,7 +25,7 @@ define Package/python3-hermes-agent
   CATEGORY:=Languages
   TITLE:=The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere
   URL:=https://hermes-agent.nousresearch.com/
-  DEPENDS:= \
+  #DEPENDS:= \
 	+python3 \
 	+python3-openai \
 	+python3-certifi \
@@ -106,12 +106,6 @@ define Build/Compile
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
 	npm run build --workspace web
-	cd $(PKG_BUILD_DIR); \
-	$(MAKE_VARS) \
-	$(MAKE_FLAGS) \
-	npm_config_nodedir=$(STAGING_DIR)/usr/ \
-	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm run build:ink --workspace ui-tui
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
