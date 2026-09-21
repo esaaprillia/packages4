@@ -26,13 +26,12 @@ define Package/python3-mcp
   DEPENDS:= \
 	+python3-light \
 	+python3-anyio \
-	+python3-httpx \
-	+python3-httpx-sse \
+	+python3-httpx2 \
+	+python3-mcp-types \
 	+python3-pydantic \
 	+python3-starlette \
 	+python3-multipart \
 	+python3-sse-starlette \
-	+python3-pydantic-settings \
 	+python3-uvicorn \
 	+python3-jsonschema \
 	+python3-pyjwt \
