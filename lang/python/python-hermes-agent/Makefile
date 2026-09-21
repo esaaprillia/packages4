@@ -58,6 +58,7 @@ define Package/python3-hermes-agent
 	+python3-uvloop \
 	+python3-watchfiles \
 	+python3-multipart \
+	+python3-xxxx \
 	+python3-pillow \
 	+python3-pillow-heif \
 	+python3-nemo-relay \
