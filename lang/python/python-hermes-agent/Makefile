@@ -55,7 +55,7 @@ define Package/python3-hermes-agent
 	+python3-fastapi \
 	+python3-uvicorn \
 	+python3-httptools \
-	+python3-xxxxx \
+	+python3-watchfiles \
 	+python3-multipart \
 	+python3-pillow \
 	+python3-pillow-heif \
