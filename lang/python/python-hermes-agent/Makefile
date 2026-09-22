@@ -72,7 +72,6 @@ define Package/python3-hermes-agent
 	+python3-slack-bolt \
 	+python3-slack-sdk \
 	+python3-qrcode \
-	+node \
 	+ripgrep
 endef
 
