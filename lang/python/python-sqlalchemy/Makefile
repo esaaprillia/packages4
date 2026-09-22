@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-sqlalchemy
-PKG_VERSION:=2.0.52
+PKG_VERSION:=2.0.54
 PKG_RELEASE:=1
 
 PYPI_NAME:=sqlalchemy
