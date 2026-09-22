@@ -53,13 +53,13 @@ define Build/Compile
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm install --target_arch=$(NODEJS_CPU)
+	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm run build --target_arch=$(NODEJS_CPU)
+	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
@@ -68,13 +68,10 @@ endef
 
 define Package/9router/install
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
-	cp -r $(PKG_BUILD_DIR)/* \
+	$(CP) $(PKG_BUILD_DIR)/{*.md,LICENSE,*.json,*.mjs,*.js} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	#$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
-	#$(CP) $(PKG_BUILD_DIR)/{LICENSE,README.md,package.json} \
-	#	$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	#$(CP) $(PKG_BUILD_DIR)/{app,cli.js,app,hooks,src} \
-	#	$(1)/usr/lib/node/$(PKG_NPM_NAME)/
+	$(CP) $(PKG_BUILD_DIR)/{.next,node_modules,gitbook,public,i18n,scripts,images,skills,captain-definition ,src,cli,tests,open-sse} \
+		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	#$(INSTALL_DIR) $(1)/usr/bin
 	#$(LN) ../lib/node/$(PKG_NPM_NAME)/cli.js $(1)/usr/bin/9router
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
