@@ -29,7 +29,7 @@ define Package/9router
   CATEGORY:=Languages
   TITLE:=9Router - FREE AI Router & Token Saver
   URL:=https://www.npmjs.com/package/9router
-  DEPENDS:=+libpthread +libc +libstdcpp
+  DEPENDS:=+libpthread +libc +libstdcpp +librt
 endef
 
 define Package/9router/description
@@ -70,7 +70,7 @@ define Package/9router/install
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
 	$(CP) $(PKG_BUILD_DIR)/{*.md,LICENSE,*.json,*.mjs,*.js} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
-	$(CP) $(PKG_BUILD_DIR)/{.next,node_modules,gitbook,public,i18n,scripts,images,skills,captain-definition,src,cli,tests,open-sse} \
+	$(CP) $(PKG_BUILD_DIR)/{.next,node_modules,gitbook,public,i18n,scripts,images,skills,captain-definition,src,cli,tests,open-sse,version.date} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	#$(INSTALL_DIR) $(1)/usr/bin
 	#$(LN) ../lib/node/$(PKG_NPM_NAME)/cli.js $(1)/usr/bin/9router
