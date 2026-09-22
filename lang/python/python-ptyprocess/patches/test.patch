@@ -1,0 +1,47 @@
+From 61c4b9c47a10689f13d7d0195b25dcf8fe8362f9 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Tue, 22 Sep 2026 08:24:54 +0800
+Subject: [PATCH] Update flit_core version and add project metadata
+
+---
+ pyproject.toml | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 5228534..bca7599 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,13 +1,15 @@
+ [build-system]
+-requires = ["flit_core >=2,<4"]
++requires = ["flit_core >=2,<5"]
+ build-backend = "flit_core.buildapi"
+ 
+-[tool.flit.metadata]
+-module = "ptyprocess"
+-author = "Thomas Kluyver"
+-author-email = "thomas@kluyver.me.uk"
+-home-page = "https://github.com/pexpect/ptyprocess"
+-description-file = "README.rst"
++[project]
++name = "ptyprocess"
++authors = [
++    { name = "Thomas Kluyver", email = "thomas@kluyver.me.uk" },
++]
++readme = "README.rst"
++requires-python = ">=3.7"
++dynamic = ["version", "description"]
+ classifiers = [
+     "Development Status :: 5 - Production/Stable",
+     "Environment :: Console",
+@@ -17,8 +19,9 @@ classifiers = [
+     "Operating System :: POSIX",
+     "Operating System :: MacOS :: MacOS X",
+     "Programming Language :: Python",
+-    "Programming Language :: Python :: 2.7",
+     "Programming Language :: Python :: 3",
+     "Topic :: Terminals"
+ ]
+ 
++[project.urls]
++Homepage = "https://github.com/pexpect/ptyprocess"
