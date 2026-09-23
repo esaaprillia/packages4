@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-types-regex
-PKG_VERSION:=2025.9.18.20250921
+PKG_VERSION:=2026.9.10.20260911
 PKG_RELEASE:=1
 
 PYPI_NAME:=types_regex
