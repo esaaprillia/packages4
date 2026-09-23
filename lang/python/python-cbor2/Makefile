@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cbor2
-PKG_VERSION:=5.9.0
+PKG_VERSION:=6.1.4
 PKG_RELEASE:=1
 
 PYPI_NAME:=cbor2
@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-setuptools-rust/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
