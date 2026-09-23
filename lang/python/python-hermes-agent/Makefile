@@ -80,7 +80,7 @@ The self-improving AI agent built by Nous Research. It's the only agent with a b
 endef
 
 PYTHON3_PKG_WHEEL_NAME:=hermes_agent
-PYTHON3_PKG_WHEEL_VERSION:=0.21.3
+PYTHON3_PKG_WHEEL_VERSION:=0.21.4
 PYTHON3_PKG_SETUP_VARS += HERMES_NIX_BUILD=1
 
 NODEJS_CPU:=$(subst powerpc,ppc,$(subst aarch64,arm64,$(subst x86_64,x64,$(subst i386,ia32,$(ARCH)))))
