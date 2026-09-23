@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-types-pyyaml
-PKG_VERSION:=6.0.12.20250915
+PKG_VERSION:=6.0.12.20260906
 PKG_RELEASE:=1
 
 PYPI_NAME:=types_pyyaml
