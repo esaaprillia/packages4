@@ -23,7 +23,7 @@ define Package/python3-opentelemetry-exporter-otlp-proto-common
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=OpenTelemetry Python Proto
+  TITLE:=OpenTelemetry Protobuf encoding
   URL:=https://github.com/open-telemetry/opentelemetry-python
   DEPENDS:= \
 	+python3 \
@@ -31,7 +31,7 @@ define Package/python3-opentelemetry-exporter-otlp-proto-common
 endef
 
 define Package/python3-opentelemetry-exporter-otlp-proto-common/description
-This library contains the generated code for OpenTelemetry protobuf data model.
+This library is provided as a convenience to encode to Protobuf.
 endef
 
 $(eval $(call HostBuild))
