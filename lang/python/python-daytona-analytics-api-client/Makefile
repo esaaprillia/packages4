@@ -8,7 +8,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-PYPI_NAME:= daytona_analytics_api_client
+PYPI_NAME:=daytona_analytics_api_client
 PKG_HASH:=skip
 
 include ../pypi.mk
