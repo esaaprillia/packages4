@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pyee
-PKG_VERSION:=13.0.0
+PKG_VERSION:=14.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=pyee
