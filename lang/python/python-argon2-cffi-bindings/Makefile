@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-argon2-cffi-bindings
-PKG_VERSION:=25.1.0
+PKG_VERSION:=26.1.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=argon2_cffi_bindings
