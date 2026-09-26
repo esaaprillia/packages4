@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-socks
-PKG_VERSION:=2.6.1
+PKG_VERSION:=3.1.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=python_socks
-PKG_HASH:=9743929aab6ffe0bab640ecfbbee7130af92408ad86e4aa2984789f742f3ec9e
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
