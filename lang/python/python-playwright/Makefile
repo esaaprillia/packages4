@@ -44,6 +44,7 @@ endef
 
 PYTHON3_PKG_WHEEL_NAME:=playwright
 PYTHON3_PKG_WHEEL_VERSION:=1.63.0
+SETUPTOOLS_SCM_PRETEND_VERSION +=$(PKG_VERSION)
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-playwright))
