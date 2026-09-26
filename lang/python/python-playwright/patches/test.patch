@@ -1,40 +1,22 @@
-From 0eb157b4209f3ac478622acea1da8b91e0626a2b Mon Sep 17 00:00:00 2001
+From 31bd8b883e4f939d7f12c9d2c0f6d48c81c5f32c Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Sat, 26 Sep 2026 22:37:45 +0800
+Date: Sat, 26 Sep 2026 23:23:38 +0800
 Subject: [PATCH] Update build_driver.py
 
 ---
- scripts/build_driver.py | 20 --------------------
- 1 file changed, 20 deletions(-)
+ scripts/build_driver.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/build_driver.py b/scripts/build_driver.py
-index 0583bca74..1bc689489 100755
+index 0583bca74..27d623f0d 100755
 --- a/scripts/build_driver.py
 +++ b/scripts/build_driver.py
-@@ -168,26 +168,6 @@ def fetch_playwright_core(version: str, work_dir: Path) -> Path:
-     return work_dir / "package"
+@@ -57,7 +57,7 @@
+ REPO_ROOT = Path(__file__).resolve().parent.parent
+ DRIVER_DIR = REPO_ROOT / "driver"
+ 
+-NODEJS_DIST = "https://nodejs.org/dist"
++NODEJS_DIST = "http://nodejs.org/dist"
  
  
--def fetch_node(
--    platform: Platform, node_version: str, bundle_dir: Path, work_dir: Path
--) -> None:
--    """Download the Node.js build for a platform and place node + LICENSE in the bundle."""
--    node_dir = f"node-v{node_version}-{platform.node_dir}"
--    ext = "zip" if platform.windows else "tar.gz"
--    url = f"{NODEJS_DIST}/v{node_version}/{node_dir}.{ext}"
--    archive = work_dir / f"{node_dir}.{ext}"
--    download(url, archive)
--    if platform.windows:
--        with zipfile.ZipFile(archive) as zf:
--            _extract_zip_file(zf, f"{node_dir}/node.exe", bundle_dir / "node.exe")
--            _extract_zip_file(zf, f"{node_dir}/LICENSE", bundle_dir / "LICENSE")
--    else:
--        with tarfile.open(archive, "r:gz") as tar:
--            _extract_tar_file(tar, f"{node_dir}/bin/node", bundle_dir / "node")
--            _extract_tar_file(tar, f"{node_dir}/LICENSE", bundle_dir / "LICENSE")
--    archive.unlink()
--
--
- def zip_bundle(bundle_dir: Path, destination: Path) -> None:
-     files = sorted(p for p in bundle_dir.rglob("*") if p.is_file())
-     tmp = destination.with_name(destination.name + ".tmp")
+ class Platform(NamedTuple):
