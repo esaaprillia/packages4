@@ -1,22 +1,40 @@
-From 8131394255b5459be980ba677c295c54c9f24467 Mon Sep 17 00:00:00 2001
-From: Jan Janssen <jan-janssen@users.noreply.github.com>
-Date: Fri, 22 Nov 2024 18:18:05 +0100
-Subject: [PATCH] Update setup.py
+From 0eb157b4209f3ac478622acea1da8b91e0626a2b Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 26 Sep 2026 22:37:45 +0800
+Subject: [PATCH] Update build_driver.py
 
 ---
- setup.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ scripts/build_driver.py | 20 --------------------
+ 1 file changed, 20 deletions(-)
 
-diff --git a/setup.py b/setup.py
-index b4212cb9d..21fe0cc0a 100644
---- a/setup.py
-+++ b/setup.py
-@@ -113,7 +113,7 @@ def run(self) -> None:
-         super().run()
-         os.makedirs("driver", exist_ok=True)
-         os.makedirs("playwright/driver", exist_ok=True)
--        self._download_and_extract_local_driver()
-+        # self._download_and_extract_local_driver()
+diff --git a/scripts/build_driver.py b/scripts/build_driver.py
+index 0583bca74..1bc689489 100755
+--- a/scripts/build_driver.py
++++ b/scripts/build_driver.py
+@@ -168,26 +168,6 @@ def fetch_playwright_core(version: str, work_dir: Path) -> Path:
+     return work_dir / "package"
  
-         wheel = None
-         if os.getenv("PLAYWRIGHT_TARGET_WHEEL", None):
+ 
+-def fetch_node(
+-    platform: Platform, node_version: str, bundle_dir: Path, work_dir: Path
+-) -> None:
+-    """Download the Node.js build for a platform and place node + LICENSE in the bundle."""
+-    node_dir = f"node-v{node_version}-{platform.node_dir}"
+-    ext = "zip" if platform.windows else "tar.gz"
+-    url = f"{NODEJS_DIST}/v{node_version}/{node_dir}.{ext}"
+-    archive = work_dir / f"{node_dir}.{ext}"
+-    download(url, archive)
+-    if platform.windows:
+-        with zipfile.ZipFile(archive) as zf:
+-            _extract_zip_file(zf, f"{node_dir}/node.exe", bundle_dir / "node.exe")
+-            _extract_zip_file(zf, f"{node_dir}/LICENSE", bundle_dir / "LICENSE")
+-    else:
+-        with tarfile.open(archive, "r:gz") as tar:
+-            _extract_tar_file(tar, f"{node_dir}/bin/node", bundle_dir / "node")
+-            _extract_tar_file(tar, f"{node_dir}/LICENSE", bundle_dir / "LICENSE")
+-    archive.unlink()
+-
+-
+ def zip_bundle(bundle_dir: Path, destination: Path) -> None:
+     files = sorted(p for p in bundle_dir.rglob("*") if p.is_file())
+     tmp = destination.with_name(destination.name + ".tmp")
