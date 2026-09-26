@@ -12,7 +12,7 @@ PYPI_NAME:=playwright-python
 PKG_SOURCE_URL:=https://github.com/microsoft/playwright-python/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-auditwheel/host
+PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-auditwheel/host node/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
