@@ -1,20 +1,31 @@
-From 83aa9952a3be27adfb2e6294f09b880c106c2f6d Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 26 Sep 2026 09:08:56 +0800
-Subject: [PATCH] Update pyproject.toml
+From 8131394255b5459be980ba677c295c54c9f24467 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Fri, 22 Nov 2024 18:18:05 +0100
+Subject: [PATCH] Update setup.py
 
 ---
- pyproject.toml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/pyproject.toml b/pyproject.toml
-index a26b9448f..553ff97ba 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
-@@ -1,5 +1,5 @@
- [build-system]
--requires = ["setuptools==82.0.1", "setuptools-scm==10.2.1", "wheel==0.47.0", "auditwheel==6.7.0"]
-+requires = ["setuptools", "setuptools-scm", "wheel", "auditwheel"]
- build-backend = "setuptools.build_meta"
+diff --git a/setup.py b/setup.py
+index b4212cb9d..21fe0cc0a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -113,7 +113,7 @@ def run(self) -> None:
+         super().run()
+         os.makedirs("driver", exist_ok=True)
+         os.makedirs("playwright/driver", exist_ok=True)
+-        self._download_and_extract_local_driver()
++        # self._download_and_extract_local_driver()
  
- [project]
+         wheel = None
+         if os.getenv("PLAYWRIGHT_TARGET_WHEEL", None):
+@@ -133,7 +133,7 @@ def run(self) -> None:
+                 )
+             )[0]
+         assert wheel
+-        self._build_wheel(wheel)
++        # self._build_wheel(wheel)
+ 
+     def _build_wheel(
+         self,
