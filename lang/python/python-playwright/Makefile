@@ -32,6 +32,12 @@ define Package/python3-playwright
 	+python3-greenlet
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	sed -e 's|==.*\"|"|' -i $(PKG_BUILD_DIR)/pyproject.toml
+	sed -e "s|driver_version = \".*\"|driver_version = \"$(PKG_VERSION)\"|" -i $(PKG_BUILD_DIR)/setup.py
+endef
+
 define Package/python3-playwright/description
 Playwright is a Python library to automate Chromium, Firefox and WebKit browsers with a single API.
 endef
