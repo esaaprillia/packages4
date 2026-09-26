@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-aiohttp-socks
-PKG_VERSION:=0.10.1
+PKG_VERSION:=0.12.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=aiohttp_socks
-PKG_HASH:=49f2e1f8051f2885719beb1b77e312b5a27c3e4b60f0b045a388f194d995e068
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
