@@ -1,0 +1,23 @@
+From bc2b7198e4c9f8b597ead8ee873cada9e0bbf492 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 2 Oct 2026 07:14:05 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 38c9c13..7baca53 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -5,8 +5,7 @@ requires = [
+     "numpy >= 2.0.0; python_version > '3.8'",
+     "oldest-supported-numpy; python_version <= '3.8'",
+     "setuptools>=49.5.0",
+-    "pybind11",
+-    "cmake"
++    "pybind11"
+ ]
+ build-backend = "setuptools.build_meta"
+ 
