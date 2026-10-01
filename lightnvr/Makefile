@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=lightnvr
-PKG_VERSION:=0.42.3
+PKG_VERSION:=0.42.9
 PKG_RELEASE:=1
 
 #PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -10,7 +10,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/opensensor/lightNVR.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=f05f942f1ae5e562bd0f873e6f044246944a6edf
+PKG_SOURCE_VERSION:=03767df2d6cbebfa388be123fa5d305a33698674
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -48,7 +48,7 @@ TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
 CMAKE_OPTIONS += \
-	-DGIT_COMMIT=f05f942f -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DGIT_COMMIT=03767df2 -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Package/lightnvr/conffiles
 /etc/lightnvr
