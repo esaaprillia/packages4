@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-scs
-PKG_VERSION:=3.2.11
+PKG_VERSION:=3.3.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=scs
