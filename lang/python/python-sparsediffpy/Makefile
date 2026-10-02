@@ -25,14 +25,14 @@ define Package/python3-sparsediffpy
   CATEGORY:=Languages
   TITLE:=Python bindings for SparseDiffEngine algorithmic differentiation
   URL:=https://github.com/SparseDifferentiation/SparseDiffPy
-  DEPENDS:= +python3-light +libstdcpp +python3-numpy
+  DEPENDS:= +python3-light +libstdcpp +openblas
 endef
 
 define Package/python3-sparsediffpy/description
   Python bindings for SparseDiffEngine, a C library for computing sparse Jacobians and Hessians.
 endef
 
-PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DOPENBLAS_INCLUDE_DIR=$(STAGING_DIR)/usr/include"
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DOPENBLAS_INCLUDE_DIR=$(STAGING_DIR)/usr/include/openblas"
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-sparsediffpy))
