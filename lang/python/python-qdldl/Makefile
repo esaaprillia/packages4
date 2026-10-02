@@ -29,7 +29,7 @@ define Package/python3-qdldl
   CATEGORY:=Languages
   TITLE:=QDLDL, a free LDL factorization routine.
   URL:=https://github.com/osqp/qdldl-python
-  DEPENDS:= +python3-light
+  DEPENDS:= +python3-light +libstdcpp
 endef
 
 define Package/python3-qdldl/description
