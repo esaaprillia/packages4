@@ -1,11 +1,16 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-qdldl
-PKG_VERSION:=0.1.9.post1
+PKG_NAME:=qdldl-python
+PKG_VERSION:=0.1.9
 PKG_RELEASE:=1
 
-PYPI_NAME:=qdldl
-PKG_HASH:=skip
+#PYPI_NAME:=qdldl
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/osqp/qdldl-python.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=429811876b9e7c506ac5a6502c1a1e23fae564cb
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
@@ -14,7 +19,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DEPENDS:=python-oldest-supported-numpy/host python-pybind11/host
 
 CMAKE_SOURCE_SUBDIR:= c
-CMAKE_BINARY_SUBDIR := c/build
+CMAKE_BINARY_SUBDIR:= c/build
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -35,6 +40,9 @@ endef
 define Package/python3-qdldl/description
   Python interface to the QDLDL free LDL factorization routine for quasi-definite linear systems: Ax = b.
 endef
+
+PYTHON3_PKG_WHEEL_NAME:=qdldl
+PYTHON3_PKG_WHEEL_VERSION:=0.1.9.post1
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-qdldl))
