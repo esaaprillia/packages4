@@ -25,7 +25,7 @@ define Package/python3-sparsediffpy
   CATEGORY:=Languages
   TITLE:=Python bindings for SparseDiffEngine algorithmic differentiation
   URL:=https://github.com/SparseDifferentiation/SparseDiffPy
-  DEPENDS:= +python3-light +libstdcpp +openblas
+  DEPENDS:= +python3-light +libstdcpp +python3-numpy
 endef
 
 define Package/python3-sparsediffpy/description
