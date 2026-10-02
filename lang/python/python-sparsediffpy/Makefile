@@ -32,6 +32,8 @@ define Package/python3-sparsediffpy/description
   Python bindings for SparseDiffEngine, a C library for computing sparse Jacobians and Hessians.
 endef
 
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DOPENBLAS_INCLUDE_DIR=$(STAGING_DIR)/usr/include"
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-sparsediffpy))
 $(eval $(call BuildPackage,python3-sparsediffpy))
