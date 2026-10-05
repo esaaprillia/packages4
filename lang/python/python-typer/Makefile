@@ -25,7 +25,6 @@ define Package/python3-typer
   URL:=https://typer.tiangolo.com/
   DEPENDS:= \
 	+python3-light \
-	+python3-click \
 	+python3-shellingham \
 	+python3-rich \
 	+python3-annotated-doc
