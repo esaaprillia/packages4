@@ -37,7 +37,10 @@ define Package/python3-mcp
 	+python3-pyjwt \
 	+python3-typing-extensions \
 	+python3-typing-inspection \
-	+python3-opentelemetry-api
+	+python3-opentelemetry-api \
+	+python3-rich \
+	+python3-typer \
+	+python3-dotenv
 endef
 
 define Package/python3-mcp/description
