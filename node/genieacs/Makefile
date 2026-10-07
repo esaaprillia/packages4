@@ -37,13 +37,6 @@ define Package/genieacs/description
  GenieACS is a high performance Auto Configuration Server (ACS) for remote management of TR-069 enabled devices.
 endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(RM) -rf $(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
-	cd $(BUILD_DIR)
-	git clone https://github.com/genieacs/genieacs.git $(PKG_NAME)-$(PKG_VERSION)
-endef
-
 TAR_OPTIONS+= --strip-components 1
 TAR_CMD=$(HOST_TAR) -C $(1) $(TAR_OPTIONS)
 
@@ -55,6 +48,9 @@ TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
 define Build/Compile
+	$(RM) -rf $(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+	cd $(BUILD_DIR)
+	git clone https://github.com/genieacs/genieacs.git $(PKG_NAME)-$(PKG_VERSION)
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
