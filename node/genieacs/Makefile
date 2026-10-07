@@ -5,14 +5,9 @@ PKG_NAME:=$(PKG_NPM_NAME)
 PKG_VERSION:=1.2.16
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://github.com/genieacs/genieacs/archive/v$(PKG_VERSION)
-#PKG_HASH:=skip
-
-PKG_SOURCE_URL:=https://github.com/genieacs/genieacs.git
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=38e9dfd0e6dcac51087d11040784fda76ad2460a
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/genieacs/genieacs/archive/v$(PKG_VERSION)
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=AGPL-3.0
@@ -48,6 +43,7 @@ TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
 define Build/Compile
+	$(CP) ./files/git $(PKG_BUILD_DIR)/.git
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
