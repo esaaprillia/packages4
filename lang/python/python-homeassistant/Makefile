@@ -100,7 +100,7 @@ define Package/python3-homeassistant
 	+python3-sqlalchemy \
 	+python3-standard-aifc \
 	+python3-standard-telnetlib \
-	+python3-truststore\
+	+python3-truststore \
 	+python3-typing-extensions \
 	+python3-ulid-transform \
 	+python3-urllib3 \
