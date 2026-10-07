@@ -73,7 +73,7 @@ define Package/python3-homeassistant
 	+python3-home-assistant-bluetooth \
 	+python3-home-assistant-frontend \
 	+python3-home-assistant-intents \
-	+python3-httpx \
+	+python3-httpx2 \
 	+python3-ifaddr \
 	+python3-jinja2 \
 	+python3-lru-dict \
@@ -100,6 +100,7 @@ define Package/python3-homeassistant
 	+python3-sqlalchemy \
 	+python3-standard-aifc \
 	+python3-standard-telnetlib \
+	+python3-truststore\
 	+python3-typing-extensions \
 	+python3-ulid-transform \
 	+python3-urllib3 \
