@@ -48,9 +48,6 @@ TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
 define Build/Compile
-	$(RM) -rf $(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
-	cd $(BUILD_DIR)
-	git clone https://github.com/genieacs/genieacs.git $(PKG_NAME)-$(PKG_VERSION)
 	cd $(PKG_BUILD_DIR); \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
