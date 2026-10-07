@@ -5,15 +5,20 @@ PKG_NAME:=$(PKG_NPM_NAME)
 PKG_VERSION:=1.2.16
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
-PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
-PKG_HASH:=skip
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=https://github.com/genieacs/genieacs/archive/v$(PKG_VERSION)
+#PKG_HASH:=skip
+
+PKG_SOURCE_URL:=https://github.com/genieacs/genieacs.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=38e9dfd0e6dcac51087d11040784fda76ad2460a
+PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=node/host
+#PKG_BUILD_DEPENDS:=node/host
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
 
@@ -30,6 +35,13 @@ endef
 
 define Package/genieacs/description
  GenieACS is a high performance Auto Configuration Server (ACS) for remote management of TR-069 enabled devices.
+endef
+
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(RM) -rf $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+	cd $(PKG_BUILD_DIR)
+	git clone https://github.com/genieacs/genieacs.git $(PKG_NAME)-$(PKG_VERSION)
 endef
 
 TAR_OPTIONS+= --strip-components 1
