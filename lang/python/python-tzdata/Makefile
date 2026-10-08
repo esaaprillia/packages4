@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-tzdata
-PKG_VERSION:=2026.3
+PKG_VERSION:=2026.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=tzdata
