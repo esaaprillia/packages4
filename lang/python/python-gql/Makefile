@@ -25,7 +25,7 @@ define Package/python3-gql
 	+python3-light \
 	+python3-graphql-core \
 	+python3-yarl \
-	+python3-backoff \
+	+python3-tenacity \
 	+python3-anyio
 endef
 
