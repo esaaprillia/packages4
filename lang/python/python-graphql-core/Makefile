@@ -11,7 +11,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 
-PKG_BUILD_DEPENDS:=python-poetry-core/host
+PKG_BUILD_DEPENDS:=python-uv-build/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
