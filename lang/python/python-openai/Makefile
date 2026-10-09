@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-openai
-PKG_VERSION:=3.24.0
+PKG_VERSION:=3.26.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=openai
