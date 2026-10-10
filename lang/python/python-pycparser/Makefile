@@ -39,8 +39,7 @@ define Package/python3-pycparser
   TITLE:=C parser in Python
   URL:=https://github.com/eliben/pycparser
   DEPENDS:= \
-      +python3-light \
-      +python3-ply
+      +python3-light
 endef
 
 define Package/python3-pycparser/description
