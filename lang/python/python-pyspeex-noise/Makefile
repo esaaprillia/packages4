@@ -4,7 +4,7 @@ PKG_NAME:=python-pyspeex-noise
 PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=pyspeex-noise
+PYPI_NAME:=pyspeex_noise
 PKG_SOURCE_URL:=https://github.com/rhasspy/pyspeex-noise/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
