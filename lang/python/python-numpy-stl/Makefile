@@ -29,7 +29,7 @@ define Package/python3-numpy-stl
 	+python3 \
 	+python3-numpy \
 	+python3-utils \
-	+python3-utils
+	+python3-typing-extensions
 endef
 
 define Package/python3-numpy-stl/description
