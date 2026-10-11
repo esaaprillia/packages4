@@ -28,6 +28,7 @@ define Package/python3-numpy-stl
   DEPENDS:= \
 	+python3 \
 	+python3-numpy \
+	+python3-utils \
 	+python3-utils
 endef
 
