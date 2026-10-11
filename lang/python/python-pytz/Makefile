@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pytz
-PKG_VERSION:=2026.4
+PKG_VERSION:=2026.5
 PKG_RELEASE:=1
 
 PYPI_NAME:=pytz
