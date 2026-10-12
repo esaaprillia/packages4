@@ -25,7 +25,8 @@ define Package/python3-pykdtree
   URL:=https://github.com/storpipfugl/pykdtree
   DEPENDS:= \
 	+python3-light \
-	+python3-numpy
+	+python3-numpy \
+	+libgomp
 endef
 
 define Package/python3-pykdtree/description
