@@ -33,7 +33,7 @@ define Package/python3-incremental
   SUBMENU:=Python
   TITLE:=Versions your Python projects
   URL:=https://github.com/twisted/incremental
-  DEPENDS:=+python3-light +python3-pkg-resources
+  DEPENDS:=+python3-light +python3-packaging
 endef
 
 define Package/python3-incremental/description
