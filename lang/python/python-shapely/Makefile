@@ -15,6 +15,7 @@ PKG_BUILD_DEPENDS:=python-cython/host meson-python/host numpy/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include ../meson/meson.mk
 include ../python3-package.mk
 
 define Package/python3-shapely
