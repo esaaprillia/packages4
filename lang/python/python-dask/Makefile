@@ -30,7 +30,7 @@ define Package/python3-dask
 	+python3-fsspec \
 	+python3-packaging \
 	+python3-partd \
-	+python3-pyyaml \
+	+python3-yaml \
 	+python3-toolz \
 	+python3-importlib-metadata
 endef
