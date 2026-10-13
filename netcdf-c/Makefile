@@ -59,8 +59,8 @@ define Package/netcdf-c/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/{nccopy,ncdump,ncgen,ncgen3} $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/{libnetcdf.settings,*.so*} $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/lib/netcdf
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/netcdf/plugin $(1)/usr/lib/netcdf/
+	$(INSTALL_DIR) $(1)/usr/lib/netcdf/plugin
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/netcdf/plugin/*.so* $(1)/usr/lib/netcdf/plugin/
 endef
 
 $(eval $(call BuildPackage,netcdf-c))
