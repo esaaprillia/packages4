@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-CMAKE_BINARY_SUBDIR := build
+CMAKE_BINARY_SUBDIR :=build
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -30,16 +30,18 @@ define Package/netcdf-c/description
 endef
 
 CMAKE_OPTIONS += \
-    -DENABLE_BYTERANGE=ON \
-    -DENABLE_CDF5=ON \
-    -DENABLE_DAP_LONG_TESTS=ON \
-    -DENABLE_DAP_REMOTE_TESTS=ON \
-    -DENABLE_EXAMPLE_TESTS=ON \
-    -DENABLE_EXTRA_TESTS=ON \
-    -DENABLE_FILTER_TESTING=ON \
-    -DENABLE_LARGE_FILE_TESTS=ON \
-    -DENABLE_UNIT_TESTS=ON \
-    -DNETCDF_ENABLE_LOGGING=ON
+	-DNETCDF_WITH_PLUGIN_DIR=/usr/lib/netcdf/plugin \
+	-DNETCDF_ENABLE_BYTERANGE=ON \
+	-DNETCDF_ENABLE_CDF5=ON \
+	-DNETCDF_ENABLE_DAP_LONG_TESTS=ON \
+	-DNETCDF_ENABLE_DAP_REMOTE_TESTS=ON \
+	-DNETCDF_ENABLE_EXAMPLE_TESTS=ON \
+	-DNETCDF_ENABLE_EXTRA_TESTS=ON \
+	-DNETCDF_ENABLE_FILTER_TESTING=ON \
+	-DNETCDF_ENABLE_LARGE_FILE_TESTS=ON \
+	-DNETCDF_ENABLE_UNIT_TESTS=ON \
+	-DNETCDF_ENABLE_LOGGING=ON \
+	-DNETCDF_PLUGIN_INSTALL=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
@@ -51,7 +53,9 @@ define Package/netcdf-c/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/{libnetcdf.settings,*.so*} $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/netcdf
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/netcdf/plugin $(1)/usr/lib/netcdf/
 endef
 
 $(eval $(call BuildPackage,netcdf-c))
