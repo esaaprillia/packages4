@@ -33,6 +33,12 @@ define Package/python3-webencodings/description
   This is a Python implementation of the WHATWG Encoding standard.
 endef
 
+PYTHON3_PKG_WHEEL_NAME:=webencodings
+PYTHON3_PKG_WHEEL_VERSION:=0.5.1
+
+PYTHON3_HOST_WHEEL_NAME:=webencodings
+PYTHON3_HOST_WHEEL_VERSION:=0.5.1
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-webencodings))
 $(eval $(call BuildPackage,python3-webencodings))
