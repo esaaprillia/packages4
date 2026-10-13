@@ -39,7 +39,7 @@ define Package/python3-onnx
   SUBMENU:=Python
   TITLE:=onnx (python3 bindings)
   URL:=https://onnx.ai/
-  DEPENDS:=+python3-light +python3-numpy +python3-protobuf +python3-typing-extensions +python3-ml-dtypes
+  DEPENDS:=+onnx +python3-light +python3-numpy +python3-protobuf +python3-typing-extensions +python3-ml-dtypes
 endef
 
 define Package/python3-onnx/description
