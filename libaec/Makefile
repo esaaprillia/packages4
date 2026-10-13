@@ -4,15 +4,14 @@ PKG_NAME:=libaec
 PKG_VERSION:=1.1.7
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://gitlab.dkrz.de/dkrz-sw/libaec/-/archive/v$(PKG_VERSION)/
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/Deutsches-Klimarechenzentrum/libaec/releases/download/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD 2-Clause
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
