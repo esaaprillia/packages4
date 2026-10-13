@@ -47,11 +47,16 @@ define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/netcdf.pc
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/netcdf.pc
+	$(SED) 's,^\(prefix\|exec_prefix\)=.*,\1=$(STAGING_DIR)/usr,g' $(1)/usr/bin/nc-config
+	$(SED) 's,/usr/include,$(STAGING_DIR)/usr/include,g' $(1)/usr/bin/nc-config
+	$(SED) 's,/usr/lib,$(STAGING_DIR)/usr/lib,g' $(1)/usr/bin/nc-config
+	$(INSTALL_DIR) $(2)/bin
+	$(LN) ../../usr/bin/nc-config $(2)/bin/nc-config
 endef
 
 define Package/netcdf-c/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/{nccopy,ncdump,ncgen,ncgen3} $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/{libnetcdf.settings,*.so*} $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/netcdf
