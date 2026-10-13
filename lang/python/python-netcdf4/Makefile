@@ -36,7 +36,7 @@ define Package/python3-netcdf4/description
 netCDF version 4 has many features not found in earlier versions of the library, such as hierarchical groups, zlib compression, multiple unlimited dimensions, and new data types. It is implemented on top of HDF5.
 endef
 
-PYTHON3_PKG_SETUP_VARS += USE_NCCONFIG=1 NETCDF4_DIR="$(STAGING_DIR)/usr"
+PYTHON3_PKG_SETUP_VARS += USE_NCCONFIG=1 NETCDF4_DIR="$(STAGING_DIR)/usr" NETCDF_PLUGIN_DIR="$(STAGING_DIR)/usr/lib/netcdf/plugin"
 
 $(eval $(call Py3Package,python3-netcdf4))
 $(eval $(call BuildPackage,python3-netcdf4))
