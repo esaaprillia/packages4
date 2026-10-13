@@ -1,0 +1,22 @@
+From 0670e84bc44461b979292efed4125e7e566082e2 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 13 Oct 2026 10:40:26 +0000
+Subject: [PATCH] Update dependencies.cmake
+
+---
+ cmake/dependencies.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/dependencies.cmake b/cmake/dependencies.cmake
+index 95cf64581b..abd4caf275 100644
+--- a/cmake/dependencies.cmake
++++ b/cmake/dependencies.cmake
+@@ -134,7 +134,7 @@ if(USE_HDF5)
+   #####
+   # First, find the C and HL libraries.
+   #####
+-  find_package(HDF5 COMPONENTS C HL REQUIRED)
++  #find_package(HDF5 COMPONENTS C HL REQUIRED)
+ 
+   message(STATUS "Found HDF5 version: ${HDF5_VERSION}")
+   if(${HDF5_VERSION} VERSION_LESS ${HDF5_VERSION_REQUIRED})
