@@ -1,18 +1,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-webencodings
-PKG_VERSION:=0.6.1
+PKG_VERSION:=0.5.1
 PKG_RELEASE:=1
 
-PYPI_NAME:=webencodings
+PYPI_NAME:=python-webencodings
+PKG_SOURCE_URL:=https://github.com/gsnedders/python-webencodings/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-flit-core/host
-HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host python-flit-core/host
+HOST_BUILD_DEPENDS:=python3/host python-build/host python-installer/host python-wheel/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -25,7 +25,7 @@ define Package/python3-webencodings
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Character encoding aliases for legacy web content
-  URL:=https://bleach.readthedocs.io
+  URL:=https://github.com/gsnedders/python-webencodings
   DEPENDS:=+python3
 endef
 
