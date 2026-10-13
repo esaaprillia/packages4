@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-webencodings
-PKG_VERSION:=0.5.1
+PKG_VERSION:=0.6.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=webencodings
