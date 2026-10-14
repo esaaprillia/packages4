@@ -32,6 +32,7 @@ endef
 CMAKE_OPTIONS += \
 	-DENABLE_FILTER_TEST=ON \
 	-DENABLE_LARGE_FILE_TESTS=ON \
+	-DNETCDF_C_INCLUDE_DIR="$(STAGING_DIR)/usr/include" \
 	-DCMAKE_Fortran_COMPILER="$(TARGET_CROSS)gfortran"
 
 define Build/InstallDev
