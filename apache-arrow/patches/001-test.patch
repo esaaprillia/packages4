@@ -1,6 +1,6 @@
-From 4d4201cb00ab41a4167b0d7b79bb4712407f098a Mon Sep 17 00:00:00 2001
+From 6350dd8b9a70957c56fa00d9559d756b80215d1a Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 1 Nov 2025 18:52:02 +0800
+Date: Thu, 15 Oct 2026 04:58:00 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
@@ -8,10 +8,10 @@ Subject: [PATCH] Update CMakeLists.txt
  1 file changed, 1 deletion(-)
 
 diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
-index 14cf1b91411..04d8328f040 100644
+index 0adf83b1819..19f9fab695d 100644
 --- a/cpp/CMakeLists.txt
 +++ b/cpp/CMakeLists.txt
-@@ -540,7 +540,6 @@ set(CMAKE_CXX_FLAGS "${CXX_ONLY_FLAGS} ${CMAKE_CXX_FLAGS}")
+@@ -545,7 +545,6 @@ include(ThirdpartyToolchain)
  if(ARROW_FUZZING)
    set(ARROW_USE_COVERAGE ON)
  endif()
