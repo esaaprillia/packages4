@@ -12,6 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=COPYRIGHT
 
+PKG_INSTALL:=1
 include $(INCLUDE_DIR)/package.mk
 
 define Package/netcdf-fortran
