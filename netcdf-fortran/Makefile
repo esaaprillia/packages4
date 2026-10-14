@@ -40,7 +40,7 @@ define Build/InstallDev
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/netcdf-fortran.pc
 	$(SED) 's,^\(prefix\|exec_prefix\)=.*,\1=$(STAGING_DIR)/usr,g' $(1)/usr/bin/nf-config
 	$(SED) 's,/usr/include,$(STAGING_DIR)/usr/include,g' $(1)/usr/bin/nf-config
-	$(SED) 's,/usr/lib,$(STAGING_DIR)/usr/lib/netcdf/plugin,g' $(1)/usr/bin/nf-config
+	$(SED) 's,/usr/lib,$(STAGING_DIR)/usr/lib,g' $(1)/usr/bin/nf-config
 	$(INSTALL_DIR) $(2)/bin
 	$(LN) ../../usr/bin/nf-config $(2)/bin/nf-config
 endef
