@@ -12,10 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=COPYRIGHT
 
-CMAKE_BINARY_SUBDIR :=build
-
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
 
 define Package/netcdf-fortran
 	SECTION:=libs
@@ -29,14 +26,19 @@ define Package/netcdf-fortran/description
 	The Unidata network Common Data Form (netCDF) is an interface for scientific data access and a freely-distributed software library that provides an implementation of the interface.
 endef
 
-CMAKE_OPTIONS += \
-	-DENABLE_FILTER_TEST=ON \
-	-DENABLE_LARGE_FILE_TESTS=ON \
-	-DNETCDF_C_INCLUDE_DIR="$(STAGING_DIR)/usr/include" \
-	-DCMAKE_Fortran_COMPILER="$(TARGET_CROSS)gfortran"
+CONFIGURE_ARGS += \
+	--prefix=/usr \
+	--disable-static
 
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/nf-config $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/netcdf-fortran.pc $(1)/usr/lib/pkgconfig/
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/netcdf-fortran.pc
 	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/netcdf-fortran.pc
 	$(SED) 's,^\(prefix\|exec_prefix\)=.*,\1=$(STAGING_DIR)/usr,g' $(1)/usr/bin/nf-config
