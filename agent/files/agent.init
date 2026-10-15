@@ -4,7 +4,7 @@ USE_PROCD=1
 START=80
 STOP=10
 
-PROG=/usr/bin/main
+PROG=/agent/main
 CONF=/agent
 
 start_service() {
