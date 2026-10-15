@@ -57,8 +57,8 @@ define Build/Compile
 endef
 
 define Package/agent/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/machinery/main $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/agent
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/machinery/main $(1)/agent/
 	$(INSTALL_DIR) $(1)/agent
 	$(CP) ./files/version $(1)/agent/version
 	$(INSTALL_DIR) $(1)/etc/init.d
