@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://github.com/uriparser/uriparser/releases/download/uripars
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=Apache-2.0 MIT
+PKG_LICENSE:=Apache-2.0 LGPL-2.1
 PKG_LICENSE_FILES:=COPYING.Apache-2.0 COPYING.BSD-3-Clause COPYING.LGPL-2.1
 
 CMAKE_BINARY_SUBDIR := build
