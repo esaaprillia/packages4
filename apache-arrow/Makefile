@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=boost flatbuffers rapidjson xsimd
+PKG_BUILD_DEPENDS:=boost flatbuffers rapidjson xsimd simdjson
 
 CMAKE_BINARY_SUBDIR := build-cpp
 CMAKE_SOURCE_SUBDIR := cpp
@@ -53,7 +53,7 @@ CMAKE_OPTIONS += \
 	-DARROW_WITH_BROTLI=ON \
 	-DARROW_WITH_BZ2=ON \
 	-DARROW_WITH_LZ4=ON \
-	-DARROW_WITH_MUSL=ON \
+	-DARROW_WITH_MUSL=OFF \
 	-DARROW_WITH_SNAPPY=ON \
 	-DARROW_WITH_ZLIB=ON \
 	-DARROW_WITH_ZSTD=ON \
