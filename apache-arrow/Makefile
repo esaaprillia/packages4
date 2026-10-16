@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=boost flatbuffers rapidjson xsimd simdjson
+PKG_BUILD_DEPENDS:=boost flatbuffers rapidjson xsimd simdjson uriparser
 
 CMAKE_BINARY_SUBDIR := build-cpp
 CMAKE_SOURCE_SUBDIR := cpp
