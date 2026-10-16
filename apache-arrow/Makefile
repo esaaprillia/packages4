@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.txt
 
-PKG_BUILD_DEPENDS:=boost flatbuffers rapidjson xsimd simdjson uriparser
+PKG_BUILD_DEPENDS:=boost flatbuffers rapidjson xsimd
 
 CMAKE_BINARY_SUBDIR := build-cpp
 CMAKE_SOURCE_SUBDIR := cpp
@@ -24,7 +24,7 @@ define Package/apache-arrow
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Apache Arrow is the universal columnar format and multi-language toolbox for fast data interchange and in-memory analytics
-	DEPENDS:=+libstdcpp +abseil-cpp +apache-orc +brotli +libbz2 +glog +grpc +utf8proc +liblz4 +libopenssl +protobuf +re2 +snappy +thrift +libzstd +zlib
+	DEPENDS:=+libstdcpp +abseil-cpp +apache-orc +brotli +libbz2 +glog +grpc +utf8proc +liblz4 +libopenssl +protobuf +re2 +snappy +thrift +libzstd +zlib +simdjson +uriparser
 	URL:=https://arrow.apache.org/
 endef
 
