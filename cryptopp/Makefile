@@ -34,7 +34,7 @@ define Package/cryptopp/description
 endef
 
 define Build/Compile
-	$(MAKE_VARS) $(MAKE) dynamic libcryptopp.pc PREFIX="/usr" -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS)
+	$(MAKE_VARS) $(MAKE) dynamic libcryptopp.pc CXXFLAGS="$(TARGET_CXXFLAGS)" PREFIX="/usr" -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS)
 endef
 
 define Build/Install
