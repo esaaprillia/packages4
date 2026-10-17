@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=lightnvr
-PKG_VERSION:=0.43.2
+PKG_VERSION:=0.43.3
 PKG_RELEASE:=1
 
 #PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -10,7 +10,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/opensensor/lightNVR.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=21aba2587cd5ab2354eb25100143e2144f20710b
+PKG_SOURCE_VERSION:=26a506bacf3eea19eb2679dbe44062cdc46a808e
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -48,7 +48,7 @@ TARGET_CFLAGS+=$(FPIC)
 TARGET_CPPFLAGS+=$(FPIC)
 
 CMAKE_OPTIONS += \
-	-DGIT_COMMIT=21aba258 -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DGIT_COMMIT=26a506ba -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Package/lightnvr/conffiles
 /etc/lightnvr
@@ -67,7 +67,7 @@ define Build/Compile
 	$(MAKE_FLAGS) \
 	npm_config_nodedir=$(STAGING_DIR)/usr/ \
 	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm run build:maps --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
+	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
 	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
 	rm -f $(PKG_BUILD_DIR)/web/node_modules/.package-lock.json
 	find $(PKG_BUILD_DIR)/web/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
