@@ -15,7 +15,7 @@ PKG_BUILD_DEPENDS:=python-cython/host numpy/host python-setuptools-scm/host pyth
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include ../python3-package.mk
 
 PYTHON3_PKG_SETUP_VARS += PYARROW_CMAKE_OPTIONS="-DARROW_SIMD_LEVEL=NONE -DARROW_RUNTIME_SIMD_LEVEL=MAX"
