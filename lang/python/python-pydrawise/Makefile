@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pydrawise
-PKG_VERSION:=2026.9.1
+PKG_VERSION:=2026.10.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=pydrawise
