@@ -1,0 +1,20 @@
+From d2cb046887a0ee41ecf3910ef1aad71327e1b6f1 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 17 Oct 2026 18:14:28 +0800
+Subject: [PATCH] Update pyproject.toml
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 0792ffbc..574d4a13 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -351,5 +351,5 @@ search = '^version = "{current_version}"'
+ replace = 'version = "{new_version}"'
+ 
+ [build-system]
+-requires = ["uv_build>=0.12,<0.13"]
++requires = ["uv_build"]
+ build-backend = "uv_build"
