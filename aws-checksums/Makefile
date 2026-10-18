@@ -32,7 +32,8 @@ define Package/aws-checksums/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON
+	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_PREFIX_PATH="$(STAGING_DIR)/usr"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
