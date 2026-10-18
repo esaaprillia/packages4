@@ -1,0 +1,28 @@
+From 95aed5547ad181cc00bfd389cd02ab15580690de Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 19 Oct 2026 07:49:41 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b2a708c3..6fdcbd9b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -122,10 +122,8 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+ include(CTest)
+ if (BUILD_TESTING)
+     add_subdirectory(tests)
+-    if (NOT CMAKE_CROSSCOMPILING )
+-        add_subdirectory(bin/elastipubsub)
+-        add_subdirectory(bin/elastipubsub5)
+-        add_subdirectory(bin/elastishadow)
+-        add_subdirectory(bin/mqtt5canary)
+-    endif()
++    add_subdirectory(bin/elastipubsub)
++    add_subdirectory(bin/elastipubsub5)
++    add_subdirectory(bin/elastishadow)
++    add_subdirectory(bin/mqtt5canary)
+ endif ()
