@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-bitstring
-PKG_VERSION:=4.2.3
+PKG_VERSION:=5.0.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=bitstring
-PKG_HASH:=e0c447af3fda0d114f77b88c2d199f02f97ee7e957e6d719f40f41cf15fbb897
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
