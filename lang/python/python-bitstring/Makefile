@@ -23,7 +23,7 @@ define Package/python3-bitstring
   CATEGORY:=Languages
   TITLE:=Simple construction, analysis and modification of binary data.
   URL:=https://bitstring.readthedocs.io/en/stable/index.html
-  DEPENDS:=+python3 +python3-bitarray
+  DEPENDS:=+python3 +python3-tibs
 endef
 
 define Package/python3-bitstring/description
