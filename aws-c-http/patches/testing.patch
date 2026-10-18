@@ -1,0 +1,28 @@
+From d8e3ab4789f77e8d0590bb3cece616ec5aefbcc0 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 19 Oct 2026 07:19:40 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5fc377449..68646a749 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -94,10 +94,8 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+         COMPONENT Development)
+ 
+ include(CTest)
+-if (NOT BYO_CRYPTO AND BUILD_TESTING)
++if (BUILD_TESTING)
+     add_subdirectory(tests)
+-    if (NOT CMAKE_CROSSCOMPILING)
+-        add_subdirectory(bin/elasticurl)
+-        add_subdirectory(bin/h2benchmark)
+-    endif()
+-endif()
++    add_subdirectory(bin/elasticurl)
++    add_subdirectory(bin/h2benchmark)
++endif ()
