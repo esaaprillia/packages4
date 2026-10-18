@@ -33,8 +33,16 @@ define Package/cryptopp/description
 	Crypto++ Library is a free C++ class library of cryptographic schemes.
 endef
 
+TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
+TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
+TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
+
+TARGET_CFLAGS += -Os -pipe -march=armv8-a+crypto
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crypto
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crypto
+
 define Build/Compile
-	$(CONFIGURE_VARS) $(MAKE) dynamic libcryptopp.pc PREFIX="/usr" -f GNUmakefile-cross -C $(PKG_BUILD_DIR)
+	$(MAKE_VARS) $(MAKE) dynamic libcryptopp.pc PREFIX="/usr" -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS)
 endef
 
 define Build/Install
