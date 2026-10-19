@@ -24,7 +24,7 @@ define Package/apache-arrow
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Apache Arrow is the universal columnar format and multi-language toolbox for fast data interchange and in-memory analytics
-	DEPENDS:=+libstdcpp +abseil-cpp +apache-orc +brotli +libbz2 +glog +grpc +utf8proc +liblz4 +libopenssl +protobuf +re2 +snappy +thrift +libzstd +zlib +simdjson +uriparser
+	DEPENDS:=+libstdcpp +abseil-cpp +apache-orc +brotli +libbz2 +glog +grpc +utf8proc +liblz4 +libopenssl +protobuf +re2 +snappy +thrift +libzstd +zlib +simdjson +uriparser +aws-sdk-cpp
 	URL:=https://arrow.apache.org/
 endef
 
@@ -33,27 +33,31 @@ define Package/apache-arrow/description
 endef
 
 CMAKE_OPTIONS += \
-	-DARROW_BUILD_STATIC=OFF \
-	-DARROW_DEPENDENCY_SOURCE=SYSTEM \
+	-DARROW_SIMD_LEVEL=NONE \
 	-DARROW_RUNTIME_SIMD_LEVEL=MAX \
-	-DARROW_BUILD_EXAMPLES=OFF \
-	-DARROW_BUILD_TESTS=OFF \
+	-DARROW_DEPENDENCY_SOURCE=SYSTEM \
+	-DARROW_BUILD_STATIC=OFF \
+	-DARROW_BUILD_TESTS=ON \
+	-DARROW_BUILD_UTILITIES=ON \
 	-DARROW_COMPUTE=ON \
 	-DARROW_CSV=ON \
-	-DARROW_DATASET=ON \
 	-DARROW_FILESYSTEM=ON \
 	-DARROW_FLIGHT=ON \
+	-DARROW_FLIGHT_SQL=ON \
+	-DARROW_GANDIVA=OFF \
 	-DARROW_HDFS=ON \
+	-DARROW_IPC=ON \
+	-DARROW_JEMALLOC=ON \
 	-DARROW_JSON=ON \
+	-DARROW_ORC=ON \
 	-DARROW_PARQUET=ON \
-	-DARROW_SIMD_LEVEL=NONE \
+	-DARROW_S3=ON \
+	-DARROW_SUBSTRAIT=ON \
 	-DARROW_TENSORFLOW=ON \
 	-DARROW_USE_GLOG=ON \
-	-DARROW_ORC=ON \
 	-DARROW_WITH_BROTLI=ON \
 	-DARROW_WITH_BZ2=ON \
 	-DARROW_WITH_LZ4=ON \
-	-DARROW_WITH_MUSL=OFF \
 	-DARROW_WITH_SNAPPY=ON \
 	-DARROW_WITH_ZLIB=ON \
 	-DARROW_WITH_ZSTD=ON \
@@ -71,8 +75,8 @@ define Build/InstallDev
 endef
 
 define Package/apache-arrow/install
-	#$(INSTALL_DIR) $(1)/usr/bin
-	#$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
