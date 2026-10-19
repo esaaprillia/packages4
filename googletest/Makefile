@@ -15,7 +15,6 @@ PKG_LICENSE_FILES:=LICENSE
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
-PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -35,7 +34,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
-	-Dgtest_build_tests=ON \
+	-Dgtest_build_tests=OFF \
 	-DBUILD_GMOCK=ON
 
 define Build/InstallDev
