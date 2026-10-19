@@ -33,7 +33,7 @@ define Package/python3-awscrt
 	+aws-c-io \
 	+aws-c-mqtt \
 	+aws-c-s3 \
-	+aws-checksums \
+	+aws-checksums
 endef
 
 define Package/python3-awscrt/description
