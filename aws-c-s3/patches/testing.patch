@@ -1,0 +1,22 @@
+From 1fbc878dafebb4ee373131e92f1330a376befa5e Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Mon, 19 Oct 2026 00:31:55 +0000
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c57cfa9d8..f6ec0dee4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -129,7 +129,5 @@ include(CTest)
+ if (BUILD_TESTING)
+     add_definitions(-DAWS_C_S3_ENABLE_TEST_STUBS)
+     add_subdirectory(tests)
+-    if (NOT BYO_CRYPTO AND NOT CMAKE_CROSSCOMPILING)
+-        add_subdirectory(samples)
+-    endif()
++    add_subdirectory(samples)
+ endif()
