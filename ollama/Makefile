@@ -12,7 +12,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-CMAKE_BINARY_SUBDIR := llama/server/llama-server-local
+CMAKE_BINARY_SUBDIR := llama/server/llama-server-local/llama-server-local
 #CMAKE_SOURCE_SUBDIR := llama/server
 PKG_BUILD_PARALLEL:=1
 
