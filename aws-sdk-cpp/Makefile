@@ -15,9 +15,12 @@ PKG_LICENSE_FILES:=LICENSE
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_PARALLEL:=1
+PYTHON3_PKG_BUILD:=0
+PKG_BUILD_DEPENDS:=python3
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/aws-sdk-cpp
 	SECTION:=libs
