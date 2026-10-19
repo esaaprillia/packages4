@@ -12,8 +12,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-CMAKE_BINARY_SUBDIR := build
-CMAKE_SOURCE_SUBDIR := llama/server
+CMAKE_BINARY_SUBDIR := llama/server
+#CMAKE_SOURCE_SUBDIR := llama/server
 PKG_BUILD_PARALLEL:=1
 
 PKG_BUILD_DEPENDS:= golang/host
