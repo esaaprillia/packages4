@@ -33,7 +33,9 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
-	-DCMAKE_PREFIX_PATH="$(STAGING_DIR)/usr"
+	-DCMAKE_PREFIX_PATH="$(STAGING_DIR)/usr" \
+	-DBUILD_DEPS=OFF \
+	-DBUILD_TESTING=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
