@@ -16,11 +16,11 @@ CMAKE_BINARY_SUBDIR := build
 CMAKE_SOURCE_SUBDIR := llama/server
 PKG_BUILD_PARALLEL:=1
 
-PKG_BUILD_DEPENDS:= golang/host node/host
+PKG_BUILD_DEPENDS:= golang/host
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/cmake.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake-golang.mk
 
 define Package/ollama
 	SECTION:=libs
@@ -33,9 +33,6 @@ endef
 define Package/ollama/description
 	Get up and running with OpenAI GLM-4.7, DeepSeek, gpt-oss, Qwen, Gemma and other models.
 endef
-
-CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON -DNPM_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/npm"
 
 GO_PKG:=github.com/ollama/ollama
 GO_PKG_LDFLAGS_X:= \
