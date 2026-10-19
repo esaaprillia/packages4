@@ -1,0 +1,23 @@
+From d43fc8b6e839122b13528869a8dd8f9e0a113871 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=9Crem=20Sancaktutan?=
+ <36550960+codelovingcat@users.noreply.github.com>
+Date: Wed, 23 Sep 2026 23:40:46 +0300
+Subject: [PATCH] Fix GCC 14 AArch64 ICE with parameterized tests
+
+---
+ googletest/include/gtest/internal/gtest-param-util.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/googletest/include/gtest/internal/gtest-param-util.h b/googletest/include/gtest/internal/gtest-param-util.h
+index 716779346a..0afb265c96 100644
+--- a/googletest/include/gtest/internal/gtest-param-util.h
++++ b/googletest/include/gtest/internal/gtest-param-util.h
+@@ -97,7 +97,7 @@ class [[nodiscard]] ParamGenerator;
+ // Interface for iterating over elements provided by an implementation
+ // of ParamGeneratorInterface<T>.
+ template <typename T>
+-class [[nodiscard]] ParamIteratorInterface {
++class ParamIteratorInterface {
+  public:
+   virtual ~ParamIteratorInterface() = default;
+   // A pointer to the base generator instance.
