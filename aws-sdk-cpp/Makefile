@@ -14,8 +14,6 @@ PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=pulseaudio
-
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -25,7 +23,7 @@ define Package/aws-sdk-cpp
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=AWS SDK for C++
-	DEPENDS:=+aws-c-common +aws-c-event-stream +aws-crt-cpp +libcurl +libstdcpp +zlib
+	DEPENDS:=+aws-c-common +aws-c-event-stream +aws-crt-cpp +libcurl +libstdcpp +zlib +pulseaudio-daemon-avahi
 	URL:=https://github.com/aws/aws-sdk-cpp
 endef
 
@@ -33,9 +31,10 @@ define Package/aws-sdk-cpp/description
 	The AWS SDK for C++ provides a modern C++ (version C++ 11 or later) interface for Amazon Web Services (AWS).
 endef
 
+TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
+
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
-	-DCMAKE_PREFIX_PATH="$(STAGING_DIR)/usr" \
 	-DBUILD_DEPS=OFF \
 	-DCUSTOM_MEMORY_MANAGEMENT=OFF \
 	-DAUTORUN_UNIT_TESTS=OFF
