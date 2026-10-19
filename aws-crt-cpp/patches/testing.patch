@@ -1,0 +1,32 @@
+From 808e69cc4ea1675930761a874da6fcc0fe091005 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Mon, 19 Oct 2026 09:10:15 +0800
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ada8515a7..8627d0f2c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -444,14 +444,9 @@ install(FILES "${GENERATED_ROOT_DIR}/${PROJECT_NAME}-config-version.cmake"
+     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}/"
+     COMPONENT Development)
+ 
+-if(NOT CMAKE_CROSSCOMPILING)
+-    if(BUILD_TESTING)
++if(BUILD_TESTING)
+         add_subdirectory(tests)
+-
+-        if(NOT BYO_CRYPTO)
+-            add_subdirectory(bin/elasticurl_cpp)
+-            add_subdirectory(bin/mqtt5_app)
+-            add_subdirectory(bin/mqtt5_canary)
+-        endif()
+-    endif()
++        add_subdirectory(bin/elasticurl_cpp)
++        add_subdirectory(bin/mqtt5_app)
++        add_subdirectory(bin/mqtt5_canary)
+ endif()
