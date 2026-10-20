@@ -1,0 +1,22 @@
+From 869fe01d251bdacaa3c8972bbcc52228580ba7e7 Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Tue, 20 Oct 2026 11:55:56 +0000
+Subject: [PATCH] Update ThirdpartyToolchain.cmake
+
+---
+ cpp/cmake_modules/ThirdpartyToolchain.cmake | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/cpp/cmake_modules/ThirdpartyToolchain.cmake b/cpp/cmake_modules/ThirdpartyToolchain.cmake
+index db4482f7378..b67bde3ec8f 100644
+--- a/cpp/cmake_modules/ThirdpartyToolchain.cmake
++++ b/cpp/cmake_modules/ThirdpartyToolchain.cmake
+@@ -2544,6 +2544,8 @@ macro(build_jemalloc)
+        "--disable-libdl"
+        # See https://github.com/jemalloc/jemalloc/issues/1237
+        "--disable-initial-exec-tls"
++       "--build=x86_64-pc-linux-gnu"
++       "--host=aarch64-openwrt-linux"
+        ${EP_LOG_OPTIONS})
+   if(${UPPERCASE_BUILD_TYPE} STREQUAL "DEBUG")
+     # Enable jemalloc debug checks when Arrow itself has debugging enabled
