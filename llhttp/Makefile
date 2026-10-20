@@ -14,7 +14,6 @@ PKG_LICENSE_FILES:=LICENSE
 
 CMAKE_BINARY_SUBDIR:=build
 
-#PKG_BUILD_DEPENDS:=node/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/llhttp-release-v$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
