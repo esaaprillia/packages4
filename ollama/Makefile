@@ -39,12 +39,6 @@ GO_PKG_LDFLAGS_X:= \
 	$(GO_PKG)/server.mode=release \
 	$(GO_PKG)/version.Version=$(PKG_VERSION)
 
-define Build/Compile
-	$(call Build/Compile/Cmake)
-	$(call GoPackage/Build/Configure)
-	$(call GoPackage/Build/Compile)
-endef
-
 define Package/ollama/install
 	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin
