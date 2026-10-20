@@ -11,7 +11,7 @@ PKG_LICENSE_FILES:=LICENSE
 PYPI_NAME:=scikit_build
 PKG_HASH:=skip
 
-HOST_BUILD_DEPENDS:=python-distro/host python-hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
+HOST_BUILD_DEPENDS:=python-distro/host python-packaging/host python-hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
