@@ -24,7 +24,7 @@ define Package/apache-arrow
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Apache Arrow is the universal columnar format and multi-language toolbox for fast data interchange and in-memory analytics
-	DEPENDS:=+libstdcpp +abseil-cpp +apache-orc +brotli +libbz2 +glog +grpc +utf8proc +liblz4 +libopenssl +protobuf +re2 +snappy +thrift +libzstd +zlib +simdjson +uriparser +aws-sdk-cpp
+	DEPENDS:=+libstdcpp +abseil-cpp +apache-orc +brotli +libbz2 +glog +grpc +utf8proc +liblz4 +libopenssl +protobuf +re2 +snappy +thrift +libzstd +zlib +simdjson +uriparser +aws-sdk-cpp +libjemalloc
 	URL:=https://arrow.apache.org/
 endef
 
