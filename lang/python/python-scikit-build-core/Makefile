@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
 
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-pathspec python-pathspec
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -25,7 +25,7 @@ define Package/python3-scikit-build-core
   CATEGORY:=Languages
   TITLE:=Build backend for CMake based projects
   URL:=https://github.com/scikit-build/scikit-build-core
-  DEPENDS:=+python3
+  DEPENDS:=+python3 python-pathspec python-pathspec
 endef
 
 define Package/python3-scikit-build-core/description
