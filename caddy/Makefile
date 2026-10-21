@@ -36,7 +36,6 @@ define Package/caddy/description
 endef
 
 define Build/Compile
-	cd $(PKG_BUILD_DIR)/cmd/caddy
 	$(call GoPackage/Build/Configure)
 	$(call GoPackage/Build/Compile)
 endef
