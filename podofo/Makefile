@@ -23,7 +23,7 @@ define Package/podofo
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=A C++17 PDF manipulation library
-	DEPENDS:=+fontconfig +libfreetype +libidn +libjpeg-turbo +libpng +libtiff +libxml2 +libopenssl +zlib
+	DEPENDS:=+libstdcpp +fontconfig +libfreetype +libidn +libjpeg-turbo +libpng +libtiff +libxml2 +libopenssl +zlib
 	URL:=http://podofo.sourceforge.net/
 endef
 
