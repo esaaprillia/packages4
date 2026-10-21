@@ -33,6 +33,9 @@ endef
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
+	-DUSE_PTHREADS=ON \
+	-DTESTS=OFF \
+	-DUTILS=ON \
 	-DCMAKE_Fortran_COMPILER="$(TARGET_CROSS)gfortran"
 
 define Build/InstallDev
