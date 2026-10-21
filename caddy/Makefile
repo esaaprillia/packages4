@@ -36,16 +36,15 @@ define Package/caddy/description
 endef
 
 define Build/Compile
-	cd $(PKG_BUILD_DIR); \
-	$(GO_GENERAL_BUILD_CONFIG_VARS) \
-	$(GO_PKG_BUILD_CONFIG_VARS) \
-	$(GO_PKG_VARS) \
-	go build -v -ldflags "-X github.com/caddyserver/caddy/v2.CustomVersion=$(PKG_VERSION) -compressdwarf=false -linkmode=external" -o build/caddy ./cmd/caddy
+	cd $(PKG_BUILD_DIR)/cmd/caddy
+	$(call GoPackage/Build/Configure)
+	$(call GoPackage/Build/Compile)
 endef
 
 define Package/caddy/install
-	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/build/* $(1)/usr/bin/
+	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,caddy))
