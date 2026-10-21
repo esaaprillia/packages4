@@ -17,8 +17,8 @@ PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
 
-GO_PKG:=$(PKG_BUILD_DIR)/cmd/caddy
-#GO_PKG_BUILD_PKG:=$(GO_PKG)/cmd/caddy
+GO_PKG:=github.com/caddyserver/caddy
+#GO_PKG_BUILD_PKG:=$(GO_PKG)/../...
 #GO_PKG_BUILD_PKG:=$(PKG_BUILD_DIR)/cmd/caddy
 
 include $(INCLUDE_DIR)/package.mk
@@ -34,11 +34,6 @@ endef
 
 define Package/caddy/description
   Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
-endef
-
-define Build/Compile
-	$(call GoPackage/Build/Configure)
-	$(call GoPackage/Build/Compile)
 endef
 
 define Package/caddy/install
