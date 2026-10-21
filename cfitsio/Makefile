@@ -5,7 +5,7 @@ PKG_VERSION:=4.7.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/heasarc/cfitsio/archive/
+PKG_SOURCE_URL:=https://github.com/heasarc/cfitsio/archive/cfitsio-$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
