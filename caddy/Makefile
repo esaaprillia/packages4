@@ -35,8 +35,21 @@ define Package/caddy/description
   Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
 endef
 
+define Build/Compile
+	cd $(PKG_BUILD_DIR); \
+	$(GO_GENERAL_BUILD_CONFIG_VARS) \
+	$(GO_PKG_BUILD_CONFIG_VARS) \
+	$(GO_PKG_VARS) \
+	$(SHELL) $(GO_INCLUDE_DIR)golang-build.sh build $(GO_PKG_INSTALL_ARGS) $(1)
+	cd $(PKG_BUILD_DIR); \
+	$(GO_GENERAL_BUILD_CONFIG_VARS) \
+	$(GO_PKG_BUILD_CONFIG_VARS) \
+	$(GO_PKG_VARS) \
+	$(SHELL) $(GO_INCLUDE_DIR)golang-build.sh install_bin "$(1)"
+endef
+
 define Package/caddy/install
-	#$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 endef
