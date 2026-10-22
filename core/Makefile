@@ -10,7 +10,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/datarhei/core.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=eeb63ecb971293a2b507a11ca5da30516232ec8c
+PKG_SOURCE_VERSION:=1a9425f976fbac1db7addec3da2a83dcd3995a52
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
