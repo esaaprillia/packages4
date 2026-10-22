@@ -43,7 +43,7 @@ define Build/Compile
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
-	go build $(GO_PKG_INSTALL_ARGS) $(1)
+	go build $(GO_PKG_INSTALL_ARGS)
 endef
 
 define Package/caddy/install
