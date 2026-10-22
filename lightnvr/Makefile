@@ -77,7 +77,7 @@ define Build/Compile
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
-	go build
+	go build $(GO_PKG_INSTALL_ARGS)
 	$(call Build/Compile/Default)
 endef
 
