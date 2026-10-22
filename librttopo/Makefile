@@ -4,10 +4,9 @@ PKG_NAME:=librttopo
 PKG_VERSION:=1.1.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://gitea.osgeo.org/rttopo/librttopo.git
-PKG_SOURCE_VERSION:=98a8bdd0b2d13f6b685d0658b4bce15d46606a1a
-PKG_MIRROR_HASH:=skip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://download.osgeo.org/librttopo/src/
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0-or-later
