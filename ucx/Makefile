@@ -32,6 +32,8 @@ endef
 CONFIGURE_ARGS += \
 	--prefix=/usr \
 	--sysconfdir=/etc \
+	--without-go \
+	--without-java \
 	--with-verbs \
 	--with-rc \
 	--with-ud \
