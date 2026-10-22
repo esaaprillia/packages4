@@ -22,7 +22,7 @@ GO_PKG:=github.com/AlexxIT/go2rtc
 GO_PKG_EXCLUDES:=examples/
 
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/golang/golang-package.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 # NOTE: Since version 1.9.9 project contains some arch-dependent code,
 #       which should be selected by magic go comments or file endings,
