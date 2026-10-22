@@ -13,7 +13,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/jbeder/yaml-cpp
-PKG_SOURCE_VERSION:=$(PKG_VERSION)
+PKG_SOURCE_VERSION:=56e3bb550c91fd7005566f19c079cb7a503223cf
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:= Steven Hessing <steven.hessing@gmail.com>
