@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nchat
-PKG_VERSION:=5.10.15
+PKG_VERSION:=5.19.18
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -17,7 +17,7 @@ CMAKE_BINARY_SUBDIR:=build
 PKG_BUILD_DEPENDS:=ncurses/host gperf/host golang/host
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake-golang.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/cmake2.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/nchat
