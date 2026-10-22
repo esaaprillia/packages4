@@ -21,7 +21,7 @@ define Package/glog
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=C++ implementation of the Google logging module
-	DEPENDS:=+gflags +libunwind +libucontext
+	DEPENDS:=+gflags +libunwind
 	URL:=http://google.github.io/glog/
 endef
 
@@ -34,8 +34,7 @@ CMAKE_OPTIONS += \
 	-DWITH_GFLAGS=ON \
 	-DWITH_THREADS=ON \
 	-DWITH_TLS=ON \
-	-DWITH_PKGCONFIG=ON \
-	-DPRINT_UNSYMBOLIZED_STACK_TRACES=OFF
+	-DWITH_PKGCONFIG=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
