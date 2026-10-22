@@ -39,7 +39,7 @@ define Package/go2rtc
   CATEGORY:=Multimedia
   TITLE:=go2rtc camera streaming
   URL:=https://github.com/AlexxIT/go2rtc
-  DEPENDS:=$(GO_ARCH_DEPENDS) $(GO2RTC_DEPENDS) +alsa-lib
+  DEPENDS:=$(GO_ARCH_DEPENDS) $(GO2RTC_DEPENDS) +alsa-lib +libv4l
   USERID:=go2rtc:go2rtc
 endef
 
