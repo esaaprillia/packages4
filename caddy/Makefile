@@ -18,8 +18,7 @@ PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
 
 GO_PKG:=github.com/caddyserver/caddy
-GO_PKG_BUILD_PKG:=$(GO_PKG)/./...
-#GO_PKG_BUILD_PKG:=$(PKG_BUILD_DIR)/cmd/caddy
+GO_PKG_BUILD_PKG:=$(GO_PKG)/cmd/caddy
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
@@ -37,7 +36,7 @@ define Package/caddy/description
 endef
 
 define Package/caddy/install
-	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	#$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 endef
