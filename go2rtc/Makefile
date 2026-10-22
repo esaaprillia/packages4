@@ -1,54 +1,68 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=podofo
-PKG_VERSION:=1.1.2
+PKG_NAME:=go2rtc
+PKG_VERSION:=1.9.14
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/podofo/podofo/archive/$(PKG_VERSION)
-PKG_HASH:=skip
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/AlexxIT/go2rtc.git
+PKG_MIRROR_HASH:=af79a091f8185d61ba06b00fd472439c4b3da1812394bef6da432ff875b5c994
+PKG_SOURCE_VERSION:=v$(PKG_VERSION)
 
-PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=MPL-2.0
-PKG_LICENSE_FILES:=COPYING.LGPL COPYING.MPL
+PKG_LICENSE:=MIT
+PKG_LICENSE_FILES:=LICENSE
+PKG_MAINTAINER:=Vladimir Ermakov <vooon341@gmail.com>
+PKG_CPE_ID:=cpe:/a:alexxit:go2rtc
 
-CMAKE_BINARY_SUBDIR := build
-
+PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
+PKG_BUILD_FLAGS:=no-mips16
+
+GO_PKG:=github.com/AlexxIT/go2rtc
+GO_PKG_EXCLUDES:=examples/
 
 include $(INCLUDE_DIR)/package.mk
-include $(INCLUDE_DIR)/cmake.mk
+include ../../lang/golang/golang-package.mk
 
-define Package/podofo
-	SECTION:=libs
-	CATEGORY:=Libraries
-	TITLE:=A C++17 PDF manipulation library
-	DEPENDS:=+fontconfig +libfreetype +libidn +libjpeg-turbo +libpng +libtiff +libxml2 +lua5.4 +libopenssl +zlib
-	URL:=http://podofo.sourceforge.net/
+# NOTE: Since version 1.9.9 project contains some arch-dependent code,
+#       which should be selected by magic go comments or file endings,
+#       which unfortunately sometimes breaks on openwrt for some targets.
+#	So I mark package as broken for some of known bad targets.
+#
+#       MIPS - only mipsel variant supported
+#       RV64 - currently selection broken
+#
+GO2RTC_DEPENDS:=@mips:BROKEN @mips64:BROKEN @riscv64:BROKEN
+
+define Package/go2rtc
+  SECTION:=multimedia
+  CATEGORY:=Multimedia
+  TITLE:=go2rtc camera streaming
+  URL:=https://github.com/AlexxIT/go2rtc
+  DEPENDS:=$(GO_ARCH_DEPENDS) $(GO2RTC_DEPENDS) +alsa-lib
+  USERID:=go2rtc:go2rtc
 endef
 
-define Package/podofo/description
-	PoDoFo is a free portable C++ library to work with the PDF file format.
+define Package/go2rtc/description
+  Ultimate camera streaming application with support RTSP, WebRTC, HomeKit, FFmpeg, RTMP, etc.
 endef
 
-CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
-	-DPODOFO_BUILD_TOOLS=True \
-	-DPODOFO_HAVE_JPEG_LIB=True \
-	-DPODOFO_HAVE_PNG_LIB=True \
-	-DPODOFO_HAVE_TIFF_LIB=True
-
-define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
-	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libpodofo.pc
-	$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/libpodofo.pc
+define Package/go2rtc/conffiles
+/etc/go2rtc.yaml
+/etc/config/go2rtc
 endef
 
-define Package/podofo/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+define Package/go2rtc/install
+	$(call GoPackage/Package/Install/Bin,$(1))
+
+	#$(INSTALL_DIR) $(1)/etc/
+	#$(INSTALL_CONF) $(CURDIR)/files/go2rtc.yaml $(1)/etc/go2rtc.yaml
+	#$(INSTALL_DIR) $(1)/etc/init.d/
+	#$(INSTALL_BIN) $(CURDIR)/files/go2rtc.init $(1)/etc/init.d/go2rtc
+	#$(INSTALL_DIR) $(1)/etc/capabilities/
+	#$(INSTALL_DATA) $(CURDIR)/files/go2rtc.json $(1)/etc/capabilities/go2rtc.json
+	#$(INSTALL_DIR) $(1)/etc/config
+	#$(INSTALL_CONF) $(CURDIR)/files/go2rtc.conf $(1)/etc/config/go2rtc
 endef
 
-$(eval $(call BuildPackage,podofo))
+$(eval $(call BuildPackage,go2rtc))
