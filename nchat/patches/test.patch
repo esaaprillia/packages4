@@ -1,0 +1,22 @@
+From e00df50bb09098738e6fb059d16a20ab834bc43a Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 22 Oct 2026 15:21:28 +0000
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ lib/wmchat/go/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/wmchat/go/CMakeLists.txt b/lib/wmchat/go/CMakeLists.txt
+index f5799142..446063ff 100644
+--- a/lib/wmchat/go/CMakeLists.txt
++++ b/lib/wmchat/go/CMakeLists.txt
+@@ -48,7 +48,7 @@ set(LIB "libcgowm${LIBSUFFIX}")
+ add_custom_command(OUTPUT ${OUTPUT_DIR}/${LIB}
+   DEPENDS ${SRCS}
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+-  COMMAND env GOPATH=${GOPATH} CGO_ENABLED=1 go build -buildmode=${BUILDMODE} ${CUSTOM_GO_FLAGS}
++  COMMAND env GOPATH=${GOPATH} ${GO_GENERAL_BUILD_CONFIG_VARS} ${GO_PKG_BUILD_CONFIG_VARS} ${GO_PKG_VARS} go build -buildmode=${BUILDMODE} ${CUSTOM_GO_FLAGS}
+   -o "${OUTPUT_DIR}/${LIB}"
+   ${CMAKE_GO_FLAGS} ./...
+   COMMENT "Building Go library")
