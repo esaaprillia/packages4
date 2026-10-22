@@ -35,17 +35,15 @@ define Package/caddy/description
   Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
 endef
 
+GO_PKG_LDFLAGS_X:= \
+	github.com/caddyserver/caddy/v2.CustomVersion=$(PKG_VERSION)
+
 define Build/Compile
 	cd $(PKG_BUILD_DIR); \
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
-	$(SHELL) $(GO_INCLUDE_DIR)golang-build.sh build $(GO_PKG_INSTALL_ARGS) $(1)
-	cd $(PKG_BUILD_DIR); \
-	$(GO_GENERAL_BUILD_CONFIG_VARS) \
-	$(GO_PKG_BUILD_CONFIG_VARS) \
-	$(GO_PKG_VARS) \
-	$(SHELL) $(GO_INCLUDE_DIR)golang-build.sh install_bin "$(1)"
+	go build $(GO_PKG_INSTALL_ARGS)
 endef
 
 define Package/caddy/install
