@@ -39,7 +39,7 @@ GO_PKG_LDFLAGS_X:= \
 	github.com/caddyserver/caddy/v2.CustomVersion=$(PKG_VERSION)
 
 define Build/Compile
-	cd $(PKG_BUILD_DIR); \
+	cd $(PKG_BUILD_DIR)/cmd/caddy; \
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
@@ -47,9 +47,8 @@ define Build/Compile
 endef
 
 define Package/caddy/install
-	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_BUILD_DIR)/cmd/caddy/caddy $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,caddy))
