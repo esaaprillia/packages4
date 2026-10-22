@@ -47,7 +47,6 @@ CONFIGURE_ARGS += \
 	--infodir=/usr/share/info \
 	--exec-prefix=/usr \
 	--enable-ipv6 \
-	--enable-c-locale \
 	--disable-static
 
 define Build/Compile
