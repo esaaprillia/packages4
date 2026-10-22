@@ -52,7 +52,7 @@ define Build/Compile
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
-	go build $(GO_PKG_INSTALL_ARGS)
+	go build -o main $(GO_PKG_INSTALL_ARGS)
 endef
 
 define Package/agent/install
