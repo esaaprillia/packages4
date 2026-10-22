@@ -17,9 +17,6 @@ PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
 
-#GO_PKG:=github.com/caddyserver/caddy
-#GO_PKG_BUILD_PKG:=$(GO_PKG)/cmd/caddy
-
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
@@ -35,6 +32,13 @@ define Package/agent/description
   An open and scalable video surveillance system for anyone making this world a better and more peaceful place.
 endef
 
+GO_PKG_TAGS:=moq,timetzdata,netgo,osusergo
+
+GO_PKG_LDFLAGS:=-checklinkname=0
+
+GO_PKG_LDFLAGS_X:= \
+	github.com/kerberos-io/agent/machinery/src/utils.VERSION=$(PKG_VERSION)
+
 define Build/Compile
 	cd $(PKG_BUILD_DIR)/ui; \
 	$(MAKE_VARS) \
@@ -48,7 +52,7 @@ define Build/Compile
 	$(GO_GENERAL_BUILD_CONFIG_VARS) \
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
-	go build -o main -tags "moq,timetzdata,netgo,osusergo" --ldflags "-s -w -X github.com/kerberos-io/agent/machinery/src/utils.VERSION=$(PKG_VERSION) -checklinkname=0"
+	go build $(GO_PKG_INSTALL_ARGS)
 endef
 
 define Package/agent/install
