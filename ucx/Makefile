@@ -31,9 +31,13 @@ endef
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
-	--sysconfdir=/etc/ucx \
-	--without-go \
-	--without-java
+	--sysconfdir=/etc \
+	--with-verbs \
+	--with-rc \
+	--with-ud \
+	--with-dc \
+	--with-mlx5-dv \
+	--enable-mt
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
