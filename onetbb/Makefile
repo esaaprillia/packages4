@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=onetbb
-PKG_VERSION:=2022.3.0
+PKG_VERSION:=2023.1.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=oneTBB-$(PKG_VERSION).tar.gz
@@ -28,7 +28,7 @@ define Package/onetbb
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=oneAPI Threading Building Blocks (oneTBB)
-	DEPENDS:=+libstdcpp +libhwloc +libucontext
+	DEPENDS:=+libstdcpp +libhwloc
 	URL:=https://uxlfoundation.github.io/oneTBB/
 endef
 
@@ -70,4 +70,3 @@ $(eval $(call BuildPackage,onetbb))
 $(eval $(call Py3Package,python3-onetbb))
 $(eval $(call BuildPackage,python3-onetbb))
 $(eval $(call BuildPackage,python3-onetbb-src))
-
