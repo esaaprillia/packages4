@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ucx
-PKG_VERSION:=1.19.1
+PKG_VERSION:=1.20.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -21,7 +21,7 @@ define Package/ucx
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Unified Communication X
-	DEPENDS:=+libstdcpp +binutils +zlib +libzstd +libexecinfo
+	DEPENDS:=+libstdcpp +binutils +zlib +libzstd +libgomp
 	URL:=http://www.openucx.org/
 endef
 
@@ -34,21 +34,6 @@ CONFIGURE_ARGS += \
 	--sysconfdir=/etc/ucx \
 	--without-go \
 	--without-java
-
-EXTRA_CFLAGS += \
-	-Wno-error \
-	-Wno-implicit-int \
-	-Wno-implicit-function-declaration \
-	-Wno-nested-externs \
-	-Wno-error=implicit-int \
-	-Wno-error=implicit-function-declaration \
-	-Wno-error=nested-externs \
-	-Wno-deprecated-declarations \
-	-Wno-unused-variable \
-	-Wno-unused-function \
-	-Wno-maybe-uninitialized \
-	-Wno-return-type \
-	-Wno-enum-compare
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
