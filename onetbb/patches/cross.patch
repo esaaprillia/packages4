@@ -1,38 +1,90 @@
-From 45baaf3c085830bb2e5dcf99aa5556e6fcb85fce Mon Sep 17 00:00:00 2001
+From 29ec8009a3898d497d13765024c7f696435affaf Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Fri, 23 Oct 2026 01:40:11 +0000
-Subject: [PATCH] Update CMakeLists.txt
+Date: Fri, 23 Oct 2026 10:46:10 +0800
+Subject: [PATCH] Delete python/CMakeLists.txt
 
 ---
- python/CMakeLists.txt | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ python/CMakeLists.txt | 74 -------------------------------------------
+ 1 file changed, 74 deletions(-)
+ delete mode 100644 python/CMakeLists.txt
 
 diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
-index a80240c5ae..8cf7ea8de0 100644
+deleted file mode 100644
+index a80240c5ae..0000000000
 --- a/python/CMakeLists.txt
-+++ b/python/CMakeLists.txt
-@@ -13,6 +13,7 @@
- # See the License for the specific language governing permissions and
- # limitations under the License.
- 
-+set(PYTHON_VARS "${PYTHON3_VARS}")
- set(PY_EXECUTABLE "")
- if(CMAKE_VERSION VERSION_LESS 3.12)
-   find_package(PythonInterp 3.5 REQUIRED)
-@@ -51,7 +52,7 @@ add_custom_target(
-     ${CMAKE_COMMAND} -E env
-         TBB_INCLUDEDIRS="${TBB4PY_INCLUDE_STRING}"
-         TBB_LIBDIRS=$<TARGET_FILE_DIR:TBB::tbb>
++++ /dev/null
+@@ -1,74 +0,0 @@
+-# Copyright (c) 2020-2023 Intel Corporation
+-# Copyright (c) 2026 UXL Foundation Contributors
+-#
+-# Licensed under the Apache License, Version 2.0 (the "License");
+-# you may not use this file except in compliance with the License.
+-# You may obtain a copy of the License at
+-#
+-#     http://www.apache.org/licenses/LICENSE-2.0
+-#
+-# Unless required by applicable law or agreed to in writing, software
+-# distributed under the License is distributed on an "AS IS" BASIS,
+-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-# See the License for the specific language governing permissions and
+-# limitations under the License.
+-
+-set(PY_EXECUTABLE "")
+-if(CMAKE_VERSION VERSION_LESS 3.12)
+-  find_package(PythonInterp 3.5 REQUIRED)
+-  set(PY_EXECUTABLE "${PYTHON_EXECUTABLE}")
+-else()
+-  find_package(Python3 3.5 REQUIRED COMPONENTS Interpreter)
+-  set(PY_EXECUTABLE "${Python3_EXECUTABLE}")
+-endif()
+-
+-set(PYTHON_BUILD_WORK_DIR python_build)
+-
+-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in  ${CMAKE_CURRENT_SOURCE_DIR}/setup.py)
+-
+-add_custom_target(
+-    python_copy
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/tbb ${PYTHON_BUILD_WORK_DIR}/tbb
+-    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/TBB.py ${PYTHON_BUILD_WORK_DIR}
+-    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/setup.py ${PYTHON_BUILD_WORK_DIR}
+-    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/pyproject.toml ${PYTHON_BUILD_WORK_DIR}
+-) 
+-
+-# Python build requires path to TBB headers
+-get_target_property(TBB_INCLUDES tbb INTERFACE_INCLUDE_DIRECTORIES)
+-foreach(dir ${TBB_INCLUDES})
+-    if (${dir} MATCHES "<BUILD_INTERFACE:" OR TBB_FOUND)
+-        set(TBB4PY_INCLUDE_STRING "${dir} ${TBB4PY_INCLUDE_STRING}")
+-    endif()
+-endforeach()
+-string(STRIP "${TBB4PY_INCLUDE_STRING}" TBB4PY_INCLUDE_STRING)
+-
+-add_custom_target(
+-    python_build
+-    ALL
+-    DEPENDS tbb python_copy
+-    COMMAND
+-    ${CMAKE_COMMAND} -E env
+-        TBB_INCLUDEDIRS="${TBB4PY_INCLUDE_STRING}"
+-        TBB_LIBDIRS=$<TARGET_FILE_DIR:TBB::tbb>
 -    ${PY_EXECUTABLE} -m pip install
-+    ${PYTHON_VARS} ${PY_EXECUTABLE} -m pip install
-         --no-build-isolation
-         --prefix build
-         ./${PYTHON_BUILD_WORK_DIR}
-@@ -62,6 +63,7 @@ add_test(NAME python_test
-          COMMAND ${CMAKE_COMMAND}
-                  -DTBB_BINARIES_PATH=$<TARGET_FILE_DIR:TBB::tbb>
-                  -DPYTHON_MODULE_BUILD_PATH=${PYTHON_BUILD_WORK_DIR}/build
-+                 -DPY_EXECUTABLE=${PYTHON_VARS} ${PY_EXECUTABLE}
-                  -P ${PROJECT_SOURCE_DIR}/cmake/python/test_launcher.cmake)
- 
- install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build/
+-        --no-build-isolation
+-        --prefix build
+-        ./${PYTHON_BUILD_WORK_DIR}
+-    COMMENT "Build and install to work directory the oneTBB Python module"
+-)
+-
+-add_test(NAME python_test
+-         COMMAND ${CMAKE_COMMAND}
+-                 -DTBB_BINARIES_PATH=$<TARGET_FILE_DIR:TBB::tbb>
+-                 -DPYTHON_MODULE_BUILD_PATH=${PYTHON_BUILD_WORK_DIR}/build
+-                 -P ${PROJECT_SOURCE_DIR}/cmake/python/test_launcher.cmake)
+-
+-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build/
+-        DESTINATION .
+-        COMPONENT tbb4py)
+-
+-if (UNIX AND NOT APPLE)
+-    add_subdirectory(rml)
+-    add_dependencies(python_build irml)
+-endif()
