@@ -55,6 +55,13 @@ CMAKE_OPTIONS += \
 	-DTBB_TEST=OFF \
 	-DTBB_DISABLE_HWLOC_AUTOMATIC_SEARCH=OFF
 
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Build/Install/Default)
+	$(call Py3Build/Compile)
+	$(call Py3Build/Install)
+endef
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/tbb.pc
