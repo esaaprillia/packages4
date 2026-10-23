@@ -24,7 +24,7 @@ include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	sed -e "s,\${PY_EXECUTABLE},\$(PYTHON3_VARS) \$(STAGING_DIR_HOSTPKG)/bin/\$(PYTHON3),g" $(PKG_BUILD_DIR)/python/CMakeLists.txt
+	sed -e "s,\$${PY_EXECUTABLE},\$$(PYTHON3_VARS) \$$(STAGING_DIR_HOSTPKG)/bin/\$$(PYTHON3),g" $(PKG_BUILD_DIR)/python/CMakeLists.txt
 endef
 
 define Package/onetbb
@@ -51,9 +51,6 @@ endef
 define Package/python3-onetbb/description
 	It is a preview Python* module which unlocks opportunities for additional performance in multi-threaded and multiprocess Python programs by enabling threading composability between two or more thread-enabled libraries like Numpy, Scipy, Sklearn, Dask, Joblib, and etc.
 endef
-
-TARGET_CC := $(filter-out -DPIC -fPIC,$(TARGET_CC))
-CCSHARED := $(filter-out -DPIC -fPIC,$(CCSHARED))
 
 CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
