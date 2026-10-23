@@ -1,30 +1,21 @@
-From 6e7f7d1d243bc7c48ae298e88b169b358ca0de99 Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Fri, 23 Oct 2026 22:41:15 +0800
+From 8fb97ebb21c2185b06a0c9369eda99e20c696a58 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Fri, 23 Oct 2026 08:32:41 +0000
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- python/CMakeLists.txt | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ python/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
-index a80240c5ae..998d5b0a6b 100644
+index a80240c5ae..a816933964 100644
 --- a/python/CMakeLists.txt
 +++ b/python/CMakeLists.txt
-@@ -51,7 +51,7 @@ add_custom_target(
-     ${CMAKE_COMMAND} -E env
-         TBB_INCLUDEDIRS="${TBB4PY_INCLUDE_STRING}"
-         TBB_LIBDIRS=$<TARGET_FILE_DIR:TBB::tbb>
--    ${PY_EXECUTABLE} -m pip install
-+    $(PYTHON3_VARS) ${PY_EXECUTABLE} -m pip install
-         --no-build-isolation
-         --prefix build
-         ./${PYTHON_BUILD_WORK_DIR}
 @@ -62,6 +62,7 @@ add_test(NAME python_test
           COMMAND ${CMAKE_COMMAND}
                   -DTBB_BINARIES_PATH=$<TARGET_FILE_DIR:TBB::tbb>
                   -DPYTHON_MODULE_BUILD_PATH=${PYTHON_BUILD_WORK_DIR}/build
-+                 -DPY_EXECUTABLE=$(PYTHON3_VARS) ${PY_EXECUTABLE}
++                 -DPY_EXECUTABLE=${PY_EXECUTABLE}
                   -P ${PROJECT_SOURCE_DIR}/cmake/python/test_launcher.cmake)
  
  install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build/
