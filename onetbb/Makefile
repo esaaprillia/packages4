@@ -22,7 +22,10 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
-PYTHON3_PKG_SETUP_DIR:=python
+define Build/Configure
+	$(call Build/Configure/Default)
+	$(SED) 's,${PY_EXECUTABLE},$(PYTHON3_VARS) $(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3),g' $(PKG_BUILD_DIR)/python/CMakeLists.txt
+endef
 
 define Package/onetbb
 	SECTION:=libs
