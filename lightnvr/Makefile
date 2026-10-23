@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=lightnvr
-PKG_VERSION:=0.43.4
+PKG_VERSION:=0.44.0
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/opensensor/lightNVR.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=312a64443574f60d467f7999947fdc68c74786d9
+PKG_SOURCE_VERSION:=40735543ee5a4bcfeb696479dad84e46a081c0c6
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -17,7 +17,6 @@ CMAKE_BINARY_SUBDIR:=build
 
 PKG_BUILD_DEPENDS:=node/host flatbuffers/host golang/host
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_FLAGS:=no-mips16
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
