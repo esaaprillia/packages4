@@ -23,7 +23,6 @@ include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 PYTHON3_PKG_SETUP_DIR:=python
-PYTHON3_PKG_SETUP_VARS += TBBROOT="$(STAGING_DIR)/usr"
 
 define Package/onetbb
 	SECTION:=libs
@@ -55,13 +54,6 @@ CMAKE_OPTIONS += \
 	-DTBB_STRICT=OFF \
 	-DTBB_TEST=OFF \
 	-DTBB_DISABLE_HWLOC_AUTOMATIC_SEARCH=OFF
-
-define Build/Compile
-	$(call Build/Compile/Default)
-	$(call Build/Install/Default)
-	$(call Py3Build/Compile)
-	$(call Py3Build/Install)
-endef
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
