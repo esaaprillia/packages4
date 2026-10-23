@@ -52,6 +52,9 @@ define Package/python3-onetbb/description
 	It is a preview Python* module which unlocks opportunities for additional performance in multi-threaded and multiprocess Python programs by enabling threading composability between two or more thread-enabled libraries like Numpy, Scipy, Sklearn, Dask, Joblib, and etc.
 endef
 
+TARGET_CC := $(filter-out -DPIC -fPIC,$(TARGET_CC))
+TARGET_CC := $(filter-out -DPIC -fPIC,$(TARGET_CC))
+
 CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
 	-DTBB_STRICT=OFF \
