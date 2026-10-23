@@ -23,6 +23,7 @@ include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 PYTHON3_PKG_SETUP_DIR:=python
+PYTHON3_PKG_SETUP_VARS += TBBROOT="$(STAGING_DIR)/usr"
 
 define Package/onetbb
 	SECTION:=libs
