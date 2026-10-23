@@ -1,21 +1,21 @@
-From 73b49cb8b218b1f922bb83387e5a8481f2473d7b Mon Sep 17 00:00:00 2001
+From 45baaf3c085830bb2e5dcf99aa5556e6fcb85fce Mon Sep 17 00:00:00 2001
 From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Fri, 23 Oct 2026 09:10:50 +0800
+Date: Fri, 23 Oct 2026 01:40:11 +0000
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- python/CMakeLists.txt | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ python/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
-index a816933964..e7c56c5d3b 100644
+index a80240c5ae..8cf7ea8de0 100644
 --- a/python/CMakeLists.txt
 +++ b/python/CMakeLists.txt
 @@ -13,6 +13,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
  
-+set(PYTHON3_VARS "")
++set(PYTHON_VARS "${PYTHON3_VARS}")
  set(PY_EXECUTABLE "")
  if(CMAKE_VERSION VERSION_LESS 3.12)
    find_package(PythonInterp 3.5 REQUIRED)
@@ -24,16 +24,15 @@ index a816933964..e7c56c5d3b 100644
          TBB_INCLUDEDIRS="${TBB4PY_INCLUDE_STRING}"
          TBB_LIBDIRS=$<TARGET_FILE_DIR:TBB::tbb>
 -    ${PY_EXECUTABLE} -m pip install
-+    ${PYTHON3_VARS} ${PY_EXECUTABLE} -m pip install
++    ${PYTHON_VARS} ${PY_EXECUTABLE} -m pip install
          --no-build-isolation
          --prefix build
          ./${PYTHON_BUILD_WORK_DIR}
-@@ -62,7 +63,7 @@ add_test(NAME python_test
+@@ -62,6 +63,7 @@ add_test(NAME python_test
           COMMAND ${CMAKE_COMMAND}
                   -DTBB_BINARIES_PATH=$<TARGET_FILE_DIR:TBB::tbb>
                   -DPYTHON_MODULE_BUILD_PATH=${PYTHON_BUILD_WORK_DIR}/build
--                 -DPY_EXECUTABLE=${PY_EXECUTABLE}
-+                 -DPY_EXECUTABLE=${PYTHON3_VARS} ${PY_EXECUTABLE}
++                 -DPY_EXECUTABLE=${PYTHON_VARS} ${PY_EXECUTABLE}
                   -P ${PROJECT_SOURCE_DIR}/cmake/python/test_launcher.cmake)
  
  install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build/
