@@ -53,7 +53,7 @@ define Package/python3-onetbb/description
 endef
 
 TARGET_CC := $(filter-out -DPIC -fPIC,$(TARGET_CC))
-TARGET_CC := $(filter-out -DPIC -fPIC,$(TARGET_CC))
+CCSHARED := $(filter-out -DPIC -fPIC,$(CCSHARED))
 
 CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
