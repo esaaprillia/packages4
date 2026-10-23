@@ -4,10 +4,6 @@ PKG_NAME:=lightnvr
 PKG_VERSION:=0.43.4
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=https://github.com/nodejs/llhttp/archive/v$(PKG_VERSION)
-#PKG_HASH:=skip
-
 PKG_SOURCE_URL:=https://github.com/opensensor/lightNVR.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=312a64443574f60d467f7999947fdc68c74786d9
@@ -40,37 +36,23 @@ define Package/lightnvr/description
 	While originally designed for resource-constrained devices like the Ingenic A1 SoC with only 256MB of RAM, it can run on any Linux system.
 endef
 
-NODEJS_CPU:=$(subst powerpc,ppc,$(subst aarch64,arm64,$(subst x86_64,x64,$(subst i386,ia32,$(ARCH)))))
-TMPNPM:=$(shell mktemp -u XXXXXXXXXX)
-NPM_CACHE_DIR:=$(if $(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(call qstrip,$(CONFIG_NODEJS_NPM_CACHE_DIR)),$(TMP_DIR))
-
-TARGET_CFLAGS+=$(FPIC)
-TARGET_CPPFLAGS+=$(FPIC)
-
 CMAKE_OPTIONS += \
-	-DGIT_COMMIT=312a6444 -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Package/lightnvr/conffiles
 /etc/lightnvr
 /etc/lightnvr/go2rtc
 endef
 
-define Build/Compile
+define Build/Configure
 	cd $(PKG_BUILD_DIR)/web; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
-	npm_config_nodedir=$(STAGING_DIR)/usr/ \
-	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm install --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
+	npm install
 	cd $(PKG_BUILD_DIR)/web; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
-	npm_config_nodedir=$(STAGING_DIR)/usr/ \
-	$(if $(CONFIG_NODEJS_NPM_KEEP_CACHE), npm_config_cache=$(NPM_CACHE_DIR)/npm-cache-$(PKG_NPM_NAME),npm_config_cache=$(TMP_DIR)/npm-cache-$(TMPNPM)) \
-	npm run build --prefer-offline --no-audit --global-style --install-strategy=shallow --build-from-source --target_arch=$(NODEJS_CPU)
-	rm -rf $(TMP_DIR)/npm-cache-$(TMPNPM)
-	rm -f $(PKG_BUILD_DIR)/web/node_modules/.package-lock.json
-	find $(PKG_BUILD_DIR)/web/node_modules -type d -empty -print0 | xargs -0 -r rmdir || true
+	npm run build
 	rm -rf $(PKG_BUILD_DIR)/go2rtc/pkg/alsa/device/asound_arch.c
 	rm -rf $(PKG_BUILD_DIR)/go2rtc/pkg/v4l2/device/videodev2_arch.c
 	cd $(PKG_BUILD_DIR)/go2rtc; \
@@ -78,6 +60,7 @@ define Build/Compile
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
 	go build $(GO_PKG_INSTALL_ARGS)
+	$(call Build/Configure/Default)
 	$(call Build/Compile/Default)
 endef
 
