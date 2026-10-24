@@ -22,10 +22,10 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
-#define Build/Prepare
-#	$(call Build/Prepare/Default)
-#	sed -i "s,${PY_EXECUTABLE},$(strip $(PYTHON3_VARS)) $(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3),g" $(PKG_BUILD_DIR)/python/CMakeLists.txt
-#endef
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) "s,\${PY_EXECUTABLE},\CC="$(TARGET_CC)" \CCSHARED="$(TARGET_CC) $(FPIC)" \CXX="$(TARGET_CXX)" \LD="$(TARGET_CC)" \LDSHARED="$(TARGET_CC) -shared" \CFLAGS="$(TARGET_CFLAGS)" \CPPFLAGS="$(TARGET_CPPFLAGS) -I$(PYTHON3_INC_DIR)" \LDFLAGS="$(TARGET_LDFLAGS) -lpython$(PYTHON3_VERSION)" \_PYTHON_HOST_PLATFORM="$(_PYTHON_HOST_PLATFORM)" \_PYTHON_SYSCONFIGDATA_NAME="_sysconfigdata_$(ABIFLAGS)_$(MACHDEP)_$(MULTIARCH)" \PYTHONPATH="$(PYTHON3PATH)" \PYTHONDONTWRITEBYTECODE=1 \$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3),g" $(PKG_BUILD_DIR)/python/CMakeLists.txt
+endef
 
 define Package/onetbb
 	SECTION:=libs
@@ -51,10 +51,6 @@ endef
 define Package/python3-onetbb/description
 	It is a preview Python* module which unlocks opportunities for additional performance in multi-threaded and multiprocess Python programs by enabling threading composability between two or more thread-enabled libraries like Numpy, Scipy, Sklearn, Dask, Joblib, and etc.
 endef
-
-#CCSHARED:= $(filter-out -DPIC,$(CCSHARED))
-#PYTHON3_VARS:= $(filter-out -DPIC,$(PYTHON3_VARS))
-MAKE_VARS += $(PYTHON3_VARS)
 
 CMAKE_OPTIONS += \
 	-DTBB4PY_BUILD=ON \
