@@ -24,7 +24,7 @@ include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	sed -i "s,\${PY_EXECUTABLE},\$(PYTHON3_VARS) \$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3),g" $(PKG_BUILD_DIR)/python/CMakeLists.txt
+	$(SED) "s,\${PY_EXECUTABLE},\$(PYTHON3_VARS) \$(STAGING_DIR_HOSTPKG)/bin/$(PYTHON3),g" $(PKG_BUILD_DIR)/python/CMakeLists.txt
 endef
 
 define Package/onetbb
