@@ -10,7 +10,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/grpc/grpc.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=3252a89f10d8e92997862167ca7d095ecda85973
+PKG_SOURCE_VERSION:=b0c0c4f8823ba69e7e43aaaf183c30a43e549924
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
