@@ -71,8 +71,8 @@ define Package/genieacs/install
 	$(INSTALL_BIN) ./files/genieacs-fs.init $(1)/etc/init.d/genieacs-fs
 	$(INSTALL_BIN) ./files/genieacs-nbi.init $(1)/etc/init.d/genieacs-nbi
 	$(INSTALL_BIN) ./files/genieacs-ui.init $(1)/etc/init.d/genieacs-ui
-	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)
-	$(CP) $(PKG_BUILD_DIR)/dist $(1)/usr/lib/node/$(PKG_NPM_NAME)/
+	$(CP) $(PKG_BUILD_DIR)/{node_modules,dist} \
+		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(LN) ../lib/node/$(PKG_NPM_NAME)/dist/bin/genieacs-cwmp $(1)/usr/bin/genieacs-cwmp
 	$(LN) ../lib/node/$(PKG_NPM_NAME)/dist/bin/genieacs-ext $(1)/usr/bin/genieacs-ext
