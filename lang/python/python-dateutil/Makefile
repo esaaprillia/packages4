@@ -31,7 +31,7 @@ define Package/python3-dateutil
   CATEGORY:=Languages
   TITLE:=Extensions to the standard Python datetime module
   URL:=https://dateutil.readthedocs.org/
-  DEPENDS:=+python3 +python3-six
+  DEPENDS:=+python3 +python3-six +python3-tzdata
 endef
 
 define Package/python3-dateutil/description
