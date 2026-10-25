@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=td
-PKG_VERSION:=1.8.69
+PKG_VERSION:=1.8.67
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/tdlib/td.git
-PKG_SOURCE_VERSION:=0e88653dcbf4e44c73cb655a05b58cd749a91169
+PKG_SOURCE_VERSION:=bc9c263e2bfee06aaab41e82db51a103376030bc
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
