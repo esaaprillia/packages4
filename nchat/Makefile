@@ -9,8 +9,8 @@ PKG_SOURCE_URL:=https://github.com/d99kris/nchat/archive/v$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=MIT
-PKG_LICENSE_FILES:=LICENSE
+PKG_LICENSE:=MIT AGPL-3.0 GPL-3.0
+PKG_LICENSE_FILES:=LICENSE LICENSE.AGPL-3.0 LICENSE.GPL-3.0
 
 CMAKE_BINARY_SUBDIR:=build
 
@@ -38,7 +38,8 @@ define Package/nchat/description
 endef
 
 CMAKE_OPTIONS += \
-	-DHAS_TELEGRAM=OFF
+	-DHAS_TELEGRAM=OFF \
+	-DHAS_SIGNAL=ON
 
 define Package/nchat/install
 	$(INSTALL_DIR) $(1)/usr/bin
