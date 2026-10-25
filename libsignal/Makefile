@@ -16,7 +16,7 @@ PKG_BUILD_DEPENDS:=rust/host protobuf/host protobuf
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/rust/rust-package.mk
+include $(TOPDIR)/feeds/python/lang/rust/rust-package3.mk
 
 define Package/libsignal
   SECTION:=net
@@ -28,6 +28,10 @@ endef
 
 define Package/libsignal/description
   libsignal contains platform-agnostic APIs used by the official Signal clients and servers, exposed as a Java, Swift, or TypeScript library. The underlying implementations are written in Rust
+endef
+
+define Build/Compile
+	$(call Build/Compile/Cargo,rust/bridge/ffi)
 endef
 
 define Build/InstallDev
