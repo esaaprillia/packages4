@@ -42,9 +42,9 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(CP) $(DL_DIR)/td/generate/auto/td/mtproto/mtproto_api.* $(PKG_BUILD_DIR)/td/mtproto/
-	$(CP) $(DL_DIR)/td/generate/auto/td/telegram/{secret_api.*,td_api.*,td_api_json.*,telegram_api.*} $(PKG_BUILD_DIR)/td/telegram/
-	$(CP) $(DL_DIR)/tdutils/generate/auto/{extension_to_mime_type.cpp,mime_type_to_extension.cpp} $(PKG_BUILD_DIR)/tdutils/generate/
+	$(CP) $(DL_DIR)/td/generate/auto/td $(PKG_BUILD_DIR)/
+	$(CP) $(DL_DIR)/td/generate/auto $(PKG_BUILD_DIR)/td/telegram/
+	$(CP) $(DL_DIR)/tdutils/generate/auto $(PKG_BUILD_DIR)/tdutils/generate/
 endef
 
 CMAKE_OPTIONS += \
