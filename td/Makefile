@@ -1,51 +1,63 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=libsignal
-PKG_VERSION:=0.106.0
+PKG_NAME:=td
+PKG_VERSION:=1.8.69
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/signalapp/libsignal/archive/v$(PKG_VERSION)
-PKG_HASH:=skip
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/tdlib/td.git
+PKG_SOURCE_VERSION:=0e88653dcbf4e44c73cb655a05b58cd749a91169
+PKG_MIRROR_HASH:=skip
 
-PKG_MAINTAINER:=example <example@gmail.com>
-PKG_LICENSE:=AGPL-3.0
-PKG_LICENSE_FILES:=LICENSE
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=BSL-1.0
+PKG_LICENSE_FILES:=LICENSE_1_0.txt
 
-PKG_BUILD_DEPENDS:=rustup/host protobuf/host
-PKG_BUILD_PARALLEL:=1
+CMAKE_BINARY_SUBDIR := build
 
+HOST_BUILD_DEPENDS:=gperf/host
+PKG_BUILD_DEPENDS:=gperf/host
+
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/rustup/rust-values.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/libsignal
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=Home to the Signal Protocol as well as other cryptographic primitives which make Signal possible.
-  DEPENDS:=$(RUST_ARCH_DEPENDS)
-  URL:=https://github.com/signalapp/libsignal
+define Package/td
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Cross-platform library for building Telegram clients
+	DEPENDS:=+libstdcpp +zlib +libopenssl
+	URL:=https://github.com/tdlib/td
 endef
 
-define Package/libsignal/description
-  libsignal contains platform-agnostic APIs used by the official Signal clients and servers, exposed as a Java, Swift, or TypeScript library. The underlying implementations are written in Rust
+define Package/td/description
+	TDLib (Telegram Database library) is a cross-platform library for building Telegram clients.
+	It can be easily used from almost any programming language.
 endef
 
-CARGO_PKG_CONFIG_VARS += RUSTUP_TOOLCHAIN=stable
-
-define Build/Compile
-	cd $(PKG_BUILD_DIR) && \
-	$(CARGO_PKG_CONFIG_VARS) \
-	$(CARGO) build -p libsignal-ffi --profile=release \
-	$(CARGO_PKG_CONFIG_ARGS) \
-	--target "$(RUSTUP_TARGET_ARCH)" \
-	--root "$(PKG_INSTALL_DIR)" \
-	--path "$(PKG_BUILD_DIR)/$(MAKE_PATH)"
+define Host/Install
+	$(INSTALL_DIR) $(DL_DIR)
+	$(CP) $(HOST_BUILD_DIR)/{td,tdutils} $(DL_DIR)/
 endef
 
-define Package/libsignal/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	ls -l $(PKG_INSTALL_DIR)/*
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/moonfire-nvr $(1)/usr/bin/
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(CP) $(DL_DIR)/files/td/generate/auto/td/mtproto/mtproto_api.* $(PKG_BUILD_DIR)/td/mtproto/
+	$(CP) $(DL_DIR)/files/td/generate/auto/td/telegram/{secret_api.*,td_api.*,td_api_json.*,telegram_api.*} $(PKG_BUILD_DIR)/td/telegram/
+	$(CP) $(DL_DIR)/files/tdutils/generate/auto/{extension_to_mime_type.cpp,mime_type_to_extension.cpp} $(PKG_BUILD_DIR)/tdutils/generate/
 endef
 
-$(eval $(call BuildPackage,libsignal))
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
+endef
+
+define Package/td/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+endef
+
+$(eval $(call HostBuild))
+$(eval $(call BuildPackage,td))
