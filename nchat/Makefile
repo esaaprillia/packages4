@@ -29,7 +29,7 @@ define Package/nchat
 	SECTION:=net
 	CATEGORY:=Network
 	TITLE:=Terminal-based Telegram / WhatsApp client for Linux and macOS
-	DEPENDS:=$(GO_ARCH_DEPENDS) +libncurses +libsqlite3 +file +zlib +libreadline +libstdcpp +libpng
+	DEPENDS:=$(GO_ARCH_DEPENDS) +libncurses +libopenssl +libopenssl-legacy +libsqlite3 +file +zlib +libreadline +libstdcpp +libpng
 	URL:=https://github.com/d99kris/nchat
 endef
 
@@ -39,7 +39,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DHAS_TELEGRAM=OFF \
-	-DHAS_SIGNAL=ON
+	-DHAS_SIGNAL=OFF
 
 define Package/nchat/install
 	$(INSTALL_DIR) $(1)/usr/bin
