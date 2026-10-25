@@ -26,7 +26,7 @@ define Package/td
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Cross-platform library for building Telegram clients
-	DEPENDS:=+libstdcpp +zlib +libopenssl
+	DEPENDS:=+libstdcpp +zlib +libopenssl +libopenssl-legacy
 	URL:=https://github.com/tdlib/td
 endef
 
