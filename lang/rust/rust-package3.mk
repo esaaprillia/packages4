@@ -41,7 +41,7 @@ endif
 # $(2) additional arguments to cargo (optional)
 define Build/Compile/Cargo
 	+$(CARGO_PKG_VARS) \
-	cargo install -v \
+	cargo build -v \
 		--profile $(CARGO_PKG_PROFILE) \
 		$(if $(strip $(RUST_PKG_FEATURES)),--features "$(strip $(RUST_PKG_FEATURES))") \
 		--root $(PKG_INSTALL_DIR) \
