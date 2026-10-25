@@ -12,11 +12,11 @@ PKG_MAINTAINER:=example <example@gmail.com>
 PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=cargo-c/host protobuf/host protobuf
+PKG_BUILD_DEPENDS:=rust/host protobuf/host protobuf
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/rust/rust-package-mod2.mk
+include $(TOPDIR)/feeds/python/lang/rust/rust-package.mk
 
 define Package/libsignal
   SECTION:=net
@@ -37,9 +37,9 @@ endef
 define Build/InstallDev
 	#$(INSTALL_DIR) $(1)/usr/include 
 	#$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
-	$(INSTALL_DIR) $(1)/usr/lib
+	#$(INSTALL_DIR) $(1)/usr/lib
 	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/{*.so*,*.a} $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
+	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 	#$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/imagequant.pc $(1)/usr/lib/pkgconfig/
 	#$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/imagequant.pc
