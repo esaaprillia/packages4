@@ -29,7 +29,7 @@ define Package/nchat
 	SECTION:=net
 	CATEGORY:=Network
 	TITLE:=Terminal-based Telegram / WhatsApp client for Linux and macOS
-	DEPENDS:=$(GO_ARCH_DEPENDS) +libncurses +libsqlite3 +file +zlib +libreadline +libstdcpp
+	DEPENDS:=$(GO_ARCH_DEPENDS) +libncurses +libsqlite3 +file +zlib +libreadline +libstdcpp +libpng
 	URL:=https://github.com/d99kris/nchat
 endef
 
