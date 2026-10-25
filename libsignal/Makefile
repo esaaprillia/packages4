@@ -30,10 +30,6 @@ define Package/libsignal/description
   libsignal contains platform-agnostic APIs used by the official Signal clients and servers, exposed as a Java, Swift, or TypeScript library. The underlying implementations are written in Rust
 endef
 
-define Build/Compile
-	$(call Build/Compile/Cargo,rust/bridge/ffi)
-endef
-
 define Build/InstallDev
 	#$(INSTALL_DIR) $(1)/usr/include 
 	#$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
