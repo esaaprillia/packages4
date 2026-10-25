@@ -30,7 +30,7 @@ define Package/libsignal/description
   libsignal contains platform-agnostic APIs used by the official Signal clients and servers, exposed as a Java, Swift, or TypeScript library. The underlying implementations are written in Rust
 endef
 
-CARGO_PKG_CONFIG_VARS += RUSTUP_TOOLCHAIN=stable
+#CARGO_PKG_CONFIG_VARS += RUSTUP_TOOLCHAIN=stable
 
 define Build/Compile
 	cd $(PKG_BUILD_DIR) && \
