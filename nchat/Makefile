@@ -20,11 +20,11 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake2.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) -- 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build $(GO_PKG_INSTALL_ARGS)#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
-	#####sed -i 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
-endef
+#define Build/Prepare
+#	$(call Build/Prepare/Default)
+#	$(SED) -- 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build $(GO_PKG_INSTALL_ARGS)#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
+#	#####sed -i 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
+#endef
 
 define Package/nchat
 	SECTION:=net
@@ -41,23 +41,18 @@ endef
 CMAKE_OPTIONS += \
 	-DHAS_TELEGRAM=OFF
 
+define Build/Compile
+	$(SED) 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/build/lib/wmchat/go/CMakeLists.txt
+	$(call Build/Compile/Default)
+endef
+
 define Package/nchat/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
-	  $(1)/usr/lib \
-	  $(1)/usr/share
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/nchat \
-	  $(1)/usr/bin/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/share/nchat \
-	  $(1)/usr/share/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/nchat $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/share/nchat
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/nchat/* $(1)/usr/share/nchat/
 endef
 
 $(eval $(call BuildPackage,nchat))
