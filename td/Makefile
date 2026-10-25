@@ -15,8 +15,8 @@ PKG_LICENSE_FILES:=LICENSE_1_0.txt
 
 CMAKE_BINARY_SUBDIR := build
 
+PKG_BUILD_DEPENDS:=td/host
 HOST_BUILD_DEPENDS:=gperf/host
-PKG_BUILD_DEPENDS:=gperf/host
 
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
