@@ -20,11 +20,11 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake2.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
-#define Build/Prepare
-#	$(call Build/Prepare/Default)
-#	$(SED) -- 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build $(GO_PKG_INSTALL_ARGS)#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
-#	#####sed -i 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
-#endef
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	##$(SED) -- 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build $(GO_PKG_INSTALL_ARGS)#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
+	sed -i 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
+endef
 
 define Package/nchat
 	SECTION:=net
@@ -42,11 +42,6 @@ GO_PKG_TARGET_VARS := $(filter-out CGO_CFLAGS=%,CGO_CPPFLAGS=%,CGO_CXXFLAGS=%,CG
 
 CMAKE_OPTIONS += \
 	-DHAS_TELEGRAM=OFF
-
-define Build/Configure
-	$(SED) 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
-	$(call Build/Compile/Default)
-endef
 
 define Package/nchat/install
 	$(INSTALL_DIR) $(1)/usr/bin
