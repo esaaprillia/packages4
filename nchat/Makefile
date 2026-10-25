@@ -42,7 +42,7 @@ CMAKE_OPTIONS += \
 	-DHAS_TELEGRAM=OFF
 
 define Build/Configure
-	$(SED) 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/build/lib/wmchat/go/CMakeLists.txt
+	$(SED) 's#CGO_ENABLED=1 go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) $(GO_PKG_VARS) $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
 	$(call Build/Compile/Default)
 endef
 
