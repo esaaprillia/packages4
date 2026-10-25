@@ -43,7 +43,7 @@ endef
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(CP) $(DL_DIR)/td/generate/auto/td $(PKG_BUILD_DIR)/
-	$(CP) $(DL_DIR)/td/generate/auto $(PKG_BUILD_DIR)/td/telegram/
+	$(CP) $(DL_DIR)/td/generate/auto $(PKG_BUILD_DIR)/td/generate/
 	$(CP) $(DL_DIR)/tdutils/generate/auto $(PKG_BUILD_DIR)/tdutils/generate/
 endef
 
