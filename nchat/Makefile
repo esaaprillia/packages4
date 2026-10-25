@@ -50,8 +50,6 @@ define Package/nchat/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/nchat $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/share/nchat
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/nchat/* $(1)/usr/share/nchat/
 endef
 
 $(eval $(call BuildPackage,nchat))
