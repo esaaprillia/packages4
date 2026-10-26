@@ -35,7 +35,7 @@ define Build/Compile/Cargo
 	cargo build -p libsignal-ffi -v \
 		--profile $(CARGO_PKG_PROFILE) \
 		$(if $(strip $(RUST_PKG_FEATURES)),--features "$(strip $(RUST_PKG_FEATURES))") \
-		--path "$(PKG_BUILD_DIR)/$(if $(strip $(1)),$(strip $(1)),$(strip $(MAKE_PATH)))" \
+		--manifest-path "$(PKG_BUILD_DIR)/$(if $(strip $(1)),$(strip $(1)),$(strip $(MAKE_PATH)))/Cargo.toml" \
 		$(if $(filter --jobserver%,$(PKG_JOBS)),,-j1) \
 		$(CARGO_PKG_ARGS) \
 		$(2)
