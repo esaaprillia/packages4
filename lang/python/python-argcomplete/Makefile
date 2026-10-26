@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-argcomplete
-PKG_VERSION:=3.6.3
+PKG_VERSION:=3.7.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=argcomplete
