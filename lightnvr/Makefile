@@ -36,7 +36,7 @@ define Package/lightnvr/description
 endef
 
 CMAKE_OPTIONS += \
-	-DGIT_COMMIT=771e8395 -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DLIGHTNVR_GIT_COMMIT=771e8395 -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Package/lightnvr/conffiles
 /etc/lightnvr
@@ -44,6 +44,7 @@ define Package/lightnvr/conffiles
 endef
 
 define Build/Compile
+	$(call Build/Compile/Default)
 	cd $(PKG_BUILD_DIR)/web; \
 	$(MAKE_VARS) \
 	$(MAKE_FLAGS) \
@@ -59,7 +60,6 @@ define Build/Compile
 	$(GO_PKG_BUILD_CONFIG_VARS) \
 	$(GO_PKG_VARS) \
 	go build $(GO_PKG_INSTALL_ARGS)
-	$(call Build/Compile/Default)
 endef
 
 define Package/lightnvr/install
