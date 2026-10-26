@@ -16,7 +16,7 @@ PKG_BUILD_DEPENDS:=rust/host protobuf/host protobuf
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/rust/rust-package3.mk
+include $(TOPDIR)/feeds/python/lang/rust/rust-package.mk
 
 define Package/libsignal
   SECTION:=net
@@ -40,6 +40,8 @@ define Build/Compile/Cargo
 		$(CARGO_PKG_ARGS) \
 		$(2)
 endef
+
+CARGO_PKG_VARS += PROTOC=$(STAGING_DIR_HOSTPKG)/bin/protoc
 
 define Build/InstallDev
 	#$(INSTALL_DIR) $(1)/usr/include 
