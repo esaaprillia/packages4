@@ -46,9 +46,9 @@ CARGO_PKG_VARS += PROTOC=$(STAGING_DIR_HOSTPKG)/bin/protoc
 define Build/InstallDev
 	#$(INSTALL_DIR) $(1)/usr/include 
 	#$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
-	#$(INSTALL_DIR) $(1)/usr/lib
+	$(INSTALL_DIR) $(1)/usr/lib
 	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/{*.so*,*.a} $(1)/usr/lib/
-	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/target/$(RUST_TARGET)/release/libsignal_ffi.a $(1)/usr/lib/
 	#$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/imagequant.pc $(1)/usr/lib/pkgconfig/
 	#$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/imagequant.pc
@@ -57,8 +57,7 @@ endef
 
 define Package/libsignal/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	ls -l $(PKG_INSTALL_DIR)/*
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/target/$(RUST_TARGET)/release/libsignal_ffi.a $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,libsignal))
