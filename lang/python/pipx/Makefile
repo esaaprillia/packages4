@@ -36,6 +36,7 @@ define Package/pipx
     +python3-urllib \
     +python3-venv \
     +python3-argcomplete \
+    +python3-filelock \
     +python3-packaging \
     +python3-platformdirs \
     +python3-userpath
