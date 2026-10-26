@@ -18,7 +18,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 
-PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+PKG_BUILD_DEPENDS:=python-docutils/host python-hatchling/host python-hatch-vcs/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
