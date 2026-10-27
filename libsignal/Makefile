@@ -16,7 +16,6 @@ PKG_BUILD_DEPENDS:=rust/host protobuf/host protobuf
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake-golang.mk
 include $(TOPDIR)/feeds/python/lang/rust/rust-package.mk
 
 define Package/libsignal
