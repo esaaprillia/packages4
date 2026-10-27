@@ -1,0 +1,40 @@
+From 9a63d7cfea47236dfc1e0fc24c63c4ae1ac0a15f Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Tue, 27 Oct 2026 15:27:14 +0800
+Subject: [PATCH] Add files via upload
+
+---
+ Cargo.lock | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index d9813905c..0069d8e6f 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -502,7 +502,7 @@ dependencies = [
+ [[package]]
+ name = "boring"
+ version = "5.2.0"
+-source = "git+https://github.com/signalapp/boring?tag=signal-v5.2.0#1405df0a23a0335618f88ed328c76f67646b088f"
++source = "git+https://github.com/esaapriliasalsabila/boring?tag=signal-v5.2.0#f0d0cb4c0f8df414b3c7d2989037b506bc216284"
+ dependencies = [
+  "bitflags 2.13.0",
+  "boring-sys",
+@@ -514,7 +514,7 @@ dependencies = [
+ [[package]]
+ name = "boring-sys"
+ version = "5.2.0"
+-source = "git+https://github.com/signalapp/boring?tag=signal-v5.2.0#1405df0a23a0335618f88ed328c76f67646b088f"
++source = "git+https://github.com/esaapriliasalsabila/boring?tag=signal-v5.2.0#f0d0cb4c0f8df414b3c7d2989037b506bc216284"
+ dependencies = [
+  "bindgen",
+  "cmake",
+@@ -5584,7 +5584,7 @@ dependencies = [
+ [[package]]
+ name = "tokio-boring"
+ version = "5.2.0"
+-source = "git+https://github.com/signalapp/boring?tag=signal-v5.2.0#1405df0a23a0335618f88ed328c76f67646b088f"
++source = "git+https://github.com/esaapriliasalsabila/boring?tag=signal-v5.2.0#f0d0cb4c0f8df414b3c7d2989037b506bc216284"
+ dependencies = [
+  "boring",
+  "boring-sys",
