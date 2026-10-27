@@ -36,7 +36,7 @@ define Package/lightnvr/description
 endef
 
 CMAKE_OPTIONS += \
-	-DLIGHTNVR_GIT_COMMIT=771e8395 -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DLIGHTNVR_GIT_COMMIT=771e8395 -DSOD_DYNAMIC_LINK=ON -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Package/lightnvr/conffiles
 /etc/lightnvr
