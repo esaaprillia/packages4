@@ -16,7 +16,7 @@ index d9813905c..0069d8e6f 100644
  name = "boring"
  version = "5.2.0"
 -source = "git+https://github.com/signalapp/boring?tag=signal-v5.2.0#1405df0a23a0335618f88ed328c76f67646b088f"
-+source = "git+https://github.com/esaapriliasalsabila/boring?tag=signal-v5.2.0#f0d0cb4c0f8df414b3c7d2989037b506bc216284"
++source = "git+https://github.com/esaapriliasalsabila/boring?tag=signal-v5.2.0#982a4f1aee293cc1ca5407621d446066b6dd75c2"
  dependencies = [
   "bitflags 2.13.0",
   "boring-sys",
@@ -25,7 +25,7 @@ index d9813905c..0069d8e6f 100644
  name = "boring-sys"
  version = "5.2.0"
 -source = "git+https://github.com/signalapp/boring?tag=signal-v5.2.0#1405df0a23a0335618f88ed328c76f67646b088f"
-+source = "git+https://github.com/esaapriliasalsabila/boring?tag=signal-v5.2.0#f0d0cb4c0f8df414b3c7d2989037b506bc216284"
++source = "git+https://github.com/esaapriliasalsabila/boring?tag=signal-v5.2.0#982a4f1aee293cc1ca5407621d446066b6dd75c2"
  dependencies = [
   "bindgen",
   "cmake",
@@ -34,7 +34,7 @@ index d9813905c..0069d8e6f 100644
  name = "tokio-boring"
  version = "5.2.0"
 -source = "git+https://github.com/signalapp/boring?tag=signal-v5.2.0#1405df0a23a0335618f88ed328c76f67646b088f"
-+source = "git+https://github.com/esaapriliasalsabila/boring?tag=signal-v5.2.0#f0d0cb4c0f8df414b3c7d2989037b506bc216284"
++source = "git+https://github.com/esaapriliasalsabila/boring?tag=signal-v5.2.0#982a4f1aee293cc1ca5407621d446066b6dd75c2"
  dependencies = [
   "boring",
   "boring-sys",
