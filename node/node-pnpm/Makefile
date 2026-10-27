@@ -71,6 +71,10 @@ define Package/node-pnpm/install
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
 	$(CP) $(PKG_BUILD_DIR)/bin \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/
+	chmod +x $(1)/usr/lib/node/$(PKG_NPM_NAME)/bin/pnpm.cjs
+	chmod +x $(1)/usr/lib/node/$(PKG_NPM_NAME)/bin/pnpm.mjs
+	chmod +x $(1)/usr/lib/node/$(PKG_NPM_NAME)/bin/pnpx.cjs
+	chmod +x $(1)/usr/lib/node/$(PKG_NPM_NAME)/bin/pnpx.mjs
 	$(INSTALL_DIR) $(1)/usr/lib/node/$(PKG_NPM_NAME)/dist
 	$(CP) $(PKG_BUILD_DIR)/dist/{pnpm.mjs,worker.js} \
 		$(1)/usr/lib/node/$(PKG_NPM_NAME)/dist/
@@ -106,12 +110,16 @@ define Host/Install
 		$(1)/lib/node_modules/$(PKG_NPM_NAME)/
 	$(CP) $(HOST_BUILD_DIR)/bin \
 		$(1)/lib/node_modules/$(PKG_NPM_NAME)/
+	chmod +x $(1)/lib/node_modules/$(PKG_NPM_NAME)/bin/pnpm.cjs
+	chmod +x $(1)/lib/node_modules/$(PKG_NPM_NAME)/bin/pnpm.mjs
+	chmod +x $(1)/lib/node_modules/$(PKG_NPM_NAME)/bin/pnpx.cjs
+	chmod +x $(1)/lib/node_modules/$(PKG_NPM_NAME)/bin/pnpx.mjs
 	$(INSTALL_DIR) $(1)/lib/node_modules/$(PKG_NPM_NAME)/dist
 	$(CP) $(HOST_BUILD_DIR)/dist/{pnpm.mjs,worker.js} \
 		$(1)/lib/node_modules/$(PKG_NPM_NAME)/dist/
 	$(INSTALL_DIR) $(1)/bin
-	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/pnpm.mjs $(1)/bin/pnpm
-	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/pnpx.mjs $(1)/bin/pnpx
+	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/pnpm.cjs $(1)/bin/pnpm
+	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/pnpx.cjs $(1)/bin/pnpx
 endef
 
 $(eval $(call HostBuild))
