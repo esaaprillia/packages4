@@ -46,7 +46,7 @@ endef
 
 define Package/sod/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/{snowball,stemwords} $(1)/usr/bin/
+	ls $(PKG_BUILD_DIR)/*
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/*.so* $(1)/usr/lib/
 endef
