@@ -52,7 +52,7 @@ define Build/InstallDev
 	#$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
 	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/{*.so*,*.a} $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/target/$(RUSTC_TARGET_ARCH)/release/* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/target/$(RUSTC_TARGET_ARCH)/release/libsignal_ffi.a $(1)/usr/lib/
 	#$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 	#$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/imagequant.pc $(1)/usr/lib/pkgconfig/
 	#$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/imagequant.pc
@@ -61,7 +61,7 @@ endef
 
 define Package/libsignal/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_BUILD_DIR)/target/$(RUSTC_TARGET_ARCH)/release/* $(1)/usr/lib/
+	$(CP) $(PKG_BUILD_DIR)/target/$(RUSTC_TARGET_ARCH)/release/libsignal_ffi.a $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,libsignal))
