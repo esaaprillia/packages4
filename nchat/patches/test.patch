@@ -19,28 +19,24 @@ index df4cd9757..fdfe297ec 100644
  
  # Build the combined Go library / C archive
  set(TARGET cgogostat)
-From 26b262b8f23f455ed428cba3963c031c1b251c8c Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 28 Oct 2026 09:17:59 +0000
+From 24229d34f9ef48f0f35b67439e781b5ae5e78b67 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 28 Oct 2026 17:31:19 +0800
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- lib/sgchat/go/CMakeLists.txt | 5 -----
- 1 file changed, 5 deletions(-)
+ lib/sgchat/go/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/lib/sgchat/go/CMakeLists.txt b/lib/sgchat/go/CMakeLists.txt
-index d481c4f42..6522235c0 100644
+index d481c4f42..7572b7521 100644
 --- a/lib/sgchat/go/CMakeLists.txt
 +++ b/lib/sgchat/go/CMakeLists.txt
-@@ -48,11 +48,6 @@ file(GLOB_RECURSE EXT_SRCS ext/*.go)
- list(APPEND SRCS ${EXT_SRCS})
- set(LIB "libcgosg${LIBSUFFIX}")
- 
--# Acquire libsignal_ffi.a (download pre-built or build from source), sets
--# LIBSIGNAL_FFI_DIR / LIBSIGNAL_FFI_FILE here and LIBSIGNAL_FFI_PATH in the
--# parent scope. Shared with lib/gostat (combined WhatsApp+Signal c-archive).
+@@ -51,7 +51,6 @@ set(LIB "libcgosg${LIBSUFFIX}")
+ # Acquire libsignal_ffi.a (download pre-built or build from source), sets
+ # LIBSIGNAL_FFI_DIR / LIBSIGNAL_FFI_FILE here and LIBSIGNAL_FFI_PATH in the
+ # parent scope. Shared with lib/gostat (combined WhatsApp+Signal c-archive).
 -include(${CMAKE_CURRENT_SOURCE_DIR}/libsignal.cmake)
--
+ 
  add_custom_command(OUTPUT ${OUTPUT_DIR}/${LIB}
    DEPENDS ${SRCS}
-   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
