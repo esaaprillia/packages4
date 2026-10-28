@@ -22,7 +22,7 @@ define Package/libsignal
   SECTION:=net
   CATEGORY:=Network
   TITLE:=Home to the Signal Protocol as well as other cryptographic primitives which make Signal possible.
-  DEPENDS:=$(RUST_ARCH_DEPENDS)
+  DEPENDS:=+libstdcpp $(RUST_ARCH_DEPENDS)
   URL:=https://github.com/signalapp/libsignal
 endef
 
