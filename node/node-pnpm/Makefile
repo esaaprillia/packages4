@@ -118,8 +118,8 @@ define Host/Install
 	$(CP) $(HOST_BUILD_DIR)/dist/{pnpm.mjs,worker.js} \
 		$(1)/lib/node_modules/$(PKG_NPM_NAME)/dist/
 	$(INSTALL_DIR) $(1)/bin
-	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/pnpm.cjs $(1)/bin/pnpm
-	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/pnpx.cjs $(1)/bin/pnpx
+	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/pnpm.mjs $(1)/bin/pnpm
+	$(LN) ../lib/node_modules/$(PKG_NPM_NAME)/bin/pnpx.mjs $(1)/bin/pnpx
 endef
 
 $(eval $(call HostBuild))
