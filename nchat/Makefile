@@ -14,7 +14,7 @@ PKG_LICENSE_FILES:=LICENSE LICENSE.AGPL-3.0 LICENSE.GPL-3.0
 
 CMAKE_BINARY_SUBDIR:=build
 
-PKG_BUILD_DEPENDS:=ncurses/host gperf/host golang/host td/host
+PKG_BUILD_DEPENDS:=ncurses/host gperf/host golang/host td/host libsignal
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
@@ -25,6 +25,9 @@ define Build/Prepare
 	$(CP) $(DL_DIR)/td/generate/auto/td $(PKG_BUILD_DIR)/lib/tgchat/ext/
 	$(CP) $(DL_DIR)/td/generate/auto $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/generate/
 	$(CP) $(DL_DIR)/tdutils/generate/auto $(PKG_BUILD_DIR)/lib/tgchat/ext/td/tdutils/generate/
+	sed -i 's#$$$${LIBSIGNAL_FFI_DIR}#$(STAGING_DIR)/usr/lib#g' $(PKG_BUILD_DIR)/lib/gostat/CMakeLists.txt
+	sed -i 's#$$$${LIBSIGNAL_FFI_PATH}#$(STAGING_DIR)/usr/lib/libsignal_ffi.a#g' $(PKG_BUILD_DIR)/lib/sgchat/CMakeLists.txt
+	sed -i 's#$$$${LIBSIGNAL_FFI_DIR}#$(STAGING_DIR)/usr/lib#g' $(PKG_BUILD_DIR)/lib/sgchat/go/CMakeLists.txt
 	sed -i 's#go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) GOOS="$(GO_OS)" GOARCH="$(GO_ARCH)" GO386="$(GO_386)" GOAMD64="$(GO_AMD64)" GOARM="$(GO_ARM)" GOARM64="$(GO_ARM64)" GOMIPS="$(GO_MIPS)" GOMIPS64="$(GO_MIPS64)" GOPPC64="$(GO_PPC64)" CGO_ENABLED=1 CC="$(TARGET_CC)" CXX="$(TARGET_CXX)" $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/lib/wmchat/go/CMakeLists.txt
 	sed -i 's#go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) GOOS="$(GO_OS)" GOARCH="$(GO_ARCH)" GO386="$(GO_386)" GOAMD64="$(GO_AMD64)" GOARM="$(GO_ARM)" GOARM64="$(GO_ARM64)" GOMIPS="$(GO_MIPS)" GOMIPS64="$(GO_MIPS64)" GOPPC64="$(GO_PPC64)" CGO_ENABLED=1 CC="$(TARGET_CC)" CXX="$(TARGET_CXX)" $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/lib/sgchat/go/CMakeLists.txt
 endef
@@ -43,7 +46,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DHAS_TELEGRAM=ON \
-	-DHAS_SIGNAL=OFF
+	-DHAS_SIGNAL=ON
 
 define Package/nchat/install
 	$(INSTALL_DIR) $(1)/usr/bin
