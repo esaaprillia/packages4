@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-home-assistant-intents
-PKG_VERSION:=2026.10.6
+PKG_VERSION:=2026.10.27
 PKG_RELEASE:=1
 
 PYPI_NAME:=home_assistant_intents
