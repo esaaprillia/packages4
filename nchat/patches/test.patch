@@ -1,28 +1,24 @@
-From e7a0ec5261151c34b8e4ecec45895d6af07c130b Mon Sep 17 00:00:00 2001
-From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
-Date: Wed, 28 Oct 2026 09:01:45 +0000
+From 9835cdaab6b7c47fc61a11a124a8915670445b33 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Wed, 28 Oct 2026 09:25:35 +0000
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- lib/gostat/CMakeLists.txt | 5 -----
- 1 file changed, 5 deletions(-)
+ lib/gostat/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/lib/gostat/CMakeLists.txt b/lib/gostat/CMakeLists.txt
-index df4cd9757..858857bf8 100644
+index df4cd9757..fdfe297ec 100644
 --- a/lib/gostat/CMakeLists.txt
 +++ b/lib/gostat/CMakeLists.txt
-@@ -48,11 +48,6 @@ endif()
- get_filename_component(WM_GO_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../wmchat/go" ABSOLUTE)
- get_filename_component(SG_GO_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../sgchat/go" ABSOLUTE)
- 
--# Acquire libsignal_ffi.a (shared with the standalone Signal build); the Signal
--# build tooling (build-libsignal.sh, ext/signal) lives in lib/sgchat/go.
--set(SIGNAL_GO_DIR ${SG_GO_DIR})
+@@ -51,7 +51,6 @@ get_filename_component(SG_GO_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../sgchat/go" ABSO
+ # Acquire libsignal_ffi.a (shared with the standalone Signal build); the Signal
+ # build tooling (build-libsignal.sh, ext/signal) lives in lib/sgchat/go.
+ set(SIGNAL_GO_DIR ${SG_GO_DIR})
 -include(${SG_GO_DIR}/libsignal.cmake)
--
+ 
  # Build the combined Go library / C archive
  set(TARGET cgogostat)
- set(GOPATH ${OUTPUT_DIR})
 From 26b262b8f23f455ed428cba3963c031c1b251c8c Mon Sep 17 00:00:00 2001
 From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
 Date: Wed, 28 Oct 2026 09:17:59 +0000
