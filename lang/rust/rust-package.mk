@@ -43,6 +43,7 @@ define Build/Compile/Cargo
 	+$(CARGO_PKG_VARS) \
 	cargo install -v \
 		--profile $(CARGO_PKG_PROFILE) \
+		--target $(RUSTC_TARGET_ARCH) \
 		$(if $(strip $(RUST_PKG_FEATURES)),--features "$(strip $(RUST_PKG_FEATURES))") \
 		--root $(PKG_INSTALL_DIR) \
 		--path "$(PKG_BUILD_DIR)/$(if $(strip $(1)),$(strip $(1)),$(strip $(MAKE_PATH)))" \
