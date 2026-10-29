@@ -57,6 +57,7 @@ CONFIGURE_ARGS = \
 	--with-tempstore=yes \
 	--disable-static \
 	--with-tcl="$(STAGING_DIR)/usr/lib" \
+	--with-tclsh="$(STAGING_DIR_HOSTPKG)/bin" \
 	--fts3 \
 	--fts4 \
 	--fts5 \
