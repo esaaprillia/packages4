@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-av
-PKG_VERSION:=19.0.1
+PKG_VERSION:=19.0.2
 PKG_RELEASE:=1
 
 PYPI_NAME:=av
