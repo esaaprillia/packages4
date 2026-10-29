@@ -52,7 +52,7 @@ TARGET_CPPFLAGS += \
 
 TARGET_LDFLAGS += -lcrypto
 
-CONFIGURE_ARGS:=$(filter-out --target=%,$(CONFIGURE_ARGS))
+CONFIGURE_ARGS:=$(filter-out --target,$(CONFIGURE_ARGS))
 
 CONFIGURE_ARGS += \
 	--prefix=/usr \
