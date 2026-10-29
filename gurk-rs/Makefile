@@ -22,7 +22,7 @@ define Package/gurk-rs
   SECTION:=net
   CATEGORY:=Network
   TITLE:=Signal Messenger client for terminal
-  DEPENDS:=+libstdcpp +libsqlite3 $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+libstdcpp $(RUST_ARCH_DEPENDS)
   URL:=https://github.com/boxdot/gurk-rs
 endef
 
@@ -31,10 +31,8 @@ define Package/gurk-rs/description
 endef
 
 CARGO_PKG_VARS += \
-	$(CONFIGURE_VARS) \
 	PERL="$(STAGING_DIR_HOSTPKG)/usr/bin/perl" \
 	PROTOC="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	LIBSQLITE3_SYS_USE_PKG_CONFIG=1 \
 	BINDGEN_EXTRA_CLANG_ARGS="-I$(STAGING_DIR)/usr/include --sysroot=$(TOOLCHAIN_ROOT_DIR)"
 
 define Package/gurk-rs/install
