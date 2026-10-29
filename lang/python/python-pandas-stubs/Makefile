@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-pandas-stubs
-PKG_VERSION:=3.0.5.260914
+PKG_VERSION:=3.1.0.261029
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
