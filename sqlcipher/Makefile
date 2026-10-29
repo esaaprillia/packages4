@@ -49,7 +49,9 @@ TARGET_CPPFLAGS += \
 
 TARGET_LDFLAGS += -lcrypto
 
-CONFIGURE_ARGS += \
+CONFIGURE_ARGS = \
+	--build=$(GNU_HOST_NAME) \
+	--host=$(GNU_TARGET_NAME) \
 	--prefix=/usr \
 	--with-tempstore=yes \
 	--disable-static \
