@@ -55,6 +55,7 @@ CONFIGURE_ARGS = \
 	--prefix=/usr \
 	--with-tempstore=yes \
 	--disable-static \
+	--with-tcl="$(STAGING_DIR)/usr/lib" \
 	--fts3 \
 	--fts4 \
 	--fts5 \
