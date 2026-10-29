@@ -12,7 +12,7 @@ PKG_MAINTAINER:=example <example@gmail.com>
 PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=LICENSE-AGPL-3.0
 
-PKG_BUILD_DEPENDS:=rust/host protobuf/host perl/host
+PKG_BUILD_DEPENDS:=rust/host protobuf/host perl/host protobuf
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -22,7 +22,7 @@ define Package/gurk-rs
   SECTION:=net
   CATEGORY:=Network
   TITLE:=Signal Messenger client for terminal
-  DEPENDS:=+libstdcpp $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+libstdcpp +libsqlite3 $(RUST_ARCH_DEPENDS)
   URL:=https://github.com/boxdot/gurk-rs
 endef
 
@@ -34,6 +34,7 @@ CARGO_PKG_VARS += \
 	$(CONFIGURE_VARS) \
 	PERL="$(STAGING_DIR_HOSTPKG)/usr/bin/perl" \
 	PROTOC="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	LIBSQLITE3_SYS_USE_PKG_CONFIG=1 \
 	BINDGEN_EXTRA_CLANG_ARGS="-I$(STAGING_DIR)/usr/include --sysroot=$(TOOLCHAIN_ROOT_DIR)"
 
 define Package/gurk-rs/install
