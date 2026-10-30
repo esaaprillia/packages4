@@ -24,7 +24,7 @@ define Package/vulkan-loader
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Vulkan Loader
-	DEPENDS:=+libstdcpp
+	DEPENDS:=+libstdcpp +libx11 +libxrandr
 	URL:=https://github.com/KhronosGroup/Vulkan-Loader
 endef
 
@@ -33,9 +33,6 @@ define Package/vulkan-loader/description
 endef
 
 CMAKE_OPTIONS += \
-	-DBUILD_WSI_XCB_SUPPORT=OFF \
-	-DBUILD_WSI_XLIB_SUPPORT=OFF \
-	-DBUILD_WSI_XLIB_XRANDR_SUPPORT=OFF \
 	-DBUILD_WSI_WAYLAND_SUPPORT=OFF
 
 define Build/InstallDev
