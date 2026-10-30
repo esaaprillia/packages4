@@ -21,7 +21,7 @@ define Package/sndio
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Portable version of OpenBSD's lightweight audio & MIDI sub-system
-	DEPENDS:=+alsa-lib
+	DEPENDS:=+alsa-lib +libbsd
 	URL:=https://sndio.org/
 endef
 
