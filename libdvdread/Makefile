@@ -25,7 +25,7 @@ define Package/libdvdread
 endef
 
 define Package/libdvdread/description
-libdvdnav is a library for developers of multimedia applications.
+libdvdread is a cross-platform library for simple navigation of DVDs.
 endef
 
 define Build/InstallDev
