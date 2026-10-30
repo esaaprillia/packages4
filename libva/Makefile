@@ -19,7 +19,7 @@ define Package/libva
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Video Acceleration (VA) API for Linux
-	DEPENDS:=+libdrm +libx11 +libxcb +libxext ×libxfixes
+	DEPENDS:=+libdrm +libx11 +libxcb +libxext +libxfixes
 	URL:=https://github.com/intel/libva/
 endef
 
