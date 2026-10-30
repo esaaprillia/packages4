@@ -35,8 +35,7 @@ MAKE_PATH:=build/generic
 CONFIGURE_PATH:=build/generic
 
 CONFIGURE_ARGS += \
-	--prefix=/usr \
-	--disable-assembly
+	--prefix=/usr
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
