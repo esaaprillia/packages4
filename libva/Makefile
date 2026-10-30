@@ -19,7 +19,7 @@ define Package/libva
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Video Acceleration (VA) API for Linux
-	DEPENDS:=+libdrm
+	DEPENDS:=+libdrm +libx11 +libxcb +libxext ×libxfixes
 	URL:=https://github.com/intel/libva/
 endef
 
@@ -29,7 +29,6 @@ define Package/libva/description
 endef
 
 MESON_ARGS += \
-	-Dwith_x11=no \
 	-Dwith_glx=no \
 	-Dwith_wayland=no \
 	-Dwith_win32=no \
