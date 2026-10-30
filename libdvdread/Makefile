@@ -20,7 +20,7 @@ define Package/libdvdread
   CATEGORY:=Libraries
   SUBMENU:=Video
   TITLE:=Library for reading DVD video disks
-  URL:=https://code.videolan.org/videolan/libdvdnav
+  URL:=https://code.videolan.org/videolan/libdvdread
   DEPENDS:=+libdvdcss
 endef
 
