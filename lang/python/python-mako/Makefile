@@ -6,7 +6,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-mako
-PKG_VERSION:=1.4.1
+PKG_VERSION:=1.4.3
 PKG_RELEASE:=1
 
 PYPI_NAME:=mako
