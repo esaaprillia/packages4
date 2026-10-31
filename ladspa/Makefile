@@ -28,14 +28,16 @@ define Package/ladspa/description
 	LADSPA is a standard that allows software audio processors and effects to be plugged into a wide range of audio synthesis and recording packages.
 endef
 
-MAKE_PATH:=src
-CONFIGURE_PATH:=src
-
-MAKE_VARS += \
-	CPP="$(TARGET_CXX)" \
-	INSTALL_PLUGINS_DIR="$(PKG_INSTALL_DIR)/usr/lib/ladspa" \
-	INSTALL_INCLUDE_DIR="$(PKG_INSTALL_DIR)/usr/include" \
-	INSTALL_BINARY_DIR="$(PKG_INSTALL_DIR)/usr/bin"
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR)/src \
+		CC="$(TARGET_CC)" \
+		CPP="$(TARGET_CXX)" \
+		LD="$(TARGET_LD)" \
+		LDFLAGS="$(TARGET_LDFLAGS)"
+		INSTALL_PLUGINS_DIR=$(PKG_INSTALL_DIR)/usr/lib/ladspa \
+		INSTALL_INCLUDE_DIR=$(PKG_INSTALL_DIR)/usr/include \
+		INSTALL_BINARY_DIR=$(PKG_INSTALL_DIR)/usr/bin
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include 
