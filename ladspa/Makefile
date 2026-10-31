@@ -48,7 +48,7 @@ define Package/ladspa/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib/ladspa
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/ladspa/* $(1)/usr/lib/ladspa/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/ladspa/*.so $(1)/usr/lib/ladspa/
 endef
 
 $(eval $(call BuildPackage,ladspa))
