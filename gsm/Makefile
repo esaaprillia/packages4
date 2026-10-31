@@ -33,6 +33,7 @@ define Build/Compile
 		LD="$(TARGET_CC)" \
 		INSTALL_ROOT="$(PKG_INSTALL_DIR)" \
 		GSM_INSTALL_INC="/usr/include/gsm" \
+		GSM_INSTALL_LIB="/usr/lib" \
 		GSM_INSTALL_MAN="/usr/share/man/man3" \
 		TOAST_INSTALL_MAN="/usr/share/man/man1" install
 endef
