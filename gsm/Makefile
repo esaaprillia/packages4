@@ -30,8 +30,8 @@ endef
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
-		CC="$(TARGET_CC)" \
-		LD="$(TARGET_CC)" \
+		CC="$(TARGET_CC) -ansi -pedantic" \
+		CCFLAGS="-c $(TARGET_CFLAGS) $(FPIC) -O2 -DNeedFunctionPrototypes=1 -Wall -Wno-comment" \
 		INSTALL_ROOT="$(PKG_INSTALL_DIR)" \
 		GSM_INSTALL_INC="/usr/include/gsm" \
 		GSM_INSTALL_LIB="/usr/lib" \
