@@ -8,7 +8,7 @@ diff -ruN a/src/Makefile b/src/Makefile
 -CFLAGS		=	$(INCLUDES) -Wall -Werror -O2 -fPIC 		\
 -			-DDEFAULT_LADSPA_PATH=$(INSTALL_PLUGINS_DIR)
 +CFLAGS		+=	$(INCLUDES) -Wall -Werror -O2 -fPIC 		\
-+			-DDEFAULT_LADSPA_PATH=$(INSTALL_PLUGINS_DIR) $(LDFLAGS)
++			-DDEFAULT_LADSPA_PATH=/usr/lib/ladspa $(LDFLAGS)
  BINFLAGS	=	-fPIE -pie
 -CXXFLAGS	=	$(CFLAGS)
 +CXXFLAGS	+=	$(CFLAGS)
