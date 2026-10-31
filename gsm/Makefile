@@ -28,6 +28,15 @@ define Package/gsm/description
 	GSM 06.10 lossy speech compression
 endef
 
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/lib"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/include/gsm"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/share/man/man3"
+	mkdir -p "$(PKG_INSTALL_DIR)/usr/share/man/man1"
+endef
+
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		CC="$(TARGET_CC) -ansi -pedantic" \
