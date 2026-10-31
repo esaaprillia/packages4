@@ -13,6 +13,7 @@ PKG_LICENSE:=GPL-2.0 GPL-3.0 LGPL-2.1 LGPL-3.0
 PKG_LICENSE_FILES:=COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1 COPYING.LGPLv3
 
 PKG_BUILD_PARALLEL:=1
+PKG_BUILD_DEPENDS:=ladspa
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -79,24 +80,23 @@ define Package/libavcodec
 	TITLE:=(libavcodec library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavutil \
-	+libswresample \
+	+libaom \
+	+dav1d \
+	+fdk-aac \
+	+libjxl \
 	+lame-lib \
 	+libopus \
+	+rav1e \
 	+shine \
-	+fdk-aac \
+	+svt-av1 \
+	+libswresample \
+	+libtheora \
+	+libvorbis \
+	+libvpx \
+	+libwebp \
 	+libx264 \
 	+libx265 \
-	+twolame \
-	+xvidcore \
-	+libvpx \
-	+libvorbis \
-	+libtheora \
-	+rav1e \
-	+dav1d \
-	+libaom \
-	+libwebp \
-	+zlib
+	+xvidcore
 endef
 
 define Package/libavcodec/description
@@ -109,12 +109,11 @@ define Package/libavdevice
 	TITLE:=(libavdevice library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavcodec \
-	+libavfilter \
-	+libavformat \
-	+libavutil \
 	+alsa-lib \
-	+libv4l
+	+libavfilter \
+	+pulseaudio-daemon-avahi \
+	+sndio \
+	+libv4l2
 endef
 
 define Package/libavdevice/description
@@ -127,14 +126,17 @@ define Package/libavfilter
 	TITLE:=(libavfilter library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavcodec \
-	+libavformat \
-	+libavutil \
-	+libswresample \
-	+libswscale \
-	+libfreetype \
 	+libass \
-	+harfbuzz
+	+libavformat \
+	+libfontconfig \
+	+libfreetype \
+	+fribidi \
+	+harfbuzz \
+	+lilv \
+	+libplacebo \
+	+libswscale \
+	+vidstab \
+	+zimg
 endef
 
 define Package/libavfilter/description
@@ -148,12 +150,16 @@ define Package/libavformat
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
 	+libavcodec \
-	+libavutil \
+	+libbluray \
 	+libbz2 \
-	+libgnutls \
-	+libxml2 \
+	+libdvdnav \
+	+libdvdread \
+	+libopenmpt \
+	+librist \
+	+srt \
 	+libssh \
-	+srt
+	+libxml2 \
+	+libzmq-nc
 endef
 
 define Package/libavformat/description
@@ -165,7 +171,14 @@ define Package/libavutil
 	CATEGORY:=Libraries
 	TITLE:=(libavutil library)
 	URL:=https://ffmpeg.org/
-	DEPENDS:=+libva +libxcb
+	DEPENDS:= \
+	+libdrm \
+	+libopenssl \
+	+libx11 \
+	+libva \
+	+libvdpau \
+	+libvpl \
+	+zlib
 endef
 
 define Package/libavutil/description
@@ -178,7 +191,8 @@ define Package/libswresample
 	TITLE:=(libswresample library)
 	URL:=https://ffmpeg.org/
 	DEPENDS:= \
-	+libavutil
+	+libavutil \
+	+soxr
 endef
 
 define Package/libswresample/description
@@ -198,7 +212,7 @@ define Package/libswscale/description
 Complete and free Internet live audio and video broadcasting solution for Linux/Unix (libswscale library)
 endef
 
-#TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
+TARGET_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR)/usr/lib/pulseaudio
 
 CONFIGURE_ARGS = \
 	--enable-cross-compile \
@@ -209,40 +223,62 @@ CONFIGURE_ARGS = \
 	--prefix=/usr \
 	--enable-shared \
 	--enable-static \
-	--enable-pthreads \
-	--enable-gpl \
-	--enable-version3 \
-	--enable-nonfree \
-	--enable-lto=auto \
-	--disable-doc \
 	--disable-debug \
-	--disable-lzma \
+	--disable-doc \
+	--disable-stripping \
 	--enable-alsa \
-	--enable-gnutls \
-	--enable-libopus \
-	--enable-libv4l2 \
-	--enable-libshine \
-	--enable-libmp3lame \
-	--enable-libx264 \
-	--enable-libx265 \
-	--enable-libfdk-aac \
-	--enable-libtwolame \
-	--enable-libxvid \
-	--enable-vaapi \
-	--enable-libfreetype \
-	--enable-libharfbuzz \
+	--enable-gpl \
+	--enable-ladspa \
+	--enable-libaom \
 	--enable-libass \
+	--enable-libbluray \
+	--enable-libdav1d \
+	--enable-libdrm \
+	--enable-libdvdnav \
+	--enable-libdvdread \
+	--enable-libfdk-aac \
+	--enable-libfontconfig \
+	--enable-libfreetype \
+	--enable-libfribidi \
+	--enable-libharfbuzz \
+	--enable-libjxl \
+	--enable-libmp3lame \
+	--enable-libopenmpt \
+	--enable-libopus \
+	--enable-libplacebo \
+	--enable-libpulse \
+	--enable-librav1e \
+	--enable-librist \
+	--enable-libshine \
+	--enable-libsoxr \
 	--enable-libsrt \
 	--enable-libssh \
+	--enable-libsvtav1 \
 	--enable-libtheora \
-	--enable-libvpx \
+	--enable-libv4l2 \
+	--enable-libvidstab \
 	--enable-libvorbis \
+	--enable-libvpl \
+	--enable-libvpx \
 	--enable-libwebp \
-	--enable-libdav1d \
-	--enable-librav1e \
+	--enable-libx264 \
+	--enable-libx265 \
+	--enable-libxcb \
 	--enable-libxml2 \
-	--enable-libaom \
-	--enable-libxcb
+	--enable-libxvid \
+	--enable-libzimg \
+	--enable-libzmq \
+	--enable-lto \
+	--enable-lv2 \
+	--enable-nonfree \
+	--enable-openssl \
+	--enable-pic \
+	--enable-pthreads \
+	--enable-sndio \
+	--enable-vaapi \
+	--enable-vdpau \
+	--enable-version3 \
+	--enable-vulkan
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
