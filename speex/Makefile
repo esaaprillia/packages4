@@ -4,7 +4,7 @@ PKG_NAME:=speex
 PKG_VERSION:=1.2.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=speex-Speex-$(PKG_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://downloads.xiph.org/releases/speex/
 PKG_HASH:=skip
 
