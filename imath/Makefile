@@ -64,6 +64,11 @@ define Package/imath/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libImath*.so* $(1)/usr/lib/
 endef
 
+define Py3Package/python3-imath/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libPyImath*.so* $(1)/usr/lib/
+endef
+
 $(eval $(call BuildPackage,imath))
 $(eval $(call Py3Package,python3-imath))
 $(eval $(call BuildPackage,python3-imath))
