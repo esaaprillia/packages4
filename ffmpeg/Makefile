@@ -113,7 +113,7 @@ define Package/libavdevice
 	+libavfilter \
 	+pulseaudio-daemon-avahi \
 	+sndio \
-	+libv4l2
+	+libv4l
 endef
 
 define Package/libavdevice/description
