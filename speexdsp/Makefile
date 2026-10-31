@@ -5,14 +5,12 @@ PKG_VERSION:=1.2.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=speexdsp-SpeexDSP-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://gitlab.xiph.org/xiph/speexdsp/-/archive/SpeexDSP-$(PKG_VERSION)
+PKG_SOURCE_URL:=http://downloads.xiph.org/releases/speex/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=COPYING
-
-PKG_BUILD_DIR:=$(BUILD_DIR)/speexdsp-SpeexDSP-$(PKG_VERSION)
 
 PKG_FIXUP:=autoreconf
 PKG_BUILD_PARALLEL:=1
