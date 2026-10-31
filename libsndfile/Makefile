@@ -21,7 +21,7 @@ define Package/libsndfile
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=libsndfile is a C library for reading and writing files containing sampled audio data.
-	DEPENDS:=+libstdcpp +alsa-lib +flac +lame-lib +libogg +libvorbis +libmpg123 +libopus
+	DEPENDS:=+libstdcpp +alsa-lib +flac +lame-lib +libogg +libvorbis +libmpg123 +libopus +speex +libsqlite3
 	URL:=https://github.com/libsndfile/libsndfile
 endef
 
