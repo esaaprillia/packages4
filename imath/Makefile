@@ -39,7 +39,7 @@ define Package/python3-imath
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=Imath Python library
-	DEPENDS:=+python3-light +boost-python3 +python3-numpy +imath
+	DEPENDS:=+python3-light +boost-container +boost-graph +boost-python3 +python3-numpy +imath
 	URL:=https://imath.readthedocs.io/
 endef
 
