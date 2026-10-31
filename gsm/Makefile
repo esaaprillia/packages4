@@ -30,6 +30,7 @@ endef
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \
+		CC="$(TARGET_CC)" \
 		LD="$(TARGET_CC)" \
 		INSTALL_ROOT="$(PKG_INSTALL_DIR)" \
 		GSM_INSTALL_INC="/usr/include/gsm" \
