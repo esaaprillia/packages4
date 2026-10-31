@@ -128,7 +128,7 @@ define Package/libavfilter
 	DEPENDS:= \
 	+libass \
 	+libavformat \
-	+libfontconfig \
+	+fontconfig \
 	+libfreetype \
 	+fribidi \
 	+harfbuzz \
