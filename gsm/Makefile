@@ -29,17 +29,12 @@ define Package/gsm/description
 endef
 
 define Build/Compile
-	$(MAKE_VARS) $(MAKE) RPM_OPT_FLAGS="$(TARGET_CFLAGS) $(FPIC)" -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_FLAGS)
-endef
-
-define Build/Install
-	mkdir -p "$(PKG_INSTALL_DIR)/usr/bin"
-	mkdir -p "$(PKG_INSTALL_DIR)/usr/lib"
-	mkdir -p "$(PKG_INSTALL_DIR)/usr/include/gsm"
-	mkdir -p "$(PKG_INSTALL_DIR)/usr/share/man/man3"
-	mkdir -p "$(PKG_INSTALL_DIR)/usr/share/man/man1"
-	$(MAKE_VARS) $(MAKE) INSTALL_ROOT="$(PKG_INSTALL_DIR)/usr" GSM_INSTALL_INC="$(PKG_INSTALL_DIR)/usr/include/gsm" GSM_INSTALL_LIB="$(PKG_INSTALL_DIR)/usr/lib" -C $(PKG_BUILD_DIR)/$(MAKE_PATH) $(MAKE_INSTALL_FLAGS) install
-	$(CP) $(PKG_BUILD_DIR)/lib/*.so* $(PKG_INSTALL_DIR)/usr/lib/
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		LD="$(TARGET_CC)" \
+		INSTALL_ROOT="$(PKG_INSTALL_DIR)" \
+		GSM_INSTALL_INC="/usr/include/gsm" \
+		GSM_INSTALL_MAN="/usr/share/man/man3" \
+		TOAST_INSTALL_MAN="/usr/share/man/man1" install
 endef
 
 define Build/InstallDev
