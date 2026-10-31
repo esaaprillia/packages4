@@ -34,7 +34,6 @@ define Build/Compile
 		CCFLAGS="-c $(TARGET_CFLAGS) $(FPIC) -O2 -DNeedFunctionPrototypes=1 -Wall -Wno-comment" \
 		INSTALL_ROOT="$(PKG_INSTALL_DIR)/usr" \
 		GSM_INSTALL_INC="$(PKG_INSTALL_DIR)/usr/include/gsm" \
-		GSM_INSTALL_LIB="$(PKG_INSTALL_DIR)/usr/lib" \
 		GSM_INSTALL_MAN="$(PKG_INSTALL_DIR)/usr/share/man/man3" \
 		TOAST_INSTALL_MAN="$(PKG_INSTALL_DIR)/usr/share/man/man1" install
 endef
