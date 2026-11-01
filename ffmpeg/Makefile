@@ -89,6 +89,7 @@ define Package/libavcodec
 	+rav1e \
 	+shine \
 	+svt-av1 \
+	+liblzma \
 	+libswresample \
 	+libtheora \
 	+libvorbis \
