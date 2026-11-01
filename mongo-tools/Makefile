@@ -37,7 +37,25 @@ define Package/mongo-tools/description
   The MongoDB tools provide import, export, and diagnostic capabilities.
 endef
 
-GO_PKG_INSTALL_ARGS += -pkgs=bsondump,mongoimport,mongoexport,mongodump,mongorestore,mongostat,mongofiles,mongotop
+GO_PKG_INSTALL_ARGS= \
+	-v \
+	-buildvcs=false \
+	-trimpath \
+	-ldflags "all=$(GO_PKG_DEFAULT_LDFLAGS)" \
+	$(if $(strip $(GO_PKG_DEFAULT_GCFLAGS)),-gcflags "all=$(GO_PKG_DEFAULT_GCFLAGS)") \
+	$(if $(strip $(GO_PKG_DEFAULT_ASMFLAGS)),-asmflags "all=$(GO_PKG_DEFAULT_ASMFLAGS)") \
+	$(if $(GO_PKG_ENABLE_PIE),-buildmode pie) \
+	$(if $(filter $(GO_ARCH),366),-installsuffix "$(GO_386)") \
+	$(if $(filter $(GO_ARCH),arm),-installsuffix "v$(GO_ARM)") \
+	$(if $(filter $(GO_ARCH),arm64),-installsuffix "$(GO_ARM64)") \
+	$(if $(filter $(GO_ARCH),mips mipsle),-installsuffix "$(GO_MIPS)") \
+	$(if $(filter $(GO_ARCH),mips64 mips64le),-installsuffix "$(GO_MIPS64)") \
+	$(if $(strip $(GO_PKG_GCFLAGS)),-gcflags "$(GO_PKG_GCFLAGS) $(GO_PKG_DEFAULT_GCFLAGS)") \
+	$(if $(strip $(GO_PKG_CUSTOM_LDFLAGS)),-ldflags "$(GO_PKG_CUSTOM_LDFLAGS) $(GO_PKG_DEFAULT_LDFLAGS)") \
+	$(if $(strip $(GO_PKG_PKGS)),-pkgs "$(GO_PKG_PKGS)") \
+	$(if $(strip $(GO_PKG_TAGS)),-tags "$(GO_PKG_TAGS)")
+
+GO_PKG_PKGS:=bsondump,mongoimport,mongoexport,mongodump,mongorestore,mongostat,mongofiles,mongotop
 
 define Package/mongo-tools/install
 	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
