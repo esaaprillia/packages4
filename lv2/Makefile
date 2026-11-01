@@ -25,11 +25,21 @@ define Package/lv2
 	TITLE:=The LV2 audio plugin specification
 	URL:=https://lv2plug.in/
 	DEPENDS:= \
-	+libstdcpp \
-	+libcairo \
-	+glib2 \
+	+sord \
 	+libsamplerate \
-	+libsndfile \
+	+libsndfile
+endef
+
+define Package/lv2/description
+	LV2 is a plugin standard for audio systems.
+endef
+
+define Package/lv2-specgen
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=The LV2 audio plugin specification (python specgen)
+	URL:=https://lv2plug.in/
+	DEPENDS:= \
 	+python3-light \
 	+python3-lxml \
 	+python3-markdown \
@@ -37,7 +47,7 @@ define Package/lv2
 	+python3-rdflib
 endef
 
-define Package/lv2/description
+define Package/lv2-specgen/description
 	LV2 is a plugin standard for audio systems.
 endef
 
@@ -56,11 +66,17 @@ endef
 
 define Package/lv2/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/lv2_validate $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/lv2 $(1)/usr/lib/
+endef
+
+define Package/lv2-specgen/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/lv2specgen.py $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
 endef
 
 $(eval $(call BuildPackage,lv2))
+$(eval $(call BuildPackage,lv2-specgen))
