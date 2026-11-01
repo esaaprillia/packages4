@@ -21,7 +21,7 @@ define Package/libmongocrypt
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=The companion C library for client side encryption in drivers.
-	DEPENDS:=+libsasl2 +libopenssl +snappy +libzstd +utf8proc +zlib
+	DEPENDS:=+libsasl2 +libopenssl
 	URL:=https://github.com/mongodb/libmongocrypt
 endef
 
