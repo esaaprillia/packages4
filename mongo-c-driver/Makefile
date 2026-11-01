@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mongo-c-driver
-PKG_VERSION:=1.30.8
+PKG_VERSION:=2.5.7
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -34,8 +34,7 @@ endef
 CMAKE_OPTIONS += \
 	-DENABLE_TESTS=OFF \
 	-DENABLE_EXAMPLES=OFF \
-	-DBUILD_VERSION="$(PKG_VERSION)" \
-	-DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF
+	-DBUILD_VERSION="$(PKG_VERSION)"
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
