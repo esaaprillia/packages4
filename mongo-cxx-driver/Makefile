@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mongo-cxx-driver
-PKG_VERSION:=3.11.1
+PKG_VERSION:=4.6.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-r$(PKG_VERSION).tar.gz
@@ -33,8 +33,7 @@ endef
 
 CMAKE_OPTIONS += \
 	-DENABLE_TESTS=OFF \
-	-DENABLE_BSONCXX_POLY_USE_IMPLS=ON \
-	-DCMAKE_POLICY_VERSION_MINIMUM=3.10
+	-DENABLE_BSONCXX_POLY_USE_IMPLS=ON
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
