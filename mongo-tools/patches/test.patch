@@ -1,0 +1,14 @@
+From a37b04b759ffec56fa2e9fe4f35561168276b4ef Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Sat, 31 Oct 2026 23:38:39 +0800
+Subject: [PATCH] Rename build.go to main.go
+
+---
+ build.go => main.go | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename build.go => main.go (100%)
+
+diff --git a/build.go b/main.go
+similarity index 100%
+rename from build.go
+rename to main.go
