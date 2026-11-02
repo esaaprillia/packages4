@@ -27,7 +27,7 @@ define Package/libavc1394
 endef
 
 define Package/libavc1394/description
-	Library to control A/V devices using the 1394 TA AV/C commands
+	libavc1394 is a programming interface for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set.
 endef
 
 CONFIGURE_ARGS += \
