@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-dateutil
-PKG_VERSION:=3.0.0
+PKG_VERSION:=4.0.0
 PKG_RELEASE:=1
 PKG_LICENSE:=BSD-2-Clause
 
