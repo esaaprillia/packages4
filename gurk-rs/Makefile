@@ -30,7 +30,10 @@ define Package/gurk-rs/description
   Signal Messenger client for terminal
 endef
 
-CARGO_PKG_VARS += \
+CARGO_PKG_VARS= \
+	$(CARGO_PKG_CONFIG_VARS) \
+	CC=$(TARGET_CC_NOCACHE) \
+	MAKEFLAGS="$(PKG_JOBS)" \
 	PERL="$(STAGING_DIR_HOSTPKG)/usr/bin/perl" \
 	PROTOC="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	BINDGEN_EXTRA_CLANG_ARGS="-I$(STAGING_DIR)/usr/include --sysroot=$(TOOLCHAIN_ROOT_DIR)"
