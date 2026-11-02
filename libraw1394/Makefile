@@ -34,31 +34,19 @@ CONFIGURE_ARGS += \
 	--disable-static
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include \
-	  $(1)/usr/lib
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/libraw1394 \
-	  $(1)/usr/include/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/{pkgconfig,*.so*} \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libraw1394.pc $(1)/usr/lib/pkgconfig/
 endef
 
 define Package/libraw1394/install
-	$(INSTALL_DIR) \
-	  $(1)/usr/bin \
-	  $(1)/usr/lib
-	
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/bin/* \
-	  $(1)/usr/bin/
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/lib/*.so* \
-	  $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,libraw1394))
