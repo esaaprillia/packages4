@@ -12,7 +12,7 @@ PKG_MAINTAINER:=example <example@gmail.com>
 PKG_LICENSE:=AGPL-3.0
 PKG_LICENSE_FILES:=LICENSE-AGPL-3.0
 
-PKG_BUILD_DEPENDS:=rust/host protobuf/host perl/host protobuf
+PKG_BUILD_DEPENDS:=rust/host protobuf/host perl/host
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
