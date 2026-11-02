@@ -22,7 +22,7 @@ define Package/gurk-rs
   SECTION:=net
   CATEGORY:=Network
   TITLE:=Signal Messenger client for terminal
-  DEPENDS:=+libstdcpp $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+libstdcpp +libsqlite3 $(RUST_ARCH_DEPENDS)
   URL:=https://github.com/boxdot/gurk-rs
 endef
 
