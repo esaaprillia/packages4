@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://downloads.sourceforge.net/project/libavc1394/libavc1394/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=LGPL-2.1-or-later
+PKG_LICENSE:=GPL-2.0-or-later AND LGPL-2.1-or-later
 PKG_LICENSE_FILES:=COPYING
 
 PKG_BUILD_PARALLEL:=1
