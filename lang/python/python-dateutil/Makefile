@@ -16,8 +16,8 @@ PYPI_NAME:=$(PKG_NAME)
 PKG_HASH:=skip
 PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 
-PKG_BUILD_DEPENDS:=python-setuptools-scm/host python-six/host
-HOST_BUILD_DEPENDS:=python-setuptools-scm/host python-six/host
+PKG_BUILD_DEPENDS:=python--hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
+HOST_BUILD_DEPENDS:=python--hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host python-tzdata/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -31,7 +31,7 @@ define Package/python3-dateutil
   CATEGORY:=Languages
   TITLE:=Extensions to the standard Python datetime module
   URL:=https://dateutil.readthedocs.org/
-  DEPENDS:=+python3 +python3-six +python3-tzdata
+  DEPENDS:=+python3 +python3-tzdata
 endef
 
 define Package/python3-dateutil/description
