@@ -45,11 +45,11 @@ define Build/Prepare
 	$(INSTALL_DIR) $(PKG_BUILD_DIR)/td/mtproto
 	$(CP) $(DL_DIR)/td/generate/auto/td/mtproto/mtproto_api.* $(PKG_BUILD_DIR)/td/mtproto/
 	$(INSTALL_DIR) $(PKG_BUILD_DIR)/td/telegram
-	$(CP) $(DL_DIR)/td/generate/auto/td/telegram/{secret_api.*,td_api.*,td_api_json.*,telegram_api.*,td_api_0.*,td_api_1.*} $(PKG_BUILD_DIR)/td/telegram/
+	$(CP) $(DL_DIR)/td/generate/auto/td/telegram/{secret_api.*,td_api.*,td_api_json.*,telegram_api.*,telegram_api_*.*,td_api_*.*} $(PKG_BUILD_DIR)/td/telegram/
 	$(INSTALL_DIR) $(PKG_BUILD_DIR)/td/generate/auto/td/mtproto
 	$(CP) $(DL_DIR)/td/generate/auto/td/mtproto/mtproto_api.* $(PKG_BUILD_DIR)/td/generate/auto/td/mtproto/
 	$(INSTALL_DIR) $(PKG_BUILD_DIR)/td/generate/auto/td/telegram
-	$(CP) $(DL_DIR)/td/generate/auto/td/telegram/{secret_api.*,td_api.*,td_api_json.*,telegram_api.*,td_api_0.*,td_api_1.*} $(PKG_BUILD_DIR)/td/generate/auto/td/telegram/
+	$(CP) $(DL_DIR)/td/generate/auto/td/telegram/{secret_api.*,td_api.*,td_api_json.*,telegram_api.*,telegram_api_*.*,td_api_*.*} $(PKG_BUILD_DIR)/td/generate/auto/td/telegram/
 	$(INSTALL_DIR) $(PKG_BUILD_DIR)/tdutils/generate/auto
 	$(CP) $(DL_DIR)/tdutils/generate/auto/{extension_to_mime_type.cpp,mime_type_to_extension.cpp,mime_type_to_extension.cpp} $(PKG_BUILD_DIR)/tdutils/generate/auto/
 endef
