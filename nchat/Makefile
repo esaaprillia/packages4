@@ -23,12 +23,16 @@ include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	$(CP) $(DL_DIR)/td/generate/auto/td $(PKG_BUILD_DIR)/lib/tgchat/ext/
-	$(CP) $(DL_DIR)/td/generate/auto $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/generate/
-	$(CP) $(DL_DIR)/tdutils/generate/auto $(PKG_BUILD_DIR)/lib/tgchat/ext/td/tdutils/generate/
-	#sed -i 's#$$$${LIBSIGNAL_FFI_DIR}#$(STAGING_DIR)/usr/lib#g' $(PKG_BUILD_DIR)/lib/gostat/CMakeLists.txt
-	#sed -i 's#$$$${LIBSIGNAL_FFI_PATH}#$(STAGING_DIR)/usr/lib/libsignal_ffi.a#g' $(PKG_BUILD_DIR)/lib/sgchat/CMakeLists.txt
-	#sed -i 's#$$$${LIBSIGNAL_FFI_DIR}#$(STAGING_DIR)/usr/lib#g' $(PKG_BUILD_DIR)/lib/sgchat/go/CMakeLists.txt
+	$(INSTALL_DIR) $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/mtproto
+	$(CP) $(DL_DIR)/td/generate/auto/td/mtproto/{mtproto_api.cpp,mtproto_api.h,mtproto_api.hpp} $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/mtproto/
+	$(INSTALL_DIR) $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/telegram
+	$(CP) $(DL_DIR)/td/generate/auto/td/telegram/{telegram_api_0.cpp,telegram_api_1.cpp,telegram_api_2.cpp,telegram_api_3.cpp,telegram_api_4.cpp,telegram_api_5.cpp,telegram_api_6.cpp,telegram_api_7.cpp,telegram_api_8.cpp,telegram_api_9.cpp,telegram_api.h,telegram_api.hpp,secret_api.cpp,secret_api.h,secret_api.hpp,e2e_api.cpp,e2e_api.h,e2e_api.hpp,td_api_0.cpp,td_api_1.cpp,td_api_2.cpp,td_api_3.cpp,td_api_4.cpp,td_api_5.cpp,td_api_6.cpp,td_api_7.cpp,td_api_8.cpp,td_api_9.cpp,td_api.h,td_api.hpp} $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/telegram/
+	$(INSTALL_DIR) $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/generate/auto/td/mtproto
+	$(CP) $(DL_DIR)/td/generate/auto/td/mtproto/{mtproto_api.cpp,mtproto_api.h,mtproto_api.hpp} $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/generate/auto/td/mtproto/
+	$(INSTALL_DIR) $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/generate/auto/td/telegram
+	$(CP) $(DL_DIR)/td/generate/auto/td/telegram/{telegram_api_0.cpp,telegram_api_1.cpp,telegram_api_2.cpp,telegram_api_3.cpp,telegram_api_4.cpp,telegram_api_5.cpp,telegram_api_6.cpp,telegram_api_7.cpp,telegram_api_8.cpp,telegram_api_9.cpp,telegram_api.h,telegram_api.hpp,secret_api.cpp,secret_api.h,secret_api.hpp,e2e_api.cpp,e2e_api.h,e2e_api.hpp,td_api_0.cpp,td_api_1.cpp,td_api_2.cpp,td_api_3.cpp,td_api_4.cpp,td_api_5.cpp,td_api_6.cpp,td_api_7.cpp,td_api_8.cpp,td_api_9.cpp,td_api.h,td_api.hpp} $(PKG_BUILD_DIR)/lib/tgchat/ext/td/td/generate/auto/td/telegram/
+	$(INSTALL_DIR) $(PKG_BUILD_DIR)/lib/tgchat/ext/td/tdutils/generate/auto
+	$(CP) $(DL_DIR)/tdutils/generate/auto/{extension_to_mime_type.cpp,mime_type_to_extension.cpp,mime_type_to_extension.cpp} $(PKG_BUILD_DIR)/lib/tgchat/ext/td/tdutils/generate/auto/
 	sed -i 's#target/release/libsignal_ffi.a#target/$(RUSTC_TARGET_ARCH)/release/libsignal_ffi.a#g' $(PKG_BUILD_DIR)/lib/sgchat/go/build-libsignal.sh
 	sed -i 's#cargo build#$(CARGO_PKG_CONFIG_VARS) CC=$(HOSTCC_NOCACHE) $(CONFIGURE_VARS) PROTOC="$(STAGING_DIR_HOSTPKG)/bin/protoc" BINDGEN_EXTRA_CLANG_ARGS="-I$(STAGING_DIR)/usr/include --sysroot=$(TOOLCHAIN_ROOT_DIR)" $(STAGING_DIR)/host/bin/cargo build#g' $(PKG_BUILD_DIR)/lib/sgchat/go/build-libsignal.sh
 	sed -i 's#go build#$(GO_GENERAL_BUILD_CONFIG_VARS) $(GO_PKG_BUILD_CONFIG_VARS) GOOS="$(GO_OS)" GOARCH="$(GO_ARCH)" GO386="$(GO_386)" GOAMD64="$(GO_AMD64)" GOARM="$(GO_ARM)" GOARM64="$(GO_ARM64)" GOMIPS="$(GO_MIPS)" GOMIPS64="$(GO_MIPS64)" GOPPC64="$(GO_PPC64)" CGO_ENABLED=1 CC="$(TARGET_CC)" CXX="$(TARGET_CXX)" $(STAGING_DIR_HOSTPKG)/lib/go-$(GO_HOST_VERSION)/bin/go build#g' $(PKG_BUILD_DIR)/lib/gostat/assemble.sh
