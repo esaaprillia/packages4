@@ -8,12 +8,10 @@ PROG=/agent/main
 CONF=/agent
 
 start_service() {
+        mkdir -p /agent/data/capture-test
         mkdir -p /agent/data/cloud
-        mkdir -p /agent/data/snapshots
         mkdir -p /agent/data/log
         mkdir -p /agent/data/recordings
-        mkdir -p /agent/data/capture-test
-        mkdir -p /agent/data/config
         procd_open_instance
         procd_set_param command "$PROG" -config="$CONF" -action=run -port=7575
         procd_set_param respawn
