@@ -37,7 +37,7 @@ GO_PKG_TAGS:=moq,timetzdata,netgo,osusergo
 GO_PKG_LDFLAGS:=-checklinkname=0
 
 GO_PKG_LDFLAGS_X:= \
-	github.com/kerberos-io/agent/machinery/src/utils.VERSION=$(PKG_VERSION)
+	github.com/kerberos-io/agent/machinery/src/utils.VERSION=v$(PKG_VERSION)
 
 define Build/Compile
 	cd $(PKG_BUILD_DIR)/ui; \
