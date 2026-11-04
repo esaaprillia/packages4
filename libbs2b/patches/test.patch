@@ -1,0 +1,26 @@
+From d7e2fcfc4feebdaf26d92bae6be84b016541fe91 Mon Sep 17 00:00:00 2001
+From: hartwork <hartwork@bc0edfbe-c936-4687-b64d-f70bc3985e72>
+Date: Sun, 8 Sep 2013 18:22:22 +0000
+Subject: [PATCH] configure.ac: Replace dist-lzma by dist-xz, require Automake
+ >=1.11.2
+
+git-svn-id: svn://svn.code.sf.net/p/bs2b/code/trunk/libbs2b@175 bc0edfbe-c936-4687-b64d-f70bc3985e72
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5a2f76c..c3d1c59 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,8 +4,8 @@
+ AC_PREREQ([2.63])
+ AC_INIT([libbs2b], [3.1.0], [boris_mikhaylov@users.sourceforge.net])
+ AC_CONFIG_AUX_DIR([build-aux])
+-AM_INIT_AUTOMAKE([1.10.1 -Wall foreign subdir-objects
+-                  dist-zip dist-bzip2 dist-lzma])
++AM_INIT_AUTOMAKE([1.11.2 -Wall foreign subdir-objects
++                  dist-zip dist-bzip2 dist-xz])
+ AC_CONFIG_SRCDIR([src/bs2b.h])
+ 
+ # Checks for programs.
