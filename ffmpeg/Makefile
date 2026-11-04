@@ -83,12 +83,17 @@ define Package/libavcodec
 	+libaom \
 	+dav1d \
 	+fdk-aac \
+	+gsm \
 	+libjxl \
 	+lame-lib \
 	+libopus \
+	+openjpeg \
 	+rav1e \
 	+shine \
+	+snappy \
+	+speex \
 	+svt-av1 \
+	+twolame \
 	+liblzma \
 	+libswresample \
 	+libtheora \
@@ -112,6 +117,9 @@ define Package/libavdevice
 	DEPENDS:= \
 	+alsa-lib \
 	+libavfilter \
+	+libavc1394 \
+	+libdc1394 \
+	+libiec61883 \
 	+pulseaudio-daemon-avahi \
 	+sndio \
 	+libv4l
@@ -129,6 +137,7 @@ define Package/libavfilter
 	DEPENDS:= \
 	+libass \
 	+libavformat \
+	+libbs2b \
 	+fontconfig \
 	+libfreetype \
 	+fribidi \
@@ -230,10 +239,13 @@ CONFIGURE_ARGS = \
 	--enable-alsa \
 	--enable-gpl \
 	--enable-ladspa \
+	--enable-lcms2 \
 	--enable-libaom \
 	--enable-libass \
 	--enable-libbluray \
+	--enable-libbs2b \
 	--enable-libdav1d \
+	--enable-libdc1394 \
 	--enable-libdrm \
 	--enable-libdvdnav \
 	--enable-libdvdread \
@@ -241,9 +253,12 @@ CONFIGURE_ARGS = \
 	--enable-libfontconfig \
 	--enable-libfreetype \
 	--enable-libfribidi \
+	--enable-libgsm \
+	--enable-libiec61883 \
 	--enable-libharfbuzz \
 	--enable-libjxl \
 	--enable-libmp3lame \
+	--enable-libopenjpeg \
 	--enable-libopenmpt \
 	--enable-libopus \
 	--enable-libplacebo \
@@ -251,11 +266,14 @@ CONFIGURE_ARGS = \
 	--enable-librav1e \
 	--enable-librist \
 	--enable-libshine \
+	--enable-libsnappy \
 	--enable-libsoxr \
+	--enable-libspeex \
 	--enable-libsrt \
 	--enable-libssh \
 	--enable-libsvtav1 \
 	--enable-libtheora \
+	--enable-libtwolame \
 	--enable-libv4l2 \
 	--enable-libvidstab \
 	--enable-libvorbis \
