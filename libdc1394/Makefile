@@ -5,7 +5,7 @@ PKG_VERSION:=2.2.7
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://sourceforge.net/projects/libdc1394/files/libdc1394-2/2.2.7/
+PKG_SOURCE_URL:=https://sourceforge.net/projects/libdc1394/files/libdc1394-2/$(PKG_VERSION)/
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
