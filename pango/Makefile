@@ -1,52 +1,57 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=libiec61883
-PKG_VERSION:=1.2.0
+PKG_NAME:=pango
+PKG_VERSION:=1.58.2
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://www.kernel.org/pub/linux/libs/ieee1394/
-PKG_HASH:=skip
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+PKG_SOURCE_URL:=@GNOME/$(PKG_NAME)/$(basename $(PKG_VERSION))
+PKG_HASH:=342385b6ca3b7c73455d7c80a13b7dbe4489e00bc3bd4c5bd6ed4dce421e374a
 
-PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
-PKG_LICENSE:=LGPL-2.1
+PKG_MAINTAINER:=Daniel Golle <daniel@makrotopia.org>
+PKG_LICENSE:=LGPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
+PKG_CPE_ID:=cpe:/a:gnome:pango
 
-PKG_BUILD_PARALLEL:=1
-PKG_FIXUP:=autoreconf
+PKG_BUILD_DEPENDS:=glib2/host
 PKG_INSTALL:=1
 
+PKG_FORTIFY_SOURCE:=0
+
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/nls.mk
+include $(INCLUDE_DIR)/meson.mk
 
-define Package/libiec61883
-	SECTION:=libs
-	CATEGORY:=Libraries
-	TITLE:=A higher level API for streaming DV, MPEG-2 and audio over Linux IEEE 1394
-	DEPENDS:=+libstdcpp +libraw1394
-	URL:=https://www.kernel.org/pub/linux/libs/ieee1394/
+define Package/libpango
+  SECTION:=libs
+  CATEGORY:=Libraries
+  SUBMENU:=Video
+  TITLE:=libpango
+  URL:=https://www.pango.org/
+  DEPENDS:=+glib2 +fribidi +harfbuzz +libcairo $(ICONV_DEPENDS) $(INTL_DEPENDS)
 endef
 
-define Package/libiec61883/description
-	libiec61883 library provides a higher-level API for streaming digital video (DV), MPEG-2, and audio/music data over Linux IEEE 1394 (FireWire) devices.
-endef
+MESON_ARGS += \
+	-Dintrospection=disabled \
+	-Dgtk_doc=false \
+	-Dsysprof=disabled
 
-CONFIGURE_ARGS += \
-	--prefix=/usr
+define package/libpango/decription
+endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/include/pango-1.0/pango
+	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/include/pango-1.0/pango/*.h $(1)/usr/include/pango-1.0/pango/
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libiec61883.pc $(1)/usr/lib/pkgconfig/
+	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/*.pc $(1)/usr/lib/pkgconfig/
+
 endef
 
-define Package/libiec61883/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+define Package/libpango/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,libiec61883))
+$(eval $(call BuildPackage,libpango))
