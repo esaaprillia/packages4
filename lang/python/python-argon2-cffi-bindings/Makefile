@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host
-HOST_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host python-cffi/host argon2/host
+PKG_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host python-scikit-build-core/host
+HOST_BUILD_DEPENDS:=python-cffi/host python-setuptools-scm/host python-scikit-build-core/host argon2/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
