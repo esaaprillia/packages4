@@ -12,25 +12,22 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=COPYING COPYING.GPL COPYING.LGPL
 
-HOST_BUILD_DEPENDS:=glib2/host libffi/host meson/host python-rnc2rng/host python-mako/host
+HOST_BUILD_DEPENDS:=glib2/host libffi/host cairo/host meson/host python-rnc2rng/host python-mako/host
 PKG_BUILD_DEPENDS:=python3 gobject-introspection/host
-
-HOST_PATCH_DIR := ./patches-host
 
 PYTHON3_PKG_BUILD:=0
 PYTHON3_HOST_BUILD:=0
-MESON_USE_STAGING_PYTHON:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(INCLUDE_DIR)/meson.mk
+include $(TOPDIR)/feeds/python/lang/python/meson/meson.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 
 define Package/gobject-introspection
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Introspection system for GObject-based libraries
-	DEPENDS:=+glib2 +libffi
+	DEPENDS:=+glib2 +libcairo +libffi
 	URL:=https://wiki.gnome.org/action/show/Projects/GObjectIntrospection
 endef
 
@@ -39,21 +36,17 @@ define Package/gobject-introspection/description
 endef
 
 MESON_VARS += $(PYTHON3_VARS)
-export GI_SCANNER_DISABLE_CACHE=1
-#TARGET_CFLAGS += $(HOST_CFLAGS)
-#TARGET_CXXFLAGS += $(HOST_CXXFLAGS)
-#TARGET_LDFLAGS += $(HOST_LDFLAGS)
 
 MESON_ARGS += \
-	-Dcairo=disabled \
 	-Dgtk_doc=false \
+	-Dbuild_introspection_data=false \
 	-Dgi_cross_use_prebuilt_gi=true \
-	-Dgi_cross_ldd_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner" \
-	-Dgi_cross_binary_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-compiler"
+	-Dgi_cross_binary_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-compiler" \
+	-Dgi_cross_ldd_wrapper="$(STAGING_DIR_HOSTPKG)/bin/g-ir-scanner"
 
 MESON_HOST_ARGS += \
-	-Dcairo=disabled \
-	-Dgtk_doc=false
+	-Dgtk_doc=false \
+	-Dbuild_introspection_data=false
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
