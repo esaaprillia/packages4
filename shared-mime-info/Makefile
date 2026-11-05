@@ -53,31 +53,22 @@ MESON_HOST_ARGS += \
 define Host/Install
 	$(call Host/Install/Meson)
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib/pkgconfig
-	$(CP) \
-		$(MESON_HOST_BUILD_DIR)/shared-mime-info.pc \
-		$(STAGING_DIR_HOSTPKG)/lib/pkgconfig/
+	$(CP) $(MESON_HOST_BUILD_DIR)/shared-mime-info.pc $(STAGING_DIR_HOSTPKG)/lib/pkgconfig/
 endef
 
 define Build/InstallDev
+	$(call Build/Install/Meson)
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) \
-		$(PKG_INSTALL_DIR)/usr/share/pkgconfig/shared-mime-info.pc \
-		$(1)/usr/lib/pkgconfig/
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/pkgconfig/shared-mime-info.pc $(1)/usr/lib/pkgconfig/
 endef
 
 define Package/shared-mime-info/install
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(CP) \
-		$(PKG_INSTALL_DIR)/usr/bin/* \
-		$(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/share/
-	$(CP) \
-		$(PKG_INSTALL_DIR)/usr/share/* \
-		$(1)/usr/share/
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/* $(1)/usr/share/
 	$(INSTALL_DIR) $(1)/etc/uci-defaults
-	$(INSTALL_DATA) \
-		./files/shared-mime-info.defaults \
-		$(1)/etc/uci-defaults/90-shared-mime-info
+	$(INSTALL_DATA) ./files/shared-mime-info.defaults $(1)/etc/uci-defaults/90-shared-mime-info
 endef
 
 $(eval $(call HostBuild))
