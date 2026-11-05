@@ -28,7 +28,7 @@ define Package/libpango
   SUBMENU:=Video
   TITLE:=libpango
   URL:=https://www.pango.org/
-  DEPENDS:=+glib2 +fribidi +harfbuzz +libcairo $(ICONV_DEPENDS) $(INTL_DEPENDS)
+  DEPENDS:=+glib2 +fribidi +harfbuzz +libcairo +libxft +libxrender +libfreetype +fontconfig $(ICONV_DEPENDS) $(INTL_DEPENDS)
 endef
 
 MESON_ARGS += \
