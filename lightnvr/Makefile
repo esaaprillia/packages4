@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=lightnvr
-PKG_VERSION:=0.45.1
+PKG_VERSION:=0.46.2
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/opensensor/lightNVR.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=8c1712a630b892aa41f3f6101269c122636809de
+PKG_SOURCE_VERSION:=0e518e1af3dcfedfd8265588a9dd765d0ac4d635
 PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -36,7 +36,7 @@ define Package/lightnvr/description
 endef
 
 CMAKE_OPTIONS += \
-	-DLIGHTNVR_GIT_COMMIT=8c1712a6 -DSOD_DYNAMIC_LINK=ON -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
+	-DLIGHTNVR_GIT_COMMIT=0e518e1a -DSOD_DYNAMIC_LINK=ON -DGO2RTC_BINARY_PATH=/usr/bin/go2rtc -DTFLITE_HOST_TOOLS_DIR="$(STAGING_DIR_HOSTPKG)/bin"
 
 define Package/lightnvr/conffiles
 /etc/lightnvr
