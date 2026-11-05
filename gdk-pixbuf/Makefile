@@ -13,7 +13,7 @@ PKG_LICENSE:=GNU LGPLv2.1
 PKG_LICENSE_FILES:=COPYING
 
 HOST_BUILD_DEPENDS:=glib2/host shared-mime-info/host meson/host
-PKG_BUILD_DEPENDS:=glib2/host 
+PKG_BUILD_DEPENDS:=glib2/host
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/host-build.mk
