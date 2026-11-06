@@ -21,7 +21,7 @@ define Package/libopenmpt
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=OpenMPT based module player library and libopenmpt based command-line player
-	DEPENDS:=+flac +libogg +pulseaudio-daemon +libsndfile +libvorbis +mpg123 +portaudio +zlib
+	DEPENDS:=+flac +libogg +pulseaudio-daemon-avahi +libsndfile +libvorbis +mpg123 +portaudio +zlib
 	URL:=https://lib.openmpt.org/libopenmpt/
 endef
 
