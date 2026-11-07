@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pytorch
-PKG_VERSION:=2.15.0
+PKG_VERSION:=2.14.1
 PKG_RELEASE:=1
 
 PKG_SOURCE:=pytorch-v$(PKG_VERSION).tar.gz
