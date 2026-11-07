@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=numpy/host python3 python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host libfmt eigen python-pybind11/host
+PKG_BUILD_DEPENDS:=numpy/host python3 python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host libfmt eigen python-pybind11
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
