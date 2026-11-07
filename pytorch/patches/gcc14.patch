@@ -1,0 +1,25 @@
+From 74a6932b27680b0d30de3280dba34ef23799df2b Mon Sep 17 00:00:00 2001
+From: firmwarecostum <145313986+firmwarecostum@users.noreply.github.com>
+Date: Sat, 7 Nov 2026 14:39:31 +0800
+Subject: [PATCH] Implement compiler workarounds for AArch64
+
+Add workaround for GCC 14.2.0 ICE and fix segfaults on AArch64.
+---
+ aten/src/ATen/native/cpu/GridSamplerKernel.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/aten/src/ATen/native/cpu/GridSamplerKernel.cpp b/aten/src/ATen/native/cpu/GridSamplerKernel.cpp
+index 0e91eff98c4a7..641ecb91e0450 100644
+--- a/aten/src/ATen/native/cpu/GridSamplerKernel.cpp
++++ b/aten/src/ATen/native/cpu/GridSamplerKernel.cpp
+@@ -14,6 +14,10 @@
+ 
+ namespace at::native { namespace {
+ 
++#if defined(__GNUC__) && __GNUC__ == 14 && defined(__aarch64__) && !defined(__ARM_FEATURE_SVE)
++// Workaround for gcc-14.2.0 ICE during RTL pass: expand when compiling for NEON
++__attribute__((optimize("no-tree-vectorize")))
++#endif
+ // fixes segfaults for GCC >= 12 on some AArch64 cpus https://github.com/pytorch/pytorch/issues/157626
+ #if defined(__GNUC__) && __GNUC__ >= 12 && defined(__aarch64__)
+ #pragma GCC push_options
