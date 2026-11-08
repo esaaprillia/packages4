@@ -51,9 +51,9 @@ TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
-TARGET_CFLAGS += -Os -pipe -march=armv8-a+sve2
-TARGET_CCFLAGS += -Os -pipe -march=armv8-a+sve2
-TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+sve2
+TARGET_CFLAGS += -Os -pipe -march=armv8-a
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a
 
 CMAKE_OPTIONS += \
 	-DINSTALL_TEST=OFF \
@@ -72,6 +72,7 @@ CMAKE_OPTIONS += \
 	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
 	-DPYTORCH_BUILD_NUMBER=1 \
 	-DEigen3_DIR="$(STAGING_DIR)/usr" \
+	-DCMAKE_CXX_FLAGS="-fno-tree-vectorize" \
 	-DCMAKE_INSTALL_PREFIX="$(PKG_INSTALL_DIR)/usr" \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
