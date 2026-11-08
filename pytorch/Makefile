@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pytorch
-PKG_VERSION:=2.14.1
+PKG_VERSION:=2.15.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=pytorch-v$(PKG_VERSION).tar.gz
@@ -51,9 +51,9 @@ TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
-TARGET_CFLAGS += -Os -pipe -march=armv8-a -fno-tree-vectorize
-TARGET_CCFLAGS += -Os -pipe -march=armv8-a -fno-tree-vectorize
-TARGET_CXXFLAGS += -Os -pipe -march=armv8-a -fno-tree-vectorize
+TARGET_CFLAGS += -Os -pipe -march=armv8-a+sve
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a+sve
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+sve
 
 CMAKE_OPTIONS += \
 	-DINSTALL_TEST=OFF \
