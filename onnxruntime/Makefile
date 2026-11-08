@@ -51,9 +51,9 @@ TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
-TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
-TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
-TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc -Wno-error=unused-variable -Wno-error=unused-result
+TARGET_CFLAGS += -Os -pipe -march=armv8-a
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a -Wno-error=unused-variable -Wno-error=unused-result
 
 define Build/Compile
 	$(call Build/Compile/Default)
