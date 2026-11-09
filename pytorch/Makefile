@@ -53,9 +53,9 @@ TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
-TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
-TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
-TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CFLAGS += -Os -pipe -march=armv8-a
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a
 
 CMAKE_OPTIONS += \
 	-DINSTALL_TEST=OFF \
