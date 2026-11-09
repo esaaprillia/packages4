@@ -52,7 +52,7 @@ TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
 TARGET_CFLAGS += -Os -pipe -march=armv8-a
 TARGET_CCFLAGS += -Os -pipe -march=armv8-a
-TARGET_CXXFLAGS += -Os -pipe -march=armv8-a -Wno-error=unused-variable -Wno-error=unused-result
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a
 
 PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DONNX_BUILD_PYTHON=ON -DONNX_ML=ON -DBUILD_SHARED_LIBS=OFF -DONNX_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" -DONNX_USE_PROTOBUF_SHARED_LIBS=ON"
 
