@@ -28,8 +28,6 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
 
-HOST_LDFLAGS += -lxml2
-
 define Package/python3-lxml
   SECTION:=lang
   CATEGORY:=Languages
