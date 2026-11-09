@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cython
-PKG_VERSION:=3.3.0
+PKG_VERSION:=3.3.1
 PKG_RELEASE:=1
 
 PYPI_NAME:=cython
