@@ -46,6 +46,14 @@ define Package/python3-lxml/description
   XPath, RelaxNG, XML Schema, XSLT, C14N and much more.
 endef
 
+PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
+	--build-option=build_ext \
+	--build-option=--with-cython
+
+PYTHON3_HOST_BUILD_CONFIG_SETTINGS += \
+	--build-option=build_ext \
+	--build-option=--with-cython
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-lxml))
 $(eval $(call BuildPackage,python3-lxml))
