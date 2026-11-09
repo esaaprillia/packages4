@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pytorch
-PKG_VERSION:=2.14.0
+PKG_VERSION:=2.15.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=pytorch-v$(PKG_VERSION).tar.gz
@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host libfmt eigen python-pybind11
+PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-pybind11/host python-requests/host protobuf/host libfmt eigen
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
@@ -26,7 +26,7 @@ define Package/pytorch
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	DEPENDS:=+libatomic +libstdcpp +libpython3 +abseil-cpp +cpuinfo +gflags +glog +numactl +openmp +openblas +protobuf +sleef +libuv
+	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +gflags +glog +numactl +openmp +openblas +protobuf +sleef +libuv
 	URL:=https://github.com/pytorch/pytorch
 endef
 
@@ -47,23 +47,22 @@ define Package/python3-pytorch/description
 	pytorch Python library
 endef
 
-PYTHON3_PKG_WHEEL_NAME:=torch
-PYTHON3_PKG_WHEEL_VERSION:=2.14.0a0+gitunknown
-PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DBUILD_PYTHON=ON"
+PYTHON3_PKG_SETUP_VARS += CMAKE_ARGS="-DBUILD_PYTHON=ON -DBUILD_PYTHON_ONLY=ON"
 
 TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
-TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
-TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
-TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CFLAGS += -Os -pipe -march=armv8-a
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a
 
 CMAKE_OPTIONS += \
-	-DINSTALL_TEST=OFF -DBUILD_PYTHON=OFF \
+	-DINSTALL_TEST=OFF \
 	-DBUILD_TEST=OFF \
 	-DBUILD_CUSTOM_PROTOBUF=OFF \
 	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_PYTHON=OFF \
 	-DUSE_SYSTEM_SLEEF=ON \
 	-DUSE_SYSTEM_PYBIND11=ON \
 	-DUSE_SYSTEM_EIGEN_INSTALL=ON \
@@ -72,13 +71,13 @@ CMAKE_OPTIONS += \
 	-DUSE_GFLAGS=ON \
 	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
 	-DUSE_SYSTEM_CPUINFO=ON \
+	-DTORCH_DEFAULT_VERSION="$(PKG_VERSION)" \
 	-DTORCH_BUILD_VERSION="$(PKG_VERSION)" \
 	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
 	-DPYTORCH_BUILD_NUMBER=1 \
 	-DEigen3_DIR="$(STAGING_DIR)/usr" \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 define Build/Compile
 	$(call Build/Compile/Default)
@@ -89,10 +88,6 @@ endef
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
-	#$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/Imath.pc
-	#$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/Imath.pc
-	#$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/PyImath.pc
-	#$(SED) 's,/usr/lib,$$$${exec_prefix}/lib,g' $(1)/usr/lib/pkgconfig/PyImath.pc
 endef
 
 define Package/pytorch/install
