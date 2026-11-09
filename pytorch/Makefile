@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-pybind11/host python-requests/host protobuf/host libfmt eigen
+PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-pybind11 python-pybind11/host python-requests/host protobuf/host libfmt eigen
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
@@ -53,9 +53,9 @@ TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
 TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
-TARGET_CFLAGS += -Os -pipe -march=armv8-a
-TARGET_CCFLAGS += -Os -pipe -march=armv8-a
-TARGET_CXXFLAGS += -Os -pipe -march=armv8-a
+TARGET_CFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CCFLAGS += -Os -pipe -march=armv8-a+crc
+TARGET_CXXFLAGS += -Os -pipe -march=armv8-a+crc
 
 CMAKE_OPTIONS += \
 	-DINSTALL_TEST=OFF \
@@ -76,8 +76,10 @@ CMAKE_OPTIONS += \
 	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
 	-DPYTORCH_BUILD_NUMBER=1 \
 	-DEigen3_DIR="$(STAGING_DIR)/usr" \
+	-DCMAKE_INSTALL_PREFIX="$(PKG_INSTALL_DIR)/usr" \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
 
 define Build/Compile
 	$(call Build/Compile/Default)
