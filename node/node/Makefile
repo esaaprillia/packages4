@@ -94,7 +94,7 @@ define Package/node/config
 
 	choice
 		prompt "Version Selection"
-		default NODEJS_24
+		default NODEJS_26
 		help
 		 Select node.js version.
 		 The host package version is also the same.
