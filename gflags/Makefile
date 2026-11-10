@@ -15,6 +15,7 @@ PKG_LICENSE_FILES:=COPYING.txt
 CMAKE_BINARY_SUBDIR := build
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/gflags
@@ -48,4 +49,5 @@ define Package/gflags/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,gflags))
