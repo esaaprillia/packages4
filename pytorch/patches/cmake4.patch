@@ -1,3 +1,22 @@
+--- a/third_party/pthreadpool/CMakeLists.txt
++++ b/third_party/pthreadpool/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ # This source code is licensed under the BSD-style license found in the
+ # LICENSE file in the root directory of this source tree.
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5...3.10 FATAL_ERROR)
+ 
+ # ---[ Project
+ PROJECT(pthreadpool C)
+--- a/third_party/FXdiv/CMakeLists.txt
++++ b/third_party/FXdiv/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5...3.10 FATAL_ERROR)
+ 
+ # ---[ Project
+ PROJECT(FXdiv C CXX)
 --- a/third_party/NNPACK/CMakeLists.txt
 +++ b/third_party/NNPACK/CMakeLists.txt
 @@ -1,4 +1,4 @@
