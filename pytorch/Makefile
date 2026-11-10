@@ -51,6 +51,10 @@ define Package/python3-pytorch/description
 	pytorch Python library
 endef
 
+CMAKE_HOST_OPTIONS += \
+	-wno-dev \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
+
 $(eval $(call HostBuild))
 $(eval $(call BuildPackage,pytorch))
 $(eval $(call Py3Package,python3-pytorch))
