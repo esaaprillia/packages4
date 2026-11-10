@@ -1,24 +1,54 @@
-From 089d520a5731b7efeafdf9acc06a420fc1518d98 Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Tue, 10 Nov 2026 23:45:33 +0800
-Subject: [PATCH] Update CMakeLists.txt
-
----
- CMakeLists.txt | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 142937a9420c2..72ccfee876792 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -45,6 +45,10 @@
+@@ -43,7 +43,7 @@
+ #    DLL and macOS OpenMP bundling).
+ # 9. Summary (cmake/Summary.cmake): print the resolved configuration.
  
- cmake_minimum_required(VERSION 3.27 FATAL_ERROR)
+-cmake_minimum_required(VERSION 3.27 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.27...4.0.0 FATAL_ERROR)
  
-+if(CMAKE_VERSION VERSION_GREATER_EQUAL "4.0")
-+  set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "" FORCE)
-+endif()
-+
  cmake_policy(SET CMP0126 OLD)
  # Don't remove the FindCUDA module
- cmake_policy(SET CMP0146 OLD)
+--- a/third_party/pthreadpool/CMakeLists.txt
++++ b/third_party/pthreadpool/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ # This source code is licensed under the BSD-style license found in the
+ # LICENSE file in the root directory of this source tree.
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5...3.10 FATAL_ERROR)
+ 
+ # ---[ Project
+ PROJECT(pthreadpool C)
+--- a/third_party/FXdiv/CMakeLists.txt
++++ b/third_party/FXdiv/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5...3.10 FATAL_ERROR)
+ 
+ # ---[ Project
+ PROJECT(FXdiv C CXX)
+--- a/third_party/NNPACK/CMakeLists.txt
++++ b/third_party/NNPACK/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5...3.10 FATAL_ERROR)
+ 
+ INCLUDE(GNUInstallDirs)
+ INCLUDE(CheckCSourceCompiles)
+--- a/third_party/FP16/CMakeLists.txt
++++ b/third_party/FP16/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5...3.10 FATAL_ERROR)
+ 
+ # ---[ Project
+ PROJECT(FP16 C)
+--- a/third_party/psimd/CMakeLists.txt
++++ b/third_party/psimd/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5...3.10 FATAL_ERROR)
+ 
+ INCLUDE(GNUInstallDirs)
+ 
