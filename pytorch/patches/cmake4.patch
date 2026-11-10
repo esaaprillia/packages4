@@ -1,22 +1,24 @@
-From 4b003c3365287b8ca466f0ca12484449606a6b79 Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Tue, 10 Nov 2026 15:57:04 +0800
-Subject: [PATCH] Update CMakeLists.txt
-
----
- CMakeLists.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 142937a9420c2..8549cc9d08f90 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -43,7 +43,7 @@
- #    DLL and macOS OpenMP bundling).
- # 9. Summary (cmake/Summary.cmake): print the resolved configuration.
+--- a/third_party/NNPACK/CMakeLists.txt
++++ b/third_party/NNPACK/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
  
--cmake_minimum_required(VERSION 3.27 FATAL_ERROR)
-+cmake_minimum_required(VERSION 3.50 FATAL_ERROR)
+ INCLUDE(GNUInstallDirs)
+ INCLUDE(CheckCSourceCompiles)
+--- a/third_party/FP16/CMakeLists.txt
++++ b/third_party/FP16/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
  
- cmake_policy(SET CMP0126 OLD)
- # Don't remove the FindCUDA module
+ # ---[ Project
+ PROJECT(FP16 C)
+--- a/third_party/psimd/CMakeLists.txt
++++ b/third_party/psimd/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
+ 
+ INCLUDE(GNUInstallDirs)
+ 
