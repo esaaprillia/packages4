@@ -52,7 +52,7 @@ define Package/python3-pytorch/description
 endef
 
 CMAKE_HOST_OPTIONS += \
-	-wno-dev \
+	-Wno-dev \
 	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 $(eval $(call HostBuild))
