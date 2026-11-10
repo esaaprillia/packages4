@@ -19,6 +19,7 @@ CMAKE_BINARY_SUBDIR := build
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/fxdiv
@@ -43,4 +44,5 @@ define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,fxdiv))
