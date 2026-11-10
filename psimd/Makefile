@@ -32,16 +32,9 @@ define Package/psimd/description
 Portable 128-bit SIMD intrinsics
 endef
 
-CMAKE_OPTIONS += \
-	-Wno-dev
-
 define Build/InstallDev
-	$(INSTALL_DIR) \
-	  $(1)/usr/include
-
-	$(CP) \
-	  $(PKG_INSTALL_DIR)/usr/include/psimd.h \
-	  $(1)/usr/include/
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
+$(eval $(call HostBuild))
 $(eval $(call BuildPackage,psimd))
