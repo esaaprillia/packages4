@@ -22,7 +22,6 @@ HOST_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/ho
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 
