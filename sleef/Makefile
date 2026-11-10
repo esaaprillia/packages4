@@ -42,6 +42,7 @@ CMAKE_HOST_OPTIONS += \
 	-DSLEEF_BUILD_TESTS=OFF
 
 define Host/Install
+	$(call Host/Install/Default)
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/bin
 	$(CP) $(HOST_BUILD_DIR)/build/bin/* $(STAGING_DIR_HOSTPKG)/bin/
 endef
