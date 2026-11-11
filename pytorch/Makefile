@@ -55,9 +55,13 @@ endef
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
-TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
-TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
-TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
+#TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
+#TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
+#TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
+
+TARGET_CFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O3
+TARGET_CCFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O3
+TARGET_CXXFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O3
 
 HOST_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR_HOSTPKG)/lib
 
