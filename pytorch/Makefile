@@ -54,6 +54,7 @@ define Package/python3-pytorch/description
 endef
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
+export USE_ITT=OFF
 
 #TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 #TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
