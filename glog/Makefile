@@ -13,7 +13,7 @@ PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE.md
 
 CMAKE_BINARY_SUBDIR:=build
-HOST_BUILD_DEPENDS:=glog/host
+HOST_BUILD_DEPENDS:=gflags/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
