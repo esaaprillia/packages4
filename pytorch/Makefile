@@ -52,7 +52,7 @@ define Package/python3-pytorch/description
 endef
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
-export USE_ITT=OFF=ON
+export USE_ITT=OFF
 
 CMAKE_HOST_OPTIONS += \
 	-DINSTALL_TEST=OFF -DUSE_ITT=OFF \
