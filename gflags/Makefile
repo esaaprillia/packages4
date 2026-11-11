@@ -36,6 +36,12 @@ CMAKE_OPTIONS += \
 	-DBUILD_TESTING=OFF \
 	-DREGISTER_INSTALL_PREFIX=OFF
 
+CMAKE_HOST_OPTIONS += \
+	-DBUILD_STATIC_LIBS=ON \
+	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_TESTING=OFF \
+	-DREGISTER_INSTALL_PREFIX=OFF
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/gflags.pc
