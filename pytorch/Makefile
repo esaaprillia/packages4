@@ -17,7 +17,7 @@ HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/pytorch-v$(PKG_VERSION)
 
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
+PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11/host
 HOST_BUILD_DEPENDS:=numpy/host numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
 
 include $(INCLUDE_DIR)/package.mk
@@ -52,9 +52,32 @@ define Package/python3-pytorch/description
 endef
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
-export USE_ITT=OFF
+
+TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
+TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
+TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
 
 HOST_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR_HOSTPKG)/lib
+
+CMAKE_OPTIONS += \
+	-DINSTALL_TEST=OFF \
+	-DBUILD_TEST=OFF \
+	-DBUILD_CUSTOM_PROTOBUF=OFF \
+	-DBUILD_SHARED_LIBS=ON \
+	-DUSE_SYSTEM_SLEEF=ON \
+	-DUSE_SYSTEM_PYBIND11=ON \
+	-DUSE_SYSTEM_EIGEN_INSTALL=ON \
+	-DUSE_GLOG=ON \
+	-DUSE_GFLAGS=ON \
+	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
+	-DUSE_SYSTEM_CPUINFO=ON \
+	-DTORCH_DEFAULT_VERSION="$(PKG_VERSION)" \
+	-DTORCH_BUILD_VERSION="$(PKG_VERSION)" \
+	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
+	-DPYTORCH_BUILD_NUMBER=0 \
+	-DEigen3_DIR="$(STAGING_DIR_HOSTPKG)" \
+	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 CMAKE_HOST_OPTIONS += \
 	-DINSTALL_TEST=OFF -DUSE_ITT=OFF \
@@ -71,7 +94,7 @@ CMAKE_HOST_OPTIONS += \
 	-DTORCH_DEFAULT_VERSION="$(PKG_VERSION)" \
 	-DTORCH_BUILD_VERSION="$(PKG_VERSION)" \
 	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
-	-DPYTORCH_BUILD_NUMBER=1 \
+	-DPYTORCH_BUILD_NUMBER=0 \
 	-DEigen3_DIR="$(STAGING_DIR_HOSTPKG)" \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
