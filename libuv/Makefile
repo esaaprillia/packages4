@@ -43,7 +43,13 @@ define Package/libuv/description
  pyuv, and others.
 endef
 
-CMAKE_OPTIONS += -DBUILD_TESTING=OFF
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_TESTING=OFF
+
+CMAKE_HOST_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_TESTING=OFF
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
