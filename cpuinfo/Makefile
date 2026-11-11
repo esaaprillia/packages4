@@ -40,6 +40,12 @@ CMAKE_OPTIONS += \
 	-DCPUINFO_BUILD_MOCK_TESTS=OFF \
 	-DCPUINFO_BUILD_BENCHMARKS=OFF
 
+CMAKE_HOST_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
+	-DCPUINFO_BUILD_UNIT_TESTS=OFF \
+	-DCPUINFO_BUILD_MOCK_TESTS=OFF \
+	-DCPUINFO_BUILD_BENCHMARKS=OFF
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 	$(SED) 's,/usr/include,$$$${prefix}/include,g' $(1)/usr/lib/pkgconfig/libcpuinfo.pc
