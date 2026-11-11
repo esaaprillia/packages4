@@ -33,6 +33,7 @@ define Package/abseil-cpp/description
 endef
 
 CMAKE_HOST_OPTIONS += \
+	-DBUILD_SHARED_LIBS=ON \
 	-DCMAKE_CXX_STANDARD=17 \
 	-DABSL_USE_GOOGLETEST_HEAD=OFF
 
