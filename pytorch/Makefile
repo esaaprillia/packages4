@@ -16,26 +16,23 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/pytorch-v$(PKG_VERSION)
 
 CMAKE_BINARY_SUBDIR := build
+PYTHON3_PKG_BUILD:=0
+PYTHON3_HOST_BUILD:=0
 
-#PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
-#HOST_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
-
-#PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
-#HOST_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
-
-#HOST_BUILD_DEPENDS:=python3/host
+PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11/host
+HOST_BUILD_DEPENDS:=numpy/host numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
-########include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 
 define Package/pytorch
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +gflags +glog +numactl +openmp +openblas +protobuf +sleef +libuv
+	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +gflags +glog +numactl +onednn +openmp +openblas +protobuf +sleef +libuv
 	URL:=https://github.com/pytorch/pytorch
 endef
 
@@ -56,11 +53,60 @@ define Package/python3-pytorch/description
 	pytorch Python library
 endef
 
-CMAKE_HOST_OPTIONS += \
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+#TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
+#TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
+#TARGET_CXXFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CXXFLAGS))
+
+TARGET_CFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O3
+TARGET_CCFLAGS:= $(filter-out -O%,$(TARGET_CCFLAGS)) -O3
+TARGET_CXXFLAGS:= $(filter-out -O%,$(TARGET_CXXFLAGS)) -O3
+
+HOST_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR_HOSTPKG)/lib
+
+CMAKE_OPTIONS += \
+	-DINSTALL_TEST=OFF \
+	-DBUILD_TEST=OFF \
+	-DBUILD_CUSTOM_PROTOBUF=OFF \
 	-DBUILD_SHARED_LIBS=ON \
-	-DCMAKE_C_COMPILER="$(HOSTCC)" \
-	-DCMAKE_CXX_COMPILER="$(HOSTCXX)" \
-	-DCMAKE_ASM_COMPILER="$(HOSTCC)"
+	-DUSE_SYSTEM_SLEEF=ON \
+	-DUSE_SYSTEM_PYBIND11=ON \
+	-DUSE_SYSTEM_EIGEN_INSTALL=ON \
+	-DUSE_GLOG=ON \
+	-DUSE_GFLAGS=ON \
+	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
+	-DUSE_SYSTEM_CPUINFO=ON \
+	-DTORCH_DEFAULT_VERSION="$(PKG_VERSION)" \
+	-DTORCH_BUILD_VERSION="$(PKG_VERSION)" \
+	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
+	-DPYTORCH_BUILD_NUMBER=0 \
+	-DPYTHON_LIB_REL_PATH="$(PYTHON3_PKG_DIR)" \
+	-DEigen3_DIR="$(STAGING_DIR_HOSTPKG)" \
+	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+
+CMAKE_HOST_OPTIONS += \
+	-DINSTALL_TEST=OFF \
+	-DUSE_MKLDNN=OFF -DUSE_ITT=OFF \
+	-DBUILD_TEST=OFF \
+	-DBUILD_CUSTOM_PROTOBUF=OFF \
+	-DBUILD_SHARED_LIBS=ON \
+	-DUSE_SYSTEM_SLEEF=ON \
+	-DUSE_SYSTEM_PYBIND11=ON \
+	-DUSE_SYSTEM_EIGEN_INSTALL=ON \
+	-DUSE_GLOG=ON \
+	-DUSE_GFLAGS=ON \
+	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
+	-DUSE_SYSTEM_CPUINFO=ON \
+	-DTORCH_DEFAULT_VERSION="$(PKG_VERSION)" \
+	-DTORCH_BUILD_VERSION="$(PKG_VERSION)" \
+	-DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" \
+	-DPYTORCH_BUILD_NUMBER=0 \
+	-DPYTHON_LIB_REL_PATH="$(HOST_PYTHON3_PKG_DIR)" \
+	-DEigen3_DIR="$(STAGING_DIR_HOSTPKG)" \
+	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
 
 $(eval $(call HostBuild))
 $(eval $(call BuildPackage,pytorch))
