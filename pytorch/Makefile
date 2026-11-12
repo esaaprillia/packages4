@@ -58,6 +58,7 @@ define Host/Compile
 	$(call Host/Compile/Default)
 	$(call Host/Install/Default)
 	ls $(STAGING_DIR_HOSTPKG)/lib/*
+	ls $(HOST_PYTHON3_PKG_DIR)/*
 endef
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
