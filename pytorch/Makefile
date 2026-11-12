@@ -21,7 +21,7 @@ CMAKE_BINARY_SUBDIR := build
 #HOST_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
 
 #PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
-HOST_BUILD_DEPENDS:=numpy/host python-pybind11/host
+HOST_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
