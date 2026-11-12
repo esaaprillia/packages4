@@ -19,6 +19,7 @@ CMAKE_BINARY_SUBDIR := build
 PYTHON3_PKG_BUILD:=0
 PYTHON3_HOST_BUILD:=0
 PKG_INSTALL:=1
+HOST_INSTALL:=1
 
 PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11/host
 HOST_BUILD_DEPENDS:=numpy/host numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
@@ -108,6 +109,15 @@ CMAKE_HOST_OPTIONS += \
 	-DEigen3_DIR="$(STAGING_DIR_HOSTPKG)" \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc"
+
+define Host/Compile
+	$(call Host/Compile/Default)
+	$(call Host/Install/Default)
+endef
+
+define Host/Install
+	$(call Host/Install/Default)
+endef
 
 $(eval $(call HostBuild))
 $(eval $(call BuildPackage,pytorch))
