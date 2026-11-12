@@ -27,7 +27,7 @@ define Package/onednn
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=oneAPI Deep Neural Network Library (oneDNN)
-	DEPENDS:=+libgomp
+	DEPENDS:=+libgomp +libstdcpp
 	URL:=https://github.com/oneapi-src/oneDNN
 endef
 
