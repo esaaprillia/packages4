@@ -54,7 +54,6 @@ define Package/python3-pytorch/description
 endef
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
-export USE_ITT=OFF
 
 #TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
 #TARGET_CCFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CCFLAGS))
@@ -64,7 +63,7 @@ TARGET_CFLAGS:= $(filter-out -O%,$(TARGET_CFLAGS)) -O3
 TARGET_CCFLAGS:= $(filter-out -O%,$(TARGET_CCFLAGS)) -O3
 TARGET_CXXFLAGS:= $(filter-out -O%,$(TARGET_CXXFLAGS)) -O3
 
-HOST_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR_HOSTPKG)/lib
+HOST_LDFLAGS += -Wl,-rpath-link=$(STAGING_DIR_HOSTPKG)/lib -ldnnl
 
 CMAKE_OPTIONS += \
 	-DINSTALL_TEST=OFF \
