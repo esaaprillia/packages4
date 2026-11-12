@@ -54,6 +54,12 @@ define Package/python3-pytorch/description
 	pytorch Python library
 endef
 
+define Host/Compile
+	$(call Host/Compile/Default)
+	$(call Host/Install/Default)
+	ls $(STAGING_DIR_HOSTPKG)/lib/*
+endef
+
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
 CMAKE_HOST_OPTIONS += \
