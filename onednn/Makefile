@@ -35,7 +35,7 @@ define Package/onednn/description
 	oneDNN is an open-source, cross-platform library of optimized deep learning operations for CPUs and GPUs.
 endef
 
-HOST_LDFLAGS += -lm -lrt
+TARGET_LDFLAGS += -lm -lrt
 
 CMAKE_OPTIONS += \
 	-DLIBM="" \
