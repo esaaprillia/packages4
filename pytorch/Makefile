@@ -20,7 +20,7 @@ PYTHON3_PKG_BUILD:=0
 PYTHON3_HOST_BUILD:=0
 
 PKG_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11/host
-HOST_BUILD_DEPENDS:=numpy/host numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host onednn/host openmp/host openblas/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
+HOST_BUILD_DEPENDS:=numpy/host numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -88,7 +88,7 @@ CMAKE_OPTIONS += \
 
 CMAKE_HOST_OPTIONS += \
 	-DINSTALL_TEST=OFF \
-	-DUSE_ITT=OFF \
+	-DUSE_MKLDNN=ON \
 	-DBUILD_TEST=OFF \
 	-DBUILD_CUSTOM_PROTOBUF=OFF \
 	-DBUILD_SHARED_LIBS=ON \
