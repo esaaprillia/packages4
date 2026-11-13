@@ -54,13 +54,6 @@ define Package/python3-pytorch/description
 	pytorch Python library
 endef
 
-define Host/Compile
-	$(call Host/Compile/Default)
-	$(call Host/Install/Default)
-	ls $(STAGING_DIR_HOSTPKG)/lib/*
-	ls $(HOST_PYTHON3_PKG_DIR)/*
-endef
-
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
 CMAKE_HOST_OPTIONS += \
@@ -76,6 +69,10 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_OPENMP=OFF \
 	-DUSE_XCCL=OFF
 	-DUSE_XPU=OFF
+
+define Host/Install
+	+DESTDIR="$(HOST_BUILD_PREFIX)" $(NINJA) -C $(HOST_CMAKE_BINARY_DIR) install
+endef
 
 $(eval $(call HostBuild))
 $(eval $(call BuildPackage,pytorch))
