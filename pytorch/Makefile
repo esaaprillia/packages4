@@ -21,13 +21,13 @@ CMAKE_BINARY_SUBDIR := build
 #HOST_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
 
 #PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
-HOST_BUILD_DEPENDS:=numpy/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host
+HOST_BUILD_DEPENDS:=numpy/host python-pybind11/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
-########include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
+include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 
 define Package/pytorch
 	SECTION:=libs
@@ -56,9 +56,12 @@ endef
 
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
+PYTHON3_HOST_BUILD_VARS += CMAKE_ARGS="-DCMAKE_INSTALL_BINDIR=/usr/bin -DCMAKE_INSTALL_LIBDIR=/usr/lib -DBUILD_PYTHON_ONLY=1 -DPYTORCH_BUILD_VERSION="$(PKG_VERSION)" -DPYTORCH_BUILD_NUMBER=0"
+
 CMAKE_HOST_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_TEST=OFF \
+	-DBUILD_PYTHON=OFF \
 	-DUSE_CUDA=OFF \
 	-DUSE_ITT=OFF \
 	-DUSE_MAGMA=OFF \
@@ -67,12 +70,10 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_NCCL=OFF \
 	-DUSE_NUMA=OFF \
 	-DUSE_OPENMP=OFF \
-	-DUSE_XCCL=OFF
-	-DUSE_XPU=OFF
-
-define Host/Install
-	+DESTDIR="$(HOST_BUILD_PREFIX)" $(NINJA) -C $(HOST_CMAKE_BINARY_DIR) install
-endef
+	-DUSE_SYSTEM_PYBIND11=ON \
+	-DUSE_XCCL=OFF \
+	-DUSE_XPU=OFF \
+	-DTORCH_BUILD_VERSION="$(PKG_VERSION)"
 
 $(eval $(call HostBuild))
 $(eval $(call BuildPackage,pytorch))
