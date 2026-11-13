@@ -75,6 +75,14 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_XPU=OFF \
 	-DTORCH_BUILD_VERSION="$(PKG_VERSION)"
 
+PYTHON3_HOST_BUILD:=0
+
+define Host/Compile
+	$(call Host/Compile/Default)
+	$(call Host/Install/Default)
+	$(call Py3Host/Compile)
+endef
+
 $(eval $(call HostBuild))
 $(eval $(call BuildPackage,pytorch))
 $(eval $(call Py3Package,python3-pytorch))
