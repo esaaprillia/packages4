@@ -11,8 +11,8 @@ PKG_MAINTAINER:=Andy Syam <privasisource@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
-HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host
+PKG_BUILD_DEPENDS:=python-hatch-fancy-pypi-readme/host python-hatchling/host python-hatch-vcs/host
+HOST_BUILD_DEPENDS:=python-hatch-fancy-pypi-readme/host python-hatchling/host python-hatch-vcs/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
