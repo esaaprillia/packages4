@@ -35,6 +35,7 @@ TARGET_LDFLAGS += $(FPIC)
 
 HOST_CFLAGS += $(HOST_FPIC)
 HOST_LDFLAGS += $(HOST_FPIC)
+HOSTCC += $(HOST_FPIC) 
 
 CONFIGURE_ARGS += \
 	--disable-static \
