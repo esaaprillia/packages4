@@ -48,6 +48,7 @@ endef
 CMAKE_OPTIONS += \
 	-DLIBOMP_ENABLE_SHARED=ON \
 	-DLIBOMP_INSTALL_ALIASES=OFF \
+	-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 	-DLLVM_DIR="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/lib/cmake/llvm" \
 	-DCLANG_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/bin/clang" \
 	-DLINK_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/bin/llvm-link" \
@@ -58,6 +59,7 @@ CMAKE_OPTIONS += \
 CMAKE_HOST_OPTIONS += \
 	-DLIBOMP_ENABLE_SHARED=OFF \
 	-DLIBOMP_INSTALL_ALIASES=OFF \
+	-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 	-DLLVM_DIR="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/lib/cmake/llvm" \
 	-DCLANG_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/bin/clang" \
 	-DLINK_TOOL="$(STAGING_DIR_HOST)/llvm-bpf-21.1.6.Linux-x86_64/bin/llvm-link" \
