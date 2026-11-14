@@ -13,6 +13,7 @@ PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=LICENSE.GPL2 LICENSE.GPL2.1
 
 PKG_BUILD_PARALLEL:=1
+HOST_FIXUP:=autoreconf
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -29,9 +30,6 @@ endef
 define Package/numactl/description
 Simple NUMA policy support. It consists of a numactl program to run other programs with a specific NUMA policy and a libnuma shared library ("NUMA API") to set NUMA policy in applications.
 endef
-
-TARGET_CFLAGS += $(FPIC)
-TARGET_LDFLAGS += $(FPIC)
 
 HOST_CFLAGS += $(HOST_FPIC)
 HOST_LDFLAGS += $(HOST_FPIC)
