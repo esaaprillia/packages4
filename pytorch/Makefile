@@ -21,7 +21,8 @@ CMAKE_BINARY_SUBDIR := build
 #HOST_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
 
 #PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
-HOST_BUILD_DEPENDS:=numpy/host python-pybind11/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host
+#HOST_BUILD_DEPENDS:=HOST_BUILD_DEPENDS:=numpy/host numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host protobuf/host eigen/host libfmt/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host  python-yaml/host
+HOST_BUILD_DEPENDS:=numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host protobuf/host eigen/host libfmt/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -62,20 +63,31 @@ PYTHON3_HOST_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION) 
 
 CMAKE_HOST_OPTIONS += \
 	-DBUILD_SHARED_LIBS=OFF \
+	-DBUILD_CUSTOM_PROTOBUF=OFF \
+	-DBUILD_PYTHON=OFF \
 	-DBUILD_TEST=OFF \
-	-DBUILD_PYTHON=ON \
 	-DUSE_CUDA=OFF \
+	-DUSE_SYSTEM_FMT=ON \
+	-DUSE_GLOG=ON \
+	-DUSE_GFLAGS=ON \
 	-DUSE_ITT=OFF \
 	-DUSE_MAGMA=OFF \
 	-DUSE_MKLDNN=OFF \
 	-DUSE_MPI=OFF \
 	-DUSE_NCCL=OFF \
-	-DUSE_NUMA=OFF \
-	-DUSE_OPENMP=OFF \
+	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
+	-DUSE_SYSTEM_CPUINFO=ON \
+	-DUSE_SYSTEM_EIGEN_INSTALL=ON \
+	-DUSE_SYSTEM_FMT=ON \
 	-DUSE_SYSTEM_PYBIND11=ON \
+	-DUSE_SYSTEM_SLEEF=ON \
 	-DUSE_XCCL=OFF \
 	-DUSE_XPU=OFF \
-	-DTORCH_BUILD_VERSION="$(PKG_VERSION)"
+	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DPYTORCH_BUILD_VERSION=$(PKG_VERSION) \
+	-DPYTORCH_BUILD_NUMBER=1 \
+	-DTORCH_BUILD_VERSION=$(PKG_VERSION)
 
 PYTHON3_HOST_BUILD:=0
 PYTHON3_HOST_WHEEL_NAME:=torch
@@ -83,7 +95,7 @@ PYTHON3_HOST_WHEEL_VERSION:=2.15.0a0+gitunknown
 
 define Host/Compile
 	$(call Host/Compile/Default)
-	$(call Py3Host/Compile)
+	#$(call Py3Host/Compile)
 endef
 
 $(eval $(call HostBuild))
