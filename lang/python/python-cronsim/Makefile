@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-cronsim
-PKG_VERSION:=2.7
+PKG_VERSION:=2.8
 PKG_RELEASE:=1
 
 PYPI_NAME:=cronsim
