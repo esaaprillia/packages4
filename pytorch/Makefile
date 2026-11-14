@@ -22,7 +22,7 @@ CMAKE_BINARY_SUBDIR := build
 
 #PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
 #HOST_BUILD_DEPENDS:=HOST_BUILD_DEPENDS:=numpy/host numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host protobuf/host eigen/host libfmt/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host  python-yaml/host
-HOST_BUILD_DEPENDS:=numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host protobuf/host eigen/host libfmt/host
+HOST_BUILD_DEPENDS:=numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host onednn/host protobuf/host eigen/host libfmt/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -71,7 +71,7 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_GFLAGS=ON \
 	-DUSE_ITT=OFF \
 	-DUSE_MAGMA=OFF \
-	-DUSE_MKLDNN=OFF \
+	-DUSE_MKLDNN=ON \
 	-DUSE_MPI=OFF \
 	-DUSE_NCCL=OFF \
 	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
@@ -81,7 +81,7 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_SYSTEM_PYBIND11=ON \
 	-DUSE_SYSTEM_SLEEF=ON \
 	-DUSE_XCCL=OFF \
-	-DUSE_XPU=OFF \
+	-DUSE_XPU=ON \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPYTORCH_BUILD_VERSION=$(PKG_VERSION) \
