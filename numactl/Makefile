@@ -13,7 +13,6 @@ PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=LICENSE.GPL2 LICENSE.GPL2.1
 
 PKG_BUILD_PARALLEL:=1
-HOST_FIXUP:=autoreconf
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -32,8 +31,7 @@ Simple NUMA policy support. It consists of a numactl program to run other progra
 endef
 
 HOST_CFLAGS += $(HOST_FPIC)
-HOST_LDFLAGS += $(HOST_FPIC)
-HOSTCC += $(HOST_FPIC) 
+HOST_LDFLAGS += $(HOST_FPIC) -Wl,--version-script=$(HOST_BUILD_DIR)/versions.ldscript
 
 CONFIGURE_ARGS += \
 	--disable-static \
