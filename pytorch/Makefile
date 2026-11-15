@@ -30,7 +30,7 @@ define Package/libtorch
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +gflags +glog +openmp +openblas +protobuf +sleef +libuv
+	DEPENDS:=+libatomic +libstdcpp +libpython3 +abseil-cpp +cpuinfo +gflags +glog +openmp +openblas +protobuf +sleef +libuv
 	URL:=https://github.com/pytorch/pytorch
 endef
 
@@ -59,7 +59,7 @@ export TORCH_BUILD_VERSION=$(PKG_VERSION)
 PYTHON3_PKG_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
 
 CMAKE_OPTIONS += \
-	-DBUILD_SHARED_LIBS=OFF \
+	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_CUSTOM_PROTOBUF=OFF \
 	-DBUILD_PYTHON=ON \
 	-DBUILD_TEST=OFF \
