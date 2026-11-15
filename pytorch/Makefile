@@ -89,6 +89,7 @@ PYTHON3_PKG_WHEEL_VERSION:=2.15.0
 
 define Build/Compile
 	$(call Build/Compile/Default)
+	$(call Build/Install/Default)
 	$(call Py3Build/Compile)
 endef
 
@@ -125,7 +126,12 @@ PYTHON3_HOST_WHEEL_VERSION:=2.15.0
 
 define Host/Compile
 	$(call Host/Compile/Default)
+	$(call Host/Install/Default)
 	$(call Py3Host/Compile)
+endef
+
+define Build/InstallDev
+	$(call Build/InstallDev/cmake,$(1))
 endef
 
 $(eval $(call HostBuild))
