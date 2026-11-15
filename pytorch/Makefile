@@ -17,12 +17,8 @@ HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/pytorch-v$(PKG_VERSION)
 
 CMAKE_BINARY_SUBDIR := build
 
-#PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
-#HOST_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
-
-#PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
+PKG_BUILD_DEPENDS:=numpy/host onednn protobuf/host eigen python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
 HOST_BUILD_DEPENDS:=numpy/host gflags/host glog/host libuv/host cpuinfo/host sleef/host onednn/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
-#HOST_BUILD_DEPENDS:=numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host onednn/host protobuf/host eigen/host libfmt/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -30,28 +26,28 @@ include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 
-define Package/pytorch
+define Package/libtorch
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +gflags +glog +numactl +openmp +openblas +protobuf +sleef +libuv
+	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +gflags +glog +openmp +openblas +protobuf +sleef +libuv
 	URL:=https://github.com/pytorch/pytorch
 endef
 
-define Package/pytorch/description
+define Package/libtorch/description
 	You can reuse your favorite Python packages such as NumPy, SciPy, and Cython to extend PyTorch when needed.
 endef
 
-define Package/python3-pytorch
+define Package/python3-torch
 	SUBMENU:=Python
 	SECTION:=lang
 	CATEGORY:=Languages
 	TITLE:=pytorch Python library
-	#DEPENDS:=+python3-light +python3-filelock +python3-fsspec +python3-jinja2 +python3-networkx +python3-numpy +python3-sympy +python3-typing-extensions +python3-yaml +pytorch
+	#DEPENDS:=+python3-light +python3-filelock +python3-fsspec +python3-jinja2 +python3-networkx +python3-numpy +python3-sympy +python3-typing-extensions +python3-yaml +libtorch
 	URL:=https://github.com/pytorch/pytorch
 endef
 
-define Package/python3-pytorch/description
+define Package/python3-torch/description
 	pytorch Python library
 endef
 
@@ -59,6 +55,42 @@ export CMAKE_POLICY_VERSION_MINIMUM=3.5
 export PYTORCH_BUILD_VERSION=$(PKG_VERSION)
 export PYTORCH_BUILD_NUMBER=1
 export TORCH_BUILD_VERSION=$(PKG_VERSION)
+
+PYTHON3_PKG_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
+
+CMAKE_OPTIONS += \
+	-DBUILD_SHARED_LIBS=OFF \
+	-DBUILD_CUSTOM_PROTOBUF=OFF \
+	-DBUILD_PYTHON=ON \
+	-DBUILD_TEST=OFF \
+	-DUSE_CUDA=OFF \
+	-DUSE_GLOG=ON \
+	-DUSE_GFLAGS=ON \
+	-DUSE_ITT=OFF \
+	-DUSE_MAGMA=OFF \
+	-DUSE_MKLDNN=ON \
+	-DUSE_MPI=OFF \
+	-DUSE_NCCL=OFF \
+	-DUSE_NUMA=OFF \
+	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
+	-DUSE_SYSTEM_CPUINFO=ON \
+	-DUSE_SYSTEM_EIGEN_INSTALL=ON \
+	-DUSE_SYSTEM_PYBIND11=ON \
+	-DUSE_SYSTEM_SLEEF=ON \
+	-DUSE_XCCL=OFF \
+	-DUSE_XPU=OFF \
+	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
+
+PYTHON3_PKG_BUILD:=0
+PYTHON3_PKG_WHEEL_NAME:=torch
+PYTHON3_PKG_WHEEL_VERSION:=2.15.0
+
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Py3Build/Compile)
+endef
 
 PYTHON3_HOST_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
 
@@ -97,7 +129,7 @@ define Host/Compile
 endef
 
 $(eval $(call HostBuild))
-$(eval $(call BuildPackage,pytorch))
-$(eval $(call Py3Package,python3-pytorch))
-$(eval $(call BuildPackage,python3-pytorch))
-$(eval $(call BuildPackage,python3-pytorch-src))
+$(eval $(call BuildPackage,libtorch))
+$(eval $(call Py3Package,python3-torch))
+$(eval $(call BuildPackage,python3-torch))
+$(eval $(call BuildPackage,python3-torch-src))
