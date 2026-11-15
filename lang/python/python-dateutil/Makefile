@@ -16,8 +16,8 @@ PYPI_NAME:=$(PKG_NAME)
 PKG_HASH:=skip
 PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 
-PKG_BUILD_DEPENDS:=python--hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
-HOST_BUILD_DEPENDS:=python--hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host python-tzdata/host
+PKG_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host
+HOST_BUILD_DEPENDS:=python-hatchling/host python-hatch-vcs/host python-hatch-fancy-pypi-readme/host python-tzdata/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
