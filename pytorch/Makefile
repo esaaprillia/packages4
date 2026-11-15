@@ -44,6 +44,7 @@ define Package/python3-torch
 	CATEGORY:=Languages
 	TITLE:=pytorch Python library
 	#DEPENDS:=+python3-light +python3-filelock +python3-fsspec +python3-jinja2 +python3-networkx +python3-numpy +python3-sympy +python3-typing-extensions +python3-yaml +libtorch
+	DEPENDS:=+libtorch
 	URL:=https://github.com/pytorch/pytorch
 endef
 
