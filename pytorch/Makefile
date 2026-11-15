@@ -89,7 +89,7 @@ CMAKE_HOST_OPTIONS += \
 
 PYTHON3_HOST_BUILD:=0
 PYTHON3_HOST_WHEEL_NAME:=torch
-PYTHON3_HOST_WHEEL_VERSION:=2.15.0a0+gitunknown
+PYTHON3_HOST_WHEEL_VERSION:=2.15.0
 
 define Host/Compile
 	$(call Host/Compile/Default)
