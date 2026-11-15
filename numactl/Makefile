@@ -30,16 +30,15 @@ define Package/numactl/description
 Simple NUMA policy support. It consists of a numactl program to run other programs with a specific NUMA policy and a libnuma shared library ("NUMA API") to set NUMA policy in applications.
 endef
 
-HOST_CFLAGS += $(HOST_FPIC)
-HOST_LDFLAGS += -version-info 1:0:0 -Wl,--version-script=$(HOST_BUILD_DIR)/versions.ldscript -Wl,-init,numa_init -Wl,-fini,numa_fini $(HOST_FPIC)
-
 CONFIGURE_ARGS += \
 	--disable-static \
-	--enable-shared
+	--enable-shared \
+	--with-pic
 
 HOST_CONFIGURE_ARGS += \
 	--enable-static \
-	--disable-shared
+	--disable-shared \
+	--with-pic
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
