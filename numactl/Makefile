@@ -31,7 +31,7 @@ Simple NUMA policy support. It consists of a numactl program to run other progra
 endef
 
 HOST_CFLAGS += $(HOST_FPIC)
-HOST_LDFLAGS += $(HOST_FPIC) -Wl,--version-script=$(HOST_BUILD_DIR)/versions.ldscript
+HOST_LDFLAGS += -version-info 1:0:0 -Wl,--version-script,$(HOST_BUILD_DIR)/versions.ldscript -Wl,-init,numa_init -Wl,-fini,numa_fini $(HOST_FPIC)
 
 CONFIGURE_ARGS += \
 	--disable-static \
