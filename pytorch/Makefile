@@ -21,7 +21,7 @@ CMAKE_BINARY_SUBDIR := build
 #HOST_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen/host python-pybind11/host
 
 #PKG_BUILD_DEPENDS:=numpy/host python-scikit-build-core/host python-packaging/host python-yaml/host python-typing-extensions/host python-six/host python-requests/host protobuf/host eigen python-pybind11
-HOST_BUILD_DEPENDS:=numpy/host numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host onednn/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
+HOST_BUILD_DEPENDS:=numpy/host gflags/host glog/host libuv/host cpuinfo/host sleef/host onednn/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
 #HOST_BUILD_DEPENDS:=numactl/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host onednn/host protobuf/host eigen/host libfmt/host
 
 include $(INCLUDE_DIR)/package.mk
@@ -75,6 +75,7 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_MKLDNN=ON \
 	-DUSE_MPI=OFF \
 	-DUSE_NCCL=OFF \
+	-DUSE_NUMA=OFF \
 	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
 	-DUSE_SYSTEM_CPUINFO=ON \
 	-DUSE_SYSTEM_EIGEN_INSTALL=ON \
