@@ -65,6 +65,8 @@ export PYTORCH_BUILD_VERSION=$(PKG_VERSION)
 export PYTORCH_BUILD_NUMBER=1
 export TORCH_BUILD_VERSION=$(PKG_VERSION)
 
+PYTHON3_PKG_WHEEL_NAME:=torch
+PYTHON3_PKG_WHEEL_VERSION:=2.15.0
 PYTHON3_PKG_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
 
 CMAKE_OPTIONS += \
@@ -90,20 +92,10 @@ CMAKE_OPTIONS += \
 	-DUSE_XPU=OFF \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DCMAKE_INSTALL_PREFIX="$(PKG_INSTALL_DIR)/usr" \
-	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
-PYTHON3_PKG_BUILD:=0
-PYTHON3_PKG_WHEEL_NAME:=torch
-PYTHON3_PKG_WHEEL_VERSION:=2.15.0
-
-define Build/Compile
-	$(call Build/Compile/Default)
-	$(call Build/Install/Default)
-	$(call Py3Build/Compile)
-endef
-
+PYTHON3_HOST_WHEEL_NAME:=torch
+PYTHON3_HOST_WHEEL_VERSION:=2.15.0
 PYTHON3_HOST_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
 
 CMAKE_HOST_OPTIONS += \
@@ -131,25 +123,29 @@ CMAKE_HOST_OPTIONS += \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
-PYTHON3_HOST_BUILD:=0
-PYTHON3_HOST_WHEEL_NAME:=torch
-PYTHON3_HOST_WHEEL_VERSION:=2.15.0
-
-define Host/Compile
-	$(call Host/Compile/Default)
-	$(call Host/Install/Default)
-	$(call Py3Host/Compile)
-endef
-
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/include/* $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/* $(1)/usr/share/
 endef
 
 define Package/libtorch/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/*.so* $(1)/usr/lib/
+endef
+
+define Host/Install
+	$(INSTALL_DIR) $(1)/include
+	$(CP) $(HOST_INSTALL_DIR)/$(HOST_PYTHON3_PKG_DIR)/torch/include/* $(1)/include/
+	$(INSTALL_DIR) $(1)/lib
+	$(CP) $(HOST_INSTALL_DIR)/$(HOST_PYTHON3_PKG_DIR)/torch/lib/*.so* $(1)/lib/
+	$(INSTALL_DIR) $(1)/share
+	$(CP) $(HOST_INSTALL_DIR)/$(HOST_PYTHON3_PKG_DIR)/torch/share/* $(1)/share/
 endef
 
 $(eval $(call HostBuild))
