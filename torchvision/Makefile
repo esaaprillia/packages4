@@ -51,6 +51,12 @@ CMAKE_OPTIONS += \
 	-DWITH_CUDA=OFF \
 	-DWITH_WEBP=ON
 
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Build/Install/Default)
+	$(call Py3Build/Compile)
+endef
+
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
 endef
