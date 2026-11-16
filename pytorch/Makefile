@@ -17,8 +17,8 @@ HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/pytorch-v$(PKG_VERSION)
 
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=numpy/host onednn protobuf/host eigen python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
-HOST_BUILD_DEPENDS:=numpy/host gflags/host glog/host libuv/host cpuinfo/host sleef/host onednn/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
+PKG_BUILD_DEPENDS:=numpy/host protobuf/host eigen python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
+HOST_BUILD_DEPENDS:=numpy/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -77,7 +77,7 @@ CMAKE_OPTIONS += \
 	-DUSE_GFLAGS=ON \
 	-DUSE_ITT=OFF \
 	-DUSE_MAGMA=OFF \
-	-DUSE_MKLDNN=ON \
+	-DUSE_MKLDNN=OFF \
 	-DUSE_MPI=OFF \
 	-DUSE_NCCL=OFF \
 	-DUSE_NUMA=OFF \
@@ -116,7 +116,7 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_GFLAGS=ON \
 	-DUSE_ITT=OFF \
 	-DUSE_MAGMA=OFF \
-	-DUSE_MKLDNN=ON \
+	-DUSE_MKLDNN=OFF \
 	-DUSE_MPI=OFF \
 	-DUSE_NCCL=OFF \
 	-DUSE_NUMA=OFF \
