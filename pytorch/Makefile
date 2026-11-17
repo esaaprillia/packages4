@@ -100,8 +100,8 @@ PYTHON3_PKG_WHEEL_VERSION:=2.15.0
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	$(call Py3Build/Compile)
 	$(call Build/Install/Default)
+	$(call Py3Build/Compile)
 	ls $(PKG_INSTALL_DIR)/*
 endef
 
