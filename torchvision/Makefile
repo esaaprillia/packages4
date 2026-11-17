@@ -47,6 +47,8 @@ define Package/python3-torchvision/description
 	The torchvision package consists of popular datasets, model architectures, and common image transformations for computer vision.
 endef
 
+PYTHON3_PKG_BUILD_VARS += WITH_CUDA=0 FORCE_CUDA=0
+
 CMAKE_OPTIONS += \
 	-DWITH_CUDA=OFF \
 	-DWITH_WEBP=ON
