@@ -90,6 +90,8 @@ CMAKE_OPTIONS += \
 	-DUSE_XPU=OFF \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DCMAKE_INSTALL_PREFIX="$(PKG_INSTALL_DIR)/usr" \
+	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
 PYTHON3_PKG_BUILD:=0
@@ -98,8 +100,8 @@ PYTHON3_PKG_WHEEL_VERSION:=2.15.0
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	$(call Build/Install/Default)
 	$(call Py3Build/Compile)
+	$(call Build/Install/Default)
 	ls $(PKG_INSTALL_DIR)/*
 endef
 
