@@ -121,9 +121,9 @@ define Build/InstallDev
 endef
 
 define Host/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
+	$(INSTALL_DIR) $(1)/include
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(1)/include/
-	$(INSTALL_DIR) $(1)/usr/lib
+	$(INSTALL_DIR) $(1)/lib
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc*,libshm*,libtorch*} $(1)/lib/
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/* $(1)/lib/
 endef
