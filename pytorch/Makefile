@@ -102,7 +102,6 @@ define Build/Compile
 	$(call Build/Compile/Default)
 	$(call Build/Install/Default)
 	$(call Py3Build/Compile)
-	$(call Py3Build/Install)
 endef
 
 PYTHON3_HOST_BUILD_VARS += CMAKE_ARGS="-DBUILD_PYTHON=ON -DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
