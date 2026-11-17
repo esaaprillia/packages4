@@ -120,14 +120,6 @@ define Build/InstallDev
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/* $(1)/usr/lib/
 endef
 
-define Host/InstallDev
-	$(INSTALL_DIR) $(1)/include
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(1)/include/
-	$(INSTALL_DIR) $(1)/lib
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc*,libshm*,libtorch*} $(1)/lib/
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/* $(1)/lib/
-endef
-
 define Py3Package/python3-torch/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/bin/* $(1)/usr/bin/
