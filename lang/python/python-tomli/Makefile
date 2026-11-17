@@ -32,10 +32,6 @@ define Package/python3-tomli/description
   Tomli continues to provide a backport on PyPI for Python versions where the standard library module is not available and that have not yet reached their end-of-life.
 endef
 
-define Host/Install
-	$(call Py3Host/Install)
-endef
-
 $(eval $(call Py3Package,python3-tomli))
 $(eval $(call BuildPackage,python3-tomli))
 $(eval $(call BuildPackage,python3-tomli-src))
