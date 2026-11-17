@@ -26,18 +26,30 @@ include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-package.mk
 include $(TOPDIR)/feeds/python/lang/python/python3-host-build.mk
 
+define Package/libtorch
+	SECTION:=libs
+	CATEGORY:=Libraries
+	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
+	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +gflags +glog +openmp +openblas +protobuf +sleef +libuv
+	URL:=https://github.com/pytorch/pytorch
+endef
+
+define Package/libtorch/description
+	You can reuse your favorite Python packages such as NumPy, SciPy, and Cython to extend PyTorch when needed.
+endef
+
 define Package/python3-torch
 	SUBMENU:=Python
 	SECTION:=lang
 	CATEGORY:=Languages
-	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
+	TITLE:=pytorch Python library
 	#DEPENDS:=+python3-light +python3-filelock +python3-fsspec +python3-jinja2 +python3-networkx +python3-numpy +python3-sympy +python3-typing-extensions +python3-yaml +libtorch
-	DEPENDS:=+libatomic +libstdcpp +libpython3 +abseil-cpp +cpuinfo +gflags +glog +openmp +openblas +protobuf +sleef +libuv
+	DEPENDS:=+python3-light +libtorch
 	URL:=https://github.com/pytorch/pytorch
 endef
 
 define Package/python3-torch/description
-	You can reuse your favorite Python packages such as NumPy, SciPy, and Cython to extend PyTorch when needed.
+	pytorch Python library
 endef
 
 TARGET_CFLAGS := $(filter-out -Os -pipe -mcpu=generic,$(TARGET_CFLAGS))
@@ -53,14 +65,12 @@ export PYTORCH_BUILD_VERSION=$(PKG_VERSION)
 export PYTORCH_BUILD_NUMBER=1
 export TORCH_BUILD_VERSION=$(PKG_VERSION)
 
-PYTHON3_PKG_WHEEL_NAME:=torch
-PYTHON3_PKG_WHEEL_VERSION:=2.15.0
-PYTHON3_PKG_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
+PYTHON3_PKG_BUILD_VARS += CMAKE_ARGS="-DBUILD_PYTHON=ON -DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_CUSTOM_PROTOBUF=OFF \
-	-DBUILD_PYTHON=ON \
+	-DBUILD_PYTHON=OFF \
 	-DBUILD_TEST=OFF \
 	-DUSE_CUDA=OFF \
 	-DUSE_GLOG=ON \
@@ -80,17 +90,27 @@ CMAKE_OPTIONS += \
 	-DUSE_XPU=OFF \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DCMAKE_INSTALL_PREFIX="$(PKG_INSTALL_DIR)/usr" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
-PYTHON3_HOST_WHEEL_NAME:=torch
-PYTHON3_HOST_WHEEL_VERSION:=2.15.0
-PYTHON3_HOST_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
+PYTHON3_PKG_BUILD:=0
+PYTHON3_PKG_WHEEL_NAME:=torch
+PYTHON3_PKG_WHEEL_VERSION:=2.15.0
+
+define Build/Compile
+	$(call Build/Compile/Default)
+	$(call Build/Install/Default)
+	$(call Py3Build/Compile)
+	$(call Py3Build/Install)
+endef
+
+PYTHON3_HOST_BUILD_VARS += CMAKE_ARGS="-DBUILD_PYTHON=ON -DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
 
 CMAKE_HOST_OPTIONS += \
-	-DBUILD_SHARED_LIBS=OFF \
+	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_CUSTOM_PROTOBUF=OFF \
-	-DBUILD_PYTHON=ON \
+	-DBUILD_PYTHON=OFF \
 	-DBUILD_TEST=OFF \
 	-DUSE_CUDA=OFF \
 	-DUSE_GLOG=ON \
@@ -112,22 +132,34 @@ CMAKE_HOST_OPTIONS += \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
+PYTHON3_HOST_BUILD:=0
+PYTHON3_HOST_WHEEL_NAME:=torch
+PYTHON3_HOST_WHEEL_VERSION:=2.15.0
+
+define Host/Compile
+	$(call Host/Compile/Default)
+	$(call Host/Install/Default)
+	$(call Py3Host/Compile)
+endef
+
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/include/* $(1)/usr/include/
+	$(call Build/InstallDev/cmake,$(1))
+endef
+
+define Package/libtorch/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc*,libshm*,libtorch*} $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/{libc*,libshm*,libtorch*} $(1)/usr/lib/
 endef
 
 define Py3Package/python3-torch/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc*,libshm*,libtorch*} $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/libtorch_python* $(1)/usr/lib/
 endef
 
 $(eval $(call HostBuild))
+$(eval $(call BuildPackage,libtorch))
 $(eval $(call Py3Package,python3-torch))
 $(eval $(call BuildPackage,python3-torch))
 $(eval $(call BuildPackage,python3-torch-src))
