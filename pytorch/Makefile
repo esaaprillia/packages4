@@ -16,6 +16,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/pytorch-v$(PKG_VERSION)
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/pytorch-v$(PKG_VERSION)
 
 CMAKE_BINARY_SUBDIR := build
+PYTHON3_HOST_BUILD:=0
 
 #PKG_BUILD_DEPENDS:=numpy/host protobuf/host eigen python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
 #HOST_BUILD_DEPENDS:=numpy/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
