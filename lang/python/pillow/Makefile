@@ -14,6 +14,7 @@ PYPI_NAME:=pillow
 PKG_HASH:=skip
 
 PKG_BUILD_DEPENDS:=python-pybind11/host
+HOST_BUILD_DEPENDS:=python-pybind11/host
 
 PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 PKG_LICENSE:=HPND
@@ -22,7 +23,9 @@ PKG_CPE_ID:=cpe:/a:python:pillow
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
+include ../python3-host-build.mk
 
 define Package/python3-pillow
   SUBMENU:=Python
@@ -50,6 +53,7 @@ PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
 	--build-option=--enable-imagequant \
 	--build-option=--disable-platform-guessing
 
+$(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pillow))
 $(eval $(call BuildPackage,python3-pillow))
 $(eval $(call BuildPackage,python3-pillow-src))
