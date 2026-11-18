@@ -39,8 +39,7 @@ define Package/python3-toml/description
   Python Library for Tom's Obvious, Minimal Language
 endef
 
-define Host/Compile
-	$(call Py3Host/Compile)
+define Host/Install
 	$(call Py3Host/Install/Installer)
 	$(call Py3Host/Install)
 endef
