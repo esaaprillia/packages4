@@ -100,13 +100,8 @@ PYTHON3_PKG_WHEEL_VERSION:=2.15.0
 
 define Build/Compile
 	$(call Build/Compile/Default)
-	#$(call Build/Install/Default)
+	$(call Build/Install/Default)
 	$(call Py3Build/Compile)
-	#ls $(PKG_INSTALL_DIR)/*
-endef
-
-define Build/Install
-	+$(NINJA) -C $(CMAKE_BINARY_DIR) install
 endef
 
 PYTHON3_HOST_BUILD_VARS += CMAKE_ARGS="-DBUILD_PYTHON=ON -DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
@@ -147,19 +142,23 @@ define Host/Compile
 endef
 
 define Build/InstallDev
-	$(call Build/InstallDev/cmake,$(1))
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/include/* $(1)/usr/include/
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*} $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/* $(1)/usr/lib/
 endef
 
 define Package/libtorch/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/{libc*,libshm*,libtorch*} $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*} $(1)/usr/lib/
 endef
 
 define Py3Package/python3-torch/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/libtorch_python* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/libtorch_python.* $(1)/usr/lib/
 endef
 
 $(eval $(call HostBuild))
