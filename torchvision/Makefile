@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DIR:=$(BUILD_DIR)/vision-$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=pytorch/host
+PKG_BUILD_DEPENDS:=pytorch/host pillow/host
 PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
