@@ -1,0 +1,92 @@
+From dd80ce1ad747a226e88f0e0f6821350936e23c6e Mon Sep 17 00:00:00 2001
+From: Klaus Zimmermann <klaus.zimmermann@quansight.com>
+Date: Mon, 16 Nov 2026 10:37:11 +0100
+Subject: [PATCH] Quote help string in caffe2_update_option
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes #204341.
+
+Configuring with USE_ITT=ON when find_package(ITT) fails aborts with
+
+    CMake Error at cmake/public/utils.cmake:123 (set):
+      set given invalid arguments: FORCE specified without CACHE
+
+The ITT fallback in cmake/Dependencies.cmake first ran
+set(USE_ITT OFF CACHE BOOL "" FORCE), which blanks the option's help
+string, and then called caffe2_update_option(USE_ITT OFF). The macro
+reads the help string back and passed it to set() unquoted, so an empty
+string vanished from the argument list and the call became
+set(USE_ITT OFF CACHE BOOL FORCE), which CMake rejects. This is
+independent of the CMake version and of cross-compilation; ITT is not
+found when third_party/ittapi is not checked out or when a toolchain
+file re-roots find_path into the sysroot.
+
+Quoting the help string makes the macro safe for any option with an
+empty help string. The explicit set() in the ITT fallback was redundant
+with the macro call that follows it and is removed so that USE_ITT keeps
+its help string. Either change alone fixes the error; USE_ITT is the
+only option passed to the macro whose help string is ever blanked.
+
+Test Plan:
+
+Ran the macro from cmake/public/utils.cmake in a scratch project, with
+CMake 3.31.10, on an option with a regular and one with an empty help
+string:
+
+```
+cat > CMakeLists.txt <<'CMAKE'
+cmake_minimum_required(VERSION 3.27)
+project(r NONE)
+set(CAFFE2_CMAKE_BUILDING_WITH_MAIN_REPO ON)
+include(${UTILS})
+option(USE_ITT "Use Intel(R) VTune Profiler ITT functionality" ON)
+caffe2_update_option(USE_ITT OFF)
+get_property(h CACHE USE_ITT PROPERTY HELPSTRING)
+message(STATUS "USE_ITT=${USE_ITT} help='${h}'")
+set(EMPTY_HELP ON CACHE BOOL "" FORCE)
+caffe2_update_option(EMPTY_HELP OFF)
+message(STATUS "EMPTY_HELP=${EMPTY_HELP}")
+CMAKE
+cmake -S . -B b -DUTILS=$PYTORCH/cmake/public/utils.cmake
+```
+
+With this change both updates succeed and USE_ITT keeps its help
+string. With utils.cmake from viable/strict the second update fails
+with the error above. A full PyTorch configure with ITT missing was not
+run.
+
+This commit was authored with the help of an AI assistant (Claude).
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+---
+ cmake/Dependencies.cmake | 1 -
+ cmake/public/utils.cmake | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/cmake/Dependencies.cmake b/cmake/Dependencies.cmake
+index 859dcf334e134..5dc2da588c29b 100644
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -753,7 +753,6 @@ if(USE_ITT)
+     list(APPEND TORCH_PYTHON_LINK_LIBRARIES ${ITT_LIBRARIES})
+   else()
+     message(WARNING "Not compiling with ITT. Suppress this warning with -DUSE_ITT=OFF")
+-    set(USE_ITT OFF CACHE BOOL "" FORCE)
+     caffe2_update_option(USE_ITT OFF)
+   endif()
+ endif()
+diff --git a/cmake/public/utils.cmake b/cmake/public/utils.cmake
+index fa5cf9b60861d..5cbdbad9d3328 100644
+--- a/cmake/public/utils.cmake
++++ b/cmake/public/utils.cmake
+@@ -120,7 +120,7 @@ endfunction()
+ macro(caffe2_update_option variable value)
+   if(CAFFE2_CMAKE_BUILDING_WITH_MAIN_REPO)
+     get_property(__help_string CACHE ${variable} PROPERTY HELPSTRING)
+-    set(${variable} ${value} CACHE BOOL ${__help_string} FORCE)
++    set(${variable} ${value} CACHE BOOL "${__help_string}" FORCE)
+   else()
+     set(${variable} ${value})
+   endif()
