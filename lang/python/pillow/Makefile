@@ -53,6 +53,18 @@ PYTHON3_PKG_BUILD_CONFIG_SETTINGS += \
 	--build-option=--enable-imagequant \
 	--build-option=--disable-platform-guessing
 
+PYTHON3_HOST_BUILD_CONFIG_SETTINGS += \
+	--build-option=build_ext \
+	--build-option=--disable-zlib \
+	--build-option=--disable-jpeg \
+	--build-option=--disable-webp \
+	--build-option=--disable-tiff \
+	--build-option=--disable-freetype \
+	--build-option=--disable-lcms \
+	--build-option=--disable-jpeg2000 \
+	--build-option=--disable-imagequant \
+	--build-option=--disable-platform-guessing
+
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-pillow))
 $(eval $(call BuildPackage,python3-pillow))
