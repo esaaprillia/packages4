@@ -56,7 +56,8 @@ define Py3Host/Install/Installer
 	$(call HostPython3/Run, \
 		$(HOST_BUILD_DIR), \
 		-m installer \
-			--prefix "$(1)" \
+			--destdir "$(1)" \
+			--prefix "" \
 			"$(PYTHON3_HOST_BUILD_DIR)"/openwrt-build/$(PYTHON3_HOST_WHEEL_NAME)-$(PYTHON3_HOST_WHEEL_VERSION)-*.whl \
 			, \
 		$(PYTHON3_HOST_INSTALL_VARS) \
