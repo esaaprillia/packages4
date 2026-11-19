@@ -130,7 +130,7 @@ define Host/Install
 	$(INSTALL_DIR) $(1)/include
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(1)/include/
 	$(INSTALL_DIR) $(1)/lib
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*} $(1)/lib/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_python.*} $(1)/lib/
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/* $(1)/lib/
 endef
 
