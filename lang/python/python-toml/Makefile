@@ -40,7 +40,8 @@ define Package/python3-toml/description
 endef
 
 define Host/Install
-	$(call Host/Install)
+	$(call Py3Host/Compile)
+	$(call Py3Host/Install)
 endef
 
 $(eval $(call HostBuild))
