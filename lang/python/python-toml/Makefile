@@ -41,8 +41,7 @@ endef
 
 PYTHON3_HOST_BUILD:=0
 
-define Host/Compile
-	$(call Py3Host/Compile)
+define Host/Install
 	$(call Py3Host/Install)
 endef
 
