@@ -64,8 +64,7 @@ export CMAKE_POLICY_VERSION_MINIMUM=3.5
 export PYTORCH_BUILD_VERSION=$(PKG_VERSION)
 export PYTORCH_BUILD_NUMBER=1
 export TORCH_BUILD_VERSION=$(PKG_VERSION)
-
-PYTHON3_PKG_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
+export SKBUILD_PROJECT_VERSION=$(PKG_VERSION)
 
 CMAKE_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
@@ -91,21 +90,11 @@ CMAKE_OPTIONS += \
 	-DUSE_XPU=OFF \
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DCMAKE_INSTALL_PREFIX="$(PKG_INSTALL_DIR)/usr" \
 	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
-PYTHON3_PKG_BUILD:=0
 PYTHON3_PKG_WHEEL_NAME:=torch
 PYTHON3_PKG_WHEEL_VERSION:=2.15.0
-
-define Build/Compile
-	$(call Build/Compile/Default)
-	$(call Build/Install/Default)
-	$(call Py3Build/Compile)
-endef
-
-PYTHON3_HOST_BUILD_VARS += CMAKE_ARGS="-DSKBUILD_PROJECT_VERSION=$(PKG_VERSION)"
 
 CMAKE_HOST_OPTIONS += \
 	-DBUILD_SHARED_LIBS=OFF \
@@ -133,21 +122,23 @@ CMAKE_HOST_OPTIONS += \
 	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
-PYTHON3_HOST_BUILD:=0
 PYTHON3_HOST_WHEEL_NAME:=torch
 PYTHON3_HOST_WHEEL_VERSION:=2.15.0
 
-define Host/Compile
-	$(call Host/Compile/Default)
-	$(call Host/Install/Default)
-	$(call Py3Host/Compile)
+define Host/Install
+	$(call Py3Host/Install)
+	$(INSTALL_DIR) $(1)/include
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(1)/include/
+	$(INSTALL_DIR) $(1)/lib
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*} $(1)/lib/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/* $(1)/lib/
 endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/include/* $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_python.*} $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*} $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/* $(1)/usr/lib/
 endef
 
