@@ -151,14 +151,14 @@ endef
 
 define Package/libtorch/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libtorch.*,libtorch_cpu.*} $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libtorch.*,libtorch_cpu.*} $(1)/usr/lib/
 endef
 
 define Py3Package/python3-torch/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/bin/* $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch_python.*} $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libshm.*,libtorch_python.*} $(1)/usr/lib/
 endef
 
 $(eval $(call HostBuild))
