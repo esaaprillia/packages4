@@ -65,18 +65,35 @@ define Py3Host/Install/Installer
 endef
 
 define Py3Host/Install
-	$(call HostPython3/Run, \
-		$(HOST_BUILD_DIR), \
-		-m installer \
-			--destdir "$(1)" \
-			--prefix "" \
-			"$(PYTHON3_HOST_BUILD_DIR)"/openwrt-build/$(PYTHON3_HOST_WHEEL_NAME)-$(PYTHON3_HOST_WHEEL_VERSION)-*.whl \
-			, \
-		$(PYTHON3_HOST_INSTALL_VARS) \
+	rm -rf "$(PYTHON3_HOST_STAGING_DIR)"
+	mkdir -p "$(PYTHON3_HOST_STAGING_DIR)" "$(PYTHON3_HOST_STAGING_FILES_LIST_DIR)"
+
+	$(call Py3Host/Install/Installer,$(PYTHON3_HOST_STAGING_DIR))
+
+	$(call Py3Host/Uninstall,$(1))
+
+	cd "$(PYTHON3_HOST_STAGING_DIR)" && find ./ > "$(PYTHON3_HOST_STAGING_DIR).files"
+
+	$(call locked, \
+		mv "$(PYTHON3_HOST_STAGING_DIR).files" "$(PYTHON3_HOST_STAGING_FILES_LIST)" && \
+		$(CP) "$(PYTHON3_HOST_STAGING_DIR)"/* "$(HOST_BUILD_PREFIX)/", \
+		host-staging-dir \
 	)
+
+	rm -rf "$(PYTHON3_HOST_STAGING_DIR)"
+endef
+
+define Py3Host/Uninstall
+	if [ -f "$(PYTHON3_HOST_STAGING_FILES_LIST)" ]; then \
+		"$(SCRIPT_DIR)/clean-package.sh" \
+			"$(PYTHON3_HOST_STAGING_FILES_LIST)" \
+			"$(1)" ; \
+		rm -f "$(PYTHON3_HOST_STAGING_FILES_LIST)" ; \
+	fi
 endef
 
 ifeq ($(strip $(PYTHON3_HOST_BUILD)),1)
   Host/Compile=$(Py3Host/Compile)
   Host/Install=$(Py3Host/Install)
+  Host/Uninstall=$(call Py3Host/Uninstall,$(HOST_BUILD_PREFIX))
 endif
