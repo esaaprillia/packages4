@@ -17,7 +17,7 @@ HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/pytorch-v$(PKG_VERSION)
 
 CMAKE_BINARY_SUBDIR := build
 
-PKG_BUILD_DEPENDS:=numpy/host protobuf/host eigen python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
+PKG_BUILD_DEPENDS:=numpy/host protobuf/host eigen python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host pytorch/host
 HOST_BUILD_DEPENDS:=numpy/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
 
 include $(INCLUDE_DIR)/package.mk
@@ -127,6 +127,7 @@ PYTHON3_HOST_WHEEL_NAME:=torch
 PYTHON3_HOST_WHEEL_VERSION:=2.15.0
 
 define Build/Prepare
+	$(call Build/Prepare/Default)
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(STAGING_DIR_HOSTPKG)/include/
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib
