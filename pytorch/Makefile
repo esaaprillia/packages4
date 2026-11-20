@@ -130,15 +130,6 @@ CMAKE_HOST_OPTIONS += \
 PYTHON3_HOST_WHEEL_NAME:=torch
 PYTHON3_HOST_WHEEL_VERSION:=2.15.0
 
-define Host/Install
-	$(call Py3Host/Install)
-	$(INSTALL_DIR) $(1)/include
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(1)/include/
-	$(INSTALL_DIR) $(1)/lib
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_python.*} $(1)/lib/
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/* $(1)/lib/
-endef
-
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/include/* $(1)/usr/include/
