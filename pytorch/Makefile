@@ -75,7 +75,6 @@ CMAKE_OPTIONS += \
 	-DUSE_GLOG=ON \
 	-DUSE_GFLAGS=ON \
 	-DUSE_ITT=OFF \
-	-DUSE_KINETO=ON \
 	-DUSE_MAGMA=OFF \
 	-DUSE_MKLDNN=OFF \
 	-DUSE_MPI=OFF \
@@ -105,7 +104,6 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_GLOG=ON \
 	-DUSE_GFLAGS=ON \
 	-DUSE_ITT=OFF \
-	-DUSE_KINETO=ON \
 	-DUSE_MAGMA=OFF \
 	-DUSE_MKLDNN=OFF \
 	-DUSE_MPI=OFF \
@@ -129,6 +127,14 @@ CMAKE_HOST_OPTIONS += \
 
 PYTHON3_HOST_WHEEL_NAME:=torch
 PYTHON3_HOST_WHEEL_VERSION:=2.15.0
+
+define Build/Prepare
+	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(STAGING_DIR_HOSTPKG)/include/
+	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_python.*} $(STAGING_DIR_HOSTPKG)/lib/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/* $(STAGING_DIR_HOSTPKG)/lib/
+endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
