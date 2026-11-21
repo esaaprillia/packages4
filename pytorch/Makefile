@@ -96,7 +96,7 @@ PYTHON3_PKG_WHEEL_NAME:=torch
 PYTHON3_PKG_WHEEL_VERSION:=2.15.0
 
 CMAKE_HOST_OPTIONS += \
-	-DBUILD_SHARED_LIBS=ON \
+	-DBUILD_SHARED_LIBS=OFF \
 	-DBUILD_CUSTOM_PROTOBUF=OFF \
 	-DBUILD_PYTHON=ON \
 	-DBUILD_TEST=OFF \
@@ -131,7 +131,7 @@ define Build/Prepare
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(STAGING_DIR_HOSTPKG)/include/
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_python.*} $(STAGING_DIR_HOSTPKG)/lib/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/* $(STAGING_DIR_HOSTPKG)/lib/
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/* $(STAGING_DIR_HOSTPKG)/lib/
 endef
 
