@@ -18,7 +18,8 @@ HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=numpy/host protobuf/host eigen python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host pytorch/host
-HOST_BUILD_DEPENDS:=numpy/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
+#HOST_BUILD_DEPENDS:=numpy/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
+HOST_BUILD_DEPENDS:=numpy/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -96,8 +97,7 @@ PYTHON3_PKG_WHEEL_NAME:=torch
 PYTHON3_PKG_WHEEL_VERSION:=2.15.0
 
 CMAKE_HOST_OPTIONS += \
-	-DBUILD_SHARED_LIBS=OFF \
-	-DBUILD_CUSTOM_PROTOBUF=OFF \
+	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_PYTHON=ON \
 	-DBUILD_TEST=OFF \
 	-DUSE_CUDA=OFF \
@@ -109,15 +109,14 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_MPI=OFF \
 	-DUSE_NCCL=OFF \
 	-DUSE_NUMA=OFF \
+	-DUSE_OPENMP=OFF \
 	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
-	-DUSE_SYSTEM_CPUINFO=ON \
-	-DUSE_SYSTEM_EIGEN_INSTALL=ON \
 	-DUSE_SYSTEM_PYBIND11=ON \
-	-DUSE_SYSTEM_SLEEF=ON \
 	-DUSE_XCCL=OFF \
 	-DUSE_XPU=OFF \
-	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
-	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DCMAKE_SKIP_RPATH=OFF \
+	-DCMAKE_INSTALL_LIBDIR=lib \
+	-DCMAKE_INSTALL_RPATH="$(STAGING_DIR_HOSTPKG)/lib" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
 PYTHON3_HOST_WHEEL_NAME:=torch
@@ -126,23 +125,25 @@ PYTHON3_HOST_WHEEL_VERSION:=2.15.0
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(STAGING_DIR_HOSTPKG)/include/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/{ATen,c10,caffe2,,torch} $(STAGING_DIR_HOSTPKG)/include/
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/* $(STAGING_DIR_HOSTPKG)/lib/
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/* $(STAGING_DIR_HOSTPKG)/lib/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_global_deps.*,libtorch_python.*} $(STAGING_DIR_HOSTPKG)/lib/
+	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib/cmake
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/cmake/{ATen,Caffe2,Torch} $(STAGING_DIR_HOSTPKG)/lib/cmake/
 endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/include/* $(1)/usr/include/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/include/{ATen,c10,caffe2,,torch} $(1)/usr/include/
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_python.*} $(1)/usr/lib/
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_global_deps.*,libtorch_python.*} $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/cmake
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/cmake/{ATen,Caffe2,Torch} $(1)/usr/lib/cmake/
 endef
 
 define Package/libtorch/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libtorch.*,libtorch_cpu.*} $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libtorch.*,libtorch_cpu.*,libtorch_global_deps.*} $(1)/usr/lib/
 endef
 
 define Py3Package/python3-torch/install
