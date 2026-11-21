@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=td
-PKG_VERSION:=1.8.67
+PKG_VERSION:=1.8.69
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
