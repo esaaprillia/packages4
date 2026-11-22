@@ -31,7 +31,7 @@ define Package/libtorch
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +gflags +glog +openmp +openblas +protobuf +sleef +libuv +libpython3
+	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +openmp +openblas +protobuf +sleef +libpython3
 	URL:=https://github.com/pytorch/pytorch
 endef
 
