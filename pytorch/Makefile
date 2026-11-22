@@ -18,7 +18,7 @@ HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/pytorch-v$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=numpy/host protobuf/host eigen python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host pytorch/host
-HOST_BUILD_DEPENDS:=numpy/host gflags/host glog/host libuv/host cpuinfo/host sleef/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
+HOST_BUILD_DEPENDS:=numpy/host cpuinfo/host sleef/host openmp/host openblas/host protobuf/host eigen/host python-pybind11/host python-packaging/host python-requests/host python-scikit-build-core/host python-six/host python-typing-extensions/host python-yaml/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -30,7 +30,7 @@ define Package/libtorch
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +gflags +glog +openmp +openblas +protobuf +sleef +libuv +libpython3
+	DEPENDS:=+libatomic +libstdcpp +abseil-cpp +cpuinfo +openmp +openblas +protobuf +sleef +libpython3
 	URL:=https://github.com/pytorch/pytorch
 endef
 
