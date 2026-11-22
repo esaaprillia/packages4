@@ -142,7 +142,8 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_global_deps.*,libtorch_python.*} $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/cmake
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/cmake/{ATen,Caffe2,Torch} $(1)/usr/lib/cmake/
+	#$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/cmake/{ATen,Caffe2,Torch} $(1)/usr/lib/cmake/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/cmake/* $(1)/usr/lib/cmake/
 endef
 
 define Package/libtorch/install
