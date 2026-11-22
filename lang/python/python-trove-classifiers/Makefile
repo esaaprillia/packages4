@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-trove-classifiers
-PKG_VERSION:=2026.6.1.19
+PKG_VERSION:=2026.9.21.13
 PKG_RELEASE:=1
 
 PYPI_NAME:=trove_classifiers
