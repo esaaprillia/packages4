@@ -113,6 +113,11 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_PRIORITIZED_TEXT_FOR_LD=OFF \
 	-DUSE_XCCL=OFF \
 	-DUSE_XPU=OFF \
+	-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
+	-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
+	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH \
+	-DCMAKE_INSTALL_RPATH="$(STAGING_DIR_HOSTPKG)/lib" \
+	-DCMAKE_SKIP_RPATH=FALSE \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
 PYTHON3_HOST_WHEEL_NAME:=torch
@@ -123,8 +128,7 @@ define Build/Prepare
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/{ATen,c10,caffe2,torch} $(STAGING_DIR_HOSTPKG)/include/
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib
-	#$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_global_deps.*,libtorch_python.*} $(STAGING_DIR_HOSTPKG)/lib/
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/* $(STAGING_DIR_HOSTPKG)/lib/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_global_deps.*,libtorch_python.*} $(STAGING_DIR_HOSTPKG)/lib/
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib/cmake
 	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/cmake/{ATen,Caffe2,Torch} $(STAGING_DIR_HOSTPKG)/lib/cmake/
 endef
