@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-flit-core
-PKG_VERSION:=4.0.2
+PKG_VERSION:=4.2.0
 PKG_RELEASE:=1
 
 PYPI_NAME:=flit-core
