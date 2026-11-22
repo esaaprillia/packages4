@@ -99,7 +99,7 @@ PYTHON3_PKG_WHEEL_VERSION:=2.15.0
 
 CMAKE_HOST_OPTIONS += \
 	-DBUILD_SHARED_LIBS=ON \
-	-DBUILD_CUSTOM_PROTOBUF=ON \
+	-DBUILD_CUSTOM_PROTOBUF=OFF \
 	-DBUILD_PYTHON=ON \
 	-DBUILD_TEST=OFF \
 	-DUSE_CUDA=OFF \
@@ -119,6 +119,11 @@ CMAKE_HOST_OPTIONS += \
 	-DUSE_SYSTEM_SLEEF=OFF \
 	-DUSE_XCCL=OFF \
 	-DUSE_XPU=OFF \
+	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DPROTOBUF_PROTOC_EXECUTABLE="$(STAGING_DIR_HOSTPKG)/bin/protoc" \
+	-DCMAKE_SKIP_RPATH=OFF \
+	-DCMAKE_INSTALL_LIBDIR=lib \
+	-DCMAKE_INSTALL_RPATH="$(STAGING_DIR_HOSTPKG)/lib" \
 	-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
 PYTHON3_HOST_WHEEL_NAME:=torch
@@ -127,11 +132,14 @@ PYTHON3_HOST_WHEEL_VERSION:=2.15.0
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/include
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/{ATen,c10,caffe2,torch} $(STAGING_DIR_HOSTPKG)/include/
+	#$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/{ATen,c10,caffe2,torch} $(STAGING_DIR_HOSTPKG)/include/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/include/* $(STAGING_DIR_HOSTPKG)/include/
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_global_deps.*,libtorch_python.*} $(STAGING_DIR_HOSTPKG)/lib/
+	#$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_global_deps.*,libtorch_python.*} $(STAGING_DIR_HOSTPKG)/lib/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/lib/* $(STAGING_DIR_HOSTPKG)/lib/
 	$(INSTALL_DIR) $(STAGING_DIR_HOSTPKG)/lib/cmake
-	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/cmake/{ATen,Caffe2,Torch} $(STAGING_DIR_HOSTPKG)/lib/cmake/
+	#$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/cmake/{ATen,Caffe2,Torch} $(STAGING_DIR_HOSTPKG)/lib/cmake/
+	$(CP) $(HOST_PYTHON3_PKG_DIR)/torch/share/cmake/* $(STAGING_DIR_HOSTPKG)/lib/cmake/
 endef
 
 define Build/InstallDev
@@ -140,7 +148,8 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/lib/{libc10.*,libshm.*,libtorch.*,libtorch_cpu.*,libtorch_global_deps.*,libtorch_python.*} $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/usr/lib/cmake
-	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/cmake/{ATen,Caffe2,Torch} $(1)/usr/lib/cmake/
+	#$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/cmake/{ATen,Caffe2,Torch} $(1)/usr/lib/cmake/
+	$(CP) $(PKG_INSTALL_DIR)/$(PYTHON3_PKG_DIR)/torch/share/cmake/* $(1)/usr/lib/cmake/
 endef
 
 define Package/libtorch/install
