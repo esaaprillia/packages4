@@ -16,7 +16,6 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/vision-$(PKG_VERSION)
 CMAKE_BINARY_SUBDIR := build
 
 PKG_BUILD_DEPENDS:=pytorch/host pillow/host
-PYTHON3_PKG_BUILD:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/python/lang/python/meson/cmake.mk
@@ -40,8 +39,8 @@ define Package/python3-torchvision
   SUBMENU:=Python
   TITLE:=image and video datasets and models for torch deep learning (python bindings)
   URL:=https://github.com/pytorch/vision
-  #DEPENDS:=+python3-light +python3-numpy +python3-pillow +python3-torch +torchvision
-  DEPENDS:=+python3-light +python3-torch +torchvision
+  #DEPENDS:=+python3-light +python3-numpy +python3-pillow +python3-torch
+  DEPENDS:=+python3-light +python3-torch
 endef
 
 define Package/python3-torchvision/description
@@ -50,15 +49,12 @@ endef
 
 PYTHON3_PKG_BUILD_VARS +=TORCH_USE_RTLD_GLOBAL=1 BUILD_VERSION=$(PKG_VERSION) WITH_CUDA=0 FORCE_CUDA=0 TORCHVISION_USE_NVJPEG=0 TORCHVISION_USE_FFMPEG=0 TORCHVISION_INCLUDE="$(STAGING_DIR)/usr/include" TORCHVISION_LIBRARY="$(STAGING_DIR)/usr/lib"
 
+PYTHON3_PKG_WHEEL_NAME:=torchvision
+PYTHON3_PKG_WHEEL_VERSION:=0.29.2
+
 CMAKE_OPTIONS += \
 	-DWITH_CUDA=OFF \
 	-DWITH_WEBP=ON
-
-define Build/Compile
-	$(call Build/Compile/Default)
-	$(call Build/Install/Default)
-	$(call Py3Build/Compile)
-endef
 
 define Build/InstallDev
 	$(call Build/InstallDev/cmake,$(1))
