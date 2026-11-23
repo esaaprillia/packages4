@@ -21,7 +21,7 @@ define Package/libavif
 	SECTION:=libs
 	CATEGORY:=Libraries
 	TITLE:=libavif - Library for encoding and decoding .avif files
-	DEPENDS:=+libstdcpp +libaom +dav1d +libyuv +libpng +libjpeg-turbo +libwebp +libxml2
+	DEPENDS:=+libstdcpp +libaom +dav1d +libyuv +libpng +libjpeg-turbo +libwebp +libxml2 +rav1e +svt-av1
 	URL:=https://aomediacodec.github.io/av1-avif/
 endef
 
