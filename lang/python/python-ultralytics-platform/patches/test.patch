@@ -10,8 +10,8 @@ Signed-off-by: esaaprillia <esaapriliasalsabila@gmail.com>
 
 diff --git a/sdk/python/pyproject.toml b/sdk/python/pyproject.toml
 index 7a6cd06..bcde159 100644
---- a/sdk/python/pyproject.toml
-+++ b/sdk/python/pyproject.toml
+--- a/pyproject.toml
++++ b/pyproject.toml
 @@ -1,7 +1,7 @@
  # Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
  
