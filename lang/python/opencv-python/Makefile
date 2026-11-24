@@ -1,11 +1,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=opencv-python
-PKG_VERSION:=4.11.0.86
+PKG_VERSION:=5.1.0.95
 PKG_RELEASE:=1
 
-PYPI_NAME:=opencv-python
-PKG_HASH:=03d60ccae62304860d232272e4a4fda93c39d595780cb40b161b310244b736a4
+PYPI_NAME:=opencv_python
+PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
@@ -17,19 +17,19 @@ include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include ../python3-package.mk
 
-define Package/opencv-python3
+define Package/opencv-python
   SECTION:=lang
   CATEGORY:=Languages
   SUBMENU:=Python
   TITLE:= Wrapper package for OpenCV python bindings.
   URL:=https://pypi.org/project/opencv-python/
-  DEPENDS:=+python3 +python3-numpy +opencv
+  DEPENDS:=+python3 +python3-numpy
 endef
 
-define Package/opencv-python3/description
+define Package/opencv-python/description
   OpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it.
 endef
 
-$(eval $(call Py3Package,opencv-python3))
-$(eval $(call BuildPackage,opencv-python3))
-$(eval $(call BuildPackage,opencv-python3-src))
+$(eval $(call Py3Package,opencv-python))
+$(eval $(call BuildPackage,opencv-python))
+$(eval $(call BuildPackage,opencv-python-src))
