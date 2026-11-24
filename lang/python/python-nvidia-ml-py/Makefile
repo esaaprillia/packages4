@@ -1,0 +1,36 @@
+include $(TOPDIR)/rules.mk
+
+PKG_NAME:=python-nvidia-ml-py
+PKG_VERSION:=13.615.71
+PKG_RELEASE:=1
+
+PYPI_NAME:=nvidia_ml_py
+PKG_HASH:=skip
+
+PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
+PKG_LICENSE:=BSD-3-Clause
+PKG_LICENSE_FILES:=LICENSE
+
+include ../pypi.mk
+include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/host-build.mk
+include ../python3-package.mk
+include ../python3-host-build.mk
+
+define Package/python3-nvidia-ml-py
+  SUBMENU:=Python
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=Python Bindings for the NVIDIA Management Library
+  URL:=https://forums.developer.nvidia.com/
+  DEPENDS:=+python3
+endef
+
+define Package/python3-nvidia-ml-py/description
+Provides a Python interface to GPU management and monitoring functions.
+endef
+
+$(eval $(call HostBuild))
+$(eval $(call Py3Package,python3-nvidia-ml-py))
+$(eval $(call BuildPackage,python3-nvidia-ml-py))
+$(eval $(call BuildPackage,python3-nvidia-ml-py-src))
