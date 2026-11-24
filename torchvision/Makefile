@@ -39,8 +39,7 @@ define Package/python3-torchvision
   SUBMENU:=Python
   TITLE:=image and video datasets and models for torch deep learning (python bindings)
   URL:=https://github.com/pytorch/vision
-  #DEPENDS:=+python3-light +python3-numpy +python3-pillow +python3-torch
-  DEPENDS:=+libjpeg-turbo +libpng +libstdcpp +libwebp +python3-light +python3-torch
+  DEPENDS:=+libjpeg-turbo +libpng +libstdcpp +libwebp +python3-light +python3-numpy +python3-pillow +python3-torch
 endef
 
 define Package/python3-torchvision/description
