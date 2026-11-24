@@ -35,7 +35,7 @@ define Package/opencv-python/description
 endef
 
 CMAKE_OPTIONS += \
-	-DCMAKE_FIND_ROOT_PATH="$(CMAKE_FIND_ROOT_PATH);$(CMAKE_HOST_FIND_ROOT_PATH)"
+	-DPYTHON3_NUMPY_INCLUDE_DIRS="$(HOST_PYTHON3_PKG_DIR)/numpy/_core/include"
 
 $(eval $(call Py3Package,opencv-python))
 $(eval $(call BuildPackage,opencv-python))
