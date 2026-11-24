@@ -27,7 +27,7 @@ define Package/opencv-python
   SUBMENU:=Python
   TITLE:= Wrapper package for OpenCV python bindings.
   URL:=https://pypi.org/project/opencv-python/
-  DEPENDS:=+python3 +python3-numpy
+  DEPENDS:=+python3 +python3-numpy +ffmpeg
 endef
 
 define Package/opencv-python/description
