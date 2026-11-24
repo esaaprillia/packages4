@@ -59,7 +59,7 @@ CMAKE_OPTIONS += \
 define Build/Compile
 	$(call Build/Compile/Default)
 	$(call Build/Install/Default)
-	$(call Py3Build/Install)
+	$(call Py3Build/Compile)
 endef
 
 define Build/InstallDev
