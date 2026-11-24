@@ -8,13 +8,12 @@ PROG=/usr/bin/lightnvr
 CONF=/etc/lightnvr/lightnvr.ini
 
 start_service() {
-        mkdir -p /var/lib/lightnvr/data
-        mkdir -p /var/lib/lightnvr/data/recordings
-        mkdir -p /var/lib/lightnvr/data/models
-        mkdir -p /var/lib/lightnvr/data/database
-        mkdir -p /var/lib/lightnvr/data/recordings/hls
-        mkdir -p /var/lib/lightnvr/data/recordings/mp4
-        mkdir -p /var/lib/lightnvr/data/swap
+        mkdir -p /var/lib/lightnvr/recordings
+        mkdir -p /var/lib/lightnvr/models
+        mkdir -p /var/lib/lightnvr/database
+        mkdir -p /var/lib/lightnvr/recordings/hls
+        mkdir -p /var/lib/lightnvr/recordings/mp4
+        mkdir -p /var/lib/lightnvr/swap
         procd_open_instance
         procd_set_param command "$PROG" -c "$CONF"
         procd_set_param respawn
