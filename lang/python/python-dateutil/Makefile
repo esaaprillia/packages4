@@ -12,7 +12,7 @@ PKG_VERSION:=4.0.0
 PKG_RELEASE:=1
 PKG_LICENSE:=BSD-2-Clause
 
-PYPI_NAME:=$(PKG_NAME)
+PYPI_NAME:=python_dateutil
 PKG_HASH:=skip
 PKG_MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 
