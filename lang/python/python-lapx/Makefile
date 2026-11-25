@@ -11,7 +11,7 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=numpy/host python-cython/host python-pybind11/host
+PKG_BUILD_DEPENDS:=numpy/host python-cython/host python-pybind11/host rust/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -27,7 +27,7 @@ define Package/python3-lapx
   URL:=https://github.com/rathaROG/lapx
   DEPENDS:= \
 	+python3-light \
-	+python3-numpy
+	+python3-numpy $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-lapx/description
