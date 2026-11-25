@@ -11,13 +11,13 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_DEPENDS:=python-maturin/host
+PKG_BUILD_DEPENDS:=python-maturin/host rustup/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
-include ../python3-package.mk
-include ../python3-host-build.mk
+include ../python3-package-rustup.mk
+include ../python3-host-build-rustup.mk
 
 define Package/python3-polars-runtime-32
   SUBMENU:=Python
