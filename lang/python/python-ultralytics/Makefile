@@ -30,12 +30,12 @@ define Package/python3-ultralytics
 	+opencv-python \
 	+python3-pillow \
 	+python3-requests \
-	+python3-torch \
-	+python3-torchvision \
+	#+python3-torch \
+	#+python3-torchvision \
 	+python3-psutil \
 	+python3-polars \
 	+python3-nvidia-ml-py \
-	+python3-ultralytics-thop \
+	#+python3-ultralytics-thop \
 	+python3-ultralytics-platform
 endef
 
