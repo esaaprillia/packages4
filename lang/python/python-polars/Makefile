@@ -29,7 +29,7 @@ define Package/python3-polars
   CATEGORY:=Languages
   TITLE:=Blazingly fast DataFrame library
   URL:=https://github.com/pola-rs/polars
-  DEPENDS:=+python3 +python3-polars-runtime-32 +python-polars-runtime-64 +python-polars-runtime-compat
+  DEPENDS:=+python3 +python3-polars-runtime-32 +python3-polars-runtime-64 +python3-polars-runtime-compat
 endef
 
 define Package/python3-polars/description
