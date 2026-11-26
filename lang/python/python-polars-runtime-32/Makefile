@@ -4,7 +4,11 @@ PKG_NAME:=python-polars-runtime-32
 PKG_VERSION:=2.2.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=polars_runtime_32
+#PYPI_NAME:=polars_runtime_32
+#PKG_HASH:=skip
+
+PYPI_NAME:=polars-py
+PKG_SOURCE_URL:=https://github.com/pola-rs/polars/archive/py-$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -20,6 +24,9 @@ include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package-rustup.mk
 include ../python3-host-build-rustup.mk
 
+PYTHON3_PKG_BUILD_PATH:=py-polars/runtime/polars-runtime-32
+PYTHON3_HOST_BUILD_PATH:=py-polars/runtime/polars-runtime-32
+
 define Package/python3-polars-runtime-32
   SUBMENU:=Python
   SECTION:=lang
@@ -33,7 +40,8 @@ define Package/python3-polars-runtime-32/description
 Packages that contain the binary shared libraries that back the polars python package.
 endef
 
-PYTHON3_PKG_SETUP_VARS += $(CARGO_PKG_CONFIG_VARS)
+PYTHON3_HOST_WHEEL_NAME:=polars_runtime_32
+PYTHON3_HOST_WHEEL_VERSION:=2.2.0
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-polars-runtime-32))
