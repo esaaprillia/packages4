@@ -1,0 +1,17 @@
+From 6c9ca4a1bc866e02b9cde5ca237d599f7530ce04 Mon Sep 17 00:00:00 2001
+From: esaaprillia <esaapriliasalsabila@gmail.com>
+Date: Thu, 26 Nov 2026 06:49:14 +0000
+Subject: [PATCH] Update rust-toolchain.toml
+
+---
+ py-polars/runtime/polars-runtime-32/rust-toolchain.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/py-polars/runtime/polars-runtime-32/rust-toolchain.toml b/py-polars/runtime/polars-runtime-32/rust-toolchain.toml
+index 833ef405acf8..5d56faf9ae08 100644
+--- a/py-polars/runtime/polars-runtime-32/rust-toolchain.toml
++++ b/py-polars/runtime/polars-runtime-32/rust-toolchain.toml
+@@ -1,2 +1,2 @@
+ [toolchain]
+-channel = "nightly-2026-09-01"
++channel = "nightly"
