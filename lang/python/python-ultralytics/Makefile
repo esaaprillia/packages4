@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=python-ultralytics
-PKG_VERSION:=8.4.218
+PKG_VERSION:=8.4.220
 PKG_RELEASE:=1
 
 PYPI_NAME:=ultralytics
