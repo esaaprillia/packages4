@@ -40,6 +40,9 @@ define Package/python3-polars-runtime-32/description
 Packages that contain the binary shared libraries that back the polars python package.
 endef
 
+PYTHON3_PKG_BUILD_VARS += RUSTUP_TOOLCHAIN=nightly
+PYTHON3_HOST_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo RUSTUP_TOOLCHAIN=nightly
+
 PYTHON3_HOST_WHEEL_NAME:=polars_runtime_32
 PYTHON3_HOST_WHEEL_VERSION:=2.2.0
 
