@@ -12,6 +12,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-maturin/host rustup/host
+HOST_BUILD_DEPENDS:=python-maturin/host rustup/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
