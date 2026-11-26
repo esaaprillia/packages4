@@ -16,7 +16,6 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DEPENDS:=python-maturin/host rustup/host
-HOST_BUILD_DEPENDS:=python-maturin/host rustup/host
 
 include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
@@ -25,7 +24,6 @@ include ../python3-package-rustup.mk
 include ../python3-host-build-rustup.mk
 
 PYTHON3_PKG_BUILD_PATH:=py-polars/runtime/polars-runtime-32
-PYTHON3_HOST_BUILD_PATH:=py-polars/runtime/polars-runtime-32
 
 define Package/python3-polars-runtime-32
   SUBMENU:=Python
@@ -40,17 +38,10 @@ define Package/python3-polars-runtime-32/description
 Packages that contain the binary shared libraries that back the polars python package.
 endef
 
-#PYTHON3_PKG_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo RUSTUP_TOOLCHAIN=nightly-2026-09-01
-#PYTHON3_HOST_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo RUSTUP_TOOLCHAIN=nightly-2026-09-01
-
 PYTHON3_PKG_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo
-PYTHON3_HOST_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo
 
 PYTHON3_PKG_WHEEL_NAME:=polars_runtime_32
 PYTHON3_PKG_WHEEL_VERSION:=2.2.0
-
-PYTHON3_HOST_WHEEL_NAME:=polars_runtime_32
-PYTHON3_HOST_WHEEL_VERSION:=2.2.0
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-polars-runtime-32))
