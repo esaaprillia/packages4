@@ -1,12 +1,12 @@
 --- a/rust-toolchain.toml
 +++ b/rust-toolchain.toml
-@@ -1,2 +1,2 @@
+@@ -1,2 +1,3 @@
  [toolchain]
--channel = "nightly-2026-09-01"
-+channel = "nightly"
+ channel = "nightly-2026-09-01"
++targets = ["aarch64-unknown-linux-gnu"]
 --- a/py-polars/runtime/polars-runtime-32/rust-toolchain.toml
 +++ b/py-polars/runtime/polars-runtime-32/rust-toolchain.toml
-@@ -1,2 +1,2 @@
+@@ -1,2 +1,3 @@
  [toolchain]
--channel = "nightly-2026-09-01"
-+channel = "nightly"
+ channel = "nightly-2026-09-01"
++targets = ["aarch64-unknown-linux-gnu"]
