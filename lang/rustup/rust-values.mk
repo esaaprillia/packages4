@@ -65,6 +65,9 @@ ifeq ($(ARCH),aarch64)
     RUSTUP_CFLAGS:=-mno-outline-atomics
 endif
 
+CARGO_HOST_CONFIG_VARS= \
+	CARGO_HOME=$(CARGO_HOME)
+
 CARGO_HOST_PROFILE:=release
 
 # Support only a subset for now.
