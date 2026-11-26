@@ -8,8 +8,8 @@
 # Rust Environmental Vars
 RUSTUP_HOST_SUFFIX := $(word 4, $(subst -, ,$(GNU_HOST_NAME)))
 RUSTUP_HOST_ARCH := $(HOST_ARCH)-unknown-linux-$(RUSTUP_HOST_SUFFIX)
-CARGO_HOME := $(STAGING_DIR_HOST)/.cargo/
-RUSTUP_HOME := $(STAGING_DIR_HOST)/.rustup/
+CARGO_HOME := $(STAGING_DIR_HOST)/.cargo
+RUSTUP_HOME := $(STAGING_DIR_HOST)/.rustup
 CARGO := $(CARGO_HOME)/bin/cargo
 
 ifeq ($(CONFIG_USE_MUSL),y)
