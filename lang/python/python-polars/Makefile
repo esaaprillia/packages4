@@ -4,7 +4,11 @@ PKG_NAME:=python-polars
 PKG_VERSION:=2.2.0
 PKG_RELEASE:=1
 
-PYPI_NAME:=polars
+#PYPI_NAME:=polars
+#PKG_HASH:=skip
+
+PYPI_NAME:=polars-py
+PKG_SOURCE_URL:=https://github.com/pola-rs/polars/archive/py-$(PKG_VERSION)
 PKG_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
@@ -16,6 +20,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../python3-package.mk
 include ../python3-host-build.mk
+
+PYTHON3_PKG_BUILD_PATH:=py-polars
 
 define Package/python3-polars
   SUBMENU:=Python
@@ -29,6 +35,9 @@ endef
 define Package/python3-polars/description
 Polars is an analytical query engine for DataFrames, written in Rust.
 endef
+
+PYTHON3_PKG_WHEEL_NAME:=polars
+PYTHON3_PKG_WHEEL_VERSION:=2.2.0
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-polars))
