@@ -11,7 +11,6 @@ PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
-PKG_BUILD_PARALLEL:=0
 PKG_BUILD_DEPENDS:=python-maturin/host rustup/host
 
 include ../pypi.mk
@@ -33,7 +32,7 @@ define Package/python3-polars-runtime-32/description
 Packages that contain the binary shared libraries that back the polars python package.
 endef
 
-PYTHON3_PKG_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo
+PYTHON3_PKG_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo RUSTUP_AUTO_INSTALL=0
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-polars-runtime-32))
