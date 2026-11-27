@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mongo
-PKG_VERSION:=7.0.45
+PKG_VERSION:=7.0.48
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-r$(PKG_VERSION).tar.gz
@@ -72,6 +72,8 @@ SCONS_OPTIONS += \
 	--use-sasl-client \
 	--ssl \
 	--runtime-hardening=off \
+	--enable-http-client=on \
+	--server-js=on \
 	--wiredtiger=on \
 	PREFIX=/usr \
 	RPATH="$(STAGING_DIR)/usr/lib" \
