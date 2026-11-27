@@ -32,7 +32,7 @@ define Package/python3-polars-runtime-64/description
 Packages that contain the binary shared libraries that back the polars python package.
 endef
 
-PYTHON3_PKG_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo RUSTUP_AUTO_INSTALL=0
+PYTHON3_PKG_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-polars-runtime-64))
