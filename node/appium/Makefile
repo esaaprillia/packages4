@@ -5,18 +5,18 @@ PKG_NAME:=$(PKG_NPM_NAME)
 PKG_VERSION:=4.0.2
 PKG_RELEASE:=1
 
-#PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
-#PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
-#PKG_HASH:=skip
+PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
+PKG_SOURCE_URL:=https://registry.npmjs.org/$(PKG_NPM_NAME)/-/
+PKG_HASH:=skip
 
 #PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tar.gz
 #PKG_SOURCE_URL:=https://github.com/decolua/9router/archive/v$(PKG_VERSION)
 #PKG_HASH:=skip
 
-PKG_SOURCE_URL:=https://github.com/appium/appium.git
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=19b5d082d57bad563511d5120ef7fd8da63788b3
-PKG_MIRROR_HASH:=skip
+#PKG_SOURCE_URL:=https://github.com/appium/appium.git
+#PKG_SOURCE_PROTO:=git
+#PKG_SOURCE_VERSION:=19b5d082d57bad563511d5120ef7fd8da63788b3
+#PKG_MIRROR_HASH:=skip
 
 PKG_MAINTAINER:=Esa Aprilia Salsabila <esaapriliasalsabila@gmail.com>
 PKG_LICENSE:=Apache-2.0
