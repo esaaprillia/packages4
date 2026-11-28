@@ -1,17 +1,5 @@
-From b15b8af2240a42aac58ad46dac76564708cb2d9f Mon Sep 17 00:00:00 2001
-From: esaaprillia <esaapriliasalsabila@gmail.com>
-Date: Sat, 28 Nov 2026 20:37:38 +0800
-Subject: [PATCH] Update pyproject.toml
-
-Signed-off-by: esaaprillia <esaapriliasalsabila@gmail.com>
----
- sdk/python/pyproject.toml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/sdk/python/pyproject.toml b/sdk/python/pyproject.toml
-index ab68f4b..2f9927b 100644
---- a/sdk/python/pyproject.toml
-+++ b/sdk/python/pyproject.toml
+--- a/pyproject.toml
++++ b/pyproject.toml
 @@ -1,5 +1,5 @@
  [build-system]
 -requires = ["uv_build>=0.12.3,<0.13"]
