@@ -25,14 +25,14 @@ define Package/python3-polars-runtime-32
   CATEGORY:=Languages
   TITLE:=Blazingly fast DataFrame library
   URL:=https://github.com/pola-rs/polars
-  DEPENDS:=+python3 $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+python3 +libzstd $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-polars-runtime-32/description
 Packages that contain the binary shared libraries that back the polars python package.
 endef
 
-PYTHON3_PKG_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo
+PYTHON3_PKG_BUILD_VARS += CARGO=$(CARGO_HOME)/bin/cargo ZSTD_SYS_USE_PKG_CONFIG=1
 
 $(eval $(call HostBuild))
 $(eval $(call Py3Package,python3-polars-runtime-32))
