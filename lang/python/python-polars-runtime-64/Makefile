@@ -25,7 +25,7 @@ define Package/python3-polars-runtime-64
   CATEGORY:=Languages
   TITLE:=Blazingly fast DataFrame library
   URL:=https://github.com/pola-rs/polars
-  DEPENDS:=+python3 $(RUST_ARCH_DEPENDS)
+  DEPENDS:=+python3 +libzstd $(RUST_ARCH_DEPENDS)
 endef
 
 define Package/python3-polars-runtime-64/description
